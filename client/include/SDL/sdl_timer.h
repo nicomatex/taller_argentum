@@ -15,6 +15,14 @@ class SDLTimer{
         SDLTimer();
         ~SDLTimer();
 
+        /* Constructor por copia. */
+        SDLTimer(const SDLTimer &other);
+        SDLTimer& operator=(const SDLTimer &other);
+
+        /* Constructor por movimiento. */
+        SDLTimer(SDLTimer &&other);
+        SDLTimer& operator=(SDLTimer &&other);
+
         /* Inicia la cuenta del timer. */
         void start();
 

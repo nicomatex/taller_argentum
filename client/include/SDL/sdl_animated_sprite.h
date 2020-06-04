@@ -27,6 +27,16 @@ class SDLSprite {
     SDLSprite(SDLTexture &texture, int nframes, int fps, int base_x, int base_y, int w,
               int h);
     
+    ~SDLSprite();
+
+    /* No se permite construccion por copia. */
+    SDLSprite(const SDLSprite &other) = delete;
+    SDLSprite operator=(const SDLSprite &other) = delete;
+
+    /* Constructor y asginador por movimiento. */
+    SDLSprite(SDLSprite &&other);
+    SDLSprite& operator=(SDLSprite &&other);
+
     /* Renderiza la sprite en el area de destino del renderer. */
     void render(const SDLArea &dest);
 };

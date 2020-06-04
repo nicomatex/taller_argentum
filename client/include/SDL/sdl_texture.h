@@ -26,7 +26,7 @@ class SDLTexture {
 
     /* No se permite construccion por copia. */
     SDLTexture(const SDLTexture &other) = delete;
-    SDLTexture operator=(const SDLTexture &other) = delete;
+    SDLTexture& operator=(const SDLTexture &other) = delete;
     
     /* Constructor por movimiento. */
     SDLTexture(SDLTexture &&other);
