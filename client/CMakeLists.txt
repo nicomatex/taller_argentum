@@ -12,6 +12,7 @@ add_library(sdlutil
   sdl_timer.cpp
   sdl_animated_sprite.cpp
   sdl_text.cpp
+  sdl_texture_loader.cpp
 )
 
 # Agrego la carpeta con los headers autogenerados a los includes

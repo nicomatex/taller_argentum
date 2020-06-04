@@ -5,6 +5,8 @@
 SDLTimer::SDLTimer()
     : start_ticks(0), pause_ticks(0), _is_paused(false), _is_started(false) {}
 
+SDLTimer::~SDLTimer(){}
+
 void SDLTimer::start() {
     _is_started = true;
     _is_paused = false;
@@ -36,7 +38,7 @@ void SDLTimer::unpause() {
     }
 }
 
-uint32_t SDLTimer::get_ticks() {
+uint32_t SDLTimer::get_ticks() const{
     uint32_t time = 0;
     if (_is_started) {
         time = _is_paused ? pause_ticks : SDL_GetTicks() - start_ticks;
@@ -44,10 +46,10 @@ uint32_t SDLTimer::get_ticks() {
     return time;
 }
 
-bool SDLTimer::is_started(){
+bool SDLTimer::is_started() const{
     return _is_started;
 }
 
-bool SDLTimer::is_paused(){
+bool SDLTimer::is_paused() const{
     return _is_paused;
 }

@@ -8,6 +8,7 @@ class SDLArea {
 
    public:
     SDLArea(int x, int y, int width, int height);
+    SDLArea();
     ~SDLArea();
 
     /* Devuelve la posicion X del area. */
