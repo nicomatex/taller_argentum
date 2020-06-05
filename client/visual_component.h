@@ -56,8 +56,8 @@ class VisualComponent {
     void set_move_status(MovementStatus new_movement_status);
 
     /* Devuelve el offset de renderizacion en decimas de tile. */
-    int get_x_offset();
-    int get_y_offset();
+    int get_x_offset() const;
+    int get_y_offset() const;
 };
 
 #endif

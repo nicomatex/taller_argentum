@@ -8,7 +8,7 @@
 
 extern bool debug;
 
-SDLWindow::SDLWindow(int width, int height) {
+SDLWindow::SDLWindow(int width, int height,const std::string &title) {
     int errCode = SDL_Init(SDL_INIT_VIDEO);
     if (errCode) {
         throw SDLError(ERR_SDL_INIT);
@@ -23,7 +23,7 @@ SDLWindow::SDLWindow(int width, int height) {
     if (debug)
         std::cout << "[DEBUG] SDL, IMAGE y TTF inicializados." << std::endl;
 
-    this->window = SDL_CreateWindow("Jueguito", 100, 100, width, height, 0);
+    this->window = SDL_CreateWindow(title.c_str(), 100, 100, width, height, 0);
     if (!this->window) {
         throw SDLError(ERR_WINDOW_INIT);
     }

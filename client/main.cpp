@@ -1,9 +1,9 @@
 #include <iostream>
 #include <vector>
-
 #include "include/SDL/sdl_texture_loader.h"
 #include "include/SDL/sdl_window.h"
 #include "visual_component.h"
+#include "camera.h"
 
 bool debug = true;
 
@@ -29,7 +29,7 @@ VisualComponent load_component(SDLTexture &texture) {
 }
 
 void update_npc(VisualComponent &npc, SDL_Event &e) {
-    if (e.type == SDL_KEYDOWN && e.key.repeat == 0) {
+    if (e.type == SDL_KEYDOWN) {
         switch (e.key.keysym.sym) {
             case SDLK_RIGHT:
                 npc.set_orientation(RIGHT);
@@ -63,8 +63,9 @@ void update_npc(VisualComponent &npc, SDL_Event &e) {
         }
     }
 }
+
 int main(void) {
-    SDLWindow ventana(800, 600);
+    SDLWindow ventana(960, 640,"Argentum Online");
     SDLTextureLoader loader(ventana.init_renderer());
 
     SDLTexture sprite_texture =
@@ -72,9 +73,17 @@ int main(void) {
     bool running = true;
 
     VisualComponent npc = load_component(sprite_texture);
+    VisualComponent npc2 = load_component(sprite_texture);
+    Camera camera(npc);
+    std::vector<VisualComponent*> components;
+    components.push_back(&npc2);
+    components.push_back(&npc);
+
     npc.set_move_status(IDLE);
     npc.set_orientation(DOWN);
 
+    npc2.set_move_status(IDLE);
+    npc2.set_orientation(UP);
     while (running) {
         SDL_Event e;
         while (SDL_PollEvent(&e)) {
@@ -83,17 +92,9 @@ int main(void) {
             }
             update_npc(npc, e);
         }
-        int xpos_pixels = npc.get_x_tile() * TILE_SIZE +
-                          (npc.get_x_offset() * TILE_SIZE) / 100;
-        int ypos_pixels = npc.get_y_tile() * TILE_SIZE +
-                          (npc.get_y_offset() * TILE_SIZE) / 100;
-
-        SDLArea dest(xpos_pixels, ypos_pixels, npc.get_width_tile() * TILE_SIZE,
-                     npc.get_height_tile() * TILE_SIZE);
 
         ventana.fill(0, 143, 37, 255);
-        npc.render(dest);
-
+        camera.render_components(components);
         ventana.render();
     }
     return 0;

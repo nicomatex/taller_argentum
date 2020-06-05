@@ -13,6 +13,7 @@ include_directories(${PROJECT_BINARY_DIR})
 add_library(game
   animation_pack.cpp
   visual_component.cpp
+  camera.cpp
 )
 
 add_executable (aoclient

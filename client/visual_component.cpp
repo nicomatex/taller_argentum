@@ -59,9 +59,9 @@ int VisualComponent::get_height_tile() const { return height_tile; }
 
 int VisualComponent::get_width_tile() const { return width_tile; }
 
-int VisualComponent::get_x_offset() { return x_offset; }
+int VisualComponent::get_x_offset() const{ return x_offset; }
 
-int VisualComponent::get_y_offset() { return y_offset; }
+int VisualComponent::get_y_offset() const{ return y_offset; }
 
 void VisualComponent::set_position(int new_x_tile, int new_y_tile) {
     if (new_x_tile < x_tile) {

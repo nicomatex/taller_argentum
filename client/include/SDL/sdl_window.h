@@ -16,7 +16,7 @@ class SDLWindow {
 
    public:
     /* Constructor. Recibe ancho y alto de la ventana en pixeles. */
-    SDLWindow(int width, int height);
+    SDLWindow(int width, int height,const std::string &title);
     ~SDLWindow();
 
     /* Llena toda la ventana con el color indicado en los parametros. */
