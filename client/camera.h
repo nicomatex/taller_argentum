@@ -17,12 +17,7 @@ class Camera {
     /* Coordenadas del tile donde esta centrada la camara. */
     int x_center_tile;
     int y_center_tile;
-
-    /* Ofset del campo de vision respecto del tile central, en pixeles.
-    Usado para suavizar el movimiento de la camara. */
-    int x_offset_pixels;
-    int y_offset_pixels;
-
+    
     const VisualComponent &follow_component;
 
     /* Devuelve true si un componente visual esta dentro del campo

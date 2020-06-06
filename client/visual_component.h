@@ -10,52 +10,42 @@ a ser renderizados por pantalla. */
 #include "include/SDL/sdl_area.h"
 #include "include/SDL/sdl_timer.h"
 
+/* Interfaz que deben implementar todos los componentes
+que vayan a ser renderizados por la camara.*/
 class VisualComponent {
-   private:
-    AnimationPack animation_pack;
-    Orientation orientation;
-    MovementStatus movement_status;
-    SDLTimer timer;
+   protected:
+    int x;
+    int y;
 
-    int x_tile;
-    int y_tile;
+    int height;
+    int width;
 
-    int height_tile;
-    int width_tile;
-
-    /* Estos offset estan medidos en decimas de tile (es decir, 10 = 1
+    /* Estos offset estan medidos en centesimas de tile (es decir, 100 = 1
      * tile). Se usan para que la transicion sea smooth.*/
     int x_offset;
     int y_offset;
 
-    void _update_offset();
-    
    public:
-    VisualComponent(AnimationPack &&animation_pack, int x_tile, int y_tile,
-                    int width_tile, int height_tile);
+    VisualComponent(int x, int y, int width, int height);
+    virtual ~VisualComponent(){}
+
     /* Renderiza el objeto en pantalla. */
-    void render(const SDLArea &dest);
+    virtual void render(const SDLArea &dest) = 0;
+
+    /* Establece la nueva posicion. */
+    void set_position(int new_x, int new_y);
 
     /* Devuelve el ancho en tiles del objeto. */
-    int get_width_tile() const;
+    int get_width() const;
 
     /* Devuelve la altura en tiles del objeto. */
-    int get_height_tile() const;
+    int get_height() const;
 
     /* Devuelve el tile absoluto donde esta parado el objeto. */
-    int get_x_tile() const;
-    int get_y_tile() const;
+    int get_x() const;
+    int get_y() const;
 
-    /* Establece la nueva posicion del componente. */
-    void set_position(int new_x_tile, int new_y_tile);
-
-    /* Establece la nueva orientacion del componente.*/
-    void set_orientation(Orientation new_orientation);
-
-    /* Establece el nuevo estado de movimiento*/
-    void set_move_status(MovementStatus new_movement_status);
-
-    /* Devuelve el offset de renderizacion en decimas de tile. */
+    /* Devuelve el offset de renderizacion en centesimas de tile. */
     int get_x_offset() const;
     int get_y_offset() const;
 };

@@ -1,5 +1,7 @@
 #include "sdl_animated_sprite.h"
 
+#include <iostream>
+
 #include "sdl_error.h"
 
 SDLSprite::SDLSprite(SDLTexture& texture, int nframes, int fps, int base_x,
@@ -15,6 +17,30 @@ SDLSprite::SDLSprite(SDLTexture& texture, int nframes, int fps, int base_x,
     timer.start();
 }
 
+SDLSprite::SDLSprite(const SDLSprite& other) : texture(other.texture) {
+    this->nframes = other.nframes;
+    this->frame_width = other.frame_width;
+    this->frame_height = other.frame_height;
+    this->current_frame = other.current_frame;
+    this->base_x = other.base_x;
+    this->base_y = other.base_y;
+    this->time_between_frames = other.time_between_frames;
+    this->timer = other.timer;
+}
+
+SDLSprite& SDLSprite::operator=(const SDLSprite& other) {
+    this->texture = other.texture;
+    this->nframes = other.nframes;
+    this->frame_width = other.frame_width;
+    this->frame_height = other.frame_height;
+    this->current_frame = other.current_frame;
+    this->base_x = other.base_x;
+    this->base_y = other.base_y;
+    this->time_between_frames = other.time_between_frames;
+    this->timer = other.timer;
+    return *this;
+}
+
 SDLSprite::SDLSprite(SDLSprite&& other) : texture(other.texture) {
     this->nframes = std::move(other.nframes);
     this->frame_width = std::move(other.frame_width);
@@ -26,7 +52,7 @@ SDLSprite::SDLSprite(SDLSprite&& other) : texture(other.texture) {
     this->timer = std::move(other.timer);
 }
 
-SDLSprite& SDLSprite::operator=(SDLSprite &&other){
+SDLSprite& SDLSprite::operator=(SDLSprite&& other) {
     texture = std::move(other.texture);
     this->nframes = std::move(other.nframes);
     this->frame_width = std::move(other.frame_width);
@@ -39,7 +65,7 @@ SDLSprite& SDLSprite::operator=(SDLSprite &&other){
     return *this;
 }
 
-SDLSprite::~SDLSprite(){}
+SDLSprite::~SDLSprite() {}
 
 void SDLSprite::render(const SDLArea& dest) {
     /* Actualizacion del cuadro de la animacion. */
@@ -47,10 +73,15 @@ void SDLSprite::render(const SDLArea& dest) {
         current_frame = (current_frame + 1) % nframes;
         timer.start();
     }
+    int frames_per_row = texture.get().get_width() / frame_width;
 
-    SDLArea src(base_x + (current_frame * frame_width), base_y, frame_width,
-                frame_height);
+    int x_start_render = base_x + ((current_frame % frames_per_row) * frame_width);
+
+    int y_start_render =
+        base_y + (current_frame / frames_per_row) * frame_height;
+
+    SDLArea src(x_start_render, y_start_render, frame_width, frame_height);
     SDL_Rect sdlDest = {dest.getX(), dest.getY(), dest.getWidth(),
                         dest.getHeight()};
-    texture.render(src, dest);
+    texture.get().render(src, dest);
 }

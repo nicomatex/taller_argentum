@@ -4,10 +4,11 @@
 #include "sdl_area.h"
 #include "sdl_texture.h"
 #include "sdl_timer.h"
+#include <functional>
 
 class SDLSprite {
    private:
-    SDLTexture &texture;
+    std::reference_wrapper<SDLTexture> texture;
     int nframes;
     int current_frame;
     int base_y;
@@ -29,9 +30,9 @@ class SDLSprite {
     
     ~SDLSprite();
 
-    /* No se permite construccion por copia. */
-    SDLSprite(const SDLSprite &other) = delete;
-    SDLSprite operator=(const SDLSprite &other) = delete;
+    /* Constructor por copia */
+    SDLSprite(const SDLSprite &other);
+    SDLSprite& operator=(const SDLSprite &other);
 
     /* Constructor y asginador por movimiento. */
     SDLSprite(SDLSprite &&other);
