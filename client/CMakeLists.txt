@@ -19,7 +19,7 @@ add_library(game
 )
 
 add_executable (aoclient
-  main.cpp  
+  test.cpp  
 )
 
 target_link_libraries(aoclient sdlutil game SDL2 SDL2_image SDL2_ttf)
