@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsdlutil.a  CMakeFiles/sdlutil.dir/sdl_window.cpp.o CMakeFiles/sdlutil.dir/sdl_area.cpp.o CMakeFiles/sdlutil.dir/sdl_texture.cpp.o CMakeFiles/sdlutil.dir/sdl_error.cpp.o CMakeFiles/sdlutil.dir/sdl_timer.cpp.o CMakeFiles/sdlutil.dir/sdl_animated_sprite.cpp.o CMakeFiles/sdlutil.dir/sdl_text.cpp.o CMakeFiles/sdlutil.dir/sdl_texture_loader.cpp.o
+/usr/bin/ranlib libsdlutil.a
