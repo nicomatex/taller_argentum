@@ -8,6 +8,7 @@ include/SDL/CMakeFiles/sdlutil.dir/sdl_animated_sprite.cpp.o
  /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_error.h
  /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_texture.h
  /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_timer.h
+ /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/json.hpp
 include/SDL/CMakeFiles/sdlutil.dir/sdl_area.cpp.o
  /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_area.cpp
  /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_area.h
@@ -46,3 +47,4 @@ include/SDL/CMakeFiles/sdlutil.dir/sdl_window.cpp.o
  /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_timer.h
  /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_window.cpp
  /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_window.h
+ /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/json.hpp

@@ -1,7 +1,13 @@
 #include "visual_component.h"
 
-VisualComponent::VisualComponent(int x, int y, int width, int height)
-    : x(x), y(y), width(width), height(height), x_offset(0), y_offset(0) {}
+VisualComponent::VisualComponent(int x, int y, int width, int height,
+                                 int x_offset, int y_offset)
+    : x(x),
+      y(y),
+      width(width),
+      height(height),
+      x_offset(x_offset),
+      y_offset(y_offset) {}
 
 int VisualComponent::get_x() const { return x; }
 
@@ -19,3 +25,9 @@ void VisualComponent::set_position(int new_x, int new_y) {
     x = new_x;
     y = new_y;
 }
+
+bool VisualComponent::is_transitioning() const{
+    return false;
+}
+
+void VisualComponent::update(){}

@@ -22,11 +22,12 @@ class VisualComponent {
 
     /* Estos offset estan medidos en centesimas de tile (es decir, 100 = 1
      * tile). Se usan para que la transicion sea smooth.*/
+
     int x_offset;
     int y_offset;
 
    public:
-    VisualComponent(int x, int y, int width, int height);
+    VisualComponent(int x, int y, int width, int height,int x_offset, int y_offset);
     virtual ~VisualComponent(){}
 
     /* Renderiza el objeto en pantalla. */
@@ -45,9 +46,17 @@ class VisualComponent {
     int get_x() const;
     int get_y() const;
 
+    /* Devuelve true si el actor esta en medio de un movimiento.*/
+    virtual bool is_transitioning() const;
+
+
     /* Devuelve el offset de renderizacion en centesimas de tile. */
-    int get_x_offset() const;
-    int get_y_offset() const;
+    virtual int get_x_offset() const;
+    virtual int get_y_offset() const;
+
+    /* Debe ser llamado luego de renderizar para actualizar el estado de las constantes 
+    visuales.*/
+    virtual void update();
 };
 
 #endif

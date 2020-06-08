@@ -7,6 +7,7 @@ include/SDL/CMakeFiles/sdlutil.dir/sdl_animated_sprite.cpp.o: ../include/SDL/sdl
 include/SDL/CMakeFiles/sdlutil.dir/sdl_animated_sprite.cpp.o: ../include/SDL/sdl_error.h
 include/SDL/CMakeFiles/sdlutil.dir/sdl_animated_sprite.cpp.o: ../include/SDL/sdl_texture.h
 include/SDL/CMakeFiles/sdlutil.dir/sdl_animated_sprite.cpp.o: ../include/SDL/sdl_timer.h
+include/SDL/CMakeFiles/sdlutil.dir/sdl_animated_sprite.cpp.o: ../include/json.hpp
 
 include/SDL/CMakeFiles/sdlutil.dir/sdl_area.cpp.o: ../include/SDL/sdl_area.cpp
 include/SDL/CMakeFiles/sdlutil.dir/sdl_area.cpp.o: ../include/SDL/sdl_area.h
@@ -45,4 +46,5 @@ include/SDL/CMakeFiles/sdlutil.dir/sdl_window.cpp.o: ../include/SDL/sdl_texture.
 include/SDL/CMakeFiles/sdlutil.dir/sdl_window.cpp.o: ../include/SDL/sdl_timer.h
 include/SDL/CMakeFiles/sdlutil.dir/sdl_window.cpp.o: ../include/SDL/sdl_window.cpp
 include/SDL/CMakeFiles/sdlutil.dir/sdl_window.cpp.o: ../include/SDL/sdl_window.h
+include/SDL/CMakeFiles/sdlutil.dir/sdl_window.cpp.o: ../include/json.hpp
 
