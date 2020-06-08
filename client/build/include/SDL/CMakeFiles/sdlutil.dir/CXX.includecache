@@ -6,14 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_animated_sprite.cpp
-sdl_animated_sprite.h
-/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_animated_sprite.h
-iostream
--
-sdl_error.h
-/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_error.h
-
 /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_animated_sprite.h
 sdl_area.h
 /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_area.h
@@ -26,11 +18,21 @@ functional
 
 /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_area.h
 
+/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_config.h
+
 /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_error.h
 string
 -
 typeinfo
 -
+
+/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_text.h
+cstdint
+-
+SDL2/SDL_ttf.h
+/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/SDL2/SDL_ttf.h
+sdl_texture.h
+/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_texture.h
 
 /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_texture.h
 cstdint
@@ -47,4 +49,32 @@ sdl_area.h
 /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_timer.h
 cstdint
 -
+
+/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_window.cpp
+iostream
+-
+SDL2/SDL_ttf.h
+/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/SDL2/SDL_ttf.h
+sdl_config.h
+/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_config.h
+sdl_window.h
+/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_window.h
+sdl_error.h
+/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_error.h
+sdl_text.h
+/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_text.h
+
+/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_window.h
+cstdint
+-
+SDL2/SDL.h
+/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/SDL2/SDL.h
+SDL2/SDL_image.h
+/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/SDL2/SDL_image.h
+sdl_animated_sprite.h
+/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_animated_sprite.h
+sdl_text.h
+/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_text.h
+sdl_texture.h
+/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/include/SDL/sdl_texture.h
 
