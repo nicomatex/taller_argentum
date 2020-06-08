@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "sdl_error.h"
+using json = nlohmann::json;
 
 SDLSprite::SDLSprite(SDLTexture& texture, int nframes, int fps, int base_x,
                      int base_y, int w, int h)
@@ -17,7 +18,13 @@ SDLSprite::SDLSprite(SDLTexture& texture, int nframes, int fps, int base_x,
     timer.start();
 }
 
-SDLSprite::SDLSprite(const SDLSprite& other) : texture(other.texture) {
+SDLSprite::SDLSprite(SDLTexture& texture, json sprite_info)
+    : SDLSprite(texture, int(sprite_info["frames"]), int(sprite_info["fps"]),
+                int(sprite_info["base x"]), int(sprite_info["base y"]),
+                int(sprite_info["frame width"]), int(sprite_info["frame height"])){}
+
+          SDLSprite::SDLSprite(const SDLSprite& other)
+    : texture(other.texture) {
     this->nframes = other.nframes;
     this->frame_width = other.frame_width;
     this->frame_height = other.frame_height;
@@ -75,7 +82,8 @@ void SDLSprite::render(const SDLArea& dest) {
     }
     int frames_per_row = texture.get().get_width() / frame_width;
 
-    int x_start_render = base_x + ((current_frame % frames_per_row) * frame_width);
+    int x_start_render =
+        base_x + ((current_frame % frames_per_row) * frame_width);
 
     int y_start_render =
         base_y + (current_frame / frames_per_row) * frame_height;

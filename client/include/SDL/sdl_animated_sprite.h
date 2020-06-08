@@ -4,6 +4,7 @@
 #include "sdl_area.h"
 #include "sdl_texture.h"
 #include "sdl_timer.h"
+#include "../json.hpp"
 #include <functional>
 
 class SDLSprite {
@@ -27,7 +28,8 @@ class SDLSprite {
     ser menos). */
     SDLSprite(SDLTexture &texture, int nframes, int fps, int base_x, int base_y, int w,
               int h);
-    
+    SDLSprite(SDLTexture &texture,nlohmann::json sprite_info);
+
     ~SDLSprite();
 
     /* Constructor por copia */

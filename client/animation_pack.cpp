@@ -1,5 +1,5 @@
 #include "animation_pack.h"
-
+#include <iostream>
 AnimationPack::AnimationPack(
     SDLSprite &&up_move_sprite, SDLSprite &&down_move_sprite,
     SDLSprite &&left_move_sprite, SDLSprite &&right_move_sprite,
