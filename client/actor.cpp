@@ -5,12 +5,14 @@
 #include "stdlib.h"
 #include "visual_config.h"
 
-Actor::Actor(AnimationPack &&animation_pack, int x, int y, int width,
+Actor::Actor(AnimationPack &animation_pack, int x, int y, int width,
              int height, int x_offset, int y_offset)
-    : animation_pack(std::move(animation_pack)),
+    : animation_pack(animation_pack),
       VisualComponent(x, y, width, height,x_offset,y_offset),
       orientation(DOWN),
-      movement_status(IDLE) {offset_timer.start();}
+      movement_status(IDLE),
+      transition_offset_x(0),
+      transition_offset_y(0) {}
 
 void Actor::_update_offset() {
     int delta_offset = (MOVEMENT_OFFSET * offset_timer.get_ticks());

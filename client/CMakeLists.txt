@@ -18,6 +18,10 @@ add_library(game
   decoration.cpp
 )
 
+target_link_libraries(
+  game sdlutil
+)
+
 add_executable (aoclient
   test.cpp  
 )

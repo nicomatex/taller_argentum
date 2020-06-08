@@ -41,10 +41,10 @@ SDLArea Camera::_get_render_area(VisualComponent* component) {
 
     if (_is_locked_x) camera_offset_x = 0;
     if (_is_locked_y) camera_offset_y = 0;
-
     int x_render_base =
         (relative_x_tile * TILE_SIZE) +
         (component->get_x_offset() * TILE_SIZE) / OFFSET_GRANULARITY;
+    
     int y_render_base =
         (relative_y_tile * TILE_SIZE) +
         (component->get_y_offset() * TILE_SIZE) / OFFSET_GRANULARITY;
@@ -99,6 +99,7 @@ void Camera::render_components(std::vector<VisualComponent*> components) {
          ++component) {
         if (!_is_within_visual_range(*component)) continue;
         SDLArea dest = _get_render_area(*component);
+        std::cout << "Renderizando un wachin en " << dest.getX() << " - " << dest.getY() << std::endl;
         (*component)->render(dest);
     }
     /* Actualiza el estado visual de todos los componentes luego de renderizar.*/

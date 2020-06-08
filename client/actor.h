@@ -6,7 +6,7 @@
 
 class Actor : public VisualComponent {
    private:
-    AnimationPack animation_pack;
+    AnimationPack &animation_pack;
     Orientation orientation;
     MovementStatus movement_status;
     SDLTimer offset_timer;
@@ -21,7 +21,7 @@ class Actor : public VisualComponent {
     int transition_offset_y;
 
    public:
-    Actor(AnimationPack &&animation_pack, int x, int y, int width, int height,
+    Actor(AnimationPack &animation_pack, int x, int y, int width, int height,
           int x_offset, int y_offset);
 
     /* Establece la nueva orientacion.*/
