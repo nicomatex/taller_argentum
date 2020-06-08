@@ -1,0 +1,860 @@
+{
+    "actors": {
+        "heads": {
+            "1": {
+                "texture": "1",
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                }
+            },
+            "2": {
+                "texture": "2",
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                }
+            },
+            "3": {
+                "texture": "3",
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                }
+            },
+            "4": {
+                "texture": "4",
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                }
+            },
+            "5": {
+                "texture": "5",
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                }
+            },
+            "6": {
+                "texture": "6",
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                }
+            },
+            "7": {
+                "texture": "7",
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                }
+            },
+            "8": {
+                "texture": "8",
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                }
+            }
+        },
+        "bodies": {
+            "1": {
+                "texture": "1",
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 90,
+                        "fps": 1,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 135,
+                        "fps": 1,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 45,
+                        "fps": 1,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 20,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 6
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 90,
+                        "fps": 20,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 5
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 135,
+                        "fps": 20,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 5
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 45,
+                        "fps": 20,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 6
+                    }
+                }
+            },
+            "2": {
+                "texture": "2",
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 90,
+                        "fps": 1,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 135,
+                        "fps": 1,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 45,
+                        "fps": 1,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 20,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 6
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 90,
+                        "fps": 20,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 5
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 135,
+                        "fps": 20,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 5
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 45,
+                        "fps": 20,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 6
+                    }
+                }
+            },
+            "3": {
+                "texture": "3",
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 90,
+                        "fps": 1,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 135,
+                        "fps": 1,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 45,
+                        "fps": 1,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 20,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 6
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 90,
+                        "fps": 20,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 5
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 135,
+                        "fps": 20,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 5
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 45,
+                        "fps": 20,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 6
+                    }
+                }
+            },
+            "4": {
+                "texture": "4",
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 90,
+                        "fps": 1,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 135,
+                        "fps": 1,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 45,
+                        "fps": 1,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 20,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 6
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 90,
+                        "fps": 20,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 5
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 135,
+                        "fps": 20,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 5
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 45,
+                        "fps": 20,
+                        "frame height": 45,
+                        "frame width": 25,
+                        "frames": 6
+                    }
+                }
+            }
+        }
+    }
+}

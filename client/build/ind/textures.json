@@ -1,0 +1,30 @@
+{
+    "bodies": {
+        "basedir": "assets/sprites/character/bodies/",
+        "textures": {
+            "1": "1.png",
+            "2": "2.png",
+            "3": "3.png",
+            "4": "4.png"
+        }
+    },
+    "heads": {
+        "basedir": "assets/sprites/character/heads/",
+        "textures": {
+            "1": "1.png",
+            "2": "2.png",
+            "3": "3.png",
+            "4": "4.png",
+            "5": "5.png",
+            "6": "6.png",
+            "7": "7.png",
+            "8": "8.png"
+        }
+    },
+    "npcs": {
+        "basedir" : "assets/sprites/npc/",
+        "textures":{
+            "1": "1.png"
+        }
+    }
+}
