@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "visual_component.h"
+#include "decoration.h"
 #include "include/SDL/sdl_area.h"
 
 class Camera {
@@ -18,6 +19,10 @@ class Camera {
     int x_center_tile;
     int y_center_tile;
     
+    int map_size; /* Lado del mapa, en tiles (los mapas son cuadrados). */
+
+    int tile_size; /* Lado de cada tile, en pixeles.*/
+
     const VisualComponent &follow_component;
 
     /* Devuelve true si un componente visual esta dentro del campo
@@ -34,14 +39,14 @@ class Camera {
     bool _is_locked_x;
     bool _is_locked_y;
    public:
-    Camera(const VisualComponent &follow_component);
+    Camera(const VisualComponent &follow_component,int map_size, int tile_size);
     ~Camera();
 
     /* Renderiza los componentes que esten en el campo de vision de la camara.*/
     void render_components(std::vector<VisualComponent *> components);
 
     
-    void render_map();  // todo
+    void render_map_layer(std::vector<Decoration> &layer);  // todo
 };
 
 #endif

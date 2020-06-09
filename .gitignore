@@ -3,3 +3,5 @@ client/build/CMakeCache.txt
 client/build/CMakeFiles/*
 client/build/cmake_install.cmake
 client/build/Makefile
+client/.vscode/*
+

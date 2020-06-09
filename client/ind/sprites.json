@@ -856,5 +856,18 @@
                 }
             }
         }
+    },
+    "decorations": {
+        "environment": {
+            "1":{
+                "texture": "1",
+                "base x": 0,
+                "base y": 0,
+                "fps": 4,
+                "frame height": 592,
+                "frame width": 250,
+                "frames": 4
+            }
+        }
     }
 }

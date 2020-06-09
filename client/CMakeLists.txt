@@ -16,6 +16,8 @@ add_library(game
   actor.cpp
   camera.cpp
   decoration.cpp
+  game_client.cpp
+  map.cpp
 )
 
 target_link_libraries(
@@ -23,7 +25,9 @@ target_link_libraries(
 )
 
 add_executable (aoclient
-  test.cpp  
+  main.cpp
 )
 
 target_link_libraries(aoclient sdlutil game SDL2 SDL2_image SDL2_ttf)
+
+install(DIRECTORY assets ind DESTINATION ${CMAKE_BINARY_DIR})
