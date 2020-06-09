@@ -54,7 +54,7 @@ void Actor::render(const SDLArea &dest) {
 void Actor::move(Orientation move_orientation, int steps) {
     movement_status = MOVING;
     orientation = move_orientation;
-
+    if(offset_timer.is_started()) return;
     switch (move_orientation) {
         case UP:
             y -= steps;

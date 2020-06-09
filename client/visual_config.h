@@ -3,8 +3,7 @@
 
 /* Offset de transicion */
 #define MOVEMENT_OFFSET 100
-#define MOVEMENT_TRANSITION_TIME 230
-
+#define MOVEMENT_TRANSITION_TIME 200
 
 /* Constantes de transformacion */
 #define OFFSET_GRANULARITY 100

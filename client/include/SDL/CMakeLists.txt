@@ -9,3 +9,9 @@ add_library(sdlutil
   sdl_texture_loader.cpp
 )
 
+
+target_link_libraries(sdlutil
+  SDL2
+  SDL2_image
+  SDL2_ttf
+)

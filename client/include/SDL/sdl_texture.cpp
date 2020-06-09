@@ -1,4 +1,5 @@
 #include "sdl_texture.h"
+
 #include "sdl_config.h"
 #include "sdl_error.h"
 
@@ -42,7 +43,7 @@ SDLTexture::SDLTexture(const std::string& filename, SDL_Renderer* renderer,
     if (!this->texture) {
         throw SDLError(ERR_TEX_CKEY_CREATE);
     }
-    
+
     this->width = loaded_surface->w;
     this->height = loaded_surface->h;
 
@@ -54,8 +55,8 @@ SDLTexture::SDLTexture(SDLTexture&& other) {
     this->renderer = std::move(other.renderer);
     this->height = std::move(other.height);
     this->width = std::move(other.width);
-    other.texture = NULL;
-    other.renderer = NULL;
+    other.texture = nullptr;
+    other.renderer = nullptr;
     other.height = 0;
     other.width = 0;
 }
@@ -65,8 +66,8 @@ SDLTexture& SDLTexture::operator=(SDLTexture&& other) {
     this->renderer = std::move(other.renderer);
     this->height = std::move(other.height);
     this->width = std::move(other.width);
-    other.texture = NULL;
-    other.renderer = NULL;
+    other.texture = nullptr;
+    other.renderer = nullptr;
     other.height = 0;
     other.width = 0;
     return *this;
@@ -100,6 +101,6 @@ void SDLTexture::render(const SDLArea& dest) const {
     }
 }
 
-int SDLTexture::get_height() { return this->height; }
+int SDLTexture::get_height() const { return this->height; }
 
-int SDLTexture::get_width() { return this->width; }
+int SDLTexture::get_width() const { return this->width; }

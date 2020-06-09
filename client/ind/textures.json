@@ -26,5 +26,17 @@
         "textures":{
             "1": "1.png"
         }
+    },
+    "tilesets": {
+        "basedir" : "assets/sprites/tilesets/",
+        "textures":{
+            "1": "1.png"
+        }
+    },
+    "environment": {
+        "basedir" : "assets/sprites/environment/",
+        "textures":{
+            "1" : "1.png"
+        }
     }
 }

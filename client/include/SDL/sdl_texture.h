@@ -38,8 +38,8 @@ class SDLTexture {
     void render(const SDLArea& src, const SDLArea& dest) const;
     void render(const SDLArea& dest) const;
 
-    int get_width();
-    int get_height();
+    int get_width() const;
+    int get_height() const;
 };
 
 #endif
