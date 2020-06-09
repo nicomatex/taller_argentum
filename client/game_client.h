@@ -29,11 +29,16 @@ class GameClient {
     TextureMap texture_map;
     AnimationPackMap animation_pack_map;
     SpriteMap sprite_map;
-    
+
     SDLWindow main_window;
 
+    /* Realiza la carga de texturas indexadas en el texture_index_file, llenando
+    el texture_map. */
     void _load_textures(SDLTextureLoader &loader,
                         const std::string &texture_index_file);
+
+    /* Genera las animaciones indicadas en el sprite_index_file, llenando
+    el animation_pack_map y el sprite_map */
     void _load_animations(const std::string &sprite_index_file);
 
     void _update_game(SDL_Event &e);
