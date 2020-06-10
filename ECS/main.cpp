@@ -10,8 +10,8 @@ int main(int argc, char const *argv[]) {
 	try {
 		EntityManager e_manager;
 		EntityFactory e_factory(e_manager);
-		Entity& player = e_factory.createPlayer();
-		std::cout << player.hasComponent<PositionComponent>() << std::endl;
+		Entity& player = e_factory.create_player();
+		std::cout << player.has_component<PositionComponent>() << std::endl;
 		player.kill();
 		e_manager.clean();
 		e_manager.update(5);

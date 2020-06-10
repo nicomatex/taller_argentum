@@ -16,8 +16,8 @@ class EntityManager {
     EntityManager();
     ~EntityManager();
     Entity& create();
-    Entity& getFromId(unsigned int entity_id);
-    bool hasEntity(unsigned int entity_id);
+    Entity& get_from_id(unsigned int entity_id);
+    bool has_entity(unsigned int entity_id);
     void clean();
 };
 

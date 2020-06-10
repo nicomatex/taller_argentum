@@ -4,6 +4,6 @@ Component::Component() {}
 
 Component::~Component() {}
 
-void Component::setEntity(Entity *entity) {
+void Component::set_entity(Entity *entity) {
 	this->entity = entity;
 }

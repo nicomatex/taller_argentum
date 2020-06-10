@@ -14,8 +14,8 @@ class PositionComponent: public Component {
 	void init() override;
 	void update(int dt) override;
 	void draw() override;
-	int getX();
-	int getY();
+	int get_x();
+	int get_y();
 };
 
 #endif

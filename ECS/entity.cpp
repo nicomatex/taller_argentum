@@ -16,7 +16,7 @@ void Entity::draw(){
 	}
 }
 
-bool Entity::isAlive() {
+bool Entity::is_alive() {
 	return alive;
 }
 

@@ -7,9 +7,9 @@ EntityFactory::EntityFactory(EntityManager &e_manager) :
 
 EntityFactory::~EntityFactory() {}
 
-Entity& EntityFactory::createPlayer() {
+Entity& EntityFactory::create_player() {
 	Entity &player = e_manager.create();
-	player.addComponent<PositionComponent>();
+	player.add_component<PositionComponent>();
 	//player.addComponent<VisualComponent>();
 	//player.addComponent<InputComponent>();
 	//player.addComponent<CollisionComponent>();

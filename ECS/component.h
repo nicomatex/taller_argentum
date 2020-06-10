@@ -9,7 +9,7 @@ class Component {
    public:
    	Component();
    	virtual ~Component();
-   	void setEntity(Entity *entity);
+   	void set_entity(Entity *entity);
    	/*
 		Inicializa el componente con lo que necesite, es llamado en el momento
 		de agregarlo a la entity.

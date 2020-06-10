@@ -9,7 +9,7 @@ class EntityFactory {
    public:
    	EntityFactory(EntityManager &e_manager);
    	~EntityFactory();
-   	Entity& createPlayer();
+   	Entity& create_player();
 };
 
 #endif // ENTITY_FACTORY_H

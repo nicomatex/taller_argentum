@@ -17,10 +17,10 @@ void PositionComponent::update(int dt) {
 
 void PositionComponent::draw() {}
 
-int PositionComponent::getX() {
+int PositionComponent::get_x() {
 	return x;
 }
 
-int PositionComponent::getY() {
+int PositionComponent::get_y() {
 	return y;
 }

@@ -22,39 +22,39 @@ class Entity {
     ~Entity();
     void update(int dt);
     void draw();
-    bool isAlive();
+    bool is_alive();
     void kill();
 
     template <class T>
-    bool hasComponent() const {
-        return components.count(ComponentUtil::getTypeId<T>());
+    bool has_component() const {
+        return components.count(ComponentUtil::get_type_id<T>());
     }
 
     template <class T, typename... TArgs>
-    T& addComponent(TArgs&&... mArgs) {
+    T& add_component(TArgs&&... mArgs) {
         //Se puede tener una sola vez el componente
-        if (hasComponent<T>()) throw std::exception();
+        if (has_component<T>()) throw std::exception();
         T* component(new T(std::forward<TArgs>(mArgs)...)); //perfect forward
-        component->setEntity(this);
-        ComponentId c_id = ComponentUtil::getTypeId<T>(); 
+        component->set_entity(this);
+        ComponentId c_id = ComponentUtil::get_type_id<T>(); 
         components[c_id] = std::unique_ptr<Component>(component);
         component->init();
         return *component;
     }
 
     template <class T>
-    void delComponent() {
+    void del_component() {
         //No puedo eliminar un componente que no tengo
-        if (!hasComponent<T>()) throw std::exception();
-        ComponentId c_id = ComponentUtil::getTypeId<T>();
+        if (!has_component<T>()) throw std::exception();
+        ComponentId c_id = ComponentUtil::get_type_id<T>();
         components[c_id].reset();
         components.erase(c_id);
     }
 
     template <class T>
-    T& getComponent() const {
-        if (!hasComponent<T>()) throw std::exception(); 
-        ComponentId c_id = ComponentUtil::getTypeId<T>();
+    T& get_component() const {
+        if (!has_component<T>()) throw std::exception(); 
+        ComponentId c_id = ComponentUtil::get_type_id<T>();
         Component *comp = components.at(c_id);
         return *reinterpret_cast<T*>(comp);
     }

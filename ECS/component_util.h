@@ -3,7 +3,7 @@
 
 typedef unsigned int ComponentId;
 
-inline ComponentId getUniqueId() {
+inline ComponentId get_unique_id() {
 	static ComponentId id = 0;
 	return id++;
 }
@@ -13,8 +13,8 @@ class ComponentUtil {
 	ComponentUtil();
 	~ComponentUtil();
 	template <class T>
-	static ComponentId getTypeId() {
-		static ComponentId type_id = getUniqueId(); 
+	static ComponentId get_type_id() {
+		static ComponentId type_id = get_unique_id(); 
 		return type_id;
 	}
 };
