@@ -5,7 +5,7 @@
 
 #include "visual_component.h"
 #include "decoration.h"
-#include "include/SDL/sdl_area.h"
+#include "SDL/sdl_area.h"
 
 class Camera {
    private:
@@ -32,9 +32,6 @@ class Camera {
     /* Devuelve el area fisica donde deberia ser dibujado el componente.*/
     SDLArea _get_render_area(VisualComponent *component);
 
-    /* Actualiza la posicion de la camara segun el objeto que esta siguiendo. */
-    void _update_position();
-
     /* Indica si la camara esta pegada contra una esquina */
     bool _is_locked_x;
     bool _is_locked_y;
@@ -42,9 +39,13 @@ class Camera {
     Camera(const VisualComponent &follow_component,int map_size, int tile_size);
     ~Camera();
 
+    /* Actualiza la posicion de la camara segun el objeto que esta siguiendo. */
+    void update_position();
+
     /* Renderiza los componentes que esten en el campo de vision de la camara.*/
     void render_components(std::vector<VisualComponent *> components);
 
+    void draw(VisualComponent *component);
     
     void render_map_layer(std::vector<Decoration> &layer);  // todo
 };

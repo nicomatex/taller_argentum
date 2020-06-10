@@ -58,7 +58,7 @@ SDLArea Camera::_get_render_area(VisualComponent* component) {
                    (component->get_height() * tile_size) / SIZE_GRANULARITY);
 }
 
-void Camera::_update_position() {
+void Camera::update_position() {
     if(follow_component.get_x() <= map_size - (width_tiles / 2) && follow_component.get_x() >= (width_tiles/2)){
         x_center_tile = follow_component.get_x();
         if(!follow_component.is_transitioning()) _is_locked_x = false;
@@ -75,8 +75,13 @@ void Camera::_update_position() {
  
 }
 
+void Camera::draw(VisualComponent *component){
+    SDLArea dest = _get_render_area(component);
+    component->render(dest);
+}
+
 void Camera::render_components(std::vector<VisualComponent*> components) {
-    _update_position();
+    //update_position();
     for (auto component = components.begin(); component != components.end();
          ++component) {
         if (!_is_within_visual_range(*component)) continue;
@@ -92,7 +97,7 @@ void Camera::render_components(std::vector<VisualComponent*> components) {
 
 
 void Camera::render_map_layer(std::vector<Decoration> &layer){
-    _update_position();
+    //update_position();
     for(auto tile = layer.begin(); tile != layer.end(); ++tile){
         SDLArea dest = _get_render_area(&(*tile));
         (*tile).render(dest);
