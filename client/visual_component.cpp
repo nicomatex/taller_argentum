@@ -21,13 +21,15 @@ int VisualComponent::get_x_offset() const { return x_offset; }
 
 int VisualComponent::get_y_offset() const { return y_offset; }
 
+int VisualComponent::get_transition_offset_x() const { return 0; }
+
+int VisualComponent::get_transition_offset_y() const { return 0; }
+
 void VisualComponent::set_position(int new_x, int new_y) {
     x = new_x;
     y = new_y;
 }
 
-bool VisualComponent::is_transitioning() const{
-    return false;
-}
+bool VisualComponent::is_transitioning() const { return false; }
 
-void VisualComponent::update(){}
+void VisualComponent::update() {}

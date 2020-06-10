@@ -124,20 +124,22 @@ void GameClient::_update_components(SDL_Event &e, Actor &player) {
     if (e.type == SDL_KEYDOWN && e.key.repeat == 0) {
         switch (e.key.keysym.sym) {
             case SDLK_RIGHT:
-                player.move(RIGHT, 1);
+                player.set_position(player.get_x() + 1,player.get_y(),true);
                 break;
             case SDLK_LEFT:
-                player.move(LEFT, 1);
+                player.set_position(player.get_x() - 1,player.get_y(),true);
                 break;
             case SDLK_UP:
-                player.move(UP, 1);
+                player.set_position(player.get_x(),player.get_y() - 1,true);
                 break;
             case SDLK_DOWN:
-                player.move(DOWN, 1);
+                player.set_position(player.get_x(),player.get_y() + 1,true);
                 break;
         }
     }
 }
+
+
 
 void GameClient::run() {
     bool running = true;
