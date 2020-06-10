@@ -50,9 +50,13 @@ class VisualComponent {
     virtual bool is_transitioning() const;
 
 
-    /* Devuelve el offset de renderizacion en centesimas de tile. */
+    /* Devuelve el offset total de renderizacion en centesimas de tile. */
     virtual int get_x_offset() const;
     virtual int get_y_offset() const;
+
+    /* Devuelve el ofset de transicion en centesimas de tile. */
+    virtual int get_transition_offset_x() const;
+    virtual int get_transition_offset_y() const;
 
     /* Debe ser llamado luego de renderizar para actualizar el estado de las constantes 
     visuales.*/

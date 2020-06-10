@@ -1,9 +1,9 @@
 #include "actor.h"
-
-#include <iostream>
-
 #include "stdlib.h"
 #include "visual_config.h"
+#include "stdlib.h"
+#include <iostream>
+
 
 Actor::Actor(AnimationPack &animation_pack, int x, int y, int width,
              int height, int x_offset, int y_offset)
@@ -15,7 +15,7 @@ Actor::Actor(AnimationPack &animation_pack, int x, int y, int width,
       transition_offset_y(0) {}
 
 void Actor::_update_offset() {
-    int delta_offset = (MOVEMENT_OFFSET * offset_timer.get_ticks());
+    int delta_offset = (MOVEMENT_OFFSET * transition_timer.get_ticks());
     delta_offset /= MOVEMENT_TRANSITION_TIME;
 
     if (transition_offset_x != 0) {
@@ -24,9 +24,9 @@ void Actor::_update_offset() {
         transition_offset_x += delta_offset;
         if (transition_offset_x * old_offset <= 0) { /* Si el movimiento ya termino. */
             transition_offset_x = 0;
-            offset_timer.stop();
+            transition_timer.stop();
         } else {
-            offset_timer.start();
+            transition_timer.start();
         }
     }
     if (transition_offset_y != 0) {
@@ -35,15 +35,15 @@ void Actor::_update_offset() {
         transition_offset_y += delta_offset;
         if (transition_offset_y * old_offset <= 0) { /* Si el movimiento ya termino. */
             transition_offset_y = 0;
-            offset_timer.stop();
+            transition_timer.stop();
         } else {
-            offset_timer.start();
+            transition_timer.start();
         }
     }
 }
 
 void Actor::_update_status() {
-    if (!offset_timer.is_started()) {
+    if (!transition_timer.is_started()) {
         movement_status = IDLE;
     }
 }
@@ -51,29 +51,37 @@ void Actor::render(const SDLArea &dest) {
     animation_pack.render(orientation, movement_status, dest);
 }
 
-void Actor::move(Orientation move_orientation, int steps) {
-    movement_status = MOVING;
-    orientation = move_orientation;
-    if(offset_timer.is_started()) return;
-    switch (move_orientation) {
-        case UP:
-            y -= steps;
-            transition_offset_y = MOVEMENT_OFFSET * steps;
-            break;
-        case DOWN:
-            y += steps;
-            transition_offset_y = -MOVEMENT_OFFSET * steps;
-            break;
-        case LEFT:
-            x -= steps;
-            transition_offset_x = MOVEMENT_OFFSET * steps;
-            break;
-        case RIGHT:
-            x += steps;
-            transition_offset_x = -MOVEMENT_OFFSET * steps;
-            break;
+
+void Actor::set_position(int new_x, int new_y, bool animation){
+    int delta_x = new_x - x;
+    int delta_y = new_y - y;
+    if(delta_x == 0 && delta_y == 0) return;
+
+    x = new_x;
+    y = new_y;
+    
+    if(animation){
+        if(abs(delta_x) > abs(delta_y)){
+            if(delta_x > 0){
+                orientation = RIGHT;
+                transition_offset_x = -MOVEMENT_OFFSET;
+            }else{
+                orientation = LEFT;
+                transition_offset_x = MOVEMENT_OFFSET;
+            }
+        }else{
+            if(delta_y > 0){
+                orientation = DOWN;
+                transition_offset_y = -MOVEMENT_OFFSET;
+            }else{
+                orientation = UP;
+                transition_offset_y = MOVEMENT_OFFSET;
+            }
+        }
+        movement_status = MOVING;
+        transition_timer.start();
     }
-    offset_timer.start();
+
 }
 
 void Actor::set_move_status(MovementStatus new_movement_status) {
@@ -93,8 +101,16 @@ int Actor::get_y_offset() const{
     return transition_offset_y + y_offset;
 }
 
+int Actor::get_transition_offset_x() const{
+    return transition_offset_x;
+}
+
+int Actor::get_transition_offset_y() const{
+    return transition_offset_y;
+}
+
 bool Actor::is_transitioning() const{
-    return offset_timer.is_started();
+    return transition_timer.is_started();
 }
 
 void Actor::update(){

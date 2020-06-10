@@ -33,9 +33,9 @@ SDLArea Camera::_get_render_area(VisualComponent* component) {
     int relative_y_tile = component->get_y() - camera_corner_y_tile;
 
     int camera_offset_x =
-        (follow_component.get_x_offset() * tile_size) / OFFSET_GRANULARITY;
+        (follow_component.get_transition_offset_x() * tile_size) / OFFSET_GRANULARITY;
     int camera_offset_y =
-        (follow_component.get_y_offset() * tile_size) / OFFSET_GRANULARITY;
+        (follow_component.get_transition_offset_y() * tile_size) / OFFSET_GRANULARITY;
 
     if (_is_locked_x) camera_offset_x = 0;
     if (_is_locked_y) camera_offset_y = 0;
