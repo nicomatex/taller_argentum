@@ -1,20 +1,29 @@
 #include <iostream>
+#include <map>
+#include <unordered_set>
 
-#include "../include/blocking_queue.h"
-#include "../include/receive_handler.h"
+#include "../include/command.h"
+#include "../include/th_event_handler.h"
 
-class StrReceiveServerHandler : public ReceiveHandler<std::string> {
+class StrReceiveServerHandler : public ThEventHandler {
    private:
-    BlockingQueue<std::string>& send_queue;
+    ThEventHandler& sender;
+
+   protected:
+    virtual void handle(Command& ev) override {
+        std::cout << "The Server got: ";
+        ev.execute(std::cout);
+        std::cout << std::endl;
+        try {
+            sender.push_event(ev);
+        } catch (const EventHandlerStoppedException& e) {
+            stop();
+        }
+    }
 
    public:
-    StrReceiveServerHandler(BlockingQueue<std::string>& send_queue)
-        : ReceiveHandler<std::string>(), send_queue(send_queue) {}
-
-    virtual void handle_event(std::string& str) override {
-        std::cout << "The Server got: " << str << std::endl;
-        send_queue.push(str);
-    }
+    StrReceiveServerHandler(ThEventHandler& sender)
+        : ThEventHandler(), sender(sender) {}
 
     ~StrReceiveServerHandler() {}
 };

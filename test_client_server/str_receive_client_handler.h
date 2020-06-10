@@ -1,14 +1,18 @@
 #include <iostream>
 
-#include "../include/receive_handler.h"
+#include "../include/command.h"
+#include "../include/th_event_handler.h"
 
-class StrReceiveClientHandler : public ReceiveHandler<std::string> {
-   public:
-    StrReceiveClientHandler() : ReceiveHandler<std::string>() {}
-
-    virtual void handle_event(std::string& str) override {
-        std::cout << "The Client got: " << str << std::endl;
+class StrReceiveClientHandler : public ThEventHandler {
+   protected:
+    virtual void handle(Command& ev) override {
+        std::cout << "The Client got: ";
+        ev.execute(std::cout);
+        std::cout << std::endl;
     }
+
+   public:
+    StrReceiveClientHandler() : ThEventHandler() {}
 
     ~StrReceiveClientHandler() {}
 };

@@ -1,19 +1,26 @@
-#ifndef __PROTOCOLO_H__
-#define __PROTOCOLO_H__
+#ifndef __PROTOCOL_H__
+#define __PROTOCOL_H__
 
 #include <stdint.h>
 
+#include <functional>
 #include <string>
 #include <vector>
 
+#include "command.h"
 #include "socket.h"
 
 class Protocol {
    private:
-    Socket& socket;
+    std::reference_wrapper<Socket> socket_ref;
 
    public:
     explicit Protocol(Socket& socket);
+
+    Protocol(const Protocol& other);
+    Protocol& operator=(const Protocol& other);
+
+    const Socket& get_socket();
 
     // Enviar o recibir un caracter
     Protocol& operator<<(const char c);
@@ -30,7 +37,10 @@ class Protocol {
     Protocol& operator>>(uint16_t& num);
     Protocol& operator>>(uint32_t& num);
 
+    Protocol& operator<<(const Command& ev);
+    Protocol& operator>>(Command& ev);
+
     ~Protocol();
 };
 
-#endif  //__PROTOCOLO_H__
+#endif  //__PROTOCOL_H__

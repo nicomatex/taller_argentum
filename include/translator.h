@@ -1,5 +1,5 @@
-#ifndef __TRADUCTOR_H__
-#define __TRADUCTOR_H__
+#ifndef TRANSLATOR_H
+#define TRANSLATOR_H
 
 #include <string>
 #include <utility>
@@ -12,4 +12,4 @@ class Traductor {
     static std::string deserializar(std::vector<char> v);
 };
 
-#endif  //__TRADUCTOR_H__
+#endif  // TRANSLATOR_H

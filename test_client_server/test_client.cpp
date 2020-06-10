@@ -1,32 +1,30 @@
 #include <iostream>
 
+#include "../include/command.h"
 #include "../include/socket.h"
-#include "../include/th_client_receiver.h"
-#include "../include/th_client_sender.h"
+#include "../include/socket_manager.h"
 #include "str_receive_client_handler.h"
 
 int main(const int argc, const char* argv[]) try {
     Socket client("localhost", "2500");
 
     StrReceiveClientHandler str_handler;
-    ThClientReceiver receiver(client, str_handler);
+    SocketManager socket_manager(client, &str_handler);
 
-    BlockingQueue<std::string> str_queue;
-    ThClientSender sender(client, str_queue);
-
-    receiver.start();
-    sender.start();
-    str_handler();
+    socket_manager.start();
+    str_handler.start();
 
     std::string line;
     while (std::getline(std::cin, line)) {
-        str_queue.push(line);
+        socket_manager.send(Command(line));
     }
-    str_queue.close();
-    sender.join();
-    std::cerr << "Sender joined\n";
-    receiver.join();
-    std::cerr << "Receiver joined\n";
+    socket_manager.stop(true);
+    std::cerr << "Stopped Socket Manager\n";
+    str_handler.stop();
+    std::cerr << "Stopped Str Handler\n";
+
+    socket_manager.join();
+    str_handler.join();
 
 } catch (const std::exception& e) {
     std::cerr << e.what() << std::endl;
