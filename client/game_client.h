@@ -4,11 +4,11 @@
 /* ----- Includes ----- */
 #include <unordered_map>
 
-#include "actor.h"
-#include "animation_pack.h"
-#include "include/SDL/sdl_texture.h"
-#include "include/SDL/sdl_texture_loader.h"
-#include "include/SDL/sdl_window.h"
+#include "engine/actor.h"
+#include "engine/animation_pack.h"
+#include "engine/SDL/sdl_texture.h"
+#include "engine/SDL/sdl_texture_loader.h"
+#include "engine/SDL/sdl_window.h"
 
 /* ----- Tipos y forward declarations ----- */
 typedef std::unordered_map<std::string,

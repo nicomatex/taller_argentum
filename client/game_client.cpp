@@ -3,16 +3,16 @@
 #include <fstream>
 #include <iostream>
 #include <iomanip>
-#include "actor.h"
-#include "animation_pack.h"
-#include "camera.h"
+#include "engine/actor.h"
+#include "engine/animation_pack.h"
+#include "engine/camera.h"
 #include "client_config.h"
-#include "include/SDL/sdl_animated_sprite.h"
-#include "include/SDL/sdl_error.h"
-#include "include/SDL/sdl_window.h"
-#include "include/json.hpp"
-#include "map.h"
-#include "visual_component.h"
+#include "engine/SDL/sdl_animated_sprite.h"
+#include "engine/SDL/sdl_error.h"
+#include "engine/SDL/sdl_window.h"
+#include "engine/json.hpp"
+#include "engine/map.h"
+#include "engine/visual_component.h"
 
 using json = nlohmann::json;
 
@@ -167,9 +167,16 @@ void GameClient::run() {
             _update_components(e, head);
         }
         main_window.fill(0, 51, 0, 255);
+        head.update();
+        player.update();
+        camera.update_position();
+
         camera.render_map_layer(map.get_layer(0));
         camera.render_map_layer(map.get_layer(1));
-        camera.render_components(components);
+        camera.draw(&player);
+        camera.draw(&head);
+
+        //camera.render_components(components);
 
         main_window.render();
     }

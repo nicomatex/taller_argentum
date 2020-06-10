@@ -1,8 +1,8 @@
 #ifndef __ANIMATION_PACK_H
 #define __ANIMATION_PACK_H
 
-#include "include/SDL/sdl_animated_sprite.h"
-#include "include/SDL/sdl_area.h"
+#include "SDL/sdl_animated_sprite.h"
+#include "SDL/sdl_area.h"
 
 enum Orientation { UP, DOWN, LEFT, RIGHT };
 enum MovementStatus { MOVING, IDLE };

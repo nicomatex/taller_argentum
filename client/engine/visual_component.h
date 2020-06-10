@@ -6,9 +6,9 @@ a ser renderizados por pantalla. */
 #include <mutex>
 
 #include "animation_pack.h"
-#include "include/SDL/sdl_animated_sprite.h"
-#include "include/SDL/sdl_area.h"
-#include "include/SDL/sdl_timer.h"
+#include "SDL/sdl_animated_sprite.h"
+#include "SDL/sdl_area.h"
+#include "SDL/sdl_timer.h"
 
 /* Interfaz que deben implementar todos los componentes
 que vayan a ser renderizados por la camara.*/

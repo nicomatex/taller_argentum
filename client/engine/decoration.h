@@ -1,7 +1,7 @@
 #ifndef __DECORATION_H
 #define __DECORATION_H
 
-#include "include/SDL/sdl_animated_sprite.h"
+#include "SDL/sdl_animated_sprite.h"
 #include "visual_component.h"
 
 class Decoration : public VisualComponent {
