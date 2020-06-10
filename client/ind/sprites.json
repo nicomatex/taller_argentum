@@ -1,8 +1,9 @@
 {
     "actors": {
-        "heads": {
-            "1": {
-                "texture": "1",
+        "heads": [
+            {
+                "id": 1,
+                "texture": 1,
                 "idle": {
                     "down": {
                         "base x": 0,
@@ -72,8 +73,9 @@
                     }
                 }
             },
-            "2": {
-                "texture": "2",
+            {
+                "id": 2,
+                "texture": 2,
                 "idle": {
                     "down": {
                         "base x": 0,
@@ -143,8 +145,9 @@
                     }
                 }
             },
-            "3": {
-                "texture": "3",
+            {
+                "id": 3,
+                "texture": 3,
                 "idle": {
                     "down": {
                         "base x": 0,
@@ -214,8 +217,9 @@
                     }
                 }
             },
-            "4": {
-                "texture": "4",
+            {
+                "id": 4,
+                "texture": 4,
                 "idle": {
                     "down": {
                         "base x": 0,
@@ -285,8 +289,9 @@
                     }
                 }
             },
-            "5": {
-                "texture": "5",
+            {
+                "id": 5,
+                "texture": 5,
                 "idle": {
                     "down": {
                         "base x": 0,
@@ -356,8 +361,9 @@
                     }
                 }
             },
-            "6": {
-                "texture": "6",
+            {
+                "id": 6,
+                "texture": 6,
                 "idle": {
                     "down": {
                         "base x": 0,
@@ -427,8 +433,9 @@
                     }
                 }
             },
-            "7": {
-                "texture": "7",
+            {
+                "id": 7,
+                "texture": 7,
                 "idle": {
                     "down": {
                         "base x": 0,
@@ -498,8 +505,9 @@
                     }
                 }
             },
-            "8": {
-                "texture": "8",
+            {
+                "id": 8,
+                "texture": 8,
                 "idle": {
                     "down": {
                         "base x": 0,
@@ -569,10 +577,11 @@
                     }
                 }
             }
-        },
-        "bodies": {
-            "1": {
-                "texture": "1",
+        ],
+        "bodies": [
+            {
+                "id": 1,
+                "texture": 1,
                 "idle": {
                     "down": {
                         "base x": 0,
@@ -642,8 +651,9 @@
                     }
                 }
             },
-            "2": {
-                "texture": "2",
+            {
+                "id": 2,
+                "texture": 2,
                 "idle": {
                     "down": {
                         "base x": 0,
@@ -713,8 +723,9 @@
                     }
                 }
             },
-            "3": {
-                "texture": "3",
+            {
+                "id": 3,
+                "texture": 3,
                 "idle": {
                     "down": {
                         "base x": 0,
@@ -784,8 +795,9 @@
                     }
                 }
             },
-            "4": {
-                "texture": "4",
+            {
+                "id": 4,
+                "texture": 4,
                 "idle": {
                     "down": {
                         "base x": 0,
@@ -855,12 +867,13 @@
                     }
                 }
             }
-        }
+        ]
     },
     "decorations": {
-        "environment": {
-            "1":{
-                "texture": "1",
+        "environment": [
+            {
+                "id": 1,
+                "texture": 1,
                 "base x": 0,
                 "base y": 0,
                 "fps": 4,
@@ -868,6 +881,6 @@
                 "frame width": 250,
                 "frames": 4
             }
-        }
+        ]
     }
 }
