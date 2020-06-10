@@ -2,7 +2,7 @@
 
 #include <fstream>
 #include <iostream>
-
+#include <iomanip>
 #include "actor.h"
 #include "animation_pack.h"
 #include "camera.h"
@@ -28,15 +28,23 @@ void GameClient::_load_textures(SDLTextureLoader &loader,
         std::string type(texture_type.key());
         std::string base_dir(texture_indexes[type]["basedir"]);
 
-        for (auto texture_filename = texture_indexes[type]["textures"].begin();
-             texture_filename != texture_indexes[type]["textures"].end();
-             ++texture_filename) {
+        for (auto &texture_info : texture_indexes[type]["textures"].items()) {
+            json tex_info = texture_info.value();
             std::string texture_address =
-                base_dir + std::string(texture_filename.value());
+                base_dir + std::string(tex_info["filename"]);
             try {
-                texture_map[type].insert(std::make_pair(
-                    texture_filename.key(),
-                    loader.load_texture(texture_address, 0, 0, 0)));
+                if (tex_info["needs ckey"]) {
+                    int ckey_r(tex_info["ckey"][0]);
+                    int ckey_g(tex_info["ckey"][1]);
+                    int ckey_b(tex_info["ckey"][2]);
+                    texture_map[type].insert(std::make_pair(
+                        tex_info["id"],
+                        loader.load_texture(texture_address, ckey_r, ckey_g,
+                                            ckey_b)));
+                } else {
+                    texture_map[type].insert(std::make_pair(
+                        tex_info["id"], loader.load_texture(texture_address)));
+                }
 
             } catch (std::exception) {
                 std::cout << MSG_ERR_LOADING_TEXTURE << " " << texture_address
@@ -55,11 +63,8 @@ void GameClient::_load_animations(const std::string &sprite_index_file) {
          sprite_type_it != sprite_info["actors"].end(); ++sprite_type_it) {
         std::string type(sprite_type_it.key());
 
-        for (auto animation_pack_info = sprite_info["actors"][type].begin();
-             animation_pack_info != sprite_info["actors"][type].end();
-             animation_pack_info++) {
+        for (auto &animation_pack_info : sprite_info["actors"][type].items()) {
             json pack_info = animation_pack_info.value();
-            std::string pack_id(animation_pack_info.key());
 
             SDLSprite idle_down(texture_map.at(type).at(pack_info["texture"]),
                                 pack_info["idle"]["down"]);
@@ -80,7 +85,7 @@ void GameClient::_load_animations(const std::string &sprite_index_file) {
                 pack_info["moving"]["right"]);
 
             animation_pack_map[type].insert(std::make_pair(
-                animation_pack_info.key(),
+                pack_info["id"],
                 AnimationPack(std::move(moving_up), std::move(moving_down),
                               std::move(moving_left), std::move(moving_right),
                               std::move(idle_up), std::move(idle_down),
@@ -92,13 +97,10 @@ void GameClient::_load_animations(const std::string &sprite_index_file) {
          sprite_type_it != sprite_info["decorations"].end(); ++sprite_type_it) {
         std::string type(sprite_type_it.key());
 
-        for (auto animation_info = sprite_info["decorations"][type].begin();
-             animation_info != sprite_info["decorations"][type].end();
-             animation_info++) {
+        for (auto &animation_info : sprite_info["decorations"][type].items()) {
             json info = animation_info.value();
-            std::string sprite_id(animation_info.key());
             sprite_map[type].insert(std::make_pair(
-                sprite_id,
+                info["id"],
                 SDLSprite(texture_map.at(type).at(info["texture"]), info)));
         }
     }
@@ -139,11 +141,11 @@ void GameClient::_update_components(SDL_Event &e, Actor &player) {
 
 void GameClient::run() {
     bool running = true;
-    Actor player(animation_pack_map.at("bodies").at("3"), 10, 10, 50, 100, 20,
+    Actor player(animation_pack_map.at("bodies").at(3), 10, 10, 50, 100, 20,
                  -20);
-    Actor head(animation_pack_map.at("heads").at("3"), 10, 10, 30, 30, 30,
-               -100);
-    Decoration portal(sprite_map.at("environment").at("1"),21,5,100,200,0,0);
+    Actor head(animation_pack_map.at("heads").at(3), 10, 10, 30, 30, 30, -100);
+    Decoration portal(sprite_map.at("environment").at(1), 21, 5, 100, 200, 0,
+                      0);
 
     std::vector<VisualComponent *> components;
     components.push_back(&player);
@@ -152,7 +154,7 @@ void GameClient::run() {
 
     Camera camera(player, 50, 64);
 
-    Map map("assets/maps/forest1.json", texture_map.at("tilesets").at("1"));
+    Map map("assets/maps/forest1.json", texture_map.at("tilesets").at(1));
     while (running) {
         SDL_Event e;
         while (SDL_PollEvent(&e)) {

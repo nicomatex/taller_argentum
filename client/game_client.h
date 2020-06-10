@@ -12,15 +12,15 @@
 
 /* ----- Tipos y forward declarations ----- */
 typedef std::unordered_map<std::string,
-                           std::unordered_map<std::string, SDLTexture>>
+                           std::unordered_map<int, SDLTexture>>
     TextureMap;
 
 typedef std::unordered_map<std::string,
-                           std::unordered_map<std::string, AnimationPack>>
+                           std::unordered_map<int, AnimationPack>>
     AnimationPackMap;
 
 typedef std::unordered_map<std::string,
-                           std::unordered_map<std::string, SDLSprite>>
+                           std::unordered_map<int, SDLSprite>>
     SpriteMap;
 
 /* Interfaz de la clase */

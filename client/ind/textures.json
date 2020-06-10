@@ -1,42 +1,118 @@
 {
     "bodies": {
         "basedir": "assets/sprites/character/bodies/",
-        "textures": {
-            "1": "1.png",
-            "2": "2.png",
-            "3": "3.png",
-            "4": "4.png"
-        }
+        "textures": [
+            {
+            "id":1,
+            "filename": "1.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
+            },
+            {
+            "id":2,
+            "filename": "2.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
+            },
+            {
+            "id":3,
+            "filename": "3.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
+            },
+            {
+            "id":4,
+            "filename": "4.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
+            }
+        ]
     },
     "heads": {
         "basedir": "assets/sprites/character/heads/",
-        "textures": {
-            "1": "1.png",
-            "2": "2.png",
-            "3": "3.png",
-            "4": "4.png",
-            "5": "5.png",
-            "6": "6.png",
-            "7": "7.png",
-            "8": "8.png"
-        }
+        "textures": [
+            {
+            "id":1,
+            "filename": "1.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
+            },
+            {
+            "id":2,
+            "filename": "2.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
+            },
+            {
+            "id":3,
+            "filename": "3.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
+            },
+            {
+            "id":4,
+            "filename": "4.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
+            },
+            {
+            "id":5,
+            "filename": "5.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
+            },
+            {
+            "id":6,
+            "filename": "6.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
+            },
+            {
+            "id":7,
+            "filename": "7.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
+            },
+            {
+            "id":8,
+            "filename": "8.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
+            }
+
+        ]
     },
     "npcs": {
         "basedir" : "assets/sprites/npc/",
-        "textures":{
-            "1": "1.png"
-        }
+        "textures":[
+            {
+            "id":1,
+            "filename": "1.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
+            }
+        ]
     },
     "tilesets": {
         "basedir" : "assets/sprites/tilesets/",
-        "textures":{
-            "1": "1.png"
-        }
+        "textures":[
+            {
+            "id":1,
+            "filename": "1.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
+            }
+        ]
     },
     "environment": {
         "basedir" : "assets/sprites/environment/",
-        "textures":{
-            "1" : "1.png"
-        }
+        "textures":[
+            {
+            "id":1,
+            "filename": "1.png",
+            "needs ckey": false,
+            "ckey" : [0,0,0]
+            }
+        ]
     }
 }
