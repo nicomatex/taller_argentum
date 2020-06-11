@@ -1,9 +1,9 @@
 #include <iostream>
 #include "camera.h"
-#include "visual_config.h"
+#include "engine_config.h"
 #include "decoration.h"
 
-Camera::Camera(const VisualComponent &follow_component,int map_size, int tile_size)
+Camera::Camera(const RenderizableObject &follow_component,int map_size, int tile_size)
     : follow_component(follow_component),
       x_center_tile(follow_component.get_x()),
       y_center_tile(follow_component.get_y()),
@@ -16,7 +16,7 @@ Camera::Camera(const VisualComponent &follow_component,int map_size, int tile_si
 
 Camera::~Camera(){};
 
-bool Camera::_is_within_visual_range(VisualComponent* component) {
+bool Camera::_is_within_visual_range(RenderizableObject* component) {
     /* return (
         (component->get_x() - 2< x_center_tile + (width_tiles / 2)) &&
         (component->get_x() + 2 > x_center_tile - (width_tiles / 2)) &&
@@ -25,7 +25,7 @@ bool Camera::_is_within_visual_range(VisualComponent* component) {
     return true;
 }
 
-SDLArea Camera::_get_render_area(VisualComponent* component) {
+SDLArea Camera::_get_render_area(RenderizableObject* component) {
     int camera_corner_x_tile = x_center_tile - (width_tiles / 2);
     int camera_corner_y_tile = y_center_tile - (height_tiles / 2);
 
@@ -75,12 +75,12 @@ void Camera::update_position() {
  
 }
 
-void Camera::draw(VisualComponent *component){
+void Camera::draw(RenderizableObject *component){
     SDLArea dest = _get_render_area(component);
     component->render(dest);
 }
 
-void Camera::render_components(std::vector<VisualComponent*> components) {
+void Camera::render_components(std::vector<RenderizableObject*> components) {
     //update_position();
     for (auto component = components.begin(); component != components.end();
          ++component) {

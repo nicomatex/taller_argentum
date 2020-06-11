@@ -8,6 +8,10 @@ add_subdirectory(engine)
 
 add_subdirectory(engine/SDL)
 
+add_subdirectory(engine/ECS)
+
+add_subdirectory(engine/components)
+
 # Agrego la carpeta con los headers autogenerados a los includes
 message("Agregando '${PROJECT_BINARY_DIR}' como directorio de includes")
 include_directories(${PROJECT_BINARY_DIR})
@@ -16,8 +20,7 @@ add_library(game
   game_client.cpp
 )
 
-target_link_libraries(game 
-  sdlutil
+target_link_libraries(game
   engine
 )
 
@@ -25,6 +28,6 @@ add_executable (aoclient
   main.cpp
 )
 
-target_link_libraries(aoclient game SDL2 SDL2_image SDL2_ttf)
+target_link_libraries(aoclient game)
 
 install(DIRECTORY assets ind DESTINATION ${CMAKE_BINARY_DIR})
