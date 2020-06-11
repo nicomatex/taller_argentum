@@ -1,5 +1,5 @@
-#ifndef __VISUAL_COMPONENT_H
-#define __VISUAL_COMPONENT_H
+#ifndef __RENDERIZABLE_OBJECT_H
+#define __RENDERIZABLE_OBJECT_H
 
 /* Interfaz que deben implementar todos los objetos que vayan
 a ser renderizados por pantalla. */
@@ -12,7 +12,7 @@ a ser renderizados por pantalla. */
 
 /* Interfaz que deben implementar todos los componentes
 que vayan a ser renderizados por la camara.*/
-class VisualComponent {
+class RenderizableObject {
    protected:
     int x;
     int y;
@@ -27,8 +27,8 @@ class VisualComponent {
     int y_offset;
 
    public:
-    VisualComponent(int x, int y, int width, int height,int x_offset, int y_offset);
-    virtual ~VisualComponent(){}
+    RenderizableObject(int x, int y, int width, int height,int x_offset, int y_offset);
+    virtual ~RenderizableObject(){}
 
     /* Renderiza el objeto en pantalla. */
     virtual void render(const SDLArea &dest) = 0;
@@ -42,13 +42,11 @@ class VisualComponent {
     /* Devuelve la altura en tiles del objeto. */
     int get_height() const;
 
-    /* Devuelve el tile absoluto donde esta parado el objeto. */
-    int get_x() const;
-    int get_y() const;
-
     /* Devuelve true si el actor esta en medio de un movimiento.*/
     virtual bool is_transitioning() const;
 
+    virtual int get_x() const;
+    virtual int get_y() const;
 
     /* Devuelve el offset total de renderizacion en centesimas de tile. */
     virtual int get_x_offset() const;

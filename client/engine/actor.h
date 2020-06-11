@@ -2,9 +2,9 @@
 #define __ACTOR_H
 
 #include "animation_pack.h"
-#include "visual_component.h"
+#include "renderizable_object.h"
 
-class Actor : public VisualComponent {
+class Actor : public RenderizableObject {
    private:
     AnimationPack &animation_pack;
     Orientation orientation;
@@ -20,6 +20,8 @@ class Actor : public VisualComponent {
     int transition_offset_x;
     int transition_offset_y;
 
+    bool is_empty;
+
    public:
     Actor(AnimationPack &animation_pack, int x, int y, int width, int height,
           int x_offset, int y_offset);
@@ -30,8 +32,9 @@ class Actor : public VisualComponent {
     /* Establece el nuevo estado de movimiento.*/
     void set_move_status(MovementStatus new_movement_status);
 
-    /* Establece la nueva posicion del actor. Si animation es true, la transicion
-    se hace de forma suave, disparando la animacion correspondiente en el actor. */
+    /* Establece la nueva posicion del actor. Si animation es true, la
+    transicion se hace de forma suave, disparando la animacion correspondiente
+    en el actor. */
     void set_position(int new_x, int new_y, bool animation);
 
     /* Renderiza el objeto en pantalla. */

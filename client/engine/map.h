@@ -1,7 +1,7 @@
 #ifndef __MAP_H
 #define __MAP_H
 #include <vector>
-#include "visual_component.h"
+#include "renderizable_object.h"
 #include "decoration.h"
 
 class Map {
