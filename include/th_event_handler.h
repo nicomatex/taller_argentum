@@ -4,7 +4,7 @@
 #include <stdexcept>
 
 #include "blocking_queue.h"
-#include "command.h"
+#include "event.h"
 #include "thread.h"
 
 class EventHandlerStoppedException : public std::exception {
@@ -20,12 +20,12 @@ class EventHandlerStoppedException : public std::exception {
 
 class ThEventHandler : public Thread {
    private:
-    BlockingQueue<Command> event_queue;
+    BlockingQueue<Event> event_queue;
 
    protected:
-    Command pop_event();
+    Event pop_event();
 
-    virtual void handle(Command& ev) = 0;
+    virtual void handle(Event& ev) = 0;
 
    public:
     ThEventHandler();
@@ -33,7 +33,7 @@ class ThEventHandler : public Thread {
     ThEventHandler(ThEventHandler&& other);
     ThEventHandler& operator=(ThEventHandler&& other);
 
-    void push_event(const Command& ev);
+    void push_event(const Event& ev);
 
     virtual void run() override;
 

@@ -2,7 +2,7 @@
 #include <map>
 #include <unordered_set>
 
-#include "../include/command.h"
+#include "../include/event.h"
 #include "../include/th_event_handler.h"
 
 class StrReceiveServerHandler : public ThEventHandler {
@@ -10,9 +10,9 @@ class StrReceiveServerHandler : public ThEventHandler {
     ThEventHandler& sender;
 
    protected:
-    virtual void handle(Command& ev) override {
+    virtual void handle(Event& ev) override {
         std::cout << "The Server got: ";
-        ev.execute(std::cout);
+        std::cout << ev.get_json().dump();
         std::cout << std::endl;
         try {
             sender.push_event(ev);

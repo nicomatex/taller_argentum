@@ -5,11 +5,14 @@
 #include <utility>
 #include <vector>
 
-class Traductor {
-   public:
-    static std::vector<char> serializar(const std::string& str);
+#include "../nlohmann/json.hpp"
+#include "event.h"
 
-    static std::string deserializar(std::vector<char> v);
+class Translator {
+   public:
+    static std::vector<uint8_t> serialize(const Event& ev);
+
+    static std::string deserialize(std::vector<uint8_t> v);
 };
 
 #endif  // TRANSLATOR_H

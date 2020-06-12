@@ -10,10 +10,10 @@ class ThClientAccepter : public Thread {
     Socket listener;
     bool running;
     int next_free_id;
-    Session session;
+    SessionManager& session_manager;
 
    public:
-    ThClientAccepter(Socket listener);
+    ThClientAccepter(Socket listener, SessionManager& session_manager);
 
     virtual void run() override;
 

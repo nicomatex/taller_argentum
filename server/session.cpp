@@ -5,25 +5,25 @@
 // Temp
 #include <iostream>
 
-Session::Session() : broadcaster(clients), recv_handler(broadcaster) {}
+Session::Session() : broadcaster(clients), dispatcher(broadcaster) {}
 
 void Session::start() {
     broadcaster.start();
-    recv_handler.start();
+    dispatcher.start();
 }
 
 void Session::stop() {
-    recv_handler.stop();
+    dispatcher.stop();
     broadcaster.stop();
 }
 
 void Session::join() {
     broadcaster.join();
-    recv_handler.join();
+    dispatcher.join();
 }
 
 void Session::add_client(SocketManager* new_client) {
-    new_client->assign_handler(static_cast<ThEventHandler*>(&recv_handler));
+    new_client->assign_handler(static_cast<ThEventHandler*>(&dispatcher));
     clients.add_client(new_client);
 }
 

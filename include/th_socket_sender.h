@@ -12,7 +12,7 @@ class ThSocketSender : public ThEventHandler {
     Protocol protocol;
 
    protected:
-    virtual void handle(Command& ev) override;
+    virtual void handle(Event& ev) override;
 
    public:
     ThSocketSender(Socket& socket);

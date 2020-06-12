@@ -34,7 +34,7 @@ void ThSocketReceiver::run() {
             cond_var.wait(lock);
         }
         try {
-            Command ev;
+            Event ev;
             protocol >> ev;
             recieve_handler->push_event(ev);
             lock.unlock();

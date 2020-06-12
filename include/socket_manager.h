@@ -23,7 +23,7 @@ class SocketManager {
 
     void assign_handler(ThEventHandler* recv_handler);
 
-    void send(const Command& t);
+    void send(const Event& ev);
 
     int get_id() const;
 

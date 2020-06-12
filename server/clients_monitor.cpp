@@ -21,7 +21,7 @@ SocketManager* ClientsMonitor::rm_client(int id) {
     return deleted;
 }
 
-void ClientsMonitor::send_to(size_t id, const Command& ev) {
+void ClientsMonitor::send_to(size_t id, const Event& ev) {
     std::unique_lock<std::mutex> lock(mutex);
     try {
         clients[id]->send(ev);
@@ -30,7 +30,7 @@ void ClientsMonitor::send_to(size_t id, const Command& ev) {
     }
 }
 
-void ClientsMonitor::broadcast(Command& ev) {
+void ClientsMonitor::broadcast(Event& ev) {
     std::unique_lock<std::mutex> lock(mutex);
     for (auto it = clients.begin(); it != clients.end();) {
         try {

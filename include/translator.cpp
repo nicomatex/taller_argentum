@@ -1,8 +1,8 @@
 #include "translator.h"
 
-std::vector<char> Traductor::serializar(const std::string& str) {
-    return std::vector<char>(str.begin(), str.end());
+std::vector<uint8_t> Translator::serialize(const Event& ev) {
+    return nlohmann::json::to_msgpack(ev.get_json());
 }
-std::string Traductor::deserializar(std::vector<char> v) {
-    return std::string(v.begin(), v.end());
+std::string Translator::deserialize(std::vector<uint8_t> v) {
+    return nlohmann::json::from_msgpack(v);
 }

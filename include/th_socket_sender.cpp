@@ -5,7 +5,7 @@
 // Temp
 #include <iostream>
 
-void ThSocketSender::handle(Command& ev) {
+void ThSocketSender::handle(Event& ev) {
     try {
         protocol << ev;
     } catch (const ConnectionClosedSocketException& e) {

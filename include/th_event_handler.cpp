@@ -1,6 +1,6 @@
 #include "th_event_handler.h"
 
-Command ThEventHandler::pop_event() {
+Event ThEventHandler::pop_event() {
     try {
         return event_queue.pop();
     } catch (ClosedBlockingQueueException& e) {
@@ -17,7 +17,7 @@ ThEventHandler& ThEventHandler::operator=(ThEventHandler&& other) {
     return *this;
 }
 
-void ThEventHandler::push_event(const Command& ev) {
+void ThEventHandler::push_event(const Event& ev) {
     try {
         event_queue.push(ev);
     } catch (const ClosedBlockingQueueException& e) {
@@ -28,7 +28,7 @@ void ThEventHandler::push_event(const Command& ev) {
 void ThEventHandler::run() {
     while (!event_queue.is_closed()) {
         try {
-            Command ev = pop_event();
+            Event ev = pop_event();
             handle(ev);
         } catch (const EventHandlerStoppedException& e) {
             break;

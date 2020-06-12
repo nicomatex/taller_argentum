@@ -9,7 +9,7 @@ class ThBroadcaster : public ThEventHandler {
     ClientsMonitor& clients;
 
    protected:
-    virtual void handle(Command& ev) override;
+    virtual void handle(Event& ev) override;
 
    public:
     ThBroadcaster(ClientsMonitor& clients);

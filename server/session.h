@@ -1,16 +1,16 @@
-#ifndef SESSION_MANAGER_H
-#define SESSION_MANAGER_H
+#ifndef SESSION_H
+#define SESSION_H
 
 #include "../include/socket_manager.h"
-#include "../test_client_server/str_receive_server_handler.h"
 #include "clients_monitor.h"
 #include "th_broadcaster.h"
+#include "th_dispatcher.h"
 
 class Session {
    private:
     ClientsMonitor clients;
     ThBroadcaster broadcaster;
-    StrReceiveServerHandler recv_handler;
+    ThDispatcher dispatcher;
 
    public:
     Session();
@@ -30,4 +30,4 @@ class Session {
     ~Session();
 };
 
-#endif  // SESSION_MANAGER_H
+#endif  // SESSION_H

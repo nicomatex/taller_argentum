@@ -22,7 +22,7 @@ void SocketManager::assign_handler(ThEventHandler* recv_handler) {
     receiver.assign_handler(recv_handler);
 }
 
-void SocketManager::send(const Command& ev) {
+void SocketManager::send(const Event& ev) {
     sender.push_event(ev);
 }
 

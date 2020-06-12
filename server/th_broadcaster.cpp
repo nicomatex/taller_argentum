@@ -3,7 +3,7 @@
 // Temp
 #include <iostream>
 
-void ThBroadcaster::handle(Command& ev) {
+void ThBroadcaster::handle(Event& ev) {
     std::cerr << "Broadcaster: Broadcasting: " << ev.str << std::endl;
     clients.broadcast(ev);
 }
