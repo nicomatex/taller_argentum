@@ -11,6 +11,7 @@
 #include "engine/actor.h"
 #include "engine/animation_pack.h"
 #include "engine/entity_factory.h"
+#include <atomic>
 
 /* Interfaz de la clase */
 class GameClient {
@@ -20,6 +21,8 @@ class GameClient {
     EntityFactory entitiy_factory;
     void _update_game(SDL_Event &e);
     void _update_components(SDL_Event &e, Entity &player);
+    std::atomic_bool running;
+    void _poll_events();
 
    public:
     GameClient(const std::string &texture_index_file,

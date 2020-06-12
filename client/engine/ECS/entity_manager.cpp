@@ -5,11 +5,6 @@ EntityManager::EntityManager() {}
 
 EntityManager::~EntityManager() {}
 
-static unsigned int get_new_id() {
-	static unsigned int entity_id = 0;
-	return entity_id++;
-}
-
 void EntityManager::update() {
 	for(auto& entity : entities) entity.second->update();
 
@@ -19,8 +14,7 @@ void EntityManager::draw() {
 	for(auto& entity : entities) entity.second->draw();
 }
 
-Entity& EntityManager::create() {
-	unsigned int entity_id = get_new_id();
+Entity& EntityManager::create(unsigned int entity_id) {
 	entities[entity_id] = std::unique_ptr<Entity>(new Entity(entity_id));
 	return *entities.at(entity_id);
 }

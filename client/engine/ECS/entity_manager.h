@@ -15,7 +15,7 @@ class EntityManager {
     void draw();
     EntityManager();
     ~EntityManager();
-    Entity& create();
+    Entity& create(unsigned int entity_id);
     Entity& get_from_id(unsigned int entity_id);
     bool has_entity(unsigned int entity_id);
     void clean();

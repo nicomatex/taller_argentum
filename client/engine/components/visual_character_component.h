@@ -17,9 +17,13 @@ class VisualCharacterComponent : public Component {
     ~VisualCharacterComponent();
     Actor &get_part(const std::string& type);
     void bind_to_camera(Camera &bind_camera);
-	void init() override;
+	void set_head(int new_head_id);
+    void set_body(int new_body_id);
+    //TODO: Implementar set_weapon y set_offhand.
+    void init() override;
 	void update() override;
 	void draw() override;
+
 };
 
 #endif
