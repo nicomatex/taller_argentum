@@ -3,16 +3,16 @@
 #include <iostream>
 #include <utility>
 
+#include "../include/my_exception.h"
 #include "../include/socket_exception.h"
 #include "../include/socket_manager.h"
 
-ThClientAccepter::ThClientAccepter(Socket listener,
-                                   SessionManager& session_manager)
+ThClientAccepter::ThClientAccepter(Socket listener, Session& session)
     : Thread(),
       listener(std::move(listener)),
       running(true),
       next_free_id(0),
-      session_manager(session_manager) {}
+      session(session) {}
 
 void ThClientAccepter::run() {
     while (running && listener.is_open()) {
@@ -22,7 +22,7 @@ void ThClientAccepter::run() {
             new_client->start();
             std::cerr << "Accepter: Started client: " << next_free_id
                       << std::endl;
-            session_manager.add_client(new_client);
+            session.add_client(new_client);
             next_free_id++;
         } catch (const ConnectionClosedSocketException& e) {
             throw MyException("\tAccepter: Listener closed unexpectedly");

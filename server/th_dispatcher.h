@@ -1,13 +1,20 @@
 #ifndef TH_DISPATCHER_H
 #define TH_DISPATCHER_H
 
-class ThDispatcher {
-   private:
-    // GameSession o ThEventHandler1...*
-   public:
-    ThDispatcher() {}
+#include "../include/th_event_handler.h"
+#include "../nlohmann/json.hpp"
 
-    ~ThDispatcher() {}
+class ThDispatcher : public ThEventHandler {
+   private:
+    BlockingQueue<Event>& game_queue;
+
+   protected:
+    void handle(Event& ev) override;
+
+   public:
+    ThDispatcher(BlockingQueue<Event>& queue);
+
+    ~ThDispatcher();
 };
 
 #endif  // TH_DISPATCHER_H

@@ -5,7 +5,8 @@
 // Temp
 #include <iostream>
 
-Session::Session() : broadcaster(clients), dispatcher(broadcaster) {}
+Session::Session(Map& map, BlockingQueue<Event>& queue)
+    : broadcaster(clients), dispatcher(queue), observer(map, broadcaster) {}
 
 void Session::start() {
     broadcaster.start();
