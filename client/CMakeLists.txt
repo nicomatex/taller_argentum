@@ -33,3 +33,4 @@ add_executable (aoclient
 target_link_libraries(aoclient game)
 
 install(DIRECTORY assets ind DESTINATION ${CMAKE_BINARY_DIR})
+install(FILES config.json DESTINATION ${CMAKE_BINARY_DIR})

@@ -8,6 +8,7 @@ add_library(engine
   renderizable_object.cpp
   resource_manager.cpp
   receive_handler.cpp
+  engine_error.cpp
 )
 
 

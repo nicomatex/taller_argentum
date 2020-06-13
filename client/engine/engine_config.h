@@ -18,5 +18,8 @@
 
 /* Mensajes de errores */
 #define MSG_ERR_LOADING_TEXTURE "Error cargando la textura."
+#define MSG_ERR_MAP_NOT_INITIALIZED "El mapa no fue inicializado."
 
+/* Indices */
+#define TILESET_ID_INDEX 0
 #endif

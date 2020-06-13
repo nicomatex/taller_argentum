@@ -3,18 +3,17 @@
 
 /* ----- Includes ----- */
 #include <unordered_map>
+#include <atomic>
 
 #include "engine/ECS/entity_manager.h"
-#include "engine/SDL/sdl_texture.h"
-#include "engine/SDL/sdl_texture_loader.h"
 #include "engine/SDL/sdl_window.h"
-#include "engine/actor.h"
-#include "engine/animation_pack.h"
 #include "engine/entity_factory.h"
 #include "../include/socket_manager.h"
 #include "engine/receive_handler.h"
-#include <atomic>
+#include "../nlohmann/json.hpp"
+#include "engine/map.h"
 
+using json = nlohmann::json;
 
 /* Interfaz de la clase */
 class GameClient {
@@ -22,17 +21,15 @@ class GameClient {
     SDLWindow main_window;
     EntityManager entity_manager;
     EntityFactory entitiy_factory;
-    void _update_game(SDL_Event &e);
-    void _update_components(SDL_Event &e, Entity &player);
     std::atomic_bool running;
     void _poll_events();
     Socket socket;
     ClientHandler receive_handler;
     SocketManager socket_manager;
+    Map current_map;
 
    public:
-    GameClient(const std::string &texture_index_file,
-               const std::string &sprite_index_file);
+    GameClient(json config);
     ~GameClient();
     void run();
 };

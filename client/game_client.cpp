@@ -1,34 +1,28 @@
-#include "game_client.h"
-
 #include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <thread>
 
+#include "game_client.h"
 #include "client_config.h"
 #include "engine/ECS/entity.h"
-#include "engine/SDL/sdl_animated_sprite.h"
-#include "engine/SDL/sdl_error.h"
 #include "engine/SDL/sdl_window.h"
 #include "engine/actor.h"
-#include "engine/animation_pack.h"
 #include "engine/camera.h"
 #include "engine/components/position_component.h"
 #include "engine/components/visual_character_component.h"
 #include "engine/entity_factory.h"
 #include "engine/json.hpp"
 #include "engine/map.h"
-#include "engine/renderizable_object.h"
 #include "engine/resource_manager.h"
 
 using json = nlohmann::json;
 
-GameClient::GameClient(const std::string &texture_index_file,
-                       const std::string &sprite_index_file)
-    : main_window(960, 640, "Argentum Online"),
+GameClient::GameClient(json config)
+    : main_window(int(config["window width"]), int(config["window height"]), WINDOW_TITLE),
       entitiy_factory(entity_manager),
       receive_handler(entity_manager),
-      socket("localhost","8080"),
+      socket(std::string(config["server"]),std::string(config["port"])),
       socket_manager(socket,(ThEventHandler*)&receive_handler) {
     try {
         SDLTextureLoader texture_loader(main_window.init_renderer());
@@ -38,8 +32,6 @@ GameClient::GameClient(const std::string &texture_index_file,
     }
     socket_manager.start();
 }
-
-void GameClient::_update_game(SDL_Event &e) {}
 
 void GameClient::_poll_events() {
     while (running) {
@@ -70,13 +62,14 @@ void GameClient::run() {
     Entity &another_player = entitiy_factory.create_player(1, 1, 2, 0, 0);
     Actor &body =
         player.get_component<VisualCharacterComponent>().get_part("body");
-    Camera camera(body, 50, 64);
+    Camera camera(body,50, 64);
     player.get_component<VisualCharacterComponent>().bind_to_camera(camera);
     another_player.get_component<VisualCharacterComponent>().bind_to_camera(
         camera);
     another_player.get_component<PositionComponent>().set_position(5, 5);
-    Map map("assets/maps/forest1.json",
-            ResourceManager::get_instance().get_texture("tilesets", 1));
+    std::ifstream map_file("assets/maps/forest1.json");
+    json map_info = json::parse(map_file);
+    current_map.generate(map_info);
     std::thread event_thread(&GameClient::_poll_events, this);
 
     SDLTimer head_timer;
@@ -86,8 +79,8 @@ void GameClient::run() {
         main_window.fill(0, 0, 0, 255);
         entity_manager.update();
         camera.update_position();
-        camera.render_map_layer(map.get_layer(0));
-        camera.render_map_layer(map.get_layer(1));
+        camera.render_map_layer(current_map.get_layer(0));
+        camera.render_map_layer(current_map.get_layer(1));
         entity_manager.draw();
         main_window.render();
         if (head_timer.get_ticks() >= 5000) {
@@ -104,11 +97,9 @@ void GameClient::run() {
             entity_manager.clean();
         }
     }
-    std::cout << "llegue a salir del bucle" << std::endl;
     socket_manager.stop(true);
     event_thread.join();
     socket_manager.join();
-    std::cout << "Llegue a joinear el event thread" << std::endl;
 }
 
 GameClient::~GameClient() {}

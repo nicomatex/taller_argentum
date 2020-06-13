@@ -36,6 +36,12 @@
  "nextlayerid":4,
  "nextobjectid":1,
  "orientation":"orthogonal",
+ "properties":[
+        {
+         "name":"tileset id",
+         "type":"int",
+         "value":1
+        }],
  "renderorder":"left-up",
  "tiledversion":"2020.05.29",
  "tileheight":32,

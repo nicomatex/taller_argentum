@@ -1,0 +1,7 @@
+{
+	"server":"localhost",
+	"port":"8080",
+	"window width":960,
+	"window height":640,
+	"fullscreen": false
+}
