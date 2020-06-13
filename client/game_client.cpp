@@ -26,13 +26,14 @@ using json = nlohmann::json;
 GameClient::GameClient(const std::string &texture_index_file,
                        const std::string &sprite_index_file)
     : main_window(960, 640, "Argentum Online"),
-      entitiy_factory(entity_manager) {
+      entitiy_factory(entity_manager), socket_manager(0,Socket("localhost","8080")) {
     try {
         SDLTextureLoader texture_loader(main_window.init_renderer());
         ResourceManager::get_instance().init(texture_loader);
     } catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
+    socket_manager.start();
 }
 
 void GameClient::_update_game(SDL_Event &e) {}
@@ -68,6 +69,18 @@ void GameClient::_poll_events() {
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) {
                 running = false;
+                //socket_manager.stop(true);
+            }
+            if(e.type == SDL_KEYDOWN){
+                switch(e.key.keysym.sym){
+                    case SDLK_UP:
+                        json command;
+                        command["event_id"] = 0;
+                        command["type"] = "start";
+                        command["orientation"] = "right";
+                        socket_manager.send(Event(command));
+                        break;
+                }
             }
         }
     }
@@ -109,7 +122,12 @@ void GameClient::run() {
             entity_manager.clean();
         }
     }
+    std::cout << "llegue a salir del bucle" << std::endl;
+    //socket_manager.join();
     event_thread.join();
+    socket_manager.stop(true);
+    socket_manager.join();
+    std::cout << "Llegue a joinear el event thread" << std::endl;
 }
 
 GameClient::~GameClient() {}

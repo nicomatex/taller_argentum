@@ -12,6 +12,8 @@ add_subdirectory(engine/ECS)
 
 add_subdirectory(engine/components)
 
+add_subdirectory(../include build)
+
 # Agrego la carpeta con los headers autogenerados a los includes
 message("Agregando '${PROJECT_BINARY_DIR}' como directorio de includes")
 include_directories(${PROJECT_BINARY_DIR})

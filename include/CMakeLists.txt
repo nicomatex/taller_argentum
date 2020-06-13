@@ -1,0 +1,13 @@
+add_library(network
+  my_exception.cpp
+  protocol.cpp
+  socket.cpp
+  socket_exception.cpp
+  socket_manager.cpp
+  th_event_handler.cpp
+  thread.cpp
+  th_socket_receiver.cpp
+  th_socket_sender.cpp
+  translator.cpp
+  event.cpp
+)

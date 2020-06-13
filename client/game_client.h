@@ -11,6 +11,7 @@
 #include "engine/actor.h"
 #include "engine/animation_pack.h"
 #include "engine/entity_factory.h"
+#include "../include/socket_manager.h"
 #include <atomic>
 
 /* Interfaz de la clase */
@@ -23,7 +24,8 @@ class GameClient {
     void _update_components(SDL_Event &e, Entity &player);
     std::atomic_bool running;
     void _poll_events();
-
+    SocketManager socket_manager;
+    
    public:
     GameClient(const std::string &texture_index_file,
                const std::string &sprite_index_file);
