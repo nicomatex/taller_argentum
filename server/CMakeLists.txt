@@ -11,10 +11,13 @@ message("Agregando '${PROJECT_BINARY_DIR}' como directorio de includes")
 include_directories(${PROJECT_BINARY_DIR})
 
 add_library(server
-  client_monitor.cpp
+  clients_monitor.cpp
   session.cpp
+  th_observer.cpp
+  th_dispatcher.cpp
   th_broadcaster.cpp
   th_client_accepter.cpp
+  map.cpp
   game_server.cpp
 )
 
@@ -26,5 +29,5 @@ add_executable (aoserver
   main.cpp
 )
 
-target_link_libraries(aoserver game)
+target_link_libraries(aoserver server)
 

@@ -48,7 +48,6 @@ void ThSocketReceiver::run() {
             recieve_handler->push_event(ev);
             lock.unlock();
         } catch (const ConnectionClosedSocketException& e) {
-            std::cout << "Closed by socket\n";
             running = false;
         } catch (const EventHandlerStoppedException& e) {
             running = false;

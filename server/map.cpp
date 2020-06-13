@@ -7,8 +7,8 @@ void Map::add_entity(unsigned int entity_id, position_t position) {
     entity_matrix[position.x][position.y].emplace(entity_id);
 }
 
-bool Map::collides(position_t position){
-    //TODO
+bool Map::collides(position_t position) {
+    // TODO
     return false;
 }
 
@@ -28,7 +28,8 @@ void Map::move(unsigned int entity_id, Direction direction) {
             new_position.x -= 1;
             break;
     }
-    if (collides(new_position)) return;
+    if (collides(new_position))
+        return;
 
     // Borrado de la matriz de entidad en la vieja posicion.
     position_t old_position = position_map[entity_id];
@@ -40,6 +41,8 @@ void Map::move(unsigned int entity_id, Direction direction) {
     position_map[entity_id] = new_position;
 }
 
-Map::~Map() {}
+PositionMap Map::get_position_map() {
+    return position_map;
+}
 
-void Map
+Map::~Map() {}

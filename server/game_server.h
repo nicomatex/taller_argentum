@@ -1,12 +1,12 @@
 #ifndef GAME_SERVER_H
 #define GAME_SERVER_H
 
-#include "session_manager.h"
-#include "th_client_accepter.h"
-#include "map.h"
 #include <atomic>
+
 #include "../include/blocking_queue.h"
 #include "../include/event.h"
+#include "map.h"
+#include "th_client_accepter.h"
 
 class GameServer {
    private:
@@ -15,7 +15,7 @@ class GameServer {
     Map map;
     std::atomic_bool running;
     BlockingQueue<Event> event_queue;
-    //Esto probablemente no deberia estar aca 
+    // Esto probablemente no deberia estar aca
     void game_loop();
 
    public:

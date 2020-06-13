@@ -12,7 +12,7 @@ class Translator {
    public:
     static std::vector<uint8_t> serialize(const Event& ev);
 
-    static std::string deserialize(std::vector<uint8_t> v);
+    static nlohmann::json deserialize(std::vector<uint8_t> v);
 };
 
 #endif  // TRANSLATOR_H

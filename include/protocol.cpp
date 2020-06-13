@@ -3,6 +3,9 @@
 #include "my_exception.h"
 #include "translator.h"
 
+// Temp
+#include <iostream>
+
 Protocol::Protocol(Socket& socket) : socket_ref(socket) {}
 
 Protocol::Protocol(const Protocol& other)
