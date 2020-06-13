@@ -12,7 +12,9 @@
 #include "engine/animation_pack.h"
 #include "engine/entity_factory.h"
 #include "../include/socket_manager.h"
+#include "engine/receive_handler.h"
 #include <atomic>
+
 
 /* Interfaz de la clase */
 class GameClient {
@@ -24,8 +26,10 @@ class GameClient {
     void _update_components(SDL_Event &e, Entity &player);
     std::atomic_bool running;
     void _poll_events();
+    Socket socket;
+    ClientHandler receive_handler;
     SocketManager socket_manager;
-    
+
    public:
     GameClient(const std::string &texture_index_file,
                const std::string &sprite_index_file);

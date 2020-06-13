@@ -27,7 +27,9 @@ GameClient::GameClient(const std::string &texture_index_file,
                        const std::string &sprite_index_file)
     : main_window(960, 640, "Argentum Online"),
       entitiy_factory(entity_manager),
-      socket_manager(0, Socket("localhost", "8080")) {
+      receive_handler(entity_manager),
+      socket("localhost","8080"),
+      socket_manager(socket,(ThEventHandler*)&receive_handler) {
     try {
         SDLTextureLoader texture_loader(main_window.init_renderer());
         ResourceManager::get_instance().init(texture_loader);
@@ -38,31 +40,6 @@ GameClient::GameClient(const std::string &texture_index_file,
 }
 
 void GameClient::_update_game(SDL_Event &e) {}
-
-void GameClient::_update_components(SDL_Event &e, Entity &player) {
-    if (e.type == SDL_KEYDOWN && e.key.repeat == 0) {
-        PositionComponent &playerpos =
-            player.get_component<PositionComponent>();
-        switch (e.key.keysym.sym) {
-            case SDLK_RIGHT:
-                playerpos.set_position(playerpos.get_x() + 1,
-                                       playerpos.get_y());
-                break;
-            case SDLK_LEFT:
-                playerpos.set_position(playerpos.get_x() - 1,
-                                       playerpos.get_y());
-                break;
-            case SDLK_UP:
-                playerpos.set_position(playerpos.get_x(),
-                                       playerpos.get_y() - 1);
-                break;
-            case SDLK_DOWN:
-                playerpos.set_position(playerpos.get_x(),
-                                       playerpos.get_y() + 1);
-                break;
-        }
-    }
-}
 
 void GameClient::_poll_events() {
     while (running) {

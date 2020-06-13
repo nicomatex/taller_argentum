@@ -3,27 +3,25 @@
 
 #include "session_manager.h"
 #include "th_client_accepter.h"
+#include "map.h"
+#include <atomic>
+#include "../include/blocking_queue.h"
+#include "../include/event.h"
 
 class GameServer {
    private:
-    SessionManager session_manager;
+    Session session;
     ThClientAccepter accepter;
+    Map map;
+    std::atomic_bool running;
+    BlockingQueue<Event> event_queue;
+    //Esto probablemente no deberia estar aca 
+    void game_loop();
 
    public:
-    GameServer() : accepter(Socket("2500", 10), session_manager) {}
+    GameServer();
 
-    void run() {
-        accepter.start();
-
-        std::string line;
-        while (std::getline(std::cin, line)) {
-            if (line == "q" || line == "quit")
-                break;
-            // Podemos tener comandos para el server acá
-        }
-        accepter.stop();
-        accepter.join();
-    }
+    void run();
 
     ~GameServer() {}
 };
