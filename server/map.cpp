@@ -1,33 +1,27 @@
 #include "map.h"
+#include <mutex>
 
 Map::Map() {}
 
 void Map::add_entity(unsigned int entity_id, position_t position) {
+    std::unique_lock<std::mutex> l(m);
     position_map[entity_id] = position;
     entity_matrix[position.x][position.y].emplace(entity_id);
 }
 
-bool Map::collides(position_t position) {
+bool Map::collides(position_t position){
+    std::unique_lock<std::mutex> l(m);
     // TODO
     return false;
 }
 
-void Map::move(unsigned int entity_id, Direction direction) {
+void Map::move(unsigned int entity_id, steps_t steps) {
+    std::unique_lock<std::mutex> l(m);
     position_t new_position = position_map[entity_id];
-    switch (direction) {
-        case UP:
-            new_position.y -= 1;
-            break;
-        case DOWN:
-            new_position.y += 1;
-            break;
-        case RIGHT:
-            new_position.x += 1;
-            break;
-        case LEFT:
-            new_position.x -= 1;
-            break;
-    }
+
+    new_position.x += steps.x;
+    new_position.y += steps.y;
+
     if (collides(new_position))
         return;
 
@@ -41,7 +35,10 @@ void Map::move(unsigned int entity_id, Direction direction) {
     position_map[entity_id] = new_position;
 }
 
-PositionMap Map::get_position_map() {
+PositionMap Map::get_position_map(){
+    //Esto sirve despues para el polling a la hora de enviarle 
+    //info a los jugadores.
+    std::unique_lock<std::mutex> l(m);
     return position_map;
 }
 

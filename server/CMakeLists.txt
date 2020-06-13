@@ -18,6 +18,8 @@ add_library(server
   th_broadcaster.cpp
   th_client_accepter.cpp
   map.cpp
+  entity.cpp
+  player.cpp
   game_server.cpp
 )
 
