@@ -2,6 +2,9 @@
 
 #include "my_exception.h"
 
+// Temp
+#include <iostream>
+
 SocketManager::SocketManager(int id, Socket socket)
     : id(id),
       socket(std::move(socket)),
@@ -36,13 +39,16 @@ bool SocketManager::is_done() const {
 
 void SocketManager::stop(bool shutdown) {
     sender.stop();
+    receiver.stop();
     if (shutdown)
         socket.shutdown_and_close();
 }
 
 void SocketManager::join() {
-    receiver.join();
     sender.join();
+    std::cerr << "Sender joined\n";
+    receiver.join();
+    std::cerr << "Receiver joined\n";
 }
 
 SocketManager::~SocketManager() {}

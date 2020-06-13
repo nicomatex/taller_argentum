@@ -1,6 +1,7 @@
 #ifndef TH_SOCKET_RECEIVER
 #define TH_SOCKET_RECEIVER
 
+#include <atomic>
 #include <condition_variable>
 #include <mutex>
 
@@ -12,6 +13,7 @@
 
 class ThSocketReceiver : public Thread {
    private:
+    std::atomic<bool> running;
     Protocol protocol;
     ThEventHandler* recieve_handler;
     std::mutex mutex;
@@ -26,6 +28,8 @@ class ThSocketReceiver : public Thread {
     void assign_handler(ThEventHandler* receive_handler);
 
     virtual void run() override;
+
+    void stop();
 
     ~ThSocketReceiver();
 };

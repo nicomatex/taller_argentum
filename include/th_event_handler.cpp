@@ -1,5 +1,8 @@
 #include "th_event_handler.h"
 
+// Temp
+#include <iostream>
+
 Event ThEventHandler::pop_event() {
     try {
         return event_queue.pop();

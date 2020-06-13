@@ -3,9 +3,15 @@
 #include "my_exception.h"
 #include "socket_exception.h"
 
+// Temp
+#include <iostream>
+
 ThSocketReceiver::ThSocketReceiver(Socket& socket,
                                    ThEventHandler* recieve_handler)
-    : Thread(), protocol(socket), recieve_handler(recieve_handler) {}
+    : Thread(),
+      running(false),
+      protocol(socket),
+      recieve_handler(recieve_handler) {}
 
 ThSocketReceiver::ThSocketReceiver(ThSocketReceiver&& other)
     : Thread(std::move(other)),
@@ -25,25 +31,34 @@ void ThSocketReceiver::assign_handler(ThEventHandler* new_handler) {
 }
 
 void ThSocketReceiver::run() {
+    running = true;
     std::unique_lock<std::mutex> lock(mutex);
-    while (protocol.get_socket().is_connected()) {
+    while (running && protocol.get_socket().is_connected()) {
         if (!lock.owns_lock())
             lock.lock();
-        while (!recieve_handler) {
-            // Permite que ocurra la reasociación
+        while (running && !recieve_handler) {
+            // Permite que ocurra la reasociación del handler
             cond_var.wait(lock);
         }
+        if (!running)
+            break;
         try {
             Event ev;
             protocol >> ev;
             recieve_handler->push_event(ev);
             lock.unlock();
         } catch (const ConnectionClosedSocketException& e) {
-            break;
+            std::cout << "Closed by socket\n";
+            running = false;
         } catch (const EventHandlerStoppedException& e) {
-            break;
+            running = false;
         }
     }
+}
+
+void ThSocketReceiver::stop() {
+    running = false;
+    cond_var.notify_all();
 }
 
 ThSocketReceiver::~ThSocketReceiver() {}
