@@ -4,8 +4,12 @@
 #include "SDL/sdl_animated_sprite.h"
 #include "SDL/sdl_area.h"
 
-enum Orientation { UP, DOWN, LEFT, RIGHT };
-enum MovementStatus { MOVING, IDLE };
+#ifndef DIRECTION_T
+#define DIRECTION_T
+enum direction_t { UP, DOWN, LEFT, RIGHT };
+#endif
+
+enum movement_status_t { MOVING, IDLE };
 
 class AnimationPack {
    private:
@@ -28,7 +32,7 @@ class AnimationPack {
                   SDLSprite &&left_idle_sprite, SDLSprite &&right_idle_sprite);
     ~AnimationPack();
 
-    void render(Orientation orientation, MovementStatus status, const SDLArea &dest);
+    void render(direction_t direction, movement_status_t status, const SDLArea &dest);
     
     /* No se permite la construccion por copia. */
     AnimationPack(const AnimationPack &other) = delete;

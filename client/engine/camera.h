@@ -3,9 +3,9 @@
 
 #include <vector>
 
-#include "renderizable_object.h"
-#include "decoration.h"
 #include "SDL/sdl_area.h"
+#include "decoration.h"
+#include "renderizable_object.h"
 
 class Camera {
    private:
@@ -18,7 +18,7 @@ class Camera {
     /* Coordenadas del tile donde esta centrada la camara. */
     int x_center_tile;
     int y_center_tile;
-    
+
     int map_size; /* Lado del mapa, en tiles (los mapas son cuadrados). */
 
     int tile_size; /* Lado de cada tile, en pixeles.*/
@@ -35,8 +35,10 @@ class Camera {
     /* Indica si la camara esta pegada contra una esquina */
     bool _is_locked_x;
     bool _is_locked_y;
+
    public:
-    Camera(const RenderizableObject &follow_component,int map_size, int tile_size);
+    Camera(const RenderizableObject &follow_component, int map_size,
+           int tile_size, int viewport_width, int viewport_height);
     ~Camera();
 
     /* Actualiza la posicion de la camara segun el objeto que esta siguiendo. */
@@ -46,7 +48,7 @@ class Camera {
     void render_components(std::vector<RenderizableObject *> components);
 
     void draw(RenderizableObject *component);
-    
+
     void render_map_layer(std::vector<Decoration> &layer);  // todo
 };
 

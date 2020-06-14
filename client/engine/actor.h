@@ -4,11 +4,13 @@
 #include "animation_pack.h"
 #include "renderizable_object.h"
 
+class AnimationPack;
+
 class Actor : public RenderizableObject {
    private:
     AnimationPack &animation_pack;
-    Orientation orientation;
-    MovementStatus movement_status;
+    direction_t orientation;
+    movement_status_t movement_status;
     SDLTimer transition_timer;
 
     /* Actualiza el offset de renderizacion. */
@@ -27,10 +29,10 @@ class Actor : public RenderizableObject {
           int x_offset, int y_offset);
 
     /* Establece la nueva orientacion.*/
-    void set_orientation(Orientation new_orientation);
+    void set_orientation(direction_t new_direction);
 
     /* Establece el nuevo estado de movimiento.*/
-    void set_move_status(MovementStatus new_movement_status);
+    void set_move_status(movement_status_t new_movement_status);
 
     /* Establece la nueva posicion del actor. Si animation es true, la
     transicion se hace de forma suave, disparando la animacion correspondiente

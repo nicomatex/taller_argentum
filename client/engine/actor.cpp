@@ -85,12 +85,12 @@ void Actor::set_position(int new_x, int new_y, bool animation) {
     }
 }
 
-void Actor::set_move_status(MovementStatus new_movement_status) {
+void Actor::set_move_status(movement_status_t new_movement_status) {
     movement_status = new_movement_status;
 }
 
-void Actor::set_orientation(Orientation new_orientation) {
-    orientation = new_orientation;
+void Actor::set_orientation(direction_t new_direction) {
+    orientation = new_direction;
 }
 
 int Actor::get_x_offset() const { return transition_offset_x + x_offset; }

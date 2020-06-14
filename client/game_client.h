@@ -12,8 +12,7 @@
 #include "engine/receive_handler.h"
 #include "../nlohmann/json.hpp"
 #include "engine/map.h"
-
-using json = nlohmann::json;
+#include "event_factory.h"
 
 /* Interfaz de la clase */
 class GameClient {
@@ -27,9 +26,10 @@ class GameClient {
     ClientHandler receive_handler;
     SocketManager socket_manager;
     Map current_map;
+    EventFactory event_factory;
 
    public:
-    GameClient(json config);
+    GameClient(nlohmann::json config);
     ~GameClient();
     void run();
 };

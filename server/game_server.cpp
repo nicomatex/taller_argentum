@@ -16,7 +16,7 @@ GameServer::GameServer()
 void GameServer::game_loop() {
     std::cerr << "Launching event_loop thread\n";
     while (running) {
-        json event = event_queue.pop().get_json();  // TODO: Implementar los event handlers que hacen esto de verdad.
+    /*    json event = event_queue.pop().get_json();  // TODO: Implementar los event handlers que hacen esto de verdad.
         std::string orientation = event["orientation"];
         if (orientation == "up") {
             map.move(1, {0,-1});
@@ -29,8 +29,8 @@ void GameServer::game_loop() {
         }
         std::cout << "Jugador en " << map.get_position_map()[1].x << " - "
                   << map.get_position_map()[1].y << std::endl;
-        // sleep (timestep - runtime de esta iteracion)
-    }
+        // sleep (timestep - runtime de esta iteracion) */
+    } 
     //Este game loop no va aca, es solo de prueba.
 }
 

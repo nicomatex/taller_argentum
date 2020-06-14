@@ -19,6 +19,7 @@ message("Agregando '${PROJECT_BINARY_DIR}' como directorio de includes")
 include_directories(${PROJECT_BINARY_DIR})
 
 add_library(game
+  event_factory.cpp
   game_client.cpp
 )
 

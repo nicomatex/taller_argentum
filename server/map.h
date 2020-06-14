@@ -12,10 +12,25 @@ typedef struct position {
     unsigned int y;
 } position_t;
 
+class PositionHasher {
+   public:
+    std::size_t operator()(const position_t& position) const noexcept {
+        boost::hash<int> hasher;
+        return hasher(position.x) ^ hasher(position.y);
+    }
+};
+
+class PositionComparator {
+   public:
+    bool operator()(const position_t& position1, const position_t& position2) const noexcept{
+        return position1.x == position2.x && position1.y == position2.y;
+    }
+};
+
 typedef struct steps {
     int x;
     int y;
-} steps_t;  
+} steps_t;
 
 typedef std::unordered_map<unsigned int, position_t> PositionMap;
 
@@ -24,7 +39,8 @@ class Map {
     std::mutex m;
     PositionMap position_map;
     std::unordered_set<int> entity_matrix[MAP_SIZE][MAP_SIZE];
-    std::unordered_set<position_t, boost::hash<position_t>> collision_map;
+    std::unordered_set<position_t, PositionHasher, PositionComparator>
+        collision_map;
     position_t get_nearest_free_position(position_t position);
 
     /* Indica si la posicion indicada tiene un elemento colisionable (no se

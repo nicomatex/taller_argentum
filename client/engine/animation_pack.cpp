@@ -38,9 +38,9 @@ AnimationPack &AnimationPack::operator=(AnimationPack &&other) {
 
 AnimationPack::~AnimationPack() {}
 
-void AnimationPack::render(Orientation orientation, MovementStatus status,
+void AnimationPack::render(direction_t direction, movement_status_t status,
                            const SDLArea &dest) {
-    switch (orientation) {
+    switch (direction) {
         case UP:
             if (status == IDLE)
                 up_idle_sprite.render(dest);
