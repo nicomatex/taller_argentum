@@ -1,4 +1,5 @@
 #include "map.h"
+
 #include <mutex>
 
 Map::Map() {}
@@ -9,10 +10,9 @@ void Map::add_entity(unsigned int entity_id, position_t position) {
     entity_matrix[position.x][position.y].emplace(entity_id);
 }
 
-bool Map::collides(position_t position){
+bool Map::collides(position_t position) {
     std::unique_lock<std::mutex> l(m);
-    // TODO
-    return false;
+    return collision_map.count(position);
 }
 
 void Map::move(unsigned int entity_id, steps_t steps) {
@@ -35,9 +35,9 @@ void Map::move(unsigned int entity_id, steps_t steps) {
     position_map[entity_id] = new_position;
 }
 
-PositionMap Map::get_position_map(){
-    //Esto sirve despues para el polling a la hora de enviarle 
-    //info a los jugadores.
+PositionMap Map::get_position_map() {
+    // Esto sirve despues para el polling a la hora de enviarle
+    // info a los jugadores.
     std::unique_lock<std::mutex> l(m);
     return position_map;
 }
