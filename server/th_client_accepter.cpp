@@ -7,22 +7,23 @@
 #include "../include/socket_exception.h"
 #include "../include/socket_manager.h"
 
-ThClientAccepter::ThClientAccepter(Socket listener, Session& session)
+ThClientAccepter::ThClientAccepter(Socket listener,
+                                   ServerManager& server_manager)
     : Thread(),
       listener(std::move(listener)),
       running(true),
       next_free_id(0),
-      session(session) {}
+      server_manager(server_manager) {}
 
 void ThClientAccepter::run() {
     while (running && listener.is_open()) {
         try {
             SocketManager* new_client =
                 new SocketManager(next_free_id, listener.accept());
-            new_client->start();
             std::cerr << "Accepter: Started client: " << next_free_id
                       << std::endl;
-            session.add_client(new_client);
+            new_client->start();
+            server_manager.add_client(new_client);
             next_free_id++;
         } catch (const ConnectionClosedSocketException& e) {
             throw MyException("\tAccepter: Listener closed unexpectedly");

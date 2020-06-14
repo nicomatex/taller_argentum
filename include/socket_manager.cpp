@@ -10,7 +10,8 @@ SocketManager::SocketManager(int id, Socket socket)
       socket(std::move(socket)),
       receiver(this->socket, nullptr),
       sender(this->socket) {}
-SocketManager::SocketManager(Socket& socket, ThEventHandler* receive_handler)
+SocketManager::SocketManager(Socket& socket,
+                             BlockingThEventHandler* receive_handler)
     : id(0),
       socket(std::move(socket)),
       receiver(this->socket, receive_handler),
@@ -21,7 +22,7 @@ void SocketManager::start() {
     sender.start();
 }
 
-void SocketManager::assign_handler(ThEventHandler* recv_handler) {
+void SocketManager::assign_handler(BlockingThEventHandler* recv_handler) {
     receiver.assign_handler(recv_handler);
 }
 

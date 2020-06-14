@@ -2,12 +2,12 @@
 #include <map>
 #include <unordered_set>
 
+#include "../include/blocking_th_event_handler.h"
 #include "../include/event.h"
-#include "../include/th_event_handler.h"
 
-class StrReceiveServerHandler : public ThEventHandler {
+class StrReceiveServerHandler : public BlockingThEventHandler {
    private:
-    ThEventHandler& sender;
+    BlockingThEventHandler& sender;
 
    protected:
     virtual void handle(Event& ev) override {
@@ -22,8 +22,8 @@ class StrReceiveServerHandler : public ThEventHandler {
     }
 
    public:
-    StrReceiveServerHandler(ThEventHandler& sender)
-        : ThEventHandler(), sender(sender) {}
+    StrReceiveServerHandler(BlockingThEventHandler& sender)
+        : BlockingThEventHandler(), sender(sender) {}
 
     ~StrReceiveServerHandler() {}
 };

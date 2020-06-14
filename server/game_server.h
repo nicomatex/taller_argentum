@@ -5,17 +5,18 @@
 
 #include "../include/blocking_queue.h"
 #include "../include/event.h"
-#include "map.h"
+#include "game_loop.h"
 #include "th_client_accepter.h"
 
 class GameServer {
    private:
-    Session session;
+    ServerManager server_manager;
     ThClientAccepter accepter;
-    Map map;
+    GameLoop game_loop;
+
+    // Esto probablemente no deberia estar aca
     std::atomic_bool running;
     BlockingQueue<Event> event_queue;
-    // Esto probablemente no deberia estar aca
     void game_loop();
 
    public:

@@ -1,13 +1,29 @@
 #include "th_dispatcher.h"
 
+#include "../nlohmann/json.hpp"
+#include "client_initializer.h"
+#include "server_manager.h"
+#include "th_event_handler.h"
+
 // Temp
 #include <iostream>
 
-ThDispatcher::ThDispatcher(BlockingQueue<Event>& queue) : game_queue(queue) {}
+ThDispatcherHandler::ThDispatcherHandler() {}
 
-void ThDispatcher::handle(Event& ev) {
-    std::cerr << "Dispatcher: Pushing event: " << ev.get_json() << std::endl;
-    game_queue.push(ev);
+void ThDispatcherHandler::handle(Event& ev) {
+    nlohmann::json json_ev = ev.get_json();
+    switch (int(json_ev["ev_id"])) {
+        case 0:
+            ThEventHandler* client_initializer =
+                new ClientInitializeHandler(ev, ServerManager::get_instance());
+            break;
+        case 1:
+            // TODO: handler de movimiento
+        default:
+            std::cerr << "Dispatcher: No handler for: " << ev.get_json()
+                      << std::endl;
+            break;
+    }
 }
 
-ThDispatcher::~ThDispatcher() {}
+ThDispatcherHandler::~ThDispatcherHandler() {}

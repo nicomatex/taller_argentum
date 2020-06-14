@@ -7,7 +7,7 @@
 #include <iostream>
 
 ThSocketReceiver::ThSocketReceiver(Socket& socket,
-                                   ThEventHandler* recieve_handler)
+                                   BlockingThEventHandler* recieve_handler)
     : Thread(),
       running(false),
       protocol(socket),
@@ -24,7 +24,7 @@ ThSocketReceiver& ThSocketReceiver::operator=(ThSocketReceiver&& other) {
     return *this;
 }
 
-void ThSocketReceiver::assign_handler(ThEventHandler* new_handler) {
+void ThSocketReceiver::assign_handler(BlockingThEventHandler* new_handler) {
     std::unique_lock<std::mutex> lock(mutex);
     recieve_handler = new_handler;
     cond_var.notify_all();

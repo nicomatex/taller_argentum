@@ -1,9 +1,9 @@
 #include <iostream>
 
+#include "../include/blocking_th_event_handler.h"
 #include "../include/event.h"
-#include "../include/th_event_handler.h"
 
-class StrReceiveClientHandler : public ThEventHandler {
+class StrReceiveClientHandler : public BlockingThEventHandler {
    protected:
     virtual void handle(Event& ev) override {
         std::cout << "The Client got: ";
@@ -12,7 +12,7 @@ class StrReceiveClientHandler : public ThEventHandler {
     }
 
    public:
-    StrReceiveClientHandler() : ThEventHandler() {}
+    StrReceiveClientHandler() : BlockingThEventHandler() {}
 
     ~StrReceiveClientHandler() {}
 };

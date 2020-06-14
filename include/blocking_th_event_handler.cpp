@@ -1,9 +1,9 @@
-#include "th_event_handler.h"
+#include "blocking_th_event_handler.h"
 
 // Temp
 #include <iostream>
 
-Event ThEventHandler::pop_event() {
+Event BlockingThEventHandler::pop_event() {
     try {
         return event_queue.pop();
     } catch (ClosedBlockingQueueException& e) {
@@ -11,16 +11,17 @@ Event ThEventHandler::pop_event() {
     }
 }
 
-ThEventHandler::ThEventHandler() : Thread() {}
+BlockingThEventHandler::BlockingThEventHandler() : Thread() {}
 
-ThEventHandler::ThEventHandler(ThEventHandler&& other)
+BlockingThEventHandler::BlockingThEventHandler(BlockingThEventHandler&& other)
     : event_queue(std::move(other.event_queue)) {}
-ThEventHandler& ThEventHandler::operator=(ThEventHandler&& other) {
+BlockingThEventHandler& BlockingThEventHandler::operator=(
+    BlockingThEventHandler&& other) {
     event_queue = std::move(other.event_queue);
     return *this;
 }
 
-void ThEventHandler::push_event(const Event& ev) {
+void BlockingThEventHandler::push_event(const Event& ev) {
     try {
         event_queue.push(ev);
     } catch (const ClosedBlockingQueueException& e) {
@@ -28,7 +29,7 @@ void ThEventHandler::push_event(const Event& ev) {
     }
 }
 
-void ThEventHandler::run() {
+void BlockingThEventHandler::run() {
     while (!event_queue.is_closed()) {
         try {
             Event ev = pop_event();
@@ -39,8 +40,8 @@ void ThEventHandler::run() {
     }
 }
 
-void ThEventHandler::stop() {
+void BlockingThEventHandler::stop() {
     event_queue.close();
 }
 
-ThEventHandler::~ThEventHandler() {}
+BlockingThEventHandler::~BlockingThEventHandler() {}

@@ -12,7 +12,7 @@
 class ClientsMonitor {
    private:
     std::mutex mutex;
-    std::unordered_map<int, SocketManager*> clients;
+    std::vector<int> clients;
 
    public:
     ClientsMonitor();

@@ -3,18 +3,15 @@
 
 #include "../include/socket_manager.h"
 #include "clients_monitor.h"
+#include "map.h"
 #include "th_broadcaster.h"
 #include "th_dispatcher.h"
 #include "th_observer.h"
-
-// Temp
-#include "map.h"
 
 class Session {
    private:
     ClientsMonitor clients;
     ThBroadcaster broadcaster;
-    ThDispatcher dispatcher;
     ThObserver observer;
 
    public:

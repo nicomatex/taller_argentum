@@ -1,6 +1,6 @@
 #include "session.h"
 
-#include "../include/th_event_handler.h"
+#include "../include/blocking_th_event_handler.h"
 
 // Temp
 #include <iostream>
@@ -24,7 +24,8 @@ void Session::join() {
 }
 
 void Session::add_client(SocketManager* new_client) {
-    new_client->assign_handler(static_cast<ThEventHandler*>(&dispatcher));
+    new_client->assign_handler(
+        static_cast<BlockingThEventHandler*>(&dispatcher));
     clients.add_client(new_client);
 }
 

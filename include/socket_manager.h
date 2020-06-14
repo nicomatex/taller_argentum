@@ -3,8 +3,8 @@
 
 #include <utility>
 
+#include "blocking_th_event_handler.h"
 #include "socket.h"
-#include "th_event_handler.h"
 #include "th_socket_receiver.h"
 #include "th_socket_sender.h"
 
@@ -17,11 +17,11 @@ class SocketManager {
 
    public:
     SocketManager(int id, Socket socket);
-    SocketManager(Socket& socket, ThEventHandler* ReceiveHandler);
+    SocketManager(Socket& socket, BlockingThEventHandler* ReceiveHandler);
 
     void start();
 
-    void assign_handler(ThEventHandler* recv_handler);
+    void assign_handler(BlockingThEventHandler* recv_handler);
 
     void send(const Event& ev);
 

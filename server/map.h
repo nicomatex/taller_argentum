@@ -22,10 +22,20 @@ class PositionHasher {
 
 class PositionComparator {
    public:
-    bool operator()(const position_t& position1, const position_t& position2) const noexcept{
+    bool operator()(const position_t& position1,
+                    const position_t& position2) const noexcept {
         return position1.x == position2.x && position1.y == position2.y;
     }
 };
+
+void to_json(json& j, const position_t& p) {
+    j["pos"] = {p.x, p.y};
+}
+
+void from_json(const json& j, position_t& p) {
+    j.at("pos")[0].get_to(p.x);
+    j.at("pos")[1].get_to(p.y);
+}
 
 typedef struct steps {
     int x;

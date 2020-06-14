@@ -10,6 +10,6 @@ void ThBroadcaster::handle(Event& ev) {
 }
 
 ThBroadcaster::ThBroadcaster(ClientsMonitor& clients)
-    : ThEventHandler(), clients(clients) {}
+    : BlockingThEventHandler(), clients(clients) {}
 
 ThBroadcaster::~ThBroadcaster() {}
