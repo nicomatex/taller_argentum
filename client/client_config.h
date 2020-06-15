@@ -10,4 +10,7 @@
 /* Mensajes*/
 #define MSG_ERR_CONFIG_FILE "Error parseando el archivo de configuracion."
 
+/* Cuestiones visuales */
+#define TILE_SIZE 64
+
 #endif

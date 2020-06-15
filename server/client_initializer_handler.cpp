@@ -1,4 +1,4 @@
-#include "client_initializer.h"
+#include "client_initializer_handler.h"
 #include "map.h"
 
 ClientInitializeHandler::ClientInitializeHandler(Event ev,
@@ -33,7 +33,8 @@ void ClientInitializeHandler::run_handler() {
 		{"posicion", player_pos},
         {"id_cabeza", 2},
         {"id_cuerpo", 2}
-	};  
+	}; 
+	int map_id = 1;
 	server_manager.add_player(map_id, int(connect_info["client_id"]),
 							  player_info);
 }

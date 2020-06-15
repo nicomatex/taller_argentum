@@ -9,7 +9,7 @@
 #include "engine/SDL/sdl_window.h"
 #include "engine/entity_factory.h"
 #include "../include/socket_manager.h"
-#include "engine/receive_handler.h"
+#include "receive_handler.h"
 #include "../nlohmann/json.hpp"
 #include "engine/map.h"
 #include "event_factory.h"
@@ -23,7 +23,7 @@ class GameClient {
     std::atomic_bool running;
     void _poll_events();
     Socket socket;
-    ClientHandler receive_handler;
+    ClientReceiveHandler receive_handler;
     SocketManager socket_manager;
     Map current_map;
     EventFactory event_factory;
