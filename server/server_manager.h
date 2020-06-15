@@ -10,6 +10,7 @@ typedef unsigned int MapId;
 
 class ServerManager {
    private:
+    // std::unordered_map<int, Player> players;
     std::unordered_map<int, SocketManager*> clients;
     std::unordered_map<MapId, Map> maps;
     std::unordered_map<MapId, Session> sessions;
@@ -33,6 +34,8 @@ class ServerManager {
     void add_player(MapId map_id, int client_id, nlohmann::json player_info);
 
     SocketManager* get_client(int id);
+
+    //Player& getPlayer(int client_id) const;
 
     ~ServerManager();
 };

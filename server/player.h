@@ -17,6 +17,7 @@ class Player : public Entity {
     Player(int id, Map &map); //Aca probablemente habria que pasarle mas info, como el nombre 
                             // y los stats. Por lo pronto con el id y el map tamos
     entity_type_t get_type() override;
+    void set_current_speed(int value_x, int value_y);
     void update(unsigned int delta_t) override;
 };
 

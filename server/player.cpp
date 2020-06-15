@@ -23,6 +23,11 @@ void Player::update(unsigned int delta_t) {
     //TODO: demas updates, como regeneraciones de vida/mana, etc.
 }
 
-entity_type_t Player::get_type(){
+entity_type_t Player::get_type() {
     return PLAYER;
+}
+
+void Player::set_current_speed(int value_x, int value_y) {
+    current_speed_x = value_x;
+    current_speed_y = value_y;
 }

@@ -17,8 +17,10 @@ void ThDispatcherHandler::handle(Event& ev) {
             ThEventHandler* client_initializer =
                 new ClientInitializeHandler(ev, ServerManager::get_instance());
             break;
-        case 1:
-            // TODO: handler de movimiento
+        case 2:
+         // TODO: handler de movimiento
+            ThEventHandler* movement_handler = 
+                new MovementHandler(ev, ServerManager::get_instance());
         default:
             std::cerr << "Dispatcher: No handler for: " << ev.get_json()
                       << std::endl;
