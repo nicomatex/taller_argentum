@@ -10,18 +10,17 @@
 
 class SocketManager {
    private:
-    const int id;
+    const int client_id;
     Socket socket;
     ThSocketReceiver receiver;
     ThSocketSender sender;
 
    public:
-    SocketManager(int id, Socket socket);
-    SocketManager(Socket& socket, BlockingThEventHandler* ReceiveHandler);
+    SocketManager(int id, Socket socket,
+                  BlockingThEventHandler& ReceiveHandler);
+    SocketManager(Socket& socket, BlockingThEventHandler& ReceiveHandler);
 
     void start();
-
-    void assign_handler(BlockingThEventHandler* recv_handler);
 
     void send(const Event& ev);
 

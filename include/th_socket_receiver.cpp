@@ -6,10 +6,11 @@
 // Temp
 #include <iostream>
 
-ThSocketReceiver::ThSocketReceiver(Socket& socket,
-                                   BlockingThEventHandler* recieve_handler)
+ThSocketReceiver::ThSocketReceiver(int id, Socket& socket,
+                                   BlockingThEventHandler& recieve_handler)
     : Thread(),
       running(false),
+      client_id(id),
       protocol(socket),
       recieve_handler(recieve_handler) {}
 
@@ -17,35 +18,17 @@ ThSocketReceiver::ThSocketReceiver(ThSocketReceiver&& other)
     : Thread(std::move(other)),
       protocol(other.protocol),
       recieve_handler(other.recieve_handler) {}
-ThSocketReceiver& ThSocketReceiver::operator=(ThSocketReceiver&& other) {
-    Thread::operator=(std::move(other));
-    protocol = Protocol(other.protocol);
-    recieve_handler = other.recieve_handler;
-    return *this;
-}
-
-void ThSocketReceiver::assign_handler(BlockingThEventHandler* new_handler) {
-    std::unique_lock<std::mutex> lock(mutex);
-    recieve_handler = new_handler;
-    cond_var.notify_all();
-}
 
 void ThSocketReceiver::run() {
     running = true;
     std::unique_lock<std::mutex> lock(mutex);
     while (running && protocol.get_socket().is_connected()) {
-        if (!lock.owns_lock())
-            lock.lock();
-        while (running && !recieve_handler) {
-            // Permite que ocurra la reasociación del handler
-            cond_var.wait(lock);
-        }
-        if (!running)
-            break;
         try {
             Event ev;
             protocol >> ev;
-            recieve_handler->push_event(ev);
+            nlohmann::json json_ev = ev.get_json();
+            json_ev["client_id"] = client_id;
+            recieve_handler.push_event(Event(json_ev));
             lock.unlock();
         } catch (const ConnectionClosedSocketException& e) {
             running = false;

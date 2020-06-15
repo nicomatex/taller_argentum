@@ -5,16 +5,17 @@
 // Temp
 #include <iostream>
 
-SocketManager::SocketManager(int id, Socket socket)
-    : id(id),
+SocketManager::SocketManager(int id, Socket socket,
+                             BlockingThEventHandler& receive_handler)
+    : client_id(id),
       socket(std::move(socket)),
-      receiver(this->socket, nullptr),
+      receiver(id, this->socket, receive_handler),
       sender(this->socket) {}
 SocketManager::SocketManager(Socket& socket,
-                             BlockingThEventHandler* receive_handler)
-    : id(0),
+                             BlockingThEventHandler& receive_handler)
+    : client_id(0),
       socket(std::move(socket)),
-      receiver(this->socket, receive_handler),
+      receiver(client_id, this->socket, receive_handler),
       sender(this->socket) {}
 
 void SocketManager::start() {
@@ -22,16 +23,12 @@ void SocketManager::start() {
     sender.start();
 }
 
-void SocketManager::assign_handler(BlockingThEventHandler* recv_handler) {
-    receiver.assign_handler(recv_handler);
-}
-
 void SocketManager::send(const Event& ev) {
     sender.push_event(ev);
 }
 
 int SocketManager::get_id() const {
-    return id;
+    return client_id;
 }
 
 bool SocketManager::is_done() const {

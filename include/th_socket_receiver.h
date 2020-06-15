@@ -14,18 +14,18 @@
 class ThSocketReceiver : public Thread {
    private:
     std::atomic<bool> running;
+    int client_id;
     Protocol protocol;
-    BlockingThEventHandler* recieve_handler;
+    BlockingThEventHandler& recieve_handler;
     std::mutex mutex;
     std::condition_variable cond_var;
 
    public:
-    ThSocketReceiver(Socket& socket, BlockingThEventHandler* recieve_handler);
+    ThSocketReceiver(int id, Socket& socket,
+                     BlockingThEventHandler& recieve_handler);
 
     ThSocketReceiver(ThSocketReceiver&& other);
-    ThSocketReceiver& operator=(ThSocketReceiver&& other);
-
-    void assign_handler(BlockingThEventHandler* receive_handler);
+    ThSocketReceiver& operator=(ThSocketReceiver&& other) = delete;
 
     virtual void run() override;
 
