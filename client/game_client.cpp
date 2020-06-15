@@ -25,7 +25,8 @@ GameClient::GameClient(json config)
       entitiy_factory(entity_manager),
       receive_handler(entity_manager,current_map),
       socket(std::string(config["server"]), std::string(config["port"])),
-      socket_manager(socket, (BlockingThEventHandler *)&receive_handler) {
+      socket_manager(socket, (BlockingThEventHandler *)&receive_handler),
+      ui_event_handler(running,socket_manager) {
     try {
         SDLTextureLoader texture_loader(main_window.init_renderer());
         ResourceManager::get_instance().init(texture_loader);
@@ -33,55 +34,11 @@ GameClient::GameClient(json config)
         std::cerr << e.what() << std::endl;
     }
     socket_manager.start();
+    ui_event_handler.start();
 }
 
 void GameClient::_poll_events() {
-    while (running) {
-        SDL_Event e;
-        while (SDL_PollEvent(&e)) {
-            if (e.type == SDL_QUIT)
-                running = false;
-            if (e.type == SDL_KEYDOWN && e.key.repeat == 0) {
-                switch (e.key.keysym.sym) {
-                    case SDLK_UP:
-                        socket_manager.send(
-                            event_factory.movement_event(START, UP));
-                        break;
-                    case SDLK_DOWN:
-                        socket_manager.send(
-                            event_factory.movement_event(START, DOWN));
-                        break;
-                    case SDLK_RIGHT:
-                        socket_manager.send(
-                            event_factory.movement_event(START, RIGHT));
-                        break;
-                    case SDLK_LEFT:
-                        socket_manager.send(
-                            event_factory.movement_event(START, LEFT));
-                        break;
-                }
-            } else if (e.type == SDL_KEYUP && e.key.repeat == 0) {
-                switch (e.key.keysym.sym) {
-                    case SDLK_UP:
-                        socket_manager.send(
-                            event_factory.movement_event(STOP, UP));
-                        break;
-                    case SDLK_DOWN:
-                        socket_manager.send(
-                            event_factory.movement_event(STOP, DOWN));
-                        break;
-                    case SDLK_RIGHT:
-                        socket_manager.send(
-                            event_factory.movement_event(STOP, RIGHT));
-                        break;
-                    case SDLK_LEFT:
-                        socket_manager.send(
-                            event_factory.movement_event(STOP, LEFT));
-                        break;
-                }
-            }
-        }
-    }
+    
 }
 
 void GameClient::run() {

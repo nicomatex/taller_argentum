@@ -13,6 +13,7 @@
 #include "../nlohmann/json.hpp"
 #include "engine/map.h"
 #include "event_factory.h"
+#include "ui_event_handler.h"
 
 /* Interfaz de la clase */
 class GameClient {
@@ -27,7 +28,8 @@ class GameClient {
     SocketManager socket_manager;
     Map current_map;
     EventFactory event_factory;
-
+    UiEventHandler ui_event_handler;
+    
    public:
     GameClient(nlohmann::json config);
     ~GameClient();
