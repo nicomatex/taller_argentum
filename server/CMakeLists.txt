@@ -33,3 +33,4 @@ add_executable (aoserver
 
 target_link_libraries(aoserver server)
 
+install(DIRECTORY assets DESTINATION ${CMAKE_BINARY_DIR})

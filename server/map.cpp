@@ -2,7 +2,25 @@
 
 #include <mutex>
 
-Map::Map() {}
+Map::Map(nlohmann::json map_description) {
+    int height = map_description["height"];
+    int width = map_description["width"];
+
+    for (auto& layer : map_description["layers"].items()) {
+        if (layer.value()["name"] == "Collision") {
+            for (unsigned int i = 0; i < height; i++) {
+                for (unsigned int j = 0; j < width; j++) {
+                    int tile_index = j + (i * width);
+                    if (int(layer.value()["data"][tile_index]) != 0) {
+                        collision_map.insert({i,j});
+                    }
+                }
+            }
+            map_description["layers"].erase(std::stoi(layer.key()));
+        }
+    }
+    visual_map_info = map_description;
+}
 
 void Map::add_entity(unsigned int entity_id, position_t position) {
     std::unique_lock<std::mutex> l(m);
@@ -22,8 +40,7 @@ void Map::move(unsigned int entity_id, steps_t steps) {
     new_position.x += steps.x;
     new_position.y += steps.y;
 
-    if (collides(new_position))
-        return;
+    if (collides(new_position)) return;
 
     // Borrado de la matriz de entidad en la vieja posicion.
     position_t old_position = position_map[entity_id];

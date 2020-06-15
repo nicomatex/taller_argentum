@@ -4,6 +4,7 @@
 #include <mutex>
 #include <unordered_map>
 #include <unordered_set>
+#include "../nlohmann/json.hpp"
 
 #define MAP_SIZE 50
 
@@ -53,12 +54,14 @@ class Map {
         collision_map;
     position_t get_nearest_free_position(position_t position);
 
+    nlohmann::json visual_map_info; //Para mandarsela a los clientes.
+
     /* Indica si la posicion indicada tiene un elemento colisionable (no se
      * puede pisar). */
     bool collides(position_t position);
 
    public:
-    Map();
+    Map(nlohmann::json map_info);
     ~Map();
     /* Mueve la entidad asociada al entity_id un tile en la direccion
      * indicada.*/
