@@ -30,13 +30,17 @@ void BlockingThEventHandler::push_event(const Event& ev) {
 }
 
 void BlockingThEventHandler::run() {
-    while (!event_queue.is_closed()) {
-        try {
-            Event ev = pop_event();
-            handle(ev);
-        } catch (const EventHandlerStoppedException& e) {
-            break;
+    try {
+        while (!event_queue.is_closed()) {
+            try {
+                Event ev = pop_event();
+                handle(ev);
+            } catch (const EventHandlerStoppedException& e) {
+                break;
+            }
         }
+    } catch (const std::exception& e) {
+        std::cerr << e.what() << '\n';
     }
 }
 

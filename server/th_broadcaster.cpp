@@ -9,7 +9,7 @@ void ThBroadcaster::handle(Event& ev) {
     clients.broadcast(ev);
 }
 
-ThBroadcaster::ThBroadcaster(ClientsMonitor& clients)
+ThBroadcaster::ThBroadcaster(ClientIdSet& clients)
     : BlockingThEventHandler(), clients(clients) {}
 
 ThBroadcaster::~ThBroadcaster() {}

@@ -3,7 +3,6 @@
 
 #include "../include/socket.h"
 #include "../include/thread.h"
-#include "client_initializer.h"
 #include "session.h"
 
 class ThClientAccepter : public Thread {
@@ -11,10 +10,9 @@ class ThClientAccepter : public Thread {
     Socket listener;
     bool running;
     int next_free_id;
-    ServerManager& server_manager;
 
    public:
-    ThClientAccepter(Socket listener, ServerManager& server_manager);
+    ThClientAccepter(Socket listener);
 
     virtual void run() override;
 

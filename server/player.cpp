@@ -9,7 +9,7 @@ Player::Player(int entity_id, int head_id, int body_id, std::string name,
       map(map),
       move_accumulator(0) {}
 
-void Player::update(unsigned int delta_t) {
+void Player::update(uint64_t delta_t) {
     int time_between_tiles = 1000 / player_speed;
     move_accumulator += delta_t;
 
@@ -30,7 +30,9 @@ void Player::update(unsigned int delta_t) {
     // TODO: demas updates, como regeneraciones de vida/mana, etc.
 }
 
-entity_type_t Player::get_type() { return PLAYER; }
+entity_type_t Player::get_type() {
+    return PLAYER;
+}
 
 void Player::set_current_speed(int value_x, int value_y) {
     current_speed_x = value_x;

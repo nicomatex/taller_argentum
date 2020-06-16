@@ -17,8 +17,6 @@ class ThSocketReceiver : public Thread {
     int client_id;
     Protocol protocol;
     BlockingThEventHandler& recieve_handler;
-    std::mutex mutex;
-    std::condition_variable cond_var;
 
    public:
     ThSocketReceiver(int id, Socket& socket,

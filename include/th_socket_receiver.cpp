@@ -20,27 +20,36 @@ ThSocketReceiver::ThSocketReceiver(ThSocketReceiver&& other)
       recieve_handler(other.recieve_handler) {}
 
 void ThSocketReceiver::run() {
-    running = true;
-    std::unique_lock<std::mutex> lock(mutex);
-    while (running && protocol.get_socket().is_connected()) {
-        try {
-            Event ev;
-            protocol >> ev;
-            nlohmann::json json_ev = ev.get_json();
-            json_ev["client_id"] = client_id;
-            recieve_handler.push_event(Event(json_ev));
-            lock.unlock();
-        } catch (const ConnectionClosedSocketException& e) {
-            running = false;
-        } catch (const EventHandlerStoppedException& e) {
-            running = false;
+    try {
+        const std::exception* tmp;
+        running = true;
+        while (running && protocol.get_socket().is_connected()) {
+            try {
+                Event ev;
+                protocol >> ev;
+                nlohmann::json json_ev = ev.get_json();
+                json_ev["client_id"] = client_id;
+                recieve_handler.push_event(Event(json_ev));
+            } catch (const ConnectionClosedSocketException& e) {
+                running = false;
+            } catch (const EventHandlerStoppedException& e) {
+                running = false;
+            } catch (const std::exception& e) {
+                tmp = &e;
+                break;
+            }
         }
+        if (running)
+            throw *tmp;
+    } catch (const std::exception& e) {
+        std::cerr << e.what() << std::endl;
+    } catch (...) {
+        std::cerr << "Unknown exception" << std::endl;
     }
 }
 
 void ThSocketReceiver::stop() {
     running = false;
-    cond_var.notify_all();
 }
 
 ThSocketReceiver::~ThSocketReceiver() {}

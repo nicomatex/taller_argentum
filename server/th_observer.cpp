@@ -1,35 +1,38 @@
 #include "th_observer.h"
 
 #include <chrono>
+#include <iostream>
 
 #include "../nlohmann/json.hpp"
+
+constexpr std::chrono::milliseconds OBSERVER_INTERVAL(15);
 
 ThObserver::ThObserver(Map& map, BlockingThEventHandler& handler)
     : Thread(), running(false), map(map), handler(handler) {}
 
 void ThObserver::run() {
-    running = true;
-    while (running) {
-        // Usar steady_clock
-        PositionMap u_map = map.get_position_map();
-        nlohmann::json json_update;
-        json_update["ev_id"] = 1;
-        json_update["entities"] = u_map;
-        handler.push_event(Event(json_update));
+    try {
+        running = true;
+        int counter = 0;
+        while (running) {
+            auto start = std::chrono::steady_clock::now();
+            nlohmann::json json_update;
+            if (++counter % 5 == 0) {
+                counter = 0;
+                // nlohmann::json json_entities = map.get_entity_data();
+                // json_entities["ev_id"] = 2;
+                // handler.push_event(Event(json_entities));
+            } else {
+                json_update = map.get_position_data();
+                json_update["ev_id"] = 1;
+            }
+            sleep(OBSERVER_INTERVAL -
+                  (std::chrono::steady_clock::now() - start));
+            handler.push_event(Event(json_update));
+        }
+    } catch (const std::exception& e) {
+        std::cerr << e.what() << std::endl;
     }
-    /*
-
-    Those methods MUST be in your type's namespace
-    (which can be the global namespace), or the library will not be able
-    to locate them (namespace/header).
-
-    Those methods MUST be available (e.g., proper headers must be included)
-    everywhere you use these conversions.
-
-    Ejemplo con 2 entidades:
-    {"entities":[[5,{"pos":[100,90]}],[1,{"pos":[20,20]}]],"ev_id":1}
-
-    */
 }
 
 ThObserver::~ThObserver() {}

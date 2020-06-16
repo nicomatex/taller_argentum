@@ -1,10 +1,11 @@
 #include "entity.h"
 
+Entity::Entity(unsigned int id) : id(id) {}
 
-Entity::Entity(unsigned int id):id(id){}
+Entity::~Entity() {}
 
-Entity::~Entity(){}
+unsigned int Entity::get_id() const {
+    return id;
+}
 
-unsigned int Entity::get_id() const{return id;}
-
-void Entity::update(unsigned int delta_t){}
+void Entity::update(uint64_t delta_t) {}

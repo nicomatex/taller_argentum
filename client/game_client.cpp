@@ -1,8 +1,10 @@
+#include "game_client.h"
+
 #include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <thread>
-#include "game_client.h"
+
 #include "client_config.h"
 #include "engine/ECS/entity.h"
 #include "engine/SDL/sdl_area.h"
@@ -23,10 +25,10 @@ GameClient::GameClient(json config)
     : main_window(int(config["window width"]), int(config["window height"]),
                   WINDOW_TITLE),
       entitiy_factory(entity_manager),
-      receive_handler(entity_manager,current_map),
+      receive_handler(entity_manager, current_map),
       socket(std::string(config["server"]), std::string(config["port"])),
-      socket_manager(socket, (BlockingThEventHandler *)&receive_handler),
-      ui_event_handler(running,socket_manager) {
+      socket_manager(socket, receive_handler),
+      ui_event_handler(running, socket_manager) {
     try {
         SDLTextureLoader texture_loader(main_window.init_renderer());
         ResourceManager::get_instance().init(texture_loader);
@@ -37,9 +39,7 @@ GameClient::GameClient(json config)
     ui_event_handler.start();
 }
 
-void GameClient::_poll_events() {
-    
-}
+void GameClient::_poll_events() {}
 
 void GameClient::run() {
     running = true;

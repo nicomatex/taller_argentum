@@ -3,6 +3,7 @@
 
 #include <unistd.h>
 
+#include <chrono>
 #include <thread>
 
 class Thread {
@@ -33,6 +34,11 @@ class Thread {
 
     // Sleeps for value in us
     void usleep(unsigned int us);
+
+    template <class Rep, class Period>
+    void sleep(const std::chrono::duration<Rep, Period>& duration) {
+        std::this_thread::sleep_for(duration);
+    }
 
     // Implemented by children
     virtual void run() = 0;

@@ -16,8 +16,8 @@ class Player : public Entity {
     std::string name;
 
     Map &map;  // Mapa en el que esta el jugador en este momento.
-    // STATS
-    // INVENTARIO
+               // STATS
+               // INVENTARIO
    public:
     Player(int entity_id, int head_id, int body_id, std::string name,
            Map &map);  // Aca probablemente habria que pasarle mas info, como el
@@ -25,7 +25,7 @@ class Player : public Entity {
                        // y los stats. Por lo pronto con el id y el map tamos
     entity_type_t get_type() override;
     void set_current_speed(int value_x, int value_y);
-    void update(unsigned int delta_t) override;
+    void update(uint64_t delta_t) override;
 };
 
 #endif

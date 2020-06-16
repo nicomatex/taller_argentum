@@ -1,15 +1,26 @@
 #include "game_loop.h"
 
-#define TIME_STEP 15
+#include <iostream>
 
-GameLoop::GameLoop():running(true){}
+constexpr std::chrono::milliseconds TIME_STEP(15);
 
-GameLoop::~GameLoop(){}
+GameLoop::GameLoop(MapManager& map_manager)
+    : running(true), map_manager(map_manager) {}
 
-void GameLoop::run(){
-    while(running){
-        //tomar tiempo de comienzo 
-        //for cada mapa, mapa.update()
-        //dormir por lo que falta para completar time_step
+GameLoop::~GameLoop() {}
+
+void GameLoop::run() {
+    try {
+        while (running) {
+            auto start = std::chrono::steady_clock::now();
+            map_manager.update(TIME_STEP.count());
+            sleep(TIME_STEP - (std::chrono::steady_clock::now() - start));
+        }
+    } catch (const std::exception& e) {
+        std::cerr << e.what() << std::endl;
     }
+}
+
+void GameLoop::stop() {
+    running = false;
 }

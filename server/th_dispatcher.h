@@ -3,14 +3,14 @@
 
 #include "../include/blocking_th_event_handler.h"
 
-class ThDispatcherHandler : public BlockingThEventHandler {
+class ThDispatcher : public BlockingThEventHandler {
    protected:
     void handle(Event& ev) override;
 
    public:
-    ThDispatcherHandler();
+    ThDispatcher();
 
-    ~ThDispatcherHandler();
+    ~ThDispatcher();
 };
 
 #endif  // TH_DISPATCHER_H

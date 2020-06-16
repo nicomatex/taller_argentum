@@ -13,7 +13,7 @@ INCLUDE = ../include/my_exception.cpp ../include/thread.cpp \
 include_client = $(INCLUDE) test_client.cpp
 include_server = $(INCLUDE) test_server.cpp ../server/th_broadcaster.cpp \
 ../server/th_client_accepter.cpp ../server/session.cpp \
-../server/clients_monitor.cpp
+../server/client_id_set.cpp
 
 ocxx := $(CXX)
 

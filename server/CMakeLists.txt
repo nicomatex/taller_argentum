@@ -11,16 +11,21 @@ message("Agregando '${PROJECT_BINARY_DIR}' como directorio de includes")
 include_directories(${PROJECT_BINARY_DIR})
 
 add_library(server
-  clients_monitor.cpp
+  client_id_set.cpp
+  client_initializer_handler.cpp
+  entity.cpp
+  game_server.cpp
+  game_loop.cpp
+  map_manager.cpp
+  map.cpp
+  movement_handler.cpp
+  player.cpp
+  server_manager.cpp
   session.cpp
-  th_observer.cpp
-  th_dispatcher.cpp
   th_broadcaster.cpp
   th_client_accepter.cpp
-  map.cpp
-  entity.cpp
-  player.cpp
-  game_server.cpp
+  th_dispatcher.cpp
+  th_observer.cpp
 )
 
 target_link_libraries(server

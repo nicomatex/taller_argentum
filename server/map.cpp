@@ -39,8 +39,10 @@ void Map::add_entity(Entity* entity, position_t position) {
 
 bool Map::collides(position_t position) {
     std::unique_lock<std::mutex> l(m);
-    if(collision_map.count(position) > 0) return false;
-    if(entity_matrix[position.x][position.y].size() > 0) return false;
+    if (collision_map.count(position) > 0)
+        return false;
+    if (entity_matrix[position.x][position.y].size() > 0)
+        return false;
     return true;
 }
 
@@ -51,7 +53,8 @@ void Map::move(unsigned int entity_id, steps_t steps) {
     new_position.x += steps.x;
     new_position.y += steps.y;
 
-    if (collides(new_position)) return;
+    if (collides(new_position))
+        return;
 
     // Borrado de la matriz de entidad en la vieja posicion.
     position_t old_position = position_map[entity_id];
@@ -66,29 +69,35 @@ void Map::move(unsigned int entity_id, steps_t steps) {
 int Map::add_player(nlohmann::json player_info, int client_id) {
     int entity_id = get_next_id();
     Player* player =
-        new Player(entity_id, int(player_info["id_head"]), int(player_info["id_body"]),
-                   player_info["name"], *this);
+        new Player(entity_id, int(player_info["id_head"]),
+                   int(player_info["id_body"]), player_info["name"], *this);
     position_t player_position = player_info["position"];
-    add_entity(player,player_position);
+    add_entity(player, player_position);
     client_map[client_id] = entity_id;
+    return entity_id;
 }
 
-void Map::update(unsigned int delta_t){
+void Map::update(uint64_t delta_t) {
     std::unique_lock<std::mutex> l(m);
-    for(auto &it : entity_map){
+    for (auto& it : entity_map) {
         it.second->update(delta_t);
     }
 }
 
-nlohmann::json Map::get_map_data(){
-    return visual_map_info;
+Player& Map::get_player(int client_id) {
+    return *(Player*)entity_map.at(client_map.at(client_id));
 }
 
-PositionMap Map::get_position_map() {
-    // Esto sirve despues para el polling a la hora de enviarle
-    // info a los jugadores.
-    std::unique_lock<std::mutex> l(m);
-    return position_map;
+nlohmann::json Map::get_position_data() {
+    return nlohmann::json(position_map);
+}
+
+nlohmann::json Map::get_entity_data() {
+    return nlohmann::json{};
+}
+
+nlohmann::json Map::get_map_data() {
+    return visual_map_info;
 }
 
 Map::~Map() {}
