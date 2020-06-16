@@ -28,11 +28,11 @@ void ClientInitializeHandler::run_handler() {
 	//Aca haría el lookup usando el name
 	position_t player_pos{3,5};
 	nlohmann::json player_info = {
-		{"nombre", player_name},
-		{"mapa", 0},
-		{"posicion", player_pos},
-        {"id_cabeza", 2},
-        {"id_cuerpo", 2}
+		{"name", player_name},
+		{"map", 0},
+		{"position", player_pos},
+        {"id_head", 2},
+        {"id_body", 2}
 	}; 
 	int map_id = 1;
 	server_manager.add_player(map_id, int(connect_info["client_id"]),

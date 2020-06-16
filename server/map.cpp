@@ -2,6 +2,8 @@
 
 #include <mutex>
 
+#include "player.h"
+
 Map::Map(nlohmann::json map_description) {
     int height = map_description["height"];
     int width = map_description["width"];
@@ -12,7 +14,7 @@ Map::Map(nlohmann::json map_description) {
                 for (unsigned int j = 0; j < width; j++) {
                     int tile_index = j + (i * width);
                     if (int(layer.value()["data"][tile_index]) != 0) {
-                        collision_map.insert({i,j});
+                        collision_map.insert({i, j});
                     }
                 }
             }
@@ -22,15 +24,24 @@ Map::Map(nlohmann::json map_description) {
     visual_map_info = map_description;
 }
 
-void Map::add_entity(unsigned int entity_id, position_t position) {
+int Map::get_next_id() {
+    static int entity_id = 0;
+    entity_id++;
+    return entity_id;
+}
+
+void Map::add_entity(Entity* entity, position_t position) {
     std::unique_lock<std::mutex> l(m);
-    position_map[entity_id] = position;
-    entity_matrix[position.x][position.y].emplace(entity_id);
+    position_map[entity->get_id()] = position;
+    entity_matrix[position.x][position.y].emplace(entity->get_id());
+    entity_map[entity->get_id()] = entity;
 }
 
 bool Map::collides(position_t position) {
     std::unique_lock<std::mutex> l(m);
-    return collision_map.count(position);
+    if(collision_map.count(position) > 0) return false;
+    if(entity_matrix[position.x][position.y].size() > 0) return false;
+    return true;
 }
 
 void Map::move(unsigned int entity_id, steps_t steps) {
@@ -50,6 +61,27 @@ void Map::move(unsigned int entity_id, steps_t steps) {
     // posicion.
     entity_matrix[new_position.x][new_position.y].emplace(entity_id);
     position_map[entity_id] = new_position;
+}
+
+int Map::add_player(nlohmann::json player_info, int client_id) {
+    int entity_id = get_next_id();
+    Player* player =
+        new Player(entity_id, int(player_info["id_head"]), int(player_info["id_body"]),
+                   player_info["name"], *this);
+    position_t player_position = player_info["position"];
+    add_entity(player,player_position);
+    client_map[client_id] = entity_id;
+}
+
+void Map::update(unsigned int delta_t){
+    std::unique_lock<std::mutex> l(m);
+    for(auto &it : entity_map){
+        it.second->update(delta_t);
+    }
+}
+
+nlohmann::json Map::get_map_data(){
+    return visual_map_info;
 }
 
 PositionMap Map::get_position_map() {
