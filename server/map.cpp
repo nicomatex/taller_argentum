@@ -15,7 +15,7 @@ Map::Map(nlohmann::json map_description) {
                 for (unsigned int j = 0; j < width; j++) {
                     int tile_index = j + (i * width);
                     if (int(layer.value()["data"][tile_index]) != 0) {
-                        collision_map.insert({i, j});
+                        collision_map.insert({j, i});
                     }
                 }
             }
