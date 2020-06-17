@@ -7,7 +7,7 @@
 #include "../include/socket_manager.h"
 #include "event_factory.h"
 
-class UiEventHandler : public Thread {
+class UiEventHandler{
    private:
     EventFactory event_factory;
     std::atomic_bool &running;
@@ -24,7 +24,7 @@ class UiEventHandler : public Thread {
     void handle_keyup_move_down();
     void handle_keyup_move_left();
     void handle_keyup_move_right();
-    void run() override;
+    void handle();
 };
 
 #endif

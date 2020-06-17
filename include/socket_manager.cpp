@@ -31,8 +31,8 @@ ClientId SocketManager::get_id() const {
     return client_id;
 }
 
-bool SocketManager::is_done() const {
-    return !socket.is_connected();
+bool SocketManager::is_connected() const {
+    return socket.is_connected();
 }
 
 void SocketManager::stop(bool shutdown) {

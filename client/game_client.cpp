@@ -1,10 +1,8 @@
-#include "game_client.h"
-
 #include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <thread>
-
+#include "game_client.h"
 #include "client_config.h"
 #include "engine/ECS/entity.h"
 #include "engine/SDL/sdl_area.h"
@@ -37,56 +35,37 @@ GameClient::GameClient(json config)
         std::cerr << e.what() << std::endl;
     }
     socket_manager.start();
-    ui_event_handler.start();
 }
 
-void GameClient::_poll_events() {}
-
 void GameClient::run() {
+    // while(!ready){} //Esperamos que se complete la carga
+
     running = true;
     Entity &player = entity_factory.create_player(0, 1, 1, 0, 0);
-    Entity &another_player = entity_factory.create_player(1, 1, 2, 0, 0);
-    Actor &body =
-        player.get_component<VisualCharacterComponent>().get_part("body");
+    Actor &body = player.get_component<VisualCharacterComponent>().get_part("body");
     Camera camera(body, 50, TILE_SIZE, 15, 8);
     player.get_component<VisualCharacterComponent>().bind_to_camera(camera);
-    another_player.get_component<VisualCharacterComponent>().bind_to_camera(
-        camera);
-    another_player.get_component<PositionComponent>().set_position(5, 5);
     std::ifstream map_file("assets/maps/forest1.json");
     json map_info = json::parse(map_file);
     current_map.generate(map_info);
-    std::thread event_thread(&GameClient::_poll_events, this);
-
-    SDLTimer head_timer;
-    head_timer.start();
     SDLArea render_area(0, 128, 960, 512);
-
     main_window.set_viewport(render_area);
-    while (running) {
+
+    while (running && socket_manager.is_connected()) {
         main_window.fill(0, 0, 0, 255);
+        ui_event_handler.handle();
         entity_manager.update();
         camera.update_position();
         camera.render_map_layer(current_map.get_layer(0));
         camera.render_map_layer(current_map.get_layer(1));
         entity_manager.draw();
         main_window.render();
-        if (head_timer.get_ticks() >= 5000) {
-            player.get_component<VisualCharacterComponent>().set_head(2);
-            player.get_component<VisualCharacterComponent>().set_body(2);
-            head_timer.stop();
-            Entity &yet_another_player =
-                entity_factory.create_player(2, 3, 3, 0, 0);
-            yet_another_player.get_component<VisualCharacterComponent>()
-                .bind_to_camera(camera);
-            yet_another_player.get_component<PositionComponent>().set_position(
-                6, 9);
-            another_player.kill();
-            entity_manager.clean();
-        }
     }
+    if(!socket_manager.is_connected()){
+        std::cout << MSG_ERR_CONECT_DROPPED << std::endl;
+    }
+
     socket_manager.stop(true);
-    event_thread.join();
     socket_manager.join();
 }
 

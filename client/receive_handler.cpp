@@ -2,6 +2,7 @@
 #include "../nlohmann/json.hpp"
 #include "engine/ECS/entity.h"
 #include "engine/components/position_component.h"
+#include <iostream>
 
 using json = nlohmann::json;
 
@@ -14,6 +15,7 @@ void ClientReceiveHandler::handle(Event& ev){
 }
 
 void ClientReceiveHandler::handle_new_map(Event &ev){
+    std::cout << "Generando mapa...\n"; 
     json map_description = ev.get_json()["map"];
     map.generate(map_description);
 }

@@ -27,7 +27,7 @@ class SocketManager {
 
     ClientId get_id() const;
 
-    bool is_done() const;
+    bool is_connected() const;
 
     void stop(bool shutdown);
 

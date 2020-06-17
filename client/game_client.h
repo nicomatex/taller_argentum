@@ -23,13 +23,12 @@ class GameClient {
     EntityFactory entity_factory;
     EventFactory event_factory;
     std::atomic_bool running;
-    void _poll_events();
+    std::atomic_bool ready;
     Socket socket;
     ClientReceiveHandler receive_handler;
     SocketManager socket_manager;
     Map current_map;
     UiEventHandler ui_event_handler;
-    
    public:
     GameClient(nlohmann::json config);
     ~GameClient();

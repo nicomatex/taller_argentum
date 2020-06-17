@@ -11,6 +11,7 @@
 using json = nlohmann::json;
 
 void Map::generate(json map_description) {
+    visual_layers.clear();
     int tileset_id = map_description["properties"][TILESET_ID_INDEX]["value"];
     height = map_description["height"];
     width = map_description["width"];
