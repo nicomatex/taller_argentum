@@ -9,13 +9,13 @@ Player::Player(EntityId entity_id, int head_id, int body_id, std::string name,
       name(name),
       map(map),
       move_accumulator(0),
-      player_speed(4) {}
+      player_speed(5) {}
 
 void Player::update(uint64_t delta_t) {
     int time_between_tiles = 1000 / player_speed;
     move_accumulator += delta_t;
 
-    if (move_accumulator > time_between_tiles) {
+    if (move_accumulator >= time_between_tiles) {
         int steps = move_accumulator /
                     time_between_tiles;  // Esto deberia dar 1 salvo que el
                                          // ciclo de juego se ponga MUY slow
@@ -27,7 +27,11 @@ void Player::update(uint64_t delta_t) {
         map.move(this->id, {steps_x, steps_y});
 
         /* Se guarda el restante para la proxima actualizacion. */
-        move_accumulator = move_accumulator % time_between_tiles;
+        if(steps_x != 0 || steps_y != 0){
+            move_accumulator = move_accumulator % time_between_tiles;
+        }else{
+            move_accumulator = time_between_tiles;
+        }
     }
 
     // TODO: demas updates, como regeneraciones de vida/mana, etc.

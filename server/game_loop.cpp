@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-constexpr std::chrono::milliseconds TIME_STEP(15);
+constexpr std::chrono::milliseconds TIME_STEP(10);
 
 GameLoop::GameLoop(MapManager& map_manager)
     : running(true), map_manager(map_manager) {}

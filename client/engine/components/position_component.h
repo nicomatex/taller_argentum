@@ -3,14 +3,14 @@
 
 #include "../SDL/sdl_timer.h"
 #include "../ECS/component.h"
+#include <mutex>
 
 class PositionComponent: public Component {
    private:
 	int x;
 	int y;
-
-
-
+	std::mutex m;
+	
    public:
    	PositionComponent();
 	PositionComponent(int x, int y);

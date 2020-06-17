@@ -11,6 +11,8 @@ class VisualCharacterComponent : public Component {
    private:
     Camera* camera;
     Parts parts;
+    std::mutex m;
+    
    public:
 
     VisualCharacterComponent(int head_id, int body_id, int weapon_id, int offhand_id);
