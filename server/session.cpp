@@ -5,18 +5,21 @@
 // Temp
 #include <iostream>
 
-Session::Session(Map& map) : broadcaster(clients), observer(map, broadcaster) {}
+Session::Session(MapMonitor& map) : broadcaster(clients), observer(map, broadcaster) {}
 
 void Session::start() {
     broadcaster.start();
+    observer.start();
 }
 
 void Session::stop() {
     broadcaster.stop();
+    observer.stop();
 }
 
 void Session::join() {
     broadcaster.join();
+    observer.join();
 }
 
 void Session::add_client(int new_client) {

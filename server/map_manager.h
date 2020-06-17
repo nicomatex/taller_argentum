@@ -2,18 +2,18 @@
 #define MAP_MANAGER_H
 
 #include <unordered_map>
-
+#include "map_monitor.h"
 #include "../include/types.h"
 #include "map.h"
 
 class MapManager {
    private:
-    std::unordered_map<MapId, Map> maps;
+    std::unordered_map<MapId, MapMonitor> maps;
 
    public:
     MapManager(const char* path);
 
-    Map& operator[](MapId map_id);
+    MapMonitor& operator[](MapId map_id);
 
     const std::vector<MapId> get_ids();
 

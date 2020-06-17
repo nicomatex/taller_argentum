@@ -31,30 +31,29 @@ EntityId Map::get_next_id() {
 }
 
 void Map::add_entity(Entity* entity, position_t position) {
-    std::unique_lock<std::mutex> l(m);
     position_map[entity->get_id()] = position;
     entity_matrix[position.x][position.y].emplace(entity->get_id());
-    entity_map[entity->get_id()] = entity;
+    entity_map.emplace(entity->get_id(),entity);
+    std::cout << "Added entity with id " << entity->get_id() << std::endl;
 }
 
 bool Map::collides(position_t position) {
-    std::unique_lock<std::mutex> l(m);
-    if (collision_map.count(position) > 0)
+    if (collision_map.count(position) > 0) return true;
+    if (entity_matrix[position.x][position.y].size() > 0) return true;
+    if (position.x < 0 || position.y < 0 || position.x >= MAP_SIZE ||
+        position.y >= MAP_SIZE) {
         return true;
-    if (entity_matrix[position.x][position.y].size() > 0)
-        return true;
+    }
     return false;
 }
 
 void Map::move(EntityId entity_id, steps_t steps) {
-    std::unique_lock<std::mutex> l(m);
     position_t new_position = position_map[entity_id];
 
     new_position.x += steps.x;
     new_position.y += steps.y;
 
-    if (collides(new_position))
-        return;
+    if (collides(new_position)) return;
 
     // Borrado de la matriz de entidad en la vieja posicion.
     position_t old_position = position_map[entity_id];
@@ -68,43 +67,40 @@ void Map::move(EntityId entity_id, steps_t steps) {
               << std::endl;
 }
 
-EntityId Map::add_player(ClientId client_id, nlohmann::json player_info) {
+EntityId Map::add_player(nlohmann::json player_info) {
     EntityId entity_id = get_next_id();
     Player* player =
         new Player(entity_id, int(player_info["id_head"]),
                    int(player_info["id_body"]), player_info["name"], *this);
     position_t player_position = {int(player_info["pos"]["x"]),
                                   int(player_info["pos"]["y"])};
+    
     add_entity(player, player_position);
-    client_map[client_id] = entity_id;
-
-    std::cerr << "Added player with clientid " << client_id << " - entity id "
-              << entity_id << std::endl;
 
     return entity_id;
 }
 
 void Map::update(uint64_t delta_t) {
-    std::unique_lock<std::mutex> l(m);
     for (auto& it : entity_map) {
         it.second->update(delta_t);
     }
 }
 
-Player& Map::get_player(ClientId client_id) {
-    return *(Player*)entity_map.at(client_map.at(client_id));
+void Map::with_entity(EntityId entity_id, const Action& action) {
+    action.execute(*(entity_map.at(entity_id)));
 }
 
-nlohmann::json Map::get_position_data() {
-    return nlohmann::json(position_map);
+nlohmann::json Map::get_position_data() { 
+    nlohmann::json position_data;
+    position_data["positions"] = nlohmann::json::array();
+    for(auto &it : position_map){
+        position_data["positions"].push_back({{"entity_id",it.first},{"x",it.second.x},{"y",it.second.y}});
+    }
+    return position_data;
 }
 
-nlohmann::json Map::get_entity_data() {
-    return nlohmann::json{};
-}
+nlohmann::json Map::get_entity_data() { return nlohmann::json{}; }
 
-nlohmann::json Map::get_map_data() {
-    return visual_map_info;
-}
+nlohmann::json Map::get_map_data() { return visual_map_info; }
 
 Map::~Map() {}

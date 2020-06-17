@@ -2,14 +2,13 @@
 #define __MAP_H
 
 #include <cstdint>
-#include <mutex>
 #include <unordered_map>
 #include <unordered_set>
-
 #include "../include/types.h"
 #include "../nlohmann/json.hpp"
 #include "entity.h"
 #include "position.h"
+#include "action.h"
 
 #define MAP_SIZE 50
 
@@ -26,22 +25,18 @@ typedef std::unordered_map<EntityId, position_t> PositionMap;
 // Clave: id de entidad, valor: puntero a la entidad
 typedef std::unordered_map<EntityId, Entity*> EntityMap;
 
-// Clave: id de cliente, valor: id de entidad del jugador.
-typedef std::unordered_map<ClientId, EntityId> ClientMap;
-
 // Clave: position_t. Contiene los bloques colisionables.
 typedef std::unordered_set<position_t, PositionHasher, PositionComparator>
     CollisionMap;
 
 class Map {
    private:
-    std::mutex m;
     PositionMap position_map;
     // Set de ids de lo que hay en cada posicion.
     std::unordered_set<EntityId> entity_matrix[MAP_SIZE][MAP_SIZE];
     CollisionMap collision_map;
     EntityMap entity_map;
-    ClientMap client_map;
+    
     // Para mandarsela a los clientes.
     nlohmann::json visual_map_info;
 
@@ -66,13 +61,14 @@ class Map {
     void move(EntityId entity_id, steps_t steps);
 
     /* Devuelve el id de entidad asignado dentro del mapa al jugador. */
-    EntityId add_player(ClientId client_id, nlohmann::json player_info);
+    EntityId add_player(nlohmann::json player_info);
 
     /* Actualiza todas las entidades que contiene segun el delta_t
      * transcurrido.*/
     void update(uint64_t delta_t);
 
-    Player& get_player(ClientId client_id);
+    /* Ejecuta sobre la entidad asociada al id la accion. */
+    void with_entity(EntityId entity_id,const Action &action);
 
     nlohmann::json get_position_data();
     nlohmann::json get_entity_data();

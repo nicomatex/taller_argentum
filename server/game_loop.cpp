@@ -19,6 +19,7 @@ void GameLoop::run() {
     } catch (const std::exception& e) {
         std::cerr << e.what() << std::endl;
     }
+    std::cout << "Gameloop finished" << std::endl;
 }
 
 void GameLoop::stop() {

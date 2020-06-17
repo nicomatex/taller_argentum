@@ -1,8 +1,10 @@
+#include "game_client.h"
+
 #include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <thread>
-#include "game_client.h"
+
 #include "client_config.h"
 #include "engine/ECS/entity.h"
 #include "engine/SDL/sdl_area.h"
@@ -23,31 +25,32 @@ GameClient::GameClient(json config)
     : main_window(int(config["window width"]), int(config["window height"]),
                   WINDOW_TITLE),
       entity_factory(entity_manager),
-      receive_handler(entity_manager, current_map),
+      ready(false),
+      receive_handler(entity_manager, current_map, ready, running),
       socket(std::string(config["server"]), std::string(config["port"])),
       socket_manager(socket, receive_handler),
       ui_event_handler(running, socket_manager) {
     try {
         SDLTextureLoader texture_loader(main_window.init_renderer());
         ResourceManager::get_instance().init(texture_loader);
-        socket_manager.send(event_factory.connect_event("nicolito","1234"));
+        socket_manager.send(event_factory.connect_event("nicolito", "1234"));
     } catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
+    receive_handler.start();
     socket_manager.start();
 }
 
 void GameClient::run() {
-    // while(!ready){} //Esperamos que se complete la carga
+    while (!ready) {
+    }  // Esperamos que se complete la carga
 
     running = true;
     Entity &player = entity_factory.create_player(0, 1, 1, 0, 0);
-    Actor &body = player.get_component<VisualCharacterComponent>().get_part("body");
+    Actor &body =
+        player.get_component<VisualCharacterComponent>().get_part("body");
     Camera camera(body, 50, TILE_SIZE, 15, 8);
     player.get_component<VisualCharacterComponent>().bind_to_camera(camera);
-    std::ifstream map_file("assets/maps/forest1.json");
-    json map_info = json::parse(map_file);
-    current_map.generate(map_info);
     SDLArea render_area(0, 128, 960, 512);
     main_window.set_viewport(render_area);
 
@@ -61,10 +64,11 @@ void GameClient::run() {
         entity_manager.draw();
         main_window.render();
     }
-    if(!socket_manager.is_connected()){
+    if (!socket_manager.is_connected()) {
         std::cout << MSG_ERR_CONECT_DROPPED << std::endl;
     }
-
+    receive_handler.stop();
+    receive_handler.join();
     socket_manager.stop(true);
     socket_manager.join();
 }

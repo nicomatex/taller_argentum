@@ -61,10 +61,6 @@ void ServerManager::send_to(ClientId client_id, const Event& ev) {
     clients[client_id]->send(ev);
 }
 
-Player& ServerManager::get_player(ClientId client_id) {
-    return (map_manager[client_to_map[client_id]]).get_player(client_id);
-}
-
 void ServerManager::finish() {
     accepter.stop();
     accepter.join();
@@ -84,6 +80,10 @@ void ServerManager::finish() {
     game_loop.stop();
     game_loop.join();
     std::cerr << "GameLoop: joined\n";
+}
+
+MapMonitor& ServerManager::get_map(ClientId client_id){
+    return map_manager[client_to_map.at(client_id)];
 }
 
 ServerManager::~ServerManager() {}

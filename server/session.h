@@ -3,7 +3,7 @@
 
 #include "../include/socket_manager.h"
 #include "client_id_set.h"
-#include "map.h"
+#include "map_monitor.h"
 #include "th_broadcaster.h"
 #include "th_dispatcher.h"
 #include "th_observer.h"
@@ -15,7 +15,7 @@ class Session {
     ThObserver observer;
 
    public:
-    Session(Map& map);
+    Session(MapMonitor& map);
 
     void start();
 

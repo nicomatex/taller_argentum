@@ -5,19 +5,21 @@
 
 #include "../include/blocking_th_event_handler.h"
 #include "../include/thread.h"
-#include "map.h"
+#include "map_monitor.h"
 
 class ThObserver : public Thread {
    private:
     std::atomic<bool> running;
-    Map& map;
+    MapMonitor& map;
     BlockingThEventHandler& handler;
 
    public:
-    ThObserver(Map& map, BlockingThEventHandler& handler);
+    ThObserver(MapMonitor& map, BlockingThEventHandler& handler);
 
     void run() override;
 
+    void stop();
+    
     ~ThObserver();
 };
 

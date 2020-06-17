@@ -8,7 +8,7 @@ MapManager::MapManager(const char* path) {
     maps.emplace(0, map_description);
 }
 
-Map& MapManager::operator[](MapId map_id) {
+MapMonitor& MapManager::operator[](MapId map_id) {
     return maps.at(map_id);
 }
 

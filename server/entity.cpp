@@ -1,6 +1,7 @@
 #include "entity.h"
+#include <iostream>
 
-Entity::Entity(unsigned int id) : id(id) {}
+Entity::Entity(EntityId id) : id(id) {}
 
 Entity::~Entity() {}
 

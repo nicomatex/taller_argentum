@@ -26,6 +26,8 @@ add_library(server
   th_client_accepter.cpp
   th_dispatcher.cpp
   th_observer.cpp
+  action_move.cpp
+  map_monitor.cpp
 )
 
 target_link_libraries(server

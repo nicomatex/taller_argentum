@@ -19,7 +19,7 @@ class Player : public Entity {
                // STATS
                // INVENTARIO
    public:
-    Player(int entity_id, int head_id, int body_id, std::string name,
+    Player(EntityId entity_id, int head_id, int body_id, std::string name,
            Map &map);  // Aca probablemente habria que pasarle mas info, como el
                        // nombre
                        // y los stats. Por lo pronto con el id y el map tamos

@@ -1,9 +1,9 @@
 #include "player.h"
 #include <iostream>
 
-Player::Player(int entity_id, int head_id, int body_id, std::string name,
+Player::Player(EntityId entity_id, int head_id, int body_id, std::string name,
                Map &map)
-    : Entity(id),
+    : Entity(entity_id),
       head_id(head_id),
       body_id(body_id),
       name(name),
