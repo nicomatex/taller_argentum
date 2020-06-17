@@ -3,9 +3,8 @@
 
 #include <unordered_map>
 
+#include "../include/types.h"
 #include "map.h"
-
-typedef unsigned int MapId;
 
 class MapManager {
    private:

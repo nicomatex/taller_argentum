@@ -7,16 +7,17 @@
 #include "socket.h"
 #include "th_socket_receiver.h"
 #include "th_socket_sender.h"
+#include "types.h"
 
 class SocketManager {
    private:
-    const int client_id;
+    const ClientId client_id;
     Socket socket;
     ThSocketReceiver receiver;
     ThSocketSender sender;
 
    public:
-    SocketManager(int id, Socket socket,
+    SocketManager(ClientId id, Socket socket,
                   BlockingThEventHandler& ReceiveHandler);
     SocketManager(Socket& socket, BlockingThEventHandler& ReceiveHandler);
 
@@ -24,7 +25,7 @@ class SocketManager {
 
     void send(const Event& ev);
 
-    int get_id() const;
+    ClientId get_id() const;
 
     bool is_done() const;
 

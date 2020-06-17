@@ -14,8 +14,8 @@ class ServerManager {
    private:
     MapManager map_manager;
     std::unordered_map<MapId, Session> sessions;
-    std::unordered_map<int, MapId> client_to_map;
-    std::unordered_map<int, SocketManager*> clients;
+    std::unordered_map<ClientId, MapId> client_to_map;
+    std::unordered_map<ClientId, SocketManager*> clients;
     GameLoop game_loop;
     ThDispatcher dispatcher;
     ThClientAccepter accepter;
@@ -27,16 +27,17 @@ class ServerManager {
 
     ThDispatcher& get_dispatcher();
 
-    void add_client(int client_id, SocketManager* new_client);
+    void add_client(ClientId client_id, SocketManager* new_client);
 
     // TODO
     // Se crea la entidad player con la informaciónd del json y envía al jugador
     // el mensaje de inicialización
-    void add_player(MapId map_id, int client_id, nlohmann::json player_info);
+    void add_player(MapId map_id, ClientId client_id,
+                    nlohmann::json player_info);
 
-    void send_to(int client_id, const Event& ev);
+    void send_to(ClientId client_id, const Event& ev);
 
-    Player& get_player(int client_id);
+    Player& get_player(ClientId client_id);
 
     void finish();
 

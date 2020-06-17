@@ -10,11 +10,12 @@
 #include "protocol.h"
 #include "socket.h"
 #include "thread.h"
+#include "types.h"
 
 class ThSocketReceiver : public Thread {
    private:
     std::atomic<bool> running;
-    int client_id;
+    ClientId client_id;
     Protocol protocol;
     BlockingThEventHandler& recieve_handler;
 

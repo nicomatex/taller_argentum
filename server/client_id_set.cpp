@@ -7,21 +7,21 @@
 
 ClientIdSet::ClientIdSet() {}
 
-void ClientIdSet::add_client(int client_id) {
+void ClientIdSet::add_client(ClientId client_id) {
     std::unique_lock<std::mutex> lock(mutex);
     if (clients.count(client_id))
         return;
     clients.emplace(client_id);
 }
 
-void ClientIdSet::rm_client(int id) {
+void ClientIdSet::rm_client(ClientId id) {
     std::unique_lock<std::mutex> lock(mutex);
     if (!clients.count(id))
         return;
     clients.erase(id);
 }
 
-void ClientIdSet::send_to(int id, const Event& ev) {
+void ClientIdSet::send_to(ClientId id, const Event& ev) {
     std::unique_lock<std::mutex> lock(mutex);
     ServerManager& server_manager = ServerManager::get_instance();
     try {

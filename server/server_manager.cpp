@@ -31,11 +31,11 @@ ThDispatcher& ServerManager::get_dispatcher() {
     return dispatcher;
 }
 
-void ServerManager::add_client(int client_id, SocketManager* new_client) {
+void ServerManager::add_client(ClientId client_id, SocketManager* new_client) {
     clients.emplace(client_id, new_client);
 }
 
-void ServerManager::add_player(MapId map_id, int client_id,
+void ServerManager::add_player(MapId map_id, ClientId client_id,
                                nlohmann::json player_info) {
     // Añadimos el jugador al mapa
     player_info["player_id"] =
@@ -55,13 +55,13 @@ void ServerManager::add_player(MapId map_id, int client_id,
     sessions.at(map_id).add_client(client_id);
 }
 
-void ServerManager::send_to(int client_id, const Event& ev) {
+void ServerManager::send_to(ClientId client_id, const Event& ev) {
     // if (!clients.count(client_id))
     //     throw ClientDisconnectedException();
     clients[client_id]->send(ev);
 }
 
-Player& ServerManager::get_player(int client_id) {
+Player& ServerManager::get_player(ClientId client_id) {
     return (map_manager[client_to_map[client_id]]).get_player(client_id);
 }
 

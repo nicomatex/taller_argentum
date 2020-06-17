@@ -5,7 +5,7 @@
 // Temp
 #include <iostream>
 
-SocketManager::SocketManager(int id, Socket socket,
+SocketManager::SocketManager(ClientId id, Socket socket,
                              BlockingThEventHandler& receive_handler)
     : client_id(id),
       socket(std::move(socket)),
@@ -27,7 +27,7 @@ void SocketManager::send(const Event& ev) {
     sender.push_event(ev);
 }
 
-int SocketManager::get_id() const {
+ClientId SocketManager::get_id() const {
     return client_id;
 }
 

@@ -25,7 +25,6 @@ void ClientInitializeHandler::run_handler() {
             id_cuerpo:
     */
     nlohmann::json connect_info = event.get_json();
-    // int client_id = event.get_client_id();
     std::string player_name = connect_info["player"]["name"];
     std::cout << "Entered ClientInitializerHandler\n"; 
     // Aca haría el lookup usando el name
@@ -35,6 +34,6 @@ void ClientInitializeHandler::run_handler() {
                                   {"id_head", 2},
                                   {"id_body", 2}};
     int map_id = 0;
-    server_manager.add_player(map_id, int(connect_info["client_id"]),
+    server_manager.add_player(map_id, ClientId(connect_info["client_id"]),
                               player_info);
 }

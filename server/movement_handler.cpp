@@ -26,7 +26,7 @@ MovementHandler::~MovementHandler() {}
 void MovementHandler::run_handler() {
     ServerManager& server_manager = ServerManager::get_instance();
     nlohmann::json movement_info = event.get_json();
-    int client_id = movement_info["client_id"];
+    ClientId client_id = movement_info["client_id"];
     mov_action_t mov_act = movement_info["movement"]["action"];
     direction_t direction = movement_info["movement"]["direction"];
     Player& player = server_manager.get_player(client_id);

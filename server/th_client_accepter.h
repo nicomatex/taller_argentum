@@ -9,7 +9,8 @@ class ThClientAccepter : public Thread {
    private:
     Socket listener;
     bool running;
-    int next_free_id;
+
+    ClientId get_next_id();
 
    public:
     ThClientAccepter(Socket listener);

@@ -3,14 +3,16 @@
 
 #include <cstdint>
 
+#include "../include/types.h"
+
 enum entity_type_t { PLAYER, NPC, LOOT };
 
 class Entity {
    protected:
-    unsigned int id;
+    EntityId id;
 
    public:
-    Entity(unsigned int id);
+    Entity(EntityId id);
     virtual ~Entity();
 
     /* Saber el tipo de la entidad sirve para saber si es colisionable o no.
@@ -19,7 +21,7 @@ class Entity {
 
     virtual void update(uint64_t delta_t);
 
-    unsigned int get_id() const;
+    EntityId get_id() const;
 };
 
 #endif

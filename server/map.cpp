@@ -1,10 +1,9 @@
 #include "map.h"
 
+#include <iostream>  //temp
 #include <mutex>
 
 #include "player.h"
-
-#include <iostream> //temp
 
 Map::Map(nlohmann::json map_description) {
     int height = map_description["height"];
@@ -26,8 +25,8 @@ Map::Map(nlohmann::json map_description) {
     visual_map_info = map_description;
 }
 
-uint32_t Map::get_next_id() {
-    static uint32_t entity_id = 0;
+EntityId Map::get_next_id() {
+    static EntityId entity_id = 0;
     return entity_id++;
 }
 
@@ -47,7 +46,7 @@ bool Map::collides(position_t position) {
     return false;
 }
 
-void Map::move(unsigned int entity_id, steps_t steps) {
+void Map::move(EntityId entity_id, steps_t steps) {
     std::unique_lock<std::mutex> l(m);
     position_t new_position = position_map[entity_id];
 
@@ -65,19 +64,22 @@ void Map::move(unsigned int entity_id, steps_t steps) {
     // posicion.
     entity_matrix[new_position.x][new_position.y].emplace(entity_id);
     position_map[entity_id] = new_position;
-    std::cerr << "Moved player to " << new_position.x << " - " << new_position.y << std::endl;
+    std::cerr << "Moved player to " << new_position.x << " - " << new_position.y
+              << std::endl;
 }
 
-uint32_t Map::add_player(uint32_t client_id,nlohmann::json player_info) {
-    uint32_t entity_id = get_next_id();
+EntityId Map::add_player(ClientId client_id, nlohmann::json player_info) {
+    EntityId entity_id = get_next_id();
     Player* player =
         new Player(entity_id, int(player_info["id_head"]),
                    int(player_info["id_body"]), player_info["name"], *this);
-    position_t player_position = {int(player_info["pos"]["x"]),int(player_info["pos"]["y"])};
+    position_t player_position = {int(player_info["pos"]["x"]),
+                                  int(player_info["pos"]["y"])};
     add_entity(player, player_position);
     client_map[client_id] = entity_id;
 
-    std::cerr << "Added player with clientid " << client_id << " - entity id " << entity_id << std::endl;
+    std::cerr << "Added player with clientid " << client_id << " - entity id "
+              << entity_id << std::endl;
 
     return entity_id;
 }
@@ -89,7 +91,7 @@ void Map::update(uint64_t delta_t) {
     }
 }
 
-Player& Map::get_player(uint32_t client_id) {
+Player& Map::get_player(ClientId client_id) {
     return *(Player*)entity_map.at(client_map.at(client_id));
 }
 

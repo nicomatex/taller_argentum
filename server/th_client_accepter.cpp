@@ -9,21 +9,24 @@
 #include "server_manager.h"
 
 ThClientAccepter::ThClientAccepter(Socket listener)
-    : Thread(), listener(std::move(listener)), running(true), next_free_id(0) {}
+    : Thread(), listener(std::move(listener)), running(true) {}
+
+ClientId ThClientAccepter::get_next_id() {
+    static ClientId next_free_id = 0;
+    return next_free_id++;
+}
 
 void ThClientAccepter::run() {
     try {
         ServerManager& server_manager = ServerManager::get_instance();
         while (running && listener.is_open()) {
             try {
-                SocketManager* new_client =
-                    new SocketManager(next_free_id, listener.accept(),
-                                      server_manager.get_dispatcher());
-                std::cerr << "Accepter: Started client: " << next_free_id
-                          << std::endl;
+                ClientId id = get_next_id();
+                SocketManager* new_client = new SocketManager(
+                    id, listener.accept(), server_manager.get_dispatcher());
+                std::cerr << "Accepter: Started client: " << id << std::endl;
                 new_client->start();
-                server_manager.add_client(next_free_id, new_client);
-                next_free_id++;
+                server_manager.add_client(id, new_client);
             } catch (const ConnectionClosedSocketException& e) {
                 running = false;
             }

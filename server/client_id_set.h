@@ -5,22 +5,21 @@
 #include <unordered_set>
 
 #include "../include/event.h"
-
-#define INVALID_ID -1
+#include "../include/types.h"
 
 class ClientIdSet {
    private:
     std::mutex mutex;
-    std::unordered_set<int> clients;
+    std::unordered_set<ClientId> clients;
 
    public:
     ClientIdSet();
 
-    void add_client(int client_id);
+    void add_client(ClientId id);
 
-    void rm_client(int id);
+    void rm_client(ClientId id);
 
-    void send_to(int id, const Event& ev);
+    void send_to(ClientId id, const Event& ev);
 
     void broadcast(Event& ev);
 
