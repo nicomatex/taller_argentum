@@ -24,7 +24,7 @@ using json = nlohmann::json;
 GameClient::GameClient(json config)
     : main_window(int(config["window width"]), int(config["window height"]),
                   WINDOW_TITLE),
-      entitiy_factory(entity_manager),
+      entity_factory(entity_manager),
       receive_handler(entity_manager, current_map),
       socket(std::string(config["server"]), std::string(config["port"])),
       socket_manager(socket, receive_handler),
@@ -32,6 +32,7 @@ GameClient::GameClient(json config)
     try {
         SDLTextureLoader texture_loader(main_window.init_renderer());
         ResourceManager::get_instance().init(texture_loader);
+        socket_manager.send(event_factory.connect_event("nicolito","1234"));
     } catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
@@ -43,8 +44,8 @@ void GameClient::_poll_events() {}
 
 void GameClient::run() {
     running = true;
-    Entity &player = entitiy_factory.create_player(0, 1, 1, 0, 0);
-    Entity &another_player = entitiy_factory.create_player(1, 1, 2, 0, 0);
+    Entity &player = entity_factory.create_player(0, 1, 1, 0, 0);
+    Entity &another_player = entity_factory.create_player(1, 1, 2, 0, 0);
     Actor &body =
         player.get_component<VisualCharacterComponent>().get_part("body");
     Camera camera(body, 50, TILE_SIZE, 15, 8);
@@ -75,7 +76,7 @@ void GameClient::run() {
             player.get_component<VisualCharacterComponent>().set_body(2);
             head_timer.stop();
             Entity &yet_another_player =
-                entitiy_factory.create_player(2, 3, 3, 0, 0);
+                entity_factory.create_player(2, 3, 3, 0, 0);
             yet_another_player.get_component<VisualCharacterComponent>()
                 .bind_to_camera(camera);
             yet_another_player.get_component<PositionComponent>().set_position(

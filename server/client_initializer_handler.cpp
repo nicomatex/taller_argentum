@@ -27,10 +27,11 @@ void ClientInitializeHandler::run_handler() {
     nlohmann::json connect_info = event.get_json();
     // int client_id = event.get_client_id();
     std::string player_name = connect_info["player"]["name"];
+    std::cout << "Entered ClientInitializerHandler\n"; 
     // Aca haría el lookup usando el name
     nlohmann::json player_info = {{"name", player_name},
                                   {"map", 0},
-                                  {position_t{3, 5}},
+                                  {"pos",{{"x",5},{"y",2}}},
                                   {"id_head", 2},
                                   {"id_body", 2}};
     int map_id = 0;

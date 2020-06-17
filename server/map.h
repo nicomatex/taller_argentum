@@ -8,6 +8,7 @@
 #include "../nlohmann/json.hpp"
 #include "entity.h"
 #include "position.h"
+#include <cstdint>
 
 #define MAP_SIZE 50
 
@@ -18,11 +19,11 @@ typedef struct steps {
     int y;
 } steps_t;
 
-typedef std::unordered_map<unsigned int, position_t> PositionMap;
+typedef std::unordered_map<uint32_t, position_t> PositionMap;
 
-typedef std::unordered_map<unsigned int, Entity*> EntityMap;
+typedef std::unordered_map<uint32_t, Entity*> EntityMap;
 
-typedef std::unordered_map<unsigned int, unsigned int> ClientMap;
+typedef std::unordered_map<uint32_t, uint32_t> ClientMap;
 
 class Map {
    private:
@@ -30,7 +31,7 @@ class Map {
     // clave: id de entidad, valor: position_t
     PositionMap position_map;
     // Set de ids de lo que hay en cada posicion.
-    std::unordered_set<int> entity_matrix[MAP_SIZE][MAP_SIZE];
+    std::unordered_set<uint32_t> entity_matrix[MAP_SIZE][MAP_SIZE];
     // Clave: position_t. Contiene los bloques colisionables.
     std::unordered_set<position_t, PositionHasher, PositionComparator>
         collision_map;
@@ -47,7 +48,7 @@ class Map {
      * puede pisar). */
     bool collides(position_t position);
 
-    int
+    uint32_t
     get_next_id();  // Devuelve el siguiente id a asignar a una nueva entidad.
 
     /* Agrega una nueva entidad asociada al entity_id en la posicion indicada.*/
@@ -58,16 +59,16 @@ class Map {
     ~Map();
     /* Mueve la entidad asociada al entity_id un tile en la direccion
      * indicada.*/
-    void move(unsigned int entity_id, steps_t steps);
+    void move(uint32_t entity_id, steps_t steps);
 
     /* Devuelve el id de entidad asignado dentro del mapa al jugador. */
-    int add_player(nlohmann::json player_info, int client_id);
+    uint32_t add_player(uint32_t client_id, nlohmann::json player_info);
 
     /* Actualiza todas las entidades que contiene segun el delta_t
      * transcurrido.*/
     void update(uint64_t delta_t);
 
-    Player& get_player(int client_id);
+    Player& get_player(uint32_t client_id);
 
     nlohmann::json get_position_data();
     nlohmann::json get_entity_data();

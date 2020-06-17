@@ -1,4 +1,5 @@
 #include "player.h"
+#include <iostream>
 
 Player::Player(int entity_id, int head_id, int body_id, std::string name,
                Map &map)
@@ -7,7 +8,8 @@ Player::Player(int entity_id, int head_id, int body_id, std::string name,
       body_id(body_id),
       name(name),
       map(map),
-      move_accumulator(0) {}
+      move_accumulator(0),
+      player_speed(4) {}
 
 void Player::update(uint64_t delta_t) {
     int time_between_tiles = 1000 / player_speed;
@@ -27,6 +29,7 @@ void Player::update(uint64_t delta_t) {
         /* Se guarda el restante para la proxima actualizacion. */
         move_accumulator = move_accumulator % time_between_tiles;
     }
+
     // TODO: demas updates, como regeneraciones de vida/mana, etc.
 }
 

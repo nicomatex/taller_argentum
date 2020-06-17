@@ -20,14 +20,14 @@ class GameClient {
    private:
     SDLWindow main_window;
     EntityManager entity_manager;
-    EntityFactory entitiy_factory;
+    EntityFactory entity_factory;
+    EventFactory event_factory;
     std::atomic_bool running;
     void _poll_events();
     Socket socket;
     ClientReceiveHandler receive_handler;
     SocketManager socket_manager;
     Map current_map;
-    EventFactory event_factory;
     UiEventHandler ui_event_handler;
     
    public:
