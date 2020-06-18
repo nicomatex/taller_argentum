@@ -1,0 +1,119 @@
+items/loot.txt
+
+16000 armas
+
+items = {
+	{ "name_item0": {id_item0, type,"sprite_item0"}, "name_item1": {id_item1, type ,"sprite_item1"} }
+}
+
+typedef enum {weapon, armor, potion, gold} item_type_t;
+
+typedef struct item_info {
+	int item_id;
+	item_type_t item_type;
+	int id_texture // o lo que corresponda -> 
+} item_type_t;
+-
+type sea enum, es lo mejor.
+
+weapons = {
+	{ id_item: ....., "id_item": ..... }
+}
+
+typedef struct weapon_info {
+	int min_damage;
+	int max_damage;
+} weapon_info_t;
+
+weapon -> dictionary, clave item_id/name_item, .............
+
+armors = {
+	{ id_item: ....., "id_item": ..... }   -> aca meto escudos/cascos/armadura?
+}
+
+typedef enum {head, body, shield} slot_info_t;
+
+typedef struct armor_info {
+	int min_defense;
+	int max_defense;
+	slot_info_t slot_info;
+} armor_info_t;
+
+Player supongo que va a tener campos del estilo:
+	Armor helmet;
+	Armor body;
+	Armor shield;
+	Weapon weapon;
+
+
+//Las vestimentas son armaduras con defensa 0 (?
+//o son parte del player para que no esté en pelotas, por lo cual no las consideramos un item xD
+
+potions = {
+	{ id_item: ....., "id_item": ..... }	
+}
+
+typedef struct potion_info {
+	int health_increase;
+	int mana_increase;
+} potion_info_t;
+
+la posicion de hp tendria un {14,0}, la de mana {0,30}, y una especial que te cure mana y vida {10,10}
+
+/*
+	Datos: no hay energia, ni comida, ni bebida, ni hace falta otro consumible
+	que no sean las potas/oro (las flechas son infinitas.)
+	Preguntas: 
+	1) Cambiamos el typeId Loot por Item?
+	2) Hacemos todos stackables, y con limite 9999 o sin limite?
+	3) Dado que la entidad se suele crear dentro del mapa, con lo que el entity
+	_id se lo asigna el mapa, vamos a tener que agregar un constructor de 
+	entity que no reciba id, y que se lo podamos setear por fuera una vez
+	que le devolvamos el item al mapa.
+
+*/
+
+
+item_factory("Daga", 3) -> Devuelve un item por movimiento
+item_factory("Poción de mana", 1000) -> item por movimiento
+
+Ejemplo daga:
+
+Accedo al dicc de items -> Busco "Daga"
+me devuelve un struct item_info
+
+hago un switch(item_type_t) {
+	case weapon:
+		accedo dict de weapons
+		return std::move(Weapon(.....))
+	case armor:
+		accedo dict de armors
+		return std::move(Armor(.....))
+	case potion:
+		accedo dict de potions
+		return std::move(Potion(.....))
+	case gold:
+		no tiene mas info, simplemente creo la clase Gold
+}
+
+Inventario:
+_____________________________________________________________________________________
+inventario que no tengas instancias?? tipo map <id_item, int> (int es la cantidad)
+									  
+									  pero hay que ver como resolverlo bien (en algun lado tengo que tener el objecto)
+
+									  sino <id_item, Item>
+									  	   <id_item, int>
+									  o la cantidad es un atributo del item,
+									  y mi inventario es solo
+									  <id_item, Item> -> tengo que definir un metodo
+									  increase/decrease y set/get.
+
+
+Las clases Weapon, Potion, implementan una interfaz "Usable" con metodo virtual void use(Player& player) ?
+-> en el caso de los weapons si tocas "u": hay que fijarse:
+Si es un arma de rango-> pega ya sea con arco o con hechizo
+Si no no hago nada.
+
+-> en el caso de las pociones -> use reduce su cantidad en 1 -> implica reducir su cantidad en inventario y modificar mana/vida al player
+
