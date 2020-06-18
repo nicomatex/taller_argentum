@@ -1,4 +1,5 @@
 #include "player.h"
+
 #include <iostream>
 
 Player::Player(EntityId entity_id, int head_id, int body_id, std::string name,
@@ -9,7 +10,12 @@ Player::Player(EntityId entity_id, int head_id, int body_id, std::string name,
       name(name),
       map(map),
       move_accumulator(0),
-      player_speed(5) {}
+      player_speed(5) {
+    visual_entity_info["type_id"] = get_type();
+    visual_entity_info["head_id"] = head_id;
+    visual_entity_info["body_id"] = body_id;
+    visual_entity_info["name"] = name;
+}
 
 void Player::update(uint64_t delta_t) {
     int time_between_tiles = 1000 / player_speed;
@@ -27,9 +33,9 @@ void Player::update(uint64_t delta_t) {
         map.move(this->id, {steps_x, steps_y});
 
         /* Se guarda el restante para la proxima actualizacion. */
-        if(steps_x != 0 || steps_y != 0){
+        if (steps_x != 0 || steps_y != 0) {
             move_accumulator = move_accumulator % time_between_tiles;
-        }else{
+        } else {
             move_accumulator = time_between_tiles;
         }
     }

@@ -33,13 +33,15 @@ EntityId Map::get_next_id() {
 void Map::add_entity(Entity* entity, position_t position) {
     position_map[entity->get_id()] = position;
     entity_matrix[position.x][position.y].emplace(entity->get_id());
-    entity_map.emplace(entity->get_id(),entity);
+    entity_map.emplace(entity->get_id(), entity);
     std::cout << "Added entity with id " << entity->get_id() << std::endl;
 }
 
 bool Map::collides(position_t position) {
-    if (collision_map.count(position) > 0) return true;
-    if (entity_matrix[position.x][position.y].size() > 0) return true;
+    if (collision_map.count(position) > 0)
+        return true;
+    if (entity_matrix[position.x][position.y].size() > 0)
+        return true;
     if (position.x < 0 || position.y < 0 || position.x >= MAP_SIZE ||
         position.y >= MAP_SIZE) {
         return true;
@@ -53,7 +55,8 @@ void Map::move(EntityId entity_id, steps_t steps) {
     new_position.x += steps.x;
     new_position.y += steps.y;
 
-    if (collides(new_position)) return;
+    if (collides(new_position))
+        return;
 
     // Borrado de la matriz de entidad en la vieja posicion.
     position_t old_position = position_map[entity_id];
@@ -74,7 +77,7 @@ EntityId Map::add_player(nlohmann::json player_info) {
                    int(player_info["id_body"]), player_info["name"], *this);
     position_t player_position = {int(player_info["pos"]["x"]),
                                   int(player_info["pos"]["y"])};
-    
+
     add_entity(player, player_position);
 
     return entity_id;
@@ -90,17 +93,30 @@ void Map::with_entity(EntityId entity_id, const Action& action) {
     action.execute(*(entity_map.at(entity_id)));
 }
 
-nlohmann::json Map::get_position_data() { 
-    nlohmann::json position_data;
-    position_data["positions"] = nlohmann::json::array();
-    for(auto &it : position_map){
-        position_data["positions"].push_back({{"entity_id",it.first},{"x",it.second.x},{"y",it.second.y}});
+nlohmann::json Map::get_position_data(const PositionMap& position_map) {
+    nlohmann::json positions = nlohmann::json::array();
+    for (auto& it : position_map) {
+        positions.push_back(
+            {{"entity_id", it.first}, {"x", it.second.x}, {"y", it.second.y}});
     }
-    return position_data;
+    return positions;
 }
 
-nlohmann::json Map::get_entity_data() { return nlohmann::json{}; }
+const PositionMap Map::get_position_map() const {
+    return position_map;
+}
 
-nlohmann::json Map::get_map_data() { return visual_map_info; }
+nlohmann::json Map::get_entity_data() {
+    nlohmann::json entities;
+    entities = nlohmann::json::array();
+    for (auto& it : entity_map) {
+        entities.push_back(it.second->get_data());
+    }
+    return entities;
+}
+
+nlohmann::json Map::get_map_data() {
+    return visual_map_info;
+}
 
 Map::~Map() {}

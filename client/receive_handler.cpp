@@ -25,20 +25,25 @@ void ClientReceiveHandler::handle(Event &ev) {
         case 2:
             handle_move(ev);
             break;
+        case 3:
+            std::cerr << "Handler: got: " << ev.get_json() << std::endl;
+            break;
         case -1:
             std::cout << "Fui kickeado del servidor." << std::endl;
             running = false;
     };
 }
 
-void ClientReceiveHandler::handle_move(Event &ev) { 
+void ClientReceiveHandler::handle_move(Event &ev) {
     json event = ev.get_json();
-    for(auto &it: event["positions"].items()){
+    for (auto &it : event["positions"].items()) {
         json entity_position = it.value();
         int entity_id = entity_position["entity_id"];
         int x = entity_position["x"];
         int y = entity_position["y"];
-        entity_manager.get_from_id(entity_id).get_component<PositionComponent>().set_position(x,y);
+        entity_manager.get_from_id(entity_id)
+            .get_component<PositionComponent>()
+            .set_position(x, y);
     }
 }
 

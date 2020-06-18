@@ -17,15 +17,16 @@ void MapMonitor::update(uint64_t delta_t) {
     map.update(delta_t);
 }
 
-void MapMonitor::with_player(ClientId client_id,const Action& action) {
+void MapMonitor::with_player(ClientId client_id, const Action& action) {
     std::unique_lock<std::mutex> l(m);
     map.with_entity(client_map.at(client_id), action);
 }
 
-
 nlohmann::json MapMonitor::get_position_data() {
-    std::unique_lock<std::mutex> l(m);
-    return map.get_position_data();
+    m.lock();
+    PositionMap copy = map.get_position_map();
+    m.unlock();
+    return Map::get_position_data(copy);
 }
 
 nlohmann::json MapMonitor::get_entity_data() {

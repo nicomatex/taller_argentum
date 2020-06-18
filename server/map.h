@@ -4,11 +4,12 @@
 #include <cstdint>
 #include <unordered_map>
 #include <unordered_set>
+
 #include "../include/types.h"
 #include "../nlohmann/json.hpp"
+#include "action.h"
 #include "entity.h"
 #include "position.h"
-#include "action.h"
 
 #define MAP_SIZE 50
 
@@ -36,7 +37,7 @@ class Map {
     std::unordered_set<EntityId> entity_matrix[MAP_SIZE][MAP_SIZE];
     CollisionMap collision_map;
     EntityMap entity_map;
-    
+
     // Para mandarsela a los clientes.
     nlohmann::json visual_map_info;
 
@@ -68,9 +69,10 @@ class Map {
     void update(uint64_t delta_t);
 
     /* Ejecuta sobre la entidad asociada al id la accion. */
-    void with_entity(EntityId entity_id,const Action &action);
+    void with_entity(EntityId entity_id, const Action& action);
 
-    nlohmann::json get_position_data();
+    static nlohmann::json get_position_data(const PositionMap& position_map);
+    const PositionMap get_position_map() const;
     nlohmann::json get_entity_data();
     nlohmann::json get_map_data();
 };
