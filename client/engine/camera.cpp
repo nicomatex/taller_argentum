@@ -80,6 +80,7 @@ SDLArea Camera::_get_render_area(Decoration &decoration) {
     y_render_base -=
         ((decoration.get_height() * tile_size) / SIZE_GRANULARITY) - tile_size;
 
+
     return SDLArea(x_render_base - camera_offset_x,
                    y_render_base - camera_offset_y,
                    (decoration.get_width() * tile_size) / SIZE_GRANULARITY,
@@ -97,6 +98,7 @@ void Camera::_update_offset() {
 
     float smooth_factor_x = abs(camera_offset_x) / tile_size;
     float smooth_factor_y = abs(camera_offset_y) / tile_size;
+
     if(smooth_factor_x < 0.7) smooth_factor_x = 0.7;
     if(smooth_factor_y < 0.7) smooth_factor_y = 0.7;
 
@@ -126,7 +128,7 @@ void Camera::_update_offset() {
 }
 
 void Camera::update() {
-
+    _update_offset();
     if (follow_component.get_x() <= map_size - (width_tiles / 2) &&
         follow_component.get_x() >= (width_tiles / 2)) {
         int new_center_x = follow_component.get_x();
@@ -142,7 +144,7 @@ void Camera::update() {
         y_center_tile = new_center_y;
         movement_timer.start();
     }
-    _update_offset();
+    
 }
 
 void Camera::draw(RenderizableObject *component, int x, int y, int x_tmp_offset,
