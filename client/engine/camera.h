@@ -4,6 +4,8 @@
 #include <vector>
 
 #include "SDL/sdl_area.h"
+#include "SDL/sdl_timer.h"
+#include "components/position_component.h"
 #include "decoration.h"
 #include "renderizable_object.h"
 
@@ -19,37 +21,42 @@ class Camera {
     int x_center_tile;
     int y_center_tile;
 
+    int camera_offset_x;
+    int camera_offset_y;
+
+    SDLTimer movement_timer;
+
     int map_size; /* Lado del mapa, en tiles (los mapas son cuadrados). */
 
     int tile_size; /* Lado de cada tile, en pixeles.*/
 
-    const RenderizableObject &follow_component;
+    int speed;  // En tiles/segundo.
+
+    const PositionComponent &follow_component;
 
     /* Devuelve true si un componente visual esta dentro del campo
     de vision de la camara.*/
     bool _is_within_visual_range(RenderizableObject *component);
 
     /* Devuelve el area fisica donde deberia ser dibujado el componente.*/
-    SDLArea _get_render_area(RenderizableObject *component);
+    SDLArea _get_render_area(RenderizableObject *component, int x, int y,
+                             int x_tmp_offset, int y_tmp_offset);
+    SDLArea _get_render_area(Decoration &decoration);
 
-    /* Indica si la camara esta pegada contra una esquina */
-    bool _is_locked_x;
-    bool _is_locked_y;
+    void _update_offset();
 
    public:
-    Camera(const RenderizableObject &follow_component, int map_size,
-           int tile_size, int viewport_width, int viewport_height);
+    Camera(const PositionComponent &follow_component, int map_size,
+           int tile_size, int viewport_width, int viewport_height, int speed);
     ~Camera();
 
     /* Actualiza la posicion de la camara segun el objeto que esta siguiendo. */
-    void update_position();
+    void update();
 
-    /* Renderiza los componentes que esten en el campo de vision de la camara.*/
-    void render_components(std::vector<RenderizableObject *> components);
+    void draw(RenderizableObject *component, int x, int y, int x_tmp_offset,
+              int y_tmp_offset);
 
-    void draw(RenderizableObject *component);
-
-    void render_map_layer(std::vector<Decoration> &layer);  // todo
+    void render_map_layer(std::vector<Decoration> &layer);
 };
 
 #endif

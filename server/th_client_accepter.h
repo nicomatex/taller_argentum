@@ -9,11 +9,11 @@ class ThClientAccepter : public Thread {
    private:
     Socket listener;
     bool running;
-    int next_free_id;
-    Session& session;
+
+    ClientId get_next_id();
 
    public:
-    ThClientAccepter(Socket listener, Session& session);
+    ThClientAccepter(Socket listener);
 
     virtual void run() override;
 

@@ -4,7 +4,7 @@ add_library(network
   socket.cpp
   socket_exception.cpp
   socket_manager.cpp
-  th_event_handler.cpp
+  blocking_th_event_handler.cpp
   thread.cpp
   th_socket_receiver.cpp
   th_socket_sender.cpp

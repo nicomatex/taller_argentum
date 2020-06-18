@@ -3,11 +3,11 @@
 
 #include <functional>
 
+#include "blocking_th_event_handler.h"
 #include "protocol.h"
 #include "socket.h"
-#include "th_event_handler.h"
 
-class ThSocketSender : public ThEventHandler {
+class ThSocketSender : public BlockingThEventHandler {
    private:
     Protocol protocol;
 

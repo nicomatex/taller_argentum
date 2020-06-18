@@ -9,25 +9,27 @@
 #include "engine/SDL/sdl_window.h"
 #include "engine/entity_factory.h"
 #include "../include/socket_manager.h"
-#include "engine/receive_handler.h"
+#include "receive_handler.h"
 #include "../nlohmann/json.hpp"
 #include "engine/map.h"
 #include "event_factory.h"
+#include "ui_event_handler.h"
 
 /* Interfaz de la clase */
 class GameClient {
    private:
     SDLWindow main_window;
     EntityManager entity_manager;
-    EntityFactory entitiy_factory;
+    EntityFactory entity_factory;
+    EventFactory event_factory;
     std::atomic_bool running;
-    void _poll_events();
+    std::atomic_bool ready;
     Socket socket;
-    ClientHandler receive_handler;
+    ClientReceiveHandler receive_handler;
     SocketManager socket_manager;
     Map current_map;
-    EventFactory event_factory;
-
+    UiEventHandler ui_event_handler;
+    nlohmann::json config;
    public:
     GameClient(nlohmann::json config);
     ~GameClient();

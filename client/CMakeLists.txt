@@ -21,6 +21,8 @@ include_directories(${PROJECT_BINARY_DIR})
 add_library(game
   event_factory.cpp
   game_client.cpp
+  receive_handler.cpp
+  ui_event_handler.cpp
 )
 
 target_link_libraries(game

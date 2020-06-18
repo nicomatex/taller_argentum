@@ -1,41 +1,33 @@
 #include "session.h"
 
-#include "../include/th_event_handler.h"
+#include "../include/blocking_th_event_handler.h"
 
 // Temp
 #include <iostream>
 
-Session::Session(Map& map, BlockingQueue<Event>& queue)
-    : broadcaster(clients), dispatcher(queue), observer(map, broadcaster) {}
+Session::Session(MapMonitor& map) : broadcaster(clients), observer(map, broadcaster) {}
 
 void Session::start() {
     broadcaster.start();
-    dispatcher.start();
+    observer.start();
 }
 
 void Session::stop() {
-    dispatcher.stop();
     broadcaster.stop();
+    observer.stop();
 }
 
 void Session::join() {
     broadcaster.join();
-    dispatcher.join();
+    observer.join();
 }
 
-void Session::add_client(SocketManager* new_client) {
-    new_client->assign_handler(static_cast<ThEventHandler*>(&dispatcher));
+void Session::add_client(int new_client) {
     clients.add_client(new_client);
 }
 
-SocketManager* Session::rm_client(int id) {
-    SocketManager* removed = clients.rm_client(id);
-    removed->assign_handler(nullptr);
-    return removed;
-}
-
-void Session::join_finished(bool wait) {
-    clients.join_finished(wait);
+void Session::rm_client(int id) {
+    clients.rm_client(id);
 }
 
 Session::~Session() {}

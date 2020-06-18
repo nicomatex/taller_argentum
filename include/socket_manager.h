@@ -3,31 +3,31 @@
 
 #include <utility>
 
+#include "blocking_th_event_handler.h"
 #include "socket.h"
-#include "th_event_handler.h"
 #include "th_socket_receiver.h"
 #include "th_socket_sender.h"
+#include "types.h"
 
 class SocketManager {
    private:
-    const int id;
+    const ClientId client_id;
     Socket socket;
     ThSocketReceiver receiver;
     ThSocketSender sender;
 
    public:
-    SocketManager(int id, Socket socket);
-    SocketManager(Socket& socket, ThEventHandler* ReceiveHandler);
+    SocketManager(ClientId id, Socket socket,
+                  BlockingThEventHandler& ReceiveHandler);
+    SocketManager(Socket& socket, BlockingThEventHandler& ReceiveHandler);
 
     void start();
 
-    void assign_handler(ThEventHandler* recv_handler);
-
     void send(const Event& ev);
 
-    int get_id() const;
+    ClientId get_id() const;
 
-    bool is_done() const;
+    bool is_connected() const;
 
     void stop(bool shutdown);
 

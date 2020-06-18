@@ -14,12 +14,12 @@ void ThSocketSender::handle(Event& ev) {
 }
 
 ThSocketSender::ThSocketSender(Socket& socket)
-    : ThEventHandler(), protocol(socket) {}
+    : BlockingThEventHandler(), protocol(socket) {}
 
 ThSocketSender::ThSocketSender(ThSocketSender&& other)
-    : ThEventHandler(std::move(other)), protocol(other.protocol) {}
+    : BlockingThEventHandler(std::move(other)), protocol(other.protocol) {}
 ThSocketSender& ThSocketSender::operator=(ThSocketSender&& other) {
-    ThEventHandler::operator=(std::move(other));
+    BlockingThEventHandler::operator=(std::move(other));
     protocol = other.protocol;
     return *this;
 }

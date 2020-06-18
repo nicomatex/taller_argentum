@@ -1,18 +1,14 @@
 #ifndef TH_DISPATCHER_H
 #define TH_DISPATCHER_H
 
-#include "../include/th_event_handler.h"
-#include "../nlohmann/json.hpp"
+#include "../include/blocking_th_event_handler.h"
 
-class ThDispatcher : public ThEventHandler {
-   private:
-    BlockingQueue<Event>& game_queue;
-
+class ThDispatcher : public BlockingThEventHandler {
    protected:
     void handle(Event& ev) override;
 
    public:
-    ThDispatcher(BlockingQueue<Event>& queue);
+    ThDispatcher();
 
     ~ThDispatcher();
 };

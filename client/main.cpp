@@ -17,7 +17,12 @@ int main(void){
         std::cerr << MSG_ERR_CONFIG_FILE << std::endl;
         return 1;
     }
-    GameClient game(config);
-    game.run();
+
+    try{
+        GameClient game(config);
+        game.run();
+    }catch(std::exception &e){
+        std::cerr << e.what() << std::endl;
+    }
     return 0;
 }

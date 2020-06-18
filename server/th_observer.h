@@ -1,20 +1,25 @@
 #ifndef TH_OBSERVER_H
 #define TH_OBSERVER_H
 
-#include "../include/th_event_handler.h"
+#include <atomic>
+
+#include "../include/blocking_th_event_handler.h"
 #include "../include/thread.h"
-#include "map.h"
+#include "map_monitor.h"
 
 class ThObserver : public Thread {
    private:
-    Map& map;
-    ThEventHandler& handler;
+    std::atomic<bool> running;
+    MapMonitor& map;
+    BlockingThEventHandler& handler;
 
    public:
-    ThObserver(Map& map, ThEventHandler& handler);
+    ThObserver(MapMonitor& map, BlockingThEventHandler& handler);
 
     void run() override;
 
+    void stop();
+    
     ~ThObserver();
 };
 

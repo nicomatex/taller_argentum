@@ -1,14 +1,15 @@
+#include "game_client.h"
+
 #include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <thread>
 
-#include "game_client.h"
 #include "client_config.h"
 #include "engine/ECS/entity.h"
-#include "engine/SDL/sdl_window.h"
 #include "engine/SDL/sdl_area.h"
 #include "engine/SDL/sdl_text.h"
+#include "engine/SDL/sdl_window.h"
 #include "engine/actor.h"
 #include "engine/camera.h"
 #include "engine/components/position_component.h"
@@ -21,105 +22,52 @@
 using json = nlohmann::json;
 
 GameClient::GameClient(json config)
-    : main_window(int(config["window width"]), int(config["window height"]), WINDOW_TITLE),
-      entitiy_factory(entity_manager),
-      receive_handler(entity_manager),
-      socket(std::string(config["server"]),std::string(config["port"])),
-      socket_manager(socket,(ThEventHandler*)&receive_handler) {
+    : main_window(int(config["window width"]), int(config["window height"]),
+                  WINDOW_TITLE),
+      entity_factory(entity_manager),
+      ready(false),
+      receive_handler(entity_manager, current_map, ready, running),
+      socket(std::string(config["server"]), std::string(config["port"])),
+      socket_manager(socket, receive_handler),
+      ui_event_handler(running, socket_manager),
+      config(config) {
     try {
         SDLTextureLoader texture_loader(main_window.init_renderer());
         ResourceManager::get_instance().init(texture_loader);
+        socket_manager.send(event_factory.connect_event("nicolito", "1234"));
     } catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
+    receive_handler.start();
     socket_manager.start();
 }
 
-void GameClient::_poll_events() {
-    while (running) {
-        SDL_Event e;
-        while (SDL_PollEvent(&e)) {
-            if (e.type == SDL_QUIT) running = false;
-            if (e.type == SDL_KEYDOWN && e.key.repeat == 0) {
-                switch (e.key.keysym.sym) {
-                    case SDLK_UP:
-                        socket_manager.send(event_factory.movement_event(START,UP));
-                        break;
-                    case SDLK_DOWN:
-                        socket_manager.send(event_factory.movement_event(START,DOWN));
-                        break;
-                    case SDLK_RIGHT:
-                        socket_manager.send(event_factory.movement_event(START,RIGHT));
-                        break;
-                    case SDLK_LEFT:
-                        socket_manager.send(event_factory.movement_event(START,LEFT));
-                        break;
-                }
-            }else if (e.type == SDL_KEYUP && e.key.repeat == 0) {
-                switch (e.key.keysym.sym) {
-                    case SDLK_UP:
-                        socket_manager.send(event_factory.movement_event(STOP,UP));
-                        break;
-                    case SDLK_DOWN:
-                        socket_manager.send(event_factory.movement_event(STOP,DOWN));
-                        break;
-                    case SDLK_RIGHT:
-                        socket_manager.send(event_factory.movement_event(STOP,RIGHT));
-                        break;
-                    case SDLK_LEFT:
-                        socket_manager.send(event_factory.movement_event(STOP,LEFT));
-                        break;
-                }
-            }
-        }
-    }
-}
-
 void GameClient::run() {
-    running = true;
-    Entity &player = entitiy_factory.create_player(0, 1, 1, 0, 0);
-    Entity &another_player = entitiy_factory.create_player(1, 1, 2, 0, 0);
-    Actor &body =
-        player.get_component<VisualCharacterComponent>().get_part("body");
-    Camera camera(body,50, 64,15,8);
-    player.get_component<VisualCharacterComponent>().bind_to_camera(camera);
-    another_player.get_component<VisualCharacterComponent>().bind_to_camera(
-        camera);
-    another_player.get_component<PositionComponent>().set_position(5, 5);
-    std::ifstream map_file("assets/maps/forest1.json");
-    json map_info = json::parse(map_file);
-    current_map.generate(map_info);
-    std::thread event_thread(&GameClient::_poll_events, this);
+    while (!ready) {}  // Esperamos que se complete la carga
 
-    SDLTimer head_timer;
-    head_timer.start();
-    SDLArea render_area(0,128,960,512);
-    
+    running = true;
+    Entity &player = entity_factory.create_player(0, 1, 1, 0, 0);
+    Camera camera(player.get_component<PositionComponent>(), 50, TILE_SIZE, 15, 8,4);
+    player.get_component<VisualCharacterComponent>().bind_to_camera(camera);
+    SDLArea render_area(0, 128, 960, 512);
     main_window.set_viewport(render_area);
-    while (running) {
+
+    while (running && socket_manager.is_connected()) {
         main_window.fill(0, 0, 0, 255);
+        ui_event_handler.handle();
         entity_manager.update();
-        camera.update_position();
+        camera.update();
         camera.render_map_layer(current_map.get_layer(0));
         camera.render_map_layer(current_map.get_layer(1));
         entity_manager.draw();
         main_window.render();
-        if (head_timer.get_ticks() >= 5000) {
-            player.get_component<VisualCharacterComponent>().set_head(2);
-            player.get_component<VisualCharacterComponent>().set_body(2);
-            head_timer.stop();
-            Entity &yet_another_player =
-                entitiy_factory.create_player(2, 3, 3, 0, 0);
-            yet_another_player.get_component<VisualCharacterComponent>()
-                .bind_to_camera(camera);
-            yet_another_player.get_component<PositionComponent>().set_position(
-                6, 9);
-            another_player.kill();
-            entity_manager.clean();
-        }
     }
+    if (!socket_manager.is_connected()) {
+        std::cout << MSG_ERR_CONECT_DROPPED << std::endl;
+    }
+    receive_handler.stop();
+    receive_handler.join();
     socket_manager.stop(true);
-    event_thread.join();
     socket_manager.join();
 }
 

@@ -1,64 +1,78 @@
 #ifndef __MAP_H
 #define __MAP_H
-#include <boost/functional/hash.hpp>
-#include <mutex>
+
+#include <cstdint>
 #include <unordered_map>
 #include <unordered_set>
+#include "../include/types.h"
+#include "../nlohmann/json.hpp"
+#include "entity.h"
+#include "position.h"
+#include "action.h"
 
 #define MAP_SIZE 50
 
-typedef struct position {
-    unsigned int x;
-    unsigned int y;
-} position_t;
-
-class PositionHasher {
-   public:
-    std::size_t operator()(const position_t& position) const noexcept {
-        boost::hash<int> hasher;
-        return hasher(position.x) ^ hasher(position.y);
-    }
-};
-
-class PositionComparator {
-   public:
-    bool operator()(const position_t& position1, const position_t& position2) const noexcept{
-        return position1.x == position2.x && position1.y == position2.y;
-    }
-};
+class Player;
 
 typedef struct steps {
     int x;
     int y;
 } steps_t;
 
-typedef std::unordered_map<unsigned int, position_t> PositionMap;
+// clave: id de entidad, valor: position_t
+typedef std::unordered_map<EntityId, position_t> PositionMap;
+
+// Clave: id de entidad, valor: puntero a la entidad
+typedef std::unordered_map<EntityId, Entity*> EntityMap;
+
+// Clave: position_t. Contiene los bloques colisionables.
+typedef std::unordered_set<position_t, PositionHasher, PositionComparator>
+    CollisionMap;
 
 class Map {
    private:
-    std::mutex m;
     PositionMap position_map;
-    std::unordered_set<int> entity_matrix[MAP_SIZE][MAP_SIZE];
-    std::unordered_set<position_t, PositionHasher, PositionComparator>
-        collision_map;
+    // Set de ids de lo que hay en cada posicion.
+    std::unordered_set<EntityId> entity_matrix[MAP_SIZE][MAP_SIZE];
+    CollisionMap collision_map;
+    EntityMap entity_map;
+    
+    // Para mandarsela a los clientes.
+    nlohmann::json visual_map_info;
+
+    // Devuelve la posicion no-colisionable mas cercana.
     position_t get_nearest_free_position(position_t position);
 
     /* Indica si la posicion indicada tiene un elemento colisionable (no se
      * puede pisar). */
     bool collides(position_t position);
 
+    // Devuelve el siguiente id a asignar a una nueva entidad.
+    EntityId get_next_id();
+
+    /* Agrega una nueva entidad asociada al entity_id en la posicion indicada.*/
+    void add_entity(Entity* entity, position_t position);
+
    public:
-    Map();
+    Map(nlohmann::json map_info);
     ~Map();
     /* Mueve la entidad asociada al entity_id un tile en la direccion
      * indicada.*/
-    void move(unsigned int entity_id, steps_t steps);
+    void move(EntityId entity_id, steps_t steps);
 
-    /* Agrega una nueva entidad asociada al entity_id en la posicion indicada.*/
-    void add_entity(unsigned int entity_id, position_t position);
+    /* Devuelve el id de entidad asignado dentro del mapa al jugador. */
+    EntityId add_player(nlohmann::json player_info);
 
-    /* Devuelve una copia del mapa de posiciones.*/
-    PositionMap get_position_map();
+    /* Actualiza todas las entidades que contiene segun el delta_t
+     * transcurrido.*/
+    void update(uint64_t delta_t);
+
+    /* Ejecuta sobre la entidad asociada al id la accion. */
+    void with_entity(EntityId entity_id,const Action &action);
+
+    nlohmann::json get_position_data();
+    nlohmann::json get_entity_data();
+    nlohmann::json get_map_data();
 };
 
 #endif

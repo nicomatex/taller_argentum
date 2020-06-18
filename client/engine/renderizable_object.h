@@ -14,9 +14,6 @@ a ser renderizados por pantalla. */
 que vayan a ser renderizados por la camara.*/
 class RenderizableObject {
    protected:
-    int x;
-    int y;
-
     int height;
     int width;
 
@@ -27,34 +24,21 @@ class RenderizableObject {
     int y_offset;
 
    public:
-    RenderizableObject(int x, int y, int width, int height,int x_offset, int y_offset);
+    RenderizableObject(int width, int height,int x_offset, int y_offset);
     virtual ~RenderizableObject(){}
 
     /* Renderiza el objeto en pantalla. */
     virtual void render(const SDLArea &dest) = 0;
-
-    /* Establece la nueva posicion. */
-    void set_position(int new_x, int new_y);
 
     /* Devuelve el ancho en tiles del objeto. */
     int get_width() const;
 
     /* Devuelve la altura en tiles del objeto. */
     int get_height() const;
-
-    /* Devuelve true si el actor esta en medio de un movimiento.*/
-    virtual bool is_transitioning() const;
-
-    virtual int get_x() const;
-    virtual int get_y() const;
-
+    
     /* Devuelve el offset total de renderizacion en centesimas de tile. */
     virtual int get_x_offset() const;
     virtual int get_y_offset() const;
-
-    /* Devuelve el ofset de transicion en centesimas de tile. */
-    virtual int get_transition_offset_x() const;
-    virtual int get_transition_offset_y() const;
 
     /* Debe ser llamado luego de renderizar para actualizar el estado de las constantes 
     visuales.*/

@@ -6,26 +6,25 @@
 #include <mutex>
 
 #include "blocking_queue.h"
+#include "blocking_th_event_handler.h"
 #include "protocol.h"
 #include "socket.h"
-#include "th_event_handler.h"
 #include "thread.h"
+#include "types.h"
 
 class ThSocketReceiver : public Thread {
    private:
     std::atomic<bool> running;
+    ClientId client_id;
     Protocol protocol;
-    ThEventHandler* recieve_handler;
-    std::mutex mutex;
-    std::condition_variable cond_var;
+    BlockingThEventHandler& recieve_handler;
 
    public:
-    ThSocketReceiver(Socket& socket, ThEventHandler* recieve_handler);
+    ThSocketReceiver(int id, Socket& socket,
+                     BlockingThEventHandler& recieve_handler);
 
     ThSocketReceiver(ThSocketReceiver&& other);
-    ThSocketReceiver& operator=(ThSocketReceiver&& other);
-
-    void assign_handler(ThEventHandler* receive_handler);
+    ThSocketReceiver& operator=(ThSocketReceiver&& other) = delete;
 
     virtual void run() override;
 

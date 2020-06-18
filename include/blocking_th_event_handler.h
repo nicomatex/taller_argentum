@@ -1,5 +1,5 @@
-#ifndef TH_EVENT_HANDLER_H
-#define TH_EVENT_HANDLER_H
+#ifndef BLOCKING_TH_EVENT_HANDLER_H
+#define BLOCKING_TH_EVENT_HANDLER_H
 
 #include <stdexcept>
 
@@ -18,7 +18,7 @@ class EventHandlerStoppedException : public std::exception {
     ~EventHandlerStoppedException() {}
 };
 
-class ThEventHandler : public Thread {
+class BlockingThEventHandler : public Thread {
    private:
     BlockingQueue<Event> event_queue;
 
@@ -28,10 +28,10 @@ class ThEventHandler : public Thread {
     virtual void handle(Event& ev) = 0;
 
    public:
-    ThEventHandler();
+    BlockingThEventHandler();
 
-    ThEventHandler(ThEventHandler&& other);
-    ThEventHandler& operator=(ThEventHandler&& other);
+    BlockingThEventHandler(BlockingThEventHandler&& other);
+    BlockingThEventHandler& operator=(BlockingThEventHandler&& other);
 
     void push_event(const Event& ev);
 
@@ -39,7 +39,7 @@ class ThEventHandler : public Thread {
 
     void stop();
 
-    ~ThEventHandler();
+    ~BlockingThEventHandler();
 };
 
-#endif  // TH_EVENT_HANDLER_H
+#endif  // BLOCKING_TH_EVENT_HANDLER_H

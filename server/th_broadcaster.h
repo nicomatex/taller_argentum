@@ -1,18 +1,18 @@
 #ifndef SEND_HANDLER_H
 #define SEND_HANDLER_H
 
-#include "../include/th_event_handler.h"
-#include "clients_monitor.h"
+#include "../include/blocking_th_event_handler.h"
+#include "client_id_set.h"
 
-class ThBroadcaster : public ThEventHandler {
+class ThBroadcaster : public BlockingThEventHandler {
    private:
-    ClientsMonitor& clients;
+    ClientIdSet& clients;
 
    protected:
     virtual void handle(Event& ev) override;
 
    public:
-    ThBroadcaster(ClientsMonitor& clients);
+    ThBroadcaster(ClientIdSet& clients);
 
     ~ThBroadcaster();
 };

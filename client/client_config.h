@@ -9,5 +9,9 @@
 
 /* Mensajes*/
 #define MSG_ERR_CONFIG_FILE "Error parseando el archivo de configuracion."
+#define MSG_ERR_CONECT_DROPPED "Conexion cerrada."
+
+/* Cuestiones visuales */
+#define TILE_SIZE 64
 
 #endif

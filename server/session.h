@@ -2,23 +2,20 @@
 #define SESSION_H
 
 #include "../include/socket_manager.h"
-#include "clients_monitor.h"
+#include "client_id_set.h"
+#include "map_monitor.h"
 #include "th_broadcaster.h"
 #include "th_dispatcher.h"
 #include "th_observer.h"
 
-// Temp
-#include "map.h"
-
 class Session {
    private:
-    ClientsMonitor clients;
+    ClientIdSet clients;
     ThBroadcaster broadcaster;
-    ThDispatcher dispatcher;
     ThObserver observer;
 
    public:
-    Session(Map& map, BlockingQueue<Event>& queue);
+    Session(MapMonitor& map);
 
     void start();
 
@@ -26,11 +23,9 @@ class Session {
 
     void join();
 
-    void add_client(SocketManager* new_client);
+    void add_client(int new_client);
 
-    SocketManager* rm_client(int id);
-
-    void join_finished(bool wait);
+    void rm_client(int id);
 
     ~Session();
 };
