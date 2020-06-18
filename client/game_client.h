@@ -29,6 +29,7 @@ class GameClient {
     SocketManager socket_manager;
     Map current_map;
     UiEventHandler ui_event_handler;
+    nlohmann::json config;
    public:
     GameClient(nlohmann::json config);
     ~GameClient();

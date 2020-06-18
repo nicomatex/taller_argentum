@@ -1,14 +1,16 @@
-#include <iostream>
-#include "SDL2/SDL_ttf.h"
-
-#include "sdl_config.h"
 #include "sdl_window.h"
+
+#include <iostream>
+
+#include "SDL2/SDL_ttf.h"
+#include "sdl_config.h"
 #include "sdl_error.h"
 #include "sdl_text.h"
 
 extern bool debug;
 
-SDLWindow::SDLWindow(int width, int height,const std::string &title) {
+SDLWindow::SDLWindow(int width, int height, const std::string &title)
+    : width(width), height(height) {
     int errCode = SDL_Init(SDL_INIT_VIDEO);
     if (errCode) {
         throw SDLError(ERR_SDL_INIT);
@@ -28,25 +30,22 @@ SDLWindow::SDLWindow(int width, int height,const std::string &title) {
         throw SDLError(ERR_WINDOW_INIT);
     }
 
-    if(debug)
-        std::cout << "[DEBUG] Ventana creada." << std::endl;
+    if (debug) std::cout << "[DEBUG] Ventana creada." << std::endl;
 }
 
-SDL_Renderer* SDLWindow::init_renderer(){
+SDL_Renderer *SDLWindow::init_renderer() {
     this->renderer = SDL_CreateRenderer(
         this->window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (!this->renderer) {
         SDL_DestroyWindow(this->window);
         throw SDLError(ERR_RENDERER_INIT);
     }
-    if(debug)
-        std::cout << "[DEBUG] Renderer inicializado." << std::endl;
+    if (debug) std::cout << "[DEBUG] Renderer inicializado." << std::endl;
     return this->renderer;
 }
 
 SDLWindow::~SDLWindow() {
-    if(debug)
-        std::cout << ("[DEBUG] Destruyendo ventana.") << std::endl;
+    if (debug) std::cout << ("[DEBUG] Destruyendo ventana.") << std::endl;
     if (this->renderer) {
         SDL_DestroyRenderer(this->renderer);
         this->renderer = nullptr;
@@ -65,13 +64,17 @@ void SDLWindow::fill(int r, int g, int b, int alpha) {
     SDL_RenderClear(this->renderer);
 }
 
-void SDLWindow::set_viewport(const SDLArea &viewport_area){
+void SDLWindow::set_viewport(const SDLArea &viewport_area) {
     SDL_Rect viewport_area_rect;
     viewport_area_rect.x = viewport_area.getX();
     viewport_area_rect.y = viewport_area.getY();
     viewport_area_rect.w = viewport_area.getWidth();
     viewport_area_rect.h = viewport_area.getHeight();
-    SDL_RenderSetViewport(this->renderer,&viewport_area_rect);
+    SDL_RenderSetViewport(this->renderer, &viewport_area_rect);
 }
 
-void SDLWindow::render() const{ SDL_RenderPresent(renderer); }
+void SDLWindow::render() const { SDL_RenderPresent(renderer); }
+
+int SDLWindow::get_height() const { return height; }
+
+int SDLWindow::get_width() const { return width; }

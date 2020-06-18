@@ -18,7 +18,6 @@ ClientReceiveHandler::ClientReceiveHandler(EntityManager &entity_manager,
 
 void ClientReceiveHandler::handle(Event &ev) {
     json event = ev.get_json();
-    std::cout << "Got " << event << std::endl;
     switch (int(event["ev_id"])) {
         case 1:
             handle_new_map(ev);
@@ -36,7 +35,6 @@ void ClientReceiveHandler::handle_move(Event &ev) {
     json event = ev.get_json();
     for(auto &it: event["positions"].items()){
         json entity_position = it.value();
-        std::cout << entity_position << std::endl;
         int entity_id = entity_position["entity_id"];
         int x = entity_position["x"];
         int y = entity_position["y"];

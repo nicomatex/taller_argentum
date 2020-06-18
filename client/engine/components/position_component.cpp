@@ -16,13 +16,11 @@ void PositionComponent::update() {}
 
 void PositionComponent::draw() {}
 
-int PositionComponent::get_x() {
-    std::unique_lock<std::mutex> l(m);
+int PositionComponent::get_x() const{
     return x;
 }
 
-int PositionComponent::get_y() {
-    std::unique_lock<std::mutex> l(m);
+int PositionComponent::get_y() const{
     return y;
 }
 

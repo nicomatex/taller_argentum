@@ -29,7 +29,8 @@ GameClient::GameClient(json config)
       receive_handler(entity_manager, current_map, ready, running),
       socket(std::string(config["server"]), std::string(config["port"])),
       socket_manager(socket, receive_handler),
-      ui_event_handler(running, socket_manager) {
+      ui_event_handler(running, socket_manager),
+      config(config) {
     try {
         SDLTextureLoader texture_loader(main_window.init_renderer());
         ResourceManager::get_instance().init(texture_loader);
@@ -42,14 +43,11 @@ GameClient::GameClient(json config)
 }
 
 void GameClient::run() {
-    while (!ready) {
-    }  // Esperamos que se complete la carga
+    while (!ready) {}  // Esperamos que se complete la carga
 
     running = true;
     Entity &player = entity_factory.create_player(0, 1, 1, 0, 0);
-    Actor &body =
-        player.get_component<VisualCharacterComponent>().get_part("body");
-    Camera camera(body, 50, TILE_SIZE, 15, 8);
+    Camera camera(player.get_component<PositionComponent>(), 50, TILE_SIZE, 15, 8,4);
     player.get_component<VisualCharacterComponent>().bind_to_camera(camera);
     SDLArea render_area(0, 128, 960, 512);
     main_window.set_viewport(render_area);
@@ -58,7 +56,7 @@ void GameClient::run() {
         main_window.fill(0, 0, 0, 255);
         ui_event_handler.handle();
         entity_manager.update();
-        camera.update_position();
+        camera.update();
         camera.render_map_layer(current_map.get_layer(0));
         camera.render_map_layer(current_map.get_layer(1));
         entity_manager.draw();

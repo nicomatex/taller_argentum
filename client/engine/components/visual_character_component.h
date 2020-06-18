@@ -12,10 +12,19 @@ class VisualCharacterComponent : public Component {
     Camera* camera;
     Parts parts;
     std::mutex m;
+    int transition_offset_x;
+    int transition_offset_y;
+    SDLTimer transition_timer;
+    /* Actualiza el offset de renderizacion. */
+    void _update_offset();
+    void _update_animation(int delta_x, int delta_y);
+    int current_x;
+    int current_y;
+    int speed; //En tiles/segundo.
     
    public:
 
-    VisualCharacterComponent(int head_id, int body_id, int weapon_id, int offhand_id);
+    VisualCharacterComponent(int head_id, int body_id, int weapon_id, int offhand_id, int speed);
     ~VisualCharacterComponent();
     Actor &get_part(const std::string& type);
     void bind_to_camera(Camera &bind_camera);
