@@ -96,8 +96,8 @@ void Camera::_update_offset() {
     bool stop_x = false;
     bool stop_y = false;
 
-    float smooth_factor_x = abs(camera_offset_x) / tile_size;
-    float smooth_factor_y = abs(camera_offset_y) / tile_size;
+    float smooth_factor_x = (float)abs(camera_offset_x) / (float)tile_size;
+    float smooth_factor_y = (float)abs(camera_offset_y) / (float)tile_size;
 
     if(smooth_factor_x < 0.7) smooth_factor_x = 0.7;
     if(smooth_factor_y < 0.7) smooth_factor_y = 0.7;

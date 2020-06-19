@@ -73,18 +73,24 @@ void VisualCharacterComponent::_update_offset() {
     bool stop_x = false;
     bool stop_y = false;
 
+    float speed_factor_x = (float)abs(transition_offset_x) / (float)MOVEMENT_OFFSET;
+    if(speed_factor_x < 1) speed_factor_x = 1;
+
+    float speed_factor_y = (float)abs(transition_offset_y) / (float)MOVEMENT_OFFSET;
+    if(speed_factor_y < 1) speed_factor_y = 1;
+    
     if(transition_offset_x > 0){
-        transition_offset_x -= delta_offset;
+        transition_offset_x -= delta_offset * speed_factor_x;
         if(transition_offset_x <= 0) stop_x = true;
     }else if(transition_offset_x < 0){
-        transition_offset_x += delta_offset;
+        transition_offset_x += delta_offset * speed_factor_x;
         if(transition_offset_x >= 0) stop_x = true;
     }
     if(transition_offset_y > 0){
-        transition_offset_y -= delta_offset;
+        transition_offset_y -= delta_offset * speed_factor_y;
         if(transition_offset_y <= 0) stop_y = true;
     }else if(transition_offset_y < 0){
-        transition_offset_y += delta_offset;
+        transition_offset_y += delta_offset * speed_factor_y;
         if(transition_offset_y >= 0) stop_x = true;
     }
 

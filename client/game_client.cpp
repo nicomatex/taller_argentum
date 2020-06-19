@@ -47,7 +47,7 @@ void GameClient::run() {
 
     running = true;
     Entity &player = entity_factory.create_player(0, 1, 1, 0, 0);
-    Camera camera(player.get_component<PositionComponent>(), 50, TILE_SIZE, 15, 8,4);
+    Camera camera(player.get_component<PositionComponent>(), 50, TILE_SIZE, 15, 8,3);
     player.get_component<VisualCharacterComponent>().bind_to_camera(camera);
     SDLArea render_area(0, 128, 960, 512);
     main_window.set_viewport(render_area);

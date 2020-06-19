@@ -14,7 +14,7 @@ Entity &EntityFactory::create_player(unsigned int entity_id, int head_id,
     Entity &player = e_manager.create(entity_id);
     player.add_component<PositionComponent>(10, 10);
     player.add_component<VisualCharacterComponent>(head_id, body_id, weapon_id,
-                                                   offhand_id,5);
+                                                   offhand_id,4);
 
     return player;
 }
