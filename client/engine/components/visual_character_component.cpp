@@ -47,9 +47,9 @@ void VisualCharacterComponent::set_body(int new_body_id) {
     parts.insert(std::make_pair("body", body));
 }
 
-void VisualCharacterComponent::draw() {
+void VisualCharacterComponent::draw(Camera &camera) {
     for (auto& it : parts) {
-        camera->draw(&(it.second), current_x, current_y, transition_offset_x,
+        camera.draw(&(it.second), current_x, current_y, transition_offset_x,
                      transition_offset_y);
     }
 }

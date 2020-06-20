@@ -22,9 +22,20 @@
 #define CHAT_BOX_BACKGROUND_COLOR {0,0,0,255}
 
 /* Layout de la interfaz */
+
+#define MAIN_WINDOW_WIDTH 960
+#define MAIN_WINDOW_HEIGHT 640
+
 #define AREA_MAIN_RENDER {0, 128, 700, 512}
 #define AREA_CHAT {0,0,700,128}
 #define AREA_SIDE_PANEL {700,0,260,960}
 
 #define CHAT_LINES 8
+
+/* Configuracion de la camara */
+#define TILE_SIZE 64
+#define VIEWPORT_WIDTH 11
+#define VIEWPORT_HEIGHT 8
+#define CAMERA_SPEED 3
+
 #endif

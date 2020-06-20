@@ -33,7 +33,7 @@ class VisualCharacterComponent : public Component {
     //TODO: Implementar set_weapon y set_offhand.
     void init() override;
 	void update() override;
-	void draw() override;
+	void draw(Camera &camera);
 
 };
 

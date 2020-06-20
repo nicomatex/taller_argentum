@@ -14,8 +14,6 @@ void PositionComponent::init() {}
 
 void PositionComponent::update() {}
 
-void PositionComponent::draw() {}
-
 int PositionComponent::get_x() const{
     return x;
 }

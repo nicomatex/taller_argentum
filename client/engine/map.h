@@ -19,7 +19,9 @@ class Map {
     Map();
     void generate(json map_description);
     ~Map();
-
+    int get_width();
+    int get_height();
+    
     /* Devuelve una referencia a los componentes visuales en la n-esima capa del mapa. */
     std::vector<Decoration>& get_layer(int n);
 };

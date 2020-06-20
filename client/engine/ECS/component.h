@@ -19,10 +19,7 @@ class Component {
 		Actualiza la información del componente.
    	*/
    	virtual void update() = 0;
-   	/*
-		Muestra por pantalla el componente.
-   	*/
-   	virtual void draw() = 0;
+
 };
 
 #endif // COMPONENT_H

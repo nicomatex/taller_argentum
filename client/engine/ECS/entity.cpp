@@ -10,12 +10,6 @@ void Entity::update() {
 	}
 }
 
-void Entity::draw(){
-	for (auto& comp : components) {
-		comp.second->draw();
-	}
-}
-
 bool Entity::is_alive() {
 	return alive;
 }

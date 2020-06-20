@@ -6,12 +6,9 @@
 
 class EntityFactory {
    private:
-    EntityManager &e_manager;
 
    public:
-    EntityFactory(EntityManager &e_manager);
-    ~EntityFactory();
-    Entity &create_player(unsigned int entity_id, int head_id, int body_id,
+    static Entity &create_player(unsigned int entity_id, int head_id, int body_id,
                           int weapon_id, int offhand_id);
 };
 

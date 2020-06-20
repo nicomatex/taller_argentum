@@ -4,7 +4,9 @@
 #include <iomanip>
 #include <iostream>
 #include <thread>
+
 #include "SDL2/SDL.h"
+#include "chat.h"
 #include "client_config.h"
 #include "engine/ECS/entity.h"
 #include "engine/SDL/sdl_text.h"
@@ -17,24 +19,22 @@
 #include "engine/json.hpp"
 #include "engine/map.h"
 #include "engine/resource_manager.h"
-#include "chat.h"
+#include "game.h"
 
 using json = nlohmann::json;
 
 GameClient::GameClient(json config)
-    : main_window(int(config["window width"]), int(config["window height"]),
-                  WINDOW_TITLE),
-      entity_factory(entity_manager),
-      ready(false),
-      receive_handler(entity_manager, current_map, ready, running),
-      socket(std::string(config["server"]), std::string(config["port"])),
-      socket_manager(socket, receive_handler),
-      ui_event_handler(running, socket_manager),
-      config(config) {
+    : window(int(config["window width"]), int(config["window height"]),
+             WINDOW_TITLE),
+      socket_manager(
+          Socket(std::string(config["server"]), std::string(config["port"])),
+          receive_handler),
+      config(config),
+      receive_handler(map_change_buffer) {
     try {
-        SDLTextureLoader texture_loader(main_window.init_renderer());
+        SDLTextureLoader texture_loader(window.init_renderer());
         ResourceManager::get_instance().init(texture_loader);
-        socket_manager.send(event_factory.connect_event("nicolito", "1234"));
+        socket_manager.send(EventFactory::connect_event("nicolito", "1234"));
     } catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
@@ -43,33 +43,12 @@ GameClient::GameClient(json config)
 }
 
 void GameClient::run() {
-    while (!ready) {}  // Esperamos que se complete la carga
-    
-    running = true;
-    Entity &player = entity_factory.create_player(0, 1, 1, 0, 0);
-    Camera camera(player.get_component<PositionComponent>(), 50, TILE_SIZE, 11, 8,3);
-    player.get_component<VisualCharacterComponent>().bind_to_camera(camera);
-
-    /* Generacion de la UI */
-    Chat chat(AREA_CHAT,CHAT_LINES,main_window.get_renderer());
-    ui_event_handler.attach_chat(&chat);
-    while (running && socket_manager.is_connected()) {
-        main_window.fill(0, 0, 0, 255);
-        ui_event_handler.handle();
-        entity_manager.update();
-        main_window.set_viewport(AREA_MAIN_RENDER);
-        camera.update();
-        camera.render_map_layer(current_map.get_layer(0));
-        camera.render_map_layer(current_map.get_layer(1));
-        entity_manager.draw();
-        main_window.set_viewport(AREA_CHAT);
-        chat.render();
-        main_window.set_viewport(AREA_SIDE_PANEL);
-        SDL_SetRenderDrawColor(main_window.get_renderer(),100,100,100,255); //Temporal
-        SDL_Rect side_panel = {0,0,260,960}; //Temporal
-        SDL_RenderFillRect(main_window.get_renderer(),&side_panel); //Temporal
-        main_window.render();
-    }
+    map_change_buffer.wait_for_map();
+    std::cout << "A punto de instanciar el juego " << std::endl;
+    Game game(map_change_buffer.get_follow_entity_id(), socket_manager, window);
+    game.setup_map(map_change_buffer.get_map_info());
+    std::cout << "A punto de correr el juego " << std::endl;
+    game.run();
     if (!socket_manager.is_connected()) {
         std::cout << MSG_ERR_CONECT_DROPPED << std::endl;
     }

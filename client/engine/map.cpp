@@ -59,4 +59,12 @@ std::vector<Decoration>& Map::get_layer(int n) {
     return visual_layers[n]; 
 }
 
+int Map::get_width(){
+    return width;
+}
+
+int Map::get_height(){
+    return height;
+}
+
 Map::~Map() {}

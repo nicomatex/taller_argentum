@@ -39,7 +39,7 @@ class Camera {
 
     /* Devuelve el area fisica donde deberia ser dibujado el componente.*/
     SDL_Rect _get_render_area(RenderizableObject *component, int x, int y,
-                             int x_tmp_offset, int y_tmp_offset);
+                              int x_tmp_offset, int y_tmp_offset);
     SDL_Rect _get_render_area(Decoration &decoration);
 
     void _update_offset();
@@ -55,6 +55,9 @@ class Camera {
     void draw(RenderizableObject *component, int x, int y, int x_tmp_offset,
               int y_tmp_offset);
 
+    /* Renderiza todos las entidades con una componente visual.*/
+    void draw_all();
+    
     void render_map_layer(std::vector<Decoration> &layer);
 };
 

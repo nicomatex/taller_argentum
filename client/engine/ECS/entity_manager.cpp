@@ -1,6 +1,11 @@
 #include "entity_manager.h"
 #include "entity.h"
 
+EntityManager& EntityManager::get_instance(){
+	static EntityManager instance;
+	return instance;
+}
+
 EntityManager::EntityManager() {}
 
 EntityManager::~EntityManager() {}
@@ -8,10 +13,6 @@ EntityManager::~EntityManager() {}
 void EntityManager::update() {
 	for(auto& entity : entities) entity.second->update();
 
-}
-
-void EntityManager::draw() {
-	for(auto& entity : entities) entity.second->draw();
 }
 
 Entity& EntityManager::create(unsigned int entity_id) {
@@ -33,4 +34,13 @@ bool EntityManager::has_entity(unsigned int entity_id) {
 Entity& EntityManager::get_from_id(unsigned int entity_id) {
 	if (!has_entity(entity_id)) throw std::exception();
 	return *entities.at(entity_id);
+}
+
+
+std::vector<EntityId> EntityManager::get_entity_id_list(){
+	std::vector<EntityId> ids;
+	for(auto &entity:entities){
+		ids.push_back(entity.first);
+	}
+	return ids;
 }

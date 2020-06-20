@@ -26,6 +26,8 @@ add_library(game
   receive_handler.cpp
   ui_event_handler.cpp
   chat.cpp
+  game.cpp
+  map_change_buffer.cpp
 )
 
 target_link_libraries(game

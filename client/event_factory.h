@@ -18,14 +18,14 @@ class EventFactory {
     ~EventFactory();
 
     /* Evento inicial para obtener la informacion del personaje solicitado. */
-    Event connect_event(std::string character_name, std::string password);
+    static Event connect_event(std::string character_name, std::string password);
 
     /* Evento de consola de comandos. */
-    Event console_command_event(std::string command,std::vector<std::string> args);
+    static Event console_command_event(std::string command,std::vector<std::string> args);
 
     /* Evento de movimiento. Recibe si se esta comenzando o finalizando el
     movimiento y en que direccion.*/
-    Event movement_event(movement_action_t action, direction_t direction);
+    static Event movement_event(movement_action_t action, direction_t direction);
 
 };
 

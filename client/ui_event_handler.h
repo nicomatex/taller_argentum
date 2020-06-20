@@ -16,7 +16,7 @@ class UiEventHandler{
     Chat *chat;
 
    public:
-    UiEventHandler(std::atomic_bool &running, SocketManager &socket_manager);
+    UiEventHandler(SocketManager &socket_manager, std::atomic_bool &running);
     ~UiEventHandler();
 
     void attach_chat(Chat* new_chat);

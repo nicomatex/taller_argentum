@@ -1,8 +1,12 @@
+
 #include "camera.h"
 
 #include <cmath>
 #include <iostream>
 
+#include "ECS/entity.h"
+#include "ECS/entity_manager.h"
+#include "components/visual_character_component.h"
 #include "decoration.h"
 #include "engine_config.h"
 
@@ -154,5 +158,16 @@ void Camera::render_map_layer(std::vector<Decoration> &layer) {
     for (auto tile = layer.begin(); tile != layer.end(); ++tile) {
         SDL_Rect dest = _get_render_area((*tile));
         (*tile).render(dest);
+    }
+}
+
+void Camera::draw_all() {
+    std::vector<EntityId> ids =
+        EntityManager::get_instance().get_entity_id_list();
+    for (const int &id : ids) {
+        Entity &entity = EntityManager::get_instance().get_from_id(id);
+        if(entity.has_component<VisualCharacterComponent>()){
+            entity.get_component<VisualCharacterComponent>().draw(*this);
+        }
     }
 }

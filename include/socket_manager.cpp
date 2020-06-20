@@ -11,7 +11,7 @@ SocketManager::SocketManager(ClientId id, Socket socket,
       socket(std::move(socket)),
       receiver(id, this->socket, receive_handler),
       sender(this->socket) {}
-SocketManager::SocketManager(Socket& socket,
+SocketManager::SocketManager(Socket socket,
                              BlockingThEventHandler& receive_handler)
     : client_id(0),
       socket(std::move(socket)),

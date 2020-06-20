@@ -3,8 +3,7 @@
 #include "SDL2/SDL.h"
 #include "event_factory.h"
 
-UiEventHandler::UiEventHandler(std::atomic_bool &running,
-                               SocketManager &socket_manager)
+UiEventHandler::UiEventHandler(SocketManager &socket_manager, std::atomic_bool &running)
     : running(running), socket_manager(socket_manager), chat(NULL) {}
 
 UiEventHandler::~UiEventHandler() {}

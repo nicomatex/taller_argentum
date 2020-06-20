@@ -19,7 +19,7 @@ class SocketManager {
    public:
     SocketManager(ClientId id, Socket socket,
                   BlockingThEventHandler& ReceiveHandler);
-    SocketManager(Socket& socket, BlockingThEventHandler& ReceiveHandler);
+    SocketManager(Socket socket, BlockingThEventHandler& ReceiveHandler);
 
     void start();
 
