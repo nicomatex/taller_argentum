@@ -5,6 +5,7 @@
 
 #include "../include/blocking_th_event_handler.h"
 #include "../include/thread.h"
+#include "../include/types.h"
 #include "map_monitor.h"
 
 class ThObserver : public Thread {
@@ -14,12 +15,12 @@ class ThObserver : public Thread {
     BlockingThEventHandler& handler;
 
    public:
-    ThObserver(MapMonitor& map, BlockingThEventHandler& handler);
+    ThObserver(MapMonitor& map_monitor, BlockingThEventHandler& handler);
 
     void run() override;
 
     void stop();
-    
+
     ~ThObserver();
 };
 

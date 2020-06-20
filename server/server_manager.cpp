@@ -14,6 +14,8 @@ ServerManager::ServerManager()
       game_loop(map_manager) {
     std::vector<MapId> v = map_manager.get_ids();
     for (auto& it : v) {
+        std::cerr << "ServerManager: creating session for map id: " << it
+                  << std::endl;
         sessions.emplace(it, map_manager[it]);
         sessions.at(it).start();
     }
@@ -82,8 +84,16 @@ void ServerManager::finish() {
     std::cerr << "GameLoop: joined\n";
 }
 
-MapMonitor& ServerManager::get_map(ClientId client_id){
-    return map_manager[client_to_map.at(client_id)];
+MapMonitor& ServerManager::get_map_by_client(ClientId client_id) {
+    return get_map(client_to_map.at(client_id));
+}
+
+MapMonitor& ServerManager::get_map(MapId map_id) {
+    return map_manager[map_id];
+}
+
+Session& ServerManager::get_session(ClientId client_id) {
+    return sessions.at(client_to_map.at(client_id));
 }
 
 ServerManager::~ServerManager() {}

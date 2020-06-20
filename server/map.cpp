@@ -42,8 +42,8 @@ bool Map::collides(position_t position) {
         return true;
     if (entity_matrix[position.x][position.y].size() > 0)
         return true;
-    if (position.x < 0 || position.y < 0 || position.x >= MAP_SIZE ||
-        position.y >= MAP_SIZE) {
+    if (position.x <= 0 || position.y <= 0 || position.x >= MAP_SIZE - 1 ||
+        position.y >= MAP_SIZE - 1) {
         return true;
     }
     return false;

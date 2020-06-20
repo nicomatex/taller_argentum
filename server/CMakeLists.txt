@@ -28,6 +28,7 @@ add_library(server
   th_observer.cpp
   action_move.cpp
   map_monitor.cpp
+  command_handler.cpp
 )
 
 target_link_libraries(server

@@ -4,11 +4,12 @@
 #include <iostream>
 
 #include "../nlohmann/json.hpp"
+#include "server_manager.h"
 
-constexpr std::chrono::milliseconds OBSERVER_INTERVAL(15);
+constexpr std::chrono::milliseconds OBSERVER_INTERVAL(5);
 
-ThObserver::ThObserver(MapMonitor& map, BlockingThEventHandler& handler)
-    : Thread(), running(false), map(map), handler(handler) {}
+ThObserver::ThObserver(MapMonitor& map_monitor, BlockingThEventHandler& handler)
+    : Thread(), running(false), map(map_monitor), handler(handler) {}
 
 void ThObserver::run() {
     try {
@@ -26,8 +27,9 @@ void ThObserver::run() {
             }
             json_update["positions"] = map.get_position_data();
             json_update["ev_id"] = 2;
-            sleep(OBSERVER_INTERVAL -
-                  (std::chrono::steady_clock::now() - start));
+            auto dif =
+                OBSERVER_INTERVAL - (std::chrono::steady_clock::now() - start);
+            sleep(dif);
             handler.push_event(Event(json_update));
         }
     } catch (const std::exception& e) {

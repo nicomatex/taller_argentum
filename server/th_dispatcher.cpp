@@ -2,6 +2,7 @@
 
 #include "../nlohmann/json.hpp"
 #include "client_initializer_handler.h"
+#include "command_handler.h"
 #include "movement_handler.h"
 #include "server_manager.h"
 #include "th_event_handler.h"
@@ -22,6 +23,9 @@ void ThDispatcher::handle(Event& ev) {
             break;
         case 2:
             handler = new MovementHandler(ev);
+            break;
+        case 4:
+            handler = new CommandHandler(ev);
             break;
         default:
             std::cerr << "Dispatcher: No handler for: " << ev.get_json()

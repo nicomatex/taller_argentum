@@ -2,13 +2,14 @@
 #define SERVER_MANAGER_H
 
 #include "../include/socket_manager.h"
+#include "../include/types.h"
 #include "../nlohmann/json.hpp"
 #include "game_loop.h"
 #include "map_manager.h"
+#include "map_monitor.h"
 #include "player.h"
 #include "session.h"
 #include "th_client_accepter.h"
-#include "map_monitor.h"
 
 class ServerManager {
    private:
@@ -37,7 +38,10 @@ class ServerManager {
 
     void send_to(ClientId client_id, const Event& ev);
 
-    MapMonitor& get_map(ClientId client_id);
+    MapMonitor& get_map_by_client(ClientId client_id);
+    MapMonitor& get_map(MapId map_id);
+
+    Session& get_session(ClientId client_id);
 
     void finish();
 

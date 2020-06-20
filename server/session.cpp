@@ -5,7 +5,8 @@
 // Temp
 #include <iostream>
 
-Session::Session(MapMonitor& map) : broadcaster(clients), observer(map, broadcaster) {}
+Session::Session(MapMonitor& map)
+    : broadcaster(clients), observer(map, broadcaster) {}
 
 void Session::start() {
     broadcaster.start();
@@ -28,6 +29,10 @@ void Session::add_client(int new_client) {
 
 void Session::rm_client(int id) {
     clients.rm_client(id);
+}
+
+void Session::broadcast(const Event& ev) {
+    broadcaster.push_event(ev);
 }
 
 Session::~Session() {}

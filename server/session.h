@@ -1,7 +1,9 @@
 #ifndef SESSION_H
 #define SESSION_H
 
+#include "../include/event.h"
 #include "../include/socket_manager.h"
+#include "../include/types.h"
 #include "client_id_set.h"
 #include "map_monitor.h"
 #include "th_broadcaster.h"
@@ -26,6 +28,8 @@ class Session {
     void add_client(int new_client);
 
     void rm_client(int id);
+
+    void broadcast(const Event& ev);
 
     ~Session();
 };
