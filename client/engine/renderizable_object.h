@@ -5,9 +5,7 @@
 a ser renderizados por pantalla. */
 #include <mutex>
 
-#include "animation_pack.h"
 #include "SDL/sdl_animated_sprite.h"
-#include "SDL/sdl_area.h"
 #include "SDL/sdl_timer.h"
 
 /* Interfaz que deben implementar todos los componentes
@@ -28,7 +26,7 @@ class RenderizableObject {
     virtual ~RenderizableObject(){}
 
     /* Renderiza el objeto en pantalla. */
-    virtual void render(const SDLArea &dest) = 0;
+    virtual void render(SDL_Rect dest) = 0;
 
     /* Devuelve el ancho en tiles del objeto. */
     int get_width() const;

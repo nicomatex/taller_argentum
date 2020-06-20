@@ -64,13 +64,8 @@ void SDLWindow::fill(int r, int g, int b, int alpha) {
     SDL_RenderClear(this->renderer);
 }
 
-void SDLWindow::set_viewport(const SDLArea &viewport_area) {
-    SDL_Rect viewport_area_rect;
-    viewport_area_rect.x = viewport_area.getX();
-    viewport_area_rect.y = viewport_area.getY();
-    viewport_area_rect.w = viewport_area.getWidth();
-    viewport_area_rect.h = viewport_area.getHeight();
-    SDL_RenderSetViewport(this->renderer, &viewport_area_rect);
+void SDLWindow::set_viewport(SDL_Rect viewport_area) {
+    SDL_RenderSetViewport(this->renderer, &viewport_area);
 }
 
 void SDLWindow::render() const { SDL_RenderPresent(renderer); }

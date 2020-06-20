@@ -12,13 +12,13 @@ class TextBox {
     std::deque<std::string> lines;
     std::vector<SDLText> render_lines;
     SDL_Renderer* renderer;
-    SDLArea render_area;
+    SDL_Rect render_area;
     void render_background();
     int nlines;
     SDL_Color background_color;
 
    public:
-    TextBox(SDLArea render_area, const std::string& font_file,
+    TextBox(SDL_Rect render_area, const std::string& font_file,
             SDL_Renderer* renderer, int nlines, SDL_Color font_color,
             SDL_Color background_color);
     ~TextBox();

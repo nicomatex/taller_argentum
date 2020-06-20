@@ -1,7 +1,6 @@
 #ifndef __SDL_SPRITE_H
 #define __SDL_SPRITE_H
 
-#include "sdl_area.h"
 #include "sdl_texture.h"
 #include "sdl_timer.h"
 #include "../json.hpp"
@@ -41,6 +40,6 @@ class SDLSprite {
     SDLSprite& operator=(SDLSprite &&other);
 
     /* Renderiza la sprite en el area de destino del renderer. */
-    void render(const SDLArea &dest);
+    void render(SDL_Rect dest);
 };
 #endif

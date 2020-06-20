@@ -28,7 +28,7 @@ class Actor : public RenderizableObject {
     void set_move_status(movement_status_t new_movement_status);
 
     /* Renderiza el objeto en pantalla. */
-    void render(const SDLArea &dest) override;
+    void render(SDL_Rect dest) override;
 
     /* Getters para el offset total en centesimas de tile. */
     int get_x_offset() const override;

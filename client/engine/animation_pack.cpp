@@ -39,7 +39,7 @@ AnimationPack &AnimationPack::operator=(AnimationPack &&other) {
 AnimationPack::~AnimationPack() {}
 
 void AnimationPack::render(direction_t direction, movement_status_t status,
-                           const SDLArea &dest) {
+                           SDL_Rect dest) {
     switch (direction) {
         case UP:
             if (status == IDLE)

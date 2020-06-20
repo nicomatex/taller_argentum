@@ -21,4 +21,10 @@
 #define CHAT_BOX_FONT_COLOR {49, 168, 63,255}
 #define CHAT_BOX_BACKGROUND_COLOR {0,0,0,255}
 
+/* Layout de la interfaz */
+#define AREA_MAIN_RENDER {0, 128, 700, 512}
+#define AREA_CHAT {0,0,700,128}
+#define AREA_SIDE_PANEL {700,0,260,960}
+
+#define CHAT_LINES 8
 #endif

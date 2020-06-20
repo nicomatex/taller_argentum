@@ -15,7 +15,7 @@ class Decoration : public RenderizableObject {
     /* Renderiza el objeto en pantalla. */
     int get_x() const;
     int get_y() const;
-    void render(const SDLArea &dest) override;
+    void render(SDL_Rect dest) override;
 };
 
 #endif

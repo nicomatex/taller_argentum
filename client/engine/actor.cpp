@@ -12,7 +12,7 @@ Actor::Actor(AnimationPack &animation_pack, int width, int height,
       is_empty(false) {}
 
 void Actor::_update_status() {}
-void Actor::render(const SDLArea &dest) {
+void Actor::render(SDL_Rect dest) {
     animation_pack.render(orientation, movement_status, dest);
 }
 

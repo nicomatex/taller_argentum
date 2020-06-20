@@ -21,10 +21,10 @@ SDLSprite::SDLSprite(SDLTexture& texture, int nframes, int fps, int base_x,
 SDLSprite::SDLSprite(SDLTexture& texture, json sprite_info)
     : SDLSprite(texture, int(sprite_info["frames"]), int(sprite_info["fps"]),
                 int(sprite_info["base x"]), int(sprite_info["base y"]),
-                int(sprite_info["frame width"]), int(sprite_info["frame height"])){}
+                int(sprite_info["frame width"]),
+                int(sprite_info["frame height"])) {}
 
-          SDLSprite::SDLSprite(const SDLSprite& other)
-    : texture(other.texture) {
+SDLSprite::SDLSprite(const SDLSprite& other) : texture(other.texture) {
     this->nframes = other.nframes;
     this->frame_width = other.frame_width;
     this->frame_height = other.frame_height;
@@ -74,7 +74,7 @@ SDLSprite& SDLSprite::operator=(SDLSprite&& other) {
 
 SDLSprite::~SDLSprite() {}
 
-void SDLSprite::render(const SDLArea& dest) {
+void SDLSprite::render(SDL_Rect dest) {
     /* Actualizacion del cuadro de la animacion. */
     if (timer.get_ticks() > time_between_frames) {
         current_frame = (current_frame + 1) % nframes;
@@ -88,8 +88,7 @@ void SDLSprite::render(const SDLArea& dest) {
     int y_start_render =
         base_y + (current_frame / frames_per_row) * frame_height;
 
-    SDLArea src(x_start_render, y_start_render, frame_width, frame_height);
-    SDL_Rect sdlDest = {dest.getX(), dest.getY(), dest.getWidth(),
-                        dest.getHeight()};
+    SDL_Rect src = {x_start_render, y_start_render, frame_width, frame_height};
+
     texture.get().render(src, dest);
 }

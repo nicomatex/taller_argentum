@@ -77,25 +77,17 @@ SDLTexture::~SDLTexture() {
     if (this->texture) SDL_DestroyTexture(this->texture);
 }
 
-void SDLTexture::render(const SDLArea& src, const SDLArea& dest) const {
-    SDL_Rect sdlSrc = {src.getX(), src.getY(), src.getWidth(), src.getHeight()};
-
-    SDL_Rect sdlDest = {dest.getX(), dest.getY(), dest.getWidth(),
-                        dest.getHeight()};
-
+void SDLTexture::render(SDL_Rect src, SDL_Rect dest) const {
     int render_result =
-        SDL_RenderCopy(this->renderer, this->texture, &sdlSrc, &sdlDest);
+        SDL_RenderCopy(this->renderer, this->texture, &src, &dest);
     if (render_result < 0) {
         throw SDLError(ERR_TEX_RENDER);
     }
 }
 
-void SDLTexture::render(const SDLArea& dest) const {
-    SDL_Rect sdlDest = {dest.getX(), dest.getY(), dest.getWidth(),
-                        dest.getHeight()};
-
+void SDLTexture::render(SDL_Rect src) const {
     int render_result =
-        SDL_RenderCopy(this->renderer, this->texture, NULL, &sdlDest);
+        SDL_RenderCopy(this->renderer, this->texture, NULL, &src);
     if (render_result < 0) {
         throw SDLError(ERR_TEX_RENDER);
     }

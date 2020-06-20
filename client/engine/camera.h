@@ -3,7 +3,6 @@
 
 #include <vector>
 
-#include "SDL/sdl_area.h"
 #include "SDL/sdl_timer.h"
 #include "components/position_component.h"
 #include "decoration.h"
@@ -39,9 +38,9 @@ class Camera {
     bool _is_within_visual_range(RenderizableObject *component);
 
     /* Devuelve el area fisica donde deberia ser dibujado el componente.*/
-    SDLArea _get_render_area(RenderizableObject *component, int x, int y,
+    SDL_Rect _get_render_area(RenderizableObject *component, int x, int y,
                              int x_tmp_offset, int y_tmp_offset);
-    SDLArea _get_render_area(Decoration &decoration);
+    SDL_Rect _get_render_area(Decoration &decoration);
 
     void _update_offset();
 

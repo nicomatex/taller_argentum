@@ -5,7 +5,6 @@
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
-#include "sdl_area.h"
 
 class SDLTexture {
    protected:
@@ -35,8 +34,8 @@ class SDLTexture {
     virtual ~SDLTexture();
 
     /* Renderiza la textura */
-    void render(const SDLArea& src, const SDLArea& dest) const;
-    void render(const SDLArea& dest) const;
+    void render(SDL_Rect src, SDL_Rect dest) const;
+    void render(SDL_Rect dest) const;
 
     int get_width() const;
     int get_height() const;

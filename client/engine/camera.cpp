@@ -31,8 +31,8 @@ bool Camera::_is_within_visual_range(RenderizableObject *component) {
     return true;
 }
 
-SDLArea Camera::_get_render_area(RenderizableObject *component, int x, int y,
-                                 int x_tmp_offset, int y_tmp_offset) {
+SDL_Rect Camera::_get_render_area(RenderizableObject *component, int x, int y,
+                                  int x_tmp_offset, int y_tmp_offset) {
     int camera_corner_x_tile = x_center_tile - (width_tiles / 2);
     int camera_corner_y_tile = y_center_tile - (height_tiles / 2);
 
@@ -54,13 +54,12 @@ SDLArea Camera::_get_render_area(RenderizableObject *component, int x, int y,
     y_render_base -=
         ((component->get_height() * tile_size) / SIZE_GRANULARITY) - tile_size;
 
-    return SDLArea(x_render_base - camera_offset_x,
-                   y_render_base - camera_offset_y,
-                   (component->get_width() * tile_size) / SIZE_GRANULARITY,
-                   (component->get_height() * tile_size) / SIZE_GRANULARITY);
+    return {x_render_base - camera_offset_x, y_render_base - camera_offset_y,
+            (component->get_width() * tile_size) / SIZE_GRANULARITY,
+            (component->get_height() * tile_size) / SIZE_GRANULARITY};
 }
 
-SDLArea Camera::_get_render_area(Decoration &decoration) {
+SDL_Rect Camera::_get_render_area(Decoration &decoration) {
     int camera_corner_x_tile = x_center_tile - (width_tiles / 2);
     int camera_corner_y_tile = y_center_tile - (height_tiles / 2);
 
@@ -80,11 +79,9 @@ SDLArea Camera::_get_render_area(Decoration &decoration) {
     y_render_base -=
         ((decoration.get_height() * tile_size) / SIZE_GRANULARITY) - tile_size;
 
-
-    return SDLArea(x_render_base - camera_offset_x,
-                   y_render_base - camera_offset_y,
-                   (decoration.get_width() * tile_size) / SIZE_GRANULARITY,
-                   (decoration.get_height() * tile_size) / SIZE_GRANULARITY);
+    return {x_render_base - camera_offset_x, y_render_base - camera_offset_y,
+            (decoration.get_width() * tile_size) / SIZE_GRANULARITY,
+            (decoration.get_height() * tile_size) / SIZE_GRANULARITY};
 }
 
 void Camera::_update_offset() {
@@ -99,8 +96,8 @@ void Camera::_update_offset() {
     float smooth_factor_x = (float)abs(camera_offset_x) / (float)tile_size;
     float smooth_factor_y = (float)abs(camera_offset_y) / (float)tile_size;
 
-    if(smooth_factor_x < 0.7) smooth_factor_x = 0.7;
-    if(smooth_factor_y < 0.7) smooth_factor_y = 0.7;
+    if (smooth_factor_x < 0.7) smooth_factor_x = 0.7;
+    if (smooth_factor_y < 0.7) smooth_factor_y = 0.7;
 
     if (camera_offset_x > 0) {
         camera_offset_x -= delta_offset * smooth_factor_x;
@@ -144,19 +141,18 @@ void Camera::update() {
         y_center_tile = new_center_y;
         movement_timer.start();
     }
-    
 }
 
 void Camera::draw(RenderizableObject *component, int x, int y, int x_tmp_offset,
                   int y_tmp_offset) {
-    SDLArea dest =
+    SDL_Rect dest =
         _get_render_area(component, x, y, x_tmp_offset, y_tmp_offset);
     component->render(dest);
 }
 
 void Camera::render_map_layer(std::vector<Decoration> &layer) {
     for (auto tile = layer.begin(); tile != layer.end(); ++tile) {
-        SDLArea dest = _get_render_area((*tile));
+        SDL_Rect dest = _get_render_area((*tile));
         (*tile).render(dest);
     }
 }

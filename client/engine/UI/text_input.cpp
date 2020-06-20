@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-TextInput::TextInput(SDLArea render_area, const std::string& font_file,
+TextInput::TextInput(SDL_Rect render_area, const std::string& font_file,
                      SDL_Renderer* renderer, SDL_Color font_color,
                      SDL_Color background_color)
     : render_area(render_area),
@@ -51,30 +51,28 @@ void TextInput::render_cursor() {
 
     if (!render_blink) return;
 
-    float scale_factor =
-        (float)render_area.getHeight() / (float)render_text.get_height();
+    float scale_factor = (float)render_area.h / (float)render_text.get_height();
     int text_width = render_text.get_width() * scale_factor;
-    int cursor_base_x = text_width + render_area.getX();
-    if (cursor_base_x > render_area.getX() + render_area.getWidth()) {
-        cursor_base_x = render_area.getX() + render_area.getWidth();
+    int cursor_base_x = text_width + render_area.x;
+    if (cursor_base_x > render_area.x + render_area.w) {
+        cursor_base_x = render_area.x + render_area.w;
     } else if (text == "") {
-        cursor_base_x = render_area.getX() + 1;
+        cursor_base_x = render_area.x + 1;
     }
-    int cursor_base_y = render_area.getY() + 3;
-    int cursor_height = render_area.getHeight() - 3;
+    int cursor_base_y = render_area.y + 3;
+    int cursor_height = render_area.h - 3;
     int cursor_width = 2;
 
     SDL_Rect cursor_rect = {cursor_base_x, cursor_base_y, cursor_width,
                             cursor_height};
 
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);
     SDL_RenderFillRect(renderer, &cursor_rect);
 }
 
 void TextInput::render_background() {
-    SDL_Rect background_area = {render_area.getX(), render_area.getY(),
-                                render_area.getWidth(),
-                                render_area.getHeight()};
+    SDL_Rect background_area = render_area;
+
     // SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     SDL_SetRenderDrawColor(renderer, background_color.r, background_color.g,
                            background_color.b, background_color.a);
@@ -83,21 +81,20 @@ void TextInput::render_background() {
 
 void TextInput::render() {
     render_background();
-    float scale_factor =
-        (float)render_area.getHeight() / (float)render_text.get_height();
+    float scale_factor = (float)render_area.h / (float)render_text.get_height();
     int dest_width = render_text.get_width() * scale_factor;
     int dest_height = render_text.get_height() * scale_factor;
-    SDLArea render_origin(0, 0, render_text.get_width(),
-                          render_text.get_height());
+    SDL_Rect render_origin = {0, 0, render_text.get_width(),
+                              render_text.get_height()};
 
-    if (dest_width > render_area.getWidth()) {
-        int max_real_width = render_area.getWidth() / scale_factor;
-        dest_width = render_area.getWidth();
-        render_origin.set_new_pos(render_text.get_width() - max_real_width, 0);
+    if (dest_width > render_area.w) {
+        int max_real_width = render_area.w / scale_factor;
+        dest_width = render_area.w;
+        render_origin.x = render_text.get_width() - max_real_width;
     }
 
-    SDLArea render_dest(render_area.getX(), render_area.getY(), dest_width,
-                        dest_height);
+    SDL_Rect render_dest = {render_area.x, render_area.y, dest_width,
+                            dest_height};
     render_text.render(render_origin, render_dest);
     render_cursor();
 }

@@ -3,7 +3,6 @@
 
 #include <string>
 
-#include "../SDL/sdl_area.h"
 #include "../SDL/sdl_text.h"
 #include "../SDL/sdl_timer.h"
 
@@ -13,7 +12,7 @@ class TextInput {
     SDLText render_text;
     SDLTimer blink_timer;
     SDL_Renderer* renderer;
-    SDLArea render_area;
+    SDL_Rect render_area;
     bool enabled;
     bool render_blink;
     void render_cursor();
@@ -21,7 +20,7 @@ class TextInput {
     SDL_Color background_color;
 
    public:
-    TextInput(SDLArea render_area, const std::string& font_file,
+    TextInput(SDL_Rect render_area, const std::string& font_file,
               SDL_Renderer* renderer, SDL_Color font_color,
               SDL_Color background_color);
     ~TextInput();

@@ -7,7 +7,7 @@ Decoration::Decoration(SDLSprite sprite, int x, int y, int width, int height,
       x(x),
       y(y) {}
 
-void Decoration::render(const SDLArea &dest) { sprite.render(dest); }
+void Decoration::render(SDL_Rect dest) { sprite.render(dest); }
 
 int Decoration::get_x() const { return x; }
 

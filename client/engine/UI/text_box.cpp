@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-TextBox::TextBox(SDLArea render_area, const std::string& font_file,
+TextBox::TextBox(SDL_Rect render_area, const std::string& font_file,
                  SDL_Renderer* renderer, int nlines, SDL_Color font_color,
                  SDL_Color background_color)
     : render_area(render_area),
@@ -30,9 +30,7 @@ void TextBox::add_line(std::string line) {
 }
 
 void TextBox::render_background() {
-    SDL_Rect background_area = {render_area.getX(), render_area.getY(),
-                                render_area.getWidth(),
-                                render_area.getHeight()};
+    SDL_Rect background_area = render_area;
     // SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     SDL_SetRenderDrawColor(renderer, background_color.r, background_color.g,
                            background_color.b, background_color.a);
@@ -41,7 +39,7 @@ void TextBox::render_background() {
 
 void TextBox::render() {
     render_background();
-    int line_height = render_area.getHeight() / nlines;
+    int line_height = render_area.h / nlines;
     float scale_factor =
         (float)line_height / (float)render_lines[0].get_height();
 
@@ -49,11 +47,11 @@ void TextBox::render() {
         int dest_width = render_lines[i].get_width() * scale_factor;
         int dest_height = render_lines[i].get_height() * scale_factor;
 
-        SDLArea render_origin(0, 0, render_lines[i].get_width(),
-                              render_lines[i].get_height());
-        SDLArea render_dest(render_area.getX(),
-                            render_area.getY() + (nlines - i - 1) * line_height,
-                            dest_width, dest_height);
+        SDL_Rect render_origin = {0, 0, render_lines[i].get_width(),
+                                  render_lines[i].get_height()};
+        SDL_Rect render_dest = {render_area.x,
+                                render_area.y + (nlines - i - 1) * line_height,
+                                dest_width, dest_height};
         render_lines[i].render(render_origin, render_dest);
     }
 

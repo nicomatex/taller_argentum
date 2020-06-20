@@ -8,7 +8,6 @@
 #include "sdl_animated_sprite.h"
 #include "sdl_text.h"
 #include "sdl_texture.h"
-#include "sdl_area.h"
 
 class SDLWindow {
    private:
@@ -29,7 +28,7 @@ class SDLWindow {
     void render() const;
 
     /* Setea el viewport del renderer absoluto en la ventana. */
-    void set_viewport(const SDLArea &viewport_area);
+    void set_viewport(SDL_Rect viewport_area);
 
     /* Inicializa el renderer de la ventana, y devuelve un puntero al mismo.*/
     SDL_Renderer* init_renderer();

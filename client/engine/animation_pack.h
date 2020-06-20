@@ -2,7 +2,6 @@
 #define __ANIMATION_PACK_H
 
 #include "SDL/sdl_animated_sprite.h"
-#include "SDL/sdl_area.h"
 
 #ifndef DIRECTION_T
 #define DIRECTION_T
@@ -32,7 +31,7 @@ class AnimationPack {
                   SDLSprite &&left_idle_sprite, SDLSprite &&right_idle_sprite);
     ~AnimationPack();
 
-    void render(direction_t direction, movement_status_t status, const SDLArea &dest);
+    void render(direction_t direction, movement_status_t status, SDL_Rect dest);
     
     /* No se permite la construccion por copia. */
     AnimationPack(const AnimationPack &other) = delete;
