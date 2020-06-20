@@ -14,6 +14,7 @@
 #include "engine/map.h"
 #include "event_factory.h"
 #include "ui_event_handler.h"
+#include "chat.h"
 
 /* Interfaz de la clase */
 class GameClient {

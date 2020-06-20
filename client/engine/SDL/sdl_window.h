@@ -34,6 +34,8 @@ class SDLWindow {
     /* Inicializa el renderer de la ventana, y devuelve un puntero al mismo.*/
     SDL_Renderer* init_renderer();
 
+    SDL_Renderer* get_renderer();
+    
     int get_width() const;
     int get_height() const;
 };

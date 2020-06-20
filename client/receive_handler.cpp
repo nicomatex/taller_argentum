@@ -26,7 +26,7 @@ void ClientReceiveHandler::handle(Event &ev) {
             handle_move(ev);
             break;
         case 3:
-            std::cerr << "Handler: got: " << ev.get_json() << std::endl;
+            //std::cerr << "Handler: got: " << ev.get_json() << std::endl;
             break;
         case -1:
             std::cout << "Fui kickeado del servidor." << std::endl;

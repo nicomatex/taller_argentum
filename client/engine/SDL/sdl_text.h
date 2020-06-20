@@ -14,8 +14,8 @@ class SDLText : public SDLTexture {
    public:
     /* Crea una textura renderizable que contiene el texto text, del color
      * indicado.*/
-    SDLText(const std::string& text, const std::string& font_file, uint8_t r,
-            uint8_t g, uint8_t b, SDL_Renderer* renderer);
+    SDLText(const std::string& text, const std::string& font_file,
+            SDL_Color color, SDL_Renderer* renderer);
 
     /* No se permite construccion por copia*/
     SDLText(const SDLText& other) = delete;

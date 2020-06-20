@@ -14,6 +14,8 @@ add_subdirectory(engine/components)
 
 add_subdirectory(../include build)
 
+add_subdirectory(engine/UI)
+
 # Agrego la carpeta con los headers autogenerados a los includes
 message("Agregando '${PROJECT_BINARY_DIR}' como directorio de includes")
 include_directories(${PROJECT_BINARY_DIR})
@@ -23,6 +25,7 @@ add_library(game
   game_client.cpp
   receive_handler.cpp
   ui_event_handler.cpp
+  chat.cpp
 )
 
 target_link_libraries(game

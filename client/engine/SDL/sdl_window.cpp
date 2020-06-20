@@ -78,3 +78,7 @@ void SDLWindow::render() const { SDL_RenderPresent(renderer); }
 int SDLWindow::get_height() const { return height; }
 
 int SDLWindow::get_width() const { return width; }
+
+SDL_Renderer* SDLWindow::get_renderer(){
+    return renderer;
+}
