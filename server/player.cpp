@@ -10,7 +10,9 @@ Player::Player(EntityId entity_id, int head_id, int body_id, std::string name,
       name(name),
       map(map),
       move_accumulator(0),
-      player_speed(5) {
+      player_speed(5),
+      current_speed_x(0),
+      current_speed_y(0) {
     visual_entity_info["type_id"] = get_type();
     visual_entity_info["head_id"] = head_id;
     visual_entity_info["body_id"] = body_id;
@@ -43,9 +45,7 @@ void Player::update(uint64_t delta_t) {
     // TODO: demas updates, como regeneraciones de vida/mana, etc.
 }
 
-entity_type_t Player::get_type() {
-    return PLAYER;
-}
+entity_type_t Player::get_type() { return PLAYER; }
 
 void Player::set_current_speed(int value_x, int value_y) {
     current_speed_x = value_x;
