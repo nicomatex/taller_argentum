@@ -78,10 +78,8 @@ void ResourceManager::_load_animations(const std::string& sprite_index_file) {
 
             animation_pack_map[type].insert(std::make_pair(
                 pack_info["id"],
-                AnimationPack(std::move(moving_up), std::move(moving_down),
-                              std::move(moving_left), std::move(moving_right),
-                              std::move(idle_up), std::move(idle_down),
-                              std::move(idle_left), std::move(idle_right))));
+                AnimationPack(moving_up, moving_down, moving_left, moving_right,
+                              idle_up, idle_down, idle_left, idle_right)));
         }
     }
 
@@ -108,16 +106,16 @@ ResourceManager& ResourceManager::get_instance() {
     return resource_manager;
 }
 
-SDLTexture& ResourceManager::get_texture(const std::string& type, int id){
+SDLTexture& ResourceManager::get_texture(const std::string& type, int id) {
     return texture_map.at(type).at(id);
 }
 
-
-AnimationPack& ResourceManager::get_animation_pack(const std::string& type, int id){
+AnimationPack& ResourceManager::get_animation_pack(const std::string& type,
+                                                   int id) {
     return animation_pack_map.at(type).at(id);
 }
 
-SDLSprite& ResourceManager::get_sprite(const std::string& type, int id){
+SDLSprite& ResourceManager::get_sprite(const std::string& type, int id) {
     return sprite_map.at(type).at(id);
 }
 

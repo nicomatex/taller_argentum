@@ -16,12 +16,14 @@
 #include "map_change_buffer.h"
 #include "receive_handler.h"
 #include "ui_event_handler.h"
+#include "chat_buffer.h"
 
 /* Interfaz de la clase */
 class GameClient {
    private:
     SDLWindow window;
     MapChangeBuffer map_change_buffer;
+    ChatBuffer chat_buffer;
     ClientReceiveHandler receive_handler;
     SocketManager socket_manager;
     nlohmann::json config;

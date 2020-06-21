@@ -51,7 +51,7 @@ void ServerManager::add_player(MapId map_id, ClientId client_id,
         EventFactory::initialize_map(map_data, player_data));
     bool update = true;
     clients[client_id]->send(
-        EventFactory::update_entities(map_monitor.get_update_data(update)));
+        EventFactory::update_entities(map_monitor.get_update_data(update)["entities"]));
 
     // Lo agregamos a la session correspondiente
     sessions.at(map_id).add_client(client_id);

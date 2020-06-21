@@ -12,11 +12,11 @@ void CommandHandler::parse_line(const std::string& line) {
     // Cambiar esta linea
     cmd_type = CMD_MESSAGE;
     if (line[0] == COMMAND) {
-        cmd[0] = std::string(++line.begin(), line.end());
+        cmd.push_back(std::string(++line.begin(), line.end()));
     } else if (line[0] == WHISPER) {
-        cmd[0] = std::string(++line.begin(), line.end());
+        cmd.push_back(std::string(++line.begin(), line.end()));
     } else {
-        cmd[0] = line;
+        cmd.push_back(line);
     }
 }
 

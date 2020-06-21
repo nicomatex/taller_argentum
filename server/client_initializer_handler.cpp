@@ -31,8 +31,8 @@ void ClientInitializeHandler::run_handler() {
     nlohmann::json player_info = {{"name", player_name},
                                   {"map", 0},
                                   {"pos",{{"x",5},{"y",2}}},
-                                  {"id_head", 2},
-                                  {"id_body", 2}};
+                                  {"head_id", 2},
+                                  {"body_id", 2}};
     int map_id = 0;
     server_manager.add_player(map_id, ClientId(connect_info["client_id"]),
                               player_info);

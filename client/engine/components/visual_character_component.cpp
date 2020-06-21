@@ -9,7 +9,8 @@
 
 VisualCharacterComponent::VisualCharacterComponent(int head_id, int body_id,
                                                    int weapon_id,
-                                                   int offhand_id,int speed):speed(speed) {
+                                                   int offhand_id, int speed)
+    : speed(speed), head_id(head_id), body_id(body_id) {
     if (head_id != 0) {
         Actor head(ResourceManager::get_instance().get_animation_pack("heads",
                                                                       head_id),
@@ -32,25 +33,33 @@ la componente de posicion. */
 }
 
 void VisualCharacterComponent::set_head(int new_head_id) {
+    if(new_head_id == head_id) return;
     Actor head(ResourceManager::get_instance().get_animation_pack("heads",
                                                                   new_head_id),
                HEAD_WIDTH, HEAD_HEIGHT, HEAD_OFFSET_X, HEAD_OFFSET_Y);
+    head.set_move_status(parts.at("head").get_movement_status());
+    head.set_orientation(parts.at("head").get_direction());
     parts.erase("head");
     parts.insert(std::make_pair("head", head));
+    head_id = new_head_id;
 }
 
 void VisualCharacterComponent::set_body(int new_body_id) {
+    if(new_body_id == body_id) return;
     Actor body(ResourceManager::get_instance().get_animation_pack("bodies",
                                                                   new_body_id),
                BODY_WIDTH, BODY_HEIGHT, BODY_OFFSET_X, BODY_OFFSET_Y);
+    body.set_move_status(parts.at("body").get_movement_status());
+    body.set_orientation(parts.at("body").get_direction());
     parts.erase("body");
     parts.insert(std::make_pair("body", body));
+    body_id = new_body_id;
 }
 
-void VisualCharacterComponent::draw(Camera &camera) {
+void VisualCharacterComponent::draw(Camera& camera) {
     for (auto& it : parts) {
         camera.draw(&(it.second), current_x, current_y, transition_offset_x,
-                     transition_offset_y);
+                    transition_offset_y);
     }
 }
 
@@ -73,35 +82,36 @@ void VisualCharacterComponent::_update_offset() {
     bool stop_x = false;
     bool stop_y = false;
 
-    float speed_factor_x = (float)abs(transition_offset_x) / (float)MOVEMENT_OFFSET;
-    if(speed_factor_x < 1) speed_factor_x = 1;
+    float speed_factor_x =
+        (float)abs(transition_offset_x) / (float)MOVEMENT_OFFSET;
+    if (speed_factor_x < 1) speed_factor_x = 1;
 
-    float speed_factor_y = (float)abs(transition_offset_y) / (float)MOVEMENT_OFFSET;
-    if(speed_factor_y < 1) speed_factor_y = 1;
-    
-    if(transition_offset_x > 0){
+    float speed_factor_y =
+        (float)abs(transition_offset_y) / (float)MOVEMENT_OFFSET;
+    if (speed_factor_y < 1) speed_factor_y = 1;
+
+    if (transition_offset_x > 0) {
         transition_offset_x -= delta_offset * speed_factor_x;
-        if(transition_offset_x <= 0) stop_x = true;
-    }else if(transition_offset_x < 0){
+        if (transition_offset_x <= 0) stop_x = true;
+    } else if (transition_offset_x < 0) {
         transition_offset_x += delta_offset * speed_factor_x;
-        if(transition_offset_x >= 0) stop_x = true;
+        if (transition_offset_x >= 0) stop_x = true;
     }
-    if(transition_offset_y > 0){
+    if (transition_offset_y > 0) {
         transition_offset_y -= delta_offset * speed_factor_y;
-        if(transition_offset_y <= 0) stop_y = true;
-    }else if(transition_offset_y < 0){
+        if (transition_offset_y <= 0) stop_y = true;
+    } else if (transition_offset_y < 0) {
         transition_offset_y += delta_offset * speed_factor_y;
-        if(transition_offset_y >= 0) stop_x = true;
+        if (transition_offset_y >= 0) stop_x = true;
     }
 
-    if(stop_x || stop_y){
+    if (stop_x || stop_y) {
         transition_timer.stop();
-        if(stop_x) transition_offset_x = 0;
-        if(stop_y) transition_offset_y = 0;
-    }else{
+        if (stop_x) transition_offset_x = 0;
+        if (stop_y) transition_offset_y = 0;
+    } else {
         transition_timer.start();
     }
-
 }
 
 void VisualCharacterComponent::_update_animation(int delta_x, int delta_y) {
@@ -118,18 +128,18 @@ void VisualCharacterComponent::_update_animation(int delta_x, int delta_y) {
     if (abs(delta_x) > abs(delta_y)) {
         if (delta_x > 0) {
             orientation = RIGHT;
-            //transition_offset_x = -MOVEMENT_OFFSET;
+            // transition_offset_x = -MOVEMENT_OFFSET;
         } else {
             orientation = LEFT;
-            //transition_offset_x = MOVEMENT_OFFSET;
+            // transition_offset_x = MOVEMENT_OFFSET;
         }
     } else {
         if (delta_y > 0) {
             orientation = DOWN;
-            //transition_offset_y = -MOVEMENT_OFFSET;
+            // transition_offset_y = -MOVEMENT_OFFSET;
         } else {
             orientation = UP;
-            //transition_offset_y = MOVEMENT_OFFSET;
+            // transition_offset_y = MOVEMENT_OFFSET;
         }
     }
 

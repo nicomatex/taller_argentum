@@ -11,10 +11,7 @@ class MapChangeBuffer {
     std::condition_variable cv;
     nlohmann::json map_info;
     unsigned int follow_entity_id;
-    
-    bool map_info_ready;
-
-    bool entity_info_ready;
+    bool ready;
 
    public:
     MapChangeBuffer();
@@ -23,10 +20,7 @@ class MapChangeBuffer {
     void wait_for_map();
 
     /* Llena el buffer con map info. */
-    void set_map_info(nlohmann::json map_info);
-
-    /* Setea el id de follow entity del buffer. */
-    void set_follow_entity_id(unsigned int follow_entity_id);
+    void fill(nlohmann::json map_info,unsigned int follow_entity_id);
 
     /* Devuelve la informacion de mapa guardada en el buffer.*/
     nlohmann::json get_map_info();

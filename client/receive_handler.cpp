@@ -1,34 +1,35 @@
 #include "receive_handler.h"
 
 #include <iostream>
-
+#include <iomanip>
 #include "../nlohmann/json.hpp"
 #include "engine/ECS/entity.h"
 #include "engine/components/position_component.h"
+#include "engine/components/visual_character_component.h"
 #include "engine/entity_factory.h"
 
 using json = nlohmann::json;
 
-ClientReceiveHandler::ClientReceiveHandler(MapChangeBuffer &map_change_buffer)
-    : map_change_buffer(map_change_buffer) {}
+ClientReceiveHandler::ClientReceiveHandler(MapChangeBuffer &map_change_buffer,
+                                           ChatBuffer &chat_buffer)
+    : map_change_buffer(map_change_buffer), chat_buffer(chat_buffer) {}
 
-ClientReceiveHandler::~ClientReceiveHandler(){}
+ClientReceiveHandler::~ClientReceiveHandler() {}
 
 void ClientReceiveHandler::handle(Event &ev) {
     json event = ev.get_json();
     switch (int(event["ev_id"])) {
         case 0:
-            std::cerr << "Handler: got: " << ev.get_json() << std::endl;
             handle_initialization(ev);
-            break;
-        case 1:
-            handle_new_map(ev);
             break;
         case 2:
             handle_move(ev);
             break;
         case 3:
-            // std::cerr << "Handler: got: " << ev.get_json() << std::endl;
+            handle_entity_update(ev);
+            break;
+        case 4:
+            handle_chat_message(ev);
             break;
         case -1:
             std::cout << "Fui kickeado del servidor." << std::endl;
@@ -50,16 +51,33 @@ void ClientReceiveHandler::handle_move(Event &ev) {
 }
 
 void ClientReceiveHandler::handle_initialization(Event &ev) {
-    json player_info = ev.get_json();
-    std::cout << player_info << std::endl;
+    json initialization_info = ev.get_json();
+    json player_info = initialization_info["player"];
     EntityFactory::create_player(player_info["player_id"],
-                                 player_info["id_head"], player_info["id_body"],
+                                 player_info["head_id"], player_info["body_id"],
                                  0, 0);
-    map_change_buffer.set_follow_entity_id(player_info["player_id"]);
+
+    json map_description = initialization_info["map_info"];
+    map_change_buffer.fill(map_description, player_info["player_id"]);
 }
 
-void ClientReceiveHandler::handle_new_map(Event &ev) {
-    std::cout << "Generando mapa...\n";
-    json map_description = ev.get_json();
-    map_change_buffer.set_map_info(map_description);
+void ClientReceiveHandler::handle_entity_update(Event &ev) {
+    json entities_info = ev.get_json();
+    for (auto &it : entities_info["entities"].items() ) {
+        json entity_info = it.value();
+        if (!EntityManager::get_instance().has_entity(entity_info["entity_id"])){
+            EntityFactory::create_player(entity_info["entity_id"],
+                                         entity_info["head_id"],
+                                         entity_info["body_id"], 0, 0);
+        } else {
+            Entity &entity =
+                EntityManager::get_instance().get_from_id(entity_info["entity_id"]);
+            entity.get_component<VisualCharacterComponent>().set_body(entity_info["body_id"]);
+            entity.get_component<VisualCharacterComponent>().set_head(entity_info["head_id"]);
+        }
+    }
+}
+
+void ClientReceiveHandler::handle_chat_message(Event &ev){
+    chat_buffer.push(ev.get_json()["msg"]);
 }

@@ -74,8 +74,8 @@ void Map::move(EntityId entity_id, steps_t steps) {
 EntityId Map::add_player(nlohmann::json player_info) {
     EntityId entity_id = get_next_id();
     Player* player =
-        new Player(entity_id, int(player_info["id_head"]),
-                   int(player_info["id_body"]), player_info["name"], *this);
+        new Player(entity_id, int(player_info["head_id"]),
+                   int(player_info["body_id"]), player_info["name"], *this);
     position_t player_position = {int(player_info["pos"]["x"]),
                                   int(player_info["pos"]["y"])};
 

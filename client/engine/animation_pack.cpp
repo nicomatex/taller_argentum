@@ -1,18 +1,19 @@
 #include "animation_pack.h"
+
 #include <iostream>
 AnimationPack::AnimationPack(
-    SDLSprite &&up_move_sprite, SDLSprite &&down_move_sprite,
-    SDLSprite &&left_move_sprite, SDLSprite &&right_move_sprite,
-    SDLSprite &&up_idle_sprite, SDLSprite &&down_idle_sprite,
-    SDLSprite &&left_idle_sprite, SDLSprite &&right_idle_sprite)
-    : up_move_sprite(std::move(up_move_sprite)),
-      down_move_sprite(std::move(down_move_sprite)),
-      left_move_sprite(std::move(left_move_sprite)),
-      right_move_sprite(std::move(right_move_sprite)),
-      up_idle_sprite(std::move(up_idle_sprite)),
-      down_idle_sprite(std::move(down_idle_sprite)),
-      left_idle_sprite(std::move(left_idle_sprite)),
-      right_idle_sprite(std::move(right_idle_sprite)) {}
+    SDLSprite &up_move_sprite, SDLSprite &down_move_sprite,
+    SDLSprite &left_move_sprite, SDLSprite &right_move_sprite,
+    SDLSprite &up_idle_sprite, SDLSprite &down_idle_sprite,
+    SDLSprite &left_idle_sprite, SDLSprite &right_idle_sprite)
+    : up_move_sprite(up_move_sprite),
+      down_move_sprite(down_move_sprite),
+      left_move_sprite(left_move_sprite),
+      right_move_sprite(right_move_sprite),
+      up_idle_sprite(up_idle_sprite),
+      down_idle_sprite(down_idle_sprite),
+      left_idle_sprite(left_idle_sprite),
+      right_idle_sprite(right_idle_sprite) {}
 
 AnimationPack::AnimationPack(AnimationPack &&other)
     : up_move_sprite(std::move(other.up_move_sprite)),
@@ -66,4 +67,26 @@ void AnimationPack::render(direction_t direction, movement_status_t status,
                 left_move_sprite.render(dest);
             break;
     }
+}
+
+AnimationPack::AnimationPack(const AnimationPack &other)
+    : up_move_sprite(other.up_move_sprite),
+      down_move_sprite(other.down_move_sprite),
+      left_move_sprite(other.left_move_sprite),
+      right_move_sprite(other.right_move_sprite),
+      up_idle_sprite(other.up_idle_sprite),
+      down_idle_sprite(other.down_idle_sprite),
+      left_idle_sprite(other.left_idle_sprite),
+      right_idle_sprite(other.right_idle_sprite) {}
+
+AnimationPack &AnimationPack::operator=(const AnimationPack &other) {
+    up_move_sprite = other.up_move_sprite;
+    down_move_sprite = other.down_move_sprite;
+    left_move_sprite = other.left_move_sprite;
+    right_move_sprite = other.right_move_sprite;
+    up_idle_sprite = other.up_idle_sprite;
+    down_idle_sprite = other.down_idle_sprite;
+    left_idle_sprite = other.left_idle_sprite;
+    right_idle_sprite = other.right_idle_sprite;
+    return *this;
 }

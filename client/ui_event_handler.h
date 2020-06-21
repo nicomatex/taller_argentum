@@ -10,11 +10,10 @@
 
 class UiEventHandler{
    private:
-    EventFactory event_factory;
     std::atomic_bool &running;
     SocketManager &socket_manager;
     Chat *chat;
-
+    bool text_input_enabled;
    public:
     UiEventHandler(SocketManager &socket_manager, std::atomic_bool &running);
     ~UiEventHandler();
@@ -25,7 +24,9 @@ class UiEventHandler{
     void handle_keydown_move_down();
     void handle_keydown_move_left();
     void handle_keydown_move_right();
-    
+    void handle_keydown_return();
+    void handle_keydown_backspace();
+
     void handle_keyup_move_up();
     void handle_keyup_move_down();
     void handle_keyup_move_left();

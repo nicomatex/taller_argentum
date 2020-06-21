@@ -28,7 +28,7 @@ void EntityManager::clean() {
 }
 
 bool EntityManager::has_entity(unsigned int entity_id) {
-	return entities.count(entity_id);
+	return entities.count(entity_id) != 0;
 }
 
 Entity& EntityManager::get_from_id(unsigned int entity_id) {

@@ -7,6 +7,8 @@ EventFactory::EventFactory(){}
 
 EventFactory::~EventFactory(){}
 
+/*No aplicarle el auto-estilizador a este archivo porque se desacomodan los json*/
+
 Event EventFactory::connect_event(std::string character_name, std::string password){
     json event = 
     {
@@ -21,16 +23,11 @@ Event EventFactory::connect_event(std::string character_name, std::string passwo
     return Event(event);
 }
 
-Event EventFactory::console_command_event(std::string command,std::vector<std::string> args){
+Event EventFactory::chat_event(std::string message){
     json event = 
     {
-        {"ev_id",1},
-        {"command",
-            {
-                {"cmd",command},
-                {"args",args}
-            }
-        }
+        {"ev_id",4},
+        {"msg",message}
     };
     return Event(event);
 }

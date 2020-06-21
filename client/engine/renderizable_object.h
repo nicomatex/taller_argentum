@@ -38,6 +38,8 @@ class RenderizableObject {
     virtual int get_x_offset() const;
     virtual int get_y_offset() const;
 
+    RenderizableObject(const RenderizableObject& other);
+    RenderizableObject& operator=(const RenderizableObject& other);
     /* Debe ser llamado luego de renderizar para actualizar el estado de las constantes 
     visuales.*/
     virtual void update();

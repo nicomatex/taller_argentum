@@ -22,9 +22,8 @@ class EventFactory {
     static Event connect_event(std::string character_name,
                                std::string password);
 
-    /* Evento de consola de comandos. */
-    static Event console_command_event(std::string command,
-                                       std::vector<std::string> args);
+    /* Evento del chat. */
+    static Event chat_event(std::string message);
 
     /* Evento de movimiento. Recibe si se esta comenzando o finalizando el
     movimiento y en que direccion.*/

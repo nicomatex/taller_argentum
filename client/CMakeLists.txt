@@ -28,6 +28,7 @@ add_library(game
   chat.cpp
   game.cpp
   map_change_buffer.cpp
+  chat_buffer.cpp
 )
 
 target_link_libraries(game

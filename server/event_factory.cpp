@@ -1,6 +1,7 @@
 #include "event_factory.h"
 
 #include <string>
+#include <iostream> //temp
 
 Event EventFactory::initialize_map(const nlohmann::json& map_data,
                                    const nlohmann::json& player_data) {
@@ -14,7 +15,7 @@ Event EventFactory::initialize_map(const nlohmann::json& map_data,
 Event EventFactory::update_map(const nlohmann::json& position_data) {
     nlohmann::json ev_json;
     ev_json["ev_id"] = EV_ID_UPDATE_MAP;
-    ev_json["positioins"] = position_data;
+    ev_json["positions"] = position_data;
     return Event(ev_json);
 }
 

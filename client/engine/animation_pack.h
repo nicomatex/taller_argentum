@@ -25,17 +25,17 @@ class AnimationPack {
     SDLSprite left_idle_sprite;
 
    public:
-    AnimationPack(SDLSprite &&up_move_sprite, SDLSprite &&down_move_sprite,
-                  SDLSprite &&left_move_sprite, SDLSprite &&right_move_sprite, 
-                  SDLSprite &&up_idle_sprite, SDLSprite &&down_idle_sprite,
-                  SDLSprite &&left_idle_sprite, SDLSprite &&right_idle_sprite);
+    AnimationPack(SDLSprite &up_move_sprite, SDLSprite &down_move_sprite,
+                  SDLSprite &left_move_sprite, SDLSprite &right_move_sprite, 
+                  SDLSprite &up_idle_sprite, SDLSprite &down_idle_sprite,
+                  SDLSprite &left_idle_sprite, SDLSprite &right_idle_sprite);
     ~AnimationPack();
 
     void render(direction_t direction, movement_status_t status, SDL_Rect dest);
     
-    /* No se permite la construccion por copia. */
-    AnimationPack(const AnimationPack &other) = delete;
-    AnimationPack& operator=(AnimationPack &other) = delete;
+    /* Constructor y asignador por copia. */
+    AnimationPack(const AnimationPack &other);
+    AnimationPack& operator=(const AnimationPack &other);
 
     /* Constructor y asginador por movimiento. */
     AnimationPack(AnimationPack &&other);

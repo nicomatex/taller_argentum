@@ -22,6 +22,9 @@ class VisualCharacterComponent : public Component {
     int current_y;
     int speed; //En tiles/segundo.
     
+    int head_id;
+    int body_id;
+    //Eventualmente de las demas partes
    public:
 
     VisualCharacterComponent(int head_id, int body_id, int weapon_id, int offhand_id, int speed);

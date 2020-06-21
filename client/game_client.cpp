@@ -30,7 +30,7 @@ GameClient::GameClient(json config)
           Socket(std::string(config["server"]), std::string(config["port"])),
           receive_handler),
       config(config),
-      receive_handler(map_change_buffer) {
+      receive_handler(map_change_buffer,chat_buffer) {
     try {
         SDLTextureLoader texture_loader(window.init_renderer());
         ResourceManager::get_instance().init(texture_loader);
@@ -44,10 +44,9 @@ GameClient::GameClient(json config)
 
 void GameClient::run() {
     map_change_buffer.wait_for_map();
-    std::cout << "A punto de instanciar el juego " << std::endl;
-    Game game(map_change_buffer.get_follow_entity_id(), socket_manager, window);
+    Game game(map_change_buffer.get_follow_entity_id(), socket_manager, window,chat_buffer);
     game.setup_map(map_change_buffer.get_map_info());
-    std::cout << "A punto de correr el juego " << std::endl;
+
     game.run();
     if (!socket_manager.is_connected()) {
         std::cout << MSG_ERR_CONECT_DROPPED << std::endl;

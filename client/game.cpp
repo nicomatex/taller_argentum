@@ -5,14 +5,15 @@
 #include "engine/ECS/entity_manager.h"
 
 Game::Game(int follow_entity_id, SocketManager &socket_manager,
-           SDLWindow &window)
+           SDLWindow &window, ChatBuffer &chat_buffer)
     : running(true),
       ui_event_handler(socket_manager, running),
       camera(EntityManager::get_instance()
                  .get_from_id(follow_entity_id)
                  .get_component<PositionComponent>(),
              50, TILE_SIZE, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, CAMERA_SPEED),
-      window(window) {}
+      window(window),
+      chat_buffer(chat_buffer) {}
 
 Game::~Game() {}
 
@@ -31,6 +32,7 @@ void Game::run() {
         camera.render_map_layer(map.get_layer(1));
         camera.draw_all();
         window.set_viewport(AREA_CHAT);
+        chat_buffer.flush(chat);
         chat.render();
         window.set_viewport(AREA_SIDE_PANEL);
         SDL_SetRenderDrawColor(window.get_renderer(), 100, 100, 100,
