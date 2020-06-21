@@ -11,8 +11,7 @@ typedef struct position {
 } position_t;
 
 inline void to_json(nlohmann::json& j, const position_t& p) {
-    j["pos"]["x"] = p.x;
-    j["pos"]["y"] = p.y;
+    j["pos"] = {p.x, p.y};
 }
 
 inline void from_json(const nlohmann::json& j, position_t& p) {

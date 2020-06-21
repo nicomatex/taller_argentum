@@ -18,6 +18,16 @@ typedef struct character {
 
 typedef uint32_t CharId;
 
+class CharacterAlreadyExistsException : public std::exception {
+public:
+    const char *what() const throw();
+};
+
+class CharacterNotFoundException : public std::exception {
+public:
+    const char *what() const throw();
+};
+
 class CharacterManager {
    private:
     int char_count;
@@ -29,6 +39,7 @@ class CharacterManager {
 
     /*
         Devuelve un character por movimiento.
+        Lanza std::exception() en caso de que name exceda MAX_LENGTH
     */
     character_t create_character(std::string name, int map_id,
                                  position_t pos_player, int head_id,
@@ -40,39 +51,43 @@ class CharacterManager {
 
     /*
         Agrega un personaje al archivo de structs y al diccionario,
-        si ya existe, tira excepcion.
+        si ya existe, lanza CharacterAlreadyExistsException()
     */
    	void add_character(const character_t &character);
 
     /*
-        Le setea a al character con nombre "name", un character.
-        Lanza excepcion si el character pasado difiere en nombre.
-        (eso se utiliza para hacer updates, con lo que el character
-        ya debe estar agregado, y si se quiere hacer un update, se puede
-        llamar a get_character, modificar lo que devuelve, y setearlo)
+        Le setea al character con nombre "name", un character.
+        Si no existe, lanza CharacterNotFoundException.
+        Si el character pasado difiere en nombre, lanza std::exception()
+        Se utiliza para persistir el estado actual de la entidad player,
+        al archivo de structs.
     */
     void set_character(std::string name, const character_t &character);
     
     /*
         Devuelve el CharId asociado al player_name.
-        Lanza excepcion si player_name no existe.
+        Si no existe, lanza CharacterNotFoundException.
     */
-    CharId get_char_id(std::string player_name);
+    CharId get_char_id(std::string name);
 
     /*
         Devuelve el character asociado al name por movimiento.
-        Si no existe, lanza exception.
+        Si no existe, lanza CharacterNotFoundException.
     */
     character_t get_character(std::string name);
+
     /*
         Hace el dump del diccionario actual al archivo de diccionarios, junto
         con el char_count.
-        Para hacer saves esporadicos del diccionario.
-        TODO: Falta ver aca conectar algo que me de la informacion actual en el juego
-        de los characters(que son players en este momento), para yo hacer un get_character(),
-        actualizar lo que cambio, y hacer set_character (para todos los personajes que estan jugando).
     */
     void save();
+
+    /*
+        Imprime la informacion de un personaje.
+        Si no existe, lanza CharacterNotFoundException.
+    */
+    void print_character(std::string name);
+    
     /*
         Debe realizarse un save. 
     */
