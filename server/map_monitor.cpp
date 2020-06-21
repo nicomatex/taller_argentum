@@ -1,5 +1,7 @@
 #include "map_monitor.h"
 
+#include <atomic>
+
 MapMonitor::MapMonitor(nlohmann::json map_description) : map(map_description) {}
 
 MapMonitor::~MapMonitor() {}
@@ -22,16 +24,17 @@ void MapMonitor::with_player(ClientId client_id, const Action& action) {
     map.with_entity(client_map.at(client_id), action);
 }
 
-nlohmann::json MapMonitor::get_position_data() {
+nlohmann::json MapMonitor::get_update_data(bool& update_entities) {
+    nlohmann::json map_data;
     m.lock();
-    PositionMap copy = map.get_position_map();
+    PositionMap position_map_copy = map.get_position_map();
+    if (update_entities || map.is_dirty()) {
+        update_entities = true;
+        map_data["entities"] = map.get_entity_data();
+    }
     m.unlock();
-    return Map::get_position_data(copy);
-}
-
-nlohmann::json MapMonitor::get_entity_data() {
-    std::unique_lock<std::mutex> l(m);
-    return map.get_entity_data();
+    map_data["positions"] = Map::get_position_data(position_map_copy);
+    return map_data;
 }
 
 nlohmann::json MapMonitor::get_map_data() {

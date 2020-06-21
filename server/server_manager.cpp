@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "../nlohmann/json.hpp"
+#include "event_factory.h"
 
 // Temp
 #include <iostream>
@@ -38,20 +39,19 @@ void ServerManager::add_client(ClientId client_id, SocketManager* new_client) {
 }
 
 void ServerManager::add_player(MapId map_id, ClientId client_id,
-                               nlohmann::json player_info) {
+                               nlohmann::json player_data) {
+    MapMonitor& map_monitor(map_manager[map_id]);
     // Añadimos el jugador al mapa
-    player_info["player_id"] =
-        map_manager[map_id].add_player(client_id, player_info);
+    player_data["player_id"] = map_monitor.add_player(client_id, player_data);
     client_to_map[client_id] = map_id;
 
-    // Enviamos la información del mapa
-    nlohmann::json map_data = map_manager[map_id].get_map_data();
-    map_data["ev_id"] = 1;
-    clients[client_id]->send(Event(map_data));
-
-    // Enviamos la información del jugador
-    player_info["ev_id"] = 0;
-    clients[client_id]->send(Event(player_info));
+    // Enviamos la información de inicialización del mapa y del jugador
+    nlohmann::json map_data = map_monitor.get_map_data();
+    clients[client_id]->send(
+        EventFactory::initialize_map(map_data, player_data));
+    bool update = true;
+    clients[client_id]->send(
+        EventFactory::update_entities(map_monitor.get_update_data(update)));
 
     // Lo agregamos a la session correspondiente
     sessions.at(map_id).add_client(client_id);

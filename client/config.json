@@ -1,7 +1,7 @@
 {
-	"server":"localhost",
-	"port":"8080",
-	"window width":960,
-	"window height":640,
+	"server": "181.229.159.189",
+	"port": "27016",
+	"window width": 1280,
+	"window height": 720,
 	"fullscreen": false
 }

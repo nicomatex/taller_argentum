@@ -1,6 +1,7 @@
 #include "command_handler.h"
 
 #include "../nlohmann/json.hpp"
+#include "event_factory.h"
 #include "map_monitor.h"
 #include "server_manager.h"
 
@@ -21,23 +22,20 @@ void CommandHandler::parse_line(const std::string& line) {
 
 void CommandHandler::run_handler() {
     nlohmann::json json = event.get_json();
-    parse_line(json["command"]);
+    parse_line(json["msg"]);
 
     ServerManager& server_manager = ServerManager::get_instance();
-    nlohmann::json response;
-    response["ev_id"] = 4;
 
     switch (cmd_type) {
         case CMD_WHISPER:
-            // response["text"] =
+            // response["msg"] =
             //     server_manager.get_player_name(json["client_id"]) + cmd[1];
             // server_manager.send_to(server_manager.get_client_id(cmd[0]),
             // Event());
             break;
         default:
-            response["text"] = cmd[0];
             Session& session = server_manager.get_session(json["client_id"]);
-            session.broadcast(Event(response));
+            session.broadcast(EventFactory::chat_message(cmd[0]));
             break;
     }
 }

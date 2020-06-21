@@ -5,7 +5,7 @@
 
 #include "player.h"
 
-Map::Map(nlohmann::json map_description) {
+Map::Map(nlohmann::json map_description) : dirty(false) {
     int height = map_description["height"];
     int width = map_description["width"];
 
@@ -31,6 +31,7 @@ EntityId Map::get_next_id() {
 }
 
 void Map::add_entity(Entity* entity, position_t position) {
+    dirty = true;
     position_map[entity->get_id()] = position;
     entity_matrix[position.x][position.y].emplace(entity->get_id());
     entity_map.emplace(entity->get_id(), entity);
@@ -117,6 +118,10 @@ nlohmann::json Map::get_entity_data() {
 
 nlohmann::json Map::get_map_data() {
     return visual_map_info;
+}
+
+bool Map::is_dirty() const {
+    return dirty;
 }
 
 Map::~Map() {}

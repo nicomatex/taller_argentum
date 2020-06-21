@@ -32,6 +32,7 @@ typedef std::unordered_set<position_t, PositionHasher, PositionComparator>
 
 class Map {
    private:
+    bool dirty;
     PositionMap position_map;
     // Set de ids de lo que hay en cada posicion.
     std::unordered_set<EntityId> entity_matrix[MAP_SIZE][MAP_SIZE];
@@ -75,6 +76,7 @@ class Map {
     const PositionMap get_position_map() const;
     nlohmann::json get_entity_data();
     nlohmann::json get_map_data();
+    bool is_dirty() const;
 };
 
 #endif

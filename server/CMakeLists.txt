@@ -29,6 +29,7 @@ add_library(server
   action_move.cpp
   map_monitor.cpp
   command_handler.cpp
+  event_factory.cpp
 )
 
 target_link_libraries(server

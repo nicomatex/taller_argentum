@@ -101,7 +101,8 @@ Socket::Socket(const std::string& node, const std::string& port)
     : _is_open(false), _is_connected(false) {
     socketfd = socket_setup(node.c_str(), port.c_str(), connect, 0);
     if (socketfd < 0)
-        throw MyException("No se pudo abrir el socket indicado");
+        throw MyException("Socket: No se pudo abrir el socket indicado: %s %s",
+                          node.c_str(), port.c_str());
     _is_connected = true;
 }
 

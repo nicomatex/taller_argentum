@@ -1,10 +1,12 @@
 #ifndef __MAP_MONITOR_H
 #define __MAP_MONITOR_H
+
 #include <mutex>
+
 #include "../include/types.h"
-#include "map.h"
-#include "action.h"
 #include "../nlohmann/json.hpp"
+#include "action.h"
+#include "map.h"
 
 // Clave: id de cliente, valor: id de entidad del jugador.
 typedef std::unordered_map<ClientId, EntityId> ClientMap;
@@ -20,16 +22,14 @@ class MapMonitor {
     ~MapMonitor();
     /* Devuelve el id de entidad asignado dentro del mapa al jugador. */
     EntityId add_player(ClientId client_id, nlohmann::json player_info);
-    
+
     /* Actualiza el estado del mapa. */
     void update(uint64_t delta_t);
 
     /* Ejecuta sobre la entidad asociada al client_id la accion. */
-    void with_player(ClientId client_id,const Action& action);
+    void with_player(ClientId client_id, const Action& action);
 
-    nlohmann::json get_position_data();
-
-    nlohmann::json get_entity_data();
+    nlohmann::json get_update_data(bool& update_entities);
 
     nlohmann::json get_map_data();
 };

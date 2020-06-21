@@ -11,12 +11,13 @@ typedef struct position {
 } position_t;
 
 inline void to_json(nlohmann::json& j, const position_t& p) {
-    j["pos"] = {p.x, p.y};
+    j["pos"]["x"] = p.x;
+    j["pos"]["y"] = p.y;
 }
 
 inline void from_json(const nlohmann::json& j, position_t& p) {
-    j.at("pos")[0].get_to(p.x);
-    j.at("pos")[1].get_to(p.y);
+    j["pos"]["x"].get_to(p.x);
+    j["pos"]["y"].get_to(p.y);
 }
 
 class PositionHasher {
