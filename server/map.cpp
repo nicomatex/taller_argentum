@@ -71,14 +71,22 @@ void Map::move(EntityId entity_id, steps_t steps) {
               << std::endl;
 }
 
+position_t Map::get_nearest_free_position(position_t position){
+    while(collides(position)){
+        position.x++;
+    }
+    return position;
+}
+
 EntityId Map::add_player(nlohmann::json player_info) {
     EntityId entity_id = get_next_id();
     Player* player =
         new Player(entity_id, int(player_info["head_id"]),
                    int(player_info["body_id"]), player_info["name"], *this);
     position_t player_position = player_info["pos"];
+    position_t nearest_position = get_nearest_free_position(player_position);
 
-    add_entity(player, player_position);
+    add_entity(player, nearest_position);
 
     return entity_id;
 }

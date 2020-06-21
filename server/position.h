@@ -23,7 +23,7 @@ inline void from_json(const nlohmann::json& j, position_t& p) {
 class PositionHasher {
    public:
     std::size_t operator()(const position_t& position) const noexcept {
-        boost::hash<int> hasher;
+        boost::hash<unsigned int> hasher;
         return hasher(position.x) ^ hasher(position.y);
     }
 };

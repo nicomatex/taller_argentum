@@ -11,7 +11,7 @@
 
 ServerManager::ServerManager()
     : map_manager("assets/maps/forest1.json"),
-      accepter(Socket("8080", 10)),
+      accepter(Socket("27016", 10)),
       game_loop(map_manager) {
     std::vector<MapId> v = map_manager.get_ids();
     for (auto& it : v) {
