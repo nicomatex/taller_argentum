@@ -76,8 +76,7 @@ EntityId Map::add_player(nlohmann::json player_info) {
     Player* player =
         new Player(entity_id, int(player_info["head_id"]),
                    int(player_info["body_id"]), player_info["name"], *this);
-    position_t player_position = {int(player_info["pos"]["x"]),
-                                  int(player_info["pos"]["y"])};
+    position_t player_position = player_info["pos"];
 
     add_entity(player, player_position);
 

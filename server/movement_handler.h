@@ -1,7 +1,7 @@
 #ifndef MOVEMENT_HANDLER_H
 #define MOVEMENT_HANDLER_H
 
-#include "event.h"
+#include "../include/event.h"
 #include "th_event_handler.h"
 
 #ifndef MOVEMENT_ACTION_T           // TODO: PONER EN  DISTINTOS HEADERS

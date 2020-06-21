@@ -1,7 +1,7 @@
 #ifndef CLIENT_INITIALIZER_H
 #define CLIENT_INITIALIZER_H
 
-#include "event.h"
+#include "../include/event.h"
 #include "th_event_handler.h"
 
 class ClientInitializeHandler : public ThEventHandler {

@@ -1,6 +1,6 @@
 {
-	"server": "181.229.159.189",
-	"port": "27016",
+	"server": "localhost",
+	"port": "8080",
 	"window width": 1280,
 	"window height": 720,
 	"fullscreen": false
