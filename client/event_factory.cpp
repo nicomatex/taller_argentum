@@ -46,3 +46,11 @@ Event EventFactory::movement_event(movement_action_t action, direction_t directi
     return Event(event);
 }
 
+Event EventFactory::drop_event(){
+    json event = 
+    {
+        {"ev_id",-1}
+    };
+    return  Event(event);
+}
+

@@ -64,10 +64,15 @@ void UiEventHandler::handle_keydown_backspace() {
     if (text_input_enabled) chat->input_erase();
 }
 
+void UiEventHandler::handle_quit() {
+    running = false;
+    socket_manager.send(EventFactory::drop_event());
+}
+
 void UiEventHandler::handle() {
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
-        if (e.type == SDL_QUIT) running = false;
+        if (e.type == SDL_QUIT) handle_quit();
         if (e.type == SDL_KEYDOWN) {
             if (e.key.repeat == 0) {
                 switch (e.key.keysym.sym) {

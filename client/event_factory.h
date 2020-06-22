@@ -29,6 +29,9 @@ class EventFactory {
     movimiento y en que direccion.*/
     static Event movement_event(movement_action_t action,
                                 direction_t direction);
+
+    /* Evento de desconexion*/
+    static Event drop_event();
 };
 
 #endif
