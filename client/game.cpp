@@ -3,6 +3,7 @@
 #include "client_config.h"
 #include "engine/ECS/entity.h"
 #include "engine/ECS/entity_manager.h"
+#include "engine/resource_manager.h"
 
 Game::Game(int follow_entity_id, SocketManager &socket_manager,
            SDLWindow &window, ChatBuffer &chat_buffer)
@@ -20,7 +21,8 @@ Game::~Game() {}
 void Game::setup_map(nlohmann::json map_info) { map.generate(map_info); }
 
 void Game::run() {
-    Chat chat(AREA_CHAT, CHAT_LINES, window.get_renderer());
+    Chat chat(AREA_CHAT, CHAT_LINES, window.get_renderer(),
+              ResourceManager::get_instance().get_font(1));
     ui_event_handler.attach_chat(&chat);
     while (running) {
         window.fill(0, 0, 0, 255);

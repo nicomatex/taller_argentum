@@ -4,13 +4,13 @@
 
 TextBox::TextBox(SDL_Rect render_area, const std::string& font_file,
                  SDL_Renderer* renderer, int nlines, SDL_Color font_color,
-                 SDL_Color background_color)
+                 SDL_Color background_color,TTF_Font* font)
     : render_area(render_area),
       renderer(renderer),
       nlines(nlines),
       background_color(background_color) {
     for (int i = 0; i < nlines; i++) {
-        render_lines.emplace_back("", font_file, font_color, renderer);
+        render_lines.emplace_back("", font, font_color, renderer);
     }
 }
 

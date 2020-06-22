@@ -96,9 +96,24 @@ void ResourceManager::_load_animations(const std::string& sprite_index_file) {
     }
 }
 
+void ResourceManager::_load_fonts(const std::string& font_index_file) {
+    std::ifstream input_file(font_index_file);
+    json fonts_info = json::parse(input_file);
+    std::string basedir = fonts_info["basedir"];
+    for (auto& font : fonts_info["fonts"].items()) {
+        json font_info = font.value();
+        std::string filename = font_info["filename"];
+        std::string font_address = basedir + filename;
+        int font_id = font_info["id"];
+        TTF_Font* ttf_font = TTF_OpenFont(font_address.c_str(), 28);
+        font_map.insert(std::make_pair(font_id, ttf_font));
+    }
+}
+
 void ResourceManager::init(SDLTextureLoader& loader) {
     _load_textures(loader, TEXTURE_INDEX_FILE);
     _load_animations(SPRITE_INDEX_FILE);
+    _load_fonts(FONT_INDEX_FILE);
 }
 
 ResourceManager& ResourceManager::get_instance() {
@@ -119,6 +134,13 @@ SDLSprite& ResourceManager::get_sprite(const std::string& type, int id) {
     return sprite_map.at(type).at(id);
 }
 
+TTF_Font* ResourceManager::get_font(int id) { return font_map.at(id); }
 ResourceManager::ResourceManager() {}
+
+void ResourceManager::free_resources() {
+    for (auto& it : font_map) {
+        TTF_CloseFont(it.second);
+    }
+}
 
 ResourceManager::~ResourceManager() {}

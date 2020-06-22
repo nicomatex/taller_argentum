@@ -24,13 +24,13 @@
 using json = nlohmann::json;
 
 GameClient::GameClient(json config)
-    : window(int(config["window width"]), int(config["window height"]),
+    : window(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT,
              WINDOW_TITLE),
       socket_manager(
           Socket(std::string(config["server"]), std::string(config["port"])),
           receive_handler),
       config(config),
-      receive_handler(map_change_buffer,chat_buffer) {
+      receive_handler(map_change_buffer, chat_buffer) {
     try {
         SDLTextureLoader texture_loader(window.init_renderer());
         ResourceManager::get_instance().init(texture_loader);
@@ -44,7 +44,8 @@ GameClient::GameClient(json config)
 
 void GameClient::run() {
     map_change_buffer.wait_for_map();
-    Game game(map_change_buffer.get_follow_entity_id(), socket_manager, window,chat_buffer);
+    Game game(map_change_buffer.get_follow_entity_id(), socket_manager, window,
+              chat_buffer);
     game.setup_map(map_change_buffer.get_map_info());
 
     game.run();
@@ -57,4 +58,4 @@ void GameClient::run() {
     socket_manager.join();
 }
 
-GameClient::~GameClient() {}
+GameClient::~GameClient() { ResourceManager::get_instance().free_resources(); }

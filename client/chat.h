@@ -3,17 +3,18 @@
 
 #include "engine/UI/text_box.h"
 #include "engine/UI/text_input.h"
+#include "SDL2/SDL_ttf.h"
 
 class Chat {
    private:
     TextInput text_input;
     TextBox text_box;
-
+    
    public:
     /* La altura del area pasada por parametro sera dividida entre las n lineas,
     una de las cuales se utilizara para la entrada de texto, y las otras
     n - 1 para mostrar los mensajes del chat. */
-    Chat(SDL_Rect chat_area, int nlines, SDL_Renderer* renderer);
+    Chat(SDL_Rect chat_area, int nlines, SDL_Renderer* renderer, TTF_Font* font);
     ~Chat();
 
     /* Agrega caracteres al input box del chat. */

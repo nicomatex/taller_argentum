@@ -4,9 +4,9 @@
 
 TextInput::TextInput(SDL_Rect render_area, const std::string& font_file,
                      SDL_Renderer* renderer, SDL_Color font_color,
-                     SDL_Color background_color)
+                     SDL_Color background_color,TTF_Font* font)
     : render_area(render_area),
-      render_text("", font_file, font_color, renderer),
+      render_text("", font, font_color, renderer),
       enabled(false),
       renderer(renderer),
       render_blink(true),

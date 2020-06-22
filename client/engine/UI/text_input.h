@@ -5,6 +5,7 @@
 
 #include "../SDL/sdl_text.h"
 #include "../SDL/sdl_timer.h"
+#include "SDL2/SDL_ttf.h"
 
 class TextInput {
    private:
@@ -22,7 +23,7 @@ class TextInput {
    public:
     TextInput(SDL_Rect render_area, const std::string& font_file,
               SDL_Renderer* renderer, SDL_Color font_color,
-              SDL_Color background_color);
+              SDL_Color background_color, TTF_Font* font);
     ~TextInput();
     /* Agrega caracteres al texto. */
     void add_characters(char* characters);

@@ -4,10 +4,9 @@
 #include "sdl_config.h"
 #include "sdl_error.h"
 #include <iostream>
-SDLText::SDLText(const std::string& text, const std::string& font_file,
+SDLText::SDLText(const std::string& text, TTF_Font* font,
                  SDL_Color color, SDL_Renderer* renderer)
-    : SDLTexture(renderer),text_color(color) {
-    font = TTF_OpenFont(font_file.c_str(), 28);
+    : SDLTexture(renderer),text_color(color),font(font) {
 
     if (!font) {
         throw SDLError(ERR_TEXT_FONT);
@@ -29,12 +28,13 @@ SDLText& SDLText::operator=(SDLText&& other) {
     return *this;
 }
 
-SDLText::~SDLText() { TTF_CloseFont(font); }
+SDLText::~SDLText() {}
 
 void SDLText::update_text(const std::string& text) {
     if (this->texture) {
         SDL_DestroyTexture(this->texture);
     }
+
     std::string render_text;
     if(text.size() == 0){
         render_text = " ";

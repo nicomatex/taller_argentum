@@ -20,7 +20,7 @@ class TextBox {
    public:
     TextBox(SDL_Rect render_area, const std::string& font_file,
             SDL_Renderer* renderer, int nlines, SDL_Color font_color,
-            SDL_Color background_color);
+            SDL_Color background_color,TTF_Font* font);
     ~TextBox();
     void erase_all();
     void add_line(std::string string);

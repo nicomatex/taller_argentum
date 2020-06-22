@@ -1,0 +1,9 @@
+{
+	"basedir":"assets/fonts/",
+	"fonts":[
+		{
+			"id":1,
+			"filename":"arial.ttf"
+		}
+	]
+}
