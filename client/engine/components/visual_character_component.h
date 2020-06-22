@@ -11,7 +11,6 @@ class VisualCharacterComponent : public Component {
    private:
     Camera* camera;
     Parts parts;
-    std::mutex m;
     int transition_offset_x;
     int transition_offset_y;
     SDLTimer transition_timer;
@@ -25,6 +24,8 @@ class VisualCharacterComponent : public Component {
     int head_id;
     int body_id;
     //Eventualmente de las demas partes
+
+    std::mutex m;
    public:
 
     VisualCharacterComponent(int head_id, int body_id, int weapon_id, int offhand_id, int speed);

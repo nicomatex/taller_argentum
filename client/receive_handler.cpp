@@ -63,19 +63,24 @@ void ClientReceiveHandler::handle_initialization(Event &ev) {
 
 void ClientReceiveHandler::handle_entity_update(Event &ev) {
     json entities_info = ev.get_json();
+    EntityManager::get_instance().update_initialize();
     for (auto &it : entities_info["entities"].items() ) {
         json entity_info = it.value();
+        std::cout << std::setw(4) << entity_info << std::endl;
         if (!EntityManager::get_instance().has_entity(entity_info["entity_id"])){
             EntityFactory::create_player(entity_info["entity_id"],
                                          entity_info["head_id"],
                                          entity_info["body_id"], 0, 0);
         } else {
+            std::cout << "Solicitando entidad con id " << entity_info["entity_id"] << std::endl;
             Entity &entity =
                 EntityManager::get_instance().get_from_id(entity_info["entity_id"]);
             entity.get_component<VisualCharacterComponent>().set_body(entity_info["body_id"]);
             entity.get_component<VisualCharacterComponent>().set_head(entity_info["head_id"]);
         }
     }
+    EntityManager::get_instance().remove_non_updated();
+    EntityManager::get_instance().clean();
 }
 
 void ClientReceiveHandler::handle_chat_message(Event &ev){

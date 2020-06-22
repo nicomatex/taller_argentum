@@ -31,7 +31,7 @@ class Camera {
 
     int speed;  // En tiles/segundo.
 
-    const PositionComponent &follow_component;
+    PositionComponent &follow_component;
 
     /* Devuelve true si un componente visual esta dentro del campo
     de vision de la camara.*/
@@ -45,7 +45,7 @@ class Camera {
     void _update_offset();
 
    public:
-    Camera(const PositionComponent &follow_component, int map_size,
+    Camera(PositionComponent &follow_component, int map_size,
            int tile_size, int viewport_width, int viewport_height, int speed);
     ~Camera();
 

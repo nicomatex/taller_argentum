@@ -33,6 +33,7 @@ la componente de posicion. */
 }
 
 void VisualCharacterComponent::set_head(int new_head_id) {
+    std::unique_lock<std::mutex> l(m);
     if(new_head_id == head_id) return;
     Actor head(ResourceManager::get_instance().get_animation_pack("heads",
                                                                   new_head_id),
@@ -45,6 +46,7 @@ void VisualCharacterComponent::set_head(int new_head_id) {
 }
 
 void VisualCharacterComponent::set_body(int new_body_id) {
+    std::unique_lock<std::mutex> l(m);
     if(new_body_id == body_id) return;
     Actor body(ResourceManager::get_instance().get_animation_pack("bodies",
                                                                   new_body_id),
@@ -57,6 +59,7 @@ void VisualCharacterComponent::set_body(int new_body_id) {
 }
 
 void VisualCharacterComponent::draw(Camera& camera) {
+    std::unique_lock<std::mutex> l(m);
     for (auto& it : parts) {
         camera.draw(&(it.second), current_x, current_y, transition_offset_x,
                     transition_offset_y);
@@ -64,12 +67,14 @@ void VisualCharacterComponent::draw(Camera& camera) {
 }
 
 Actor& VisualCharacterComponent::get_part(const std::string& type) {
+    std::unique_lock<std::mutex> l(m);
     return parts.at(type);
 }
 
 VisualCharacterComponent::~VisualCharacterComponent() {}
 
 void VisualCharacterComponent::bind_to_camera(Camera& bind_camera) {
+    std::unique_lock<std::mutex> l(m);
     camera = &bind_camera;
 }
 
@@ -155,6 +160,7 @@ void VisualCharacterComponent::_update_animation(int delta_x, int delta_y) {
 }
 
 void VisualCharacterComponent::update() {
+    std::unique_lock<std::mutex> l(m);
     /* Se actualiza la posicion de todos los actores para matchear con
     la componente de posicion. */
     int new_x = entity->get_component<PositionComponent>().get_x();

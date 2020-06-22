@@ -10,7 +10,7 @@
 #include "decoration.h"
 #include "engine_config.h"
 
-Camera::Camera(const PositionComponent &follow_component, int map_size,
+Camera::Camera(PositionComponent &follow_component, int map_size,
                int tile_size, int viewport_width, int viewport_height,
                int speed)
     : follow_component(follow_component),

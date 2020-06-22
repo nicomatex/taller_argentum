@@ -10,15 +10,14 @@ class PositionComponent: public Component {
 	int x;
 	int y;
 	std::mutex m;
-	
    public:
    	PositionComponent();
 	PositionComponent(int x, int y);
 	~PositionComponent();
 	void init() override;
 	void update() override;
-	int get_x() const;
-	int get_y() const;
+	int get_x();
+	int get_y();
 	void set_position(int x, int y);
 };
 

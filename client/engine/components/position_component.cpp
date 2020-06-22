@@ -14,11 +14,13 @@ void PositionComponent::init() {}
 
 void PositionComponent::update() {}
 
-int PositionComponent::get_x() const{
+int PositionComponent::get_x(){
+    std::unique_lock<std::mutex> l(m);
     return x;
 }
 
-int PositionComponent::get_y() const{
+int PositionComponent::get_y(){
+    std::unique_lock<std::mutex> l(m);
     return y;
 }
 
