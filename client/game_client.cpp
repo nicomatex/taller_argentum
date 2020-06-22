@@ -26,15 +26,28 @@ using json = nlohmann::json;
 GameClient::GameClient(json config)
     : window(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT,
              WINDOW_TITLE),
-      socket_manager(
-          Socket(std::string(config["server"]), std::string(config["port"])),
-          receive_handler),
+      socket_manager(Socket(std::string(config["server"]),
+                     std::string(config["port"])), receive_handler),
       config(config),
       receive_handler(map_change_buffer, chat_buffer) {
     try {
+        std::cout << R"(
+   _____                                      __                       ________           .__   .__                 
+  /  _  \  _______    ____    ____    ____  _/  |_  __ __   _____      \_____  \    ____  |  |  |__|  ____    ____
+ /  /_\  \ \_  __ \  / ___\ _/ __ \  /    \ \   __\|  |  \ /     \      /   |   \  /    \ |  |  |  | /    \ _/ __ \
+/    |    \ |  | \/ / /_/  >\  ___/ |   |  \ |  |  |  |  /|  Y Y  \    /    |    \|   |  \|  |__|  ||   |  \\  ___/
+\____|__  / |__|    \___  /  \___  >|___|  / |__|  |____/ |__|_|  /    \_______  /|___|  /|____/|__||___|  / \___  >
+        \/         /_____/       \/      \/                     \/             \/      \/                \/      \/
+)"      << std::endl;
+        std::string char_name;
+        std::string password;
+        std::cout << "Usuario: "; 
+        std::cin >> char_name;
+        std::cout << "Contraseña: ";
+        std::cin >> password;
         SDLTextureLoader texture_loader(window.init_renderer());
         ResourceManager::get_instance().init(texture_loader);
-        socket_manager.send(EventFactory::connect_event("nicolito", "1234"));
+        socket_manager.send(EventFactory::connect_event(char_name, password));
     } catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
     }

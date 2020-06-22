@@ -11,31 +11,16 @@ ClientInitializeHandler::~ClientInitializeHandler() {}
 
 void ClientInitializeHandler::run_handler() {
     ServerManager& server_manager = ServerManager::get_instance();
-    /*
-        TODO: incluye crear archivos ejemplo de persistencia
-            - lectura de disco
-            - creación de json con información de la entidad
-    */
-    /*
-        DONE:
-        Como primera aproximacion hardcodear el player:
-            nombre: string
-            mapa: id
-            posicion: {x,y}
-            id_cabeza:
-            id_cuerpo:
-    */
-
+    CharacterManager& char_manager = server_manager.get_character_manager();
     nlohmann::json connect_info = event.get_json();
     std::string player_name = connect_info["player"]["name"];
     std::cout << "Entered ClientInitializerHandler\n";
-    // Aca haría el lookup usando el name
-    nlohmann::json player_info = {{"name", player_name},
-                                  {"map", 0},
-                                  {"pos", position_t{10, 10}},
-                                  {"head_id", 2},
-                                  {"body_id", 2}};
-    int map_id = 0;
-    server_manager.add_player(map_id, ClientId(connect_info["client_id"]),
+    character_t character = char_manager.get_character(player_name);
+    nlohmann::json player_info = {{"name", character.name},
+                                  {"map_id", character.map_id},
+                                  {"pos", character.position},
+                                  {"head_id", character.head_id},
+                                  {"body_id", character.body_id}};
+    server_manager.add_player(character.map_id, ClientId(connect_info["client_id"]),
                               player_info);
 }

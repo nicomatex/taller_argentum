@@ -10,6 +10,8 @@
 #include "player.h"
 #include "session.h"
 #include "th_client_accepter.h"
+#include "character_manager.h"
+
 
 typedef enum client_status {
     STATUS_CONNECTING,
@@ -20,6 +22,7 @@ typedef enum client_status {
 
 class ServerManager {
    private:
+    CharacterManager char_manager;
     MapManager map_manager;
     std::unordered_map<MapId, Session> sessions;
     std::unordered_map<ClientId, MapId> client_to_map;
@@ -53,6 +56,8 @@ class ServerManager {
     Session& get_session(ClientId client_id);
 
     void finish();
+
+    CharacterManager& get_character_manager();
 
     ~ServerManager();
 };

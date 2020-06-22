@@ -11,9 +11,29 @@
 #include <iostream>
 
 ServerManager::ServerManager()
-    : map_manager("assets/maps/forest1.json"),
+    : char_manager("../characters.dat", "../characters.json"),
+      map_manager("assets/maps/forest1.json"),
       accepter(Socket("27016", 10)),
       game_loop(map_manager) {
+
+    if (!char_manager.character_exists("nicolitox")) {
+        character_t character_nico;
+        character_nico = char_manager.create_character("nicolitox", 0, position_t{18,15}, 1, 2);
+        char_manager.add_character(character_nico); 
+    }
+    
+    if (!char_manager.character_exists("xxtaielxx")) {
+        character_t character_taiel;
+        character_taiel = char_manager.create_character("xxtaielxx", 0, position_t{20,21}, 2, 2);
+        char_manager.add_character(character_taiel);
+    }
+    
+    if (!char_manager.character_exists("fran")) {
+        character_t character_fran;
+        character_fran = char_manager.create_character("fran", 0, position_t{13,10}, 2, 1);
+        char_manager.add_character(character_fran);
+    }
+
     std::vector<MapId> v = map_manager.get_ids();
     for (auto& it : v) {
         std::cerr << "ServerManager: creating session for map id: " << it
@@ -125,6 +145,10 @@ MapMonitor& ServerManager::get_map(MapId map_id) {
 
 Session& ServerManager::get_session(ClientId client_id) {
     return sessions.at(client_to_map.at(client_id));
+}
+
+CharacterManager& ServerManager::get_character_manager() {
+    return char_manager;
 }
 
 ServerManager::~ServerManager() {}

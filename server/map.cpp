@@ -131,7 +131,7 @@ nlohmann::json Map::rm_player(EntityId entity_id) {
     position_map.erase(entity_id);
     collision_map.erase(position);
     entity_matrix[position.x][position.y].erase(entity_id);
-    player_data["pos"] = {position};
+    player_data["pos"] = position;
     return player_data;
 }
 
