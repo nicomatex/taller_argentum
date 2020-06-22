@@ -9,7 +9,7 @@
 
 class ClientIdSet {
    private:
-    std::mutex mutex;
+    std::mutex m;
     std::unordered_set<ClientId> clients;
 
    public:

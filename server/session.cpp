@@ -23,12 +23,12 @@ void Session::join() {
     observer.join();
 }
 
-void Session::add_client(int new_client) {
+void Session::add_client(ClientId new_client) {
     observer.refresh_entities();
     clients.add_client(new_client);
 }
 
-void Session::rm_client(int id) {
+void Session::rm_client(ClientId id) {
     clients.rm_client(id);
 }
 

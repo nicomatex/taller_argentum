@@ -1,6 +1,7 @@
 #include "client_initializer_handler.h"
-#include "position.h"
+
 #include "map.h"
+#include "position.h"
 #include "server_manager.h"
 
 ClientInitializeHandler::ClientInitializeHandler(Event ev)
@@ -27,11 +28,11 @@ void ClientInitializeHandler::run_handler() {
 
     nlohmann::json connect_info = event.get_json();
     std::string player_name = connect_info["player"]["name"];
-    std::cout << "Entered ClientInitializerHandler\n"; 
+    std::cout << "Entered ClientInitializerHandler\n";
     // Aca haría el lookup usando el name
     nlohmann::json player_info = {{"name", player_name},
                                   {"map", 0},
-                                  {"pos",position_t{5,2}},
+                                  {"pos", position_t{10, 10}},
                                   {"head_id", 2},
                                   {"body_id", 2}};
     int map_id = 0;

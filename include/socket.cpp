@@ -165,9 +165,7 @@ size_t Socket::send(const char* bytes, size_t lenght) {
 
     while (sent < lenght && _is_connected) {
         count = _send(socketfd, &bytes[sent], lenght - sent);
-        if (count == SENT_ERROR) {
-            throw MyException("Error in Socket Send");
-        } else if (count == CONECTION_CLOSED) {
+        if (count == SENT_ERROR || count == CONECTION_CLOSED) {
             _is_connected = false;
             throw ConnectionClosedSocketException();
         } else {

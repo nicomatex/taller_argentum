@@ -28,7 +28,9 @@ class ThEventHandler : public Thread {
             running = true;
             run_handler();
         } catch (const std::exception& e) {
-            std::cerr << e.what() << std::endl;
+            std::cerr << "EventHandler: " << e.what() << std::endl;
+        } catch (...) {
+            std::cerr << "EventHandler: Unknown exception" << std::endl;
         }
         running = false;
     }

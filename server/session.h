@@ -25,9 +25,9 @@ class Session {
 
     void join();
 
-    void add_client(int new_client);
+    void add_client(ClientId new_client);
 
-    void rm_client(int id);
+    void rm_client(ClientId id);
 
     void broadcast(const Event& ev);
 

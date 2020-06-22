@@ -8,7 +8,7 @@ int main(const int argc, const char* argv[]) try {
     server.run();
     return 0;
 } catch (const std::exception& e) {
-    std::cerr << e.what() << std::endl;
+    std::cerr << "ServerMain: " << e.what() << std::endl;
 } catch (...) {
-    std::cerr << "Unknown exception\n";
+    std::cerr << "ServerMain: Unknown exception" << std::endl;
 }

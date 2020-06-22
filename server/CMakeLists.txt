@@ -30,6 +30,7 @@ add_library(server
   map_monitor.cpp
   command_handler.cpp
   event_factory.cpp
+  client_drop_handler.cpp
 )
 
 target_link_libraries(server

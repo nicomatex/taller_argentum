@@ -14,6 +14,13 @@ EntityId MapMonitor::add_player(ClientId client_id,
     return entity_id;
 }
 
+nlohmann::json MapMonitor::rm_player(ClientId client_id) {
+    std::unique_lock<std::mutex> l(m);
+    EntityId player_id = client_map.at(client_id);
+    client_map.erase(client_id);
+    return map.rm_player(player_id);
+}
+
 void MapMonitor::update(uint64_t delta_t) {
     std::unique_lock<std::mutex> l(m);
     map.update(delta_t);

@@ -9,7 +9,7 @@ void ThSocketSender::handle(Event& ev) {
     try {
         protocol << ev;
     } catch (const ConnectionClosedSocketException& e) {
-        stop();
+        throw EventHandlerStoppedException();
     }
 }
 

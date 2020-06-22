@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 
+#include "../include/socket_exception.h"
 #include "../nlohmann/json.hpp"
 #include "event_factory.h"
 
@@ -36,31 +37,61 @@ ThDispatcher& ServerManager::get_dispatcher() {
 
 void ServerManager::add_client(ClientId client_id, SocketManager* new_client) {
     clients.emplace(client_id, new_client);
+    clients_status[client_id] = STATUS_CONNECTING;
 }
 
 void ServerManager::add_player(MapId map_id, ClientId client_id,
                                nlohmann::json player_data) {
-    MapMonitor& map_monitor(map_manager[map_id]);
+    MapMonitor& map_monitor = map_manager[map_id];
     // Añadimos el jugador al mapa
     player_data["player_id"] = map_monitor.add_player(client_id, player_data);
     client_to_map[client_id] = map_id;
 
     // Enviamos la información de inicialización del mapa y del jugador
     nlohmann::json map_data = map_monitor.get_map_data();
-    clients[client_id]->send(
-        EventFactory::initialize_map(map_data, player_data));
-    bool update = true;
-    clients[client_id]->send(
-        EventFactory::update_entities(map_monitor.get_update_data(update)["entities"]));
+    clients_status[client_id] = STATUS_CONNECTED;
+    send_to(client_id, EventFactory::initialize_map(map_data, player_data));
 
     // Lo agregamos a la session correspondiente
     sessions.at(map_id).add_client(client_id);
 }
 
+void ServerManager::rm_client(ClientId client_id) {
+    SocketManager* client = clients.at(client_id);
+    clients.erase(client_id);
+    client->stop(true);
+    client->join();
+    clients_status[client_id] = STATUS_DISCONNECTED;
+    delete client;
+}
+
+nlohmann::json ServerManager::rm_player(ClientId client_id) {
+    // Eliminamos el jugador del mapa
+    MapId map_id = client_to_map.at(client_id);
+    client_to_map.erase(client_id);
+    nlohmann::json player_data = map_manager[map_id].rm_player(client_id);
+    player_data["map_id"] = map_id;
+
+    // Eliminamos el jugador de la session
+    sessions.at(map_id).rm_client(client_id);
+    std::cerr << "ServerManager: removing player: " << player_data << std::endl;
+    return player_data;
+}
+
+// void ServerManager::move_player(MapId to, ClientId client_id) {
+//     nlohmann::json player_info = rm_player(client_id);
+//     // Hacer algo con player_info
+//     add_player(to, client_id, player_info);
+// }
+
 void ServerManager::send_to(ClientId client_id, const Event& ev) {
-    // if (!clients.count(client_id))
-    //     throw ClientDisconnectedException();
-    clients[client_id]->send(ev);
+    try {
+        if (clients_status[client_id] == STATUS_CONNECTED)
+            clients[client_id]->send(ev);
+    } catch (const ConnectionClosedSocketException& e) {
+        clients_status[client_id] = STATUS_DROPPING;
+        dispatcher.push_event(EventFactory::drop_client(client_id));
+    }
 }
 
 void ServerManager::finish() {

@@ -1,6 +1,7 @@
 #include "th_dispatcher.h"
 
 #include "../nlohmann/json.hpp"
+#include "client_drop_handler.h"
 #include "client_initializer_handler.h"
 #include "command_handler.h"
 #include "movement_handler.h"
@@ -13,27 +14,36 @@
 ThDispatcher::ThDispatcher() {}
 
 void ThDispatcher::handle(Event& ev) {
-    nlohmann::json json_ev = ev.get_json();
-    std::cerr << "Dispatcher got: " << json_ev << std::endl;
-    ThEventHandler* handler;
-    int ev_id = json_ev["ev_id"];
-    switch (ev_id) {
-        case 0:
-            handler = new ClientInitializeHandler(ev);
-            break;
-        case 2:
-            handler = new MovementHandler(ev);
-            break;
-        case 4:
-            handler = new CommandHandler(ev);
-            break;
-        default:
-            std::cerr << "Dispatcher: No handler for: " << ev.get_json()
-                      << std::endl;
-            break;
+    try {
+        nlohmann::json json_ev = ev.get_json();
+        std::cerr << "Dispatcher got: " << json_ev << std::endl;
+        ThEventHandler* handler;
+        int ev_id = json_ev["ev_id"];
+        switch (ev_id) {
+            case -1:
+                handler = new ClientDropHandler(ev);
+                break;
+            case 0:
+                handler = new ClientInitializeHandler(ev);
+                break;
+            case 2:
+                handler = new MovementHandler(ev);
+                break;
+            case 4:
+                handler = new CommandHandler(ev);
+                break;
+            default:
+                std::cerr << "Dispatcher: No handler for: " << ev.get_json()
+                          << std::endl;
+                break;
+        }
+        handler->start();
+        handler->join();
+    } catch (const std::exception& e) {
+        std::cerr << "dispatcher: " << e.what() << std::endl;
+    } catch (...) {
+        std::cerr << "dispatcher: Unknown exception" << std::endl;
     }
-    handler->start();
-    handler->join();
 }
 
 ThDispatcher::~ThDispatcher() {}

@@ -2,6 +2,7 @@
 #define EVENT_FACTORY_H
 
 #include "../include/event.h"
+#include "../include/types.h"
 #include "../nlohmann/json.hpp"
 
 class EventFactory {
@@ -14,6 +15,8 @@ class EventFactory {
     static Event update_entities(const nlohmann::json& entity_data);
 
     static Event chat_message(const std::string& message);
+
+    static Event drop_client(ClientId client_id);
 };
 
 #endif  // EVENT_FACTORY_H

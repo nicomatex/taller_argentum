@@ -1,7 +1,7 @@
 #include "event_factory.h"
 
+#include <iostream>  //temp
 #include <string>
-#include <iostream> //temp
 
 Event EventFactory::initialize_map(const nlohmann::json& map_data,
                                    const nlohmann::json& player_data) {
@@ -31,4 +31,8 @@ Event EventFactory::chat_message(const std::string& message) {
     ev_json["ev_id"] = EV_ID_CHAT_MESSAGE;
     ev_json["msg"] = message;
     return Event(ev_json);
+}
+
+Event EventFactory::drop_client(ClientId client_id) {
+    return Event({{"ev_id", -1}, {"client_id", client_id}});
 }

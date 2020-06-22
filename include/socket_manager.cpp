@@ -1,6 +1,7 @@
 #include "socket_manager.h"
 
 #include "my_exception.h"
+#include "socket_exception.h"
 
 // Temp
 #include <iostream>
@@ -24,6 +25,9 @@ void SocketManager::start() {
 }
 
 void SocketManager::send(const Event& ev) {
+    if (!socket.is_connected()) {
+        throw ConnectionClosedSocketException();
+    }
     sender.push_event(ev);
 }
 

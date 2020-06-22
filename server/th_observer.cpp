@@ -36,7 +36,9 @@ void ThObserver::run() {
             sleep(dif);
         }
     } catch (const std::exception& e) {
-        std::cerr << e.what() << std::endl;
+        std::cerr << "Observer: " << e.what() << std::endl;
+    } catch (...) {
+        std::cerr << "Observer: Unknown exception" << std::endl;
     }
     std::cout << "Observer finished" << std::endl;
 }

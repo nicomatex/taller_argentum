@@ -17,7 +17,9 @@ void GameLoop::run() {
             sleep(TIME_STEP - (std::chrono::steady_clock::now() - start));
         }
     } catch (const std::exception& e) {
-        std::cerr << e.what() << std::endl;
+        std::cerr << "GameLoop: " << e.what() << std::endl;
+    } catch (...) {
+        std::cerr << "GameLoop: Unknown exception" << std::endl;
     }
     std::cout << "Gameloop finished" << std::endl;
 }

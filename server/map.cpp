@@ -2,6 +2,8 @@
 
 #include <iostream>  //temp
 #include <mutex>
+#include <queue>
+#include <unordered_set>
 
 #include "player.h"
 
@@ -71,10 +73,40 @@ void Map::move(EntityId entity_id, steps_t steps) {
               << std::endl;
 }
 
-position_t Map::get_nearest_free_position(position_t position){
-    while(collides(position)){
-        position.x++;
+position_t Map::get_nearest_free_position(position_t position) {
+    if (!collides(position))
+        return position;
+    std::queue<position_t> queue;
+    std::unordered_set<position_t, PositionHasher, PositionComparator> visited;
+    queue.push(position);
+    while (!queue.empty()) {
+        position_t p = queue.front();
+        queue.pop();
+        if (visited.count(p))
+            continue;
+        visited.emplace(p);
+        position_t aux = {p.x + 1, p.y};
+        if (!collides(aux))
+            return aux;
+        else
+            queue.push(aux);
+        aux = {p.x, p.y + 1};
+        if (!collides(aux))
+            return aux;
+        else
+            queue.push(aux);
+        aux = {p.x - 1, p.y};
+        if (!collides(aux))
+            return aux;
+        else
+            queue.push(aux);
+        aux = {p.x, p.y - 1};
+        if (!collides(aux))
+            return aux;
+        else
+            queue.push(aux);
     }
+
     return position;
 }
 
@@ -89,6 +121,18 @@ EntityId Map::add_player(nlohmann::json player_info) {
     add_entity(player, nearest_position);
 
     return entity_id;
+}
+
+nlohmann::json Map::rm_player(EntityId entity_id) {
+    Entity* player = entity_map.at(entity_id);
+    entity_map.erase(entity_id);
+    nlohmann::json player_data = player->get_data();
+    position_t position = position_map.at(entity_id);
+    position_map.erase(entity_id);
+    collision_map.erase(position);
+    entity_matrix[position.x][position.y].erase(entity_id);
+    player_data["pos"] = {position};
+    return player_data;
 }
 
 void Map::update(uint64_t delta_t) {

@@ -32,7 +32,9 @@ void ThClientAccepter::run() {
             }
         }
     } catch (const std::exception& e) {
-        std::cerr << e.what() << std::endl;
+        std::cerr << "ClientAccepter: " << e.what() << std::endl;
+    } catch (...) {
+        std::cerr << "ClientAccepter: Unknown Exception" << std::endl;
     }
 }
 

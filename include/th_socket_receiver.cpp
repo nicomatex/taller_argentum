@@ -42,9 +42,9 @@ void ThSocketReceiver::run() {
         if (running)
             throw *tmp;
     } catch (const std::exception& e) {
-        std::cerr << e.what() << std::endl;
+        std::cerr << "SocketRecvHandler: " << e.what() << std::endl;
     } catch (...) {
-        std::cerr << "Unknown exception" << std::endl;
+        std::cerr << "SocketRecvHandler: Unknown exception" << std::endl;
     }
 }
 

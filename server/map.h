@@ -65,6 +65,8 @@ class Map {
     /* Devuelve el id de entidad asignado dentro del mapa al jugador. */
     EntityId add_player(nlohmann::json player_info);
 
+    nlohmann::json rm_player(EntityId entity_id);
+
     /* Actualiza todas las entidades que contiene segun el delta_t
      * transcurrido.*/
     void update(uint64_t delta_t);

@@ -40,7 +40,9 @@ void BlockingThEventHandler::run() {
             }
         }
     } catch (const std::exception& e) {
-        std::cerr << e.what() << '\n';
+        std::cerr << "BlockingThEvHandler: " << e.what() << std::endl;
+    } catch (...) {
+        std::cerr << "BlockingThEvHandler: Unknown exception" << std::endl;
     }
 }
 

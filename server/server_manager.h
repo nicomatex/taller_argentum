@@ -11,12 +11,20 @@
 #include "session.h"
 #include "th_client_accepter.h"
 
+typedef enum client_status {
+    STATUS_CONNECTING,
+    STATUS_CONNECTED,
+    STATUS_DROPPING,
+    STATUS_DISCONNECTED
+} client_status_t;
+
 class ServerManager {
    private:
     MapManager map_manager;
     std::unordered_map<MapId, Session> sessions;
     std::unordered_map<ClientId, MapId> client_to_map;
     std::unordered_map<ClientId, SocketManager*> clients;
+    std::unordered_map<ClientId, client_status_t> clients_status;
     GameLoop game_loop;
     ThDispatcher dispatcher;
     ThClientAccepter accepter;
@@ -30,11 +38,12 @@ class ServerManager {
 
     void add_client(ClientId client_id, SocketManager* new_client);
 
-    // TODO
-    // Se crea la entidad player con la informaciónd del json y envía al jugador
-    // el mensaje de inicialización
     void add_player(MapId map_id, ClientId client_id,
                     nlohmann::json player_info);
+
+    void rm_client(ClientId client_id);
+
+    nlohmann::json rm_player(ClientId client_id);
 
     void send_to(ClientId client_id, const Event& ev);
 
