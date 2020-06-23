@@ -82,6 +82,40 @@
 
         ]
     },
+    "weapons": {
+        "basedir" : "assets/sprites/weapons/",
+        "textures":[
+            {
+                "id":1,
+                "filename": "2.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
+            },
+            {
+                "id":2,
+                "filename": "4.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
+            }
+        ]
+    },
+    "shields": {
+        "basedir" : "assets/sprites/shields/",
+        "textures":[
+            {
+                "id":1,
+                "filename": "2.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
+            },
+            {
+                "id":2,
+                "filename":"3.png",
+                "needs ckey": true,
+                "ckey": [0,0,0]
+            }
+        ]
+    },
     "npcs": {
         "basedir" : "assets/sprites/npc/",
         "textures":[

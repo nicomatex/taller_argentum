@@ -11,7 +11,7 @@
 #include <iostream>
 
 ServerManager::ServerManager()
-    : char_manager("../characters.dat", "../characters.json"),
+    : char_manager("database/characters.dat", "database/characters.json"),
       map_manager("assets/maps/forest1.json"),
       accepter(Socket("27016", 10)),
       game_loop(map_manager) {

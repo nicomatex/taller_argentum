@@ -867,6 +867,80 @@
                     }
                 }
             }
+        ],
+        "weapons":[
+            {
+                "id": 1,
+                "texture": 1,
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 48,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 96,
+                        "fps": 1,
+                        "frame height": 48,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 144,
+                        "fps": 1,
+                        "frame height": 48,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 48,
+                        "fps": 1,
+                        "frame height": 48,
+                        "frame width": 25,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 20,
+                        "frame height": 50,
+                        "frame width": 25,
+                        "frames": 6
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 100,
+                        "fps": 20,
+                        "frame height": 50,
+                        "frame width": 25,
+                        "frames": 4
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 150,
+                        "fps": 20,
+                        "frame height": 50,
+                        "frame width": 25,
+                        "frames": 4
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 50,
+                        "fps": 20,
+                        "frame height": 50,
+                        "frame width": 25,
+                        "frames": 6
+                    }
+                }
+            }
         ]
     },
     "decorations": {

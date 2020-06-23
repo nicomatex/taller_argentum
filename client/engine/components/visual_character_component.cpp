@@ -23,6 +23,13 @@ VisualCharacterComponent::VisualCharacterComponent(int head_id, int body_id,
                    BODY_WIDTH, BODY_HEIGHT, BODY_OFFSET_X, BODY_OFFSET_Y);
         parts.insert(std::make_pair("body", body));
     }
+    if (weapon_id != 0) {
+        std::cout << "Agregando arma con id " << weapon_id << std::endl;
+        Actor weapon(ResourceManager::get_instance().get_animation_pack(
+                         "weapons", weapon_id),
+                     50, 50, 20, -38);
+        parts.insert(std::make_pair("weapon", weapon));
+    }
 }
 
 void VisualCharacterComponent::init() {
@@ -34,7 +41,7 @@ la componente de posicion. */
 
 void VisualCharacterComponent::set_head(int new_head_id) {
     std::unique_lock<std::mutex> l(m);
-    if(new_head_id == head_id) return;
+    if (new_head_id == head_id) return;
     Actor head(ResourceManager::get_instance().get_animation_pack("heads",
                                                                   new_head_id),
                HEAD_WIDTH, HEAD_HEIGHT, HEAD_OFFSET_X, HEAD_OFFSET_Y);
@@ -47,7 +54,7 @@ void VisualCharacterComponent::set_head(int new_head_id) {
 
 void VisualCharacterComponent::set_body(int new_body_id) {
     std::unique_lock<std::mutex> l(m);
-    if(new_body_id == body_id) return;
+    if (new_body_id == body_id) return;
     Actor body(ResourceManager::get_instance().get_animation_pack("bodies",
                                                                   new_body_id),
                BODY_WIDTH, BODY_HEIGHT, BODY_OFFSET_X, BODY_OFFSET_Y);
@@ -60,10 +67,17 @@ void VisualCharacterComponent::set_body(int new_body_id) {
 
 void VisualCharacterComponent::draw(Camera& camera) {
     std::unique_lock<std::mutex> l(m);
-    for (auto& it : parts) {
+    
+    camera.draw(&parts.at("head"), current_x, current_y, transition_offset_x,
+                transition_offset_y);
+    camera.draw(&parts.at("body"), current_x, current_y, transition_offset_x,
+                transition_offset_y);
+    camera.draw(&parts.at("weapon"), current_x, current_y, transition_offset_x,
+                transition_offset_y);
+    /*for (auto& it : parts) {
         camera.draw(&(it.second), current_x, current_y, transition_offset_x,
                     transition_offset_y);
-    }
+    }*/
 }
 
 Actor& VisualCharacterComponent::get_part(const std::string& type) {

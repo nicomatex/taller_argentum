@@ -1,7 +1,8 @@
 #include "receive_handler.h"
 
-#include <iostream>
 #include <iomanip>
+#include <iostream>
+
 #include "../nlohmann/json.hpp"
 #include "engine/ECS/entity.h"
 #include "engine/components/position_component.h"
@@ -55,7 +56,7 @@ void ClientReceiveHandler::handle_initialization(Event &ev) {
     json player_info = initialization_info["player"];
     EntityFactory::create_player(player_info["player_id"],
                                  player_info["head_id"], player_info["body_id"],
-                                 0, 0);
+                                 1, 1);
 
     json map_description = initialization_info["map_info"];
     map_change_buffer.fill(map_description, player_info["player_id"]);
@@ -64,25 +65,26 @@ void ClientReceiveHandler::handle_initialization(Event &ev) {
 void ClientReceiveHandler::handle_entity_update(Event &ev) {
     json entities_info = ev.get_json();
     EntityManager::get_instance().update_initialize();
-    for (auto &it : entities_info["entities"].items() ) {
+    for (auto &it : entities_info["entities"].items()) {
         json entity_info = it.value();
-        std::cout << std::setw(4) << entity_info << std::endl;
-        if (!EntityManager::get_instance().has_entity(entity_info["entity_id"])){
+        if (!EntityManager::get_instance().has_entity(
+                entity_info["entity_id"])) {
             EntityFactory::create_player(entity_info["entity_id"],
                                          entity_info["head_id"],
-                                         entity_info["body_id"], 0, 0);
+                                         entity_info["body_id"], 1, 1);
         } else {
-            std::cout << "Solicitando entidad con id " << entity_info["entity_id"] << std::endl;
-            Entity &entity =
-                EntityManager::get_instance().get_from_id(entity_info["entity_id"]);
-            entity.get_component<VisualCharacterComponent>().set_body(entity_info["body_id"]);
-            entity.get_component<VisualCharacterComponent>().set_head(entity_info["head_id"]);
+            Entity &entity = EntityManager::get_instance().get_from_id(
+                entity_info["entity_id"]);
+            entity.get_component<VisualCharacterComponent>().set_body(
+                entity_info["body_id"]);
+            entity.get_component<VisualCharacterComponent>().set_head(
+                entity_info["head_id"]);
         }
     }
     EntityManager::get_instance().remove_non_updated();
     EntityManager::get_instance().clean();
 }
 
-void ClientReceiveHandler::handle_chat_message(Event &ev){
+void ClientReceiveHandler::handle_chat_message(Event &ev) {
     chat_buffer.push(ev.get_json()["msg"]);
 }
