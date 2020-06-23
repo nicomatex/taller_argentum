@@ -38,22 +38,30 @@ CharacterManager::~CharacterManager() {
     save();
 }
 
-character_t CharacterManager::create_character(std::string name, int map_id,
-											   position_t pos_character,
-											   int head_id, int body_id) {
+/*
+    Devuelve un character por movimiento.
+    Lanza std::exception() en caso de que name exceda MAX_LENGTH
+*/
+static character_t create_character(nlohmann::json& character_info) {
+    std::string name = character_info["name"];
     if (name.length() > MAX_CHAR_NAME) throw std::exception();
 	character_t character;
 	memset(&character, 0 ,sizeof(character_t));
 	strncpy(character.name, name.data(), MAX_CHAR_NAME);
-	character.map_id = map_id;
-	character.position = pos_character;
-	character.head_id = head_id;
-	character.body_id = body_id;
+	character.map_id = character_info["map_id"];
+	character.position = character_info["pos"];
+	character.head_id = character_info["head_id"];
+	character.body_id = character_info["body_id"];
+    character.helmet_id = character_info["helmet_id"];
+    character.armor_id = character_info["armor_id"];
+    character.shield_id = character_info["shield_id"];
+    character.weapon_id = character_info["weapon_id"];
     return std::move(character);
 }
 
-void CharacterManager::add_character(const character_t &character) {
+void CharacterManager::add_character(nlohmann::json& character_info) {
     std::unique_lock<std::mutex> l(m);
+    character_t character = create_character(character_info);
     if (character_exists(character.name)) {
         throw CharacterAlreadyExistsException();    
     } 
@@ -68,11 +76,10 @@ bool CharacterManager::character_exists(std::string name) {
     return char_map.count(name);
 }
 
-void CharacterManager::set_character(std::string name,
-								     const character_t &character) {
+void CharacterManager::set_character(nlohmann::json& character_info) {
     std::unique_lock<std::mutex> l(m);
-    CharId char_id = get_char_id(name);
-    if (char_id != get_char_id(character.name)) throw std::exception();
+    CharId char_id = get_char_id(character_info["name"]);
+    character_t character = create_character(character_info);
     f_char_stream.seekg(char_id * sizeof(character_t), std::ios_base::beg);
     f_char_stream.write(reinterpret_cast<const char*>(&character),
                         sizeof(character_t));
@@ -84,14 +91,23 @@ CharId CharacterManager::get_char_id(std::string name) {
     return char_map.at(name);
 }
 
-character_t CharacterManager::get_character(std::string name) {
+nlohmann::json CharacterManager::get_character(std::string name) {
     std::unique_lock<std::mutex> l(m);
     CharId char_id = get_char_id(name);
     character_t character;
     f_char_stream.seekg(char_id * sizeof(character_t), std::ios_base::beg);
     f_char_stream.read(reinterpret_cast<char*>(&character),sizeof(character_t));
     f_char_stream.clear();
-    return std::move(character);
+    nlohmann::json character_info;
+    character_info["map_id"] = character.map_id;
+    character_info["pos"] = character.position;
+    character_info["head_id"] = character.head_id;
+    character_info["body_id"] = character.body_id;
+    character_info["helmet_id"] = character.helmet_id;
+    character_info["armor_id"] = character.armor_id;
+    character_info["shield_id"] = character.shield_id;
+    character_info["weapon_id"] = character.weapon_id;
+    return std::move(character_info);
 }
 
 void CharacterManager::save() {
@@ -114,5 +130,9 @@ void CharacterManager::print_character(std::string name) {
                 " Y: " << character.position.y << std::endl;                  
     std::cout << "Head id: " << character.head_id << std::endl;
     std::cout << "Body id: " << character.body_id << std::endl;
+    std::cout << "Helmet id: " << character.helmet_id << std::endl;
+    std::cout << "Armor id: " << character.armor_id << std::endl;
+    std::cout << "Shield id: " << character.shield_id << std::endl;
+    std::cout << "Weapon id: " << character.weapon_id << std::endl;
     std::cout << std::endl;
 }
