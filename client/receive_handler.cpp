@@ -56,7 +56,7 @@ void ClientReceiveHandler::handle_initialization(Event &ev) {
     json player_info = initialization_info["player"];
     EntityFactory::create_player(player_info["player_id"],
                                  player_info["head_id"], player_info["body_id"],
-                                 1, 1);
+                                 4, 2, 1);
 
     json map_description = initialization_info["map_info"];
     map_change_buffer.fill(map_description, player_info["player_id"]);
@@ -71,7 +71,7 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                 entity_info["entity_id"])) {
             EntityFactory::create_player(entity_info["entity_id"],
                                          entity_info["head_id"],
-                                         entity_info["body_id"], 1, 1);
+                                         entity_info["body_id"], 1, 1, 1);
         } else {
             Entity &entity = EntityManager::get_instance().get_from_id(
                 entity_info["entity_id"]);

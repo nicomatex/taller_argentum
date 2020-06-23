@@ -6,10 +6,10 @@
 
 class EntityFactory {
    private:
-
    public:
-    static Entity &create_player(unsigned int entity_id, int head_id, int body_id,
-                          int weapon_id, int offhand_id);
+    static Entity &create_player(unsigned int entity_id, int head_id,
+                                 int body_id, int weapon_id, int offhand_id,
+                                 int helmet_id);
 };
 
 #endif  // ENTITY_FACTORY_H

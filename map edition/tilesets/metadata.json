@@ -1,5 +1,13 @@
 { "columns":8,
- "image":"..\/..\/..\/..\/tiles para el entorno\/metadata.png",
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"",
+         "target":"."
+        }
+    },
+ "image":"..\/sprites\/tilesets\/metadata.png",
  "imageheight":32,
  "imagewidth":256,
  "margin":0,

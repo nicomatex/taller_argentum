@@ -9,7 +9,7 @@
 
 VisualCharacterComponent::VisualCharacterComponent(int head_id, int body_id,
                                                    int weapon_id,
-                                                   int offhand_id, int speed)
+                                                   int offhand_id,int helmet_id, int speed)
     : speed(speed), head_id(head_id), body_id(body_id) {
     if (head_id != 0) {
         Actor head(ResourceManager::get_instance().get_animation_pack("heads",
@@ -24,11 +24,22 @@ VisualCharacterComponent::VisualCharacterComponent(int head_id, int body_id,
         parts.insert(std::make_pair("body", body));
     }
     if (weapon_id != 0) {
-        std::cout << "Agregando arma con id " << weapon_id << std::endl;
         Actor weapon(ResourceManager::get_instance().get_animation_pack(
                          "weapons", weapon_id),
-                     50, 50, 20, -38);
+                     WEAPON_WIDTH, WEAPON_HEIGHT, WEAPON_OFFSET_X, WEAPON_OFFSET_Y);
         parts.insert(std::make_pair("weapon", weapon));
+    }
+    if (offhand_id != 0) {
+        Actor shield(ResourceManager::get_instance().get_animation_pack(
+                         "shields", offhand_id),
+                     SHIELD_WIDTH, SHIELD_HEIGHT, SHIELD_OFFSET_X, SHIELD_OFFSET_Y);
+        parts.insert(std::make_pair("shield", shield));
+    }
+    if (helmet_id != 0) {
+        Actor helmet(ResourceManager::get_instance().get_animation_pack(
+                         "helmets", helmet_id),
+                     HEAD_WIDTH, HEAD_HEIGHT, HEAD_OFFSET_X, HEAD_OFFSET_Y);
+        parts.insert(std::make_pair("helmet", helmet));
     }
 }
 
@@ -68,11 +79,16 @@ void VisualCharacterComponent::set_body(int new_body_id) {
 void VisualCharacterComponent::draw(Camera& camera) {
     std::unique_lock<std::mutex> l(m);
     
-    camera.draw(&parts.at("head"), current_x, current_y, transition_offset_x,
-                transition_offset_y);
+    
     camera.draw(&parts.at("body"), current_x, current_y, transition_offset_x,
                 transition_offset_y);
+    camera.draw(&parts.at("head"), current_x, current_y, transition_offset_x,
+                transition_offset_y);
     camera.draw(&parts.at("weapon"), current_x, current_y, transition_offset_x,
+                transition_offset_y);
+    camera.draw(&parts.at("shield"), current_x, current_y, transition_offset_x,
+                transition_offset_y);
+    camera.draw(&parts.at("helmet"), current_x, current_y, transition_offset_x,
                 transition_offset_y);
     /*for (auto& it : parts) {
         camera.draw(&(it.second), current_x, current_y, transition_offset_x,

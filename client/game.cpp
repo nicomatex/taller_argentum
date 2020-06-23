@@ -32,6 +32,7 @@ void Game::run() {
         camera.update();
         camera.render_map_layer(map.get_layer(0));
         camera.render_map_layer(map.get_layer(1));
+        camera.render_map_layer(map.get_layer(2));
         camera.draw_all();
         window.set_viewport(AREA_CHAT);
         chat_buffer.flush(chat);
