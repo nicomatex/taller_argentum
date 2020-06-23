@@ -41,8 +41,7 @@ class ServerManager {
 
     void add_client(ClientId client_id, SocketManager* new_client);
 
-    void add_player(MapId map_id, ClientId client_id,
-                    nlohmann::json player_info);
+    void add_player(ClientId client_id, nlohmann::json player_info);
 
     void rm_client(ClientId client_id);
 

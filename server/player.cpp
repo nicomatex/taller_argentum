@@ -2,12 +2,15 @@
 
 #include <iostream>
 
-Player::Player(EntityId entity_id, int head_id, int body_id, std::string name,
-               Map &map)
+Player::Player(EntityId entity_id, nlohmann::json player_info, Map &map)
     : Entity(entity_id),
-      head_id(head_id),
-      body_id(body_id),
-      name(name),
+      head_id(player_info["head_id"]),
+      body_id(player_info["body_id"]),
+      name(player_info["name"]),
+      helmet_id(player_info["helmet_id"]),
+      armor_id(player_info["armor_id"]),
+      shield_id(player_info["shield_id"]),
+      weapon_id(player_info["weapon_id"]),
       map(map),
       move_accumulator(0),
       player_speed(5),
@@ -17,6 +20,10 @@ Player::Player(EntityId entity_id, int head_id, int body_id, std::string name,
     visual_entity_info["head_id"] = head_id;
     visual_entity_info["body_id"] = body_id;
     visual_entity_info["name"] = name;
+    visual_entity_info["helmet_id"] = helmet_id;
+    visual_entity_info["armor_id"] = armor_id;
+    visual_entity_info["shield_id"] = shield_id;
+    visual_entity_info["weapon_id"] = weapon_id;
 }
 
 void Player::update(uint64_t delta_t) {
@@ -45,7 +52,9 @@ void Player::update(uint64_t delta_t) {
     // TODO: demas updates, como regeneraciones de vida/mana, etc.
 }
 
-entity_type_t Player::get_type() { return PLAYER; }
+entity_type_t Player::get_type() {
+    return PLAYER;
+}
 
 void Player::set_current_speed(int value_x, int value_y) {
     current_speed_x = value_x;

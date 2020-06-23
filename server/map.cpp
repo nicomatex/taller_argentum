@@ -112,9 +112,7 @@ position_t Map::get_nearest_free_position(position_t position) {
 
 EntityId Map::add_player(nlohmann::json player_info) {
     EntityId entity_id = get_next_id();
-    Player* player =
-        new Player(entity_id, int(player_info["head_id"]),
-                   int(player_info["body_id"]), player_info["name"], *this);
+    Player* player = new Player(entity_id, player_info, *this);
     position_t player_position = player_info["pos"];
     position_t nearest_position = get_nearest_free_position(player_position);
 

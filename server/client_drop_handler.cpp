@@ -1,7 +1,8 @@
 #include "client_drop_handler.h"
-#include "position.h"
+
 #include "../nlohmann/json.hpp"
 #include "map_monitor.h"
+#include "position.h"
 #include "server_manager.h"
 
 ClientDropHandler::ClientDropHandler(Event ev) : ThEventHandler(ev) {}
@@ -11,8 +12,8 @@ void ClientDropHandler::run_handler() {
     ServerManager& server_manager = ServerManager::get_instance();
     CharacterManager& char_manager = server_manager.get_character_manager();
     nlohmann::json player_info = server_manager.rm_player(client_id);
-    //Persistir datos
-    char_manager.save(); // persisto el diccionario.
+    // Persistir datos
+    char_manager.save();  // persisto el diccionario.
     char_manager.set_character(player_info);
     server_manager.rm_client(client_id);
 }

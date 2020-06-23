@@ -1,37 +1,35 @@
 #include "character_manager.h"
+
 #include <iostream>
+
 #include "../nlohmann/json.hpp"
 
-const char* CharacterAlreadyExistsException::what() const throw(){
+const char* CharacterAlreadyExistsException::what() const throw() {
     return "Character already exists!";
 }
 
-const char* CharacterNotFoundException::what() const throw(){
+const char* CharacterNotFoundException::what() const throw() {
     return "Character not found!";
 }
 
-CharacterManager::CharacterManager(const char *f_char,
-	                               const char *f_map) :
-                                   f_char_stream(f_char, std::fstream::binary |
-                                   std::fstream::in | std::fstream::out |
-                                   std::fstream::ate),
-                                   f_map_stream(f_map, std::fstream::in |
-                                   std::fstream::out) {
-
-	if (!f_char_stream.is_open()) {
+CharacterManager::CharacterManager(const char* f_char, const char* f_map)
+    : f_char_stream(f_char, std::fstream::binary | std::fstream::in |
+                                std::fstream::out | std::fstream::ate),
+      f_map_stream(f_map, std::fstream::in | std::fstream::out) {
+    if (!f_char_stream.is_open()) {
         std::cerr << "Archivo de personajes inexistente" << std::endl;
-        throw std::exception();    
-    } 
+        throw std::exception();
+    }
 
-	if (!f_map_stream.is_open()) {
+    if (!f_map_stream.is_open()) {
         std::cerr << "Archivo de dict de personajes inexistente" << std::endl;
         throw std::exception();
     }
 
-	nlohmann::json j_char_map;
-	f_map_stream >> j_char_map;
+    nlohmann::json j_char_map;
+    f_map_stream >> j_char_map;
     char_count = j_char_map["char_count"];
-	char_map = j_char_map["char_map"].get<std::map<std::string, CharId>>();
+    char_map = j_char_map["char_map"].get<std::map<std::string, CharId>>();
 }
 
 CharacterManager::~CharacterManager() {
@@ -42,16 +40,17 @@ CharacterManager::~CharacterManager() {
     Devuelve un character por movimiento.
     Lanza std::exception() en caso de que name exceda MAX_LENGTH
 */
-static character_t create_character(nlohmann::json& character_info) {
+static character_t create_character(const nlohmann::json& character_info) {
     std::string name = character_info["name"];
-    if (name.length() > MAX_CHAR_NAME) throw std::exception();
-	character_t character;
-	memset(&character, 0 ,sizeof(character_t));
-	strncpy(character.name, name.data(), MAX_CHAR_NAME);
-	character.map_id = character_info["map_id"];
-	character.position = character_info["pos"];
-	character.head_id = character_info["head_id"];
-	character.body_id = character_info["body_id"];
+    if (name.length() > MAX_CHAR_NAME)
+        throw std::exception();
+    character_t character;
+    memset(&character, 0, sizeof(character_t));
+    strncpy(character.name, name.data(), MAX_CHAR_NAME);
+    character.map_id = character_info["map_id"];
+    character.position = character_info["pos"];
+    character.head_id = character_info["head_id"];
+    character.body_id = character_info["body_id"];
     character.helmet_id = character_info["helmet_id"];
     character.armor_id = character_info["armor_id"];
     character.shield_id = character_info["shield_id"];
@@ -59,12 +58,12 @@ static character_t create_character(nlohmann::json& character_info) {
     return std::move(character);
 }
 
-void CharacterManager::add_character(nlohmann::json& character_info) {
+void CharacterManager::add_character(const nlohmann::json& character_info) {
     std::unique_lock<std::mutex> l(m);
     character_t character = create_character(character_info);
     if (character_exists(character.name)) {
-        throw CharacterAlreadyExistsException();    
-    } 
+        throw CharacterAlreadyExistsException();
+    }
     f_char_stream.seekg(0, std::ios_base::end);
     f_char_stream.write(reinterpret_cast<const char*>(&character),
                         sizeof(character_t));
@@ -76,7 +75,7 @@ bool CharacterManager::character_exists(std::string name) {
     return char_map.count(name);
 }
 
-void CharacterManager::set_character(nlohmann::json& character_info) {
+void CharacterManager::set_character(const nlohmann::json& character_info) {
     std::unique_lock<std::mutex> l(m);
     CharId char_id = get_char_id(character_info["name"]);
     character_t character = create_character(character_info);
@@ -85,9 +84,9 @@ void CharacterManager::set_character(nlohmann::json& character_info) {
                         sizeof(character_t));
 }
 
-
 CharId CharacterManager::get_char_id(std::string name) {
-    if (!character_exists(name)) throw CharacterNotFoundException();
+    if (!character_exists(name))
+        throw CharacterNotFoundException();
     return char_map.at(name);
 }
 
@@ -96,9 +95,11 @@ nlohmann::json CharacterManager::get_character(std::string name) {
     CharId char_id = get_char_id(name);
     character_t character;
     f_char_stream.seekg(char_id * sizeof(character_t), std::ios_base::beg);
-    f_char_stream.read(reinterpret_cast<char*>(&character),sizeof(character_t));
+    f_char_stream.read(reinterpret_cast<char*>(&character),
+                       sizeof(character_t));
     f_char_stream.clear();
     nlohmann::json character_info;
+    character_info["name"] = std::string(character.name);
     character_info["map_id"] = character.map_id;
     character_info["pos"] = character.position;
     character_info["head_id"] = character.head_id;
@@ -120,19 +121,19 @@ void CharacterManager::save() {
 }
 
 void CharacterManager::print_character(std::string name) {
-    character_t character = get_character(name);
+    nlohmann::json character = get_character(name);
     CharId char_id = get_char_id(name);
     std::cout << std::endl;
     std::cout << "-------- PJ ID : " << char_id << " --------" << std::endl;
-    std::cout << "Name: " << character.name << std::endl;
-    std::cout << "Map id: " << character.map_id << std::endl;
-    std::cout << "X: " << character.position.x <<
-                " Y: " << character.position.y << std::endl;                  
-    std::cout << "Head id: " << character.head_id << std::endl;
-    std::cout << "Body id: " << character.body_id << std::endl;
-    std::cout << "Helmet id: " << character.helmet_id << std::endl;
-    std::cout << "Armor id: " << character.armor_id << std::endl;
-    std::cout << "Shield id: " << character.shield_id << std::endl;
-    std::cout << "Weapon id: " << character.weapon_id << std::endl;
+    std::cout << "Name: " << character["name"] << std::endl;
+    std::cout << "Map id: " << character["map_id"] << std::endl;
+    std::cout << "X: " << character["pos"]["x"]
+              << " Y: " << character["pos"]["y"] << std::endl;
+    std::cout << "Head id: " << character["head_id"] << std::endl;
+    std::cout << "Body id: " << character["body_id"] << std::endl;
+    std::cout << "Helmet id: " << character["helmet_id"] << std::endl;
+    std::cout << "Armor id: " << character["armor_id"] << std::endl;
+    std::cout << "Shield id: " << character["shield_id"] << std::endl;
+    std::cout << "Weapon id: " << character["weapon_id"] << std::endl;
     std::cout << std::endl;
 }
