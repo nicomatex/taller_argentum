@@ -15,22 +15,24 @@ ServerManager::ServerManager()
       map_manager("assets/maps/forest1.json"),
       accepter(Socket("27016", 10)),
       game_loop(map_manager) {
-
     if (!char_manager.character_exists("nicolitox")) {
         character_t character_nico;
-        character_nico = char_manager.create_character("nicolitox", 0, position_t{18,15}, 1, 2);
-        char_manager.add_character(character_nico); 
+        character_nico = char_manager.create_character(
+            "nicolitox", 0, position_t{18, 15}, 1, 2);
+        char_manager.add_character(character_nico);
     }
-    
+
     if (!char_manager.character_exists("xxtaielxx")) {
         character_t character_taiel;
-        character_taiel = char_manager.create_character("xxtaielxx", 0, position_t{20,21}, 2, 2);
+        character_taiel = char_manager.create_character(
+            "xxtaielxx", 0, position_t{20, 21}, 2, 2);
         char_manager.add_character(character_taiel);
     }
-    
+
     if (!char_manager.character_exists("fran")) {
         character_t character_fran;
-        character_fran = char_manager.create_character("fran", 0, position_t{13,10}, 2, 1);
+        character_fran =
+            char_manager.create_character("fran", 0, position_t{13, 10}, 2, 1);
         char_manager.add_character(character_fran);
     }
 
@@ -56,7 +58,7 @@ ThDispatcher& ServerManager::get_dispatcher() {
 }
 
 void ServerManager::add_client(ClientId client_id, SocketManager* new_client) {
-    clients.emplace(client_id, new_client);
+    clients.add_client(client_id, new_client);
     clients_status[client_id] = STATUS_CONNECTING;
 }
 
@@ -77,8 +79,7 @@ void ServerManager::add_player(MapId map_id, ClientId client_id,
 }
 
 void ServerManager::rm_client(ClientId client_id) {
-    SocketManager* client = clients.at(client_id);
-    clients.erase(client_id);
+    SocketManager* client = clients.rm_client(client_id);
     client->stop(true);
     client->join();
     clients_status[client_id] = STATUS_DISCONNECTED;
@@ -98,16 +99,17 @@ nlohmann::json ServerManager::rm_player(ClientId client_id) {
     return player_data;
 }
 
-// void ServerManager::move_player(MapId to, ClientId client_id) {
+// void ServerManager::change_player_map(MapId to, ClientId client_id) {
 //     nlohmann::json player_info = rm_player(client_id);
 //     // Hacer algo con player_info
+//     // Cambiar el id de session
 //     add_player(to, client_id, player_info);
 // }
 
 void ServerManager::send_to(ClientId client_id, const Event& ev) {
     try {
         if (clients_status[client_id] == STATUS_CONNECTED)
-            clients[client_id]->send(ev);
+            clients.send_to(client_id, ev);
     } catch (const ConnectionClosedSocketException& e) {
         clients_status[client_id] = STATUS_DROPPING;
         dispatcher.push_event(EventFactory::drop_client(client_id));
@@ -118,9 +120,9 @@ void ServerManager::finish() {
     accepter.stop();
     accepter.join();
     std::cerr << "Accepter: joined\n";
-    for (auto& it : clients) {
-        SocketManager* client = it.second;
-        client->send(Event(nlohmann::json({"ev_id", -1})));
+    for (auto& it : clients_status) {
+        it.second = STATUS_DROPPING;
+        dispatcher.push_event(EventFactory::drop_client(it.first));
     }
     dispatcher.stop();
     dispatcher.join();

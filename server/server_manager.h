@@ -4,14 +4,14 @@
 #include "../include/socket_manager.h"
 #include "../include/types.h"
 #include "../nlohmann/json.hpp"
+#include "character_manager.h"
+#include "clients_monitor.h"
 #include "game_loop.h"
 #include "map_manager.h"
 #include "map_monitor.h"
 #include "player.h"
 #include "session.h"
 #include "th_client_accepter.h"
-#include "character_manager.h"
-
 
 typedef enum client_status {
     STATUS_CONNECTING,
@@ -26,7 +26,7 @@ class ServerManager {
     MapManager map_manager;
     std::unordered_map<MapId, Session> sessions;
     std::unordered_map<ClientId, MapId> client_to_map;
-    std::unordered_map<ClientId, SocketManager*> clients;
+    ClientsMonitor clients;
     std::unordered_map<ClientId, client_status_t> clients_status;
     GameLoop game_loop;
     ThDispatcher dispatcher;
