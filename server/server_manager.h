@@ -1,6 +1,8 @@
 #ifndef SERVER_MANAGER_H
 #define SERVER_MANAGER_H
 
+#include <boost/bimap.hpp>
+
 #include "../include/socket_manager.h"
 #include "../include/types.h"
 #include "../nlohmann/json.hpp"
@@ -26,6 +28,7 @@ class ServerManager {
     MapManager map_manager;
     std::unordered_map<MapId, Session> sessions;
     std::unordered_map<ClientId, MapId> client_to_map;
+    boost::bimap<ClientId, std::string> clients_names;
     ClientsMonitor clients;
     std::unordered_map<ClientId, client_status_t> clients_status;
     GameLoop game_loop;
@@ -48,6 +51,9 @@ class ServerManager {
     nlohmann::json rm_player(ClientId client_id);
 
     void send_to(ClientId client_id, const Event& ev);
+
+    std::string get_name_by_client(ClientId client_id);
+    ClientId get_client_by_name(const std::string& name);
 
     MapMonitor& get_map_by_client(ClientId client_id);
     MapMonitor& get_map(MapId map_id);

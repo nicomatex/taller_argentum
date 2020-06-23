@@ -74,10 +74,10 @@ void ServerManager::add_client(ClientId client_id, SocketManager* new_client) {
 }
 
 void ServerManager::add_player(ClientId client_id, nlohmann::json player_data) {
-    std::cerr << player_data << std::endl;
     MapMonitor& map_monitor = map_manager[player_data["map_id"]];
     // Añadimos el jugador al mapa
     player_data["player_id"] = map_monitor.add_player(client_id, player_data);
+    clients_names.insert({client_id, player_data["name"]});
     client_to_map[client_id] = player_data["map_id"];
 
     // Enviamos la información de inicialización del mapa y del jugador
@@ -94,6 +94,9 @@ void ServerManager::rm_client(ClientId client_id) {
     client->stop(true);
     client->join();
     clients_status[client_id] = STATUS_DISCONNECTED;
+    std::string name = clients_names.left.at(client_id);
+    clients_names.left.erase(client_id);
+    clients_names.right.erase(name);
     delete client;
 }
 
@@ -146,6 +149,15 @@ void ServerManager::finish() {
     game_loop.stop();
     game_loop.join();
     std::cerr << "GameLoop: joined\n";
+}
+
+std::string ServerManager::get_name_by_client(ClientId client_id) {
+    return clients_names.left.at(client_id);
+}
+
+ClientId ServerManager::get_client_by_name(const std::string& name) {
+    std::cerr << "ServerManager: looking for name: " << name << std::endl;
+    return clients_names.right.at(name);
 }
 
 MapMonitor& ServerManager::get_map_by_client(ClientId client_id) {
