@@ -15,6 +15,10 @@ typedef struct character {
     position_t position;
     int head_id;
     int body_id;
+    int helmet_id;
+    int armor_id;
+    int shield_id;
+    int weapon_id;
 } character_t;
 
 typedef uint32_t CharId;
@@ -38,14 +42,6 @@ class CharacterManager {
     std::map<std::string, CharId> char_map;
    public:
    	CharacterManager(const char *f_char, const char *f_map);
-
-    /*
-        Devuelve un character por movimiento.
-        Lanza std::exception() en caso de que name exceda MAX_LENGTH
-    */
-    character_t create_character(std::string name, int map_id,
-                                 position_t pos_player, int head_id,
-                                 int body_id);
     /*
         Devuelve true si existe el character, false si no.
     */
@@ -55,16 +51,14 @@ class CharacterManager {
         Agrega un personaje al archivo de structs y al diccionario,
         si ya existe, lanza CharacterAlreadyExistsException()
     */
-   	void add_character(const character_t &character);
+   	void add_character(const nlohmann::json& character_info);
 
     /*
-        Le setea al character con nombre "name", un character.
-        Si no existe, lanza CharacterNotFoundException.
-        Si el character pasado difiere en nombre, lanza std::exception()
-        Se utiliza para persistir el estado actual de la entidad player,
+        Se utiliza para persistir el estado actual de la entidad character,
         al archivo de structs.
+        Si no existe el character, lanza excepcion.
     */
-    void set_character(std::string name, const character_t &character);
+    void set_character(const nlohmann::json& character_info);
     
     /*
         Devuelve el CharId asociado al player_name.
@@ -76,7 +70,7 @@ class CharacterManager {
         Devuelve el character asociado al name por movimiento.
         Si no existe, lanza CharacterNotFoundException.
     */
-    character_t get_character(std::string name);
+    nlohmann::json get_character(std::string name);
 
     /*
         Hace el dump del diccionario actual al archivo de diccionarios, junto

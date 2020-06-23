@@ -15,25 +15,36 @@ ServerManager::ServerManager()
       map_manager("assets/maps/forest1.json"),
       accepter(Socket("27016", 10)),
       game_loop(map_manager) {
-    if (!char_manager.character_exists("nicolitox")) {
-        character_t character_nico;
-        character_nico = char_manager.create_character(
-            "nicolitox", 0, position_t{18, 15}, 1, 2);
-        char_manager.add_character(character_nico);
+    if (!char_manager.character_exists("nicomatex")) {
+        nlohmann::json nico_info = {
+            {"name", "nicomatex"}, {"map_id", 0},    {"pos", position_t{18, 5}},
+            {"head_id", 1},        {"body_id", 2},   {"helmet_id", 1},
+            {"armor_id", 1},       {"shield_id", 2}, {"weapon_id", 5}};
+        char_manager.add_character(nico_info);
     }
 
-    if (!char_manager.character_exists("xxtaielxx")) {
-        character_t character_taiel;
-        character_taiel = char_manager.create_character(
-            "xxtaielxx", 0, position_t{20, 21}, 2, 2);
-        char_manager.add_character(character_taiel);
+    if (!char_manager.character_exists("tai")) {
+        nlohmann::json taiel_info = {
+            {"name", "tai"}, {"map_id", 0},    {"pos", position_t{20, 21}},
+            {"head_id", 2},  {"body_id", 2},   {"helmet_id", 2},
+            {"armor_id", 3}, {"shield_id", 2}, {"weapon_id", 6}};
+        char_manager.add_character(taiel_info);
     }
 
     if (!char_manager.character_exists("fran")) {
-        character_t character_fran;
-        character_fran =
-            char_manager.create_character("fran", 0, position_t{13, 10}, 2, 1);
-        char_manager.add_character(character_fran);
+        nlohmann::json fran_info = {
+            {"name", "fran"}, {"map_id", 0},    {"pos", position_t{13, 20}},
+            {"head_id", 2},   {"body_id", 1},   {"helmet_id", 3},
+            {"armor_id", 2},  {"shield_id", 1}, {"weapon_id", 7}};
+        char_manager.add_character(fran_info);
+    }
+
+    if (!char_manager.character_exists("eze")) {
+        nlohmann::json eze_info = {
+            {"name", "eze"}, {"map_id", 0},    {"pos", position_t{23, 20}},
+            {"head_id", 2},  {"body_id", 1},   {"helmet_id", 2},
+            {"armor_id", 1}, {"shield_id", 1}, {"weapon_id", 1}};
+        char_manager.add_character(eze_info);
     }
 
     std::vector<MapId> v = map_manager.get_ids();
