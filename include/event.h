@@ -4,6 +4,7 @@
 #include "../nlohmann/json.hpp"
 
 enum server_to_client {
+    EV_ID_DROP_CLIENT = -1,
     EV_ID_INITIALIZE_MAP = 0,
     EV_ID_UPDATE_MAP = 2,
     EV_ID_UPDATE_ENTITIES = 3,
@@ -11,8 +12,9 @@ enum server_to_client {
 };
 
 enum client_to_server {
-    EV_ID_CONNECT_EVENT = 0,
-    EV_ID_MOVE_EVENT = 2,
+    EV_ID_DISCONNECT = -1,
+    EV_ID_CONNECT = 0,
+    EV_ID_MOVE = 2,
     EV_ID_COMMAND = 4
 };
 

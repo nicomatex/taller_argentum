@@ -16,6 +16,8 @@ class EventFactory {
 
     static Event chat_message(const std::string& message);
 
+    static Event disconnect();
+
     static Event drop_client(ClientId client_id);
 };
 

@@ -33,6 +33,10 @@ Event EventFactory::chat_message(const std::string& message) {
     return Event(ev_json);
 }
 
+Event EventFactory::disconnect() {
+    return Event({"ev_id", EV_ID_DISCONNECT});
+}
+
 Event EventFactory::drop_client(ClientId client_id) {
-    return Event({{"ev_id", -1}, {"client_id", client_id}});
+    return Event({{"ev_id", EV_ID_DROP_CLIENT}, {"client_id", client_id}});
 }

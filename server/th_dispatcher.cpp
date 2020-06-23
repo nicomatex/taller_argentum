@@ -20,20 +20,20 @@ void ThDispatcher::handle(Event& ev) {
         ThEventHandler* handler;
         int ev_id = json_ev["ev_id"];
         switch (ev_id) {
-            case -1:
+            case EV_ID_DROP_CLIENT:
                 handler = new ClientDropHandler(ev);
                 break;
-            case 0:
+            case EV_ID_CONNECT:
                 handler = new ClientInitializeHandler(ev);
                 break;
-            case 2:
+            case EV_ID_MOVE:
                 handler = new MovementHandler(ev);
                 break;
-            case 4:
+            case EV_ID_COMMAND:
                 handler = new CommandHandler(ev);
                 break;
             default:
-                std::cerr << "Dispatcher: No handler for: " << ev.get_json()
+                std::cerr << "Dispatcher: No handler for: " << json_ev
                           << std::endl;
                 break;
         }

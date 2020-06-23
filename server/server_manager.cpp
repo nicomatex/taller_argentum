@@ -136,6 +136,7 @@ void ServerManager::finish() {
     std::cerr << "Accepter: joined\n";
     for (auto& it : clients_status) {
         it.second = STATUS_DROPPING;
+        send_to(it.first, EventFactory::disconnect());
         dispatcher.push_event(EventFactory::drop_client(it.first));
     }
     dispatcher.stop();
@@ -152,11 +153,14 @@ void ServerManager::finish() {
 }
 
 std::string ServerManager::get_name_by_client(ClientId client_id) {
+    if (!clients_names.left.count(client_id))
+        throw ClientDisconnectedException(client_id);
     return clients_names.left.at(client_id);
 }
 
 ClientId ServerManager::get_client_by_name(const std::string& name) {
-    std::cerr << "ServerManager: looking for name: " << name << std::endl;
+    if (!clients_names.right.count(name))
+        throw ClientDisconnectedException(name);
     return clients_names.right.at(name);
 }
 

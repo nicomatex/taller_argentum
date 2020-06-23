@@ -2,6 +2,8 @@
 #define SERVER_MANAGER_H
 
 #include <boost/bimap.hpp>
+#include <stdexcept>
+#include <string>
 
 #include "../include/socket_manager.h"
 #include "../include/types.h"
@@ -14,6 +16,29 @@
 #include "player.h"
 #include "session.h"
 #include "th_client_accepter.h"
+
+class ClientDisconnectedException : public std::exception {
+   private:
+    char err_msg[100];
+
+   public:
+    ClientDisconnectedException(ClientId client_id) {
+        std::string str =
+            "The client: " + std::to_string(client_id) + " has disconnected.";
+        strncpy(err_msg, str.c_str(), 100);
+        err_msg[99] = '\0';
+    }
+    ClientDisconnectedException(std::string name) {
+        std::string str = "The client: " + name + " has disconnected.";
+        strncpy(err_msg, str.c_str(), 100);
+        err_msg[99] = '\0';
+    }
+    ~ClientDisconnectedException() {}
+
+    const char* what() const noexcept override {
+        return err_msg;
+    }
+};
 
 typedef enum client_status {
     STATUS_CONNECTING,

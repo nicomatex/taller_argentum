@@ -4,6 +4,7 @@
 #include <string>
 
 #include "../include/event.h"
+#include "../include/types.h"
 #include "th_event_handler.h"
 
 enum cmd_type {
@@ -20,15 +21,19 @@ enum cmd_type {
     CMD_PICKUP,
     CMD_DROP,
     CMD_WHISPER,
+    CMD_DISCONNECT,
     CMD_HELP
 };
 
 class CommandHandler : public ThEventHandler {
    private:
+    size_t space;
     enum cmd_type cmd_type;
     std::vector<std::string> cmd;
 
     void parse_line(const std::string& cmd);
+
+    void cmd_help(ClientId client_id);
 
    protected:
     void run_handler() override;
