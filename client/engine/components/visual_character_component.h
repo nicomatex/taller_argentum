@@ -24,18 +24,28 @@ class VisualCharacterComponent : public Component {
 
     int head_id;
     int body_id;
+    int helmet_id;
+    int weapon_id;
+    int shield_id;
+    int armor_id;
     // Eventualmente de las demas partes
 
     std::mutex m;
 
    public:
     VisualCharacterComponent(int head_id, int body_id, int weapon_id,
-                             int offhand_id, int helmet_id, int speed);
+                             int shield_id, int helmet_id,int armor_id, int speed);
     ~VisualCharacterComponent();
     Actor &get_part(const std::string &type);
     void bind_to_camera(Camera &bind_camera);
+
     void set_head(int new_head_id);
     void set_body(int new_body_id);
+    void set_helmet(int new_helmet_id);
+    void set_weapon(int new_weapon_id);
+    void set_shield(int new_shield_id);
+    void set_armor(int new_armor_id);
+    
     // TODO: Implementar set_weapon y set_offhand.
     void init() override;
     void update() override;

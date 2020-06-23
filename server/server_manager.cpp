@@ -34,8 +34,8 @@ ServerManager::ServerManager()
     if (!char_manager.character_exists("fran")) {
         nlohmann::json fran_info = {
             {"name", "fran"}, {"map_id", 0},    {"pos", position_t{13, 20}},
-            {"head_id", 2},   {"body_id", 1},   {"helmet_id", 3},
-            {"armor_id", 2},  {"shield_id", 1}, {"weapon_id", 7}};
+            {"head_id", 2},   {"body_id", 1},   {"helmet_id", 1},
+            {"armor_id", 2},  {"shield_id", 1}, {"weapon_id", 9}};
         char_manager.add_character(fran_info);
     }
 

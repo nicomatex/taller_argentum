@@ -53,10 +53,13 @@ void ClientReceiveHandler::handle_move(Event &ev) {
 
 void ClientReceiveHandler::handle_initialization(Event &ev) {
     json initialization_info = ev.get_json();
+    std::cout << initialization_info << std::endl;
     json player_info = initialization_info["player"];
-    EntityFactory::create_player(player_info["player_id"],
-                                 player_info["head_id"], player_info["body_id"],
-                                 4, 2, 1);
+    EntityFactory::create_player(
+        player_info["player_id"], player_info["head_id"],
+        player_info["body_id"], player_info["weapon_id"],
+        player_info["shield_id"], player_info["helmet_id"],
+        player_info["armor_id"]);
 
     json map_description = initialization_info["map_info"];
     map_change_buffer.fill(map_description, player_info["player_id"]);
@@ -69,9 +72,11 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
         json entity_info = it.value();
         if (!EntityManager::get_instance().has_entity(
                 entity_info["entity_id"])) {
-            EntityFactory::create_player(entity_info["entity_id"],
-                                         entity_info["head_id"],
-                                         entity_info["body_id"], 1, 1, 1);
+            EntityFactory::create_player(
+                entity_info["entity_id"], entity_info["head_id"],
+                entity_info["body_id"], entity_info["weapon_id"],
+                entity_info["shield_id"], entity_info["helmet_id"],
+                entity_info["armor_id"]);
         } else {
             Entity &entity = EntityManager::get_instance().get_from_id(
                 entity_info["entity_id"]);
@@ -79,6 +84,15 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                 entity_info["body_id"]);
             entity.get_component<VisualCharacterComponent>().set_head(
                 entity_info["head_id"]);
+            entity.get_component<VisualCharacterComponent>().set_helmet(
+                entity_info["helmet_id"]);
+            entity.get_component<VisualCharacterComponent>().set_weapon(
+                entity_info["weapon_id"]);
+            entity.get_component<VisualCharacterComponent>().set_shield(
+                entity_info["shield_id"]);
+            entity.get_component<VisualCharacterComponent>().set_armor(
+                entity_info["armor_id"]);
+            
         }
     }
     EntityManager::get_instance().remove_non_updated();

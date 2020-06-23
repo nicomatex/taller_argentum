@@ -1,9 +1,9 @@
-#include "ui_event_handler.h"
-
 #include <iostream>
-
+#include "ui_event_handler.h"
+#include "../include/socket_exception.h"
 #include "SDL2/SDL.h"
 #include "event_factory.h"
+#include <iostream>
 
 UiEventHandler::UiEventHandler(SocketManager &socket_manager,
                                std::atomic_bool &running)
@@ -16,36 +16,45 @@ UiEventHandler::UiEventHandler(SocketManager &socket_manager,
 
 UiEventHandler::~UiEventHandler() {}
 
+void UiEventHandler::send_event(const Event& event){
+    try{
+        socket_manager.send(event);
+    }catch(std::exception &e){
+        std::cout << "Conexion cerrada inesperadamente!" << std::endl;
+        running = false;
+    }
+}
+
 void UiEventHandler::handle_keydown_move_up() {
-    socket_manager.send(EventFactory::movement_event(START, UP));
+    send_event(EventFactory::movement_event(START, UP));
 }
 
 void UiEventHandler::handle_keydown_move_down() {
-    socket_manager.send(EventFactory::movement_event(START, DOWN));
+    send_event(EventFactory::movement_event(START, DOWN));
 }
 
 void UiEventHandler::handle_keydown_move_left() {
-    socket_manager.send(EventFactory::movement_event(START, LEFT));
+    send_event(EventFactory::movement_event(START, LEFT));
 }
 
 void UiEventHandler::handle_keydown_move_right() {
-    socket_manager.send(EventFactory::movement_event(START, RIGHT));
+    send_event(EventFactory::movement_event(START, RIGHT));
 }
 
 void UiEventHandler::handle_keyup_move_up() {
-    socket_manager.send(EventFactory::movement_event(STOP, UP));
+    send_event(EventFactory::movement_event(STOP, UP));
 }
 
 void UiEventHandler::handle_keyup_move_down() {
-    socket_manager.send(EventFactory::movement_event(STOP, DOWN));
+    send_event(EventFactory::movement_event(STOP, DOWN));
 }
 
 void UiEventHandler::handle_keyup_move_left() {
-    socket_manager.send(EventFactory::movement_event(STOP, LEFT));
+    send_event(EventFactory::movement_event(STOP, LEFT));
 }
 
 void UiEventHandler::handle_keyup_move_right() {
-    socket_manager.send(EventFactory::movement_event(STOP, RIGHT));
+    send_event(EventFactory::movement_event(STOP, RIGHT));
 }
 
 void UiEventHandler::handle_keydown_return() {
@@ -53,7 +62,7 @@ void UiEventHandler::handle_keydown_return() {
     if (text_input_enabled) {
         SDL_StopTextInput();
         text_input_enabled = false;
-        socket_manager.send(EventFactory::chat_event(chat->get_input_and_erase()));
+        send_event(EventFactory::chat_event(chat->get_input_and_erase()));
     } else {
         SDL_StartTextInput();
         text_input_enabled = true;
@@ -66,7 +75,7 @@ void UiEventHandler::handle_keydown_backspace() {
 
 void UiEventHandler::handle_quit() {
     running = false;
-    socket_manager.send(EventFactory::drop_event());
+    send_event(EventFactory::drop_event());
 }
 
 void UiEventHandler::handle() {

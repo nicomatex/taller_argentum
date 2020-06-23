@@ -8,16 +8,27 @@
 #include "position_component.h"
 
 VisualCharacterComponent::VisualCharacterComponent(int head_id, int body_id,
-                                                   int weapon_id,
-                                                   int offhand_id,int helmet_id, int speed)
-    : speed(speed), head_id(head_id), body_id(body_id) {
+                                                   int weapon_id, int shield_id,
+                                                   int helmet_id,int armor_id, int speed)
+    : speed(speed),
+      head_id(head_id),
+      body_id(body_id),
+      helmet_id(helmet_id),
+      weapon_id(weapon_id),
+      shield_id(shield_id),
+      armor_id(armor_id) {
     if (head_id != 0) {
         Actor head(ResourceManager::get_instance().get_animation_pack("heads",
                                                                       head_id),
                    HEAD_WIDTH, HEAD_HEIGHT, HEAD_OFFSET_X, HEAD_OFFSET_Y);
         parts.insert(std::make_pair("head", head));
     }
-    if (body_id != 0) {
+    if (armor_id != 0) {
+        Actor armor(ResourceManager::get_instance().get_animation_pack("armors",
+                                                                      armor_id),
+                   BODY_WIDTH, BODY_HEIGHT, BODY_OFFSET_X, BODY_OFFSET_Y);
+        parts.insert(std::make_pair("body", armor));
+    }else if (body_id != 0) {
         Actor body(ResourceManager::get_instance().get_animation_pack("bodies",
                                                                       body_id),
                    BODY_WIDTH, BODY_HEIGHT, BODY_OFFSET_X, BODY_OFFSET_Y);
@@ -26,13 +37,15 @@ VisualCharacterComponent::VisualCharacterComponent(int head_id, int body_id,
     if (weapon_id != 0) {
         Actor weapon(ResourceManager::get_instance().get_animation_pack(
                          "weapons", weapon_id),
-                     WEAPON_WIDTH, WEAPON_HEIGHT, WEAPON_OFFSET_X, WEAPON_OFFSET_Y);
+                     WEAPON_WIDTH, WEAPON_HEIGHT, WEAPON_OFFSET_X,
+                     WEAPON_OFFSET_Y);
         parts.insert(std::make_pair("weapon", weapon));
     }
-    if (offhand_id != 0) {
+    if (shield_id != 0) {
         Actor shield(ResourceManager::get_instance().get_animation_pack(
-                         "shields", offhand_id),
-                     SHIELD_WIDTH, SHIELD_HEIGHT, SHIELD_OFFSET_X, SHIELD_OFFSET_Y);
+                         "shields", shield_id),
+                     SHIELD_WIDTH, SHIELD_HEIGHT, SHIELD_OFFSET_X,
+                     SHIELD_OFFSET_Y);
         parts.insert(std::make_pair("shield", shield));
     }
     if (helmet_id != 0) {
@@ -76,10 +89,61 @@ void VisualCharacterComponent::set_body(int new_body_id) {
     body_id = new_body_id;
 }
 
+void VisualCharacterComponent::set_weapon(int new_weapon_id) {
+    std::unique_lock<std::mutex> l(m);
+    if (new_weapon_id == weapon_id) return;
+    Actor weapon(ResourceManager::get_instance().get_animation_pack(
+                     "weapons", new_weapon_id),
+                 WEAPON_WIDTH, WEAPON_HEIGHT, WEAPON_OFFSET_X, WEAPON_OFFSET_Y);
+    weapon.set_move_status(parts.at("weapon").get_movement_status());
+    weapon.set_orientation(parts.at("weapon").get_direction());
+    parts.erase("weapon");
+    parts.insert(std::make_pair("weapon", weapon));
+    weapon_id = new_weapon_id;
+}
+
+void VisualCharacterComponent::set_helmet(int new_helmet_id) {
+    std::unique_lock<std::mutex> l(m);
+    if (new_helmet_id == helmet_id) return;
+    Actor helmet(ResourceManager::get_instance().get_animation_pack(
+                     "helmets", new_helmet_id),
+                 HEAD_WIDTH, HEAD_HEIGHT, HEAD_OFFSET_X, HEAD_OFFSET_Y);
+    helmet.set_move_status(parts.at("helmet").get_movement_status());
+    helmet.set_orientation(parts.at("helmet").get_direction());
+    parts.erase("helmet");
+    parts.insert(std::make_pair("helmet", helmet));
+    helmet_id = new_helmet_id;
+}
+
+void VisualCharacterComponent::set_shield(int new_shield_id) {
+    std::unique_lock<std::mutex> l(m);
+    if (new_shield_id == shield_id) return;
+    Actor shield(ResourceManager::get_instance().get_animation_pack(
+                     "shields", new_shield_id),
+                 SHIELD_WIDTH, SHIELD_HEIGHT, SHIELD_OFFSET_X, SHIELD_OFFSET_Y);
+    shield.set_move_status(parts.at("shield").get_movement_status());
+    shield.set_orientation(parts.at("shield").get_direction());
+    parts.erase("shield");
+    parts.insert(std::make_pair("shield", shield));
+    shield_id = new_shield_id;
+}
+
+void VisualCharacterComponent::set_armor(int new_armor_id) {
+    std::unique_lock<std::mutex> l(m);
+    if (new_armor_id == armor_id) return;
+    Actor armor(ResourceManager::get_instance().get_animation_pack(
+                     "armors", new_armor_id),
+                 BODY_WIDTH, BODY_HEIGHT, BODY_OFFSET_X, BODY_OFFSET_Y);
+    armor.set_move_status(parts.at("armor").get_movement_status());
+    armor.set_orientation(parts.at("armor").get_direction());
+    parts.erase("armor");
+    parts.insert(std::make_pair("armor", armor));
+    armor_id = new_armor_id;
+}
+
 void VisualCharacterComponent::draw(Camera& camera) {
     std::unique_lock<std::mutex> l(m);
-    
-    
+
     camera.draw(&parts.at("body"), current_x, current_y, transition_offset_x,
                 transition_offset_y);
     camera.draw(&parts.at("head"), current_x, current_y, transition_offset_x,
