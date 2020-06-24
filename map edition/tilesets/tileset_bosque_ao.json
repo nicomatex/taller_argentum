@@ -1,0 +1,14 @@
+{ "columns":16,
+ "image":"..\/sprites\/tilesets\/2.png",
+ "imageheight":1408,
+ "imagewidth":512,
+ "margin":0,
+ "name":"tileset_bosque_ao",
+ "spacing":0,
+ "tilecount":704,
+ "tiledversion":"2020.05.29",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":1.2
+}

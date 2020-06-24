@@ -221,7 +221,13 @@
             {
             "id":1,
             "filename": "1.png",
-            "needs ckey": true,
+            "needs ckey": false,
+            "ckey" : [0,0,0]
+            },
+            {
+            "id":2,
+            "filename": "2.png",
+            "needs ckey": false,
             "ckey" : [0,0,0]
             }
         ]
