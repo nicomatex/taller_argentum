@@ -2,12 +2,12 @@
 
 #include "player.h"
 
-ActionMove::ActionMove(int new_speed_x, int new_speed_y)
-    : new_speed_x(new_speed_x), new_speed_y(new_speed_y) {}
+ActionMove::ActionMove(mov_action_t action, direction_t direction)
+    : action(action), direction(direction) {}
 
 ActionMove::~ActionMove() {}
 
 void ActionMove::execute(Entity &entity) const {
     Player &player = static_cast<Player &>(entity);
-    player.set_current_speed(new_speed_x, new_speed_y);
+    player.set_current_movement(action, direction);
 }

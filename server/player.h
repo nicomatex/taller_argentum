@@ -8,8 +8,8 @@
 class Player : public Entity {
    private:
     unsigned int player_speed;  // en tiles per second
-    int current_speed_x;        // es 1, -1 o 0
-    int current_speed_y;        // es 1, -1 o 0
+    direction_t current_direction;
+    bool moving;
     int move_accumulator;
 
     int head_id;
@@ -26,7 +26,8 @@ class Player : public Entity {
    public:
     Player(EntityId entity_id, nlohmann::json player_info, Map &map);
     entity_type_t get_type() override;
-    void set_current_speed(int value_x, int value_y);
+    nlohmann::json get_data() override;
+    void set_current_movement(mov_action_t action, direction_t direction);
     void update(uint64_t delta_t) override;
 };
 

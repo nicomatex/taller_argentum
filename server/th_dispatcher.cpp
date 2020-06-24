@@ -11,16 +11,15 @@
 #include <iostream>
 
 void ThDispatcher::join_done(bool wait) {
-    for (auto it = started_set.begin(); it != started_set.end();) {
+    std::unique_lock<std::mutex> l(m);
+    for (auto it = started_handlers.begin(); it != started_handlers.end();) {
         ThEventHandler* handler = *it;
         if (!wait && !handler->is_done()) {
             it++;
             continue;
         }
         handler->join();
-        std::cerr << "Dispatcher: waiting for handler, " << started_set.size()
-                  << " left\n";
-        it = started_set.erase(it);
+        it = started_handlers.erase(it);
         delete handler;
     }
 }
@@ -53,14 +52,16 @@ void ThDispatcher::handle(Event& ev) {
             break;
     }
     if (handler) {
+        std::unique_lock<std::mutex> l(m);
         handler->start();
-        started_set.push_back(handler);
+        started_handlers.push_back(handler);
     }
     join_done(false);
 }
 
 void ThDispatcher::stop() {
-    join_done(true);
-    std::cerr << "\tDispatcher: joined all started handlers\n";
+    std::cerr << "\tDispatcher: stopping, there are " << started_handlers.size()
+              << " handlers unjoined\n";
     BlockingThEventHandler::stop();
+    join_done(true);
 }

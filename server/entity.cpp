@@ -12,8 +12,4 @@ unsigned int Entity::get_id() const {
     return id;
 }
 
-nlohmann::json Entity::get_data() {
-    return visual_entity_info;
-}
-
 void Entity::update(uint64_t delta_t) {}

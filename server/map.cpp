@@ -69,8 +69,6 @@ void Map::move(EntityId entity_id, steps_t steps) {
     // posicion.
     entity_matrix[new_position.x][new_position.y].emplace(entity_id);
     position_map[entity_id] = new_position;
-    std::cerr << "Moved player to " << new_position.x << " - " << new_position.y
-              << std::endl;
 }
 
 position_t Map::get_nearest_free_position(position_t position) {

@@ -21,7 +21,7 @@ class Entity {
     Los players y npcs son colisionables; el loot no.*/
     virtual entity_type_t get_type() = 0;
 
-    nlohmann::json get_data();
+    virtual nlohmann::json get_data() = 0;
     virtual void update(uint64_t delta_t);
 
     EntityId get_id() const;

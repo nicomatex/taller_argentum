@@ -50,7 +50,10 @@ void ClientsMonitor::drop(ClientId client_id) {
 
 void ClientsMonitor::drop_all() {
     std::unique_lock<std::mutex> l(m);
-    for (auto& client_id : connected_clients) {
-        drop(client_id);
+    for (auto it = connected_clients.begin(); it != connected_clients.end();) {
+        std::cerr << "ClientsMonitor: dropping " << *it << std::endl;
+        ServerManager::get_instance().get_dispatcher().push_event(
+            EventFactory::drop_client(*it));
+        it = connected_clients.erase(it);
     }
 }

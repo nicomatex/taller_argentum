@@ -74,7 +74,7 @@ class BlockingQueue {
         return t;
     }
 
-    void close(bool deplete = false) {
+    void close(bool deplete = true) {
         std::unique_lock<std::mutex> lock(mutex);
         wait_depleted = deplete;
         _is_closed = true;

@@ -14,17 +14,8 @@ Player::Player(EntityId entity_id, nlohmann::json player_info, Map &map)
       map(map),
       move_accumulator(0),
       player_speed(5),
-      current_speed_x(0),
-      current_speed_y(0) {
-    visual_entity_info["type_id"] = get_type();
-    visual_entity_info["head_id"] = head_id;
-    visual_entity_info["body_id"] = body_id;
-    visual_entity_info["name"] = name;
-    visual_entity_info["helmet_id"] = helmet_id;
-    visual_entity_info["armor_id"] = armor_id;
-    visual_entity_info["shield_id"] = shield_id;
-    visual_entity_info["weapon_id"] = weapon_id;
-}
+      current_direction(DOWN),
+      moving(false) {}
 
 void Player::update(uint64_t delta_t) {
     int time_between_tiles = 1000 / player_speed;
@@ -35,14 +26,27 @@ void Player::update(uint64_t delta_t) {
                     time_between_tiles;  // Esto deberia dar 1 salvo que el
                                          // ciclo de juego se ponga MUY slow
 
-        /* current_speed_x y current_speed_y no deberian ser nunca
-        simultaneamente diferentes de 0. */
-        int steps_x = current_speed_x * steps;
-        int steps_y = current_speed_y * steps;
-        map.move(this->id, {steps_x, steps_y});
+        if (moving) {
+            switch (current_direction) {
+                case UP:
+                    map.move(this->id, {0, -steps});
+                    break;
+                case DOWN:
+                    map.move(this->id, {0, steps});
+                    break;
+                case RIGHT:
+                    map.move(this->id, {steps, 0});
+                    break;
+                case LEFT:
+                    map.move(this->id, {-steps, 0});
+                    break;
+                default:
+                    break;
+            }
+        }
 
         /* Se guarda el restante para la proxima actualizacion. */
-        if (steps_x != 0 || steps_y != 0) {
+        if (moving && steps != 0) {
             move_accumulator = move_accumulator % time_between_tiles;
         } else {
             move_accumulator = time_between_tiles;
@@ -56,7 +60,27 @@ entity_type_t Player::get_type() {
     return PLAYER;
 }
 
-void Player::set_current_speed(int value_x, int value_y) {
-    current_speed_x = value_x;
-    current_speed_y = value_y;
+nlohmann::json Player::get_data() {
+    visual_entity_info["type_id"] = get_type();
+    visual_entity_info["head_id"] = head_id;
+    visual_entity_info["body_id"] = body_id;
+    visual_entity_info["name"] = name;
+    visual_entity_info["helmet_id"] = helmet_id;
+    visual_entity_info["armor_id"] = armor_id;
+    visual_entity_info["shield_id"] = shield_id;
+    visual_entity_info["weapon_id"] = weapon_id;
+    visual_entity_info["direction"] = current_direction;
+    return visual_entity_info;
+}
+
+void Player::set_current_movement(mov_action_t action, direction_t direction) {
+    if (action == STOP) {
+        if (current_direction == direction)
+            moving = false;
+        else
+            return;
+    } else if (action == START) {
+        current_direction = direction;
+        moving = true;
+    }
 }
