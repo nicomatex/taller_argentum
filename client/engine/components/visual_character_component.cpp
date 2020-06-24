@@ -134,10 +134,10 @@ void VisualCharacterComponent::set_armor(int new_armor_id) {
     Actor armor(ResourceManager::get_instance().get_animation_pack(
                      "armors", new_armor_id),
                  BODY_WIDTH, BODY_HEIGHT, BODY_OFFSET_X, BODY_OFFSET_Y);
-    armor.set_move_status(parts.at("armor").get_movement_status());
-    armor.set_orientation(parts.at("armor").get_direction());
-    parts.erase("armor");
-    parts.insert(std::make_pair("armor", armor));
+    armor.set_move_status(parts.at("body").get_movement_status());
+    armor.set_orientation(parts.at("body").get_direction());
+    parts.erase("body");
+    parts.insert(std::make_pair("body", armor));
     armor_id = new_armor_id;
 }
 
