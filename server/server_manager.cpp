@@ -12,7 +12,7 @@
 
 ServerManager::ServerManager()
     : char_manager("database/characters.dat", "database/characters.json"),
-      map_manager("assets/maps/forest2.json"),
+      map_manager("assets/maps/forest1.json"),
       accepter(Socket("27016", 10)),
       game_loop(map_manager) {
     if (!char_manager.character_exists("nicomatex")) {
