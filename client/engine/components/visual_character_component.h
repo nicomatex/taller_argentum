@@ -5,6 +5,7 @@
 #include "../ECS/component.h"
 #include "../actor.h"
 #include "../camera.h"
+#include "../../../include/types.h"
 
 typedef std::unordered_map<std::string, Actor> Parts;
 
@@ -46,7 +47,7 @@ class VisualCharacterComponent : public Component {
     void set_shield(int new_shield_id);
     void set_armor(int new_armor_id);
     
-    // TODO: Implementar set_weapon y set_offhand.
+    void set_orientation(direction_t new_orientation);
     void init() override;
     void update() override;
     void draw(Camera &camera);

@@ -213,6 +213,12 @@ void VisualCharacterComponent::_update_offset() {
     }
 }
 
+void VisualCharacterComponent::set_orientation(direction_t new_orientation){
+    for (auto& part : parts) {
+        part.second.set_orientation(new_orientation);
+    }
+}
+
 void VisualCharacterComponent::_update_animation(int delta_x, int delta_y) {
     if (!transition_timer.is_started()) {
         for (auto& part : parts) {

@@ -72,11 +72,12 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
         json entity_info = it.value();
         if (!EntityManager::get_instance().has_entity(
                 entity_info["entity_id"])) {
-            EntityFactory::create_player(
+            Entity &new_player = EntityFactory::create_player(
                 entity_info["entity_id"], entity_info["head_id"],
                 entity_info["body_id"], entity_info["weapon_id"],
                 entity_info["shield_id"], entity_info["helmet_id"],
                 entity_info["armor_id"]);
+                new_player.get_component<VisualCharacterComponent>().set_orientation(entity_info["direction"]);
         } else {
             Entity &entity = EntityManager::get_instance().get_from_id(
                 entity_info["entity_id"]);
@@ -92,7 +93,7 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                 entity_info["shield_id"]);
             entity.get_component<VisualCharacterComponent>().set_armor(
                 entity_info["armor_id"]);
-            
+            entity.get_component<VisualCharacterComponent>().set_orientation(entity_info["direction"]);   
         }
     }
     EntityManager::get_instance().remove_non_updated();
