@@ -21,6 +21,11 @@ nlohmann::json MapMonitor::rm_player(ClientId client_id) {
     return map.rm_player(player_id);
 }
 
+position_t MapMonitor::get_position(ClientId client_id) {
+    std::unique_lock<std::mutex> l(m);
+    return map.get_position(client_map.at(client_id));
+}
+
 void MapMonitor::update(uint64_t delta_t) {
     std::unique_lock<std::mutex> l(m);
     map.update(delta_t);

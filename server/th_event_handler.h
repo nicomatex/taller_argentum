@@ -17,24 +17,13 @@ class ThEventHandler : public Thread {
     virtual void run_handler() = 0;
 
    public:
-    ThEventHandler(Event ev) : Thread(), running(true), event(ev) {}
+    ThEventHandler(Event ev);
 
-    bool is_done() {
-        return running;
-    }
+    bool is_done();
 
-    virtual void run() override {
-        try {
-            run_handler();
-        } catch (const std::exception& e) {
-            std::cerr << "EventHandler: " << e.what() << std::endl;
-        } catch (...) {
-            std::cerr << "EventHandler: Unknown exception" << std::endl;
-        }
-        running = false;
-    }
+    virtual void run() override;
 
-    ~ThEventHandler() {}
+    ~ThEventHandler();
 };
 
 #endif  // TH_EVENT_HANDLER_H

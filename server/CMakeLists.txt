@@ -33,6 +33,7 @@ add_library(server
   client_drop_handler.cpp
   character_manager.cpp
   clients_monitor.cpp
+  th_event_handler.cpp
 )
 
 target_link_libraries(server

@@ -80,6 +80,7 @@ void ServerManager::add_player(ClientId client_id, nlohmann::json player_data) {
 
     // Enviamos la información de inicialización del mapa y del jugador
     nlohmann::json map_data = map_monitor.get_map_data();
+    player_data["pos"] = map_monitor.get_position(client_id);
     send_to(client_id, EventFactory::initialize_map(map_data, player_data));
 
     // Lo agregamos a la session correspondiente

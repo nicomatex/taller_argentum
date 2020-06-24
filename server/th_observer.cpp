@@ -10,7 +10,11 @@
 constexpr std::chrono::milliseconds OBSERVER_INTERVAL(5);
 
 ThObserver::ThObserver(MapMonitor& map_monitor, BlockingThEventHandler& handler)
-    : Thread(), running(false), map(map_monitor), handler(handler) {}
+    : Thread(),
+      running(false),
+      map(map_monitor),
+      handler(handler),
+      update_entities(false) {}
 
 void ThObserver::run() {
     try {

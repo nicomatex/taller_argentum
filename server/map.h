@@ -67,6 +67,8 @@ class Map {
 
     nlohmann::json rm_player(EntityId entity_id);
 
+    position_t get_position(EntityId entity_id);
+
     /* Actualiza todas las entidades que contiene segun el delta_t
      * transcurrido.*/
     void update(uint64_t delta_t);

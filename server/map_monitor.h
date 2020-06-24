@@ -25,6 +25,8 @@ class MapMonitor {
 
     nlohmann::json rm_player(ClientId client_id);
 
+    position_t get_position(ClientId client_id);
+
     /* Actualiza el estado del mapa. */
     void update(uint64_t delta_t);
 

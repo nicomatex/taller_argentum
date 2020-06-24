@@ -131,6 +131,10 @@ nlohmann::json Map::rm_player(EntityId entity_id) {
     return player_data;
 }
 
+position_t Map::get_position(EntityId entity_id) {
+    return position_map.at(entity_id);
+}
+
 void Map::update(uint64_t delta_t) {
     for (auto& it : entity_map) {
         it.second->update(delta_t);
