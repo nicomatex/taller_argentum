@@ -6,44 +6,61 @@
 #include "command_handler.h"
 #include "movement_handler.h"
 #include "server_manager.h"
-#include "th_event_handler.h"
 
 // Temp
 #include <iostream>
 
-ThDispatcher::ThDispatcher() {}
-
-void ThDispatcher::handle(Event& ev) {
-    try {
-        nlohmann::json json_ev = ev.get_json();
-        std::cerr << "Dispatcher got: " << json_ev << std::endl;
-        ThEventHandler* handler;
-        int ev_id = json_ev["ev_id"];
-        switch (ev_id) {
-            case EV_ID_DROP_CLIENT:
-                handler = new ClientDropHandler(ev);
-                break;
-            case EV_ID_CONNECT:
-                handler = new ClientInitializeHandler(ev);
-                break;
-            case EV_ID_MOVE:
-                handler = new MovementHandler(ev);
-                break;
-            case EV_ID_COMMAND:
-                handler = new CommandHandler(ev);
-                break;
-            default:
-                std::cerr << "Dispatcher: No handler for: " << json_ev
-                          << std::endl;
-                break;
+void ThDispatcher::join_done(bool wait) {
+    for (auto it = started_set.begin(); it != started_set.end();) {
+        ThEventHandler* handler = *it;
+        if (!wait && !handler->is_done()) {
+            it++;
+            continue;
         }
-        handler->start();
         handler->join();
-    } catch (const std::exception& e) {
-        std::cerr << "dispatcher: " << e.what() << std::endl;
-    } catch (...) {
-        std::cerr << "dispatcher: Unknown exception" << std::endl;
+        std::cerr << "Dispatcher: waiting for handler, " << started_set.size()
+                  << " left\n";
+        it = started_set.erase(it);
+        delete handler;
     }
 }
 
+ThDispatcher::ThDispatcher() {}
 ThDispatcher::~ThDispatcher() {}
+
+void ThDispatcher::handle(Event& ev) {
+    nlohmann::json json_ev = ev.get_json();
+    ThEventHandler* handler = nullptr;
+    int ev_id = json_ev["ev_id"];
+    switch (ev_id) {
+        case SERVER_DROP_CLIENT:
+            handler = new ClientDropHandler(ev);
+            break;
+        case EV_ID_DISCONNECT:
+            ServerManager::get_instance().drop_client(json_ev["client_id"]);
+            break;
+        case EV_ID_CONNECT:
+            handler = new ClientInitializeHandler(ev);
+            break;
+        case EV_ID_MOVE:
+            handler = new MovementHandler(ev);
+            break;
+        case EV_ID_COMMAND:
+            handler = new CommandHandler(ev);
+            break;
+        default:
+            std::cerr << "Dispatcher: No handler for: " << json_ev << std::endl;
+            break;
+    }
+    if (handler) {
+        handler->start();
+        started_set.push_back(handler);
+    }
+    join_done(false);
+}
+
+void ThDispatcher::stop() {
+    join_done(true);
+    std::cerr << "\tDispatcher: joined all started handlers\n";
+    BlockingThEventHandler::stop();
+}

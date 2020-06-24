@@ -3,7 +3,6 @@
 #include <fstream>
 #include <vector>
 
-#include "../include/socket_exception.h"
 #include "../nlohmann/json.hpp"
 #include "event_factory.h"
 
@@ -70,7 +69,6 @@ ThDispatcher& ServerManager::get_dispatcher() {
 
 void ServerManager::add_client(ClientId client_id, SocketManager* new_client) {
     clients.add_client(client_id, new_client);
-    clients_status[client_id] = STATUS_CONNECTING;
 }
 
 void ServerManager::add_player(ClientId client_id, nlohmann::json player_data) {
@@ -82,18 +80,21 @@ void ServerManager::add_player(ClientId client_id, nlohmann::json player_data) {
 
     // Enviamos la información de inicialización del mapa y del jugador
     nlohmann::json map_data = map_monitor.get_map_data();
-    clients_status[client_id] = STATUS_CONNECTED;
     send_to(client_id, EventFactory::initialize_map(map_data, player_data));
 
     // Lo agregamos a la session correspondiente
     sessions.at(player_data["map_id"]).add_client(client_id);
 }
 
+void ServerManager::drop_client(ClientId client_id) {
+    clients.drop(client_id);
+}
+
 void ServerManager::rm_client(ClientId client_id) {
     SocketManager* client = clients.rm_client(client_id);
     client->stop(true);
     client->join();
-    clients_status[client_id] = STATUS_DISCONNECTED;
+    std::cerr << "ServerManager: removing client: " << client_id << std::endl;
     std::string name = clients_names.left.at(client_id);
     clients_names.left.erase(client_id);
     clients_names.right.erase(name);
@@ -109,7 +110,6 @@ nlohmann::json ServerManager::rm_player(ClientId client_id) {
 
     // Eliminamos el jugador de la session
     sessions.at(map_id).rm_client(client_id);
-    std::cerr << "ServerManager: removing player: " << player_data << std::endl;
     return player_data;
 }
 
@@ -121,24 +121,14 @@ nlohmann::json ServerManager::rm_player(ClientId client_id) {
 // }
 
 void ServerManager::send_to(ClientId client_id, const Event& ev) {
-    try {
-        if (clients_status[client_id] == STATUS_CONNECTED)
-            clients.send_to(client_id, ev);
-    } catch (const ConnectionClosedSocketException& e) {
-        clients_status[client_id] = STATUS_DROPPING;
-        dispatcher.push_event(EventFactory::drop_client(client_id));
-    }
+    clients.send_to(client_id, ev);
 }
 
 void ServerManager::finish() {
     accepter.stop();
     accepter.join();
     std::cerr << "Accepter: joined\n";
-    for (auto& it : clients_status) {
-        it.second = STATUS_DROPPING;
-        send_to(it.first, EventFactory::disconnect());
-        dispatcher.push_event(EventFactory::drop_client(it.first));
-    }
+    clients.drop_all();
     dispatcher.stop();
     dispatcher.join();
     std::cerr << "Dispatcher: joined\n";

@@ -40,13 +40,6 @@ class ClientDisconnectedException : public std::exception {
     }
 };
 
-typedef enum client_status {
-    STATUS_CONNECTING,
-    STATUS_CONNECTED,
-    STATUS_DROPPING,
-    STATUS_DISCONNECTED
-} client_status_t;
-
 class ServerManager {
    private:
     CharacterManager char_manager;
@@ -55,7 +48,6 @@ class ServerManager {
     std::unordered_map<ClientId, MapId> client_to_map;
     boost::bimap<ClientId, std::string> clients_names;
     ClientsMonitor clients;
-    std::unordered_map<ClientId, client_status_t> clients_status;
     GameLoop game_loop;
     ThDispatcher dispatcher;
     ThClientAccepter accepter;
@@ -70,6 +62,8 @@ class ServerManager {
     void add_client(ClientId client_id, SocketManager* new_client);
 
     void add_player(ClientId client_id, nlohmann::json player_info);
+
+    void drop_client(ClientId client_id);
 
     void rm_client(ClientId client_id);
 

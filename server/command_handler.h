@@ -33,7 +33,13 @@ class CommandHandler : public ThEventHandler {
 
     void parse_line(const std::string& cmd);
 
+    void cmd_whisper(ClientId client_id);
+
+    void cmd_message(ClientId client_id);
+
     void cmd_help(ClientId client_id);
+
+    void cmd_disconnect(ClientId client_id);
 
    protected:
     void run_handler() override;

@@ -3,6 +3,8 @@
 
 #include "../nlohmann/json.hpp"
 
+#define SERVER_DROP_CLIENT -2
+
 enum server_to_client {
     EV_ID_DROP_CLIENT = -1,
     EV_ID_INITIALIZE_MAP = 0,

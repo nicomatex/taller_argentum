@@ -37,7 +37,7 @@ class BlockingThEventHandler : public Thread {
 
     virtual void run() override;
 
-    void stop();
+    virtual void stop();
 
     ~BlockingThEventHandler();
 };

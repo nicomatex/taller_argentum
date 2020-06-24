@@ -3,6 +3,7 @@
 
 #include <mutex>
 #include <unordered_map>
+#include <unordered_set>
 
 #include "../include/event.h"
 #include "../include/socket_exception.h"
@@ -13,6 +14,7 @@ class ClientsMonitor {
    private:
     std::mutex m;
     std::unordered_map<ClientId, SocketManager*> clients;
+    std::unordered_set<ClientId> connected_clients;
 
    public:
     ClientsMonitor();
@@ -21,6 +23,10 @@ class ClientsMonitor {
     void add_client(ClientId client_id, SocketManager* client);
 
     SocketManager* rm_client(ClientId client_id);
+
+    void drop(ClientId client_id);
+
+    void drop_all();
 
     void send_to(ClientId, Event ev);
 };

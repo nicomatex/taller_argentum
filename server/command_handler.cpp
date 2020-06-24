@@ -7,7 +7,7 @@
 
 #define COMMAND '/'
 #define WHISPER '@'
-#define HELP_MESSAGE "Comando de ayuda!"
+#define HELP_MESSAGE "[info] Comando de ayuda!"
 
 #include <stdexcept>
 
@@ -46,6 +46,44 @@ void CommandHandler::parse_line(const std::string& line) {
     }
 }
 
+void CommandHandler::cmd_whisper(ClientId client_id) {
+    ServerManager& server_manager = ServerManager::get_instance();
+    std::string chat_msg;
+    try {
+        chat_msg = "[susurro de] " +
+                   server_manager.get_name_by_client(client_id) + ": " + cmd[1];
+        server_manager.send_to(server_manager.get_client_by_name(cmd[0]),
+                               EventFactory::chat_message(chat_msg));
+        chat_msg = "[susurro a] " + cmd[0] + ": " + cmd[1];
+        server_manager.send_to(client_id, EventFactory::chat_message(chat_msg));
+    } catch (const ClientDisconnectedException& e) {
+        chat_msg = "[info] El cliente '" + cmd[0] +
+                   "' al que se le quiso enviar un mensaje" +
+                   " esta desconectado.";
+        server_manager.send_to(client_id, EventFactory::chat_message(chat_msg));
+    }
+}
+
+void CommandHandler::cmd_message(ClientId client_id) {
+    ServerManager& server_manager = ServerManager::get_instance();
+    Session& session = server_manager.get_session(client_id);
+    std::string chat_msg = "[todos] " +
+                           server_manager.get_name_by_client(client_id) + ": " +
+                           cmd[0];
+    session.broadcast(EventFactory::chat_message(chat_msg));
+}
+
+void CommandHandler::cmd_help(ClientId client_id) {
+    ServerManager& server_manager = ServerManager::get_instance();
+    server_manager.send_to(client_id, EventFactory::chat_message(HELP_MESSAGE));
+}
+
+void CommandHandler::cmd_disconnect(ClientId client_id) {
+    ServerManager& server_manager = ServerManager::get_instance();
+    server_manager.send_to(client_id, EventFactory::disconnect());
+    server_manager.drop_client(client_id);
+}
+
 void CommandHandler::run_handler() {
     nlohmann::json json = event.get_json();
     try {
@@ -60,53 +98,25 @@ void CommandHandler::run_handler() {
             case CMD_WHISPER:
                 if (space == msg.npos)
                     throw CommandErrorException();
-                try {
-                    chat_msg =
-                        "[susurro de] " +
-                        server_manager.get_name_by_client(json["client_id"]) +
-                        ": " + cmd[1];
-                    server_manager.send_to(
-                        server_manager.get_client_by_name(cmd[0]),
-                        EventFactory::chat_message(chat_msg));
-                    chat_msg = "[susurro a] " + cmd[0] + ": " + cmd[1];
-                    server_manager.send_to(
-                        json["client_id"],
-                        EventFactory::chat_message(chat_msg));
-                } catch (const ClientDisconnectedException& e) {
-                    std::string msg = "El cliente '" + cmd[0] +
-                                      "' al que se le quiso enviar un mensaje" +
-                                      " esta desconectado.";
-                    server_manager.send_to(json["client_id"],
-                                           EventFactory::chat_message(msg));
-                    break;
-                }
-
+                cmd_whisper(json["client_id"]);
                 break;
             case CMD_MESSAGE:
-                chat_msg =
-                    "[todos] " +
-                    server_manager.get_name_by_client(json["client_id"]) +
-                    ": " + cmd[0];
-                session.broadcast(EventFactory::chat_message(chat_msg));
+                cmd_message(json["client_id"]);
                 break;
             case CMD_HELP:
-                server_manager.send_to(
-                    json["client_id"],
-                    EventFactory::chat_message(HELP_MESSAGE));
+                cmd_help(json["client_id"]);
                 break;
             case CMD_DISCONNECT:
-                server_manager.send_to(json["client_id"],
-                                       EventFactory::disconnect());
-                server_manager.get_dispatcher().push_event(
-                    EventFactory::drop_client(json["client_id"]));
+                cmd_disconnect(json["client_id"]);
                 break;
             default:
                 throw CommandErrorException();
                 break;
         }
-    } catch (const CommandErrorException& help) {
+    } catch (const CommandErrorException& e) {
         ServerManager::get_instance().send_to(
-            json["client_id"], EventFactory::chat_message(help.what()));
+            json["client_id"],
+            EventFactory::chat_message("[info] " + std::string(e.what())));
     }
 }
 

@@ -17,7 +17,7 @@ class ThEventHandler : public Thread {
     virtual void run_handler() = 0;
 
    public:
-    ThEventHandler(Event ev) : Thread(), running(false), event(ev) {}
+    ThEventHandler(Event ev) : Thread(), running(true), event(ev) {}
 
     bool is_done() {
         return running;
@@ -25,7 +25,6 @@ class ThEventHandler : public Thread {
 
     virtual void run() override {
         try {
-            running = true;
             run_handler();
         } catch (const std::exception& e) {
             std::cerr << "EventHandler: " << e.what() << std::endl;
