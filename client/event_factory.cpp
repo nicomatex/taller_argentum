@@ -32,7 +32,7 @@ Event EventFactory::chat_event(std::string message){
     return Event(event);
 }
 
-Event EventFactory::movement_event(movement_action_t action, direction_t direction){
+Event EventFactory::movement_event(mov_action_t action, direction_t direction){
     json event = 
     {
         {"ev_id",2},

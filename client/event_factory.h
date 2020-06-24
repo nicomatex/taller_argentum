@@ -6,7 +6,10 @@
 
 #include "../include/event.h"
 
-enum movement_action_t { START, STOP };
+#ifndef MOVEMENT_ACTION_T
+#define MOVEMENT_ACTION_T
+enum mov_action_t { START, STOP };
+#endif
 
 #ifndef DIRECTION_T
 #define DIRECTION_T
@@ -27,7 +30,7 @@ class EventFactory {
 
     /* Evento de movimiento. Recibe si se esta comenzando o finalizando el
     movimiento y en que direccion.*/
-    static Event movement_event(movement_action_t action,
+    static Event movement_event(mov_action_t action,
                                 direction_t direction);
 
     /* Evento de desconexion*/
