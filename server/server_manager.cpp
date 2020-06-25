@@ -78,7 +78,6 @@ void ServerManager::rm_client(ClientId client_id) {
     SocketManager* client = clients.rm_client(client_id);
     client->stop(true);
     client->join();
-    std::cerr << "ServerManager: removing client: " << client_id << std::endl;
     std::string name = clients_names.left.at(client_id);
     clients_names.left.erase(client_id);
     clients_names.right.erase(name);
@@ -100,11 +99,17 @@ void ServerManager::add_player(ClientId client_id, nlohmann::json player_data,
     client_to_map[client_id] = player_data["map_id"];
     player_data["pos"] = map_monitor.get_position(client_id);
 
-    std::cerr << "ServerManager: " << player_data << std::endl;
+    std::cerr << "ServerManager: adding player: " << player_data["name"]
+              << " in map " << player_data["map_id"] << " at "
+              << player_data["pos"]["x"] << "," << player_data["pos"]["y"]
+              << std::endl;
 
     // Enviamos la información de inicialización del mapa y del jugador
     nlohmann::json map_data = map_monitor.get_map_data();
     send_to(client_id, EventFactory::initialize_map(map_data, player_data));
+
+    std::cerr << "ServerManager: sent initialize msg to: " << client_id
+              << std::endl;
 
     // Lo agregamos a la session correspondiente
     sessions.at(player_data["map_id"]).add_client(client_id);
@@ -118,6 +123,11 @@ nlohmann::json ServerManager::rm_player(ClientId client_id) {
     client_to_map.erase(client_id);
     nlohmann::json player_data = map_manager[map_id].rm_player(client_id);
     player_data["map_id"] = map_id;
+
+    std::cerr << "ServerManager: removing player: " << player_data["name"]
+              << " in map " << player_data["map_id"] << " at "
+              << player_data["pos"]["x"] << "," << player_data["pos"]["y"]
+              << std::endl;
 
     // Eliminamos el jugador de la session
     sessions.at(map_id).rm_client(client_id);
