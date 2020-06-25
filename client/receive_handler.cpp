@@ -24,18 +24,23 @@ void ClientReceiveHandler::handle(Event &ev) {
     json event = ev.get_json();
     switch (int(event["ev_id"])) {
         case EV_ID_INITIALIZE_MAP:
+            std::cout << "Recibido mensaje de inicializacion" << std::endl;
             handle_initialization(ev);
             break;
         case EV_ID_MOVE:
+            //std::cout << "Recibido evento de movimiento" << std::endl;
             handle_move(ev);
             break;
         case EV_ID_UPDATE_ENTITIES:
+            std::cout << "Recibido evento de update entities" << std::endl;
             handle_entity_update(ev);
             break;
         case EV_ID_CHAT_MESSAGE:
+            std::cout << "Recibido evento de chat " << std::endl;
             handle_chat_message(ev);
             break;
         case EV_ID_NOTIFY_NEW_MAP:
+            std::cout << "Recibida notificacion de nuevo mapa " << std::endl;
             handle_map_change(ev);
             break;
         case EV_ID_DISCONNECT:
@@ -60,6 +65,7 @@ void ClientReceiveHandler::handle_move(Event &ev) {
 }
 
 void ClientReceiveHandler::handle_initialization(Event &ev) {
+    game_state_monitor.wait_for_initialization_request();
     json initialization_info = ev.get_json();
     json player_info = initialization_info["player"];
     player_info["entity_id"] = player_info["player_id"];
@@ -70,12 +76,12 @@ void ClientReceiveHandler::handle_initialization(Event &ev) {
 }
 
 void ClientReceiveHandler::handle_entity_update(Event &ev) {
+
     json entities_info = ev.get_json();
     EntityManager::get_instance().update_initialize();
     for (auto &it : entities_info["entities"].items()) {
         json entity_info = it.value();
-        if (!EntityManager::get_instance().has_entity(
-                entity_info["entity_id"])) {
+        if (!EntityManager::get_instance().has_entity(entity_info["entity_id"])) {
             Entity &new_player = EntityFactory::create_player(entity_info);
             new_player.get_component<VisualCharacterComponent>()
                 .set_orientation(entity_info["direction"]);
@@ -86,8 +92,13 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                 entity_info);
         }
     }
+
+    std::cout << "Antes del remove non updated" << std::endl;
     EntityManager::get_instance().remove_non_updated();
+    std::cout << "Despues del remove non updated " << std::endl;
     EntityManager::get_instance().clean();
+    std::cout << "Finalizado de actualizar" << std::endl;
+
 }
 
 void ClientReceiveHandler::handle_chat_message(Event &ev) {
