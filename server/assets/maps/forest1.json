@@ -81,5 +81,29 @@
  "tilewidth":32,
  "type":"map",
  "version":1.2,
- "width":50
+ "width":50,
+ "teleporters":[
+ 		{
+ 			"position":{
+ 				"x":5,
+ 				"y":8
+ 			},
+ 			"destination":{
+ 				"map_id":1,
+ 				"x":22,
+ 				"y":10
+ 			}
+ 		},
+ 		{
+ 			"position":{
+ 				"x":5,
+ 				"y":22
+ 			},
+ 			"destination":{
+ 				"map_id":1,
+ 				"x":25,
+ 				"y":21
+ 			}
+ 		}
+ 	]
 }

@@ -8,6 +8,7 @@
 #include "engine/SDL/sdl_window.h"
 #include "engine/camera.h"
 #include "engine/map.h"
+#include "game_state_monitor.h"
 #include "ui_event_handler.h"
 
 class Game {
@@ -16,12 +17,12 @@ class Game {
     Map map;
     Camera camera;
     SDLWindow &window;
-    std::atomic_bool running;
+    GameStateMonitor &game_state_monitor;
     ChatBuffer &chat_buffer;
 
    public:
     Game(int follow_entity_id, SocketManager &socket_manager, SDLWindow &window,
-         ChatBuffer &chat_buffer);
+         ChatBuffer &chat_buffer, GameStateMonitor &game_state_monitor);
     void setup_map(nlohmann::json map_info);
 
     void run();

@@ -12,8 +12,9 @@
 using json = nlohmann::json;
 
 ClientReceiveHandler::ClientReceiveHandler(MapChangeBuffer &map_change_buffer,
-                                           ChatBuffer &chat_buffer)
-    : map_change_buffer(map_change_buffer), chat_buffer(chat_buffer) {}
+                                           ChatBuffer &chat_buffer,
+                                           GameStateMonitor &game_state_monitor)
+    : map_change_buffer(map_change_buffer), chat_buffer(chat_buffer), game_state_monitor(game_state_monitor) {}
 
 ClientReceiveHandler::~ClientReceiveHandler() {}
 
@@ -34,6 +35,7 @@ void ClientReceiveHandler::handle(Event &ev) {
             break;
         case -1:
             std::cout << "Fui kickeado del servidor." << std::endl;
+            game_state_monitor.quit();
     };
 }
 
@@ -53,7 +55,6 @@ void ClientReceiveHandler::handle_move(Event &ev) {
 
 void ClientReceiveHandler::handle_initialization(Event &ev) {
     json initialization_info = ev.get_json();
-    std::cout << initialization_info << std::endl;
     json player_info = initialization_info["player"];
     EntityFactory::create_player(
         player_info["player_id"], player_info["head_id"],
@@ -77,7 +78,8 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                 entity_info["body_id"], entity_info["weapon_id"],
                 entity_info["shield_id"], entity_info["helmet_id"],
                 entity_info["armor_id"]);
-                new_player.get_component<VisualCharacterComponent>().set_orientation(entity_info["direction"]);
+            new_player.get_component<VisualCharacterComponent>()
+                .set_orientation(entity_info["direction"]);
         } else {
             Entity &entity = EntityManager::get_instance().get_from_id(
                 entity_info["entity_id"]);
@@ -93,7 +95,8 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                 entity_info["shield_id"]);
             entity.get_component<VisualCharacterComponent>().set_armor(
                 entity_info["armor_id"]);
-            entity.get_component<VisualCharacterComponent>().set_orientation(entity_info["direction"]);   
+            entity.get_component<VisualCharacterComponent>().set_orientation(
+                entity_info["direction"]);
         }
     }
     EntityManager::get_instance().remove_non_updated();

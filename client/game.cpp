@@ -6,15 +6,16 @@
 #include "engine/resource_manager.h"
 
 Game::Game(int follow_entity_id, SocketManager &socket_manager,
-           SDLWindow &window, ChatBuffer &chat_buffer)
-    : running(true),
-      ui_event_handler(socket_manager, running),
+           SDLWindow &window, ChatBuffer &chat_buffer,
+           GameStateMonitor &game_state_monitor)
+    : ui_event_handler(socket_manager, game_state_monitor),
       camera(EntityManager::get_instance()
                  .get_from_id(follow_entity_id)
                  .get_component<PositionComponent>(),
              50, TILE_SIZE, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, CAMERA_SPEED),
       window(window),
-      chat_buffer(chat_buffer) {}
+      chat_buffer(chat_buffer),
+      game_state_monitor(game_state_monitor) {}
 
 Game::~Game() {}
 
@@ -24,7 +25,7 @@ void Game::run() {
     Chat chat(AREA_CHAT, CHAT_LINES, window.get_renderer(),
               ResourceManager::get_instance().get_font(1));
     ui_event_handler.attach_chat(&chat);
-    while (running) {
+    while (game_state_monitor.is_running()) {
         window.fill(0, 0, 0, 255);
         ui_event_handler.handle();
         EntityManager::get_instance().update();

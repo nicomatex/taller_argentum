@@ -1,27 +1,28 @@
-#include <iostream>
 #include "ui_event_handler.h"
+
+#include <iostream>
+
 #include "../include/socket_exception.h"
 #include "SDL2/SDL.h"
 #include "event_factory.h"
-#include <iostream>
 
 UiEventHandler::UiEventHandler(SocketManager &socket_manager,
-                               std::atomic_bool &running)
-    : running(running),
-      socket_manager(socket_manager),
+                               GameStateMonitor &game_state_monitor)
+    : socket_manager(socket_manager),
       chat(NULL),
-      text_input_enabled(false) {
+      text_input_enabled(false),
+      game_state_monitor(game_state_monitor) {
     SDL_StopTextInput();
 }
 
 UiEventHandler::~UiEventHandler() {}
 
-void UiEventHandler::send_event(const Event& event){
-    try{
+void UiEventHandler::send_event(const Event &event) {
+    try {
         socket_manager.send(event);
-    }catch(std::exception &e){
+    } catch (std::exception &e) {
         std::cout << "Conexion cerrada inesperadamente!" << std::endl;
-        running = false;
+        game_state_monitor.quit();
     }
 }
 
@@ -74,8 +75,8 @@ void UiEventHandler::handle_keydown_backspace() {
 }
 
 void UiEventHandler::handle_quit() {
-    running = false;
     send_event(EventFactory::drop_event());
+    game_state_monitor.quit();
 }
 
 void UiEventHandler::handle() {

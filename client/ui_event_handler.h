@@ -7,15 +7,16 @@
 #include "../include/socket_manager.h"
 #include "event_factory.h"
 #include "chat.h"
+#include "game_state_monitor.h"
 
 class UiEventHandler{
    private:
-    std::atomic_bool &running;
+    GameStateMonitor &game_state_monitor;
     SocketManager &socket_manager;
     Chat *chat;
     bool text_input_enabled;
    public:
-    UiEventHandler(SocketManager &socket_manager, std::atomic_bool &running);
+    UiEventHandler(SocketManager &socket_manager, GameStateMonitor &game_state_monitor);
     ~UiEventHandler();
 
     void send_event(const Event& event);

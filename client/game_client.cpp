@@ -29,7 +29,7 @@ GameClient::GameClient(json config)
       socket_manager(Socket(std::string(config["server"]),
                      std::string(config["port"])), receive_handler),
       config(config),
-      receive_handler(map_change_buffer, chat_buffer) {
+      receive_handler(map_change_buffer, chat_buffer, game_state_monitor) {
     try {
         std::cout << R"(
    _____                                      __                       ________           .__   .__                 
@@ -53,17 +53,22 @@ GameClient::GameClient(json config)
     }
     receive_handler.start();
     socket_manager.start();
+    game_state_monitor.set_connected_status(true);
 }
 
 void GameClient::run() {
-    map_change_buffer.wait_for_map();
-    Game game(map_change_buffer.get_follow_entity_id(), socket_manager, window,
-              chat_buffer);
-    game.setup_map(map_change_buffer.get_map_info());
+    while(game_state_monitor.is_connected()){
+        map_change_buffer.wait_for_map();
+        game_state_monitor.set_running_status(true);
+        Game game(map_change_buffer.get_follow_entity_id(), socket_manager, window,
+                chat_buffer,game_state_monitor);
+        game.setup_map(map_change_buffer.get_map_info());
 
-    game.run();
-    if (!socket_manager.is_connected()) {
-        std::cout << MSG_ERR_CONECT_DROPPED << std::endl;
+        game.run();
+        if (!socket_manager.is_connected()) {
+            std::cout << MSG_ERR_CONECT_DROPPED << std::endl;
+            game_state_monitor.set_connected_status(false);
+        }
     }
     receive_handler.stop();
     receive_handler.join();

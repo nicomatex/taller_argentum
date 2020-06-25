@@ -17,6 +17,7 @@
 #include "receive_handler.h"
 #include "ui_event_handler.h"
 #include "chat_buffer.h"
+#include "game_state_monitor.h"
 
 /* Interfaz de la clase */
 class GameClient {
@@ -27,6 +28,7 @@ class GameClient {
     ClientReceiveHandler receive_handler;
     SocketManager socket_manager;
     nlohmann::json config;
+    GameStateMonitor game_state_monitor;
 
    public:
     GameClient(nlohmann::json config);
