@@ -73,6 +73,10 @@ nlohmann::json Player::get_data() {
     return visual_entity_info;
 }
 
+std::string Player::get_name() const {
+    return name;
+}
+
 void Player::set_current_movement(mov_action_t action, direction_t direction) {
     if (action == STOP) {
         if (current_direction == direction)

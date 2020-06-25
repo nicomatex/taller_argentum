@@ -9,6 +9,7 @@
 #include "../nlohmann/json.hpp"
 #include "action.h"
 #include "entity.h"
+#include "map_changer.h"
 #include "position.h"
 
 #define MAP_SIZE 50
@@ -38,6 +39,7 @@ class Map {
     std::unordered_set<EntityId> entity_matrix[MAP_SIZE][MAP_SIZE];
     CollisionMap collision_map;
     EntityMap entity_map;
+    MapChanger& map_changer;
 
     // Para mandarsela a los clientes.
     nlohmann::json visual_map_info;
@@ -56,8 +58,9 @@ class Map {
     void add_entity(Entity* entity, position_t position);
 
    public:
-    Map(nlohmann::json map_info);
+    Map(nlohmann::json map_info, MapChanger& map_changer);
     ~Map();
+
     /* Mueve la entidad asociada al entity_id un tile en la direccion
      * indicada.*/
     void move(EntityId entity_id, steps_t steps);

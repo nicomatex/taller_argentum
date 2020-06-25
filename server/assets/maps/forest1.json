@@ -89,7 +89,7 @@
  				"y":8
  			},
  			"destination":{
- 				"map_id":1,
+ 				"map_id":0,
  				"x":22,
  				"y":10
  			}
@@ -100,7 +100,7 @@
  				"y":22
  			},
  			"destination":{
- 				"map_id":1,
+ 				"map_id":0,
  				"x":25,
  				"y":21
  			}

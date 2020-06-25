@@ -27,6 +27,7 @@ class Player : public Entity {
     Player(EntityId entity_id, nlohmann::json player_info, Map &map);
     entity_type_t get_type() override;
     nlohmann::json get_data() override;
+    std::string get_name() const;
     void set_current_movement(mov_action_t action, direction_t direction);
     void update(uint64_t delta_t) override;
 };

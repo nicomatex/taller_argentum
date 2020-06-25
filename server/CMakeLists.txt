@@ -34,6 +34,8 @@ add_library(server
   character_manager.cpp
   clients_monitor.cpp
   th_event_handler.cpp
+  map_changer.cpp
+  change_map_handler.cpp
 )
 
 target_link_libraries(server

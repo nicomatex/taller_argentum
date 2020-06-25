@@ -3,9 +3,10 @@
 #include <fstream>
 
 MapManager::MapManager(const char* path) {
+    MapId next_map_id = 0;
     std::ifstream input_file(path);
     nlohmann::json map_description = nlohmann::json::parse(input_file);
-    maps.emplace(0, map_description);
+    maps.emplace(next_map_id++, map_description);
 }
 
 MapMonitor& MapManager::operator[](MapId map_id) {

@@ -21,7 +21,6 @@ ThSocketReceiver::ThSocketReceiver(ThSocketReceiver&& other)
 
 void ThSocketReceiver::run() {
     try {
-        const std::exception* tmp;
         running = true;
         while (running && protocol.get_socket().is_connected()) {
             try {
@@ -34,13 +33,8 @@ void ThSocketReceiver::run() {
                 running = false;
             } catch (const EventHandlerStoppedException& e) {
                 running = false;
-            } catch (const std::exception& e) {
-                tmp = &e;
-                break;
             }
         }
-        if (running)
-            throw *tmp;
     } catch (const std::exception& e) {
         std::cerr << "SocketRecvHandler: " << e.what() << std::endl;
     } catch (...) {

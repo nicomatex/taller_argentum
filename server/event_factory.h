@@ -4,6 +4,7 @@
 #include "../include/event.h"
 #include "../include/types.h"
 #include "../nlohmann/json.hpp"
+#include "position.h"
 
 class EventFactory {
    public:
@@ -11,6 +12,11 @@ class EventFactory {
                                 const nlohmann::json& player_data);
 
     static Event update_map(const nlohmann::json& position_data);
+
+    static Event notify_map_change();
+
+    static Event change_map(ClientId client_id,
+                            const nlohmann::json& player_data);
 
     static Event update_entities(const nlohmann::json& entity_data);
 

@@ -7,7 +7,8 @@
 
 #include "player.h"
 
-Map::Map(nlohmann::json map_description) : dirty(false) {
+Map::Map(nlohmann::json map_description, MapChanger& map_changer)
+    : dirty(false), map_changer(map_changer) {
     int height = map_description["height"];
     int width = map_description["width"];
 
@@ -43,21 +44,25 @@ void Map::add_entity(Entity* entity, position_t position) {
 bool Map::collides(position_t position) {
     if (collision_map.count(position) > 0)
         return true;
-    if (entity_matrix[position.x][position.y].size() > 0)
-        return true;
-    if (position.x <= 0 || position.y <= 0 || position.x >= MAP_SIZE - 1 ||
-        position.y >= MAP_SIZE - 1) {
+    if (position.x < 0 || position.y < 0 || position.x > MAP_SIZE - 1 ||
+        position.y > MAP_SIZE - 1) {
         return true;
     }
+    if (entity_matrix[position.x][position.y].size() > 0)
+        return true;
     return false;
 }
 
 void Map::move(EntityId entity_id, steps_t steps) {
     position_t new_position = position_map[entity_id];
+    Entity& entity = *entity_map.at(entity_id);
 
     new_position.x += steps.x;
     new_position.y += steps.y;
 
+    if (entity.get_type() == PLAYER)
+        map_changer.set_change_if_necessary(
+            static_cast<Player&>(entity).get_name(), new_position);
     if (collides(new_position))
         return;
 

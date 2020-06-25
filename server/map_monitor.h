@@ -7,14 +7,16 @@
 #include "../nlohmann/json.hpp"
 #include "action.h"
 #include "map.h"
+#include "map_changer.h"
 
 // Clave: id de cliente, valor: id de entidad del jugador.
 typedef std::unordered_map<ClientId, EntityId> ClientMap;
 
 class MapMonitor {
    private:
+    std::recursive_mutex m;
     Map map;
-    std::mutex m;
+    MapChanger map_changer;
     ClientMap client_map;
 
    public:

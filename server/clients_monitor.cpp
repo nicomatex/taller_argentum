@@ -51,7 +51,10 @@ void ClientsMonitor::drop(ClientId client_id) {
 void ClientsMonitor::drop_all() {
     std::unique_lock<std::mutex> l(m);
     for (auto it = connected_clients.begin(); it != connected_clients.end();) {
-        send_to(*it, EventFactory::disconnect());
+        try {
+            clients[*it]->send(EventFactory::disconnect());
+        } catch (const ConnectionClosedSocketException& e) {
+        }
         std::cerr << "ClientsMonitor: dropping " << *it << std::endl;
         ServerManager::get_instance().get_dispatcher().push_event(
             EventFactory::drop_client(*it));

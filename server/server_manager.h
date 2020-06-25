@@ -42,7 +42,7 @@ class ClientDisconnectedException : public std::exception {
 
 class ServerManager {
    private:
-    CharacterManager char_manager;
+    CharacterManager character_manager;
     MapManager map_manager;
     std::unordered_map<MapId, Session> sessions;
     std::unordered_map<ClientId, MapId> client_to_map;
@@ -60,13 +60,11 @@ class ServerManager {
     ThDispatcher& get_dispatcher();
 
     void add_client(ClientId client_id, SocketManager* new_client);
-
-    void add_player(ClientId client_id, nlohmann::json player_info);
-
+    void rm_client(ClientId client_id);
     void drop_client(ClientId client_id);
 
-    void rm_client(ClientId client_id);
-
+    void add_player(ClientId client_id, nlohmann::json player_info,
+                    bool send_map_data = true);
     nlohmann::json rm_player(ClientId client_id);
 
     void send_to(ClientId client_id, const Event& ev);
@@ -74,6 +72,7 @@ class ServerManager {
     std::string get_name_by_client(ClientId client_id);
     ClientId get_client_by_name(const std::string& name);
 
+    MapId get_map_id(ClientId client_id);
     MapMonitor& get_map_by_client(ClientId client_id);
     MapMonitor& get_map(MapId map_id);
 

@@ -1,6 +1,7 @@
 #include "th_dispatcher.h"
 
 #include "../nlohmann/json.hpp"
+#include "change_map_handler.h"
 #include "client_drop_handler.h"
 #include "client_initializer_handler.h"
 #include "command_handler.h"
@@ -46,6 +47,9 @@ void ThDispatcher::handle(Event& ev) {
             break;
         case EV_ID_COMMAND:
             handler = new CommandHandler(ev);
+            break;
+        case SERVER_CHANGE_MAP:
+            handler = new ChangeMapHandler(ev);
             break;
         default:
             std::cerr << "Dispatcher: No handler for: " << json_ev << std::endl;
