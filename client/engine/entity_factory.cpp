@@ -10,7 +10,7 @@ Entity &EntityFactory::create_player(unsigned int entity_id, int head_id,
     Entity &player = EntityManager::get_instance().create(entity_id);
     player.add_component<PositionComponent>(10, 10);
     player.add_component<VisualCharacterComponent>(
-        head_id, body_id, weapon_id, shield_id, helmet_id, armor_id, 5);
+        head_id, body_id, weapon_id, shield_id, helmet_id, armor_id, 7);
     std::cout << "Added player with entity_id " << entity_id << std::endl;
     return player;
 }

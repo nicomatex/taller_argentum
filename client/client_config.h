@@ -11,9 +11,6 @@
 #define MSG_ERR_CONFIG_FILE "Error parseando el archivo de configuracion."
 #define MSG_ERR_CONECT_DROPPED "Conexion cerrada."
 
-/* Cuestiones visuales */
-#define TILE_SIZE 64
-
 /* Configuraciones de la UI */
 #define CHAT_FONT "assets/fonts/arial.ttf"
 #define CHAT_INPUT_FONT_COLOR {255,255,255,255}
@@ -33,9 +30,9 @@
 #define CHAT_LINES 8
 
 /* Configuracion de la camara */
-#define TILE_SIZE 64
-#define VIEWPORT_WIDTH 11
-#define VIEWPORT_HEIGHT 8
+#define TILE_SIZE 32
+#define VIEWPORT_WIDTH 22
+#define VIEWPORT_HEIGHT 16
 #define CAMERA_SPEED 3
 
 #endif

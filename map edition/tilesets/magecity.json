@@ -1,38 +1,14 @@
-{ "columns":8,
- "editorsettings":
-    {
-     "export":
-        {
-         "format":"",
-         "target":"."
-        }
-    },
+{ "columns":16,
  "image":"..\/sprites\/tilesets\/1.png",
- "imageheight":1450,
- "imagewidth":256,
+ "imageheight":2900,
+ "imagewidth":512,
  "margin":0,
  "name":"magecity",
- "properties":[
-        {
-         "name":"tileset id",
-         "type":"int",
-         "value":1
-        }],
  "spacing":0,
- "tilecount":360,
- "tiledversion":"2020.05.29",
+ "tilecount":1440,
+ "tiledversion":"1.4.0",
  "tileheight":32,
- "tiles":[
-        {
-         "id":0,
-         "properties":[
-                {
-                 "name":"tileset id",
-                 "type":"int",
-                 "value":1
-                }]
-        }],
  "tilewidth":32,
  "type":"tileset",
- "version":1.2
+ "version":1.4
 }

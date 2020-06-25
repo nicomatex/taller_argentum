@@ -13,7 +13,7 @@ Player::Player(EntityId entity_id, nlohmann::json player_info, Map &map)
       weapon_id(player_info["weapon_id"]),
       map(map),
       move_accumulator(0),
-      player_speed(5),
+      player_speed(7),
       current_direction(DOWN),
       moving(false) {}
 
