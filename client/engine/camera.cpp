@@ -136,6 +136,11 @@ void Camera::update() {
         camera_offset_x += (x_center_tile - new_center_x) * tile_size;
         x_center_tile = new_center_x;
         movement_timer.start();
+    }else{
+        if(follow_component.get_x() < width_tiles / 2)
+            x_center_tile = (width_tiles / 2);
+        else if(follow_component.get_x() > map_size - (width_tiles / 2))
+            x_center_tile = map_size - (width_tiles / 2);
     }
 
     if (follow_component.get_y() <= map_size - (height_tiles / 2) &&
@@ -144,6 +149,11 @@ void Camera::update() {
         camera_offset_y += (y_center_tile - new_center_y) * tile_size;
         y_center_tile = new_center_y;
         movement_timer.start();
+    }else{
+        if(follow_component.get_y() < height_tiles / 2)
+            y_center_tile = (height_tiles / 2);
+        else if(follow_component.get_y() > map_size - (height_tiles / 2))
+            y_center_tile = map_size - (height_tiles / 2);
     }
 }
 

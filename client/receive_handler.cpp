@@ -69,8 +69,9 @@ void ClientReceiveHandler::handle_initialization(Event &ev) {
     json initialization_info = ev.get_json();
     json player_info = initialization_info["player"];
     player_info["entity_id"] = player_info["player_id"];
-    EntityFactory::create_player(player_info);
-
+    Entity &player = EntityFactory::create_player(player_info);
+    player.get_component<PositionComponent>().set_position(
+        player_info["pos"]["x"], player_info["pos"]["y"]);
     json map_description = initialization_info["map_info"];
     map_change_buffer.fill(map_description, player_info["player_id"]);
 }
