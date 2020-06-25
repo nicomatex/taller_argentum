@@ -17,7 +17,8 @@ class ClientReceiveHandler : public BlockingThEventHandler {
     void handle_initialization(Event &ev);
     void handle_entity_update(Event &ev);
     void handle_chat_message(Event &ev);
-
+    void handle_map_change(Event &ev);
+    
     MapChangeBuffer &map_change_buffer;
     ChatBuffer &chat_buffer;
     GameStateMonitor &game_state_monitor;

@@ -23,21 +23,25 @@ ClientReceiveHandler::~ClientReceiveHandler() {}
 void ClientReceiveHandler::handle(Event &ev) {
     json event = ev.get_json();
     switch (int(event["ev_id"])) {
-        case 0:
+        case EV_ID_INITIALIZE_MAP:
             handle_initialization(ev);
             break;
-        case 2:
+        case EV_ID_MOVE:
             handle_move(ev);
             break;
-        case 3:
+        case EV_ID_UPDATE_ENTITIES:
             handle_entity_update(ev);
             break;
-        case 4:
+        case EV_ID_CHAT_MESSAGE:
             handle_chat_message(ev);
             break;
-        case -1:
+        case EV_ID_NOTIFY_NEW_MAP:
+            handle_map_change(ev);
+            break;
+        case EV_ID_DISCONNECT:
             std::cout << "Fui kickeado del servidor." << std::endl;
             game_state_monitor.quit();
+            break;
     };
 }
 
@@ -88,4 +92,10 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
 
 void ClientReceiveHandler::handle_chat_message(Event &ev) {
     chat_buffer.push(ev.get_json()["msg"]);
+}
+
+void ClientReceiveHandler::handle_map_change(Event &ev){
+    map_change_buffer.reset();
+    game_state_monitor.set_running_status(false);
+    std::cout << "Cargando nuevo mapa..." << std::endl;
 }
