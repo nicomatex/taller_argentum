@@ -61,8 +61,7 @@ void GameClient::run() {
         map_change_buffer.wait_for_map();
         game_state_monitor.set_running_status(true);
         Game game(map_change_buffer.get_follow_entity_id(), socket_manager, window,
-                chat_buffer,game_state_monitor);
-        game.setup_map(map_change_buffer.get_map_info());
+                chat_buffer,game_state_monitor,map_change_buffer.get_map_info());
 
         game.run();
         if (!socket_manager.is_connected()) {

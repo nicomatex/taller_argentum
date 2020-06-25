@@ -1,8 +1,7 @@
 #include "decoration.h"
 
-Decoration::Decoration(SDLSprite sprite, int x, int y, int width, int height,
-                       int x_offset, int y_offset)
-    : RenderizableObject(width, height, x_offset, y_offset),
+Decoration::Decoration(SDLSprite sprite, int x, int y, visual_info_t visual_info)
+    : RenderizableObject(visual_info),
       sprite(sprite),
       x(x),
       y(y) {}

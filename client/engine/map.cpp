@@ -7,6 +7,7 @@
 #include "json.hpp"
 #include "resource_manager.h"
 #include "engine_error.h"
+#include "visual_config.h"
 
 using json = nlohmann::json;
 
@@ -38,7 +39,7 @@ void Map::generate(json map_description) {
                 SDLSprite tilesprite(tileset, 1, 1, sprite_base_x,
                                      sprite_base_y, tile_size, tile_size);
                 new_layer.push_back(
-                    Decoration(tilesprite, j, i, 100, 100, 0, 0));
+                    Decoration(tilesprite, j, i, FLOOR_TILE_CONFIG));
             }
         }
         visual_layers.push_back(std::move(new_layer));

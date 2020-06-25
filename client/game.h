@@ -22,8 +22,8 @@ class Game {
 
    public:
     Game(int follow_entity_id, SocketManager &socket_manager, SDLWindow &window,
-         ChatBuffer &chat_buffer, GameStateMonitor &game_state_monitor);
-    void setup_map(nlohmann::json map_info);
+         ChatBuffer &chat_buffer, GameStateMonitor &game_state_monitor,
+         nlohmann::json map_info);
 
     void run();
 

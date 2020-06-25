@@ -8,21 +8,22 @@ a ser renderizados por pantalla. */
 #include "SDL/sdl_animated_sprite.h"
 #include "SDL/sdl_timer.h"
 
+typedef struct part_visual_info{
+    int width;
+    int height;
+    int offset_x;
+    int offset_y;
+} visual_info_t;
+
+
 /* Interfaz que deben implementar todos los componentes
 que vayan a ser renderizados por la camara.*/
 class RenderizableObject {
    protected:
-    int height;
-    int width;
-
-    /* Estos offset estan medidos en centesimas de tile (es decir, 100 = 1
-     * tile). Se usan para que la transicion sea smooth.*/
-
-    int x_offset;
-    int y_offset;
+    visual_info_t visual_info;
 
    public:
-    RenderizableObject(int width, int height,int x_offset, int y_offset);
+    RenderizableObject(visual_info_t visual_info);
     virtual ~RenderizableObject(){}
 
     /* Renderiza el objeto en pantalla. */

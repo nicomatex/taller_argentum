@@ -2,24 +2,13 @@
 #define __VISUAL_CONFIG_H
 
 /* Tamanios en centesimas de tile */
-#define HEAD_WIDTH 30
-#define HEAD_HEIGHT 30
-#define HEAD_OFFSET_X 30
-#define HEAD_OFFSET_Y -93
 
-#define BODY_WIDTH 50
-#define BODY_HEIGHT 90
-#define BODY_OFFSET_X 20
-#define BODY_OFFSET_Y -20
+/* Configuraciones en formato {WIDTH, HEIGHT, X_OFFSET, Y_OFFSET}*/
+#define HEAD_CONFIG {30,30,30,-93}
+#define BODY_CONFIG {50,90,20,-20}
+#define WEAPON_CONFIG {50,90,20,-20}
+#define SHIELD_CONFIG {50,90,20,-20}
 
-#define WEAPON_WIDTH 50
-#define WEAPON_HEIGHT 90
-#define WEAPON_OFFSET_X 20
-#define WEAPON_OFFSET_Y -20
-
-#define SHIELD_WIDTH 50
-#define SHIELD_HEIGHT 90
-#define SHIELD_OFFSET_X 20
-#define SHIELD_OFFSET_Y -20
+#define FLOOR_TILE_CONFIG {100,100,0,0}
 
 #endif

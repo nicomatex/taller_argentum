@@ -7,19 +7,19 @@
 
 Game::Game(int follow_entity_id, SocketManager &socket_manager,
            SDLWindow &window, ChatBuffer &chat_buffer,
-           GameStateMonitor &game_state_monitor)
+           GameStateMonitor &game_state_monitor, nlohmann::json map_info)
     : ui_event_handler(socket_manager, game_state_monitor),
       camera(EntityManager::get_instance()
                  .get_from_id(follow_entity_id)
                  .get_component<PositionComponent>(),
-             50, TILE_SIZE, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, CAMERA_SPEED),
+             map_info["width"], TILE_SIZE, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, CAMERA_SPEED),
       window(window),
       chat_buffer(chat_buffer),
-      game_state_monitor(game_state_monitor) {}
+      game_state_monitor(game_state_monitor) {
+          map.generate(map_info);
+      }
 
 Game::~Game() {}
-
-void Game::setup_map(nlohmann::json map_info) { map.generate(map_info); }
 
 void Game::run() {
     Chat chat(AREA_CHAT, CHAT_LINES, window.get_renderer(),
@@ -46,4 +46,5 @@ void Game::run() {
                            &side_panel);  // Temporal
         window.render();
     }
+    EntityManager::get_instance().empty();
 }

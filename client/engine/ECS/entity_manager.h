@@ -35,6 +35,9 @@ class EntityManager {
     void remove_non_updated();
 
     void clean();
+
+    /* Remueve todas las entidades del sistema. */
+    void empty();
 };
 
 #endif  // ENTITY_MANAGER_H

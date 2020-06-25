@@ -10,6 +10,10 @@ class PositionComponent: public Component {
 	int x;
 	int y;
 	std::mutex m;
+
+	/* Indica si se llamo a set_position al menos una vez. */
+	bool initialized;
+
    public:
    	PositionComponent();
 	PositionComponent(int x, int y);
@@ -19,6 +23,7 @@ class PositionComponent: public Component {
 	int get_x();
 	int get_y();
 	void set_position(int x, int y);
+	bool position_initialized();
 };
 
 #endif

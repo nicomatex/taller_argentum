@@ -18,8 +18,7 @@ class Actor : public RenderizableObject {
     bool is_empty;
 
    public:
-    Actor(AnimationPack &animation_pack, int width, int height, int x_offset,
-          int y_offset);
+    Actor(AnimationPack &animation_pack, visual_info_t visual_info);
 
     /* Establece la nueva orientacion.*/
     void set_orientation(direction_t new_direction);
@@ -32,10 +31,6 @@ class Actor : public RenderizableObject {
 
     /* Renderiza el objeto en pantalla. */
     void render(SDL_Rect dest) override;
-
-    /* Getters para el offset total en centesimas de tile. */
-    int get_x_offset() const override;
-    int get_y_offset() const override;
 
     void update() override;
 
