@@ -6,8 +6,8 @@
 #include "../nlohmann/json.hpp"
 
 typedef struct position {
-    unsigned int x;
-    unsigned int y;
+    int x;
+    int y;
 } position_t;
 
 inline void to_json(nlohmann::json& j, const position_t& p) {
@@ -23,7 +23,7 @@ inline void from_json(const nlohmann::json& j, position_t& p) {
 class PositionHasher {
    public:
     std::size_t operator()(const position_t& position) const noexcept {
-        boost::hash<unsigned int> hasher;
+        boost::hash<int> hasher;
         return hasher(position.x) ^ hasher(position.y);
     }
 };

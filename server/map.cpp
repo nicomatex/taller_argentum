@@ -9,13 +9,13 @@
 
 Map::Map(nlohmann::json map_description, MapChanger& map_changer)
     : dirty(false), map_changer(map_changer) {
-    int height = map_description["height"];
-    int width = map_description["width"];
+    height = map_description["height"];
+    width = map_description["width"];
 
     for (auto& layer : map_description["layers"].items()) {
         if (layer.value()["name"] == "Collision") {
-            for (unsigned int i = 0; i < height; i++) {
-                for (unsigned int j = 0; j < width; j++) {
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
                     int tile_index = j + (i * width);
                     if (int(layer.value()["data"][tile_index]) != 0) {
                         collision_map.insert({j, i});
@@ -44,8 +44,8 @@ void Map::add_entity(Entity* entity, position_t position) {
 bool Map::collides(position_t position) {
     if (collision_map.count(position) > 0)
         return true;
-    if (position.x < 0 || position.y < 0 || position.x > MAP_SIZE - 1 ||
-        position.y > MAP_SIZE - 1) {
+    if (position.x < 0 || position.y < 0 || position.x >= width ||
+        position.y >= height) {
         return true;
     }
     if (entity_matrix[position.x][position.y].size() > 0)

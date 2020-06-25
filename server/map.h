@@ -40,6 +40,8 @@ class Map {
     CollisionMap collision_map;
     EntityMap entity_map;
     MapChanger& map_changer;
+    int height;
+    int width;
 
     // Para mandarsela a los clientes.
     nlohmann::json visual_map_info;

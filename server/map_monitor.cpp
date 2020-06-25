@@ -7,7 +7,8 @@
 
 MapMonitor::MapMonitor(nlohmann::json map_description)
     : map(map_description, map_changer),
-      map_changer(map_description["teleporters"]) {}
+      map_changer(map_description["changes"], map_description["height"],
+                  map_description["width"]) {}
 
 MapMonitor::~MapMonitor() {}
 
