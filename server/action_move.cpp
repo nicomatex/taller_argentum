@@ -7,7 +7,7 @@ ActionMove::ActionMove(mov_action_t action, direction_t direction)
 
 ActionMove::~ActionMove() {}
 
-void ActionMove::execute(Entity &entity) const {
-    Player &player = static_cast<Player &>(entity);
+void ActionMove::execute(EntityId entity_id, Map &map) const {
+    Player &player = static_cast<Player &>(Action::get_entity(map, entity_id));
     player.set_current_movement(action, direction);
 }

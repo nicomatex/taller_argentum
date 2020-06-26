@@ -33,7 +33,9 @@ class MapMonitor {
     void update(uint64_t delta_t);
 
     /* Ejecuta sobre la entidad asociada al client_id la accion. */
-    void with_player(ClientId client_id, const Action& action);
+    void push_action(ClientId client_id, Action* action);
+
+    std::vector<nlohmann::json> get_update_logs();
 
     nlohmann::json get_update_data(bool& update_entities);
 

@@ -2,6 +2,7 @@
 #define __MAP_H
 
 #include <cstdint>
+#include <queue>
 #include <unordered_map>
 #include <unordered_set>
 
@@ -21,6 +22,11 @@ typedef struct steps {
     int y;
 } steps_t;
 
+typedef struct entity_action {
+    EntityId entity;
+    Action* action;
+} entity_action_t;
+
 // clave: id de entidad, valor: position_t
 typedef std::unordered_map<EntityId, position_t> PositionMap;
 
@@ -33,6 +39,8 @@ typedef std::unordered_set<position_t, PositionHasher, PositionComparator>
 
 class Map {
    private:
+    friend class Action;
+
     bool dirty;
     PositionMap position_map;
     // Set de ids de lo que hay en cada posicion.
@@ -42,6 +50,9 @@ class Map {
     MapChanger& map_changer;
     int height;
     int width;
+
+    std::queue<entity_action_t> actions;
+    std::queue<nlohmann::json> update_logs;
 
     // Para mandarsela a los clientes.
     nlohmann::json visual_map_info;
@@ -58,6 +69,8 @@ class Map {
 
     /* Agrega una nueva entidad asociada al entity_id en la posicion indicada.*/
     void add_entity(Entity* entity, position_t position);
+
+    void solve_combats();
 
    public:
     Map(nlohmann::json map_info, MapChanger& map_changer);
@@ -79,8 +92,9 @@ class Map {
     void update(uint64_t delta_t);
 
     /* Ejecuta sobre la entidad asociada al id la accion. */
-    void with_entity(EntityId entity_id, const Action& action);
+    void push_action(EntityId entity_id, Action* action);
 
+    std::queue<nlohmann::json>& get_update_logs();
     static nlohmann::json get_position_data(const PositionMap& position_map);
     const PositionMap get_position_map() const;
     nlohmann::json get_entity_data();

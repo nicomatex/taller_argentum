@@ -141,13 +141,23 @@ position_t Map::get_position(EntityId entity_id) {
 }
 
 void Map::update(uint64_t delta_t) {
+    while (!actions.empty()) {
+        entity_action_t ent_act = actions.front();
+        actions.pop();
+        ent_act.action->execute(ent_act.entity, *this);
+        delete ent_act.action;
+    }
     for (auto& it : entity_map) {
         it.second->update(delta_t);
     }
 }
 
-void Map::with_entity(EntityId entity_id, const Action& action) {
-    action.execute(*(entity_map.at(entity_id)));
+void Map::push_action(EntityId entity_id, Action* action) {
+    actions.push({entity_id, action});
+}
+
+std::queue<nlohmann::json>& Map::get_update_logs() {
+    return update_logs;
 }
 
 nlohmann::json Map::get_position_data(const PositionMap& position_map) {

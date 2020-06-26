@@ -77,9 +77,9 @@
  "width":50,
  "changes":{
  	"teleports":[],
- 	"upper":0,
- 	"lower":0,
+ 	"upper":-1,
+ 	"lower":-1,
  	"right":1,
- 	"left":0
+ 	"left":-1
  	}
 }

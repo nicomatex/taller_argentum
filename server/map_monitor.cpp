@@ -39,9 +39,13 @@ void MapMonitor::update(uint64_t delta_t) {
     map_changer.change_maps();
 }
 
-void MapMonitor::with_player(ClientId client_id, const Action& action) {
+void MapMonitor::push_action(ClientId client_id, Action* action) {
     std::unique_lock<std::recursive_mutex> l(m);
-    map.with_entity(client_map.at(client_id), action);
+    map.push_action(client_map.at(client_id), action);
+}
+
+std::vector<nlohmann::json> MapMonitor::get_update_logs() {
+    // TODO
 }
 
 nlohmann::json MapMonitor::get_update_data(bool& update_entities) {

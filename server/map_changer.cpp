@@ -10,20 +10,22 @@
 
 bool MapChanger::requires_map_change(position_t position) {
     return dest_position.count(position) || dest_map.count(position) ||
-           position.x < 0 || position.x >= width || position.y < 0 ||
-           position.y >= height;
+           (left_map >= 0 && position.x < 0) ||
+           (right_map >= 0 && position.x >= width) ||
+           (upper_map >= 0 && position.y < 0) ||
+           (lower_map >= 0 && position.y >= height);
 }
 
 position_t MapChanger::get_dest_position(position_t position) {
     if (dest_position.count(position)) {
         return dest_position.at(position);
-    } else if (position.x < 0) {
+    } else if (left_map >= 0 && position.x < 0) {
         return {width - 1, position.y};
-    } else if (position.x >= width) {
+    } else if (right_map >= 0 && position.x >= width) {
         return {0, position.y};
-    } else if (position.y < 0) {
+    } else if (upper_map >= 0 && position.y < 0) {
         return {position.x, height - 1};
-    } else if (position.y >= height) {
+    } else if (lower_map >= 0 && position.y >= height) {
         return {position.x, 0};
     }
     throw MyException("La posición no tiene un destino válido.");
@@ -33,13 +35,13 @@ position_t MapChanger::get_dest_position(position_t position) {
 MapId MapChanger::get_dest_map(position_t position) {
     if (dest_map.count(position)) {
         return dest_map.at(position);
-    } else if (position.x < 0) {
+    } else if (left_map >= 0 && position.x < 0) {
         return left_map;
-    } else if (position.x >= width) {
+    } else if (right_map >= 0 && position.x >= width) {
         return right_map;
-    } else if (position.y < 0) {
+    } else if (upper_map >= 0 && position.y < 0) {
         return upper_map;
-    } else if (position.y >= height) {
+    } else if (lower_map >= 0 && position.y >= height) {
         return lower_map;
     }
     throw MyException("La posición no tiene un destino válido.");
@@ -73,6 +75,7 @@ void MapChanger::set_change_if_necessary(const std::string& name,
 void MapChanger::change_maps() {
     ServerManager& server_manager = ServerManager::get_instance();
     for (auto& it : change_required) {
+        std::cerr << "Changing map\n";
         ClientId client_id = server_manager.get_client_by_name(it.first);
         nlohmann::json player_data = server_manager.rm_player(client_id);
         player_data["pos"] = get_dest_position(it.second);

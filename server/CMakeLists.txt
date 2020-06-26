@@ -13,6 +13,7 @@ include_directories(${PROJECT_BINARY_DIR})
 add_library(server
   client_id_set.cpp
   client_initializer_handler.cpp
+  action.cpp
   entity.cpp
   game_server.cpp
   game_loop.cpp

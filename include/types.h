@@ -17,6 +17,6 @@ typedef uint32_t ClientId;
 
 typedef uint32_t EntityId;
 
-typedef uint32_t MapId;
+typedef int32_t MapId;
 
 #endif  // TYPES_H

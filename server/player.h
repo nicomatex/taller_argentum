@@ -7,18 +7,26 @@
 
 class Player : public Entity {
    private:
+    // MovementComponent movement_component;
+    // get_facing_position()
     unsigned int player_speed;  // en tiles per second
     direction_t current_direction;
     bool moving;
     int move_accumulator;
 
-    int head_id;
-    int body_id;
-    std::string name;
+    const int head_id;
+    const int body_id;
+    const std::string name;
+
+    // CombatComponent
+    // basic_attack()
+    // special()
     int helmet_id;
     int armor_id;
     int shield_id;
-    int weapon_id;
+    int weapon_id;  // Algo más complejo que un id
+
+    // Inventory
 
     Map &map;  // Mapa en el que esta el jugador en este momento.
                // STATS
