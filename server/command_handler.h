@@ -22,6 +22,7 @@ enum cmd_type {
     CMD_DROP,
     CMD_WHISPER,
     CMD_DISCONNECT,
+    CMD_ATTACK,
     CMD_HELP
 };
 

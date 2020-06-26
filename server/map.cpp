@@ -36,7 +36,7 @@ EntityId Map::get_next_id() {
 void Map::add_entity(Entity* entity, position_t position) {
     dirty = true;
     position_map[entity->get_id()] = position;
-    entity_matrix[position.x][position.y].emplace(entity->get_id());
+    entity_matrix[position] = entity;
     entity_map.emplace(entity->get_id(), entity);
     std::cout << "Added entity with id " << entity->get_id() << std::endl;
 }
@@ -48,31 +48,31 @@ bool Map::collides(position_t position) {
         position.y >= height) {
         return true;
     }
-    if (entity_matrix[position.x][position.y].size() > 0)
+    if (entity_matrix.count(position))
         return true;
     return false;
 }
 
 void Map::move(EntityId entity_id, steps_t steps) {
     position_t new_position = position_map[entity_id];
-    Entity& entity = *entity_map.at(entity_id);
+    Entity* entity = entity_map.at(entity_id);
 
     new_position.x += steps.x;
     new_position.y += steps.y;
 
-    if (entity.get_type() == PLAYER)
+    if (entity->get_type() == PLAYER)
         map_changer.set_change_if_necessary(
-            static_cast<Player&>(entity).get_name(), new_position);
+            static_cast<Player*>(entity)->get_name(), new_position);
     if (collides(new_position))
         return;
 
     // Borrado de la matriz de entidad en la vieja posicion.
     position_t old_position = position_map[entity_id];
-    entity_matrix[old_position.x][old_position.y].erase(entity_id);
+    entity_matrix.erase(old_position);
 
     // Agregado en la matriz de entidad y mapa de posiciones en la nueva
     // posicion.
-    entity_matrix[new_position.x][new_position.y].emplace(entity_id);
+    entity_matrix[new_position] = entity;
     position_map[entity_id] = new_position;
 }
 
@@ -130,9 +130,9 @@ nlohmann::json Map::rm_player(EntityId entity_id) {
     nlohmann::json player_data = player->get_data();
     position_t position = position_map.at(entity_id);
     position_map.erase(entity_id);
-    collision_map.erase(position);
-    entity_matrix[position.x][position.y].erase(entity_id);
+    entity_matrix.erase(position);
     player_data["pos"] = position;
+    delete player;
     return player_data;
 }
 

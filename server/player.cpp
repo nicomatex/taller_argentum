@@ -60,6 +60,25 @@ entity_type_t Player::get_type() {
     return PLAYER;
 }
 
+position_t Player::get_facing_position(position_t position) {
+    position_t facing_pos;
+    switch (current_direction) {
+        case UP:
+            facing_pos = {position.x, position.y - 1};
+            break;
+        case DOWN:
+            facing_pos = {position.x, position.y + 1};
+            break;
+        case RIGHT:
+            facing_pos = {position.x + 1, position.y};
+            break;
+        case LEFT:
+            facing_pos = {position.x - 1, position.y};
+            break;
+    }
+    return facing_pos;
+}
+
 nlohmann::json Player::get_data() {
     visual_entity_info["type_id"] = get_type();
     visual_entity_info["head_id"] = head_id;

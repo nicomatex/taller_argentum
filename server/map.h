@@ -33,6 +33,10 @@ typedef std::unordered_map<EntityId, position_t> PositionMap;
 // Clave: id de entidad, valor: puntero a la entidad
 typedef std::unordered_map<EntityId, Entity*> EntityMap;
 
+typedef std::unordered_map<position_t, Entity*, PositionHasher,
+                           PositionComparator>
+    EntityMatrix;
+
 // Clave: position_t. Contiene los bloques colisionables.
 typedef std::unordered_set<position_t, PositionHasher, PositionComparator>
     CollisionMap;
@@ -44,7 +48,7 @@ class Map {
     bool dirty;
     PositionMap position_map;
     // Set de ids de lo que hay en cada posicion.
-    std::unordered_set<EntityId> entity_matrix[MAP_SIZE][MAP_SIZE];
+    EntityMatrix entity_matrix;
     CollisionMap collision_map;
     EntityMap entity_map;
     MapChanger& map_changer;
@@ -86,6 +90,8 @@ class Map {
     nlohmann::json rm_player(EntityId entity_id);
 
     position_t get_position(EntityId entity_id);
+
+    EntityId get_entity_id(position_t position);
 
     /* Actualiza todas las entidades que contiene segun el delta_t
      * transcurrido.*/

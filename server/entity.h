@@ -5,8 +5,9 @@
 
 #include "../include/types.h"
 #include "../nlohmann/json.hpp"
+#include "position.h"
 
-enum entity_type_t { PLAYER, NPC, LOOT };
+enum entity_type_t { PLAYER, NPC };
 
 class Entity {
    protected:
@@ -23,6 +24,11 @@ class Entity {
 
     virtual nlohmann::json get_data() = 0;
     virtual void update(uint64_t delta_t);
+
+    virtual position_t get_facing_position(position_t position) = 0;
+
+    // virtual int attack(Entity* attacked) = 0;
+    // virtual int recv_damage(int raw_damage) = 0;
 
     EntityId get_id() const;
 };

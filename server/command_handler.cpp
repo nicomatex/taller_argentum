@@ -1,5 +1,7 @@
 #include "command_handler.h"
 
+#include <stdexcept>
+
 #include "../nlohmann/json.hpp"
 #include "event_factory.h"
 #include "map_monitor.h"
@@ -9,7 +11,8 @@
 #define WHISPER '@'
 #define HELP_MESSAGE "[info] Comando de ayuda!"
 
-#include <stdexcept>
+// Temp
+#include "melee_attack_handler.h"
 
 class CommandErrorException : public std::exception {
    private:
@@ -37,6 +40,8 @@ void CommandHandler::parse_line(const std::string& line) {
             cmd_type = CMD_DISCONNECT;
         } else if (cmd[0] == "ayuda") {
             cmd_type = CMD_DISCONNECT;
+        } else if (cmd[0] == "attack") {
+            cmd_type = CMD_ATTACK;
         } else {
             throw CommandErrorException();
         }
@@ -109,6 +114,11 @@ void CommandHandler::run_handler() {
             case CMD_DISCONNECT:
                 cmd_disconnect(json["client_id"]);
                 break;
+            case CMD_ATTACK: {
+                MeleeAttackHandler ah(event);
+                ah.start();
+                ah.join();
+            } break;
             default:
                 throw CommandErrorException();
                 break;

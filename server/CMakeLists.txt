@@ -37,6 +37,8 @@ add_library(server
   th_event_handler.cpp
   map_changer.cpp
   change_map_handler.cpp
+  action_melee_attack.cpp
+  melee_attack_handler.cpp
 )
 
 target_link_libraries(server

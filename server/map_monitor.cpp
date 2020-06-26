@@ -46,6 +46,7 @@ void MapMonitor::push_action(ClientId client_id, Action* action) {
 
 std::vector<nlohmann::json> MapMonitor::get_update_logs() {
     // TODO
+    return std::vector<nlohmann::json>();
 }
 
 nlohmann::json MapMonitor::get_update_data(bool& update_entities) {

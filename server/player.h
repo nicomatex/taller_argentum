@@ -36,6 +36,9 @@ class Player : public Entity {
     entity_type_t get_type() override;
     nlohmann::json get_data() override;
     std::string get_name() const;
+
+    position_t get_facing_position(position_t position);
+
     void set_current_movement(mov_action_t action, direction_t direction);
     void update(uint64_t delta_t) override;
 };
