@@ -83,32 +83,10 @@
  "version":1.2,
  "width":50,
  "changes":{
- 	"teleports":[
- 		{
- 			"position":{
- 				"x":5,
- 				"y":8
- 			},
- 			"destination":{
- 				"map_id":0,
- 				"x":22,
- 				"y":10
- 			}
- 		},
- 		{
- 			"position":{
- 				"x":5,
- 				"y":22
- 			},
- 			"destination":{
- 				"map_id":0,
- 				"x":25,
- 				"y":21
- 			}
- 		}],
- 	"upper":0,
- 	"lower":0,
- 	"right":0,
+ 	"teleports":[],
+ 	"upper":1,
+ 	"lower":1,
+ 	"right":1,
  	"left":0
  	}
 }

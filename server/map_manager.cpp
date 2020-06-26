@@ -2,11 +2,20 @@
 
 #include <fstream>
 
+// Temp
+#include <iostream>
+
 MapManager::MapManager(const char* path) {
-    MapId next_map_id = 0;
-    std::ifstream input_file(path);
-    nlohmann::json map_description = nlohmann::json::parse(input_file);
-    maps.emplace(next_map_id++, map_description);
+    std::ifstream index_file(path);
+    nlohmann::json maps_index = nlohmann::json::parse(index_file);
+    for (auto& it : maps_index["maps"].items()) {
+        nlohmann::json map_info = it.value();
+        std::ifstream map_file(map_info["path"]);
+        nlohmann::json map_description = nlohmann::json::parse(map_file);
+        maps.emplace(map_info["map_id"], map_description);
+        std::cerr << "MapManager: creado mapa: " << map_info["map_name"]
+                  << std::endl;
+    }
 }
 
 MapMonitor& MapManager::operator[](MapId map_id) {

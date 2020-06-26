@@ -1,0 +1,14 @@
+{
+    "maps": [
+        {
+            "map_id": 0,
+            "map_name": "Paseo Colon",
+            "path": "assets/maps/paseo_colon.json"
+        },
+        {
+            "map_id": 1,
+            "map_name": "Reserva Puerto Madero",
+            "path": "assets/maps/reserva_puerto_madero.json"
+        }
+    ]
+}

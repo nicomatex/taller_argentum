@@ -14,7 +14,7 @@ std::recursive_mutex m;
 
 ServerManager::ServerManager()
     : character_manager("database/characters.dat", "database/characters.json"),
-      map_manager("assets/maps/forest1.json"),
+      map_manager("ind/maps_index.json"),
       accepter(Socket("27016", 10)),
       game_loop(map_manager) {
     if (!character_manager.character_exists("nicomatex")) {

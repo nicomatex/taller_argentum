@@ -76,7 +76,6 @@ void MapChanger::change_maps() {
         ClientId client_id = server_manager.get_client_by_name(it.first);
         nlohmann::json player_data = server_manager.rm_player(client_id);
         player_data["pos"] = get_dest_position(it.second);
-        std::cerr << player_data << std::endl;
         player_data["map_id"] = get_dest_map(it.second);
         server_manager.send_to(client_id, EventFactory::notify_map_change());
         server_manager.get_dispatcher().push_event(
