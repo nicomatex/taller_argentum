@@ -31,6 +31,7 @@ GameClient::GameClient(json config)
       config(config),
       receive_handler(map_change_buffer, chat_buffer, game_state_monitor) {
     try {
+        std::cout << "\e[8;30;116t"; //Magia resize terminal
         std::cout << R"(
    _____                                      __                       ________           .__   .__                 
   /  _  \  _______    ____    ____    ____  _/  |_  __ __   _____      \_____  \    ____  |  |  |__|  ____    ____
