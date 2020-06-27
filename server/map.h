@@ -17,11 +17,6 @@
 
 class Player;
 
-typedef struct steps {
-    int x;
-    int y;
-} steps_t;
-
 typedef struct entity_action {
     EntityId entity;
     Action* action;

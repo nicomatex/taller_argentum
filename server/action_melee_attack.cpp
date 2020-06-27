@@ -1,6 +1,7 @@
 #include "action_melee_attack.h"
 
 #include "map.h"
+#include "position.h"
 
 // Temp
 #include "event_factory.h"
@@ -16,8 +17,8 @@ void ActionMeleeAttack::execute(EntityId entity_id, Map& map) const {
     position_t attacked_pos =
         attacker->get_facing_position(map.get_position(entity_id));
     Entity* attacked = Action::get_entity(map, attacked_pos);
-    // if (!attacked)
-    //     return;
+    if (!attacked)  // || !attacked->is_alive() TODO
+        return;
     // int damage = attacker->attack(attacked);
     Player* player = (Player*)attacker;
     ServerManager& sm = ServerManager::get_instance();

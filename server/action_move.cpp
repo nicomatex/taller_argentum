@@ -9,5 +9,5 @@ ActionMove::~ActionMove() {}
 
 void ActionMove::execute(EntityId entity_id, Map &map) const {
     Player *player = static_cast<Player *>(Action::get_entity(map, entity_id));
-    player->set_current_movement(action, direction);
+    player->set_movement(action, direction);
 }

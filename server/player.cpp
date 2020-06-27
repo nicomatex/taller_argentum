@@ -1,109 +1,54 @@
 #include "player.h"
 
+#include "combat_component.h"
+#include "movement_component.h"
+
+// Temp
 #include <iostream>
 
-Player::Player(EntityId entity_id, nlohmann::json player_info, Map &map)
-    : Entity(entity_id),
+Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
+    : Entity(entity_id, new MovementComponent(7),
+             new CombatComponent(
+                 player_info["helmet_id"], player_info["armor_id"],
+                 player_info["shield_id"], player_info["weapon_id"])),
       head_id(player_info["head_id"]),
       body_id(player_info["body_id"]),
       name(player_info["name"]),
-      helmet_id(player_info["helmet_id"]),
-      armor_id(player_info["armor_id"]),
-      shield_id(player_info["shield_id"]),
-      weapon_id(player_info["weapon_id"]),
-      map(map),
-      move_accumulator(0),
-      player_speed(7),
-      current_direction(DOWN),
-      moving(false) {}
+      map(map) {}
 
 void Player::update(uint64_t delta_t) {
-    int time_between_tiles = 1000 / player_speed;
-    move_accumulator += delta_t;
-
-    if (move_accumulator >= time_between_tiles) {
-        int steps = move_accumulator /
-                    time_between_tiles;  // Esto deberia dar 1 salvo que el
-                                         // ciclo de juego se ponga MUY slow
-
-        if (moving) {
-            switch (current_direction) {
-                case UP:
-                    map.move(this->id, {0, -steps});
-                    break;
-                case DOWN:
-                    map.move(this->id, {0, steps});
-                    break;
-                case RIGHT:
-                    map.move(this->id, {steps, 0});
-                    break;
-                case LEFT:
-                    map.move(this->id, {-steps, 0});
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        /* Se guarda el restante para la proxima actualizacion. */
-        if (moving && steps != 0) {
-            move_accumulator = move_accumulator % time_between_tiles;
-        } else {
-            move_accumulator = time_between_tiles;
-        }
-    }
+    steps_t steps = movement_component->update(delta_t);
+    map.move(this->id, steps);
 
     // TODO: demas updates, como regeneraciones de vida/mana, etc.
 }
 
-entity_type_t Player::get_type() {
+entity_type_t Player::get_type() const {
     return PLAYER;
 }
 
-position_t Player::get_facing_position(position_t position) {
-    position_t facing_pos;
-    switch (current_direction) {
-        case UP:
-            facing_pos = {position.x, position.y - 1};
-            break;
-        case DOWN:
-            facing_pos = {position.x, position.y + 1};
-            break;
-        case RIGHT:
-            facing_pos = {position.x + 1, position.y};
-            break;
-        case LEFT:
-            facing_pos = {position.x - 1, position.y};
-            break;
+nlohmann::json Player::get_data() const {
+    nlohmann::json entity_data;
+    entity_data["entity_id"] = id;
+    entity_data["type_id"] = get_type();
+    entity_data["head_id"] = head_id;
+    entity_data["body_id"] = body_id;
+    entity_data["name"] = name;
+    nlohmann::json aux = movement_component->get_data();
+    for (auto& it : aux.items()) {
+        entity_data[it.key()] = it.value();
     }
-    return facing_pos;
-}
-
-nlohmann::json Player::get_data() {
-    visual_entity_info["type_id"] = get_type();
-    visual_entity_info["head_id"] = head_id;
-    visual_entity_info["body_id"] = body_id;
-    visual_entity_info["name"] = name;
-    visual_entity_info["helmet_id"] = helmet_id;
-    visual_entity_info["armor_id"] = armor_id;
-    visual_entity_info["shield_id"] = shield_id;
-    visual_entity_info["weapon_id"] = weapon_id;
-    visual_entity_info["direction"] = current_direction;
-    return visual_entity_info;
+    aux = combat_component->get_data();
+    for (auto& it : aux.items()) {
+        entity_data[it.key()] = it.value();
+    }
+    return entity_data;
 }
 
 std::string Player::get_name() const {
     return name;
 }
 
-void Player::set_current_movement(mov_action_t action, direction_t direction) {
-    if (action == STOP) {
-        if (current_direction == direction)
-            moving = false;
-        else
-            return;
-    } else if (action == START) {
-        current_direction = direction;
-        moving = true;
-    }
+void Player::set_movement(mov_action_t action, direction_t direction) {
+    movement_component->set_movement(action, direction);
 }

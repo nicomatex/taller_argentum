@@ -39,7 +39,7 @@ void CommandHandler::parse_line(const std::string& line) {
         } else if (cmd[0] == "salir") {
             cmd_type = CMD_DISCONNECT;
         } else if (cmd[0] == "ayuda") {
-            cmd_type = CMD_DISCONNECT;
+            cmd_type = CMD_HELP;
         } else if (cmd[0] == "attack") {
             cmd_type = CMD_ATTACK;
         } else {

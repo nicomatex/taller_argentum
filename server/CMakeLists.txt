@@ -39,6 +39,8 @@ add_library(server
   change_map_handler.cpp
   action_melee_attack.cpp
   melee_attack_handler.cpp
+  combat_component.cpp
+  movement_component.cpp
 )
 
 target_link_libraries(server

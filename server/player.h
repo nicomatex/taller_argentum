@@ -4,27 +4,13 @@
 
 #include "entity.h"
 #include "map.h"
+#include "position.h"
 
 class Player : public Entity {
    private:
-    // MovementComponent movement_component;
-    // get_facing_position()
-    unsigned int player_speed;  // en tiles per second
-    direction_t current_direction;
-    bool moving;
-    int move_accumulator;
-
     const int head_id;
     const int body_id;
     const std::string name;
-
-    // CombatComponent
-    // basic_attack()
-    // special()
-    int helmet_id;
-    int armor_id;
-    int shield_id;
-    int weapon_id;  // Algo más complejo que un id
 
     // Inventory
 
@@ -33,13 +19,11 @@ class Player : public Entity {
                // INVENTARIO
    public:
     Player(EntityId entity_id, nlohmann::json player_info, Map &map);
-    entity_type_t get_type() override;
-    nlohmann::json get_data() override;
+    entity_type_t get_type() const override;
+    nlohmann::json get_data() const override;
     std::string get_name() const;
 
-    position_t get_facing_position(position_t position);
-
-    void set_current_movement(mov_action_t action, direction_t direction);
+    void set_movement(mov_action_t action, direction_t direction);
     void update(uint64_t delta_t) override;
 };
 
