@@ -2,9 +2,9 @@
 
 #include <iostream>
 
-TextBox::TextBox(SDL_Rect render_area, const std::string& font_file,
-                 SDL_Renderer* renderer, int nlines, SDL_Color font_color,
-                 SDL_Color background_color,TTF_Font* font)
+TextBox::TextBox(SDL_Rect render_area, SDL_Renderer* renderer, int nlines,
+                 SDL_Color font_color, SDL_Color background_color,
+                 TTF_Font* font)
     : render_area(render_area),
       renderer(renderer),
       nlines(nlines),

@@ -7,12 +7,11 @@ Chat::Chat(SDL_Rect chat_area, int nlines, SDL_Renderer* renderer,
     : text_input(
           {chat_area.x, chat_area.y + ((chat_area.h / nlines) * (nlines - 1)),
            chat_area.w, chat_area.h / nlines},
-          CHAT_FONT, renderer, CHAT_INPUT_FONT_COLOR,
-          CHAT_INPUT_BACKGROUND_COLOR,font),
+          renderer, CHAT_INPUT_FONT_COLOR, CHAT_INPUT_BACKGROUND_COLOR, font),
       text_box({chat_area.x, chat_area.y, chat_area.w,
                 chat_area.h - (chat_area.h / nlines)},
-               CHAT_FONT, renderer, nlines - 1, CHAT_BOX_FONT_COLOR,
-               CHAT_BOX_BACKGROUND_COLOR,font) {}
+               renderer, nlines - 1, CHAT_BOX_FONT_COLOR,
+               CHAT_BOX_BACKGROUND_COLOR, font) {}
 
 Chat::~Chat() {}
 

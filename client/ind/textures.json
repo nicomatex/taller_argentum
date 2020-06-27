@@ -253,5 +253,16 @@
     			"ckey" : [0,0,0]
     		}
     	]
+    },
+    "interface":{
+    	"basedir" : "assets/sprites/interface/",
+    	"textures":[
+    		{
+    			"id":1,
+    			"filename": "1.png",
+    			"needs ckey": false,
+    			"ckey" : [0,0,0]
+    		}
+    	]
     }
 }

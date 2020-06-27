@@ -1,13 +1,16 @@
 #include "sdl_text.h"
 
+#include <iostream>
+
 #include "SDL2/SDL_ttf.h"
 #include "sdl_config.h"
 #include "sdl_error.h"
-#include <iostream>
-SDLText::SDLText(const std::string& text, TTF_Font* font,
-                 SDL_Color color, SDL_Renderer* renderer)
-    : SDLTexture(renderer),text_color(color),font(font) {
-
+SDLText::SDLText(const std::string& text, TTF_Font* font, SDL_Color color,
+                 SDL_Renderer* renderer)
+    : SDLTexture(renderer),
+      text_color(color),
+      font(font),
+      style(TTF_STYLE_NORMAL) {
     if (!font) {
         throw SDLError(ERR_TEXT_FONT);
     }
@@ -36,11 +39,12 @@ void SDLText::update_text(const std::string& text) {
     }
 
     std::string render_text;
-    if(text.size() == 0){
+    if (text.size() == 0) {
         render_text = " ";
-    }else{
+    } else {
         render_text = text;
     }
+    TTF_SetFontStyle(font,style);
     SDL_Surface* text_surface =
         TTF_RenderText_Blended(font, render_text.c_str(), text_color);
     if (!text_surface) {
@@ -54,4 +58,9 @@ void SDLText::update_text(const std::string& text) {
     width = text_surface->w;
     height = text_surface->h;
     SDL_FreeSurface(text_surface);
+}
+
+
+void SDLText::set_style(int new_style){
+    style = new_style;
 }

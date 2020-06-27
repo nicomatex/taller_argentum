@@ -2,9 +2,9 @@
 
 #include <iostream>
 
-TextInput::TextInput(SDL_Rect render_area, const std::string& font_file,
-                     SDL_Renderer* renderer, SDL_Color font_color,
-                     SDL_Color background_color,TTF_Font* font)
+TextInput::TextInput(SDL_Rect render_area, SDL_Renderer* renderer,
+                     SDL_Color font_color, SDL_Color background_color,
+                     TTF_Font* font)
     : render_area(render_area),
       render_text("", font, font_color, renderer),
       enabled(false),

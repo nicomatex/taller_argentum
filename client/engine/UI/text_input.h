@@ -21,9 +21,8 @@ class TextInput {
     SDL_Color background_color;
 
    public:
-    TextInput(SDL_Rect render_area, const std::string& font_file,
-              SDL_Renderer* renderer, SDL_Color font_color,
-              SDL_Color background_color, TTF_Font* font);
+    TextInput(SDL_Rect render_area, SDL_Renderer* renderer,
+              SDL_Color font_color, SDL_Color background_color, TTF_Font* font);
     ~TextInput();
     /* Agrega caracteres al texto. */
     void add_characters(char* characters);
