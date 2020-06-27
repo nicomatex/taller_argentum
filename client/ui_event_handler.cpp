@@ -7,9 +7,9 @@
 #include "event_factory.h"
 
 UiEventHandler::UiEventHandler(SocketManager &socket_manager,
-                               GameStateMonitor &game_state_monitor)
+                               GameStateMonitor &game_state_monitor, Hud &hud)
     : socket_manager(socket_manager),
-      chat(NULL),
+      hud(hud),
       text_input_enabled(false),
       game_state_monitor(game_state_monitor) {
     SDL_StopTextInput();
@@ -59,11 +59,11 @@ void UiEventHandler::handle_keyup_move_right() {
 }
 
 void UiEventHandler::handle_keydown_return() {
-    chat->toggle();
+    hud.chat.toggle();
     if (text_input_enabled) {
         SDL_StopTextInput();
         text_input_enabled = false;
-        send_event(EventFactory::chat_event(chat->get_input_and_erase()));
+        send_event(EventFactory::chat_event(hud.chat.get_input_and_erase()));
     } else {
         SDL_StartTextInput();
         text_input_enabled = true;
@@ -71,7 +71,7 @@ void UiEventHandler::handle_keydown_return() {
 }
 
 void UiEventHandler::handle_keydown_backspace() {
-    if (text_input_enabled) chat->input_erase();
+    if (text_input_enabled) hud.chat.input_erase();
 }
 
 void UiEventHandler::handle_quit() {
@@ -126,9 +126,8 @@ void UiEventHandler::handle() {
                     break;
             }
         } else if (e.type == SDL_TEXTINPUT) {
-            chat->add_characters(e.text.text);
+            hud.chat.add_characters(e.text.text);
         }
     }
 }
 
-void UiEventHandler::attach_chat(Chat *new_chat) { chat = new_chat; }

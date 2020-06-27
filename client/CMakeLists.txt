@@ -30,6 +30,7 @@ add_library(game
   map_change_buffer.cpp
   chat_buffer.cpp
   game_state_monitor.cpp
+  hud.cpp
 )
 
 target_link_libraries(game
