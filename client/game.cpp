@@ -25,6 +25,7 @@ void Game::run() {
     Chat chat(AREA_CHAT, CHAT_LINES, window.get_renderer(),
               ResourceManager::get_instance().get_font(1));
     ui_event_handler.attach_chat(&chat);
+    SDLTexture& side_panel_mock = ResourceManager::get_instance().get_texture("mocks",1);
     while (game_state_monitor.is_running()) {
         window.fill(0, 0, 0, 255);
         ui_event_handler.handle();
@@ -39,11 +40,8 @@ void Game::run() {
         chat_buffer.flush(chat);
         chat.render();
         window.set_viewport(AREA_SIDE_PANEL);
-        SDL_SetRenderDrawColor(window.get_renderer(), 100, 100, 100,
-                               255);             // Temporal
-        SDL_Rect side_panel = {0, 0, 260, 960};  // Temporal
-        SDL_RenderFillRect(window.get_renderer(),
-                           &side_panel);  // Temporal
+        SDL_Rect side_panel = {0, 0, 260, 640};  // Temporal
+        side_panel_mock.render(side_panel);
         window.render();
     }
     EntityManager::get_instance().empty();
