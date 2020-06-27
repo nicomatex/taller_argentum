@@ -1,1 +1,23 @@
-[[100,{"max_defense":6,"min_defense":2}],[101,{"max_defense":30,"min_defense":15}],[102,{"max_defense":10,"min_defense":6}]]
+[
+    [
+        100,
+        {
+            "max_defense": 6,
+            "min_defense": 2
+        }
+    ],
+    [
+        101,
+        {
+            "max_defense": 30,
+            "min_defense": 15
+        }
+    ],
+    [
+        102,
+        {
+            "max_defense": 10,
+            "min_defense": 6
+        }
+    ]
+]

@@ -14,7 +14,7 @@ class Action {
 
    public:
     virtual ~Action();
-    virtual void execute(EntityId actor, Map& map) const = 0;
+    virtual void execute(Map& map, EntityId entity_id) const = 0;
 };
 
 #endif

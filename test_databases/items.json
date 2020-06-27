@@ -1,1 +1,122 @@
-{"Arco compuesto":{"dynamic_sprt_id":3,"item_id":302,"item_type":0,"static_sprt_id":3},"Arco simple":{"dynamic_sprt_id":2,"item_id":301,"item_type":0,"static_sprt_id":2},"Armadura de cuero":{"dynamic_sprt_id":1,"item_id":100,"item_type":1,"static_sprt_id":1},"Armadura de placas":{"dynamic_sprt_id":2,"item_id":101,"item_type":1,"static_sprt_id":2},"Baculo engarzado":{"dynamic_sprt_id":6,"item_id":305,"item_type":0,"static_sprt_id":6},"Baculo nudoso":{"dynamic_sprt_id":5,"item_id":304,"item_type":0,"static_sprt_id":5},"Capucha":{"dynamic_sprt_id":1,"item_id":1,"item_type":1,"static_sprt_id":1},"Casco de hierro":{"dynamic_sprt_id":2,"item_id":2,"item_type":1,"static_sprt_id":2},"Escudo de hierro":{"dynamic_sprt_id":2,"item_id":201,"item_type":1,"static_sprt_id":2},"Escudo de tortuga":{"dynamic_sprt_id":1,"item_id":200,"item_type":1,"static_sprt_id":1},"Espada":{"dynamic_sprt_id":1,"item_id":300,"item_type":0,"static_sprt_id":1},"Flauta elfica":{"dynamic_sprt_id":7,"item_id":306,"item_type":0,"static_sprt_id":7},"Hacha":{"dynamic_sprt_id":8,"item_id":307,"item_type":0,"static_sprt_id":8},"Martillo":{"dynamic_sprt_id":9,"item_id":308,"item_type":0,"static_sprt_id":9},"Oro":{"dynamic_sprt_id":0,"item_id":500,"item_type":3,"static_sprt_id":1},"Pocion de mana":{"dynamic_sprt_id":0,"item_id":401,"item_type":2,"static_sprt_id":2},"Pocion de vida":{"dynamic_sprt_id":0,"item_id":400,"item_type":2,"static_sprt_id":1},"Sombrero magico":{"dynamic_sprt_id":3,"item_id":3,"item_type":1,"static_sprt_id":3},"Tunica azul":{"dynamic_sprt_id":3,"item_id":102,"item_type":1,"static_sprt_id":3},"Vara de fresno":{"dynamic_sprt_id":4,"item_id":303,"item_type":0,"static_sprt_id":4}}
+{
+    "Arco compuesto": {
+        "dynamic_sprt_id": 3,
+        "item_id": 302,
+        "item_type": 0,
+        "static_sprt_id": 3
+    },
+    "Arco simple": {
+        "dynamic_sprt_id": 2,
+        "item_id": 301,
+        "item_type": 0,
+        "static_sprt_id": 2
+    },
+    "Armadura de cuero": {
+        "dynamic_sprt_id": 1,
+        "item_id": 100,
+        "item_type": 1,
+        "static_sprt_id": 1
+    },
+    "Armadura de placas": {
+        "dynamic_sprt_id": 2,
+        "item_id": 101,
+        "item_type": 1,
+        "static_sprt_id": 2
+    },
+    "Baculo engarzado": {
+        "dynamic_sprt_id": 6,
+        "item_id": 305,
+        "item_type": 0,
+        "static_sprt_id": 6
+    },
+    "Baculo nudoso": {
+        "dynamic_sprt_id": 5,
+        "item_id": 304,
+        "item_type": 0,
+        "static_sprt_id": 5
+    },
+    "Capucha": {
+        "dynamic_sprt_id": 1,
+        "item_id": 1,
+        "item_type": 1,
+        "static_sprt_id": 1
+    },
+    "Casco de hierro": {
+        "dynamic_sprt_id": 2,
+        "item_id": 2,
+        "item_type": 1,
+        "static_sprt_id": 2
+    },
+    "Escudo de hierro": {
+        "dynamic_sprt_id": 2,
+        "item_id": 201,
+        "item_type": 1,
+        "static_sprt_id": 2
+    },
+    "Escudo de tortuga": {
+        "dynamic_sprt_id": 1,
+        "item_id": 200,
+        "item_type": 1,
+        "static_sprt_id": 1
+    },
+    "Espada": {
+        "dynamic_sprt_id": 1,
+        "item_id": 300,
+        "item_type": 0,
+        "static_sprt_id": 1
+    },
+    "Flauta elfica": {
+        "dynamic_sprt_id": 7,
+        "item_id": 306,
+        "item_type": 0,
+        "static_sprt_id": 7
+    },
+    "Hacha": {
+        "dynamic_sprt_id": 8,
+        "item_id": 307,
+        "item_type": 0,
+        "static_sprt_id": 8
+    },
+    "Martillo": {
+        "dynamic_sprt_id": 9,
+        "item_id": 308,
+        "item_type": 0,
+        "static_sprt_id": 9
+    },
+    "Oro": {
+        "dynamic_sprt_id": 0,
+        "item_id": 500,
+        "item_type": 3,
+        "static_sprt_id": 1
+    },
+    "Pocion de mana": {
+        "dynamic_sprt_id": 0,
+        "item_id": 401,
+        "item_type": 2,
+        "static_sprt_id": 2
+    },
+    "Pocion de vida": {
+        "dynamic_sprt_id": 0,
+        "item_id": 400,
+        "item_type": 2,
+        "static_sprt_id": 1
+    },
+    "Sombrero magico": {
+        "dynamic_sprt_id": 3,
+        "item_id": 3,
+        "item_type": 1,
+        "static_sprt_id": 3
+    },
+    "Tunica azul": {
+        "dynamic_sprt_id": 3,
+        "item_id": 102,
+        "item_type": 1,
+        "static_sprt_id": 3
+    },
+    "Vara de fresno": {
+        "dynamic_sprt_id": 4,
+        "item_id": 303,
+        "item_type": 0,
+        "static_sprt_id": 4
+    }
+}

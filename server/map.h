@@ -92,6 +92,9 @@ class Map {
      * transcurrido.*/
     void update(uint64_t delta_t);
 
+    /* */
+    void push_log(const nlohmann::json& log);
+
     /* Ejecuta sobre la entidad asociada al id la accion. */
     void push_action(EntityId entity_id, Action* action);
 

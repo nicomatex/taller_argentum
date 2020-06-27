@@ -44,8 +44,14 @@ void MapMonitor::push_action(ClientId client_id, Action* action) {
 }
 
 std::vector<nlohmann::json> MapMonitor::get_update_logs() {
-    // TODO
-    return std::vector<nlohmann::json>();
+    std::unique_lock<std::recursive_mutex> l(m);
+    std::queue<nlohmann::json>& logs_queue = map.get_update_logs();
+    std::vector<nlohmann::json> logs;
+    while (!logs_queue.empty()) {
+        logs.push_back(logs_queue.front());
+        logs_queue.pop();
+    }
+    return logs;
 }
 
 nlohmann::json MapMonitor::get_update_data(bool& update_entities) {

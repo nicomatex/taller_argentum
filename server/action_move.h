@@ -13,7 +13,7 @@ class ActionMove : public Action {
     ActionMove(mov_action_t action, direction_t direction);
     ~ActionMove();
 
-    void execute(EntityId entity_id, Map& map) const override;
+    void execute(Map& map, EntityId entity_id) const override;
 };
 
 #endif

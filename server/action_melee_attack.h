@@ -9,7 +9,7 @@ class ActionMeleeAttack : public Action {
     ActionMeleeAttack();
     ~ActionMeleeAttack();
 
-    void execute(EntityId entity_id, Map& map) const override;
+    void execute(Map& map, EntityId entity_id ) const override;
 };
 
 #endif  // ACTION_MELEE_ATTACK_H

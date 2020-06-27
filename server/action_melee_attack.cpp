@@ -10,7 +10,7 @@
 ActionMeleeAttack::ActionMeleeAttack() {}
 ActionMeleeAttack::~ActionMeleeAttack() {}
 
-void ActionMeleeAttack::execute(EntityId entity_id, Map& map) const {
+void ActionMeleeAttack::execute(Map& map, EntityId entity_id) const {
     Entity* attacker = Action::get_entity(map, entity_id);
     if (!attacker)  // || !attacker->is_alive() TODO
         return;
@@ -19,9 +19,17 @@ void ActionMeleeAttack::execute(EntityId entity_id, Map& map) const {
     Entity* attacked = Action::get_entity(map, attacked_pos);
     if (!attacked)  // || !attacked->is_alive() TODO
         return;
-    // int damage = attacker->attack(attacked);
-    Player* player = (Player*)attacker;
-    ServerManager& sm = ServerManager::get_instance();
-    sm.send_to(sm.get_client_by_name(player->get_name()),
-               EventFactory::chat_message("Attacando!"));
+    attack_result_t result = attacker->attack(attacked);
+    if (result.killed)
+        /* KILL, drops & give exp */;
+
+    if (attacker->get_type() == PLAYER)
+        map.push_log({{"player_name", attacker->get_name()},
+                      {"str", "Attacado a " + attacked->get_name() + " por " +
+                                  std::to_string(result.damage_dealt)}});
+    if (attacked->get_type() == PLAYER)
+        map.push_log(
+            {{"player_name", attacked->get_name()},
+             {"str", "Recibido " + std::to_string(result.damage_dealt) +
+                         " de danio por " + attacker->get_name()}});
 }
