@@ -71,8 +71,7 @@ void UiEventHandler::handle_keydown_return() {
 }
 
 void UiEventHandler::handle_keydown_backspace() {
-    if (text_input_enabled)
-        hud.chat.input_erase();
+    if (text_input_enabled) hud.chat.input_erase();
 }
 
 void UiEventHandler::handle_quit() {
@@ -87,10 +86,9 @@ void UiEventHandler::handle_keydown_attack() {
 void UiEventHandler::handle() {
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
-        if (e.type == SDL_QUIT)
-            handle_quit();
+        if (e.type == SDL_QUIT) handle_quit();
         if (e.type == SDL_KEYDOWN) {
-            if (e.key.repeat == 0) {
+            if (e.key.repeat == 0 && !text_input_enabled) {
                 switch (e.key.keysym.sym) {
                     case SDLK_UP:
                     case SDLK_w:
@@ -122,24 +120,26 @@ void UiEventHandler::handle() {
                     break;
             }
 
-        } else if (e.type == SDL_KEYUP && e.key.repeat == 0) {
-            switch (e.key.keysym.sym) {
-                case SDLK_UP:
-                case SDLK_w:
-                    handle_keyup_move_up();
-                    break;
-                case SDLK_DOWN:
-                case SDLK_s:
-                    handle_keyup_move_down();
-                    break;
-                case SDLK_RIGHT:
-                case SDLK_d:
-                    handle_keyup_move_right();
-                    break;
-                case SDLK_LEFT:
-                case SDLK_a:
-                    handle_keyup_move_left();
-                    break;
+        } else if (e.type == SDL_KEYUP && !text_input_enabled) {
+            if (e.key.repeat == 0 && !text_input_enabled) {
+                switch (e.key.keysym.sym) {
+                    case SDLK_UP:
+                    case SDLK_w:
+                        handle_keyup_move_up();
+                        break;
+                    case SDLK_DOWN:
+                    case SDLK_s:
+                        handle_keyup_move_down();
+                        break;
+                    case SDLK_RIGHT:
+                    case SDLK_d:
+                        handle_keyup_move_right();
+                        break;
+                    case SDLK_LEFT:
+                    case SDLK_a:
+                        handle_keyup_move_left();
+                        break;
+                }
             }
         } else if (e.type == SDL_TEXTINPUT) {
             hud.chat.add_characters(e.text.text);

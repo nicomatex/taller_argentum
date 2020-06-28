@@ -46,6 +46,8 @@ class VisualCharacterComponent : public Component {
     void init() override;
     void update() override;
     void draw(Camera &camera);
+
+    bool is_moving();
 };
 
 #endif

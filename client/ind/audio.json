@@ -1,0 +1,28 @@
+{
+    "music":{
+        "basedir":"assets/sound/music/",
+        "files":[
+            {
+                "id":1,
+                "filename":"1.mp3"
+            },
+            {
+            	"id":2,
+            	"filename":"2.mp3"
+            }
+        ]
+    },
+    "sfx":{
+        "basedir":"assets/sound/sfx/",
+        "files":[
+            {
+                "id":1,
+                "filename":"1.wav"
+            },
+            {
+                "id":2,
+                "filename":"2.wav"
+            }
+        ]
+    }
+}

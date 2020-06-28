@@ -5,6 +5,8 @@
 #include "SDL/sdl_animated_sprite.h"
 #include "SDL/sdl_texture.h"
 #include "SDL/sdl_texture_loader.h"
+#include "SDL/sdl_music.h"
+#include "SDL/sdl_sfx.h"
 #include "SDL2/SDL_ttf.h"
 #include "animation_pack.h"
 
@@ -20,6 +22,10 @@ typedef std::unordered_map<std::string, std::unordered_map<int, SDLSprite>>
 
 typedef std::unordered_map<int, TTF_Font*> FontMap;
 
+typedef std::unordered_map<int, SDLMusic> MusicMap;
+
+typedef std::unordered_map<int, SDLSoundFx> SoundFxMap;
+
 /* Singleton para el manager de texturas. */
 class ResourceManager {
    private:
@@ -27,6 +33,8 @@ class ResourceManager {
     AnimationPackMap animation_pack_map;
     SpriteMap sprite_map;
     FontMap font_map;
+    MusicMap music_map;
+    SoundFxMap sound_fx_map;
     ResourceManager();
 
     /* Realiza la carga de texturas indexadas en el texture_index_file, llenando
@@ -40,6 +48,9 @@ class ResourceManager {
 
     /* Carga las fuentes para texto. */
     void _load_fonts(const std::string& font_index_file);
+
+    /* Carga todos los archivos de audio. */
+    void _load_audio(const std::string& audio_index_file);
 
    public:
     /* Devuelve la instancia */
@@ -60,6 +71,12 @@ class ResourceManager {
     /* Devuelve la fuente con el id asociado solicitado. */
     TTF_Font* get_font(int id);
 
+    /* Devuelve la musica asociada al id. */
+    SDLMusic& get_music(int id);
+
+    /* Devuelve el efecto de sonido asociado al id. */
+    SDLSoundFx& get_sound_fx(int id);
+    
     /* Debe ser llamado para liberar recursos que pueda
     haber alocado el manager.*/
     void free_resources();

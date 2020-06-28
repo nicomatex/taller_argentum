@@ -214,3 +214,8 @@ void VisualCharacterComponent::update() {
         part.second.update();
     }
 }
+
+
+bool VisualCharacterComponent::is_moving(){
+    return transition_offset_x != 0 || transition_offset_y != 0;
+}

@@ -11,8 +11,8 @@ extern bool debug;
 
 SDLWindow::SDLWindow(int width, int height, const std::string &title)
     : width(width), height(height) {
-    int errCode = SDL_Init(SDL_INIT_VIDEO);
-    if (errCode) {
+    int errCode = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+    if (errCode < 0) {
         throw SDLError(ERR_SDL_INIT);
     }
     errCode = IMG_Init(IMG_INIT_PNG);
@@ -21,6 +21,9 @@ SDLWindow::SDLWindow(int width, int height, const std::string &title)
     }
     if (TTF_Init() == -1) {
         throw SDLError(ERR_TTF_INIT);
+    }
+    if(Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,2,2048) < 0){
+        throw SDLError(ERR_MIXER_INIT);
     }
     if (debug)
         std::cout << "[DEBUG] SDL, IMAGE y TTF inicializados." << std::endl;
@@ -57,6 +60,7 @@ SDLWindow::~SDLWindow() {
     TTF_Quit();
     IMG_Quit();
     SDL_Quit();
+    Mix_Quit();
 }
 
 void SDLWindow::fill(int r, int g, int b, int alpha) {
@@ -76,4 +80,12 @@ int SDLWindow::get_width() const { return width; }
 
 SDL_Renderer* SDLWindow::get_renderer(){
     return renderer;
+}
+
+void SDLWindow::hide(){
+    SDL_HideWindow(this->window);
+}
+
+void SDLWindow::show(){
+    SDL_ShowWindow(this->window);
 }

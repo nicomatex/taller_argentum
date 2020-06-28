@@ -27,6 +27,7 @@ Game::Game(int follow_entity_id, SocketManager &socket_manager,
 Game::~Game() {}
 
 void Game::run() {
+
     while (game_state_monitor.is_running()) {
         window.fill(0, 0, 0, 255);
 

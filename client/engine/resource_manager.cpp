@@ -8,6 +8,8 @@
 
 using json = nlohmann::json;
 
+ResourceManager::ResourceManager() {}
+
 void ResourceManager::_load_textures(SDLTextureLoader& loader,
                                      const std::string& texture_index_file) {
     std::cout << MSG_TEXTURES_LOADING << std::endl;
@@ -110,10 +112,33 @@ void ResourceManager::_load_fonts(const std::string& font_index_file) {
     }
 }
 
+void ResourceManager::_load_audio(const std::string& audio_index_file) {
+    std::ifstream input_file(audio_index_file);
+    json audio_info = json::parse(input_file);
+    std::string music_basedir = audio_info["music"]["basedir"];
+    for (auto& it : audio_info["music"]["files"].items()) {
+        json music_file_info = it.value();
+        int id = music_file_info["id"];
+        std::string file_address =
+            music_basedir + std::string(music_file_info["filename"]);
+        music_map.emplace(id, file_address);
+    }
+
+    std::string sfx_basedir = audio_info["sfx"]["basedir"];
+    for (auto& it : audio_info["sfx"]["files"].items()) {
+        json sfx_file_info = it.value();
+        int id = sfx_file_info["id"];
+        std::string file_address =
+            sfx_basedir + std::string(sfx_file_info["filename"]);
+        sound_fx_map.emplace(id, file_address);
+    }
+}
+
 void ResourceManager::init(SDLTextureLoader& loader) {
     _load_textures(loader, TEXTURE_INDEX_FILE);
     _load_animations(SPRITE_INDEX_FILE);
     _load_fonts(FONT_INDEX_FILE);
+    _load_audio(AUDIO_INDEX_FILE);
 }
 
 ResourceManager& ResourceManager::get_instance() {
@@ -135,12 +160,15 @@ SDLSprite& ResourceManager::get_sprite(const std::string& type, int id) {
 }
 
 TTF_Font* ResourceManager::get_font(int id) { return font_map.at(id); }
-ResourceManager::ResourceManager() {}
 
 void ResourceManager::free_resources() {
     for (auto& it : font_map) {
         TTF_CloseFont(it.second);
     }
 }
+
+SDLMusic& ResourceManager::get_music(int id) { return music_map.at(id); }
+
+SDLSoundFx& ResourceManager::get_sound_fx(int id) { return sound_fx_map.at(id); }
 
 ResourceManager::~ResourceManager() {}

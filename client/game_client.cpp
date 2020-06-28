@@ -9,6 +9,7 @@
 #include "chat.h"
 #include "client_config.h"
 #include "engine/ECS/entity.h"
+#include "engine/SDL/sdl_music.h"
 #include "engine/SDL/sdl_text.h"
 #include "engine/SDL/sdl_window.h"
 #include "engine/actor.h"
@@ -24,14 +25,24 @@
 using json = nlohmann::json;
 
 GameClient::GameClient(json config)
-    : window(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT,
-             WINDOW_TITLE),
-      socket_manager(Socket(std::string(config["server"]),
-                     std::string(config["port"])), receive_handler),
+    : window(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT, WINDOW_TITLE),
+      socket_manager(
+          Socket(std::string(config["server"]), std::string(config["port"])),
+          receive_handler),
       config(config),
       receive_handler(map_change_buffer, chat_buffer, game_state_monitor) {
+    window.hide();
+    SDLTextureLoader texture_loader(window.init_renderer());
+    ResourceManager::get_instance().init(texture_loader);
+    receive_handler.start();
+    socket_manager.start();
+    game_state_monitor.set_connected_status(true);
+}
+
+void GameClient::_login() {
+    ResourceManager::get_instance().get_music(1).play();
     try {
-        std::cout << "\e[8;30;116t"; //Magia resize terminal
+        std::cout << "\e[8;30;116t";  // Magia resize terminal
         std::cout << R"(
    _____                                      __                       ________           .__   .__                 
   /  _  \  _______    ____    ____    ____  _/  |_  __ __   _____      \_____  \    ____  |  |  |__|  ____    ____
@@ -39,32 +50,32 @@ GameClient::GameClient(json config)
 /    |    \ |  | \/ / /_/  >\  ___/ |   |  \ |  |  |  |  /|  Y Y  \    /    |    \|   |  \|  |__|  ||   |  \\  ___/
 \____|__  / |__|    \___  /  \___  >|___|  / |__|  |____/ |__|_|  /    \_______  /|___|  /|____/|__||___|  / \___  >
         \/         /_____/       \/      \/                     \/             \/      \/                \/      \/
-)"      << std::endl;
+)" << std::endl;
         std::string char_name;
         std::string password;
-        std::cout << "Usuario: "; 
+        std::cout << "Usuario: ";
         std::cin >> char_name;
         std::cout << "Contraseña: ";
         std::cin >> password;
-        SDLTextureLoader texture_loader(window.init_renderer());
-        ResourceManager::get_instance().init(texture_loader);
         socket_manager.send(EventFactory::connect_event(char_name, password));
     } catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
-    receive_handler.start();
-    socket_manager.start();
-    game_state_monitor.set_connected_status(true);
 }
 
 void GameClient::run() {
-    while(game_state_monitor.is_connected()){
+    Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
+    _login();
+    window.show();
+    ResourceManager::get_instance().get_music(2).play();
+    while (game_state_monitor.is_connected()) {
         std::cout << "Esperando nuevo mapa " << std::endl;
         game_state_monitor.set_initialization_requested(true);
         map_change_buffer.wait_for_map();
         game_state_monitor.set_running_status(true);
-        Game game(map_change_buffer.get_follow_entity_id(), socket_manager, window,
-                chat_buffer,game_state_monitor,map_change_buffer.get_map_info());
+        Game game(map_change_buffer.get_follow_entity_id(), socket_manager,
+                  window, chat_buffer, game_state_monitor,
+                  map_change_buffer.get_map_info());
         game_state_monitor.set_initialization_requested(false);
         game.run();
         if (!socket_manager.is_connected()) {

@@ -5,6 +5,7 @@
 #define ERR_TTF_INIT "Error inicializando SDL_TTF."
 #define ERR_WINDOW_INIT "Error inicializando ventana."
 #define ERR_RENDERER_INIT "Error inicializando renderer."
+#define ERR_MIXER_INIT "Error inicializando mixer."
 
 #define ERR_TEX_LOAD "Error cargando la textura."
 #define ERR_TEX_DIMENSIONS "Error obteniendo las dimensiones de la textura."
@@ -16,4 +17,5 @@
 #define ERR_TEXT_CREATE "Error creando la textura con texto."
 #define ERR_TEXT_FONT "Error abriendo la fuente."
 
+#define ERR_AUDIOFILE_LOAD "Error cargando el archivo de audio."
 #endif

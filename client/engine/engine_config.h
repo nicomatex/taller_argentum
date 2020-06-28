@@ -12,6 +12,7 @@
 #define TEXTURE_INDEX_FILE "ind/textures.json"
 #define SPRITE_INDEX_FILE "ind/sprites.json"
 #define FONT_INDEX_FILE "ind/fonts.json"
+#define AUDIO_INDEX_FILE "ind/audio.json"
 
 /* Mensajes de carga */
 #define MSG_TEXTURES_LOADING "Cargando texturas..."

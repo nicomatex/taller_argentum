@@ -5,6 +5,7 @@
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
+#include "SDL2/SDL_mixer.h"
 #include "sdl_animated_sprite.h"
 #include "sdl_text.h"
 #include "sdl_texture.h"
@@ -37,6 +38,12 @@ class SDLWindow {
     
     int get_width() const;
     int get_height() const;
+
+    /* Oculta la ventana. */
+    void hide();
+
+    /* Muestra la ventana. */
+    void show();
 };
 
 #endif

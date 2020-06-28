@@ -29,6 +29,7 @@ class GameClient {
     SocketManager socket_manager;
     nlohmann::json config;
     GameStateMonitor game_state_monitor;
+    void _login();
 
    public:
     GameClient(nlohmann::json config);
