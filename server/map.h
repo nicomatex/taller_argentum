@@ -77,7 +77,7 @@ class Map {
 
     /* Mueve la entidad asociada al entity_id un tile en la direccion
      * indicada.*/
-    void move(EntityId entity_id, steps_t steps);
+    void move(EntityId entity_id, position_t steps);
 
     /* Devuelve el id de entidad asignado dentro del mapa al jugador. */
     EntityId add_player(nlohmann::json player_info);

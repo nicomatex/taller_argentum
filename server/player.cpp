@@ -16,7 +16,7 @@ Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
       map(map) {}
 
 void Player::update(uint64_t delta_t) {
-    steps_t steps = movement_component->update(delta_t);
+    position_t steps = movement_component->update(delta_t);
     map.move(this->id, steps);
 
     // TODO: demas updates, como regeneraciones de vida/mana, etc.

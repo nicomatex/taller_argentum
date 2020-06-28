@@ -13,11 +13,6 @@ enum mov_action_t { START, STOP };
 enum direction_t { UP, DOWN, LEFT, RIGHT };
 #endif
 
-typedef struct steps {
-    int x;
-    int y;
-} steps_t;
-
 typedef uint32_t ClientId;
 
 typedef uint32_t EntityId;

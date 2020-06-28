@@ -53,7 +53,7 @@ bool Map::collides(position_t position) {
     return false;
 }
 
-void Map::move(EntityId entity_id, steps_t steps) {
+void Map::move(EntityId entity_id, position_t steps) {
     if (steps.x == 0 && steps.y == 0)
         return;
     position_t new_position = position_map[entity_id];

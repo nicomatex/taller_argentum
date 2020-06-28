@@ -1,25 +1,48 @@
 #include "movement_component.h"
 
+#include <algorithm>
+
 // Temp
 #include <iostream>
 
 MovementComponent::MovementComponent(unsigned int movement_speed)
-    : movement_speed(movement_speed),
-      move_accumulator(0),
-      moving(false),
-      current_direction(DOWN) {}
+    : movement_speed(movement_speed), move_accumulator(0), moving(false) {}
 
 MovementComponent::~MovementComponent() {}
 
-nlohmann::json MovementComponent::get_data() const {
-    return {{"direction", current_direction}};
+direction_t MovementComponent::current_direction() const {
+    if (direction_history.empty())
+        return DOWN;
+    return direction_history.back();
 }
 
-steps_t MovementComponent::update(uint64_t delta_t) {
+nlohmann::json MovementComponent::get_data() const {
+    return {{"direction", current_direction()}};
+}
+
+position_t MovementComponent::get_displacement(position_t pos, int dist) const {
+    switch (current_direction()) {
+        case UP:
+            pos = {pos.x, pos.y - dist};
+            break;
+        case DOWN:
+            pos = {pos.x, pos.y + dist};
+            break;
+        case RIGHT:
+            pos = {pos.x + dist, pos.y};
+            break;
+        case LEFT:
+            pos = {pos.x - dist, pos.y};
+            break;
+    }
+    return pos;
+}
+
+position_t MovementComponent::update(uint64_t delta_t) {
     int time_between_tiles = 1000 / movement_speed;
     move_accumulator += delta_t;
 
-    steps_t steps = {0, 0};
+    position_t steps = {0, 0};
 
     if (move_accumulator >= time_between_tiles) {
         // Esto deberia dar 1 salvo que el
@@ -27,20 +50,7 @@ steps_t MovementComponent::update(uint64_t delta_t) {
         int distance = move_accumulator / time_between_tiles;
 
         if (moving) {
-            switch (current_direction) {
-                case UP:
-                    steps = {0, -distance};
-                    break;
-                case DOWN:
-                    steps = {0, distance};
-                    break;
-                case RIGHT:
-                    steps = {distance, 0};
-                    break;
-                case LEFT:
-                    steps = {-distance, 0};
-                    break;
-            }
+            steps = get_displacement(steps, distance);
         }
 
         /* Se guarda el restante para la proxima actualizacion. */
@@ -54,30 +64,28 @@ steps_t MovementComponent::update(uint64_t delta_t) {
 }
 
 position_t MovementComponent::get_facing_position(position_t position) {
-    position_t facing_pos;
-    switch (current_direction) {
-        case UP:
-            facing_pos = {position.x, position.y - 1};
-            break;
-        case DOWN:
-            facing_pos = {position.x, position.y + 1};
-            break;
-        case RIGHT:
-            facing_pos = {position.x + 1, position.y};
-            break;
-        case LEFT:
-            facing_pos = {position.x - 1, position.y};
-            break;
-    }
-    return facing_pos;
+    return get_displacement(position, 1);
 }
 
 void MovementComponent::set_movement(mov_action_t action,
                                      direction_t direction) {
-    if (action == STOP && current_direction == direction) {
-        moving = false;
+    std::cerr << std::endl;
+    if (action == STOP) {
+        if (direction == direction_history.back()) {
+            if (direction_history.size() == 1) {
+                moving = false;
+                return;
+            }
+            direction_history.pop_back();
+        } else {
+            direction_history.erase(std::find(
+                direction_history.begin(), direction_history.end(), direction));
+        }
     } else if (action == START) {
-        current_direction = direction;
+        if (direction_history.size() == 1 && moving == false) {
+            direction_history.pop_back();
+        }
         moving = true;
+        direction_history.push_back(direction);
     }
 }
