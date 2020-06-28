@@ -2,6 +2,7 @@
 
 #include "ECS/entity.h"
 #include "components/position_component.h"
+#include "components/stats_component.h"
 #include "components/visual_character_component.h"
 
 Entity &EntityFactory::create_player(unsigned int entity_id, int head_id,
@@ -11,6 +12,7 @@ Entity &EntityFactory::create_player(unsigned int entity_id, int head_id,
     player.add_component<PositionComponent>(10, 10);
     player.add_component<VisualCharacterComponent>(
         head_id, body_id, weapon_id, shield_id, helmet_id, armor_id, 7);
+    player.add_component<StatsComponent>(130, 80, 100, 30);
     std::cout << "Added player with entity_id " << entity_id << std::endl;
     return player;
 }

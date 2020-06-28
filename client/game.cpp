@@ -12,18 +12,21 @@ Game::Game(int follow_entity_id, SocketManager &socket_manager,
     : window(window),
       chat_buffer(chat_buffer),
       game_state_monitor(game_state_monitor),
-      hud(window, chat_buffer, 130,70),
+      hud(window, chat_buffer,
+          EntityManager::get_instance()
+              .get_from_id(follow_entity_id)
+              .get_component<StatsComponent>()),
       ui_event_handler(socket_manager, game_state_monitor, hud),
       camera(EntityManager::get_instance()
                  .get_from_id(follow_entity_id)
                  .get_component<PositionComponent>(),
              map_info["width"], TILE_SIZE, VIEWPORT_WIDTH, VIEWPORT_HEIGHT,
-             CAMERA_SPEED),map(map_info){}
+             CAMERA_SPEED),
+      map(map_info) {}
 
 Game::~Game() {}
 
 void Game::run() {
-    
     while (game_state_monitor.is_running()) {
         window.fill(0, 0, 0, 255);
 
