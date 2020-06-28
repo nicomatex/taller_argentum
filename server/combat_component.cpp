@@ -16,8 +16,10 @@ damage_t CombatComponent::attack() {
 
 attack_result_t CombatComponent::receive_damage(damage_t raw_damage) {
     attack_result_t result = {raw_damage.damage - 5, false, false};
-    if (current_hp - result.damage_dealt <= 0)
+    if (current_hp - result.damage_dealt <= 0) {
+        current_hp = 0;
         result.killed = true;
+    }
     // else if (dodged) TODO ANTES DEL CHECK DE DEAD
     //    result.dodged = true;
     else

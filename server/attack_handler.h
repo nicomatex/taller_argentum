@@ -4,7 +4,7 @@
 #include "../include/types.h"
 #include "th_event_handler.h"
 
-class MeleeAttackHandler : public ThEventHandler {
+class AttackHandler : public ThEventHandler {
    private:
     ClientId client_id;
 
@@ -12,8 +12,8 @@ class MeleeAttackHandler : public ThEventHandler {
     void run_handler() override;
 
    public:
-    MeleeAttackHandler(Event& ev);
-    ~MeleeAttackHandler();
+    AttackHandler(Event& ev);
+    ~AttackHandler();
 };
 
 #endif  // ATTACK_MELEE_HANDLER_H

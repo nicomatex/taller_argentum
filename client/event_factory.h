@@ -30,11 +30,10 @@ class EventFactory {
 
     /* Evento de movimiento. Recibe si se esta comenzando o finalizando el
     movimiento y en que direccion.*/
-    static Event movement_event(mov_action_t action,
-                                direction_t direction);
+    static Event movement_event(mov_action_t action, direction_t direction);
 
     /* Evento de desconexion*/
-    static Event drop_event();
+    static Event disconnect();
 
     /* Evento de ataque */
     static Event attack_event();

@@ -1,4 +1,4 @@
-#include "action_melee_attack.h"
+#include "action_attack.h"
 
 #include "map.h"
 #include "position.h"
@@ -7,10 +7,10 @@
 #include "event_factory.h"
 #include "server_manager.h"
 
-ActionMeleeAttack::ActionMeleeAttack() {}
-ActionMeleeAttack::~ActionMeleeAttack() {}
+ActionAttack::ActionAttack() {}
+ActionAttack::~ActionAttack() {}
 
-void ActionMeleeAttack::execute(Map& map, EntityId entity_id) const {
+void ActionAttack::execute(Map& map, EntityId entity_id) const {
     Entity* attacker = Action::get_entity(map, entity_id);
     if (!attacker)  // || !attacker->is_alive() TODO
         return;

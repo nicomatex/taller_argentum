@@ -3,6 +3,7 @@
 #include <stdexcept>
 
 #include "../nlohmann/json.hpp"
+#include "attack_handler.h"
 #include "event_factory.h"
 #include "map_monitor.h"
 #include "server_manager.h"
@@ -10,9 +11,6 @@
 #define COMMAND '/'
 #define WHISPER '@'
 #define HELP_MESSAGE "[info] Comando de ayuda!"
-
-// Temp
-#include "melee_attack_handler.h"
 
 class CommandErrorException : public std::exception {
    private:
@@ -115,7 +113,7 @@ void CommandHandler::run_handler() {
                 cmd_disconnect(json["client_id"]);
                 break;
             case CMD_ATTACK: {
-                MeleeAttackHandler ah(event);
+                AttackHandler ah(event);
                 ah.start();
                 ah.join();
             } break;
