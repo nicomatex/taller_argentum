@@ -8,23 +8,21 @@
 #include "event_factory.h"
 #include "chat.h"
 #include "game_state_monitor.h"
+#include "hud.h"
 
 class UiEventHandler{
    private:
     GameStateMonitor &game_state_monitor;
     SocketManager &socket_manager;
-    Chat *chat;
+    Hud &hud;
     bool text_input_enabled;
    public:
-    UiEventHandler(SocketManager &socket_manager, GameStateMonitor &game_state_monitor);
+    UiEventHandler(SocketManager &socket_manager, GameStateMonitor &game_state_monitor, Hud &hud);
     ~UiEventHandler();
 
     void send_event(const Event& event);
 
     void handle_quit();
-
-    void attach_chat(Chat* new_chat);
-
     void handle_keydown_move_up();
     void handle_keydown_move_down();
     void handle_keydown_move_left();

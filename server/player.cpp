@@ -7,13 +7,12 @@
 #include <iostream>
 
 Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
-    : Entity(entity_id, new MovementComponent(7),
+    : Entity(entity_id, player_info["name"], new MovementComponent(7),
              new CombatComponent(
                  player_info["helmet_id"], player_info["armor_id"],
                  player_info["shield_id"], player_info["weapon_id"])),
       head_id(player_info["head_id"]),
       body_id(player_info["body_id"]),
-      name(player_info["name"]),
       map(map) {}
 
 void Player::update(uint64_t delta_t) {
@@ -43,10 +42,6 @@ nlohmann::json Player::get_data() const {
         entity_data[it.key()] = it.value();
     }
     return entity_data;
-}
-
-std::string Player::get_name() const {
-    return name;
 }
 
 void Player::set_movement(mov_action_t action, direction_t direction) {

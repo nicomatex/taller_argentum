@@ -15,6 +15,8 @@ class ThObserver : public Thread {
     MapMonitor& map;
     BlockingThEventHandler& handler;
 
+    void send_update_logs();
+
    public:
     ThObserver(MapMonitor& map_monitor, BlockingThEventHandler& handler);
 

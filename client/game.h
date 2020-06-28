@@ -9,16 +9,18 @@
 #include "engine/camera.h"
 #include "engine/map.h"
 #include "game_state_monitor.h"
+#include "hud.h"
 #include "ui_event_handler.h"
 
 class Game {
    private:
-    UiEventHandler ui_event_handler;
-    Map map;
-    Camera camera;
     SDLWindow &window;
-    GameStateMonitor &game_state_monitor;
     ChatBuffer &chat_buffer;
+    GameStateMonitor &game_state_monitor;
+    Hud hud;
+    UiEventHandler ui_event_handler;
+    Camera camera;
+    Map map;
 
    public:
     Game(int follow_entity_id, SocketManager &socket_manager, SDLWindow &window,

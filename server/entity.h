@@ -14,11 +14,14 @@ enum entity_type_t { PLAYER, NPC, MONSTER };
 class Entity {
    protected:
     EntityId id;
+    const std::string name;
+
     MovementComponent* movement_component;
     CombatComponent* combat_component;
 
    public:
-    Entity(EntityId id, MovementComponent* movement_component,
+    Entity(EntityId id, const std::string& name,
+           MovementComponent* movement_component,
            CombatComponent* combat_component);
     virtual ~Entity();
 
@@ -26,13 +29,14 @@ class Entity {
     Los players y npcs son colisionables; el loot no.*/
     virtual entity_type_t get_type() const = 0;
 
+    std::string get_name() const;
+
     virtual nlohmann::json get_data() const = 0;
     virtual void update(uint64_t delta_t);
 
     virtual position_t get_facing_position(position_t position);
 
-    // virtual int attack(Entity* attacked) = 0;
-    // virtual int recv_damage(int raw_damage) = 0;
+    attack_result_t attack(Entity* attacked);
 
     EntityId get_id() const;
 };

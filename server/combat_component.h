@@ -3,6 +3,17 @@
 
 #include "../nlohmann/json.hpp"
 
+typedef struct damage {
+    int damage;
+    bool crit;
+} damage_t;
+
+typedef struct attack_result {
+    int damage_dealt;
+    bool dodged;
+    bool killed;
+} attack_result_t;
+
 class CombatComponent {
    protected:
     const unsigned int max_hp;
@@ -17,11 +28,11 @@ class CombatComponent {
     CombatComponent(int helmet, int armor, int shield, int weapon);
     virtual ~CombatComponent();
 
-    int attack();
+    damage_t attack();
 
     // int special();
 
-    int receive_damage();
+    attack_result_t receive_damage(damage_t raw_damage);
 
     nlohmann::json get_data() const;
 };

@@ -146,12 +146,16 @@ void Map::update(uint64_t delta_t) {
     while (!actions.empty()) {
         entity_action_t ent_act = actions.front();
         actions.pop();
-        ent_act.action->execute(ent_act.entity, *this);
+        ent_act.action->execute(*this, ent_act.entity);
         delete ent_act.action;
     }
     for (auto& it : entity_map) {
         it.second->update(delta_t);
     }
+}
+
+void Map::push_log(const nlohmann::json& log) {
+    update_logs.push(log);
 }
 
 void Map::push_action(EntityId entity_id, Action* action) {
