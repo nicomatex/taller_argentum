@@ -36,7 +36,9 @@ class Entity {
 
     virtual position_t get_facing_position(position_t position);
 
-    attack_result_t attack(Entity* attacked);
+    attack_result_t attack(Entity* attacked); 
+    
+    bool attack_ready() const;
 
     EntityId get_id() const;
 };

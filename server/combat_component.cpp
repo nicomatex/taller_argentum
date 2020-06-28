@@ -1,16 +1,20 @@
 #include "combat_component.h"
 
-CombatComponent::CombatComponent(int helmet, int armor, int shield, int weapon)
+CombatComponent::CombatComponent(int helmet, int armor, int shield, int weapon,
+                                 float attack_speed)
     : max_hp(100),
       current_hp(max_hp),
       helmet_id(helmet),
       armor_id(armor),
       shield_id(shield),
-      weapon_id(weapon) {}
+      weapon_id(weapon),
+      attack_speed(attack_speed),
+      attack_accumulator(0) {}
 
 CombatComponent::~CombatComponent() {}
 
 damage_t CombatComponent::attack() {
+    attack_accumulator = 0;
     return {15, 0};
 }
 
@@ -36,4 +40,14 @@ nlohmann::json CombatComponent::get_data() const {
     data["shield_id"] = shield_id;
     data["weapon_id"] = weapon_id;
     return data;
+}
+
+void CombatComponent::update(uint64_t delta_t) {
+    int time_between_attacks = 1000 / attack_speed;
+    if (attack_accumulator < time_between_attacks) attack_accumulator += delta_t;
+}
+
+bool CombatComponent::attack_ready() const {
+    int time_between_attacks = 1000 / attack_speed;
+    return attack_accumulator >= time_between_attacks;
 }

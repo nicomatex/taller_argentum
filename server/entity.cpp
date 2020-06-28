@@ -32,3 +32,7 @@ attack_result_t Entity::attack(Entity* attacked) {
 }
 
 void Entity::update(uint64_t delta_t) {}
+
+bool Entity::attack_ready() const{
+    return combat_component->attack_ready();
+}

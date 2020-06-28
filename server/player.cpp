@@ -10,13 +10,14 @@ Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
     : Entity(entity_id, player_info["name"], new MovementComponent(7),
              new CombatComponent(
                  player_info["helmet_id"], player_info["armor_id"],
-                 player_info["shield_id"], player_info["weapon_id"])),
+                 player_info["shield_id"], player_info["weapon_id"],2)),
       head_id(player_info["head_id"]),
       body_id(player_info["body_id"]),
       map(map) {}
 
 void Player::update(uint64_t delta_t) {
     position_t steps = movement_component->update(delta_t);
+    combat_component->update(delta_t);
     map.move(this->id, steps);
 
     // TODO: demas updates, como regeneraciones de vida/mana, etc.

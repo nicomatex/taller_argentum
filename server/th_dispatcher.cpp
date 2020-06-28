@@ -54,6 +54,7 @@ void ThDispatcher::handle(Event& ev) {
             break;
         case EV_ID_ATTACK:
             handler = new AttackHandler(ev);
+            break;
         default:
             std::cerr << "Dispatcher: No handler for: " << json_ev << std::endl;
             break;

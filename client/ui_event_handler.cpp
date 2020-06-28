@@ -125,15 +125,19 @@ void UiEventHandler::handle() {
         } else if (e.type == SDL_KEYUP && e.key.repeat == 0) {
             switch (e.key.keysym.sym) {
                 case SDLK_UP:
+                case SDLK_w:
                     handle_keyup_move_up();
                     break;
                 case SDLK_DOWN:
+                case SDLK_s:
                     handle_keyup_move_down();
                     break;
                 case SDLK_RIGHT:
+                case SDLK_d:
                     handle_keyup_move_right();
                     break;
                 case SDLK_LEFT:
+                case SDLK_a:
                     handle_keyup_move_left();
                     break;
             }
