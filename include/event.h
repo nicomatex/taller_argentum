@@ -17,6 +17,7 @@ enum client_to_server {
     EV_ID_CONNECT = 0,
     EV_ID_CREATE = 1,
     EV_ID_MOVE = 2,
+    EV_ID_ATTACK = 3,
     EV_ID_COMMAND = 4
 };
 

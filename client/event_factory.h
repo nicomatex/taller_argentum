@@ -35,6 +35,9 @@ class EventFactory {
 
     /* Evento de desconexion*/
     static Event drop_event();
+
+    /* Evento de ataque */
+    static Event attack_event();
 };
 
 #endif

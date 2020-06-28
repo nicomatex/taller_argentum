@@ -54,3 +54,10 @@ Event EventFactory::drop_event(){
     return  Event(event);
 }
 
+
+Event EventFactory::attack_event(){
+    json event =
+    {
+        {"ev_id",3}
+    };
+}

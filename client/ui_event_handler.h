@@ -34,6 +34,8 @@ class UiEventHandler{
     void handle_keyup_move_down();
     void handle_keyup_move_left();
     void handle_keyup_move_right();
+
+    void handle_keydown_attack();
     void handle();
 };
 

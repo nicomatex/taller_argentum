@@ -5,7 +5,7 @@
 #include "../include/socket_exception.h"
 #include "SDL2/SDL.h"
 #include "event_factory.h"
-
+#include <algorithm>
 UiEventHandler::UiEventHandler(SocketManager &socket_manager,
                                GameStateMonitor &game_state_monitor, Hud &hud)
     : socket_manager(socket_manager),
@@ -79,6 +79,10 @@ void UiEventHandler::handle_quit() {
     game_state_monitor.quit();
 }
 
+void UiEventHandler::handle_keydown_attack() {
+    send_event(EventFactory::attack_event());
+}
+
 void UiEventHandler::handle() {
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
@@ -87,15 +91,19 @@ void UiEventHandler::handle() {
             if (e.key.repeat == 0) {
                 switch (e.key.keysym.sym) {
                     case SDLK_UP:
+                    case SDLK_w:
                         handle_keydown_move_up();
                         break;
                     case SDLK_DOWN:
+                    case SDLK_s:
                         handle_keydown_move_down();
                         break;
                     case SDLK_RIGHT:
+                    case SDLK_d:
                         handle_keydown_move_right();
                         break;
                     case SDLK_LEFT:
+                    case SDLK_a:
                         handle_keydown_move_left();
                         break;
                 }
@@ -103,10 +111,12 @@ void UiEventHandler::handle() {
             switch (e.key.keysym.sym) {
                 case SDLK_BACKSPACE:
                     handle_keydown_backspace();
-
                     break;
                 case SDLK_RETURN:
                     handle_keydown_return();
+                    break;
+                case SDLK_LCTRL:
+                    handle_keydown_attack();
                     break;
             }
 
