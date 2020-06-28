@@ -28,6 +28,7 @@ ItemFactory::ItemFactory(const char *items_file) {
 		item_info_t item_info =  item_data["item_info"];
     	armor_info_t armor_info = item_data["armor_info"];
     	armors_map[item_data["name"]] = Armor{item_info, armor_info};
+    	id_to_str_map[item_info.id] = item_data["name"];
 	}
 
 	for (auto& it: json_items["weapons"].items() ) {
@@ -35,6 +36,7 @@ ItemFactory::ItemFactory(const char *items_file) {
 		item_info_t item_info =  item_data["item_info"];
     	weapon_info_t weapon_info = item_data["weapon_info"];
     	weapons_map[item_data["name"]] = Weapon{item_info, weapon_info};
+    	id_to_str_map[item_info.id] = item_data["name"];
 	}
 
 	for (auto& it: json_items["potions"].items()) {
@@ -42,10 +44,13 @@ ItemFactory::ItemFactory(const char *items_file) {
 		item_info_t item_info =  item_data["item_info"];
     	potion_info_t potion_info = item_data["potion_info"];
     	potions_map[item_data["name"]] = Potion{item_info, potion_info};
+    	id_to_str_map[item_info.id] = item_data["name"];
 	}
 
-
-	gold = Gold{json_items["miscellaneous"][0]["item_info"]};
+	nlohmann::json item_data = json_items["miscellaneous"][0]; //Oro
+	item_info_t item_info =  item_data["item_info"];
+	gold = Gold{item_info};
+	id_to_str_map[item_info.id] = item_data["name"];
 }
 
 
@@ -70,11 +75,29 @@ Potion ItemFactory::create_potion(const std::string& name, uint32_t count) {
 	return std::move(potion);
 }
 
+bool ItemFactory::item_exists(ItemId item_id) {
+	return id_to_str_map.count(item_id);
+}
+
+Weapon ItemFactory::create_weapon(ItemId item_id, uint32_t count) {
+	if (!item_exists(item_id)) throw ItemNotFoundException();
+	return std::move(create_weapon(id_to_str_map.at(item_id), count));
+}
+
+Armor ItemFactory::create_armor(ItemId item_id, uint32_t count) {
+	if (!item_exists(item_id)) throw ItemNotFoundException();
+	return std::move(create_armor(id_to_str_map.at(item_id), count));
+}
+
+Potion ItemFactory::create_potion(ItemId item_id, uint32_t count){ 
+	if (!item_exists(item_id)) throw ItemNotFoundException();
+	return std::move(create_potion(id_to_str_map.at(item_id), count));
+}
+
 Gold ItemFactory::create_gold(uint32_t count) {
 	Gold gold = this->gold;
 	gold.set_count(count);
 	return std::move(gold);
 }
-
 
 ItemFactory::~ItemFactory() {}

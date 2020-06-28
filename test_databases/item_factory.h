@@ -15,14 +15,14 @@ class ItemNotFoundException : public std::exception {
 
 class ItemFactory {
    private:
+    std::unordered_map<ItemId, std::string> id_to_str_map;
 	std::unordered_map<std::string, Armor> armors_map;
 	std::unordered_map<std::string, Weapon> weapons_map;
 	std::unordered_map<std::string, Potion> potions_map;
     Gold gold;
-	bool item_exists(const std::string& name);
    public:
    	ItemFactory(const char *items_file);
-
+   
    	Weapon create_weapon(const std::string& name, uint32_t count);
    	Armor create_armor(const std::string& name, uint32_t count);
    	Potion create_potion(const std::string& name, uint32_t count);
@@ -33,6 +33,7 @@ class ItemFactory {
     
    	Gold create_gold(uint32_t count);
     
+    bool item_exists(ItemId item_id);
    	~ItemFactory();
 };
 

@@ -2,8 +2,8 @@
 #define ITEM_H
 
 #include <string>
-#include "../include/types.h"
-#include "../nlohmann/json.hpp"
+#include "types.h"
+#include "json.h"
 
 #define STACKABLE_MAX 9999
 
@@ -44,6 +44,7 @@ class Item {
    private:
    	item_info_t item_info;
    	uint32_t count;
+    //uin32_t max_count; <-- el maximo stackable
    public:
     Item();
    	Item(item_info_t item_info, uint32_t count = 0);
