@@ -24,4 +24,6 @@ typedef uint32_t EntityId;
 
 typedef int32_t MapId;
 
+typedef int32_t ItemId;
+
 #endif  // TYPES_H
