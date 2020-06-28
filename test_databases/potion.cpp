@@ -2,8 +2,8 @@
 
 Potion::Potion() {}
 
-Potion::Potion(item_info_t item_info, potion_info_t potion_info, uint32_t count) :
-			   Item(item_info, count), potion_info(potion_info) {}
+Potion::Potion(item_info_t item_info, potion_info_t potion_info, uint32_t stack) :
+			   Item(item_info, stack), potion_info(potion_info) {}
 
 Potion::~Potion() {}
 

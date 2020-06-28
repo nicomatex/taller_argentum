@@ -2,8 +2,8 @@
 
 Weapon::Weapon() {}
 
-Weapon::Weapon(item_info_t item_info, weapon_info_t weapon_info, uint32_t count):
-			   Item(item_info, count), weapon_info(weapon_info) {}
+Weapon::Weapon(item_info_t item_info, weapon_info_t weapon_info, uint32_t stack):
+			   Item(item_info, stack), weapon_info(weapon_info) {}
 
 Weapon::~Weapon() {}
 

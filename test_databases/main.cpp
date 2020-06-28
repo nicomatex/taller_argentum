@@ -22,7 +22,8 @@ int main(int argc, char const *argv[]) {
 	Potion potion = item_factory.create_potion("Pocion de vida", 1000);
 	std::cout << potion.get_info() << std::endl;
 	Gold gold = item_factory.create_gold(9999);
-	gold.decrease_count(1000);
+	gold.decrease_stack(1000);
+	
 	std::cout << gold.get_info() << std::endl;
 	return 0;
 }

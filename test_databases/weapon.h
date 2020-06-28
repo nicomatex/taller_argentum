@@ -23,7 +23,7 @@ class Weapon : public Item {
    	weapon_info_t weapon_info;
    public:
     Weapon();
-   	Weapon(item_info_t item_info, weapon_info_t weapon_info, uint32_t count = 0);
+   	Weapon(item_info_t item_info, weapon_info_t weapon_info, uint32_t stack = 0);
     nlohmann::json get_info() override;
    	~Weapon();
 };
