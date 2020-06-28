@@ -88,22 +88,18 @@ void UiEventHandler::handle() {
     while (SDL_PollEvent(&e)) {
         if (e.type == SDL_QUIT) handle_quit();
         if (e.type == SDL_KEYDOWN) {
-            if (e.key.repeat == 0 && !text_input_enabled) {
+            if (e.key.repeat == 0) {
                 switch (e.key.keysym.sym) {
                     case SDLK_UP:
-                    case SDLK_w:
                         handle_keydown_move_up();
                         break;
                     case SDLK_DOWN:
-                    case SDLK_s:
                         handle_keydown_move_down();
                         break;
                     case SDLK_RIGHT:
-                    case SDLK_d:
                         handle_keydown_move_right();
                         break;
                     case SDLK_LEFT:
-                    case SDLK_a:
                         handle_keydown_move_left();
                         break;
                 }
@@ -118,25 +114,24 @@ void UiEventHandler::handle() {
                 case SDLK_LCTRL:
                     handle_keydown_attack();
                     break;
+                case SDLK_RCTRL:
+                    handle_keydown_attack();
+                    break;
             }
 
-        } else if (e.type == SDL_KEYUP && !text_input_enabled) {
-            if (e.key.repeat == 0 && !text_input_enabled) {
+        } else if (e.type == SDL_KEYUP) {
+            if (e.key.repeat == 0) {
                 switch (e.key.keysym.sym) {
                     case SDLK_UP:
-                    case SDLK_w:
                         handle_keyup_move_up();
                         break;
                     case SDLK_DOWN:
-                    case SDLK_s:
                         handle_keyup_move_down();
                         break;
                     case SDLK_RIGHT:
-                    case SDLK_d:
                         handle_keyup_move_right();
                         break;
                     case SDLK_LEFT:
-                    case SDLK_a:
                         handle_keyup_move_left();
                         break;
                 }
