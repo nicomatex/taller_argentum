@@ -29,6 +29,7 @@ class UiEventHandler{
     void handle_keydown_move_right();
     void handle_keydown_return();
     void handle_keydown_backspace();
+    void handle_keydown_sound_toggle();
 
     void handle_keyup_move_up();
     void handle_keyup_move_down();

@@ -6,6 +6,8 @@
 #include "../include/socket_exception.h"
 #include "SDL2/SDL.h"
 #include "event_factory.h"
+#include "SDL2/SDL_mixer.h"
+
 UiEventHandler::UiEventHandler(SocketManager &socket_manager,
                                GameStateMonitor &game_state_monitor, Hud &hud)
     : socket_manager(socket_manager),
@@ -83,6 +85,19 @@ void UiEventHandler::handle_keydown_attack() {
     send_event(EventFactory::attack_event());
 }
 
+void UiEventHandler::handle_keydown_sound_toggle(){
+    static bool sound_enabled = true;
+    if(sound_enabled){
+        Mix_VolumeMusic(0);
+        Mix_Volume(-1,0);
+        sound_enabled = false;
+    }else{
+        Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
+        Mix_Volume(-1,MIX_MAX_VOLUME / 3);
+        sound_enabled = true;
+    }
+}
+
 void UiEventHandler::handle() {
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
@@ -116,6 +131,10 @@ void UiEventHandler::handle() {
                     break;
                 case SDLK_RCTRL:
                     handle_keydown_attack();
+                    break;
+                case SDLK_m:
+                    if(!text_input_enabled)
+                        handle_keydown_sound_toggle();
                     break;
             }
 

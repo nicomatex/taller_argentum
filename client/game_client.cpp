@@ -65,6 +65,7 @@ void GameClient::_login() {
 
 void GameClient::run() {
     Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
+    Mix_Volume(-1,MIX_MAX_VOLUME / 3);
     _login();
     window.show();
     ResourceManager::get_instance().get_music(2).play();
