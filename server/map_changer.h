@@ -5,33 +5,18 @@
 
 #include "../include/nlohmann/json.hpp"
 #include "../include/types.h"
+#include "game/map_transitions.h"
 #include "game/position.h"
 
 class MapChanger {
    private:
-    MapId upper_map;
-    MapId lower_map;
-    MapId right_map;
-    MapId left_map;
-    int height;
-    int width;
-    std::unordered_map<position_t, position_t, PositionHasher,
-                       PositionComparator>
-        dest_position;
-    std::unordered_map<position_t, MapId, PositionHasher, PositionComparator>
-        dest_map;
-    std::unordered_map<std::string, position_t> change_required;
-
-    bool requires_map_change(position_t position);
-
-    position_t get_dest_position(position_t position);
-    MapId get_dest_map(position_t position);
+    std::queue<map_change_t> changes_queue;
 
    public:
-    MapChanger(nlohmann::json changes, int height, int width);
+    MapChanger();
     ~MapChanger();
 
-    void set_change_if_necessary(const std::string& name, position_t position);
+    void push_change(map_change_t change);
 
     void change_maps();
 };

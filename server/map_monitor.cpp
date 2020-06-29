@@ -5,10 +5,7 @@
 // Temp
 #include <iostream>
 
-MapMonitor::MapMonitor(nlohmann::json map_description)
-    : map(map_description, map_changer),
-      map_changer(map_description["changes"], map_description["height"],
-                  map_description["width"]) {}
+MapMonitor::MapMonitor(nlohmann::json map_description) : map(map_description) {}
 
 MapMonitor::~MapMonitor() {}
 
@@ -32,10 +29,21 @@ position_t MapMonitor::get_position(ClientId client_id) {
     return map.get_position(client_map.at(client_id));
 }
 
+std::queue<map_change_t> MapMonitor::get_transitions() {
+    std::unique_lock<std::recursive_mutex> l(m);
+    std::queue<map_change_t>& map_changes_ref = map.get_transitions();
+    std::queue<map_change_t> changes;
+    while (!map_changes_ref.empty()) {
+        changes.push(map_changes_ref.front());
+        map_changes_ref.pop();
+    }
+    l.unlock();
+    return changes;
+}
+
 void MapMonitor::update(uint64_t delta_t) {
     std::unique_lock<std::recursive_mutex> l(m);
     map.update(delta_t);
-    map_changer.change_maps();
 }
 
 void MapMonitor::push_action(ClientId client_id, Action* action) {

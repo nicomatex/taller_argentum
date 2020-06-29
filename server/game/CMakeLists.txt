@@ -8,4 +8,5 @@ add_library(game
   action_attack.cpp
   combat_component.cpp
   movement_component.cpp
+  map_transitions.cpp
 )

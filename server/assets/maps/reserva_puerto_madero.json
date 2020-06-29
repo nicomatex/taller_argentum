@@ -82,7 +82,7 @@
  "type":"map",
  "version":1.2,
  "width":50,
- "changes":{
+ "transitions":{
  	"teleports":[],
  	"upper":-1,
  	"lower":-1,

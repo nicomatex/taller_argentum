@@ -7,11 +7,12 @@
 
 #include "player.h"
 
-Map::Map(nlohmann::json map_description, MapChanger& map_changer)
-    : dirty(false), map_changer(map_changer) {
-    height = map_description["height"];
-    width = map_description["width"];
-
+Map::Map(nlohmann::json map_description)
+    : map_id(map_description["map_id"]),
+      dirty(false),
+      width(map_description["width"]),
+      height(map_description["height"]),
+      transitions(map_description["transitions"], width, height) {
     for (auto& layer : map_description["layers"].items()) {
         if (layer.value()["name"] == "Collision") {
             for (int i = 0; i < height; i++) {
@@ -62,9 +63,8 @@ void Map::move(EntityId entity_id, position_t steps) {
     new_position.x += steps.x;
     new_position.y += steps.y;
 
-    if (entity->get_type() == PLAYER)
-        map_changer.set_change_if_necessary(
-            static_cast<Player*>(entity)->get_name(), new_position);
+    if (entity->get_type() == PLAYER && transitions.is_transition(new_position))
+        transitions.push_change(entity->get_name(), new_position);
     if (collides(new_position))
         return;
 
@@ -76,6 +76,10 @@ void Map::move(EntityId entity_id, position_t steps) {
     // posicion.
     entity_matrix[new_position] = entity;
     position_map[entity_id] = new_position;
+}
+
+std::queue<map_change_t>& Map::get_transitions() {
+    return transitions.get_changes();
 }
 
 position_t Map::get_nearest_free_position(position_t position) {

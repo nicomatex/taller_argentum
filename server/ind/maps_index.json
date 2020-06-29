@@ -3,26 +3,12 @@
         {
             "map_id": 0,
             "map_name": "Paseo Colon",
-            "path": "assets/maps/paseo_colon.json",
-            "changes": {
-                "teleports": [],
-                "upper": 0,
-                "lower": 0,
-                "right": 1,
-                "left": 1
-            }
+            "path": "assets/maps/paseo_colon.json"
         },
         {
             "map_id": 1,
             "map_name": "Reserva Puerto Madero",
-            "path": "assets/maps/reserva_puerto_madero.json",
-            "changes": {
-                "teleports": [],
-                "upper": -1,
-                "lower": -1,
-                "right": 0,
-                "left": 0
-            }
+            "path": "assets/maps/reserva_puerto_madero.json"
         }
     ]
 }

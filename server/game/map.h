@@ -11,6 +11,7 @@
 #include "../map_changer.h"
 #include "action.h"
 #include "entity.h"
+#include "map_transitions.h"
 #include "position.h"
 
 #define MAP_SIZE 50
@@ -39,6 +40,9 @@ typedef std::unordered_set<position_t, PositionHasher, PositionComparator>
 class Map {
    private:
     friend class Action;
+    MapId map_id;
+    int height;
+    int width;
 
     bool dirty;
     PositionMap position_map;
@@ -46,9 +50,7 @@ class Map {
     EntityMatrix entity_matrix;
     CollisionMap collision_map;
     EntityMap entity_map;
-    MapChanger& map_changer;
-    int height;
-    int width;
+    MapTransitions transitions;
 
     std::queue<entity_action_t> actions;
     std::queue<nlohmann::json> update_logs;
@@ -72,12 +74,14 @@ class Map {
     void solve_combats();
 
    public:
-    Map(nlohmann::json map_info, MapChanger& map_changer);
+    Map(nlohmann::json map_info);
     ~Map();
 
     /* Mueve la entidad asociada al entity_id un tile en la direccion
      * indicada.*/
     void move(EntityId entity_id, position_t steps);
+
+    std::queue<map_change_t>& get_transitions();
 
     /* Devuelve el id de entidad asignado dentro del mapa al jugador. */
     EntityId add_player(nlohmann::json player_info);

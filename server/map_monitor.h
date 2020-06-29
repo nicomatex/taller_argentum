@@ -2,12 +2,13 @@
 #define __MAP_MONITOR_H
 
 #include <mutex>
+#include <queue>
 
 #include "../include/nlohmann/json.hpp"
 #include "../include/types.h"
 #include "game/action.h"
 #include "game/map.h"
-#include "map_changer.h"
+#include "game/map_transitions.h"
 
 // Clave: id de cliente, valor: id de entidad del jugador.
 typedef std::unordered_map<ClientId, EntityId> ClientMap;
@@ -16,7 +17,6 @@ class MapMonitor {
    private:
     std::recursive_mutex m;
     Map map;
-    MapChanger map_changer;
     ClientMap client_map;
 
    public:
@@ -28,6 +28,8 @@ class MapMonitor {
     nlohmann::json rm_player(ClientId client_id);
 
     position_t get_position(ClientId client_id);
+
+    std::queue<map_change_t> get_transitions();
 
     /* Actualiza el estado del mapa. */
     void update(uint64_t delta_t);

@@ -5,11 +5,13 @@
 
 #include "../include/types.h"
 #include "game/map.h"
+#include "game/map_transitions.h"
 #include "map_monitor.h"
 
 class MapManager {
    private:
     std::unordered_map<MapId, MapMonitor> maps;
+    MapChanger map_changer;
 
    public:
     MapManager(const char* path);
