@@ -3,10 +3,10 @@
 #include <unordered_map>
 
 #include "SDL/sdl_animated_sprite.h"
-#include "SDL/sdl_texture.h"
-#include "SDL/sdl_texture_loader.h"
 #include "SDL/sdl_music.h"
 #include "SDL/sdl_sfx.h"
+#include "SDL/sdl_texture.h"
+#include "SDL/sdl_texture_loader.h"
 #include "SDL2/SDL_ttf.h"
 #include "animation_pack.h"
 
@@ -76,11 +76,11 @@ class ResourceManager {
 
     /* Devuelve el efecto de sonido asociado al id. */
     SDLSoundFx& get_sound_fx(int id);
-    
+
     /* Debe ser llamado para liberar recursos que pueda
     haber alocado el manager.*/
     void free_resources();
-    
+
     /* Realiza la carga y generacion de todos los sprites y sonidos.*/
     void init(SDLTextureLoader& loader);
 };

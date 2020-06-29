@@ -19,7 +19,9 @@ void Chat::add_characters(char* characters) {
     text_input.add_characters(characters);
 }
 
-void Chat::input_erase() { text_input.erase(); }
+void Chat::input_erase() {
+    text_input.erase();
+}
 
 std::string Chat::get_input_and_erase() {
     std::string input = text_input.get_text();
@@ -27,11 +29,15 @@ std::string Chat::get_input_and_erase() {
     return input;
 }
 
-void Chat::print_line(std::string line) { text_box.add_line(line); }
+void Chat::print_line(std::string line) {
+    text_box.add_line(line);
+}
 
 void Chat::render() {
     text_input.render();
     text_box.render();
 }
 
-void Chat::toggle() { text_input.toggle(); }
+void Chat::toggle() {
+    text_input.toggle();
+}

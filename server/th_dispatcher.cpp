@@ -1,12 +1,12 @@
 #include "th_dispatcher.h"
 
-#include "../nlohmann/json.hpp"
-#include "attack_handler.h"
-#include "change_map_handler.h"
-#include "client_drop_handler.h"
-#include "client_initializer_handler.h"
-#include "command_handler.h"
-#include "movement_handler.h"
+#include "../include/nlohmann/json.hpp"
+#include "events/attack_handler.h"
+#include "events/change_map_handler.h"
+#include "events/client_drop_handler.h"
+#include "events/client_initializer_handler.h"
+#include "events/command_handler.h"
+#include "events/movement_handler.h"
 #include "server_manager.h"
 
 // Temp

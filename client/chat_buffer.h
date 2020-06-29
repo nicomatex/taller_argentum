@@ -4,6 +4,7 @@
 #include <mutex>
 #include <queue>
 #include <string>
+
 #include "chat.h"
 
 class ChatBuffer {

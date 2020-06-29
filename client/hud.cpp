@@ -24,14 +24,14 @@ Hud::Hud(SDLWindow& window, ChatBuffer& chat_buffer,
 
 Hud::~Hud() {}
 
-void Hud::update() { 
+void Hud::update() {
     health_bar.set_max_value(player_stats.get_stat_max_value("hp"));
     health_bar.set_current_value(player_stats.get_stat_current_value("hp"));
 
     mana_bar.set_max_value(player_stats.get_stat_max_value("mp"));
     mana_bar.set_current_value(player_stats.get_stat_current_value("mp"));
-    
-    chat_buffer.flush(chat); 
+
+    chat_buffer.flush(chat);
 }
 
 void Hud::render() {

@@ -18,7 +18,7 @@ class Actor : public RenderizableObject {
     bool is_empty;
 
    public:
-    Actor(AnimationPack &animation_pack, visual_info_t visual_info);
+    Actor(AnimationPack& animation_pack, visual_info_t visual_info);
 
     /* Establece la nueva orientacion.*/
     void set_orientation(direction_t new_direction);

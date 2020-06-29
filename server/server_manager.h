@@ -5,17 +5,17 @@
 #include <stdexcept>
 #include <string>
 
-#include "../include/socket_manager.h"
+#include "../include/network/socket_manager.h"
+#include "../include/nlohmann/json.hpp"
 #include "../include/types.h"
-#include "../nlohmann/json.hpp"
 #include "character_manager.h"
-#include "clients_monitor.h"
-#include "game_loop.h"
+#include "game/game_loop.h"
+#include "game/player.h"
 #include "map_manager.h"
 #include "map_monitor.h"
-#include "player.h"
-#include "session.h"
-#include "th_client_accepter.h"
+#include "network/clients_monitor.h"
+#include "network/session.h"
+#include "network/th_client_accepter.h"
 
 class ClientDisconnectedException : public std::exception {
    private:

@@ -1,7 +1,7 @@
 #ifndef EVENT_H
 #define EVENT_H
 
-#include "../nlohmann/json.hpp"
+#include "nlohmann/json.hpp"
 
 enum server_to_client {
     EV_ID_DROP_CLIENT = -1,

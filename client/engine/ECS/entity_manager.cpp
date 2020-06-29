@@ -1,7 +1,9 @@
 #include "entity_manager.h"
 
-#include "entity.h"
 #include <iostream>
+
+#include "entity.h"
+
 EntityManager& EntityManager::get_instance() {
     static EntityManager instance;
     return instance;
@@ -80,6 +82,6 @@ void EntityManager::remove_non_updated() {
 
 void EntityManager::empty() {
     std::unique_lock<std::mutex> l(m);
-    entities.erase(entities.begin(),entities.end());
-    updated.erase(updated.begin(),updated.end());
+    entities.erase(entities.begin(), entities.end());
+    updated.erase(updated.begin(), updated.end());
 }

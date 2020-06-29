@@ -1,8 +1,8 @@
 #include "map_changer.h"
 
 #include "../include/my_exception.h"
-#include "event_factory.h"
-#include "map.h"
+#include "events/event_factory.h"
+#include "game/map.h"
 #include "server_manager.h"
 
 // Temp

@@ -3,8 +3,8 @@
 #include <chrono>
 #include <iostream>
 
-#include "../nlohmann/json.hpp"
-#include "event_factory.h"
+#include "../include/nlohmann/json.hpp"
+#include "events/event_factory.h"
 #include "server_manager.h"
 
 #define ENTITY_UPDATE_INTERVAL 10

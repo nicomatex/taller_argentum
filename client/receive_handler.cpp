@@ -3,12 +3,12 @@
 #include <iomanip>
 #include <iostream>
 
-#include "../nlohmann/json.hpp"
+#include "../include/nlohmann/json.hpp"
 #include "engine/ECS/entity.h"
 #include "engine/components/position_component.h"
+#include "engine/components/stats_component.h"
 #include "engine/components/visual_character_component.h"
 #include "engine/entity_factory.h"
-#include "engine/components/stats_component.h"
 
 using json = nlohmann::json;
 
@@ -92,9 +92,10 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                 entity_info["entity_id"]);
             entity.get_component<VisualCharacterComponent>().server_update(
                 entity_info);
-            entity.get_component<StatsComponent>().set_stat_max_value("hp",entity_info["max_hp"]);
-            entity.get_component<StatsComponent>().set_stat_current_value("hp",entity_info["curr_hp"]);
-            
+            entity.get_component<StatsComponent>().set_stat_max_value(
+                "hp", entity_info["max_hp"]);
+            entity.get_component<StatsComponent>().set_stat_current_value(
+                "hp", entity_info["curr_hp"]);
         }
     }
 

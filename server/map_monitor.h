@@ -3,10 +3,10 @@
 
 #include <mutex>
 
+#include "../include/nlohmann/json.hpp"
 #include "../include/types.h"
-#include "../nlohmann/json.hpp"
-#include "action.h"
-#include "map.h"
+#include "game/action.h"
+#include "game/map.h"
 #include "map_changer.h"
 
 // Clave: id de cliente, valor: id de entidad del jugador.

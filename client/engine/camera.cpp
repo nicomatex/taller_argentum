@@ -1,4 +1,3 @@
-
 #include "camera.h"
 
 #include <cmath>
@@ -10,9 +9,8 @@
 #include "decoration.h"
 #include "engine_config.h"
 
-Camera::Camera(PositionComponent &follow_component, int map_size,
-               int tile_size, int viewport_width, int viewport_height,
-               int speed)
+Camera::Camera(PositionComponent &follow_component, int map_size, int tile_size,
+               int viewport_width, int viewport_height, int speed)
     : follow_component(follow_component),
       x_center_tile(follow_component.get_x()),
       y_center_tile(follow_component.get_y()),
@@ -100,29 +98,37 @@ void Camera::_update_offset() {
     float smooth_factor_x = (float)abs(camera_offset_x) / (float)tile_size;
     float smooth_factor_y = (float)abs(camera_offset_y) / (float)tile_size;
 
-    if (smooth_factor_x < 0.7) smooth_factor_x = 0.7;
-    if (smooth_factor_y < 0.7) smooth_factor_y = 0.7;
+    if (smooth_factor_x < 0.7)
+        smooth_factor_x = 0.7;
+    if (smooth_factor_y < 0.7)
+        smooth_factor_y = 0.7;
 
     if (camera_offset_x > 0) {
         camera_offset_x -= delta_offset * smooth_factor_x;
-        if (camera_offset_x <= 0) stop_x = true;
+        if (camera_offset_x <= 0)
+            stop_x = true;
     } else if (camera_offset_x < 0) {
         camera_offset_x += delta_offset * smooth_factor_x;
-        if (camera_offset_x >= 0) stop_x = true;
+        if (camera_offset_x >= 0)
+            stop_x = true;
     }
 
     if (camera_offset_y > 0) {
         camera_offset_y -= delta_offset * smooth_factor_y;
-        if (camera_offset_y <= 0) stop_y = true;
+        if (camera_offset_y <= 0)
+            stop_y = true;
     } else if (camera_offset_y < 0) {
         camera_offset_y += delta_offset * smooth_factor_y;
-        if (camera_offset_y >= 0) stop_y = true;
+        if (camera_offset_y >= 0)
+            stop_y = true;
     }
 
     if (stop_x || stop_y) {
         movement_timer.stop();
-        if (stop_x) camera_offset_x = 0;
-        if (stop_y) camera_offset_y = 0;
+        if (stop_x)
+            camera_offset_x = 0;
+        if (stop_y)
+            camera_offset_y = 0;
     } else {
         movement_timer.start();
     }
@@ -136,10 +142,10 @@ void Camera::update() {
         camera_offset_x += (x_center_tile - new_center_x) * tile_size;
         x_center_tile = new_center_x;
         movement_timer.start();
-    }else{
-        if(follow_component.get_x() < width_tiles / 2)
+    } else {
+        if (follow_component.get_x() < width_tiles / 2)
             x_center_tile = (width_tiles / 2);
-        else if(follow_component.get_x() > map_size - (width_tiles / 2))
+        else if (follow_component.get_x() > map_size - (width_tiles / 2))
             x_center_tile = map_size - (width_tiles / 2);
     }
 
@@ -149,10 +155,10 @@ void Camera::update() {
         camera_offset_y += (y_center_tile - new_center_y) * tile_size;
         y_center_tile = new_center_y;
         movement_timer.start();
-    }else{
-        if(follow_component.get_y() < height_tiles / 2)
+    } else {
+        if (follow_component.get_y() < height_tiles / 2)
             y_center_tile = (height_tiles / 2);
-        else if(follow_component.get_y() > map_size - (height_tiles / 2))
+        else if (follow_component.get_y() > map_size - (height_tiles / 2))
             y_center_tile = map_size - (height_tiles / 2);
     }
 }
@@ -176,7 +182,7 @@ void Camera::draw_all() {
         EntityManager::get_instance().get_entity_id_list();
     for (const int &id : ids) {
         Entity &entity = EntityManager::get_instance().get_from_id(id);
-        if(entity.has_component<VisualCharacterComponent>()){
+        if (entity.has_component<VisualCharacterComponent>()) {
             entity.get_component<VisualCharacterComponent>().draw(*this);
         }
     }

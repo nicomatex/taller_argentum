@@ -6,7 +6,7 @@ LDFLAGS = -pthread
 INCLUDE = ../include/my_exception.cpp ../include/thread.cpp \
 ../include/socket.cpp  ../include/socket_exception.cpp \
 ../include/protocol.cpp ../include/translator.cpp \
-../include/th_event_handler.cpp ../include/socket_manager.cpp \
+../include/th_event_handler.cpp ../include/network/socket_manager.cpp \
 ../include/th_socket_sender.cpp ../include/th_socket_receiver.cpp 
 
 

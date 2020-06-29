@@ -3,9 +3,9 @@
 
 #include <unordered_map>
 
+#include "../include/nlohmann/json.hpp"
 #include "../include/types.h"
-#include "../nlohmann/json.hpp"
-#include "position.h"
+#include "game/position.h"
 
 class MapChanger {
    private:

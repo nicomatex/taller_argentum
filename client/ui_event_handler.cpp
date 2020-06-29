@@ -3,10 +3,10 @@
 #include <algorithm>
 #include <iostream>
 
-#include "../include/socket_exception.h"
+#include "../include/network/socket_exception.h"
 #include "SDL2/SDL.h"
-#include "event_factory.h"
 #include "SDL2/SDL_mixer.h"
+#include "event_factory.h"
 
 UiEventHandler::UiEventHandler(SocketManager &socket_manager,
                                GameStateMonitor &game_state_monitor, Hud &hud)
@@ -73,7 +73,8 @@ void UiEventHandler::handle_keydown_return() {
 }
 
 void UiEventHandler::handle_keydown_backspace() {
-    if (text_input_enabled) hud.chat.input_erase();
+    if (text_input_enabled)
+        hud.chat.input_erase();
 }
 
 void UiEventHandler::handle_quit() {
@@ -85,15 +86,15 @@ void UiEventHandler::handle_keydown_attack() {
     send_event(EventFactory::attack_event());
 }
 
-void UiEventHandler::handle_keydown_sound_toggle(){
+void UiEventHandler::handle_keydown_sound_toggle() {
     static bool sound_enabled = true;
-    if(sound_enabled){
+    if (sound_enabled) {
         Mix_VolumeMusic(0);
-        Mix_Volume(-1,0);
+        Mix_Volume(-1, 0);
         sound_enabled = false;
-    }else{
+    } else {
         Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
-        Mix_Volume(-1,MIX_MAX_VOLUME / 3);
+        Mix_Volume(-1, MIX_MAX_VOLUME / 3);
         sound_enabled = true;
     }
 }
@@ -101,7 +102,8 @@ void UiEventHandler::handle_keydown_sound_toggle(){
 void UiEventHandler::handle() {
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
-        if (e.type == SDL_QUIT) handle_quit();
+        if (e.type == SDL_QUIT)
+            handle_quit();
         if (e.type == SDL_KEYDOWN) {
             if (e.key.repeat == 0) {
                 switch (e.key.keysym.sym) {
@@ -133,7 +135,7 @@ void UiEventHandler::handle() {
                     handle_keydown_attack();
                     break;
                 case SDLK_m:
-                    if(!text_input_enabled)
+                    if (!text_input_enabled)
                         handle_keydown_sound_toggle();
                     break;
             }

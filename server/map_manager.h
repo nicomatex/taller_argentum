@@ -2,9 +2,10 @@
 #define MAP_MANAGER_H
 
 #include <unordered_map>
-#include "map_monitor.h"
+
 #include "../include/types.h"
-#include "map.h"
+#include "game/map.h"
+#include "map_monitor.h"
 
 class MapManager {
    private:

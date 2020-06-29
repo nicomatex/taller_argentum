@@ -1,9 +1,10 @@
 #ifndef __MAP_H
 #define __MAP_H
 #include <vector>
-#include "renderizable_object.h"
+
+#include "../../include/nlohmann/json.hpp"
 #include "decoration.h"
-#include "json.hpp"
+#include "renderizable_object.h"
 
 using json = nlohmann::json;
 
@@ -21,8 +22,9 @@ class Map {
     ~Map();
     int get_width();
     int get_height();
-    
-    /* Devuelve una referencia a los componentes visuales en la n-esima capa del mapa. */
+
+    /* Devuelve una referencia a los componentes visuales en la n-esima capa del
+     * mapa. */
     std::vector<Decoration>& get_layer(int n);
 };
 

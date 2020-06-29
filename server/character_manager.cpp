@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "../nlohmann/json.hpp"
+#include "../include/nlohmann/json.hpp"
 
 const char* CharacterAlreadyExistsException::what() const throw() {
     return "Character already exists!";

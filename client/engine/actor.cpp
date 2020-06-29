@@ -25,11 +25,17 @@ void Actor::set_orientation(direction_t new_direction) {
     orientation = new_direction;
 }
 
-void Actor::update() { _update_status(); }
+void Actor::update() {
+    _update_status();
+}
 
-direction_t Actor::get_direction() { return orientation; }
+direction_t Actor::get_direction() {
+    return orientation;
+}
 
-movement_status_t Actor::get_movement_status() { return movement_status; }
+movement_status_t Actor::get_movement_status() {
+    return movement_status;
+}
 
 Actor::Actor(const Actor& other)
     : animation_pack(other.animation_pack),
@@ -37,7 +43,7 @@ Actor::Actor(const Actor& other)
       movement_status(other.movement_status),
       RenderizableObject(other) {}
 
-Actor& Actor::operator=(const Actor& other){
+Actor& Actor::operator=(const Actor& other) {
     animation_pack = other.animation_pack;
     orientation = other.orientation;
     movement_status = other.movement_status;

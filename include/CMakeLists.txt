@@ -1,13 +1,6 @@
-add_library(network
+add_library(include
   my_exception.cpp
-  protocol.cpp
-  socket.cpp
-  socket_exception.cpp
-  socket_manager.cpp
   blocking_th_event_handler.cpp
   thread.cpp
-  th_socket_receiver.cpp
-  th_socket_sender.cpp
-  translator.cpp
   event.cpp
 )

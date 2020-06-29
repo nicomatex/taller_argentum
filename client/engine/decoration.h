@@ -7,10 +7,10 @@
 class Decoration : public RenderizableObject {
    private:
     SDLSprite sprite;
-    int x,y;
+    int x, y;
 
    public:
-    Decoration(SDLSprite sprite,int x,int y, visual_info_t visual_info);
+    Decoration(SDLSprite sprite, int x, int y, visual_info_t visual_info);
     /* Renderiza el objeto en pantalla. */
     int get_x() const;
     int get_y() const;

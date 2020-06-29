@@ -1,12 +1,13 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
-#include <vector>
-#include <memory>
 #include <bitset>
 #include <exception>
 #include <iostream>
+#include <memory>
 #include <unordered_map>
+#include <vector>
+
 #include "component.h"
 #include "component_util.h"
 #include "entity_manager.h"
@@ -16,7 +17,7 @@ class Entity {
     unsigned int id;
     bool alive;
     std::unordered_map<ComponentId, std::unique_ptr<Component>> components;
-    
+
    public:
     Entity(unsigned int id);
     ~Entity();
@@ -32,11 +33,12 @@ class Entity {
 
     template <class T, typename... TArgs>
     T& add_component(TArgs&&... mArgs) {
-        //Se puede tener una sola vez el componente
-        if (has_component<T>()) throw std::exception();
-        T* component(new T(std::forward<TArgs>(mArgs)...)); //perfect forward
+        // Se puede tener una sola vez el componente
+        if (has_component<T>())
+            throw std::exception();
+        T* component(new T(std::forward<TArgs>(mArgs)...));  // perfect forward
         component->set_entity(this);
-        ComponentId c_id = ComponentUtil::get_type_id<T>(); 
+        ComponentId c_id = ComponentUtil::get_type_id<T>();
         components[c_id] = std::unique_ptr<Component>(component);
         component->init();
         return *component;
@@ -44,8 +46,9 @@ class Entity {
 
     template <class T>
     void del_component() {
-        //No puedo eliminar un componente que no tengo
-        if (!has_component<T>()) throw std::exception();
+        // No puedo eliminar un componente que no tengo
+        if (!has_component<T>())
+            throw std::exception();
         ComponentId c_id = ComponentUtil::get_type_id<T>();
         components[c_id].reset();
         components.erase(c_id);
@@ -53,11 +56,12 @@ class Entity {
 
     template <class T>
     T& get_component() const {
-        if (!has_component<T>()) throw std::exception(); 
+        if (!has_component<T>())
+            throw std::exception();
         ComponentId c_id = ComponentUtil::get_type_id<T>();
-        Component *comp = components.at(c_id).get();
+        Component* comp = components.at(c_id).get();
         return *reinterpret_cast<T*>(comp);
     }
 };
 
-#endif // ENTITY_H
+#endif  // ENTITY_H

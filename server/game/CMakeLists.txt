@@ -1,0 +1,11 @@
+add_library(game
+  action.cpp
+  entity.cpp
+  game_loop.cpp
+  map.cpp
+  player.cpp
+  action_move.cpp
+  action_attack.cpp
+  combat_component.cpp
+  movement_component.cpp
+)

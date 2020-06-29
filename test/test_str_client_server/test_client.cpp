@@ -1,8 +1,8 @@
 #include <iostream>
 
 #include "../include/event.h"
+#include "../include/network/socket_manager.h"
 #include "../include/socket.h"
-#include "../include/socket_manager.h"
 #include "str_receive_client_handler.h"
 
 int main(const int argc, const char* argv[]) try {

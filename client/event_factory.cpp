@@ -1,6 +1,6 @@
 #include "event_factory.h"
 
-#include "../nlohmann/json.hpp"
+#include "../include/nlohmann/json.hpp"
 
 using json = nlohmann::json;
 

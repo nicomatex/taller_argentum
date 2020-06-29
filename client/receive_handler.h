@@ -4,6 +4,7 @@
 #include <atomic>
 
 #include "../include/blocking_th_event_handler.h"
+#include "../include/event.h"
 #include "chat_buffer.h"
 #include "engine/ECS/entity_manager.h"
 #include "engine/map.h"
@@ -18,7 +19,7 @@ class ClientReceiveHandler : public BlockingThEventHandler {
     void handle_entity_update(Event &ev);
     void handle_chat_message(Event &ev);
     void handle_map_change(Event &ev);
-    
+
     MapChangeBuffer &map_change_buffer;
     ChatBuffer &chat_buffer;
     GameStateMonitor &game_state_monitor;

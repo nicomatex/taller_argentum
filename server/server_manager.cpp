@@ -3,8 +3,8 @@
 #include <fstream>
 #include <vector>
 
-#include "../nlohmann/json.hpp"
-#include "event_factory.h"
+#include "../include/nlohmann/json.hpp"
+#include "events/event_factory.h"
 
 // Temp
 #include <iostream>

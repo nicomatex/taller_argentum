@@ -12,9 +12,9 @@ add_subdirectory(engine/ECS)
 
 add_subdirectory(engine/components)
 
-add_subdirectory(../include build)
-
 add_subdirectory(engine/UI)
+
+add_subdirectory(../include/network inc_network)
 
 # Agrego la carpeta con los headers autogenerados a los includes
 message("Agregando '${PROJECT_BINARY_DIR}' como directorio de includes")
@@ -35,6 +35,7 @@ add_library(game
 
 target_link_libraries(game
   engine
+  inc_network
 )
 
 add_executable (aoclient

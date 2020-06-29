@@ -45,8 +45,8 @@ class Camera {
     void _update_offset();
 
    public:
-    Camera(PositionComponent &follow_component, int map_size,
-           int tile_size, int viewport_width, int viewport_height, int speed);
+    Camera(PositionComponent &follow_component, int map_size, int tile_size,
+           int viewport_width, int viewport_height, int speed);
     ~Camera();
 
     /* Actualiza la posicion de la camara segun el objeto que esta siguiendo. */
@@ -57,7 +57,7 @@ class Camera {
 
     /* Renderiza todos las entidades con una componente visual.*/
     void draw_all();
-    
+
     void render_map_layer(std::vector<Decoration> &layer);
 };
 

@@ -1,7 +1,7 @@
 #ifndef ENTITY_FACTORY_H
 #define ENTITY_FACTORY_H
 
-#include "../../nlohmann/json.hpp"
+#include "../../include/nlohmann/json.hpp"
 #include "ECS/entity.h"
 #include "ECS/entity_manager.h"
 

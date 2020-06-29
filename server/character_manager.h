@@ -1,11 +1,12 @@
 #ifndef CHARACTER_MANAGER_H
 #define CHARACTER_MANAGER_H
 
-#include <mutex>
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <map>
-#include "position.h"
+#include <mutex>
+
+#include "game/position.h"
 
 #define MAX_CHAR_NAME 15
 
@@ -24,12 +25,12 @@ typedef struct character {
 typedef uint32_t CharId;
 
 class CharacterAlreadyExistsException : public std::exception {
-public:
+   public:
     const char *what() const throw();
 };
 
 class CharacterNotFoundException : public std::exception {
-public:
+   public:
     const char *what() const throw();
 };
 
@@ -40,8 +41,9 @@ class CharacterManager {
     std::fstream f_char_stream;
     std::fstream f_map_stream;
     std::map<std::string, CharId> char_map;
+
    public:
-   	CharacterManager(const char *f_char, const char *f_map);
+    CharacterManager(const char *f_char, const char *f_map);
     /*
         Devuelve true si existe el character, false si no.
     */
@@ -51,15 +53,15 @@ class CharacterManager {
         Agrega un personaje al archivo de structs y al diccionario,
         si ya existe, lanza CharacterAlreadyExistsException()
     */
-   	void add_character(const nlohmann::json& character_info);
+    void add_character(const nlohmann::json &character_info);
 
     /*
         Se utiliza para persistir el estado actual de la entidad character,
         al archivo de structs.
         Si no existe el character, lanza excepcion.
     */
-    void set_character(const nlohmann::json& character_info);
-    
+    void set_character(const nlohmann::json &character_info);
+
     /*
         Devuelve el CharId asociado al player_name.
         Si no existe, lanza CharacterNotFoundException.
@@ -83,11 +85,11 @@ class CharacterManager {
         Si no existe, lanza CharacterNotFoundException.
     */
     void print_character(std::string name);
-    
+
     /*
-        Debe realizarse un save. 
+        Debe realizarse un save.
     */
-   	~CharacterManager();
+    ~CharacterManager();
 };
 
-#endif // CHARACTER_MANAGER_H
+#endif  // CHARACTER_MANAGER_H

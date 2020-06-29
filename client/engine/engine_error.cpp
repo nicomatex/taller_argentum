@@ -1,7 +1,7 @@
+#include "engine_error.h"
+
 #include <cstdarg>
 #include <cstdio>
-
-#include "engine_error.h"
 
 EngineError::EngineError(const char* fmt, ...) noexcept {
     va_list args;
@@ -9,4 +9,6 @@ EngineError::EngineError(const char* fmt, ...) noexcept {
     vsnprintf(msg_error, BUF_LEN, fmt, args);
 }
 
-const char* EngineError::what() const noexcept { return msg_error; }
+const char* EngineError::what() const noexcept {
+    return msg_error;
+}

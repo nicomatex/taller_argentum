@@ -2,11 +2,11 @@
 #define SESSION_H
 
 #include "../include/event.h"
-#include "../include/socket_manager.h"
+#include "../include/network/socket_manager.h"
 #include "../include/types.h"
-#include "client_id_set.h"
 #include "map_monitor.h"
-#include "th_broadcaster.h"
+#include "network/client_id_set.h"
+#include "network/th_broadcaster.h"
 #include "th_dispatcher.h"
 #include "th_observer.h"
 

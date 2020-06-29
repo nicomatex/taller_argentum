@@ -2,8 +2,8 @@
 #define __MAIN_GAME_WINDOW_H
 #include <atomic>
 
-#include "../include/socket_manager.h"
-#include "../nlohmann/json.hpp"
+#include "../include/network/socket_manager.h"
+#include "../include/nlohmann/json.hpp"
 #include "chat_buffer.h"
 #include "engine/SDL/sdl_window.h"
 #include "engine/camera.h"

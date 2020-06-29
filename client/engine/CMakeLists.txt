@@ -15,6 +15,5 @@ target_link_libraries(engine
   components
   sdlutil
   ecs
-  network
   ui_widgets
 )

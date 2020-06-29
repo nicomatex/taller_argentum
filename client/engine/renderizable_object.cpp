@@ -13,12 +13,20 @@ RenderizableObject &RenderizableObject::operator=(
     return *this;
 }
 
-int RenderizableObject::get_height() const { return visual_info.height; }
+int RenderizableObject::get_height() const {
+    return visual_info.height;
+}
 
-int RenderizableObject::get_width() const { return visual_info.width; }
+int RenderizableObject::get_width() const {
+    return visual_info.width;
+}
 
-int RenderizableObject::get_x_offset() const { return visual_info.offset_x; }
+int RenderizableObject::get_x_offset() const {
+    return visual_info.offset_x;
+}
 
-int RenderizableObject::get_y_offset() const { return visual_info.offset_y; }
+int RenderizableObject::get_y_offset() const {
+    return visual_info.offset_y;
+}
 
 void RenderizableObject::update() {}

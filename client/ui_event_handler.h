@@ -3,24 +3,25 @@
 
 #include <atomic>
 
-#include "../include/thread.h"
-#include "../include/socket_manager.h"
-#include "event_factory.h"
+#include "../include/network/socket_manager.h"
 #include "chat.h"
+#include "event_factory.h"
 #include "game_state_monitor.h"
 #include "hud.h"
 
-class UiEventHandler{
+class UiEventHandler {
    private:
     GameStateMonitor &game_state_monitor;
     SocketManager &socket_manager;
     Hud &hud;
     bool text_input_enabled;
+
    public:
-    UiEventHandler(SocketManager &socket_manager, GameStateMonitor &game_state_monitor, Hud &hud);
+    UiEventHandler(SocketManager &socket_manager,
+                   GameStateMonitor &game_state_monitor, Hud &hud);
     ~UiEventHandler();
 
-    void send_event(const Event& event);
+    void send_event(const Event &event);
 
     void handle_quit();
     void handle_keydown_move_up();

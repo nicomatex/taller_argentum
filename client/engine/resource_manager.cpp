@@ -3,8 +3,8 @@
 #include <fstream>
 #include <iostream>
 
+#include "../../include/nlohmann/json.hpp"
 #include "engine_config.h"
-#include "json.hpp"
 
 using json = nlohmann::json;
 
@@ -159,7 +159,9 @@ SDLSprite& ResourceManager::get_sprite(const std::string& type, int id) {
     return sprite_map.at(type).at(id);
 }
 
-TTF_Font* ResourceManager::get_font(int id) { return font_map.at(id); }
+TTF_Font* ResourceManager::get_font(int id) {
+    return font_map.at(id);
+}
 
 void ResourceManager::free_resources() {
     for (auto& it : font_map) {
@@ -167,8 +169,12 @@ void ResourceManager::free_resources() {
     }
 }
 
-SDLMusic& ResourceManager::get_music(int id) { return music_map.at(id); }
+SDLMusic& ResourceManager::get_music(int id) {
+    return music_map.at(id);
+}
 
-SDLSoundFx& ResourceManager::get_sound_fx(int id) { return sound_fx_map.at(id); }
+SDLSoundFx& ResourceManager::get_sound_fx(int id) {
+    return sound_fx_map.at(id);
+}
 
 ResourceManager::~ResourceManager() {}

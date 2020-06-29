@@ -1,12 +1,13 @@
+#include "map.h"
+
 #include <fstream>
 #include <iostream>
 
-#include "map.h"
+#include "../../include/nlohmann/json.hpp"
 #include "decoration.h"
 #include "engine_config.h"
-#include "json.hpp"
-#include "resource_manager.h"
 #include "engine_error.h"
+#include "resource_manager.h"
 #include "visual_config.h"
 
 using json = nlohmann::json;
@@ -47,24 +48,24 @@ void Map::generate(json map_description) {
     is_valid = true;
 }
 
-Map::Map():is_valid(false){}
+Map::Map() : is_valid(false) {}
 
-Map::Map(json map_description){
+Map::Map(json map_description) {
     generate(map_description);
 }
 
-std::vector<Decoration>& Map::get_layer(int n) { 
-    if(!is_valid){
+std::vector<Decoration>& Map::get_layer(int n) {
+    if (!is_valid) {
         throw EngineError(MSG_ERR_MAP_NOT_INITIALIZED);
     }
-    return visual_layers[n]; 
+    return visual_layers[n];
 }
 
-int Map::get_width(){
+int Map::get_width() {
     return width;
 }
 
-int Map::get_height(){
+int Map::get_height() {
     return height;
 }
 

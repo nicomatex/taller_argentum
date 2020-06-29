@@ -3,8 +3,8 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
-#include <thread>
 
+#include "../include/nlohmann/json.hpp"
 #include "SDL2/SDL.h"
 #include "chat.h"
 #include "client_config.h"
@@ -17,7 +17,6 @@
 #include "engine/components/position_component.h"
 #include "engine/components/visual_character_component.h"
 #include "engine/entity_factory.h"
-#include "engine/json.hpp"
 #include "engine/map.h"
 #include "engine/resource_manager.h"
 #include "game.h"
@@ -65,7 +64,7 @@ void GameClient::_login() {
 
 void GameClient::run() {
     Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
-    Mix_Volume(-1,MIX_MAX_VOLUME / 3);
+    Mix_Volume(-1, MIX_MAX_VOLUME / 3);
     _login();
     window.show();
     ResourceManager::get_instance().get_music(2).play();
@@ -90,4 +89,6 @@ void GameClient::run() {
     socket_manager.join();
 }
 
-GameClient::~GameClient() { ResourceManager::get_instance().free_resources(); }
+GameClient::~GameClient() {
+    ResourceManager::get_instance().free_resources();
+}

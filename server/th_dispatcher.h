@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "../include/blocking_th_event_handler.h"
-#include "th_event_handler.h"
+#include "events/th_event_handler.h"
 
 class ThDispatcher : public BlockingThEventHandler {
    private:

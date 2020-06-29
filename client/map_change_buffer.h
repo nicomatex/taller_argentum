@@ -3,7 +3,7 @@
 #include <condition_variable>
 #include <mutex>
 
-#include "../nlohmann/json.hpp"
+#include "../include/nlohmann/json.hpp"
 
 class MapChangeBuffer {
    private:
@@ -20,7 +20,7 @@ class MapChangeBuffer {
     void wait_for_map();
 
     /* Llena el buffer con map info. */
-    void fill(nlohmann::json map_info,unsigned int follow_entity_id);
+    void fill(nlohmann::json map_info, unsigned int follow_entity_id);
 
     /* Devuelve la informacion de mapa guardada en el buffer.*/
     nlohmann::json get_map_info();
@@ -30,7 +30,6 @@ class MapChangeBuffer {
 
     /* Reinicia el buffer. */
     void reset();
-
 };
 
 #endif

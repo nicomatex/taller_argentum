@@ -45,6 +45,6 @@ void StatsComponent::set_stat_current_value(const std::string &stat_name,
     current_stat_values[stat_name] = new_value;
 }
 
-void StatsComponent::update(){}
+void StatsComponent::update() {}
 
-void StatsComponent::init(){}
+void StatsComponent::init() {}
