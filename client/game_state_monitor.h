@@ -4,12 +4,16 @@
 #include <condition_variable>
 #include <mutex>
 
+
+typedef enum{
+    LOGGING,WAITING_FOR_INITIALIZATION,RUNNING,SWITCHING_MAPS,EXITING
+}game_state_t;
+
 class GameStateMonitor {
    private:
     std::mutex m;
     bool connected;
-    bool game_running;
-    bool initialization_requested;
+    game_state_t game_state;
     std::condition_variable cv;
 
    public:
@@ -17,14 +21,17 @@ class GameStateMonitor {
     ~GameStateMonitor();
 
     bool is_connected();
-    bool is_running();
+    
 
     void set_connected_status(bool new_connection_status);
-    void set_running_status(bool new_running_status);
+    
+    void set_game_state(game_state_t new_game_state);
+    game_state_t get_game_state();
 
-    void wait_for_initialization_request();
+    /* Duerme el thread llamante hasta que el estado del juego 
+    sea el esperado. */
+    void wait_for_game_state(game_state_t expected_game_state);
 
-    void set_initialization_requested(bool initialization_requested);
     void quit();
 };
 

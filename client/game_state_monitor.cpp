@@ -9,35 +9,35 @@ bool GameStateMonitor::is_connected() {
     return connected;
 }
 
-bool GameStateMonitor::is_running() {
-    std::unique_lock<std::mutex> l(m);
-    return game_running;
-}
-
 void GameStateMonitor::set_connected_status(bool new_connected_status) {
     std::unique_lock<std::mutex> l(m);
     connected = new_connected_status;
+    cv.notify_all();
 }
 
-void GameStateMonitor::set_running_status(bool new_running_status) {
+void GameStateMonitor::set_game_state(game_state_t new_game_state) {
     std::unique_lock<std::mutex> l(m);
-    game_running = new_running_status;
+    game_state = new_game_state;
+    cv.notify_all();
 }
 
 void GameStateMonitor::quit() {
     std::unique_lock<std::mutex> l(m);
-    game_running = false;
+    game_state = EXITING;
     connected = false;
 }
 
-void GameStateMonitor::set_initialization_requested(
-    bool new_initialization_requested) {
-    initialization_requested = new_initialization_requested;
-}
-
-void GameStateMonitor::wait_for_initialization_request() {
+void GameStateMonitor::wait_for_game_state(game_state_t expected_game_state) {
     std::unique_lock<std::mutex> l(m);
-    while (!initialization_requested) {
+    while (game_state != expected_game_state) {
+        if(!connected){
+            return;
+        }
         cv.wait(l);
     }
+}
+
+game_state_t GameStateMonitor::get_game_state(){
+    std::unique_lock<std::mutex> l(m);
+    return game_state;
 }

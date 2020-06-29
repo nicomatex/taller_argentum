@@ -26,11 +26,12 @@ add_library(game
   receive_handler.cpp
   ui_event_handler.cpp
   chat.cpp
-  game.cpp
+  game_view.cpp
   map_change_buffer.cpp
   chat_buffer.cpp
   game_state_monitor.cpp
   hud.cpp
+  responsive_scaler.cpp
 )
 
 target_link_libraries(game

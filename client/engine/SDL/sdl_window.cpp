@@ -9,8 +9,8 @@
 
 extern bool debug;
 
-SDLWindow::SDLWindow(int width, int height, const std::string &title)
-    : width(width), height(height) {
+SDLWindow::SDLWindow(int width, int height, const std::string &title,
+                     bool fullscreen) {
     int errCode = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
     if (errCode < 0) {
         throw SDLError(ERR_SDL_INIT);
@@ -22,13 +22,15 @@ SDLWindow::SDLWindow(int width, int height, const std::string &title)
     if (TTF_Init() == -1) {
         throw SDLError(ERR_TTF_INIT);
     }
-    if(Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,2,2048) < 0){
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
         throw SDLError(ERR_MIXER_INIT);
     }
     if (debug)
         std::cout << "[DEBUG] SDL, IMAGE y TTF inicializados." << std::endl;
 
-    this->window = SDL_CreateWindow(title.c_str(), 100, 100, width, height, 0);
+    int flags = fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0;
+    this->window =
+        SDL_CreateWindow(title.c_str(), 100, 100, width, height, flags);
     if (!this->window) {
         throw SDLError(ERR_WINDOW_INIT);
     }
@@ -74,18 +76,22 @@ void SDLWindow::set_viewport(SDL_Rect viewport_area) {
 
 void SDLWindow::render() const { SDL_RenderPresent(renderer); }
 
-int SDLWindow::get_height() const { return height; }
-
-int SDLWindow::get_width() const { return width; }
-
-SDL_Renderer* SDLWindow::get_renderer(){
-    return renderer;
+int SDLWindow::get_height() const {
+    int width;
+    int height;
+    SDL_GetWindowSize(this->window, NULL, &height);
+    return height;
 }
 
-void SDLWindow::hide(){
-    SDL_HideWindow(this->window);
+int SDLWindow::get_width() const {
+    int width;
+    int height;
+    SDL_GetWindowSize(this->window, &width, NULL);
+    return width;
 }
 
-void SDLWindow::show(){
-    SDL_ShowWindow(this->window);
-}
+SDL_Renderer *SDLWindow::get_renderer() { return renderer; }
+
+void SDLWindow::hide() { SDL_HideWindow(this->window); }
+
+void SDLWindow::show() { SDL_ShowWindow(this->window); }

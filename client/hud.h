@@ -6,11 +6,13 @@
 #include "engine/SDL/sdl_texture.h"
 #include "engine/SDL/sdl_window.h"
 #include "engine/UI/stat_bar.h"
+#include "responsive_scaler.h"
 
 class StatsComponent;
 
 class Hud {
    private:
+    ResponsiveScaler &scaler;
     SDLWindow& window;
     StatsComponent& player_stats;
     ChatBuffer& chat_buffer;
@@ -22,7 +24,7 @@ class Hud {
     friend class UiEventHandler;
 
    public:
-    Hud(SDLWindow& window, ChatBuffer& chat_buffers,
+    Hud(ResponsiveScaler &scaler,SDLWindow& window, ChatBuffer& chat_buffers,
         StatsComponent& player_stats);
     ~Hud();
 

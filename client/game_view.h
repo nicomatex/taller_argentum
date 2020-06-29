@@ -10,10 +10,12 @@
 #include "engine/map.h"
 #include "game_state_monitor.h"
 #include "hud.h"
+#include "responsive_scaler.h"
 #include "ui_event_handler.h"
 
-class Game {
+class GameView {
    private:
+    ResponsiveScaler &scaler;
     SDLWindow &window;
     ChatBuffer &chat_buffer;
     GameStateMonitor &game_state_monitor;
@@ -23,13 +25,14 @@ class Game {
     Map map;
 
    public:
-    Game(int follow_entity_id, SocketManager &socket_manager, SDLWindow &window,
-         ChatBuffer &chat_buffer, GameStateMonitor &game_state_monitor,
-         nlohmann::json map_info);
+    GameView(ResponsiveScaler &scaler, int follow_entity_id,
+             SocketManager &socket_manager, SDLWindow &window,
+             ChatBuffer &chat_buffer, GameStateMonitor &game_state_monitor,
+             nlohmann::json map_info);
 
     void run();
 
-    ~Game();
+    ~GameView();
 };
 
 #endif

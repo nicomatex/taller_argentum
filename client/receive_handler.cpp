@@ -66,7 +66,7 @@ void ClientReceiveHandler::handle_move(Event &ev) {
 }
 
 void ClientReceiveHandler::handle_initialization(Event &ev) {
-    game_state_monitor.wait_for_initialization_request();
+    game_state_monitor.wait_for_game_state(WAITING_FOR_INITIALIZATION);
     json initialization_info = ev.get_json();
     json player_info = initialization_info["player"];
     player_info["entity_id"] = player_info["player_id"];
@@ -109,6 +109,6 @@ void ClientReceiveHandler::handle_chat_message(Event &ev) {
 
 void ClientReceiveHandler::handle_map_change(Event &ev) {
     map_change_buffer.reset();
-    game_state_monitor.set_running_status(false);
+    game_state_monitor.set_game_state(SWITCHING_MAPS);
     std::cout << "Cargando nuevo mapa..." << std::endl;
 }

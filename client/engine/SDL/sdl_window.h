@@ -14,12 +14,10 @@ class SDLWindow {
    private:
     SDL_Window *window;
     SDL_Renderer *renderer;
-    int width;
-    int height;
 
    public:
     /* Constructor. Recibe ancho y alto de la ventana en pixeles. */
-    SDLWindow(int width, int height,const std::string &title);
+    SDLWindow(int width, int height,const std::string &title, bool fullscreen);
     ~SDLWindow();
 
     /* Llena toda la ventana con el color indicado en los parametros. */
@@ -44,6 +42,7 @@ class SDLWindow {
 
     /* Muestra la ventana. */
     void show();
+
 };
 
 #endif

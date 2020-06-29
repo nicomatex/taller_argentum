@@ -19,12 +19,13 @@
 #include "engine/entity_factory.h"
 #include "engine/map.h"
 #include "engine/resource_manager.h"
-#include "game.h"
+#include "game_view.h"
+#include "responsive_scaler.h"
 
 using json = nlohmann::json;
 
 GameClient::GameClient(json config)
-    : window(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT, WINDOW_TITLE),
+    : window(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT, WINDOW_TITLE,config["fullscreen"]),
       socket_manager(
           Socket(std::string(config["server"]), std::string(config["port"])),
           receive_handler),
@@ -67,16 +68,16 @@ void GameClient::run() {
     Mix_Volume(-1, MIX_MAX_VOLUME / 3);
     _login();
     window.show();
+    ResponsiveScaler scaler(window,MAIN_WINDOW_WIDTH,MAIN_WINDOW_HEIGHT);
     ResourceManager::get_instance().get_music(2).play();
     while (game_state_monitor.is_connected()) {
         std::cout << "Esperando nuevo mapa " << std::endl;
-        game_state_monitor.set_initialization_requested(true);
+        game_state_monitor.set_game_state(WAITING_FOR_INITIALIZATION);
         map_change_buffer.wait_for_map();
-        game_state_monitor.set_running_status(true);
-        Game game(map_change_buffer.get_follow_entity_id(), socket_manager,
+        game_state_monitor.set_game_state(RUNNING);
+        GameView game(scaler,map_change_buffer.get_follow_entity_id(), socket_manager,
                   window, chat_buffer, game_state_monitor,
                   map_change_buffer.get_map_info());
-        game_state_monitor.set_initialization_requested(false);
         game.run();
         if (!socket_manager.is_connected()) {
             std::cout << MSG_ERR_CONECT_DROPPED << std::endl;

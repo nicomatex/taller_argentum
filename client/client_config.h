@@ -26,17 +26,17 @@
 #define STAT_BAR_FONT_COLOR {255,255,255,255}
 
 /* Layout de la interfaz */
-#define MAIN_WINDOW_WIDTH 960
+#define MAIN_WINDOW_WIDTH 1138
 #define MAIN_WINDOW_HEIGHT 640
  
 // --- Chat ---
-#define VIEWPORT_MAIN_RENDER {0, 128, 700, 512}
-#define VIEWPORT_CHAT {0,0,700,128}
-#define AREA_CHAT {0,0,700,128}
+#define VIEWPORT_MAIN_RENDER {0, 128, 878, 512}
+#define VIEWPORT_CHAT {0,0,878,128}
+#define AREA_CHAT {0,0,878,128}
 #define CHAT_LINES 8
 
 // --- Panel lateral ---
-#define VIEWPORT_SIDE_PANEL {700,0,260,640}
+#define VIEWPORT_SIDE_PANEL {878,0,260,640}
 #define AREA_SIDE_PANEL {0, 0, 260, 640}
 
 #define HP_BAR_AREA {65, 576, 129, 15}
@@ -49,7 +49,7 @@
 
 /* Configuracion de la camara */
 #define TILE_SIZE 32
-#define VIEWPORT_WIDTH 22
+#define VIEWPORT_WIDTH 28
 #define VIEWPORT_HEIGHT 16
 #define CAMERA_SPEED 3
 
