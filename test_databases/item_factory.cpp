@@ -54,50 +54,50 @@ ItemFactory::ItemFactory(const char *items_file) {
 }
 
 
-Weapon ItemFactory::create_weapon(const std::string& name, uint32_t stack) {
+Weapon* ItemFactory::create_weapon(const std::string& name, uint32_t stack) {
 	if (!weapons_map.count(name)) throw ItemNotFoundException();
-	Weapon weapon(weapons_map.at(name));
-	weapon.set_stack(stack);
-	return std::move(weapon);
+	Weapon* weapon = new Weapon(weapons_map.at(name));
+	weapon->set_stack(stack);
+	return weapon;
 }
 
-Armor ItemFactory::create_armor(const std::string& name, uint32_t stack) {
+Armor* ItemFactory::create_armor(const std::string& name, uint32_t stack) {
 	if (!armors_map.count(name)) throw ItemNotFoundException();
-	Armor armor(armors_map.at(name));
-	armor.set_stack(stack);
-	return std::move(armor);
+	Armor* armor = new Armor(armors_map.at(name));
+	armor->set_stack(stack);
+	return armor;
 }
 
-Potion ItemFactory::create_potion(const std::string& name, uint32_t stack) {
+Potion* ItemFactory::create_potion(const std::string& name, uint32_t stack) {
 	if (!potions_map.count(name)) throw ItemNotFoundException();
-	Potion potion(potions_map.at(name));
-	potion.set_stack(stack);
-	return std::move(potion);
+	Potion* potion = new Potion(potions_map.at(name));
+	potion->set_stack(stack);
+	return potion;
 }
 
 bool ItemFactory::item_exists(ItemId item_id) {
 	return id_to_str_map.count(item_id);
 }
 
-Weapon ItemFactory::create_weapon(ItemId item_id, uint32_t stack) {
+Weapon* ItemFactory::create_weapon(ItemId item_id, uint32_t stack) {
 	if (!item_exists(item_id)) throw ItemNotFoundException();
-	return std::move(create_weapon(id_to_str_map.at(item_id), stack));
+	return create_weapon(id_to_str_map.at(item_id), stack);
 }
 
-Armor ItemFactory::create_armor(ItemId item_id, uint32_t stack) {
+Armor* ItemFactory::create_armor(ItemId item_id, uint32_t stack) {
 	if (!item_exists(item_id)) throw ItemNotFoundException();
-	return std::move(create_armor(id_to_str_map.at(item_id), stack));
+	return create_armor(id_to_str_map.at(item_id), stack);
 }
 
-Potion ItemFactory::create_potion(ItemId item_id, uint32_t stack){ 
+Potion* ItemFactory::create_potion(ItemId item_id, uint32_t stack){ 
 	if (!item_exists(item_id)) throw ItemNotFoundException();
-	return std::move(create_potion(id_to_str_map.at(item_id), stack));
+	return create_potion(id_to_str_map.at(item_id), stack);
 }
 
-Gold ItemFactory::create_gold(uint32_t stack) {
-	Gold gold = this->gold;
-	gold.set_stack(stack);
-	return std::move(gold);
+Gold* ItemFactory::create_gold(uint32_t stack) {
+	Gold* gold = new Gold(this->gold);
+	gold->set_stack(stack);
+	return gold;
 }
 
 ItemFactory::~ItemFactory() {}
