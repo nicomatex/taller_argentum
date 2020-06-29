@@ -2,8 +2,8 @@
 
 Armor::Armor() {}
 
-Armor::Armor(item_info_t item_info, armor_info_t armor_info, uint32_t count) :
-			 Item(item_info, count), armor_info(armor_info) {}
+Armor::Armor(item_info_t item_info, armor_info_t armor_info, uint32_t stack) :
+			 Item(item_info, stack), armor_info(armor_info) {}
 
 Armor::~Armor() {}
 

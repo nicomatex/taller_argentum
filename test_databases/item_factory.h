@@ -23,15 +23,15 @@ class ItemFactory {
    public:
    	ItemFactory(const char *items_file);
    
-   	Weapon create_weapon(const std::string& name, uint32_t count);
-   	Armor create_armor(const std::string& name, uint32_t count);
-   	Potion create_potion(const std::string& name, uint32_t count);
+   	Weapon create_weapon(const std::string& name, uint32_t stack);
+   	Armor create_armor(const std::string& name, uint32_t stack);
+   	Potion create_potion(const std::string& name, uint32_t stack);
 
-    Weapon create_weapon(ItemId item_id, uint32_t count);
-    Armor create_armor(ItemId item_id, uint32_t count);
-    Potion create_potion(ItemId item_id, uint32_t count);
+    Weapon create_weapon(ItemId item_id, uint32_t stack);
+    Armor create_armor(ItemId item_id, uint32_t stack);
+    Potion create_potion(ItemId item_id, uint32_t stack);
     
-   	Gold create_gold(uint32_t count);
+   	Gold create_gold(uint32_t stack);
     
     bool item_exists(ItemId item_id);
    	~ItemFactory();

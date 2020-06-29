@@ -6,7 +6,7 @@
 class Gold : public Item {
    public:
    	Gold();
-   	Gold(item_info_t item_info, uint32_t count = 0);
+   	Gold(item_info_t item_info, uint32_t stack = 0);
    	~Gold();
 };
 
