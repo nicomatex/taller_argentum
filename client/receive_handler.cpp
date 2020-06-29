@@ -73,6 +73,9 @@ void ClientReceiveHandler::handle_initialization(Event &ev) {
     Entity &player = EntityFactory::create_player(player_info);
     player.get_component<PositionComponent>().set_position(
         player_info["pos"]["x"], player_info["pos"]["y"]);
+    std::cout << "Inicializando en posicion " << player_info["pos"]["x"]
+              << " - " << player_info["pos"]["y"] << std::endl;
+
     json map_description = initialization_info["map_info"];
     map_change_buffer.fill(map_description, player_info["player_id"]);
 }

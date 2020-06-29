@@ -29,6 +29,7 @@ class VisualCharacterComponent : public Component {
     bool initialized;
     std::recursive_mutex m;
 
+    void _draw_if_present(Camera &camera, const std::string& part_name);
    public:
     VisualCharacterComponent(int head_id, int body_id, int weapon_id,
                              int shield_id, int helmet_id, int armor_id,
@@ -46,6 +47,8 @@ class VisualCharacterComponent : public Component {
     void init() override;
     void update() override;
     void draw(Camera &camera);
+
+    int get_part_id(const std::string& part_name);
 
     bool is_moving();
 };

@@ -16,9 +16,7 @@ GameView::GameView(ResponsiveScaler &scaler, int follow_entity_id,
       chat_buffer(chat_buffer),
       game_state_monitor(game_state_monitor),
       hud(scaler, window, chat_buffer,
-          EntityManager::get_instance()
-              .get_from_id(follow_entity_id)
-              .get_component<StatsComponent>()),
+          EntityManager::get_instance().get_from_id(follow_entity_id)),
       ui_event_handler(socket_manager, game_state_monitor, hud),
       camera(EntityManager::get_instance()
                  .get_from_id(follow_entity_id)

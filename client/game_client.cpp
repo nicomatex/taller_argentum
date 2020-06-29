@@ -66,28 +66,35 @@ void GameClient::_login() {
 void GameClient::run() {
     Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
     Mix_Volume(-1, MIX_MAX_VOLUME / 3);
+    
     _login();
     window.show();
     ResponsiveScaler scaler(window,MAIN_WINDOW_WIDTH,MAIN_WINDOW_HEIGHT);
     ResourceManager::get_instance().get_music(2).play();
+
     while (game_state_monitor.is_connected()) {
-        std::cout << "Esperando nuevo mapa " << std::endl;
         game_state_monitor.set_game_state(WAITING_FOR_INITIALIZATION);
         map_change_buffer.wait_for_map();
         game_state_monitor.set_game_state(RUNNING);
+
         GameView game(scaler,map_change_buffer.get_follow_entity_id(), socket_manager,
                   window, chat_buffer, game_state_monitor,
                   map_change_buffer.get_map_info());
+
         game.run();
+
         if (!socket_manager.is_connected()) {
             std::cout << MSG_ERR_CONECT_DROPPED << std::endl;
             game_state_monitor.set_connected_status(false);
         }
+
     }
+
     receive_handler.stop();
     receive_handler.join();
     socket_manager.stop(true);
     socket_manager.join();
+
 }
 
 GameClient::~GameClient() {

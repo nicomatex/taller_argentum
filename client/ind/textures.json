@@ -141,6 +141,65 @@
             }
         ]
     },
+    "weapon_icons": {
+    	"basedir" : "assets/sprites/weapons/",
+    	"textures": [
+    		{
+                "id":1,
+                "filename": "1.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
+            },
+            {
+                "id":2,
+                "filename": "3.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
+            },
+            {
+                "id":3,
+                "filename": "5.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
+            },
+            {
+                "id":4,
+                "filename": "7.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
+            },
+            {
+                "id":5,
+                "filename": "9.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
+            },
+            {
+                "id":6,
+                "filename": "11.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
+            },
+            {
+                "id":7,
+                "filename": "13.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
+            },
+            {
+                "id":8,
+                "filename": "15.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
+            },
+            {
+                "id":9,
+                "filename": "17.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
+            }
+    	]
+    },
     "shields": {
         "basedir" : "assets/sprites/shields/",
         "textures":[
@@ -153,6 +212,23 @@
             {
                 "id":2,
                 "filename":"4.png",
+                "needs ckey": true,
+                "ckey": [0,0,0]
+            }
+        ]
+    },
+    "shield_icons": {
+        "basedir" : "assets/sprites/shields/",
+        "textures":[
+            {
+                "id":1,
+                "filename": "1.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
+            },
+            {
+                "id":2,
+                "filename":"3.png",
                 "needs ckey": true,
                 "ckey": [0,0,0]
             }
@@ -181,6 +257,29 @@
             }
         ]
     },
+    "helmet_icons": {
+        "basedir" : "assets/sprites/helmets/",
+        "textures":[
+            {
+                "id":1,
+                "filename": "1.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
+            },
+            {
+                "id":2,
+                "filename":"3.png",
+                "needs ckey": true,
+                "ckey": [0,0,0]
+            },
+            {
+                "id":3,
+                "filename":"5.png",
+                "needs ckey": true,
+                "ckey": [0,0,0]
+            }
+        ]
+    },
     "armors": {
         "basedir" : "assets/sprites/armors/",
         "textures":[
@@ -199,6 +298,29 @@
             {
                 "id":3,
                 "filename":"6.png",
+                "needs ckey": true,
+                "ckey": [0,0,0]
+            }
+        ]
+    },
+    "armor_icons": {
+        "basedir" : "assets/sprites/armors/",
+        "textures":[
+            {
+                "id":1,
+                "filename": "1.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
+            },
+            {
+                "id":2,
+                "filename":"3.png",
+                "needs ckey": true,
+                "ckey": [0,0,0]
+            },
+            {
+                "id":3,
+                "filename":"5.png",
                 "needs ckey": true,
                 "ckey": [0,0,0]
             }

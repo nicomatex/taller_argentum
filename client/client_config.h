@@ -25,6 +25,12 @@
 
 #define STAT_BAR_FONT_COLOR {255,255,255,255}
 
+// --- Items Equipados ---
+#define POS_HELMET 0
+#define POS_ARMOR 1
+#define POS_SHIELD 2
+#define POS_WEAPON 3
+
 /* Layout de la interfaz */
 #define MAIN_WINDOW_WIDTH 1138
 #define MAIN_WINDOW_HEIGHT 640
@@ -41,6 +47,8 @@
 
 #define HP_BAR_AREA {65, 576, 129, 15}
 #define MP_BAR_AREA {65, 616, 129, 15}
+
+#define EQUIPPED_ITEMS_AREA {205,296,45,181}
 
 /* Fuentes */
 #define CHAT_FONT_ID 1 
