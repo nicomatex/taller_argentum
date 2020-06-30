@@ -7,8 +7,8 @@ Weapon::Weapon(item_info_t item_info, weapon_info_t weapon_info, uint32_t stack)
 
 Weapon::~Weapon() {}
 
-nlohmann::json Weapon::get_info() {
-	nlohmann::json info = Item::get_info();
+nlohmann::json Weapon::get_data() {
+	nlohmann::json info = Item::get_data();
 	info["weapon_info"] = weapon_info;
 	return std::move(info);
 }

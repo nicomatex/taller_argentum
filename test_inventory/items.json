@@ -1,0 +1,109 @@
+{
+	"armors": [
+		{	
+			"name" : "Capucha",
+			"item_info" : {"id":1,"name":"Capucha","sprite_id":1,"type":1},
+			"armor_info" : {"max_defense":4,"min_defense":1}
+		},
+		{	
+			"name" : "Casco de hierro",
+			"item_info" : {"id":2,"name":"Casco de hierro","sprite_id":2,"type":1},
+			"armor_info" : {"max_defense":8,"min_defense":4}
+		},
+		{	
+			"name" : "Sombrero magico",
+			"item_info" : {"id":3,"name":"Sombrero magico","sprite_id":3,"type":1},
+			"armor_info" : {"max_defense":12,"min_defense":4}
+		},
+		{	
+			"name" : "Armadura de cuero",
+			"item_info" : {"id":100,"name":"Armadura de cuero","sprite_id":1,"type":1},
+			"armor_info" : {"max_defense":6,"min_defense":2}
+		},
+		{	
+			"name" : "Armadura de placas",
+			"item_info" : {"id":101,"name":"Armadura de placas","sprite_id":2,"type":1},
+			"armor_info" : {"max_defense":30,"min_defense":15}
+		},
+		{	
+			"name" : "Tunica azul",
+			"item_info" : {"id":102,"name":"Tunica azul","sprite_id":3,"type":1},
+			"armor_info" : {"max_defense":10,"min_defense":6}
+		},
+		{	
+			"name" : "Escudo de tortuga",
+			"item_info" : {"id":200,"name":"Escudo de tortuga","sprite_id":1,"type":1},
+			"armor_info" : {"max_defense":2,"min_defense":1}
+		},
+		{	
+			"name" : "Escudo de hierro",
+			"item_info" : {"id":201,"name":"Escudo de hierro","sprite_id":2,"type":1},
+			"armor_info" : {"max_defense":4,"min_defense":1}
+		}
+	],
+	"weapons": [
+		{	
+			"name" : "Espada",
+			"item_info" : {"id":300,"name":"Espada","sprite_id":1,"type":0},
+			"weapon_info" : {"max_damage":5,"min_damage":2}
+		},
+		{	
+			"name" : "Arco simple",
+			"item_info" : {"id":301,"name":"Arco simple","sprite_id":2,"type":0},
+			"weapon_info" : {"max_damage":4,"min_damage":1}
+		},
+		{	
+			"name" : "Arco compuesto",
+			"item_info" : {"id":302,"name":"Arco compuesto","sprite_id":3,"type":0},
+			"weapon_info" : {"max_damage":16,"min_damage":4}
+		},
+		{	
+			"name" : "Vara de fresno",
+			"item_info" : {"id":303,"name":"Vara de fresno","sprite_id":4,"type":0},
+			"weapon_info" : {"max_damage":0,"min_damage":0}
+		},
+		{	
+			"name" : "Baculo nudoso",
+			"item_info" : {"id":304,"name":"Baculo nudoso","sprite_id":5,"type":0},
+			"weapon_info" : {"max_damage":0,"min_damage":0}
+		},
+		{	
+			"name" : "Baculo engarzado",
+			"item_info" : {"id":305,"name":"Baculo engarzado","sprite_id":6,"type":0},
+			"weapon_info" : {"max_damage":0,"min_damage":0}
+		},
+		{	
+			"name" : "Flauta elfica",
+			"item_info" : {"id":306,"name":"Flauta elfica","sprite_id":7,"type":0},
+			"weapon_info" : {"max_damage":0,"min_damage":0}
+		},
+		{	
+			"name" : "Hacha",
+			"item_info" : {"id":307,"name":"Hacha","sprite_id":8,"type":0},
+			"weapon_info" : {"max_damage":5,"min_damage":4}
+		},
+		{	
+			"name" : "Martillo",
+			"item_info" : {"id":308,"name":"Martillo","sprite_id":9,"type":0},
+			"weapon_info" : {"max_damage":9,"min_damage":1}
+		}
+	],
+	"potions": [
+		{	
+			"name" : "Pocion de vida",
+			"item_info" : {"id":400,"name":"Pocion de vida","sprite_id":1,"type":2},	
+			"potion_info" : {"health_var":14,"mana_var":0}
+		},
+		{	
+			"name" : "Pocion de mana",
+			"item_info" : {"id":401,"name":"Pocion de mana","sprite_id":2,"type":2},	
+			"potion_info" : {"health_var":0,"mana_var":30}
+		}
+	],
+	"miscellaneous" : [
+		{
+			"name" : "Oro",
+			"item_info" : {"id":500,"name":"Oro","sprite_id":1,"type":3}
+		}
+	]	
+}
