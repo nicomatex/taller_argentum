@@ -2,6 +2,7 @@
 #define ITEM_H
 
 #include <string>
+#include <stdint.h>
 #include "types.h"
 #include "json.h"
 
@@ -22,7 +23,6 @@ typedef struct item_info {
 	ItemId id;
 	item_type_t type;
 	uint32_t sprite_id;
-    uint32_t max_stack;
 } item_info_t;
 
 inline void to_json(nlohmann::json &j, const item_info_t &i) {
@@ -30,7 +30,6 @@ inline void to_json(nlohmann::json &j, const item_info_t &i) {
 	j["id"] = i.id;
     j["type"] = i.type;
     j["sprite_id"] = i.sprite_id;
-    j["max_stack"] = i.max_stack;
 }
 
 inline void from_json(const nlohmann::json &j, item_info_t &i) {
@@ -38,7 +37,6 @@ inline void from_json(const nlohmann::json &j, item_info_t &i) {
 	j["id"].get_to(i.id);
     j["type"].get_to(i.type);
 	j["sprite_id"].get_to(i.sprite_id);
-    j["max_stack"].get_to(i.max_stack);
 }
 
 class Item {
@@ -49,9 +47,10 @@ class Item {
     Item();
    	Item(item_info_t item_info, uint32_t stack = 0);
    	virtual ~Item() {};
-   	virtual nlohmann::json get_info();
+   	virtual nlohmann::json get_data();
     void set_stack(uint32_t stack);
     uint32_t get_stack();
+    ItemId get_id();
     int stack_difference(uint32_t other_stack);
     void increase_stack(uint32_t stack);
     void decrease_stack(uint32_t stack);

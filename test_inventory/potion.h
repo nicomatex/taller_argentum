@@ -24,7 +24,7 @@ class Potion : public Item {
    public:
     Potion();
    	Potion(item_info_t item_info, potion_info_t potion_info, uint32_t stack = 0);
-    nlohmann::json get_info() override;
+    nlohmann::json get_data() override;
    	~Potion();
 };
 

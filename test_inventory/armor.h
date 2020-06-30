@@ -27,7 +27,7 @@ class Armor : public Item {
    public:
     Armor();
    	Armor(item_info_t item_info, armor_info_t armor_info, uint32_t stack = 0);
-    nlohmann::json get_info() override;
+    nlohmann::json get_data() override;
    	~Armor();
 };
 

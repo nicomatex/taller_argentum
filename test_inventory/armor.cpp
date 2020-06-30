@@ -7,8 +7,8 @@ Armor::Armor(item_info_t item_info, armor_info_t armor_info, uint32_t stack) :
 
 Armor::~Armor() {}
 
-nlohmann::json Armor::get_info() {
-	nlohmann::json info = Item::get_info();
+nlohmann::json Armor::get_data() {
+	nlohmann::json info = Item::get_data();
 	info["armor_info"] = armor_info;
 	return std::move(info);
 }
