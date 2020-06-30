@@ -38,8 +38,6 @@ class Entity {
 
     attack_result_t attack(Entity* attacked);
 
-    bool attack_ready() const;
-
     EntityId get_id() const;
 };
 

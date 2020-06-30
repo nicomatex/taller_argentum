@@ -10,14 +10,14 @@ void ActionAttack::execute(Map& map, EntityId entity_id) const {
     Entity* attacker = Action::get_entity(map, entity_id);
     if (!attacker)  // || !attacker->is_alive() TODO
         return;
-    if (!attacker->attack_ready())
-        return;
     position_t attacked_pos =
         attacker->get_facing_position(map.get_position(entity_id));
     Entity* attacked = Action::get_entity(map, attacked_pos);
     if (!attacked)  // || !attacked->is_alive() TODO
         return;
     attack_result_t result = attacker->attack(attacked);
+    if (!result.success)
+        return;
     if (result.killed)
         /* KILL, drops & give exp */;
 

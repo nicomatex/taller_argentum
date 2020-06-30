@@ -3,18 +3,18 @@
 #include <string>
 
 #include "entity.h"
+#include "inventory.h"
 #include "map.h"
 #include "position.h"
 
 class Player : public Entity {
    private:
-    // LevelComponent
-    //
+    // ExperienceComponent
 
     const int head_id;
     const int body_id;
 
-    // Inventory
+    // Inventory inventory;
 
     Map &map;  // Mapa en el que esta el jugador en este momento.
                // STATS

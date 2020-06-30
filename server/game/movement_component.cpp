@@ -17,7 +17,7 @@ direction_t MovementComponent::current_direction() const {
 }
 
 nlohmann::json MovementComponent::get_data() const {
-    return {{"direction", current_direction()}};
+    return {{"direction", current_direction()}, {"move_speed", movement_speed}};
 }
 
 position_t MovementComponent::get_displacement(position_t pos, int dist) const {
@@ -70,7 +70,8 @@ position_t MovementComponent::get_facing_position(position_t position) {
 void MovementComponent::set_movement(mov_action_t action,
                                      direction_t direction) {
     if (action == STOP) {
-        if(direction_history.empty()) return;
+        if (direction_history.empty())
+            return;
         if (direction == direction_history.back()) {
             if (direction_history.size() == 1) {
                 moving = false;

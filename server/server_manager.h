@@ -10,6 +10,7 @@
 #include "../include/types.h"
 #include "character_manager.h"
 #include "game/game_loop.h"
+#include "game/item_factory.h"
 #include "game/player.h"
 #include "map_manager.h"
 #include "map_monitor.h"
@@ -52,12 +53,16 @@ class ServerManager {
     ThDispatcher dispatcher;
     ThClientAccepter accepter;
 
+    ItemFactory item_factory;
+
     ServerManager();
 
    public:
     static ServerManager& get_instance();
 
     ThDispatcher& get_dispatcher();
+
+    ItemFactory& get_item_factory();
 
     void add_client(ClientId client_id, SocketManager* new_client);
     void rm_client(ClientId client_id);

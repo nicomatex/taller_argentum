@@ -25,6 +25,8 @@ position_t Entity::get_facing_position(position_t position) {
 }
 
 attack_result_t Entity::attack(Entity* attacked) {
+    if (!combat_component->attack_ready())
+        return {false, 0, 0, 0};
     damage_t raw_dmg = combat_component->attack();
     attack_result_t dealt = attacked->combat_component->receive_damage(raw_dmg);
 
@@ -32,7 +34,3 @@ attack_result_t Entity::attack(Entity* attacked) {
 }
 
 void Entity::update(uint64_t delta_t) {}
-
-bool Entity::attack_ready() const{
-    return combat_component->attack_ready();
-}

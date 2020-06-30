@@ -81,7 +81,8 @@ void VisualCharacterComponent::draw(Camera& camera) {
     std::unique_lock<std::recursive_mutex> l(m);
 
     _draw_if_present(camera, "armor");
-    if(part_ids.at("armor") == 0) _draw_if_present(camera, "body");
+    if (part_ids.at("armor") == 0)
+        _draw_if_present(camera, "body");
     _draw_if_present(camera, "head");
     _draw_if_present(camera, "weapon");
     _draw_if_present(camera, "shield");
@@ -89,8 +90,9 @@ void VisualCharacterComponent::draw(Camera& camera) {
 }
 
 void VisualCharacterComponent::_draw_if_present(Camera& camera,
-                                               const std::string& part_name) {
-    if (part_ids.at(part_name) == 0) return;
+                                                const std::string& part_name) {
+    if (part_ids.at(part_name) == 0)
+        return;
     camera.draw(&parts.at(part_name), current_x, current_y, transition_offset_x,
                 transition_offset_y);
 }
@@ -118,30 +120,38 @@ void VisualCharacterComponent::_update_offset() {
 
     float speed_factor_x =
         (float)abs(transition_offset_x) / (float)MOVEMENT_OFFSET;
-    if (speed_factor_x < 1) speed_factor_x = 1;
+    if (speed_factor_x < 1)
+        speed_factor_x = 1;
 
     float speed_factor_y =
         (float)abs(transition_offset_y) / (float)MOVEMENT_OFFSET;
-    if (speed_factor_y < 1) speed_factor_y = 1;
+    if (speed_factor_y < 1)
+        speed_factor_y = 1;
 
     if (transition_offset_x > 0) {
         transition_offset_x -= delta_offset * speed_factor_x;
-        if (transition_offset_x <= 0) stop_x = true;
+        if (transition_offset_x <= 0)
+            stop_x = true;
     } else if (transition_offset_x < 0) {
         transition_offset_x += delta_offset * speed_factor_x;
-        if (transition_offset_x >= 0) stop_x = true;
-    }else if (transition_offset_y > 0) {
+        if (transition_offset_x >= 0)
+            stop_x = true;
+    } else if (transition_offset_y > 0) {
         transition_offset_y -= delta_offset * speed_factor_y;
-        if (transition_offset_y <= 0) stop_y = true;
+        if (transition_offset_y <= 0)
+            stop_y = true;
     } else if (transition_offset_y < 0) {
         transition_offset_y += delta_offset * speed_factor_y;
-        if (transition_offset_y >= 0) stop_x = true;
+        if (transition_offset_y >= 0)
+            stop_x = true;
     }
 
     if (stop_x || stop_y) {
         transition_timer.stop();
-        if (stop_x) transition_offset_x = 0;
-        if (stop_y) transition_offset_y = 0;
+        if (stop_x)
+            transition_offset_x = 0;
+        if (stop_y)
+            transition_offset_y = 0;
     } else {
         transition_timer.start();
     }
@@ -161,7 +171,8 @@ void VisualCharacterComponent::_update_animation(int delta_x, int delta_y) {
         }
     }
 
-    if (delta_x == 0 && delta_y == 0) return;
+    if (delta_x == 0 && delta_y == 0)
+        return;
     if (!(entity->get_component<PositionComponent>().position_initialized()))
         return;
 
@@ -201,7 +212,7 @@ bool VisualCharacterComponent::is_moving() {
     return transition_offset_x != 0 || transition_offset_y != 0;
 }
 
-int VisualCharacterComponent::get_part_id(const std::string& part_name){
+int VisualCharacterComponent::get_part_id(const std::string& part_name) {
     std::unique_lock<std::recursive_mutex> l(m);
     return part_ids.at(part_name);
 }

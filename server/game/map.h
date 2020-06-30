@@ -84,7 +84,7 @@ class Map {
     std::queue<map_change_t>& get_transitions();
 
     /* Devuelve el id de entidad asignado dentro del mapa al jugador. */
-    EntityId add_player(nlohmann::json player_info);
+    nlohmann::json add_player(nlohmann::json player_info);
 
     nlohmann::json rm_player(EntityId entity_id);
 

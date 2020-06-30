@@ -16,36 +16,42 @@ ServerManager::ServerManager()
     : character_manager("database/characters.dat", "database/characters.json"),
       map_manager("ind/maps_index.json"),
       accepter(Socket("27016", 10)),
-      game_loop(map_manager) {
+      game_loop(map_manager),
+      item_factory("ind/items.json") {
     if (!character_manager.character_exists("nicomatex")) {
-        nlohmann::json nico_info = {
-            {"name", "nicomatex"}, {"map_id", 0},    {"pos", position_t{18, 5}},
-            {"head_id", 1},        {"body_id", 2},   {"helmet_id", 1},
-            {"armor_id", 1},       {"shield_id", 2}, {"weapon_id", 5}};
+        nlohmann::json nico_info = {{"name", "nicomatex"},
+                                    {"map_id", 0},
+                                    {"pos", position_t{18, 5}},
+                                    {"head_id", 1},
+                                    {"body_id", 2},
+                                    {"helmet_id", 1},
+                                    {"armor_id", 100},
+                                    {"shield_id", 200},
+                                    {"weapon_id", 303}};
         character_manager.add_character(nico_info);
     }
 
     if (!character_manager.character_exists("tai")) {
         nlohmann::json taiel_info = {
-            {"name", "tai"}, {"map_id", 0},    {"pos", position_t{20, 21}},
-            {"head_id", 2},  {"body_id", 2},   {"helmet_id", 2},
-            {"armor_id", 3}, {"shield_id", 2}, {"weapon_id", 6}};
+            {"name", "tai"},   {"map_id", 0},      {"pos", position_t{20, 21}},
+            {"head_id", 2},    {"body_id", 2},     {"helmet_id", 2},
+            {"armor_id", 101}, {"shield_id", 201}, {"weapon_id", 302}};
         character_manager.add_character(taiel_info);
     }
 
     if (!character_manager.character_exists("fran")) {
         nlohmann::json fran_info = {
-            {"name", "fran"}, {"map_id", 0},    {"pos", position_t{13, 20}},
-            {"head_id", 2},   {"body_id", 1},   {"helmet_id", 1},
-            {"armor_id", 2},  {"shield_id", 1}, {"weapon_id", 9}};
+            {"name", "fran"},  {"map_id", 0},      {"pos", position_t{13, 20}},
+            {"head_id", 2},    {"body_id", 1},     {"helmet_id", 3},
+            {"armor_id", 102}, {"shield_id", 201}, {"weapon_id", 301}};
         character_manager.add_character(fran_info);
     }
 
     if (!character_manager.character_exists("eze")) {
         nlohmann::json eze_info = {
-            {"name", "eze"}, {"map_id", 0},    {"pos", position_t{23, 20}},
-            {"head_id", 2},  {"body_id", 1},   {"helmet_id", 2},
-            {"armor_id", 1}, {"shield_id", 1}, {"weapon_id", 1}};
+            {"name", "eze"},   {"map_id", 0},      {"pos", position_t{23, 20}},
+            {"head_id", 2},    {"body_id", 1},     {"helmet_id", 1},
+            {"armor_id", 100}, {"shield_id", 200}, {"weapon_id", 300}};
         character_manager.add_character(eze_info);
     }
 
@@ -70,6 +76,10 @@ ThDispatcher& ServerManager::get_dispatcher() {
     return dispatcher;
 }
 
+ItemFactory& ServerManager::get_item_factory() {
+    return item_factory;
+}
+
 void ServerManager::add_client(ClientId client_id, SocketManager* new_client) {
     clients.add_client(client_id, new_client);
 }
@@ -91,18 +101,20 @@ void ServerManager::drop_client(ClientId client_id) {
 void ServerManager::add_player(ClientId client_id, nlohmann::json player_data,
                                bool send_map_data) {
     m.lock();
-    MapMonitor& map_monitor = map_manager[player_data["map_id"]];
+    MapId map_id = player_data["map_id"];
+    MapMonitor& map_monitor = map_manager[map_id];
     // Añadimos el jugador al mapa
-    player_data["player_id"] = map_monitor.add_player(client_id, player_data);
+    player_data = map_monitor.add_player(client_id, player_data);
     if (!clients_names.left.count(client_id))
         clients_names.insert({client_id, player_data["name"]});
-    client_to_map[client_id] = player_data["map_id"];
+    client_to_map[client_id] = map_id;
     player_data["pos"] = map_monitor.get_position(client_id);
 
     std::cerr << "ServerManager: adding player: " << player_data["name"]
-              << " in map " << player_data["map_id"] << " at "
-              << player_data["pos"]["x"] << "," << player_data["pos"]["y"]
-              << std::endl;
+              << " in map " << map_id << " at " << player_data["pos"]["x"]
+              << "," << player_data["pos"]["y"] << std::endl;
+
+    std::cerr << "\t\n" << player_data << std::endl;
 
     // Enviamos la información de inicialización del mapa y del jugador
     nlohmann::json map_data = map_monitor.get_map_data();
@@ -112,7 +124,7 @@ void ServerManager::add_player(ClientId client_id, nlohmann::json player_data,
               << std::endl;
 
     // Lo agregamos a la session correspondiente
-    sessions.at(player_data["map_id"]).add_client(client_id);
+    sessions.at(map_id).add_client(client_id);
     m.unlock();
 }
 

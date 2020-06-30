@@ -9,4 +9,12 @@ add_library(game
   combat_component.cpp
   movement_component.cpp
   map_transitions.cpp
+  random_event_generator.cpp
+  item_factory.cpp
+  item.cpp
+  weapon.cpp
+  armor.cpp
+  gold.cpp
+  potion.cpp
+
 )

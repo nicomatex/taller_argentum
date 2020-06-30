@@ -6,8 +6,7 @@
 				"id": 1,
 				"name": "Capucha",
 				"sprite_id": 1,
-				"type": 1,
-				"max_stack": 9999
+				"type": 1
 			},
 			"armor_info": {
 				"max_defense": 4,
@@ -20,8 +19,7 @@
 				"id": 2,
 				"name": "Casco de hierro",
 				"sprite_id": 2,
-				"type": 1,
-				"max_stack": 9999
+				"type": 1
 			},
 			"armor_info": {
 				"max_defense": 8,
@@ -34,8 +32,7 @@
 				"id": 3,
 				"name": "Sombrero magico",
 				"sprite_id": 3,
-				"type": 1,
-				"max_stack": 9999
+				"type": 1
 			},
 			"armor_info": {
 				"max_defense": 12,
@@ -48,8 +45,7 @@
 				"id": 100,
 				"name": "Armadura de cuero",
 				"sprite_id": 1,
-				"type": 1,
-				"max_stack": 9999
+				"type": 1
 			},
 			"armor_info": {
 				"max_defense": 6,
@@ -62,8 +58,7 @@
 				"id": 101,
 				"name": "Armadura de placas",
 				"sprite_id": 2,
-				"type": 1,
-				"max_stack": 9999
+				"type": 1
 			},
 			"armor_info": {
 				"max_defense": 30,
@@ -76,8 +71,7 @@
 				"id": 102,
 				"name": "Tunica azul",
 				"sprite_id": 3,
-				"type": 1,
-				"max_stack": 9999
+				"type": 1
 			},
 			"armor_info": {
 				"max_defense": 10,
@@ -90,8 +84,7 @@
 				"id": 200,
 				"name": "Escudo de tortuga",
 				"sprite_id": 1,
-				"type": 1,
-				"max_stack": 9999
+				"type": 1
 			},
 			"armor_info": {
 				"max_defense": 2,
@@ -104,8 +97,7 @@
 				"id": 201,
 				"name": "Escudo de hierro",
 				"sprite_id": 2,
-				"type": 1,
-				"max_stack": 9999
+				"type": 1
 			},
 			"armor_info": {
 				"max_defense": 4,
@@ -120,8 +112,7 @@
 				"id": 300,
 				"name": "Espada",
 				"sprite_id": 1,
-				"type": 0,
-				"max_stack": 9999
+				"type": 0
 			},
 			"weapon_info": {
 				"max_damage": 5,
@@ -134,8 +125,7 @@
 				"id": 301,
 				"name": "Arco simple",
 				"sprite_id": 2,
-				"type": 0,
-				"max_stack": 9999
+				"type": 0
 			},
 			"weapon_info": {
 				"max_damage": 4,
@@ -148,8 +138,7 @@
 				"id": 302,
 				"name": "Arco compuesto",
 				"sprite_id": 3,
-				"type": 0,
-				"max_stack": 9999
+				"type": 0
 			},
 			"weapon_info": {
 				"max_damage": 16,
@@ -162,8 +151,7 @@
 				"id": 303,
 				"name": "Vara de fresno",
 				"sprite_id": 4,
-				"type": 0,
-				"max_stack": 9999
+				"type": 0
 			},
 			"weapon_info": {
 				"max_damage": 0,
@@ -176,8 +164,7 @@
 				"id": 304,
 				"name": "Baculo nudoso",
 				"sprite_id": 5,
-				"type": 0,
-				"max_stack": 9999
+				"type": 0
 			},
 			"weapon_info": {
 				"max_damage": 0,
@@ -190,8 +177,7 @@
 				"id": 305,
 				"name": "Baculo engarzado",
 				"sprite_id": 6,
-				"type": 0,
-				"max_stack": 9999
+				"type": 0
 			},
 			"weapon_info": {
 				"max_damage": 0,
@@ -204,8 +190,7 @@
 				"id": 306,
 				"name": "Flauta elfica",
 				"sprite_id": 7,
-				"type": 0,
-				"max_stack": 9999
+				"type": 0
 			},
 			"weapon_info": {
 				"max_damage": 0,
@@ -218,8 +203,7 @@
 				"id": 307,
 				"name": "Hacha",
 				"sprite_id": 8,
-				"type": 0,
-				"max_stack": 9999
+				"type": 0
 			},
 			"weapon_info": {
 				"max_damage": 5,
@@ -232,8 +216,7 @@
 				"id": 308,
 				"name": "Martillo",
 				"sprite_id": 9,
-				"type": 0,
-				"max_stack": 9999
+				"type": 0
 			},
 			"weapon_info": {
 				"max_damage": 9,
@@ -248,8 +231,7 @@
 				"id": 400,
 				"name": "Pocion de vida",
 				"sprite_id": 1,
-				"type": 2,
-				"max_stack": 9999
+				"type": 2
 			},
 			"potion_info": {
 				"health_var": 14,
@@ -262,8 +244,7 @@
 				"id": 401,
 				"name": "Pocion de mana",
 				"sprite_id": 2,
-				"type": 2,
-				"max_stack": 9999
+				"type": 2
 			},
 			"potion_info": {
 				"health_var": 0,
@@ -278,8 +259,7 @@
 				"id": 500,
 				"name": "Oro",
 				"sprite_id": 1,
-				"type": 3,
-				"max_stack": 999999
+				"type": 3
 			}
 		}
 	]

@@ -9,12 +9,12 @@ MapMonitor::MapMonitor(nlohmann::json map_description) : map(map_description) {}
 
 MapMonitor::~MapMonitor() {}
 
-EntityId MapMonitor::add_player(ClientId client_id,
-                                nlohmann::json player_info) {
+nlohmann::json MapMonitor::add_player(ClientId client_id,
+                                      nlohmann::json player_info) {
     std::unique_lock<std::recursive_mutex> l(m);
-    EntityId entity_id = map.add_player(player_info);
-    client_map[client_id] = entity_id;
-    return entity_id;
+    nlohmann::json data = map.add_player(player_info);
+    client_map[client_id] = data["entity_id"];
+    return data;
 }
 
 nlohmann::json MapMonitor::rm_player(ClientId client_id) {

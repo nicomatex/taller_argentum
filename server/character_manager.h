@@ -6,6 +6,7 @@
 #include <map>
 #include <mutex>
 
+#include "../include/types.h"
 #include "game/position.h"
 
 #define MAX_CHAR_NAME 15
@@ -14,12 +15,12 @@ typedef struct character {
     char name[MAX_CHAR_NAME + 1];
     int map_id;
     position_t position;
-    int head_id;
-    int body_id;
-    int helmet_id;
-    int armor_id;
-    int shield_id;
-    int weapon_id;
+    uint32_t head_id;
+    uint32_t body_id;
+    ItemId helmet_id;
+    ItemId armor_id;
+    ItemId shield_id;
+    ItemId weapon_id;
 } character_t;
 
 typedef uint32_t CharId;

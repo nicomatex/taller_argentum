@@ -69,7 +69,6 @@ void ClientReceiveHandler::handle_initialization(Event &ev) {
     game_state_monitor.wait_for_game_state(WAITING_FOR_INITIALIZATION);
     json initialization_info = ev.get_json();
     json player_info = initialization_info["player"];
-    player_info["entity_id"] = player_info["player_id"];
     Entity &player = EntityFactory::create_player(player_info);
     player.get_component<PositionComponent>().set_position(
         player_info["pos"]["x"], player_info["pos"]["y"]);
@@ -77,7 +76,7 @@ void ClientReceiveHandler::handle_initialization(Event &ev) {
               << " - " << player_info["pos"]["y"] << std::endl;
 
     json map_description = initialization_info["map_info"];
-    map_change_buffer.fill(map_description, player_info["player_id"]);
+    map_change_buffer.fill(map_description, player_info["entity_id"]);
 }
 
 void ClientReceiveHandler::handle_entity_update(Event &ev) {
