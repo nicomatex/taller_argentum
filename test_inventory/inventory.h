@@ -34,7 +34,6 @@ inline void from_json(const nlohmann::json &j, inventory_t &i) {
 
 class Inventory {
    private:
-   	std::bitset<INV_SIZE> slots_bitset;
    	std::array<Item*, INV_SIZE> inventory;
  	std::map<ItemId, SlotId> item_id_to_slot;
    public:
@@ -42,6 +41,7 @@ class Inventory {
    	Inventory(const nlohmann::json &inv_json);
    	~Inventory();
    	void add(Item* item);
+   	void add(Item* item, uint32_t stack);
 	void add(Item* item, SlotId slot_id);
 	Item* remove(SlotId slot_id);
 	Item* remove(SlotId slot_id, uint32_t stack);
