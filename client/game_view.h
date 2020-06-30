@@ -12,6 +12,7 @@
 #include "hud.h"
 #include "responsive_scaler.h"
 #include "ui_event_handler.h"
+#include "engine/camera.h"
 
 class GameView {
    private:
@@ -20,10 +21,10 @@ class GameView {
     ChatBuffer &chat_buffer;
     GameStateMonitor &game_state_monitor;
     Hud hud;
-    UiEventHandler ui_event_handler;
     Camera camera;
+    UiEventHandler ui_event_handler;
     Map map;
-
+    
    public:
     GameView(ResponsiveScaler &scaler, int follow_entity_id,
              SocketManager &socket_manager, SDLWindow &window,

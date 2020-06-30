@@ -130,8 +130,7 @@ void VisualCharacterComponent::_update_offset() {
     } else if (transition_offset_x < 0) {
         transition_offset_x += delta_offset * speed_factor_x;
         if (transition_offset_x >= 0) stop_x = true;
-    }
-    if (transition_offset_y > 0) {
+    }else if (transition_offset_y > 0) {
         transition_offset_y -= delta_offset * speed_factor_y;
         if (transition_offset_y <= 0) stop_y = true;
     } else if (transition_offset_y < 0) {
@@ -166,22 +165,7 @@ void VisualCharacterComponent::_update_animation(int delta_x, int delta_y) {
     if (!(entity->get_component<PositionComponent>().position_initialized()))
         return;
 
-    direction_t orientation;
     movement_status_t movement_status;
-
-    if (abs(delta_x) > abs(delta_y)) {
-        if (delta_x > 0) {
-            orientation = RIGHT;
-        } else {
-            orientation = LEFT;
-        }
-    } else {
-        if (delta_y > 0) {
-            orientation = DOWN;
-        } else {
-            orientation = UP;
-        }
-    }
 
     transition_offset_x -= delta_x * MOVEMENT_OFFSET;
     transition_offset_y -= delta_y * MOVEMENT_OFFSET;
@@ -189,7 +173,6 @@ void VisualCharacterComponent::_update_animation(int delta_x, int delta_y) {
     movement_status = MOVING;
     for (auto& part : parts) {
         part.second.set_move_status(movement_status);
-        part.second.set_orientation(orientation);
     }
     transition_timer.start();
 }

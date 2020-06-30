@@ -7,6 +7,7 @@
 #include "engine/SDL/sdl_window.h"
 #include "engine/UI/stat_bar.h"
 #include "engine/UI/icon_grid.h"
+#include "cast_button.h"
 #include "responsive_scaler.h"
 #include "engine/ECS/entity.h"
 class StatsComponent;
@@ -22,6 +23,7 @@ class Hud {
     StatBar health_bar;
     // StatBar experience_bar;
     IconGrid equipped_items;
+    CastButton cast_button;
     SDLTexture& side_panel_background;
     friend class UiEventHandler;
 
@@ -32,6 +34,8 @@ class Hud {
     Hud(ResponsiveScaler &scaler,SDLWindow& window, ChatBuffer& chat_buffers,
         Entity& player);
     ~Hud();
+
+    void handle_event(SDL_Event &e);
 
     void update();
     void render();

@@ -8,17 +8,18 @@
 #include "event_factory.h"
 #include "game_state_monitor.h"
 #include "hud.h"
-
+#include "engine/camera.h"
 class UiEventHandler {
    private:
     GameStateMonitor &game_state_monitor;
     SocketManager &socket_manager;
     Hud &hud;
     bool text_input_enabled;
+    Camera &camera;
 
    public:
     UiEventHandler(SocketManager &socket_manager,
-                   GameStateMonitor &game_state_monitor, Hud &hud);
+                   GameStateMonitor &game_state_monitor, Hud &hud, Camera &camera);
     ~UiEventHandler();
 
     void send_event(const Event &event);
@@ -38,6 +39,9 @@ class UiEventHandler {
     void handle_keyup_move_right();
 
     void handle_keydown_attack();
+
+    void handle_click(SDL_Event &e);
+
     void handle();
 };
 

@@ -3,6 +3,7 @@ add_library(ui_widgets
   text_input.cpp
   stat_bar.cpp
   icon_grid.cpp
+  button.cpp
 )
 
 

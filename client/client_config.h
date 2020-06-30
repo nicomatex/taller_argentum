@@ -50,6 +50,8 @@
 
 #define EQUIPPED_ITEMS_AREA {205,296,45,181}
 
+#define CAST_BUTTON_AREA {64,514,131,37}
+
 /* Fuentes */
 #define CHAT_FONT_ID 1 
 #define STAT_FONT_ID 1

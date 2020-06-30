@@ -22,6 +22,8 @@ Hud::Hud(ResponsiveScaler& scaler, SDLWindow& window, ChatBuffer& chat_buffer,
                  window.get_renderer(), 999, HP_BAR_COLOR, STAT_BAR_FONT_COLOR),
       equipped_items(scaler.scale(EQUIPPED_ITEMS_AREA), window.get_renderer(),
                      4, 1),
+      cast_button(scaler.scale(CAST_BUTTON_AREA), scaler.scale(VIEWPORT_SIDE_PANEL),
+                  window.get_renderer()),
       side_panel_background(
           ResourceManager::get_instance().get_texture("interface", 1)) {}
 
@@ -88,4 +90,9 @@ void Hud::render() {
     health_bar.render();
     mana_bar.render();
     equipped_items.render();
+}
+
+
+void Hud::handle_event(SDL_Event &e){
+    cast_button.handle_event(e);
 }

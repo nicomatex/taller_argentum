@@ -8,6 +8,11 @@
 #include "decoration.h"
 #include "renderizable_object.h"
 
+typedef struct position {
+    int x;
+    int y;
+} position_t;
+
 class Camera {
    private:
     /* Ancho que se va a renderizar en tiles. */
@@ -31,6 +36,8 @@ class Camera {
 
     int speed;  // En tiles/segundo.
 
+    SDL_Rect viewport;
+
     PositionComponent &follow_component;
 
     /* Devuelve true si un componente visual esta dentro del campo
@@ -45,8 +52,8 @@ class Camera {
     void _update_offset();
 
    public:
-    Camera(PositionComponent &follow_component, int map_size, int tile_size,
-           int viewport_width, int viewport_height, int speed);
+    Camera(PositionComponent &follow_component, SDL_Rect viewport, int map_size,
+           int tile_size, int viewport_width, int viewport_height, int speed);
     ~Camera();
 
     /* Actualiza la posicion de la camara segun el objeto que esta siguiendo. */
@@ -59,6 +66,10 @@ class Camera {
     void draw_all();
 
     void render_map_layer(std::vector<Decoration> &layer);
+
+    /* Recibe coordenadas absolutas de pixeles de la pantalla
+    y devuelve las coordenadas del tile dibujado en esas coords. */
+    position_t tile_at(int x, int y);
 };
 
 #endif

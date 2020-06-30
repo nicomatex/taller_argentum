@@ -17,12 +17,13 @@ GameView::GameView(ResponsiveScaler &scaler, int follow_entity_id,
       game_state_monitor(game_state_monitor),
       hud(scaler, window, chat_buffer,
           EntityManager::get_instance().get_from_id(follow_entity_id)),
-      ui_event_handler(socket_manager, game_state_monitor, hud),
       camera(EntityManager::get_instance()
                  .get_from_id(follow_entity_id)
                  .get_component<PositionComponent>(),
-             map_info["width"], scaler.simple_scale(TILE_SIZE), VIEWPORT_WIDTH,
-             VIEWPORT_HEIGHT, CAMERA_SPEED),
+             scaler.scale(VIEWPORT_MAIN_RENDER), map_info["width"],
+             scaler.simple_scale(TILE_SIZE), VIEWPORT_WIDTH, VIEWPORT_HEIGHT,
+             CAMERA_SPEED),
+      ui_event_handler(socket_manager, game_state_monitor, hud, camera),
       map(map_info) {}
 
 GameView::~GameView() {}
