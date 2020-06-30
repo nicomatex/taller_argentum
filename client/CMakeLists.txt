@@ -32,6 +32,7 @@ add_library(game
   game_state_monitor.cpp
   hud.cpp
   responsive_scaler.cpp
+  cast_button.cpp
 )
 
 target_link_libraries(game
