@@ -16,28 +16,26 @@ add_subdirectory(engine/UI)
 
 add_subdirectory(../include/network inc_network)
 
+add_subdirectory(views)
+
+add_subdirectory(network)
+
 # Agrego la carpeta con los headers autogenerados a los includes
 message("Agregando '${PROJECT_BINARY_DIR}' como directorio de includes")
 include_directories(${PROJECT_BINARY_DIR})
 
 add_library(game
-  event_factory.cpp
   game_client.cpp
-  receive_handler.cpp
-  ui_event_handler.cpp
-  chat.cpp
-  game_view.cpp
   map_change_buffer.cpp
   chat_buffer.cpp
   game_state_monitor.cpp
-  hud.cpp
-  responsive_scaler.cpp
-  cast_button.cpp
 )
 
 target_link_libraries(game
   engine
+  views
   inc_network
+  client_network
 )
 
 add_executable (aoclient

@@ -74,6 +74,10 @@ void SDLWindow::set_viewport(SDL_Rect viewport_area) {
     SDL_RenderSetViewport(this->renderer, &viewport_area);
 }
 
+void SDLWindow::reset_viewport() {
+    SDL_RenderSetViewport(this->renderer, NULL);
+}
+
 void SDLWindow::render() const { SDL_RenderPresent(renderer); }
 
 int SDLWindow::get_height() const {

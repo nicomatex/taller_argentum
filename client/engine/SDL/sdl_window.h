@@ -28,6 +28,8 @@ class SDLWindow {
 
     /* Setea el viewport del renderer absoluto en la ventana. */
     void set_viewport(SDL_Rect viewport_area);
+    
+    void reset_viewport();
 
     /* Inicializa el renderer de la ventana, y devuelve un puntero al mismo.*/
     SDL_Renderer* init_renderer();

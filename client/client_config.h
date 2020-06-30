@@ -52,10 +52,20 @@
 
 #define CAST_BUTTON_AREA {64,514,131,37}
 
+// ---- Pantalla de login ----
+
+#define LOGIN_VIEWPORT {0,0,1138,640}
+#define LOGIN_BACKGROUND_AREA {0,0,1138,640}
+#define USERNAME_INPUT_AREA {465,392,265,30}
+#define USERNAME_INPUT_FONT_COLOR {255,255,255,255}
+#define USERNAME_INPUT_BG_COLOR {38,38,38,255}
+
+#define LOGIN_BUTTON_AREA {530,435,140,28}
+
 /* Fuentes */
 #define CHAT_FONT_ID 1 
 #define STAT_FONT_ID 1
-
+#define USERNAME_INPUT_FONT_ID 1
 
 /* Configuracion de la camara */
 #define TILE_SIZE 32

@@ -5,7 +5,7 @@
 #include <queue>
 #include <string>
 
-#include "chat.h"
+#include "views/chat.h"
 
 class ChatBuffer {
    private:

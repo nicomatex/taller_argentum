@@ -7,17 +7,12 @@
 
 #include "../include/network/socket_manager.h"
 #include "../include/nlohmann/json.hpp"
-#include "chat.h"
 #include "chat_buffer.h"
-#include "engine/ECS/entity_manager.h"
 #include "engine/SDL/sdl_window.h"
-#include "engine/entity_factory.h"
 #include "engine/map.h"
-#include "event_factory.h"
 #include "game_state_monitor.h"
 #include "map_change_buffer.h"
-#include "receive_handler.h"
-#include "ui_event_handler.h"
+#include "network/receive_handler.h"
 
 /* Interfaz de la clase */
 class GameClient {
@@ -29,7 +24,6 @@ class GameClient {
     SocketManager socket_manager;
     nlohmann::json config;
     GameStateMonitor game_state_monitor;
-    void _login();
 
    public:
     GameClient(nlohmann::json config);
