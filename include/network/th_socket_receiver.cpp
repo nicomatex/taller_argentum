@@ -23,12 +23,16 @@ void ThSocketReceiver::run() {
     try {
         running = true;
         while (running && protocol.get_socket().is_connected()) {
+            Event ev;
             try {
-                Event ev;
                 protocol >> ev;
                 nlohmann::json json_ev = ev.get_json();
                 json_ev["client_id"] = client_id;
                 recieve_handler.push_event(Event(json_ev));
+            } catch (const nlohmann::detail::exception& e) {
+                std::cerr << "SocketReceiver: error in json: " << ev.get_json()
+                          << std::endl;
+                continue;
             } catch (const ConnectionClosedSocketException& e) {
                 running = false;
             } catch (const EventHandlerStoppedException& e) {

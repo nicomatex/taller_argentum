@@ -88,9 +88,11 @@ void ServerManager::rm_client(ClientId client_id) {
     SocketManager* client = clients.rm_client(client_id);
     client->stop(true);
     client->join();
-    std::string name = clients_names.left.at(client_id);
-    clients_names.left.erase(client_id);
-    clients_names.right.erase(name);
+    if (clients_names.left.count(client_id)) {
+        std::string name = clients_names.left.at(client_id);
+        clients_names.left.erase(client_id);
+        clients_names.right.erase(name);
+    }
     delete client;
 }
 

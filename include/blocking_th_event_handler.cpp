@@ -3,6 +3,8 @@
 // Temp
 #include <iostream>
 
+#include "nlohmann/json.hpp"
+
 Event BlockingThEventHandler::pop_event() {
     try {
         return event_queue.pop();
@@ -32,9 +34,13 @@ void BlockingThEventHandler::push_event(const Event& ev) {
 void BlockingThEventHandler::run() {
     try {
         while (!event_queue.is_closed()) {
+            Event ev = pop_event();
             try {
-                Event ev = pop_event();
                 handle(ev);
+            } catch (const nlohmann::detail::exception& e) {
+                std::cerr << "BlockingThEvHandler: error in json: "
+                          << ev.get_json() << std::endl;
+                continue;
             } catch (const EventHandlerStoppedException& e) {
                 break;
             }

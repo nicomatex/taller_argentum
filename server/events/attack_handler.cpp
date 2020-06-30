@@ -8,7 +8,6 @@
 #include <iostream>
 
 void AttackHandler::run_handler() {
-    std::cerr << "AttackHandler: " << event.get_json() << std::endl;
     ClientId client_id = event.get_json()["client_id"];
     ServerManager& server_manager = ServerManager::get_instance();
     MapMonitor& map = server_manager.get_map_by_client(client_id);
