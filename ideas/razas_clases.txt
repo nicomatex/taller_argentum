@@ -1,0 +1,65 @@
+
+
+VidaMax = Constitución * FClaseVida * FRazaVida * Nivel
+
+Regeneracion con el paso del tiempo:
+Vida = FRazaRecuperacion * segundos         FRazaRecuperacion vida o mana /seg
+Mana = FRazaRecuperacion * segundos
+
+ManaMax = Inteligencia * FClaseMana * FRazaMana * Nivel
+
+Al meditar -> Mana = FClaseMeditacion * Inteligencia * segundos
+
+Defensa
+
+
+typedef struct attributes {
+	uint8_t strength;		//Fuerza
+	uint8_t agility;		//Agilidad
+	uint8_t intelligence;	//Inteligencia
+	uint8_t physique;		//Constitucion
+} attributes_t;
+
+typedef enum {human, elf, dwarf, gnome} race_t;
+typedef enum {mage, cleric, paladin, warrior} class_t;
+
+Strength     18 
+Agility      18
+Intelligence 18
+Physique 	 18
+
+VIDA-> FClaseVida FRazaVida {	FRazaRecuperacion vida o mana /seg
+MANA-> FClaseMana FRazaMana {
+
+Hay 4 razas:
+- ​ Humanos​ : son una raza equilibrada.
+Fuerza	     Agilidad	   Inteligencia		Constitución
++1	      		 +1					0		   	 +2
+
+
+- ​ Elfos​ : son muy inteligentes y ágiles pero de una constitución física frágil
+Fuerza	     Agilidad	   Inteligencia		Constitución
+-1	      		 +3				+2		   			+1
+
+- ​ Enanos​ : son muy fuertes y resistentes, pero la agilidad no es lo suyo
+Fuerza	     Agilidad	   Inteligencia		Constitución
++3	       		0				-2		  		+3
+
+
+- ​ Gnomos​ : inteligentes y resistentes, pero mucho menos ágiles que los elfos.
+Fuerza	     Agilidad	   Inteligencia		Constitución
+-2	       		+3				+4		  		  0
+
+
+
+Hay 4 clases:
+- ​ Mago​ : quienes hayan estudiado magia han cultivados sus mentes y menos sus cuerpos
+
+- ​ Clérigo​ : un poco menos inteligentes y hábiles que los magos, un clérigo compensa sus falencias con un
+mayor desempeño físico.
+
+- ​ Paladin​ : entrenados para el combate, son fuertes y resistentes aunque capaces también de usar magia,
+con una mucho menor inteligencia que un mago.
+
+- ​ Guerrero​ : han dedicado toda su vida al combate, son típicamente más fuertes y resistentes que otros pero
+carecen de la sabiduría para usar la magia.De todas las clases, el guerrero es el único que no puede usar la magia, ni meditar y su mana es siempre 0.
