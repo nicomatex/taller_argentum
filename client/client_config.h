@@ -62,6 +62,10 @@
 
 #define LOGIN_BUTTON_AREA {530,435,140,28}
 
+// ----- Pantalla de creacion de personaje ----
+#define CHAR_CREATION_VIEWPORT {0,0,1138,640}
+#define CHAR_CREATION_BACKGROUND_AREA {0,0,1138,640}
+
 /* Fuentes */
 #define CHAT_FONT_ID 1 
 #define STAT_FONT_ID 1

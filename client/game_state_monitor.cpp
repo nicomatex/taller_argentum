@@ -38,6 +38,11 @@ void GameStateMonitor::wait_for_game_state(game_state_t expected_game_state) {
     }
 }
 
+void GameStateMonitor::wait_for_next_game_state(){
+    std::unique_lock<std::mutex> l(m);
+    cv.wait(l);
+}
+
 game_state_t GameStateMonitor::get_game_state(){
     std::unique_lock<std::mutex> l(m);
     return game_state;

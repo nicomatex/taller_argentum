@@ -33,7 +33,9 @@ add_library(game
 
 target_link_libraries(game
   engine
-  views
+  game_view
+  login_view
+  char_creation_view
   inc_network
   client_network
 )
