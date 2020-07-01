@@ -41,6 +41,23 @@ class ClientDisconnectedException : public std::exception {
     }
 };
 
+class DuplicatedPlayerException : public std::exception {
+   private:
+    char err_msg[100];
+
+   public:
+    DuplicatedPlayerException(std::string name) {
+        std::string str = "The player: " + name + " is already connected!";
+        strncpy(err_msg, str.c_str(), 100);
+        err_msg[99] = '\0';
+    }
+    ~DuplicatedPlayerException() {}
+
+    const char* what() const noexcept override {
+        return err_msg;
+    }
+};
+
 class ServerManager {
    private:
     CharacterManager character_manager;
@@ -71,6 +88,9 @@ class ServerManager {
     void add_player(ClientId client_id, nlohmann::json player_info,
                     bool send_map_data = true);
     nlohmann::json rm_player(ClientId client_id);
+
+    void add_name(ClientId client_id, const std::string& name);
+    void rm_name(ClientId client_id);
 
     void send_to(ClientId client_id, const Event& ev);
 

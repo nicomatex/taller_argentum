@@ -22,7 +22,9 @@ void ClientsMonitor::add_client(ClientId client_id, SocketManager* client) {
 SocketManager* ClientsMonitor::rm_client(ClientId client_id) {
     std::unique_lock<std::mutex> l(m);
     if (connected_clients.count(client_id)) {
-        throw MyException("rm_client: El cliente no se eliminó apropiadamente");
+        connected_clients.erase(client_id);
+        std::cerr << "ClientsMonitor: El cliente : " << client_id
+                  << " fue eliminado de forma repentina." << std::endl;
     }
     SocketManager* client = clients.at(client_id);
     clients.erase(client_id);

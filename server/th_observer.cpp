@@ -61,7 +61,7 @@ void ThObserver::run() {
     } catch (...) {
         std::cerr << "Observer: Unknown exception" << std::endl;
     }
-    std::cout << "Observer finished" << std::endl;
+    std::cerr << "Observer finished" << std::endl;
 }
 
 void ThObserver::stop() {

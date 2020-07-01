@@ -8,6 +8,8 @@ class ClientInitializeHandler : public ThEventHandler {
    protected:
     void run_handler() override;
 
+    void disconnect() const;
+
    public:
     ClientInitializeHandler(Event ev);
     ~ClientInitializeHandler();

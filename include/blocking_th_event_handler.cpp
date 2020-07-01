@@ -35,16 +35,9 @@ void BlockingThEventHandler::run() {
     try {
         while (!event_queue.is_closed()) {
             Event ev = pop_event();
-            try {
-                handle(ev);
-            } catch (const nlohmann::detail::exception& e) {
-                std::cerr << "BlockingThEvHandler: error in json: "
-                          << ev.get_json() << std::endl;
-                continue;
-            } catch (const EventHandlerStoppedException& e) {
-                break;
-            }
+            handle(ev);
         }
+    } catch (const EventHandlerStoppedException& e) {
     } catch (const std::exception& e) {
         std::cerr << "BlockingThEvHandler: " << e.what() << std::endl;
     } catch (...) {

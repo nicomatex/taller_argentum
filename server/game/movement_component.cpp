@@ -79,8 +79,11 @@ void MovementComponent::set_movement(mov_action_t action,
             }
             direction_history.pop_back();
         } else {
-            direction_history.erase(std::find(
-                direction_history.begin(), direction_history.end(), direction));
+            auto pos = std::find(direction_history.begin(),
+                                 direction_history.end(), direction);
+            if (pos == direction_history.end())
+                return;
+            direction_history.erase(pos);
         }
     } else if (action == START) {
         if (direction_history.size() == 1 && moving == false) {

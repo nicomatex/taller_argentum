@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 
+#include "../include/event.h"
 #include "../include/nlohmann/json.hpp"
 #include "events/event_factory.h"
 
@@ -88,11 +89,7 @@ void ServerManager::rm_client(ClientId client_id) {
     SocketManager* client = clients.rm_client(client_id);
     client->stop(true);
     client->join();
-    if (clients_names.left.count(client_id)) {
-        std::string name = clients_names.left.at(client_id);
-        clients_names.left.erase(client_id);
-        clients_names.right.erase(name);
-    }
+    rm_name(client_id);
     delete client;
 }
 
@@ -100,23 +97,35 @@ void ServerManager::drop_client(ClientId client_id) {
     clients.drop(client_id);
 }
 
+void ServerManager::add_name(ClientId client_id, const std::string& name) {
+    if (clients_names.right.count(name))
+        throw DuplicatedPlayerException(name);
+    clients_names.insert({client_id, name});
+}
+void ServerManager::rm_name(ClientId client_id) {
+    if (!clients_names.left.count(client_id))
+        // Este caso sirve si un jugador nunca mandó el mensaje de
+        // inicialización
+        return;
+    std::string name = clients_names.left.at(client_id);
+    clients_names.left.erase(client_id);
+    clients_names.right.erase(name);
+}
+
 void ServerManager::add_player(ClientId client_id, nlohmann::json player_data,
                                bool send_map_data) {
+    std::cerr << "abcde" << std::endl;
     m.lock();
     MapId map_id = player_data["map_id"];
     MapMonitor& map_monitor = map_manager[map_id];
     // Añadimos el jugador al mapa
     player_data = map_monitor.add_player(client_id, player_data);
-    if (!clients_names.left.count(client_id))
-        clients_names.insert({client_id, player_data["name"]});
     client_to_map[client_id] = map_id;
     player_data["pos"] = map_monitor.get_position(client_id);
 
     std::cerr << "ServerManager: adding player: " << player_data["name"]
               << " in map " << map_id << " at " << player_data["pos"]["x"]
               << "," << player_data["pos"]["y"] << std::endl;
-
-    std::cerr << "\t\n" << player_data << std::endl;
 
     // Enviamos la información de inicialización del mapa y del jugador
     nlohmann::json map_data = map_monitor.get_map_data();
@@ -158,7 +167,7 @@ void ServerManager::finish() {
     accepter.join();
     std::cerr << "Accepter: joined\n";
     clients.drop_all();
-    dispatcher.stop();
+    dispatcher.push_event(Event(nlohmann::json{{"ev_id", 1000}}));
     dispatcher.join();
     std::cerr << "Dispatcher: joined\n";
     for (auto& it : sessions) {

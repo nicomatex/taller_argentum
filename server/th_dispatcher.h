@@ -20,8 +20,6 @@ class ThDispatcher : public BlockingThEventHandler {
    public:
     ThDispatcher();
     ~ThDispatcher();
-
-    void stop() override;
 };
 
 #endif  // TH_DISPATCHER_H
