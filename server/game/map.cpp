@@ -133,7 +133,7 @@ nlohmann::json Map::add_player(nlohmann::json player_info) {
 nlohmann::json Map::rm_player(EntityId entity_id) {
     Entity* player = entity_map.at(entity_id);
     entity_map.erase(entity_id);
-    nlohmann::json player_data = player->get_data();
+    nlohmann::json player_data = player->get_persist_data();
     position_t position = position_map.at(entity_id);
     position_map.erase(entity_id);
     entity_matrix.erase(position);

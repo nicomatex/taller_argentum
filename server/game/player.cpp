@@ -10,7 +10,8 @@ Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
     : Entity(entity_id, player_info["name"], new MovementComponent(7),
              new CombatComponent(
                  player_info["helmet_id"], player_info["armor_id"],
-                 player_info["shield_id"], player_info["weapon_id"],2)),
+                 player_info["shield_id"], player_info["weapon_id"],
+                 player_info["curr_hp"], 2)),
       head_id(player_info["head_id"]),
       body_id(player_info["body_id"]),
       map(map) {}
@@ -39,6 +40,18 @@ nlohmann::json Player::get_data() const {
         entity_data[it.key()] = it.value();
     }
     aux = combat_component->get_data();
+    for (auto& it : aux.items()) {
+        entity_data[it.key()] = it.value();
+    }
+    return entity_data;
+}
+
+nlohmann::json Player::get_persist_data() const {
+    nlohmann::json entity_data;
+    entity_data["head_id"] = head_id;
+    entity_data["body_id"] = body_id;
+    entity_data["name"] = name;
+    nlohmann::json aux = combat_component->get_persist_data();
     for (auto& it : aux.items()) {
         entity_data[it.key()] = it.value();
     }

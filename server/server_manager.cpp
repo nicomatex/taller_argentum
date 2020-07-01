@@ -28,7 +28,8 @@ ServerManager::ServerManager()
                                     {"helmet_id", 1},
                                     {"armor_id", 100},
                                     {"shield_id", 200},
-                                    {"weapon_id", 303}};
+                                    {"weapon_id", 303},
+                                    {"curr_hp", 57}};
         character_manager.add_character(nico_info);
     }
 
@@ -36,7 +37,8 @@ ServerManager::ServerManager()
         nlohmann::json taiel_info = {
             {"name", "tai"},   {"map_id", 0},      {"pos", position_t{20, 21}},
             {"head_id", 2},    {"body_id", 2},     {"helmet_id", 2},
-            {"armor_id", 101}, {"shield_id", 201}, {"weapon_id", 302}};
+            {"armor_id", 101}, {"shield_id", 201}, {"weapon_id", 302},
+            {"curr_hp", 70}};
         character_manager.add_character(taiel_info);
     }
 
@@ -44,7 +46,8 @@ ServerManager::ServerManager()
         nlohmann::json fran_info = {
             {"name", "fran"},  {"map_id", 0},      {"pos", position_t{13, 20}},
             {"head_id", 2},    {"body_id", 1},     {"helmet_id", 3},
-            {"armor_id", 102}, {"shield_id", 201}, {"weapon_id", 301}};
+            {"armor_id", 102}, {"shield_id", 201}, {"weapon_id", 301},
+            {"curr_hp", 100}};
         character_manager.add_character(fran_info);
     }
 
@@ -52,7 +55,8 @@ ServerManager::ServerManager()
         nlohmann::json eze_info = {
             {"name", "eze"},   {"map_id", 0},      {"pos", position_t{23, 20}},
             {"head_id", 2},    {"body_id", 1},     {"helmet_id", 1},
-            {"armor_id", 100}, {"shield_id", 200}, {"weapon_id", 300}};
+            {"armor_id", 100}, {"shield_id", 200}, {"weapon_id", 300},
+            {"curr_hp", 100}};
         character_manager.add_character(eze_info);
     }
 

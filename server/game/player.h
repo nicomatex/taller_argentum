@@ -23,6 +23,7 @@ class Player : public Entity {
     Player(EntityId entity_id, nlohmann::json player_info, Map &map);
     entity_type_t get_type() const override;
     nlohmann::json get_data() const override;
+    nlohmann::json get_persist_data() const override;
 
     void set_movement(mov_action_t action, direction_t direction);
     void update(uint64_t delta_t) override;

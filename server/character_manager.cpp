@@ -55,6 +55,7 @@ static character_t create_character(const nlohmann::json& character_info) {
     character.armor_id = character_info["armor_id"];
     character.shield_id = character_info["shield_id"];
     character.weapon_id = character_info["weapon_id"];
+    character.current_hp = character_info["curr_hp"];
     return std::move(character);
 }
 
@@ -108,6 +109,7 @@ nlohmann::json CharacterManager::get_character(std::string name) {
     character_info["armor_id"] = character.armor_id;
     character_info["shield_id"] = character.shield_id;
     character_info["weapon_id"] = character.weapon_id;
+    character_info["curr_hp"] = character.current_hp;
     return std::move(character_info);
 }
 
@@ -135,5 +137,6 @@ void CharacterManager::print_character(std::string name) {
     std::cout << "Armor id: " << character["armor_id"] << std::endl;
     std::cout << "Shield id: " << character["shield_id"] << std::endl;
     std::cout << "Weapon id: " << character["weapon_id"] << std::endl;
+    std::cout << "Current hp: " << character["curr_hp"] << std::endl;
     std::cout << std::endl;
 }

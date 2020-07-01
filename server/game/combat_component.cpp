@@ -8,9 +8,9 @@
 
 CombatComponent::CombatComponent(ItemId helmet_id, ItemId armor_id,
                                  ItemId shield_id, ItemId weapon_id,
-                                 float attack_speed)
+                                 unsigned int current_hp, float attack_speed)
     : max_hp(100),
-      current_hp(max_hp),
+      current_hp(current_hp),
       attack_speed(attack_speed),
       attack_accumulator(0) {
     ServerManager& server_manager = ServerManager::get_instance();
@@ -69,6 +69,19 @@ nlohmann::json CombatComponent::get_data() const {
     data["shield_id"] = shield->get_sprite_id();
     if (weapon)
         data["weapon_id"] = weapon->get_sprite_id();
+    else
+        data["weapon_id"] = NO_WEAPON;
+    return data;
+}
+
+nlohmann::json CombatComponent::get_persist_data() const {
+    nlohmann::json data;
+    data["curr_hp"] = current_hp;
+    data["helmet_id"] = helmet->get_id();
+    data["armor_id"] = armor->get_id();
+    data["shield_id"] = shield->get_id();
+    if (weapon)
+        data["weapon_id"] = weapon->get_id();
     else
         data["weapon_id"] = NO_WEAPON;
     return data;

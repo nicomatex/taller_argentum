@@ -32,6 +32,7 @@ class Entity {
     std::string get_name() const;
 
     virtual nlohmann::json get_data() const = 0;
+    virtual nlohmann::json get_persist_data() const = 0;
     virtual void update(uint64_t delta_t);
 
     virtual position_t get_facing_position(position_t position);

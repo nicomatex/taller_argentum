@@ -32,7 +32,8 @@ class CombatComponent {
 
    public:
     CombatComponent(ItemId helmet_id, ItemId armor_id, ItemId shield_id,
-                    ItemId weapon_id, float attack_speed);
+                    ItemId weapon_id, unsigned int current_hp, 
+                    float attack_speed);
     virtual ~CombatComponent();
 
     damage_t attack();
@@ -46,6 +47,7 @@ class CombatComponent {
     bool attack_ready() const;
 
     nlohmann::json get_data() const;
+    nlohmann::json get_persist_data() const;
 };
 
 #endif  // COMBAT_COMPONENT_H

@@ -21,6 +21,7 @@ typedef struct character {
     ItemId armor_id;
     ItemId shield_id;
     ItemId weapon_id;
+    unsigned int current_hp;
 } character_t;
 
 typedef uint32_t CharId;
