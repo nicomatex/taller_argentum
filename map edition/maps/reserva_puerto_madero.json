@@ -15,6 +15,12 @@
          "id":1,
          "name":" Floor",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"over_player",
+                 "type":"bool",
+                 "value":false
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":50,
@@ -27,6 +33,12 @@
          "id":3,
          "name":"Decorations1",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"over_player",
+                 "type":"bool",
+                 "value":true
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":50,
@@ -39,6 +51,12 @@
          "id":2,
          "name":"Decorations2",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"over_player",
+                 "type":"bool",
+                 "value":false
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":50,
@@ -67,7 +85,7 @@
          "value":2
         }],
  "renderorder":"right-down",
- "tiledversion":"2020.05.29",
+ "tiledversion":"1.4.1",
  "tileheight":32,
  "tilesets":[
         {
@@ -80,9 +98,9 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.2,
+ "version":1.4,
  "width":50,
- "changes":{
+ "transitions":{
  	"teleports":[],
  	"upper":-1,
  	"lower":-1,

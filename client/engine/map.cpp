@@ -13,7 +13,9 @@
 using json = nlohmann::json;
 
 void Map::generate(json map_description) {
-    visual_layers.clear();
+    background_layers.clear();
+    foreground_layers.clear();
+
     int tileset_id = map_description["properties"][TILESET_ID_INDEX]["value"];
     height = map_description["height"];
     width = map_description["width"];
@@ -43,7 +45,18 @@ void Map::generate(json map_description) {
                     Decoration(tilesprite, j, i, FLOOR_TILE_CONFIG));
             }
         }
-        visual_layers.push_back(std::move(new_layer));
+        bool over_player = false;
+        for(auto &prop : layer.value()["properties"].items()){
+            if(prop.value()["name"] == "over_player"){
+                over_player = prop.value()["value"];
+                break;
+            }
+        }
+        if(over_player){
+            foreground_layers.push_back(std::move(new_layer));
+        }else{
+            background_layers.push_back(std::move(new_layer));
+        }
     }
     is_valid = true;
 }
@@ -54,19 +67,26 @@ Map::Map(json map_description) {
     generate(map_description);
 }
 
-std::vector<Decoration>& Map::get_layer(int n) {
-    if (!is_valid) {
-        throw EngineError(MSG_ERR_MAP_NOT_INITIALIZED);
-    }
-    return visual_layers[n];
-}
-
 int Map::get_width() {
     return width;
 }
 
 int Map::get_height() {
     return height;
+}
+
+std::vector<std::vector<Decoration>>& Map::get_background_layers(){
+    if (!is_valid) {
+        throw EngineError(MSG_ERR_MAP_NOT_INITIALIZED);
+    }
+    return background_layers;
+}
+
+std::vector<std::vector<Decoration>>& Map::get_foreground_layers(){
+    if (!is_valid) {
+        throw EngineError(MSG_ERR_MAP_NOT_INITIALIZED);
+    }
+    return foreground_layers;
 }
 
 Map::~Map() {}
