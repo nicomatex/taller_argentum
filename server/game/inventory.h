@@ -36,22 +36,22 @@ class Inventory {
    private:
     std::array<Item*, INV_SIZE> inventory;
     std::map<ItemId, SlotId> item_id_to_slot;
-
+    nlohmann::json _get_data(bool need_sprite_id) const;
    public:
     Inventory();
     Inventory(const nlohmann::json& inv_json);
     ~Inventory();
     void add(Item* item);
     void add(Item* item, uint32_t stack);
-    void add(Item* item, SlotId slot_id);
+    //void add(Item* item, SlotId slot_id);
     Item* remove(SlotId slot_id);
     Item* remove(SlotId slot_id, uint32_t stack);
     SlotId get_available_slot(ItemId item_id);
-    Item* get_item(SlotId slot_id);
-    bool slot_is_free(SlotId slot_id);
+    Item* get_item(SlotId slot_id) const;
+    bool slot_is_free(SlotId slot_id) const;
     bool has_item(ItemId item_id);
-    nlohmann::json get_persist_data();
-    nlohmann::json get_data();
+    nlohmann::json get_persist_data() const;
+    nlohmann::json get_data() const;
 };
 
 #endif  // INVENTORY_H
@@ -68,22 +68,31 @@ class Inventory {
         A/B:
         Me fijo si tengo en algun slot un item con el mismo
         ItemId (para sumarle el stack del item ingresante al que ya esta), pero
-   aca hay varios casos:
+        aca hay varios casos:
             *) No hay slots con ese itemId
                 a*) Lo agrego al primer slot disponible (numericamente)
                 b*) Exception papu
             *) Hay slot/slots, devuelta en 2 casos:
                 **) Un unico slot:
-                            Si tiene stack al maximo
-                                        a*) Lo agrego al primer slot disponible
-   (numericamente) b*) Exception papu Si no tiene el stack al maximo: Le sumo
-   todo lo que pueda al stack del item del inv: a*) La diferencia va al primer
-   slot disponible (numericamente) b*) La diferencia queda en el "piso"
+                        Si tiene stack al maximo
+                            a*) Lo agrego al primer slot disponible
+   (numericamente)
+                            b*) Exception papu
+                        Si no tiene el stack al maximo:
+                            Le sumotodo lo que pueda al stack del item del
+                            inv:
+                             a*) La diferencia va al primer
+   slot disponible (numericamente)
+                             b*) La diferencia queda en el "piso"
                 **) Varios slots:
                             Si tienen todos stack al maximo
-                                        a*) Lo agrego al primer slot disponible
-   (numericamente) b*) Exception papu No tienen todos el stack al maximo: Debo
+                             a*) Lo agrego al primer slot disponible
+   (numericamente) 
+                             b*) Exception papu
+                            No tienen todos el stack al maximo:
+                             Debo
    ir llenando los slots en orden numerico (SlotId): En caso de quedar
-   diferencia. a*) Lo agrego al primer slot disponible (numericamente) b*)
-   Diferencia queda en el piso como en el anterior.
+   diferencia.
+                     a*) Lo agrego al primer slot disponible (numericamente)
+                    b*) Diferencia queda en el piso como en el anterior.
 */

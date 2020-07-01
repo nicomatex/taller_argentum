@@ -30,6 +30,9 @@ ServerManager::ServerManager()
                                     {"shield_id", 200},
                                     {"weapon_id", 303},
                                     {"curr_hp", 57}};
+
+        nico_info["inventory"] =  R"({"items_ids":[401,0,0,0,0,0,0,0,0,0,0,0],
+                                 "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0]})"_json;                         
         character_manager.add_character(nico_info);
     }
 
@@ -39,6 +42,8 @@ ServerManager::ServerManager()
             {"head_id", 2},    {"body_id", 2},     {"helmet_id", 2},
             {"armor_id", 101}, {"shield_id", 201}, {"weapon_id", 302},
             {"curr_hp", 70}};
+        taiel_info["inventory"] =  R"({"items_ids":[401,0,0,0,0,0,0,0,0,0,0,0],
+                                 "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0]})"_json;  
         character_manager.add_character(taiel_info);
     }
 
@@ -48,6 +53,8 @@ ServerManager::ServerManager()
             {"head_id", 2},    {"body_id", 1},     {"helmet_id", 3},
             {"armor_id", 102}, {"shield_id", 201}, {"weapon_id", 301},
             {"curr_hp", 100}};
+        fran_info["inventory"] =  R"({"items_ids":[401,0,0,0,0,0,0,0,0,0,0,0],
+                                 "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0]})"_json;  
         character_manager.add_character(fran_info);
     }
 
@@ -57,6 +64,8 @@ ServerManager::ServerManager()
             {"head_id", 2},    {"body_id", 1},     {"helmet_id", 1},
             {"armor_id", 100}, {"shield_id", 200}, {"weapon_id", 300},
             {"curr_hp", 100}};
+        eze_info["inventory"] =  R"({"items_ids":[401,0,0,0,0,0,0,0,0,0,0,0],
+                                 "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0]})"_json;  
         character_manager.add_character(eze_info);
     }
 

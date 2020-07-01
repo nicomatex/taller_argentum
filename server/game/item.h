@@ -52,8 +52,8 @@ class Item {
     virtual ~Item(){};
     virtual nlohmann::json get_data();
     void set_stack(uint32_t stack);
-    uint32_t get_stack();
-    ItemId get_id();
+    uint32_t get_stack() const;
+    ItemId get_id() const;
     uint32_t get_sprite_id();
     int stack_difference(uint32_t other_stack);
     void increase_stack(uint32_t stack);

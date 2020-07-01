@@ -30,11 +30,11 @@ void Item::set_stack(uint32_t stack) {
     actual_stack = stack;
 }
 
-uint32_t Item::get_stack() {
+uint32_t Item::get_stack() const {
     return actual_stack;
 }
 
-ItemId Item::get_id() {
+ItemId Item::get_id() const {
     return item_info.id;
 }
 

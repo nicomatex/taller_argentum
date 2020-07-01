@@ -14,7 +14,7 @@ class Player : public Entity {
     const int head_id;
     const int body_id;
 
-    // Inventory inventory;
+    Inventory inventory;
 
     Map &map;  // Mapa en el que esta el jugador en este momento.
                // STATS

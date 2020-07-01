@@ -11,6 +11,7 @@ add_library(game
   map_transitions.cpp
   random_event_generator.cpp
   item_factory.cpp
+  inventory.cpp
   item.cpp
   weapon.cpp
   armor.cpp
