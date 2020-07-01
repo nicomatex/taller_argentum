@@ -41,10 +41,9 @@ void GameView::run() {
         camera.update();
 
         window.set_viewport(main_render_viewport);
-        camera.render_map_layer(map.get_layer(0));
-        camera.render_map_layer(map.get_layer(1));
+        camera.render_map_layers(map.get_background_layers());
         camera.draw_all();
-        camera.render_map_layer(map.get_layer(2));
+        camera.render_map_layers(map.get_foreground_layers());
         hud.render();
         window.render();
     }

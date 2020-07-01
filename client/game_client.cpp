@@ -46,10 +46,12 @@ void GameClient::run() {
     ResourceManager::get_instance().get_music(2).play();
 
     while (game_state_monitor.is_connected()) {
+        std::cout << "Esperando inicializacion del nuevo mapa " << std::endl;
         game_state_monitor.set_game_state(WAITING_FOR_INITIALIZATION);
         map_change_buffer.wait_for_map();
         game_state_monitor.set_game_state(RUNNING);
 
+        std::cout << "Instanciando juego" << std::endl;
         GameView game(scaler, map_change_buffer.get_follow_entity_id(),
                       socket_manager, window, chat_buffer, game_state_monitor,
                       map_change_buffer.get_map_info());

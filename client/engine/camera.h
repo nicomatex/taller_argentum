@@ -65,7 +65,7 @@ class Camera {
     /* Renderiza todos las entidades con una componente visual.*/
     void draw_all();
 
-    void render_map_layer(std::vector<Decoration> &layer);
+    void render_map_layers(std::vector<std::vector<Decoration>> &layers);
 
     /* Recibe coordenadas absolutas de pixeles de la pantalla
     y devuelve las coordenadas del tile dibujado en esas coords. */

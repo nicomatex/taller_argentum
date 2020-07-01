@@ -76,6 +76,7 @@ void ClientReceiveHandler::handle_initialization(Event &ev) {
               << " - " << player_info["pos"]["y"] << std::endl;
 
     json map_description = initialization_info["map_info"];
+    std::cout << "Recibido nuevo mapa. Llenando " << std::endl;
     map_change_buffer.fill(map_description, player_info["entity_id"]);
 }
 

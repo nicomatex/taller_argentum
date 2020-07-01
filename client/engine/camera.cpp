@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <iostream>
+#include <queue>
 
 #include "ECS/entity.h"
 #include "ECS/entity_manager.h"
@@ -164,20 +165,37 @@ void Camera::draw(RenderizableObject *component, int x, int y, int x_tmp_offset,
     component->render(dest);
 }
 
-void Camera::render_map_layer(std::vector<Decoration> &layer) {
-    for (auto tile = layer.begin(); tile != layer.end(); ++tile) {
-        SDL_Rect dest = _get_render_area((*tile));
-        (*tile).render(dest);
+void Camera::render_map_layers(std::vector<std::vector<Decoration>> &layers) {
+    for (auto &layer : layers) {
+        for (auto tile = layer.begin(); tile != layer.end(); ++tile) {
+            SDL_Rect dest = _get_render_area((*tile));
+            (*tile).render(dest);
+        }
     }
 }
 
 void Camera::draw_all() {
+    auto comp = [](Entity *a, Entity *b) {
+        return a->get_component<PositionComponent>().get_y() >
+               b->get_component<PositionComponent>().get_y();
+    };
+
     std::vector<EntityId> ids =
         EntityManager::get_instance().get_entity_id_list();
-    for (const int &id : ids) {
-        Entity &entity = EntityManager::get_instance().get_from_id(id);
-        if (entity.has_component<VisualCharacterComponent>()) {
-            entity.get_component<VisualCharacterComponent>().draw(*this);
+
+    /* Para que los pies de un personaje no se rendericen
+    por encima de la cabeza de otro. */
+    std::vector<Entity*> entity_render_order;
+    for(auto &id : ids){
+        Entity* entity = &EntityManager::get_instance().get_from_id(id);
+        entity_render_order.push_back(entity);
+        std::push_heap(entity_render_order.begin(),entity_render_order.end(),comp);
+    }
+
+    
+    for (auto &entity : entity_render_order) {
+        if (entity->has_component<VisualCharacterComponent>()) {
+            entity->get_component<VisualCharacterComponent>().draw(*this);
         }
     }
 }
@@ -192,8 +210,6 @@ position_t Camera::tile_at(int x, int y) {
     int camera_corner_x_tile = x_center_tile - (width_tiles / 2);
     int camera_corner_y_tile = y_center_tile - (height_tiles / 2);
 
-    return {
-        relative_tile_x + camera_corner_x_tile,
-            relative_tile_y + camera_corner_y_tile
-    };
+    return {relative_tile_x + camera_corner_x_tile,
+            relative_tile_y + camera_corner_y_tile};
 }
