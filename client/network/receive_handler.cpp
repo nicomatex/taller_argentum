@@ -78,6 +78,7 @@ void ClientReceiveHandler::handle_initialization(Event &ev) {
     json map_description = initialization_info["map_info"];
     std::cout << "Recibido nuevo mapa. Llenando " << std::endl;
     map_change_buffer.fill(map_description, player_info["entity_id"]);
+    game_state_monitor.set_game_state(READY_TO_RUN);
 }
 
 void ClientReceiveHandler::handle_entity_update(Event &ev) {

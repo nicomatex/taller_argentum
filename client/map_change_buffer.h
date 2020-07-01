@@ -16,9 +16,7 @@ class MapChangeBuffer {
    public:
     MapChangeBuffer();
     ~MapChangeBuffer();
-    /* Duerme el thread llamante hasta que la informacion este disponible.*/
-    void wait_for_map();
-
+    
     /* Llena el buffer con map info. */
     void fill(nlohmann::json map_info, unsigned int follow_entity_id);
 

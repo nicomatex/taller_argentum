@@ -30,7 +30,7 @@ GameView::~GameView() {}
 
 void GameView::run() {
     SDL_Rect main_render_viewport = scaler.scale(VIEWPORT_MAIN_RENDER);
-
+    game_state_monitor.set_game_state(RUNNING);
     while (game_state_monitor.get_game_state() == RUNNING) {
         window.fill(0, 0, 0, 255);
 

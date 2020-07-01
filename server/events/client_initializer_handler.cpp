@@ -16,6 +16,7 @@ void ClientInitializeHandler::disconnect() const {
     nlohmann::json connect_info = event.get_json();
     server_manager.send_to(connect_info["client_id"],
                            EventFactory::disconnect());
+    std::cout << "Sending drop to " << connect_info["client_id"] << std::endl;
     server_manager.rm_client(connect_info["client_id"]);
 }
 

@@ -118,7 +118,6 @@ void ServerManager::rm_name(ClientId client_id) {
 
 void ServerManager::add_player(ClientId client_id, nlohmann::json player_data,
                                bool send_map_data) {
-    std::cerr << "abcde" << std::endl;
     m.lock();
     MapId map_id = player_data["map_id"];
     MapMonitor& map_monitor = map_manager[map_id];

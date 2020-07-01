@@ -4,13 +4,6 @@ MapChangeBuffer::MapChangeBuffer() : ready(false) {}
 
 MapChangeBuffer::~MapChangeBuffer() {}
 
-void MapChangeBuffer::wait_for_map() {
-    std::unique_lock<std::mutex> l(m);
-    while (!ready) {
-        cv.wait(l);
-    }
-}
-
 void MapChangeBuffer::fill(nlohmann::json new_map_info,
                            unsigned int new_follow_entity_id) {
     map_info = new_map_info;

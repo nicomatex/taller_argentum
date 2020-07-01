@@ -25,6 +25,7 @@ void GameStateMonitor::quit() {
     std::unique_lock<std::mutex> l(m);
     game_state = EXITING;
     connected = false;
+    cv.notify_all();
 }
 
 void GameStateMonitor::wait_for_game_state(game_state_t expected_game_state) {
