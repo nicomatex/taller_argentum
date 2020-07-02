@@ -78,6 +78,18 @@
             "filename": "8.png",
             "needs ckey": true,
             "ckey" : [0,0,0]
+            },
+            {
+            "id":9,
+            "filename": "9.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
+            },
+            {
+            "id":10,
+            "filename": "10.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
             }
 
         ]
@@ -394,6 +406,102 @@
     		{
     			"id":3,
     			"filename": "3.png",
+    			"needs ckey": false,
+    			"ckey" : [0,0,0]
+    		},
+    		{
+    			"id":4,
+    			"filename": "4.png",
+    			"needs ckey": false,
+    			"ckey" : [0,0,0]
+    		},
+    		{
+    			"id":5,
+    			"filename": "5.png",
+    			"needs ckey": false,
+    			"ckey" : [0,0,0]
+    		},
+    		{
+    			"id":6,
+    			"filename": "6.png",
+    			"needs ckey": false,
+    			"ckey" : [0,0,0]
+    		},
+    		{
+    			"id":7,
+    			"filename": "7.png",
+    			"needs ckey": false,
+    			"ckey" : [0,0,0]
+    		},
+    		{
+    			"id":8,
+    			"filename": "8.png",
+    			"needs ckey": false,
+    			"ckey" : [0,0,0]
+    		},
+    		{
+    			"id":9,
+    			"filename": "9.png",
+    			"needs ckey": false,
+    			"ckey" : [0,0,0]
+    		},
+    		{
+    			"id":10,
+    			"filename": "10.png",
+    			"needs ckey": false,
+    			"ckey" : [0,0,0]
+    		},
+    		{
+    			"id":11,
+    			"filename": "11.png",
+    			"needs ckey": false,
+    			"ckey" : [0,0,0]
+    		},
+    		{
+    			"id":12,
+    			"filename": "12.png",
+    			"needs ckey": false,
+    			"ckey" : [0,0,0]
+    		},
+    		{
+    			"id":13,
+    			"filename": "13.png",
+    			"needs ckey": false,
+    			"ckey" : [0,0,0]
+    		},
+    		{
+    			"id":14,
+    			"filename": "14.png",
+    			"needs ckey": false,
+    			"ckey" : [0,0,0]
+    		},
+    		{
+    			"id":15,
+    			"filename": "15.png",
+    			"needs ckey": false,
+    			"ckey" : [0,0,0]
+    		},
+    		{
+    			"id":16,
+    			"filename": "16.png",
+    			"needs ckey": false,
+    			"ckey" : [0,0,0]
+    		},
+    		{
+    			"id":17,
+    			"filename": "17.png",
+    			"needs ckey": false,
+    			"ckey" : [0,0,0]
+    		},
+    		{
+    			"id":18,
+    			"filename": "18.png",
+    			"needs ckey": false,
+    			"ckey" : [0,0,0]
+    		},
+    		{
+    			"id":19,
+    			"filename": "19.png",
     			"needs ckey": false,
     			"ckey" : [0,0,0]
     		}

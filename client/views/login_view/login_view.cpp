@@ -17,7 +17,11 @@ LoginView::LoginView(SDLWindow &window, ResponsiveScaler &scaler,
       login_button(scaler.scale(LOGIN_BUTTON_AREA),
                    scaler.scale(LOGIN_VIEWPORT), window.get_renderer(),
                    game_state_monitor, socket_manager, character_name_input),
-      ui_event_handler(character_name_input, login_button, game_state_monitor) {
+      create_character_button(scaler.scale(CREATE_CHAR_BUTTON_AREA),
+                              scaler.scale(LOGIN_VIEWPORT),
+                              window.get_renderer(), game_state_monitor),
+      ui_event_handler(character_name_input, login_button,
+                       create_character_button, game_state_monitor) {
     window.set_viewport(scaler.scale(LOGIN_VIEWPORT));
     character_name_input.toggle();  // Activa el cursor del input.
 }
@@ -25,10 +29,10 @@ LoginView::LoginView(SDLWindow &window, ResponsiveScaler &scaler,
 LoginView::~LoginView() {}
 
 void LoginView::run() {
-    SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" );
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
     ResourceManager::get_instance().get_music(1).play();
     while (game_state_monitor.get_game_state() == LOGGING) {
-        window.fill(0,0,0,255);
+        window.fill(0, 0, 0, 255);
         SDL_Event e;
         ui_event_handler.handle();
         background.render(scaler.scale(LOGIN_BACKGROUND_AREA));

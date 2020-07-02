@@ -1,11 +1,13 @@
 #include "login_view_ui_handler.h"
 
 #include "SDL2/SDL.h"
-LoginUiEventHandler::LoginUiEventHandler(TextInput& character_name_input,
-                                         LoginButton& login_button,
-                                         GameStateMonitor& game_state_monitor)
+LoginUiEventHandler::LoginUiEventHandler(
+    TextInput& character_name_input, LoginButton& login_button,
+    CreateCharacterButton& create_character_button,
+    GameStateMonitor& game_state_monitor)
     : character_name_input(character_name_input),
       login_button(login_button),
+      create_character_button(create_character_button),
       game_state_monitor(game_state_monitor) {
     SDL_StartTextInput();
 }
@@ -30,5 +32,6 @@ void LoginUiEventHandler::handle() {
             }
         }
         login_button.handle_event(e);
+        create_character_button.handle_event(e);
     }
 }

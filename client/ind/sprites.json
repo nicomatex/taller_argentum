@@ -576,6 +576,150 @@
                         "frames": 1
                     }
                 }
+            },
+            {
+                "id": 9,
+                "texture": 9,
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                }
+            },
+            {
+                "id": 10,
+                "texture": 10,
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 34,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 17,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 51,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 17,
+                        "frame width": 17,
+                        "frames": 1
+                    }
+                }
             }
         ],
         "bodies": [

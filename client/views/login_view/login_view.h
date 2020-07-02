@@ -7,6 +7,7 @@
 #include "../responsive_scaler.h"
 #include "../../../include/network/socket_manager.h"
 #include "login_button.h"
+#include "create_character_button.h"
 #include "login_view_ui_handler.h"
 
 class LoginView {
@@ -17,6 +18,7 @@ class LoginView {
     GameStateMonitor &game_state_monitor;
     TextInput character_name_input;
     LoginButton login_button;
+    CreateCharacterButton create_character_button;
     LoginUiEventHandler ui_event_handler;
 
    public:
