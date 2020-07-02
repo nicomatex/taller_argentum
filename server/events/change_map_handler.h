@@ -1,14 +1,14 @@
 #ifndef CHANGE_MAP_HANDLER_H
 #define CHANGE_MAP_HANDLER_H
 
-#include "th_event_handler.h"
+#include "../../include/blocking_th_event_handler.h"
 
-class ChangeMapHandler : public ThEventHandler {
+class ChangeMapHandler : public BlockingThEventHandler {
    protected:
-    void run_handler() override;
+    void handle(Event& ev) override;
 
    public:
-    ChangeMapHandler(Event ev);
+    ChangeMapHandler();
     ~ChangeMapHandler();
 };
 

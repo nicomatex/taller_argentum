@@ -5,22 +5,7 @@
 #include "../server_manager.h"
 #include "event_factory.h"
 
-ClientInitializeHandler::ClientInitializeHandler(Event ev)
-    : ThEventHandler(ev) {}
-
-ClientInitializeHandler::~ClientInitializeHandler() {}
-
-void ClientInitializeHandler::disconnect() const {
-    // TODO: mejorar este handle
-    ServerManager& server_manager = ServerManager::get_instance();
-    nlohmann::json connect_info = event.get_json();
-    server_manager.send_to(connect_info["client_id"],
-                           EventFactory::disconnect());
-    std::cout << "Sending drop to " << connect_info["client_id"] << std::endl;
-    server_manager.rm_client(connect_info["client_id"]);
-}
-
-void ClientInitializeHandler::run_handler() {
+void ClientInitializeHandler::handle(Event& event) {
     try {
         ServerManager& server_manager = ServerManager::get_instance();
         nlohmann::json connect_info = event.get_json();
@@ -34,8 +19,24 @@ void ClientInitializeHandler::run_handler() {
             character_manager.get_character(player_name);
         server_manager.add_player(connect_info["client_id"], player_info);
     } catch (const CharacterNotFoundException& e) {
-        disconnect();
+        disconnect(event);
     } catch (const DuplicatedPlayerException& e) {
-        disconnect();
+        disconnect(event);
     }
 }
+
+void ClientInitializeHandler::disconnect(Event& event) const {
+    // TODO: mejorar este handle
+    ServerManager& server_manager = ServerManager::get_instance();
+    nlohmann::json connect_info = event.get_json();
+    server_manager.send_to(connect_info["client_id"],
+                           EventFactory::disconnect());
+    std::cout << "Sending drop to " << connect_info["client_id"] << std::endl;
+    server_manager.rm_client(connect_info["client_id"]);
+}
+
+ClientInitializeHandler::ClientInitializeHandler() : BlockingThEventHandler() {
+    std::cerr << "ClientInitializeHandler: starting.." << std::endl;
+}
+
+ClientInitializeHandler::~ClientInitializeHandler() {}

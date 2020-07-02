@@ -6,73 +6,69 @@
 #include "events/client_drop_handler.h"
 #include "events/client_initializer_handler.h"
 #include "events/command_handler.h"
+#include "events/disconnect_handler.h"
 #include "events/movement_handler.h"
 #include "server_manager.h"
 
 // Temp
 #include <iostream>
 
-void ThDispatcher::join_done(bool wait) {
-    std::unique_lock<std::mutex> l(m);
-    for (auto it = started_handlers.begin(); it != started_handlers.end();) {
-        ThEventHandler* handler = *it;
-        if (!wait && !handler->is_done()) {
-            it++;
-            continue;
+void ThDispatcher::stop_and_join_handlers() {
+    for (auto it : handlers) {
+        if (it.second->is_threaded()) {
+            BlockingThEventHandler* handler =
+                static_cast<BlockingThEventHandler*>(it.second);
+            handler->stop();
+            handler->join();
         }
-        handler->join();
-        it = started_handlers.erase(it);
-        delete handler;
+        delete it.second;
     }
 }
 
-ThDispatcher::ThDispatcher() {}
-ThDispatcher::~ThDispatcher() {}
-
-void ThDispatcher::handle(Event& ev) {
+void ThDispatcher::handle(Event& event) {
     try {
-        nlohmann::json json_ev = ev.get_json();
-        ThEventHandler* handler = nullptr;
+        nlohmann::json json_ev = event.get_json();
         int ev_id = json_ev["ev_id"];
-        switch (ev_id) {
-            case SERVER_DROP_CLIENT:
-                handler = new ClientDropHandler(ev);
-                break;
-            case EV_ID_DISCONNECT:
-                ServerManager::get_instance().drop_client(json_ev["client_id"]);
-                break;
-            case EV_ID_CONNECT:
-                handler = new ClientInitializeHandler(ev);
-                break;
-            case EV_ID_MOVE:
-                handler = new MovementHandler(ev);
-                break;
-            case EV_ID_COMMAND:
-                handler = new CommandHandler(ev);
-                break;
-            case SERVER_CHANGE_MAP:
-                handler = new ChangeMapHandler(ev);
-                break;
-            case EV_ID_ATTACK:
-                handler = new AttackHandler(ev);
-                break;
-            case 1000:
-                stop();
-                join_done(true);
-                break;
-            default:
-                std::cerr << "Dispatcher: No handler for: " << json_ev
-                          << std::endl;
-                break;
+        if (!handlers.count(ev_id)) {
+            std::cerr << "Dispatcher: No handler for: " << json_ev << std::endl;
+        } else {
+            handlers[ev_id]->push_event(event);
         }
-        if (handler) {
-            std::unique_lock<std::mutex> l(m);
-            handler->start();
-            started_handlers.push_back(handler);
-        }
-        join_done(false);
     } catch (const nlohmann::detail::exception& e) {
-        std::cerr << "Dispatcher: error in json: " << ev.get_json()
+        std::cerr << "Dispatcher: error in json: " << event.get_json()
                   << std::endl;
     }
+}
+
+ThDispatcher::ThDispatcher() : BlockingThEventHandler() {
+    std::cerr << "Dispatcher: starting.." << std::endl;
+    handlers[static_cast<int>(SERVER_DROP_CLIENT)] =
+        static_cast<EventHandler*>(new ClientDropHandler());
+    handlers[static_cast<int>(SERVER_CHANGE_MAP)] =
+        static_cast<EventHandler*>(new ChangeMapHandler());
+    handlers[static_cast<int>(EV_ID_CONNECT)] =
+        static_cast<EventHandler*>(new ClientInitializeHandler());
+    handlers[static_cast<int>(EV_ID_DISCONNECT)] =
+        static_cast<EventHandler*>(new DisconnectHandler());
+    handlers[static_cast<int>(EV_ID_MOVE)] =
+        static_cast<EventHandler*>(new MovementHandler());
+    handlers[static_cast<int>(EV_ID_COMMAND)] =
+        static_cast<EventHandler*>(new CommandHandler());
+    handlers[static_cast<int>(EV_ID_ATTACK)] =
+        static_cast<EventHandler*>(new AttackHandler());
+
+    // Inicializamos los handlers que sean threads
+    for (auto it : handlers) {
+        if (it.second->is_threaded()) {
+            BlockingThEventHandler* handler =
+                static_cast<BlockingThEventHandler*>(it.second);
+            handler->start();
+        }
+    }
+}
+ThDispatcher::~ThDispatcher() {}
+
+void ThDispatcher::stop() {
+    BlockingThEventHandler::stop();
+    stop_and_join_handlers();
 }

@@ -23,6 +23,10 @@ BlockingThEventHandler& BlockingThEventHandler::operator=(
     return *this;
 }
 
+bool BlockingThEventHandler::is_threaded() const {
+    return true;
+}
+
 void BlockingThEventHandler::push_event(const Event& ev) {
     try {
         event_queue.push(ev);
