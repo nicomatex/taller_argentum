@@ -5,6 +5,7 @@
 
 #include "../../include/nlohmann/json.hpp"
 #include "engine_config.h"
+#include "engine_error.h"
 
 using json = nlohmann::json;
 
@@ -41,8 +42,7 @@ void ResourceManager::_load_textures(SDLTextureLoader& loader,
                 }
 
             } catch (std::exception) {
-                std::cout << MSG_ERR_LOADING_TEXTURE << " " << texture_address
-                          << std::endl;
+                throw EngineError(MSG_ERR_LOADING_TEXTURE);
             }
         }
     }
