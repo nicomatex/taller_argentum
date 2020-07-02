@@ -120,6 +120,7 @@ void CommandHandler::handle(Event& event) {
             EventFactory::chat_message("[info] " + std::string(e.what())));
     }
     space = 0;
+    cmd = std::vector<std::string>();
 }
 
 CommandHandler::CommandHandler() : BlockingThEventHandler(), space(0) {
