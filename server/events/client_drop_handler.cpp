@@ -5,9 +5,10 @@
 #include "../map_monitor.h"
 #include "../server_manager.h"
 
-ClientDropHandler::ClientDropHandler(Event ev) : ThEventHandler(ev) {}
+// Temp
+#include <iostream>
 
-void ClientDropHandler::run_handler() {
+void ClientDropHandler::handle(Event& event) {
     ClientId client_id = event.get_json()["client_id"];
     ServerManager& server_manager = ServerManager::get_instance();
     CharacterManager& character_manager =
@@ -17,6 +18,10 @@ void ClientDropHandler::run_handler() {
     character_manager.save();  // persisto el diccionario.
     character_manager.set_character(player_info);
     server_manager.rm_client(client_id);
+}
+
+ClientDropHandler::ClientDropHandler() : BlockingThEventHandler() {
+    std::cerr << "ClientDropHandler: starting.." << std::endl;
 }
 
 ClientDropHandler::~ClientDropHandler() {}

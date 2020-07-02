@@ -1,16 +1,16 @@
 #include "movement_handler.h"
 
-#include <iostream>  //TODO: SACAR DESP
-
 #include "../game/action_move.h"
 #include "../map_monitor.h"
 #include "../server_manager.h"
 
-MovementHandler::MovementHandler(Event ev) : ThEventHandler(ev) {}
+// Temp
+#include <iostream>
 
+MovementHandler::MovementHandler() {}
 MovementHandler::~MovementHandler() {}
 
-void MovementHandler::run_handler() {
+void MovementHandler::push_event(const Event& event) {
     ServerManager& server_manager = ServerManager::get_instance();
     nlohmann::json movement_info = event.get_json();
     ClientId client_id = movement_info["client_id"];

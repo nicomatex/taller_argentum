@@ -1,17 +1,18 @@
 #ifndef CLIENT_INITIALIZER_H
 #define CLIENT_INITIALIZER_H
 
+#include "../../include/blocking_th_event_handler.h"
 #include "../../include/event.h"
-#include "th_event_handler.h"
 
-class ClientInitializeHandler : public ThEventHandler {
+class ClientInitializeHandler : public BlockingThEventHandler {
+   private:
+    void disconnect(Event& ev) const;
+
    protected:
-    void run_handler() override;
-
-    void disconnect() const;
+    void handle(Event& ev) override;
 
    public:
-    ClientInitializeHandler(Event ev);
+    ClientInitializeHandler();
     ~ClientInitializeHandler();
 };
 

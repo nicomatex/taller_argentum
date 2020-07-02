@@ -6,7 +6,6 @@
 #include "../events/event_factory.h"
 #include "../map_monitor.h"
 #include "../server_manager.h"
-#include "attack_handler.h"
 
 #define COMMAND '/'
 #define WHISPER '@'
@@ -38,8 +37,6 @@ void CommandHandler::parse_line(const std::string& line) {
             cmd_type = CMD_DISCONNECT;
         } else if (cmd[0] == "ayuda") {
             cmd_type = CMD_HELP;
-        } else if (cmd[0] == "attack") {
-            cmd_type = CMD_ATTACK;
         } else {
             throw CommandErrorException();
         }
@@ -87,7 +84,7 @@ void CommandHandler::cmd_disconnect(ClientId client_id) {
     server_manager.drop_client(client_id);
 }
 
-void CommandHandler::run_handler() {
+void CommandHandler::handle(Event& event) {
     nlohmann::json json = event.get_json();
     try {
         std::string msg = json["msg"];
@@ -100,6 +97,7 @@ void CommandHandler::run_handler() {
         switch (cmd_type) {
             case CMD_WHISPER:
                 if (space == msg.npos)
+                    // No hay un mensaje, lo recibido es '@{nombre}'
                     throw CommandErrorException();
                 cmd_whisper(json["client_id"]);
                 break;
@@ -112,11 +110,6 @@ void CommandHandler::run_handler() {
             case CMD_DISCONNECT:
                 cmd_disconnect(json["client_id"]);
                 break;
-            case CMD_ATTACK: {
-                AttackHandler ah(event);
-                ah.start();
-                ah.join();
-            } break;
             default:
                 throw CommandErrorException();
                 break;
@@ -126,7 +119,10 @@ void CommandHandler::run_handler() {
             json["client_id"],
             EventFactory::chat_message("[info] " + std::string(e.what())));
     }
+    space = 0;
 }
 
-CommandHandler::CommandHandler(Event ev) : ThEventHandler(ev), space(0) {}
+CommandHandler::CommandHandler() : BlockingThEventHandler(), space(0) {
+    std::cerr << "CommandHandler: starting.." << std::endl;
+}
 CommandHandler::~CommandHandler() {}

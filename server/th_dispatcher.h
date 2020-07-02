@@ -2,17 +2,17 @@
 #define TH_DISPATCHER_H
 
 #include <mutex>
-#include <vector>
+#include <unordered_map>
 
 #include "../include/blocking_th_event_handler.h"
-#include "events/th_event_handler.h"
+#include "../include/event.h"
+#include "../include/event_handler.h"
 
 class ThDispatcher : public BlockingThEventHandler {
    private:
-    std::mutex m;
-    std::vector<ThEventHandler*> started_handlers;
+    std::unordered_map<int, EventHandler*> handlers;
 
-    void join_done(bool wait);
+    void stop_and_join_handlers();
 
    protected:
     void handle(Event& ev) override;
@@ -20,6 +20,8 @@ class ThDispatcher : public BlockingThEventHandler {
    public:
     ThDispatcher();
     ~ThDispatcher();
+
+    void stop() override;
 };
 
 #endif  // TH_DISPATCHER_H

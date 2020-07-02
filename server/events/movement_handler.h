@@ -2,16 +2,15 @@
 #define MOVEMENT_HANDLER_H
 
 #include "../../include/event.h"
+#include "../../include/event_handler.h"
 #include "../../include/types.h"
-#include "th_event_handler.h"
 
-class MovementHandler : public ThEventHandler {
-   protected:
-    void run_handler() override;
-
+class MovementHandler : public EventHandler {
    public:
-    MovementHandler(Event ev);
+    MovementHandler();
     ~MovementHandler();
+
+    void push_event(const Event& ev) override;
 };
 
 #endif  // MOVEMENT_HANDLER_H

@@ -5,11 +5,13 @@
 // Temp
 #include <iostream>
 
-void ChangeMapHandler::run_handler() {
+void ChangeMapHandler::handle(Event& event) {
     nlohmann::json json = event.get_json();
     ServerManager& server_manager = ServerManager::get_instance();
     server_manager.add_player(json["client_id"], json["player_info"]);
 }
 
-ChangeMapHandler::ChangeMapHandler(Event ev) : ThEventHandler(ev) {}
+ChangeMapHandler::ChangeMapHandler() : BlockingThEventHandler() {
+    std::cerr << "ChangeMapHandler: starting.." << std::endl;
+}
 ChangeMapHandler::~ChangeMapHandler() {}

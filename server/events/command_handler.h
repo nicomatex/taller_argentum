@@ -3,9 +3,9 @@
 
 #include <string>
 
+#include "../../include/blocking_th_event_handler.h"
 #include "../../include/event.h"
 #include "../../include/types.h"
-#include "th_event_handler.h"
 
 enum cmd_type {
     CMD_MESSAGE,
@@ -22,11 +22,10 @@ enum cmd_type {
     CMD_DROP,
     CMD_WHISPER,
     CMD_DISCONNECT,
-    CMD_ATTACK,
     CMD_HELP
 };
 
-class CommandHandler : public ThEventHandler {
+class CommandHandler : public BlockingThEventHandler {
    private:
     size_t space;
     enum cmd_type cmd_type;
@@ -43,10 +42,10 @@ class CommandHandler : public ThEventHandler {
     void cmd_disconnect(ClientId client_id);
 
    protected:
-    void run_handler() override;
+    void handle(Event& ev) override;
 
    public:
-    CommandHandler(Event ev);
+    CommandHandler();
     ~CommandHandler();
 };
 

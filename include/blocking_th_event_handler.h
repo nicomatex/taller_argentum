@@ -5,6 +5,7 @@
 
 #include "blocking_queue.h"
 #include "event.h"
+#include "event_handler.h"
 #include "thread.h"
 
 class EventHandlerStoppedException : public std::exception {
@@ -18,7 +19,7 @@ class EventHandlerStoppedException : public std::exception {
     ~EventHandlerStoppedException() {}
 };
 
-class BlockingThEventHandler : public Thread {
+class BlockingThEventHandler : public Thread, public EventHandler {
    private:
     BlockingQueue<Event> event_queue;
 
@@ -29,17 +30,18 @@ class BlockingThEventHandler : public Thread {
 
    public:
     BlockingThEventHandler();
+    ~BlockingThEventHandler();
 
     BlockingThEventHandler(BlockingThEventHandler&& other);
     BlockingThEventHandler& operator=(BlockingThEventHandler&& other);
 
-    void push_event(const Event& ev);
+    bool is_threaded() const override;
+
+    void push_event(const Event& ev) override;
 
     virtual void run() override;
 
     virtual void stop();
-
-    ~BlockingThEventHandler();
 };
 
 #endif  // BLOCKING_TH_EVENT_HANDLER_H
