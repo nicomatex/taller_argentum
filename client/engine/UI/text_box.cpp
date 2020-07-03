@@ -11,7 +11,6 @@ TextBox::TextBox(SDL_Rect render_area, SDL_Renderer* renderer, int nlines,
       background_color(background_color) {
     for (int i = 0; i < nlines; i++) {
         render_lines.emplace_back("", font, font_color, renderer);
-        render_lines[i].set_style(TTF_STYLE_NORMAL);
     }
 }
 

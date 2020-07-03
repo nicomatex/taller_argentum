@@ -9,7 +9,6 @@ StatBar::StatBar(SDL_Rect render_area, TTF_Font* font, SDL_Renderer* renderer,
       render_text("", font, text_color, renderer),
       max_value(max_value),
       current_value(max_value) {
-    render_text.set_style(TTF_STYLE_BOLD);
     render_text.update_text(std::to_string(current_value) + "/" + std::to_string(max_value));
 }
 

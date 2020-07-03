@@ -7,7 +7,7 @@
 #include "../responsive_scaler.h"
 
 Hud::Hud(ResponsiveScaler& scaler, SDLWindow& window, ChatBuffer& chat_buffer,
-         Entity& player)
+         Entity& player, SocketManager& socket_manager)
     : scaler(scaler),
       window(window),
       player(player),
@@ -21,13 +21,27 @@ Hud::Hud(ResponsiveScaler& scaler, SDLWindow& window, ChatBuffer& chat_buffer,
                  ResourceManager::get_instance().get_font(STAT_FONT_ID),
                  window.get_renderer(), 999, HP_BAR_COLOR, STAT_BAR_FONT_COLOR),
       equipped_items(scaler.scale(EQUIPPED_ITEMS_AREA), window.get_renderer(),
-                     4, 1),
-      cast_button(scaler.scale(CAST_BUTTON_AREA), scaler.scale(VIEWPORT_SIDE_PANEL),
-                  window.get_renderer()),
+                     4, 1, 1),
+      inventory(
+          scaler.scale(INVENTORY_AREA), scaler.scale(VIEWPORT_SIDE_PANEL),
+          INVENTORY_ROWS, INVENTORY_COLS,
+          ResourceManager::get_instance().get_font(INVENTORY_QTIES_FONT_ID),
+          window.get_renderer(), socket_manager),
+      cast_button(scaler.scale(CAST_BUTTON_AREA),
+                  scaler.scale(VIEWPORT_SIDE_PANEL), window.get_renderer()),
       side_panel_background(
-          ResourceManager::get_instance().get_texture("interface", 1)) {}
+          ResourceManager::get_instance().get_texture("interface", 1)),
+      gold_text("9999", ResourceManager::get_instance().get_font(1),
+                GOLD_TEXT_COLOR, window.get_renderer()) {}
 
 Hud::~Hud() {}
+
+void Hud::_update_inventory() {
+    SDLTexture* weapon_icon =
+        &(ResourceManager::get_instance().get_texture("weapon_icons", 1));
+    inventory.set_item(7, weapon_icon, 5);
+    // TODO buffer para conectar con el server.
+}
 
 void Hud::_update_equipped_items() {
     VisualCharacterComponent& character_visuals =
@@ -76,9 +90,17 @@ void Hud::_update_stat_bars() {
     mana_bar.set_current_value(player_stats.get_stat_current_value("mp"));
 }
 
+void Hud::_render_gold_amount(){
+    SDL_Rect dest = scaler.scale(GOLD_TEXT_AREA);
+    float scale_factor =  (float)dest.h / (float)gold_text.get_height();
+    dest.w = gold_text.get_width() * scale_factor;
+    gold_text.render(dest);
+}
+
 void Hud::update() {
     _update_stat_bars();
     _update_equipped_items();
+    _update_inventory();
     chat_buffer.flush(chat);
 }
 
@@ -90,9 +112,11 @@ void Hud::render() {
     health_bar.render();
     mana_bar.render();
     equipped_items.render();
+    inventory.render();
+    _render_gold_amount();
 }
 
-
-void Hud::handle_event(SDL_Event &e){
+void Hud::handle_event(SDL_Event& e) {
     cast_button.handle_event(e);
+    inventory.handle_event(e);
 }

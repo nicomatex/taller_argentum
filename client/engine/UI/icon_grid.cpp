@@ -1,19 +1,21 @@
 #include "icon_grid.h"
-
 #include <iostream>
 #include <stdexcept>
 IconGrid::IconGrid(SDL_Rect render_area, SDL_Renderer* renderer, int rows,
-                   int cols)
+                   int cols, float size_proportion)
     : render_area(render_area),
       renderer(renderer),
       icon_width(render_area.w / cols),
       icon_height(render_area.h / rows),
       rows(rows),
-      cols(cols) {
+      cols(cols),
+      size_proportion(size_proportion) {
     icons.resize(rows * cols);
     for (int i = 0; i < icons.size(); i++) {
         icons[i] = NULL;
     }
+    if(size_proportion < 0) size_proportion = 0;
+    if(size_proportion > 1) size_proportion = 1;
 }
 
 IconGrid::~IconGrid() {}
@@ -30,11 +32,10 @@ void IconGrid::render() {
         for (int j = 0; j < cols; j++) {
             int vector_position = j + i * cols;
             if (!icons[vector_position]) continue;
-
             SDL_Rect dest_area = {render_area.x + j * icon_width,
                                   render_area.y + i * icon_height, 
-                                  icon_width,
-                                  icon_height};
+                                  (int)(icon_width * size_proportion),
+                                  (int)(icon_height * size_proportion)};
             icons[vector_position]->render(dest_area);
         }
     }

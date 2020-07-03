@@ -4,18 +4,19 @@
 #include <iostream>
 
 #include "../../../include/network/socket_exception.h"
+#include "../../network/event_factory.h"
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_mixer.h"
-#include "../../network/event_factory.h"
 
 UiEventHandler::UiEventHandler(SocketManager &socket_manager,
                                GameStateMonitor &game_state_monitor, Hud &hud,
-                               Camera &camera)
+                               Camera &camera, SDL_Rect main_render_viewport)
     : socket_manager(socket_manager),
       hud(hud),
       text_input_enabled(false),
       game_state_monitor(game_state_monitor),
-      camera(camera) {
+      camera(camera),
+      main_render_viewport(main_render_viewport) {
     SDL_StopTextInput();
 }
 
@@ -67,7 +68,10 @@ void UiEventHandler::handle_keydown_return() {
     if (text_input_enabled) {
         SDL_StopTextInput();
         text_input_enabled = false;
-        send_event(EventFactory::chat_event(hud.chat.get_input_and_erase()));
+        std::string chat_input = hud.chat.get_input_and_erase();
+        if(chat_input != ""){
+            send_event(EventFactory::chat_event(chat_input));
+        }
     } else {
         SDL_StartTextInput();
         text_input_enabled = true;
@@ -100,11 +104,18 @@ void UiEventHandler::handle_keydown_sound_toggle() {
     }
 }
 
-void UiEventHandler::handle_click(SDL_Event &e){
-    int x,y;
-    SDL_GetMouseState(&x,&y);
-    position_t tile_clicked = camera.tile_at(x,y);
-    std::cout << "Tile clicked: " << tile_clicked.x << " - " << tile_clicked.y << std::endl;
+void UiEventHandler::handle_click(SDL_Event &e) {
+    int x, y;
+    SDL_GetMouseState(&x, &y);
+    if (x < main_render_viewport.x ||
+        x > main_render_viewport.x + main_render_viewport.w)
+        return;
+    if (y < main_render_viewport.y ||
+        y > main_render_viewport.y + main_render_viewport.h)
+        return;
+    position_t tile_clicked = camera.tile_at(x, y);
+    std::cout << "Tile clicked: " << tile_clicked.x << " - " << tile_clicked.y
+              << std::endl;
 }
 
 void UiEventHandler::handle() {
@@ -165,7 +176,7 @@ void UiEventHandler::handle() {
             }
         } else if (e.type == SDL_TEXTINPUT) {
             hud.chat.add_characters(e.text.text);
-        }else if (e.type == SDL_MOUSEBUTTONUP){
+        } else if (e.type == SDL_MOUSEBUTTONUP) {
             handle_click(e);
         }
         hud.handle_event(e);

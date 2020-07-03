@@ -9,8 +9,7 @@ SDLText::SDLText(const std::string& text, TTF_Font* font, SDL_Color color,
                  SDL_Renderer* renderer)
     : SDLTexture(renderer),
       text_color(color),
-      font(font),
-      style(TTF_STYLE_NORMAL) {
+      font(font){
     if (!font) {
         throw SDLError(ERR_TEXT_FONT);
     }
@@ -44,7 +43,6 @@ void SDLText::update_text(const std::string& text) {
     } else {
         render_text = text;
     }
-    TTF_SetFontStyle(font,style);
     SDL_Surface* text_surface =
         TTF_RenderText_Blended(font, render_text.c_str(), text_color);
     if (!text_surface) {
@@ -58,9 +56,4 @@ void SDLText::update_text(const std::string& text) {
     width = text_surface->w;
     height = text_surface->h;
     SDL_FreeSurface(text_surface);
-}
-
-
-void SDLText::set_style(int new_style){
-    style = new_style;
 }

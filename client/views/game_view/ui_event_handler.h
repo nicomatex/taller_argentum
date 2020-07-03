@@ -4,11 +4,11 @@
 #include <atomic>
 
 #include "../../../include/network/socket_manager.h"
-#include "chat.h"
-#include "../../network/event_factory.h"
-#include "../../game_state_monitor.h"
-#include "hud.h"
 #include "../../engine/camera.h"
+#include "../../game_state_monitor.h"
+#include "../../network/event_factory.h"
+#include "chat.h"
+#include "hud.h"
 class UiEventHandler {
    private:
     GameStateMonitor &game_state_monitor;
@@ -16,10 +16,12 @@ class UiEventHandler {
     Hud &hud;
     bool text_input_enabled;
     Camera &camera;
-
+    SDL_Rect main_render_viewport;
+    
    public:
     UiEventHandler(SocketManager &socket_manager,
-                   GameStateMonitor &game_state_monitor, Hud &hud, Camera &camera);
+                   GameStateMonitor &game_state_monitor, Hud &hud,
+                   Camera &camera, SDL_Rect main_render_viewport);
     ~UiEventHandler();
 
     void send_event(const Event &event);

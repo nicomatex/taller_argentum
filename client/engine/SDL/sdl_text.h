@@ -10,7 +10,6 @@ class SDLText : public SDLTexture {
    private:
     TTF_Font* font;
     SDL_Color text_color;
-    int style;
 
    public:
     /* Crea una textura renderizable que contiene el texto text, del color
@@ -29,7 +28,6 @@ class SDLText : public SDLTexture {
 
     /* Cambia el texto a renderizar al pasado por parametro. */
     void update_text(const std::string& text);
-    void set_style(int new_style);
 };
 
 #endif
