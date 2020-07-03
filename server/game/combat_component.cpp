@@ -51,7 +51,7 @@ attack_result_t CombatComponent::receive_damage(damage_t raw_damage) {
         received_dmg = 0;
     result.damage_dealt = received_dmg;
 
-    if (current_hp - result.damage_dealt <= 0) {
+    if ((int)current_hp - result.damage_dealt <= 0) {
         current_hp = 0;
         result.killed = true;
     } else {
