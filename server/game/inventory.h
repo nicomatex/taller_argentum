@@ -15,6 +15,11 @@ class FullInventoryException : public std::exception {
     const char* what() const throw();
 };
 
+class EmptySlotException : public std::exception {
+   public:
+    const char* what() const throw();
+};
+
 typedef uint8_t SlotId;  // 0 - 11
 
 typedef struct inventory {
@@ -47,7 +52,7 @@ class Inventory {
     Item* remove(SlotId slot_id);
     Item* remove(SlotId slot_id, uint32_t stack);
     SlotId get_available_slot(ItemId item_id);
-    Item* get_item(SlotId slot_id) const;
+    const Item& get_item(SlotId slot_id) const;
     bool slot_is_free(SlotId slot_id) const;
     bool has_item(ItemId item_id);
     nlohmann::json get_persist_data() const;

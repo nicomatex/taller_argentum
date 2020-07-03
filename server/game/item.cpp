@@ -38,8 +38,12 @@ ItemId Item::get_id() const {
     return item_info.id;
 }
 
-uint32_t Item::get_sprite_id() {
+uint32_t Item::get_sprite_id() const {
     return item_info.sprite_id;
+}
+
+item_type_t Item::get_type() const {
+    return item_info.type;
 }
 
 int Item::stack_difference(uint32_t other_stack) {

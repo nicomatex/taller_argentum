@@ -5,6 +5,10 @@ const char* FullInventoryException::what() const throw() {
     return "Inventory is full!";
 }
 
+const char* EmptySlotException::what() const throw() {
+    return "Slot is empty!";
+}
+
 Inventory::Inventory() {
     inventory = {};
 }
@@ -77,7 +81,7 @@ void Inventory::add(Item* item, SlotId slot_id) {
 */
 Item* Inventory::remove(SlotId slot_id) {
     if (slot_is_free(slot_id))
-        throw std::exception();
+        throw EmptySlotException();
     Item* item = inventory[slot_id];
     inventory[slot_id] = nullptr;
     item_id_to_slot.erase(item->get_id());
@@ -88,7 +92,7 @@ Item* Inventory::remove(SlotId slot_id, uint32_t stack) {
     ServerManager& server_manager = ServerManager::get_instance();
     ItemFactory& item_factory = server_manager.get_item_factory();
     if (slot_is_free(slot_id))
-        throw std::exception();
+        throw EmptySlotException();
     Item* item = inventory[slot_id];
     if (item->stack_difference(stack) <= 0)
         return remove(slot_id);
@@ -99,25 +103,30 @@ Item* Inventory::remove(SlotId slot_id, uint32_t stack) {
 nlohmann::json Inventory::_get_data(bool need_sprite_id) const {
     nlohmann::json json_inv;
     inventory_t inventory = {};
+    item_type_t items_types[INV_SIZE];
     ItemId item_id;
-    Item *item;
+    Item item;
     uint32_t stack;
     for (SlotId slot_id = 0; slot_id < INV_SIZE; slot_id++) {
         if (slot_is_free(slot_id)) {
             item_id = 0;
-            stack = 0;  
+            stack = 0;
+            items_types[slot_id] = invalid_type;  
         } else {
             item = get_item(slot_id);
-            if (need_sprite_id)
-                item_id = item->get_sprite_id();    
-            else
-                item_id = item->get_id();   
-            stack = item->get_stack();
+            if (need_sprite_id) {
+                item_id = item.get_sprite_id(); 
+                items_types[slot_id] = item.get_type();    
+            } else {
+                item_id = item.get_id();  
+            }    
+            stack = item.get_stack();
         } 
         inventory.items_ids[slot_id] = item_id;
         inventory.items_stacks[slot_id] = stack;
     }
     json_inv = inventory;
+    if (need_sprite_id) json_inv["item_types"] = items_types;
     return std::move(json_inv);
 }
 
@@ -137,10 +146,9 @@ bool Inventory::has_item(ItemId item_id) {
     return item_id_to_slot.count(item_id);
 }
 
-Item* Inventory::get_item(SlotId slot_id) const {
-    if (slot_is_free(slot_id))
-        return nullptr;
-    return inventory[slot_id];
+const Item& Inventory::get_item(SlotId slot_id) const {
+    if (slot_is_free(slot_id)) throw EmptySlotException();
+    return *inventory[slot_id];
 }
 
 SlotId Inventory::get_available_slot(ItemId item_id) {

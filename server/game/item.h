@@ -18,7 +18,13 @@ class NegativeStackException : public std::exception {
     const char *what() const throw();
 };
 
-typedef enum { weapon, armor, potion, gold } item_type_t;
+typedef enum { 
+    invalid_type = 0,
+    weapon = 1,
+    armor = 2,
+    potion= 3,
+    gold = 4
+} item_type_t;
 
 typedef struct item_info {
     std::string name;
@@ -54,7 +60,8 @@ class Item {
     void set_stack(uint32_t stack);
     uint32_t get_stack() const;
     ItemId get_id() const;
-    uint32_t get_sprite_id();
+    uint32_t get_sprite_id() const;
+    item_type_t get_type() const;
     int stack_difference(uint32_t other_stack);
     void increase_stack(uint32_t stack);
     void decrease_stack(uint32_t stack);
