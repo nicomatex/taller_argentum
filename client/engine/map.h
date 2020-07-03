@@ -14,9 +14,9 @@ class Map {
     int width;
     std::vector<std::vector<Decoration>> background_layers;
     std::vector<std::vector<Decoration>> foreground_layers;
+    int loot_layer_index;
 
     bool is_valid;
-
    public:
     Map(json map_description);
     Map();
@@ -27,8 +27,11 @@ class Map {
 
     /* Devuelve una referencia a los componentes visuales en la n-esima capa del
      * mapa. */
+
+    //TODO
+    void update_loot_layer();
+
     std::vector<std::vector<Decoration>>& get_background_layers();
-    
     std::vector<std::vector<Decoration>>& get_foreground_layers();
 };
 

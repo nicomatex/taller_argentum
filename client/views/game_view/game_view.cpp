@@ -7,6 +7,8 @@
 #include "../../engine/resource_manager.h"
 #include "../responsive_scaler.h"
 
+#include "../../engine/entity_factory.h"
+
 GameView::GameView(ResponsiveScaler &scaler, int follow_entity_id,
                    SocketManager &socket_manager, SDLWindow &window,
                    ChatBuffer &chat_buffer,

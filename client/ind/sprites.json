@@ -2315,7 +2315,81 @@
                     }
                 }
             }
-        ]
+        ],
+		"npcs":[
+            {
+                "id": 1,
+                "texture": 1,
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 98,
+                        "frame width": 57,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 196,
+                        "fps": 1,
+                        "frame height": 98,
+                        "frame width": 57,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 294,
+                        "fps": 1,
+                        "frame height": 98,
+                        "frame width": 57,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 98,
+                        "fps": 1,
+                        "frame height": 98,
+                        "frame width": 57,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 20,
+                        "frame height": 98,
+                        "frame width": 57,
+                        "frames": 6
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 196,
+                        "fps": 20,
+                        "frame height": 98,
+                        "frame width": 57,
+                        "frames": 5
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 294,
+                        "fps": 20,
+                        "frame height": 98,
+                        "frame width": 57,
+                        "frames": 5
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 98,
+                        "fps": 20,
+                        "frame height": 98,
+                        "frame width": 57,
+                        "frames": 6
+                    }
+                }
+            }
+		]
     },
     "decorations": {
         "environment": [

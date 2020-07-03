@@ -7,6 +7,7 @@
 #include "ECS/entity.h"
 #include "ECS/entity_manager.h"
 #include "components/visual_character_component.h"
+#include "components/visual_npc_component.h"
 #include "decoration.h"
 #include "engine_config.h"
 
@@ -196,6 +197,8 @@ void Camera::draw_all() {
     for (auto &entity : entity_render_order) {
         if (entity->has_component<VisualCharacterComponent>()) {
             entity->get_component<VisualCharacterComponent>().draw(*this);
+        }else if(entity->has_component<VisualNPCComponent>()){
+            entity->get_component<VisualNPCComponent>().draw(*this);
         }
     }
 }

@@ -106,11 +106,6 @@ Actor& VisualCharacterComponent::get_part(const std::string& type) {
 
 VisualCharacterComponent::~VisualCharacterComponent() {}
 
-void VisualCharacterComponent::bind_to_camera(Camera& bind_camera) {
-    std::unique_lock<std::recursive_mutex> l(m);
-    camera = &bind_camera;
-}
-
 void VisualCharacterComponent::_update_offset() {
     int movement_transition_time = 1000 / speed;
 

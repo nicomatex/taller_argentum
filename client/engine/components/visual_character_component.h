@@ -12,7 +12,6 @@ typedef std::unordered_map<std::string, int> PartIds;
 
 class VisualCharacterComponent : public Component {
    private:
-    Camera *camera;
     Parts parts;
     PartIds part_ids;
     int transition_offset_x;
@@ -36,8 +35,7 @@ class VisualCharacterComponent : public Component {
                              int speed);
     ~VisualCharacterComponent();
     Actor &get_part(const std::string &type);
-    void bind_to_camera(Camera &bind_camera);
-
+    
     void server_update(nlohmann::json update_info);
 
     void set_part(const std::string &type, const std::string &texture_family,

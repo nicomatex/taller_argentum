@@ -9,6 +9,7 @@ class EntityFactory {
    private:
    public:
     static Entity &create_player(nlohmann::json entity_info);
+    static Entity &create_npc(nlohmann::json entity);
 };
 
 #endif  // ENTITY_FACTORY_H

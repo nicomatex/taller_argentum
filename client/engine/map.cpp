@@ -58,6 +58,10 @@ void Map::generate(json map_description) {
             background_layers.push_back(std::move(new_layer));
         }
     }
+
+    std::vector<Decoration> loot_layer;
+    loot_layer_index = background_layers.size();
+    background_layers.push_back(loot_layer);
     is_valid = true;
 }
 
@@ -88,5 +92,6 @@ std::vector<std::vector<Decoration>>& Map::get_foreground_layers(){
     }
     return foreground_layers;
 }
+
 
 Map::~Map() {}
