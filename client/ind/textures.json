@@ -25,6 +25,12 @@
             "filename": "4.png",
             "needs ckey": true,
             "ckey" : [0,0,0]
+            },
+            {
+            "id":5,
+            "filename": "5.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
             }
         ]
     },

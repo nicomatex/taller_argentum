@@ -1010,6 +1010,78 @@
                         "frames": 6
                     }
                 }
+            },
+            {
+                "id": 5,
+                "texture": 5,
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 32,
+                        "frame width": 29,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 64,
+                        "fps": 1,
+                        "frame height": 32,
+                        "frame width": 29,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 96,
+                        "fps": 1,
+                        "frame height": 32,
+                        "frame width": 29,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 32,
+                        "fps": 1,
+                        "frame height": 32,
+                        "frame width": 29,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 10,
+                        "frame height": 32,
+                        "frame width": 29,
+                        "frames": 3
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 64,
+                        "fps": 10,
+                        "frame height": 32,
+                        "frame width": 29,
+                        "frames": 3
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 96,
+                        "fps": 10,
+                        "frame height": 32,
+                        "frame width": 29,
+                        "frames": 3
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 32,
+                        "fps": 10,
+                        "frame height": 32,
+                        "frame width": 29,
+                        "frames": 3
+                    }
+                }
             }
         ],
         "weapons":[

@@ -68,8 +68,10 @@ void VisualCharacterComponent::set_part(const std::string& type,
             parts.insert(std::make_pair(type, new_part));
             part_ids[type] = new_part_id;
         } else {
-            parts.erase(type);
-            part_ids.erase(type);
+            if(parts.count(type) != 0){
+                parts.erase(type);
+                part_ids.erase(type);
+            }
         }
     } catch (std::exception& e) {
         std::cout << "Error actualizando " << type << std::endl;
