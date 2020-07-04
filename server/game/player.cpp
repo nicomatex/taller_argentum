@@ -18,12 +18,7 @@ Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
       map(map),
       stats(AttributeManager::create_stats(player_info["race_type"])),
       class_type(player_info["class_type"]),
-      race_type(player_info["race_type"]) {
-        std::cout << stats.strength << std::endl;
-        std::cout << stats.agility << std::endl;
-        std::cout << stats.intelligence << std::endl;
-        std::cout << stats.physique << std::endl;
-      }
+      race_type(player_info["race_type"]) {}
 
 void Player::update(uint64_t delta_t) {
     position_t steps = movement_component->update(delta_t);

@@ -141,7 +141,6 @@ nlohmann::json Map::rm_player(EntityId entity_id) {
     entity_matrix.erase(position);
     player_data["pos"] = position;
     delete player;
-    std::cout << player_data << std::endl;
     return player_data;
 }
 
