@@ -127,7 +127,9 @@ nlohmann::json Map::add_player(nlohmann::json player_info) {
 
     add_entity(player, nearest_position);
 
-    return player->get_data();
+    player_info = player->get_data();
+    player_info["inventory"] = player->get_inventory_data();
+    return player_info;
 }
 
 nlohmann::json Map::rm_player(EntityId entity_id) {

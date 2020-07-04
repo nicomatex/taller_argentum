@@ -13,6 +13,14 @@ enum mov_action_t { START, STOP };
 enum direction_t { UP, DOWN, LEFT, RIGHT };
 #endif
 
+typedef enum {
+    TYPE_INVALID = 0,
+    TYPE_WEAPON = 1,
+    TYPE_ARMOR = 2,
+    TYPE_POTION = 3,
+    TYPE_GOLD = 4
+} item_type_t;
+
 typedef uint32_t ClientId;
 
 typedef uint32_t EntityId;

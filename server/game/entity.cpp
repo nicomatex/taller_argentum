@@ -33,4 +33,8 @@ attack_result_t Entity::attack(Entity* attacked) {
     return dealt;
 }
 
+bool Entity::is_alive() const {
+    return true;
+}
+
 void Entity::update(uint64_t delta_t) {}

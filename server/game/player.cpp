@@ -44,8 +44,37 @@ nlohmann::json Player::get_data() const {
     for (auto& it : aux.items()) {
         entity_data[it.key()] = it.value();
     }
-    entity_data["inventory"] = inventory.get_data();
     return entity_data;
+}
+
+nlohmann::json Player::get_inventory_data() const {
+    return inventory.get_data();
+}
+
+void Player::use(SlotId slot) {
+    Item* item;
+    try {
+        item = inventory.remove(slot);
+    } catch (...) {
+        return;
+    }
+    item_type_t type = item->get_type();
+    if (type == TYPE_ARMOR || type == TYPE_ARMOR) {
+        Item* unequiped;
+        if (type == TYPE_ARMOR) {
+            unequiped = combat_component->equip(static_cast<Weapon*>(item));
+        } else {
+            unequiped = combat_component->equip(static_cast<Armor*>(item));
+        }
+        if (unequiped)
+            try {
+                inventory.add(unequiped);
+            } catch (const FullInventoryException& e) {
+                /* tirar? no equipar? */
+            }
+    } else if (type == TYPE_POTION) {
+        /* usar poción */
+    }
 }
 
 nlohmann::json Player::get_persist_data() const {

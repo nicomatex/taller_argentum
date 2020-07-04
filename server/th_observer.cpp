@@ -23,20 +23,50 @@ void ThObserver::send_update_logs() {
     std::vector<nlohmann::json> logs = map.get_update_logs();
     for (auto& it : logs) {
         try {
-            server_manager.send_to(
-                server_manager.get_client_by_name(it["player_name"]),
-                EventFactory::chat_message(it["str"]));
+            ClientId client_id =
+                server_manager.get_client_by_name(it["player_name"]);
+            int log_type = it["log_type"];
+            switch (log_type) {
+                case 1: {
+                    int dmg = it["damage"];
+                    const std::string& to = it["to"];
+                    // server_manager.send_to(
+                    //     client_id,
+                    //     EventFactory::dealt_damage(dmg, it["to_id"]));
+                    std::string msg = "Recibido " + std::to_string(dmg) +
+                                      " de danio por " + to;
+                    server_manager.send_to(client_id,
+                                           EventFactory::chat_message(msg));
+                } break;
+                case 2: {
+                    int dmg = it["damage"];
+                    const std::string& from = it["from"];
+                    // server_manager.send_to(client_id,
+                    //                        EventFactory::received_damage(dmg));
+                    std::string msg = "Recibido " + std::to_string(dmg) +
+                                      " de danio por " + from;
+                    server_manager.send_to(client_id,
+                                           EventFactory::chat_message(msg));
+                } break;
+                case 3: {
+                    server_manager.send_to(
+                        client_id,
+                        EventFactory::inventory_update(it["inventory"]));
+                } break;
+                default:
+                    break;
+            }
         } catch (const std::exception& e) {
-            std::cerr << it << std::endl;
+            std::cerr << "Observer: update_logs: " << it << std::endl;
         }
     }
 }
 
 void ThObserver::run() {
-    try {
-        running = true;
-        int counter = 0;
-        while (running) {
+    running = true;
+    int counter = 0;
+    while (running) {
+        try {
             auto start = std::chrono::steady_clock::now();
             if (update_entities || ++counter % ENTITY_UPDATE_INTERVAL == 0) {
                 update_entities = true;
@@ -55,11 +85,11 @@ void ThObserver::run() {
             auto dif =
                 OBSERVER_INTERVAL - (std::chrono::steady_clock::now() - start);
             sleep(dif);
+        } catch (const std::exception& e) {
+            std::cerr << "Observer: " << e.what() << std::endl;
+        } catch (...) {
+            std::cerr << "Observer: Unknown exception" << std::endl;
         }
-    } catch (const std::exception& e) {
-        std::cerr << "Observer: " << e.what() << std::endl;
-    } catch (...) {
-        std::cerr << "Observer: Unknown exception" << std::endl;
     }
     std::cerr << "Observer finished" << std::endl;
 }

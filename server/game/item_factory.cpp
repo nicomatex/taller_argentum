@@ -59,22 +59,21 @@ bool ItemFactory::item_exists(ItemId item_id) {
 }
 
 Item* ItemFactory::create(ItemId item_id, uint32_t stack) {
-    std::cerr << "ItemFactory: creating: " << item_id << std::endl;
     if (!item_exists(item_id))
         throw ItemNotFoundException();
     item_type_t item_type = id_to_type_map.at(item_id);
     Item* item = nullptr;
     switch (item_type) {
-        case weapon:
+        case TYPE_WEAPON:
             item = new Weapon(weapons_map.at(item_id));
             break;
-        case armor:
+        case TYPE_ARMOR:
             item = new Armor(armors_map.at(item_id));
             break;
-        case potion:
+        case TYPE_POTION:
             item = new Potion(potions_map.at(item_id));
             break;
-        case gold:
+        case TYPE_GOLD:
             item = new Gold(_gold);
             break;
         default:

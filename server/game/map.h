@@ -46,7 +46,6 @@ class Map {
 
     bool dirty;
     PositionMap position_map;
-    // Set de ids de lo que hay en cada posicion.
     EntityMatrix entity_matrix;
     CollisionMap collision_map;
     EntityMap entity_map;

@@ -22,12 +22,16 @@ void ActionAttack::execute(Map& map, EntityId entity_id) const {
         /* KILL, drops & give exp */;
 
     if (attacker->get_type() == PLAYER)
-        map.push_log({{"player_name", attacker->get_name()},
-                      {"str", "Attacado a " + attacked->get_name() + " por " +
-                                  std::to_string(result.damage_dealt)}});
+        map.push_log({{"log_type", 1},
+                      {"player_name", attacker->get_name()},
+                      {"damage", result.damage_dealt},
+                      //   {"dodged", bool},
+                      {"to", attacked->get_name()},
+                      {"to_id", attacked->get_id()}});
     if (attacked->get_type() == PLAYER)
-        map.push_log(
-            {{"player_name", attacked->get_name()},
-             {"str", "Recibido " + std::to_string(result.damage_dealt) +
-                         " de danio por " + attacker->get_name()}});
+        map.push_log({{"log_type", 2},
+                      {"player_name", attacked->get_name()},
+                      {"damage", result.damage_dealt},
+                      //   {"dodged", bool},
+                      {"from", attacked->get_name()}});
 }

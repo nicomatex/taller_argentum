@@ -97,3 +97,28 @@ bool CombatComponent::attack_ready() const {
     int time_between_attacks = 1000 / attack_speed;
     return attack_accumulator >= time_between_attacks;
 }
+
+Armor* CombatComponent::equip(Armor* new_armor) {
+    Armor* old;
+    switch (new_armor->get_slot()) {
+        case 0:
+            old = helmet;
+            helmet = new_armor;
+            break;
+        case 1:
+            old = armor;
+            armor = new_armor;
+            break;
+        case 2:
+            old = shield;
+            shield = new_armor;
+            break;
+    }
+    return old;
+}
+
+Weapon* CombatComponent::equip(Weapon* new_weapon) {
+    Weapon* old = weapon;
+    weapon = new_weapon;
+    return old;
+}

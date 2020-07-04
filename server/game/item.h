@@ -18,14 +18,6 @@ class NegativeStackException : public std::exception {
     const char *what() const throw();
 };
 
-typedef enum { 
-    invalid_type = 0,
-    weapon = 1,
-    armor = 2,
-    potion= 3,
-    gold = 4
-} item_type_t;
-
 typedef struct item_info {
     std::string name;
     ItemId id;
@@ -56,7 +48,8 @@ class Item {
     Item();
     Item(item_info_t item_info, uint32_t stack = 0);
     virtual ~Item(){};
-    virtual nlohmann::json get_data();
+    virtual nlohmann::json get_data() const;
+    virtual nlohmann::json get_persist_data() const;
     void set_stack(uint32_t stack);
     uint32_t get_stack() const;
     ItemId get_id() const;

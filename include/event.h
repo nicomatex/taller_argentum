@@ -10,6 +10,9 @@ enum server_to_client {
     EV_ID_UPDATE_ENTITIES = 3,
     EV_ID_CHAT_MESSAGE = 4,
     EV_ID_NOTIFY_NEW_MAP = 5,
+    EV_ID_DEALT_DAMAGE = 6,
+    EV_ID_RECEIVED_DAMAGE = 7,
+    EV_ID_INVENTORY_UPDATE
 };
 
 enum client_to_server {

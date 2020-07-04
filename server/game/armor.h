@@ -29,7 +29,8 @@ class Armor : public Item {
     Armor();
     Armor(item_info_t item_info, armor_info_t armor_info, uint32_t stack = 0);
     int reduce_damage(int damage);
-    nlohmann::json get_data() override;
+    nlohmann::json get_data() const override;
+    slot_info_t get_slot() const;
     ~Armor();
 };
 

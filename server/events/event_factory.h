@@ -25,6 +25,12 @@ class EventFactory {
     static Event disconnect();
 
     static Event drop_client(ClientId client_id);
+
+    static Event dealt_damage(int damage, EntityId to_id);
+
+    static Event received_damage(int damage);
+
+    static Event inventory_update(const nlohmann::json& inventory_data);
 };
 
 #endif  // EVENT_FACTORY_H

@@ -59,3 +59,21 @@ Event EventFactory::drop_client(ClientId client_id) {
                               {"client_id", client_id}};
     return Event(ev_json);
 }
+
+Event EventFactory::dealt_damage(int damage, EntityId to_id) {
+    nlohmann::json ev_json = {
+        {"ev_id", EV_ID_DEALT_DAMAGE}, {"dmg", damage}, {"to", to_id}};
+    return Event(ev_json);
+}
+
+Event EventFactory::received_damage(int damage) {
+    nlohmann::json ev_json = {{"ev_id", EV_ID_RECEIVED_DAMAGE},
+                              {"dmg", damage}};
+    return Event(ev_json);
+}
+
+Event EventFactory::inventory_update(const nlohmann::json& inventory_data) {
+    nlohmann::json ev_json = {{"ev_id", EV_ID_INVENTORY_UPDATE},
+                              {"inventory", inventory_data}};
+    return Event(ev_json);
+}

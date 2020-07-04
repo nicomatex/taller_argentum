@@ -1,4 +1,5 @@
 #include "inventory.h"
+
 #include "../server_manager.h"
 
 const char* FullInventoryException::what() const throw() {
@@ -14,7 +15,6 @@ Inventory::Inventory() {
 }
 
 Inventory::Inventory(const nlohmann::json& inv_json) : Inventory() {
-    std::cerr << "Inventory: creating: " << std::endl;
     ServerManager& server_manager = ServerManager::get_instance();
     ItemFactory& item_factory = server_manager.get_item_factory();
     inventory_t inventory = inv_json;
@@ -100,42 +100,35 @@ Item* Inventory::remove(SlotId slot_id, uint32_t stack) {
     return item_factory.create(item->get_id(), stack);
 }
 
-nlohmann::json Inventory::_get_data(bool need_sprite_id) const {
+nlohmann::json Inventory::get_data() const {
     nlohmann::json json_inv;
-    inventory_t inventory = {};
-    item_type_t items_types[INV_SIZE];
-    ItemId item_id;
-    Item item;
-    uint32_t stack;
+    json_inv["items"] = nlohmann::json::array();
     for (SlotId slot_id = 0; slot_id < INV_SIZE; slot_id++) {
         if (slot_is_free(slot_id)) {
-            item_id = 0;
-            stack = 0;
-            items_types[slot_id] = invalid_type;  
+            json_inv["items"].push_back({{"type", TYPE_INVALID}});
         } else {
-            item = get_item(slot_id);
-            if (need_sprite_id) {
-                item_id = item.get_sprite_id(); 
-                items_types[slot_id] = item.get_type();    
-            } else {
-                item_id = item.get_id();  
-            }    
-            stack = item.get_stack();
-        } 
-        inventory.items_ids[slot_id] = item_id;
-        inventory.items_stacks[slot_id] = stack;
+            json_inv["items"].push_back(get_item(slot_id).get_data());
+        }
     }
-    json_inv = inventory;
-    if (need_sprite_id) json_inv["item_types"] = items_types;
-    return std::move(json_inv);
-}
-
-nlohmann::json Inventory::get_data() const {
-    return std::move(_get_data(true));
+    return json_inv;
 }
 
 nlohmann::json Inventory::get_persist_data() const {
-    return std::move(_get_data(false));
+    nlohmann::json json_inv;
+    inventory_t inventory = {};
+    Item item;
+    for (SlotId slot_id = 0; slot_id < INV_SIZE; slot_id++) {
+        if (slot_is_free(slot_id)) {
+            inventory.items_ids[slot_id] = 0;
+            inventory.items_stacks[slot_id] = 0;
+        } else {
+            item = get_item(slot_id);
+            inventory.items_ids[slot_id] = item.get_id();
+            inventory.items_stacks[slot_id] = item.get_stack();
+        }
+    }
+    json_inv = inventory;
+    return json_inv;
 }
 
 bool Inventory::slot_is_free(SlotId slot_id) const {
@@ -147,7 +140,8 @@ bool Inventory::has_item(ItemId item_id) {
 }
 
 const Item& Inventory::get_item(SlotId slot_id) const {
-    if (slot_is_free(slot_id)) throw EmptySlotException();
+    if (slot_is_free(slot_id))
+        throw EmptySlotException();
     return *inventory[slot_id];
 }
 

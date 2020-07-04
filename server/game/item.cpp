@@ -18,10 +18,19 @@ Item::Item(item_info_t item_info, uint32_t stack) : item_info(item_info) {
     actual_stack = stack;
 }
 
-nlohmann::json Item::get_data() {
+nlohmann::json Item::get_data() const {
+    nlohmann::json info;
+    info["actual_stack"] = actual_stack;
+    info["item_id"] = item_info.sprite_id;
+    info["name"] = item_info.name;
+    info["type"] = item_info.type;
+    return info;
+}
+
+nlohmann::json Item::get_persist_data() const {
     nlohmann::json info = item_info;
     info["actual_stack"] = actual_stack;
-    return std::move(info);
+    return info;
 }
 
 void Item::set_stack(uint32_t stack) {

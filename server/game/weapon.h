@@ -27,7 +27,7 @@ class Weapon : public Item {
     Weapon(item_info_t item_info, weapon_info_t weapon_info,
            uint32_t stack = 0);
     int deal_damage();
-    nlohmann::json get_data() override;
+    nlohmann::json get_data() const override;
     ~Weapon();
 };
 

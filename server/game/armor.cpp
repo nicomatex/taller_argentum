@@ -14,8 +14,12 @@ int Armor::reduce_damage(int damage) {
                         armor_info.min_defense, armor_info.max_defense);
 }
 
-nlohmann::json Armor::get_data() {
+nlohmann::json Armor::get_data() const {
     nlohmann::json info = Item::get_data();
     info["armor_info"] = armor_info;
     return std::move(info);
+}
+
+slot_info_t Armor::get_slot() const {
+    return armor_info.slot_info;
 }

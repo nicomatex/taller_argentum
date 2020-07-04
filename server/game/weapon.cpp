@@ -14,7 +14,7 @@ int Weapon::deal_damage() {
                                                 weapon_info.max_damage);
 }
 
-nlohmann::json Weapon::get_data() {
+nlohmann::json Weapon::get_data() const {
     nlohmann::json info = Item::get_data();
     info["weapon_info"] = weapon_info;
     return std::move(info);

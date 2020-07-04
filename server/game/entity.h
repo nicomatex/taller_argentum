@@ -39,6 +39,7 @@ class Entity {
 
     attack_result_t attack(Entity* attacked);
 
+    virtual bool is_alive() const;
     EntityId get_id() const;
 };
 
