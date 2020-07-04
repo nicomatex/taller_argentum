@@ -2,14 +2,26 @@
 
 #include "../../engine/resource_manager.h"
 #include "../ECS/entity.h"
-#include "../visual_config.h"
 #include "../engine_config.h"
+#include "../visual_config.h"
 
 VisualNPCComponent::VisualNPCComponent(int body_id, int speed)
     : speed(speed),
       initialized(false),
       body(ResourceManager::get_instance().get_animation_pack("npcs", body_id),
-           BODY_CONFIG) {}
+           {0, 0, 0, 0}) {
+    visual_info_t visual_info;
+    int real_width = ResourceManager::get_instance()
+                         .get_animation_pack("npcs", body_id)
+                         .get_frame_width(DOWN);
+    int real_height = ResourceManager::get_instance()
+                          .get_animation_pack("npcs", body_id)
+                          .get_frame_height(DOWN);
+    
+    int arbitrary_width = (real_width * SIZE_GRANULARITY * NPC_SIZE_FACTOR) / PATTERN_TILE_SIZE;
+    int arbitrary_height = (real_height * SIZE_GRANULARITY * NPC_SIZE_FACTOR) / PATTERN_TILE_SIZE;
+    body.set_visual_info({arbitrary_width,arbitrary_height,0,0});
+}
 
 VisualNPCComponent::~VisualNPCComponent() {}
 
@@ -37,38 +49,30 @@ void VisualNPCComponent::_update_offset() {
 
     float speed_factor_x =
         (float)abs(transition_offset_x) / (float)MOVEMENT_OFFSET;
-    if (speed_factor_x < 1)
-        speed_factor_x = 1;
+    if (speed_factor_x < 1) speed_factor_x = 1;
 
     float speed_factor_y =
         (float)abs(transition_offset_y) / (float)MOVEMENT_OFFSET;
-    if (speed_factor_y < 1)
-        speed_factor_y = 1;
+    if (speed_factor_y < 1) speed_factor_y = 1;
 
     if (transition_offset_x > 0) {
         transition_offset_x -= delta_offset * speed_factor_x;
-        if (transition_offset_x <= 0)
-            stop_x = true;
+        if (transition_offset_x <= 0) stop_x = true;
     } else if (transition_offset_x < 0) {
         transition_offset_x += delta_offset * speed_factor_x;
-        if (transition_offset_x >= 0)
-            stop_x = true;
+        if (transition_offset_x >= 0) stop_x = true;
     } else if (transition_offset_y > 0) {
         transition_offset_y -= delta_offset * speed_factor_y;
-        if (transition_offset_y <= 0)
-            stop_y = true;
+        if (transition_offset_y <= 0) stop_y = true;
     } else if (transition_offset_y < 0) {
         transition_offset_y += delta_offset * speed_factor_y;
-        if (transition_offset_y >= 0)
-            stop_x = true;
+        if (transition_offset_y >= 0) stop_x = true;
     }
 
     if (stop_x || stop_y) {
         transition_timer.stop();
-        if (stop_x)
-            transition_offset_x = 0;
-        if (stop_y)
-            transition_offset_y = 0;
+        if (stop_x) transition_offset_x = 0;
+        if (stop_y) transition_offset_y = 0;
     } else {
         transition_timer.start();
     }
@@ -79,8 +83,7 @@ void VisualNPCComponent::_update_animation(int delta_x, int delta_y) {
         body.set_move_status(IDLE);
     }
 
-    if (delta_x == 0 && delta_y == 0)
-        return;
+    if (delta_x == 0 && delta_y == 0) return;
     if (!(entity->get_component<PositionComponent>().position_initialized()))
         return;
 

@@ -90,3 +90,36 @@ AnimationPack &AnimationPack::operator=(const AnimationPack &other) {
     right_idle_sprite = other.right_idle_sprite;
     return *this;
 }
+
+int AnimationPack::get_frame_width(direction_t direction) {
+    switch (direction) {
+        case UP:
+            return up_idle_sprite.get_frame_width();
+            break;
+        case DOWN:
+            return down_idle_sprite.get_frame_width();
+            break;
+        case RIGHT:
+            return right_idle_sprite.get_frame_width();
+            break;
+        case LEFT:
+            return left_idle_sprite.get_frame_width();
+            break;
+    }
+}
+int AnimationPack::get_frame_height(direction_t direction) {
+    switch (direction) {
+        case UP:
+            return up_idle_sprite.get_frame_height();
+            break;
+        case DOWN:
+            return down_idle_sprite.get_frame_height();
+            break;
+        case RIGHT:
+            return right_idle_sprite.get_frame_height();
+            break;
+        case LEFT:
+            return left_idle_sprite.get_frame_height();
+            break;
+    }
+}

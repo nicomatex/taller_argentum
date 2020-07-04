@@ -92,3 +92,6 @@ void SDLSprite::render(SDL_Rect dest) {
 
     texture.get().render(src, dest);
 }
+
+int SDLSprite::get_frame_width() { return frame_width; }
+int SDLSprite::get_frame_height() { return frame_height; }

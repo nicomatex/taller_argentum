@@ -113,7 +113,6 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                 "mp", entity_info["curr_mp"]);
         }
     }
-
     EntityManager::get_instance().remove_non_updated();
     EntityManager::get_instance().clean();
 }

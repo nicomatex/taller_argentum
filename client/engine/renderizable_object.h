@@ -8,6 +8,7 @@ a ser renderizados por pantalla. */
 #include "SDL/sdl_animated_sprite.h"
 #include "SDL/sdl_timer.h"
 
+/* Valores expresados en centesimas de tile. */
 typedef struct part_visual_info {
     int width;
     int height;
@@ -42,6 +43,9 @@ class RenderizableObject {
     RenderizableObject& operator=(const RenderizableObject& other);
     /* Debe ser llamado luego de renderizar para actualizar el estado de las
     constantes visuales.*/
+
+    void set_visual_info(visual_info_t new_visual_info);
+    
     virtual void update();
 };
 

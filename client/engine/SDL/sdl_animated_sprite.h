@@ -42,5 +42,8 @@ class SDLSprite {
 
     /* Renderiza la sprite en el area de destino del renderer. */
     void render(SDL_Rect dest);
+
+    int get_frame_width();
+    int get_frame_height();
 };
 #endif

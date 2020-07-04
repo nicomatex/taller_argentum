@@ -32,7 +32,12 @@ class AnimationPack {
     ~AnimationPack();
 
     void render(direction_t direction, movement_status_t status, SDL_Rect dest);
-    
+
+    /* Devuelve el ancho/alto en pixeles de un cuadro de la animacion asociada a 
+    la direccion indicada. */
+    int get_frame_width(direction_t direction);
+    int get_frame_height(direction_t direction);
+
     /* Constructor y asignador por copia. */
     AnimationPack(const AnimationPack &other);
     AnimationPack& operator=(const AnimationPack &other);

@@ -29,4 +29,8 @@ int RenderizableObject::get_y_offset() const {
     return visual_info.offset_y;
 }
 
+void RenderizableObject::set_visual_info(visual_info_t new_visual_info){
+    visual_info = new_visual_info;
+}
+
 void RenderizableObject::update() {}
