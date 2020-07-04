@@ -1,8 +1,8 @@
 #include "action_inventory.h"
 
-#include "entity.h"
-#include "item.h"
-#include "player.h"
+#include "../entity.h"
+#include "../items/item.h"
+#include "../player.h"
 
 ActionInventory::ActionInventory(SlotId slot) : slot(slot) {}
 ActionInventory::~ActionInventory() {}

@@ -1,6 +1,6 @@
 #include "inventory_handler.h"
 
-#include "../game/action_inventory.h"
+#include "../game/actions/action_inventory.h"
 #include "../map_monitor.h"
 #include "../server_manager.h"
 

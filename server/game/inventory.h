@@ -5,7 +5,7 @@
 
 #include "../../include/nlohmann/json.hpp"
 #include "../../include/types.h"
-#include "item.h"
+#include "items/item.h"
 
 // Segun mock el inventario tiene 12 slots -> el oro no va en el inventario
 
@@ -20,7 +20,6 @@ class EmptySlotException : public std::exception {
    public:
     const char* what() const throw();
 };
-
 
 typedef struct inventory {
     ItemId items_ids[INV_SIZE];
@@ -42,13 +41,14 @@ class Inventory {
     std::array<Item*, INV_SIZE> inventory;
     std::map<ItemId, SlotId> item_id_to_slot;
     nlohmann::json _get_data(bool need_sprite_id) const;
+
    public:
     Inventory();
     Inventory(const nlohmann::json& inv_json);
     ~Inventory();
     void add(Item* item);
     void add(Item* item, uint32_t stack);
-    //void add(Item* item, SlotId slot_id);
+    // void add(Item* item, SlotId slot_id);
     Item* remove(SlotId slot_id);
     Item* remove(SlotId slot_id, uint32_t stack);
     SlotId get_available_slot(ItemId item_id);
@@ -92,7 +92,7 @@ class Inventory {
                 **) Varios slots:
                             Si tienen todos stack al maximo
                              a*) Lo agrego al primer slot disponible
-   (numericamente) 
+   (numericamente)
                              b*) Exception papu
                             No tienen todos el stack al maximo:
                              Debo

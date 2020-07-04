@@ -1,6 +1,6 @@
 #include "movement_handler.h"
 
-#include "../game/action_move.h"
+#include "../game/actions/action_move.h"
 #include "../map_monitor.h"
 #include "../server_manager.h"
 

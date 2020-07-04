@@ -9,7 +9,7 @@
 #include "../../include/nlohmann/json.hpp"
 #include "../../include/types.h"
 #include "../map_changer.h"
-#include "action.h"
+#include "actions/action.h"
 #include "entity.h"
 #include "map_transitions.h"
 #include "position.h"

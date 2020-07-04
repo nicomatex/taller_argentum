@@ -1,21 +1,21 @@
 add_library(game
-  action.cpp
+  actions/action.cpp
+  actions/action_move.cpp
+  actions/action_attack.cpp
+  actions/action_inventory.cpp
+  combat_component.cpp
   entity.cpp
   game_loop.cpp
-  map.cpp
-  player.cpp
-  action_move.cpp
-  action_attack.cpp
-  action_inventory.cpp
-  combat_component.cpp
-  movement_component.cpp
-  map_transitions.cpp
-  random_event_generator.cpp
-  item_factory.cpp
   inventory.cpp
-  item.cpp
-  weapon.cpp
-  armor.cpp
-  gold.cpp
-  potion.cpp
+  items/item_factory.cpp
+  items/item.cpp
+  items/armor.cpp
+  items/weapon.cpp
+  items/gold.cpp
+  items/potion.cpp
+  map.cpp
+  map_transitions.cpp
+  movement_component.cpp
+  player.cpp
+  random_event_generator.cpp
 )

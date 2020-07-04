@@ -1,8 +1,8 @@
 #ifndef __ACTION_H
 #define __ACTION_H
 
-#include "entity.h"
-#include "position.h"
+#include "../entity.h"
+#include "../position.h"
 
 class Map;
 

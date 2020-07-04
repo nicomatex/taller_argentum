@@ -6,7 +6,7 @@
 
 #include "../include/nlohmann/json.hpp"
 #include "../include/types.h"
-#include "game/action.h"
+#include "game/actions/action.h"
 #include "game/map.h"
 #include "game/map_transitions.h"
 

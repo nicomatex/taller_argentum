@@ -5,8 +5,8 @@
 
 #include <string>
 
-#include "../../include/nlohmann/json.hpp"
-#include "../../include/types.h"
+#include "../../../include/nlohmann/json.hpp"
+#include "../../../include/types.h"
 
 class MaxStackExceedException : public std::exception {
    public:

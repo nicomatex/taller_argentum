@@ -1,6 +1,6 @@
 #include "weapon.h"
 
-#include "random_event_generator.h"
+#include "../random_event_generator.h"
 
 Weapon::Weapon() {}
 

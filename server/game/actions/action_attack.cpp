@@ -1,7 +1,7 @@
 #include "action_attack.h"
 
-#include "map.h"
-#include "position.h"
+#include "../map.h"
+#include "../position.h"
 
 ActionAttack::ActionAttack() {}
 ActionAttack::~ActionAttack() {}

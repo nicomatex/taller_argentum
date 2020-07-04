@@ -1,16 +1,15 @@
 #include "combat_component.h"
 
 #include "../server_manager.h"
-#include "item.h"
-#include "item_factory.h"
+#include "items/item.h"
+#include "items/item_factory.h"
 
 #define NO_WEAPON 0
 
 CombatComponent::CombatComponent(ItemId helmet_id, ItemId armor_id,
                                  ItemId shield_id, ItemId weapon_id,
                                  unsigned int current_hp,
-                                 unsigned int current_mp,
-                                 float attack_speed)
+                                 unsigned int current_mp, float attack_speed)
     : max_hp(100),
       max_mp(200),
       current_hp(current_hp),

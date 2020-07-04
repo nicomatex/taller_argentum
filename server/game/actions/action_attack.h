@@ -2,7 +2,6 @@
 #define ACTION_MELEE_ATTACK_H
 
 #include "action.h"
-#include "map.h"
 
 class ActionAttack : public Action {
    public:

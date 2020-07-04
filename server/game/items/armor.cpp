@@ -1,6 +1,6 @@
 #include "armor.h"
 
-#include "random_event_generator.h"
+#include "../random_event_generator.h"
 
 Armor::Armor() {}
 

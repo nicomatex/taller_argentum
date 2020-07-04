@@ -1,8 +1,8 @@
 #ifndef ACTION_INVENTORY_H
 #define ACTION_INVENTORY_H
 
+#include "../inventory.h"
 #include "action.h"
-#include "inventory.h"
 
 class ActionInventory : public Action {
    private:

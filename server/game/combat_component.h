@@ -2,8 +2,8 @@
 #define COMBAT_COMPONENT_H
 
 #include "../../include/nlohmann/json.hpp"
-#include "armor.h"
-#include "weapon.h"
+#include "items/armor.h"
+#include "items/weapon.h"
 
 typedef struct damage {
     int damage;
@@ -36,7 +36,7 @@ class CombatComponent {
     CombatComponent(ItemId helmet_id, ItemId armor_id, ItemId shield_id,
                     ItemId weapon_id, unsigned int current_hp,
                     unsigned int current_mp, float attack_speed);
-                    
+
     virtual ~CombatComponent();
 
     damage_t attack();

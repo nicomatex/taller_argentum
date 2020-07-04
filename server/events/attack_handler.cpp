@@ -1,6 +1,6 @@
 #include "attack_handler.h"
 
-#include "../game/action_attack.h"
+#include "../game/actions/action_attack.h"
 #include "../map_monitor.h"
 #include "../server_manager.h"
 
