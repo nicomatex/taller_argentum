@@ -4,6 +4,7 @@ add_library(game
   actions/action_attack.cpp
   actions/action_inventory.cpp
   combat_component.cpp
+  experience_component.cpp
   entity.cpp
   game_loop.cpp
   inventory.cpp

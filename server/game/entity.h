@@ -7,6 +7,7 @@
 #include "../../include/types.h"
 #include "combat_component.h"
 #include "movement_component.h"
+#include "experience_component.h"
 #include "position.h"
 
 enum entity_type_t { PLAYER, NPC, MONSTER };
@@ -18,11 +19,13 @@ class Entity {
 
     MovementComponent* movement_component;
     CombatComponent* combat_component;
+    ExperienceComponent experience_component;
 
    public:
     Entity(EntityId id, const std::string& name,
            MovementComponent* movement_component,
-           CombatComponent* combat_component);
+           CombatComponent* combat_component,
+           unsigned int current_level, unsigned int current_exp);
     virtual ~Entity();
 
     /* Saber el tipo de la entidad sirve para saber si es colisionable o no.

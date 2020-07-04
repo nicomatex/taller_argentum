@@ -10,8 +10,6 @@
 
 class Player : public Entity {
    private:
-    // ExperienceComponent
-
     const int head_id;
     const int body_id;
 

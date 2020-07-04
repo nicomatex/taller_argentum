@@ -28,6 +28,8 @@ typedef struct character {
     inventory_t inventory;
     class_type_t class_type;
     race_type_t race_type;
+    unsigned int current_level;
+    unsigned int current_exp;
 } character_t;
 
 typedef uint32_t CharId;

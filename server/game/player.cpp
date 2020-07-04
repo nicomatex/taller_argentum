@@ -11,7 +11,8 @@ Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
              new CombatComponent(
                  player_info["helmet_id"], player_info["armor_id"],
                  player_info["shield_id"], player_info["weapon_id"],
-                 player_info["curr_hp"], player_info["curr_mp"], 2)),
+                 player_info["curr_hp"], player_info["curr_mp"], 2),
+                 player_info["curr_level"], player_info["curr_exp"]),
       head_id(player_info["head_id"]),
       body_id(player_info["body_id"]),
       inventory(player_info["inventory"]),
@@ -42,6 +43,10 @@ nlohmann::json Player::get_data() const {
         entity_data[it.key()] = it.value();
     }
     aux = combat_component->get_data();
+    for (auto& it : aux.items()) {
+        entity_data[it.key()] = it.value();
+    }
+    aux = experience_component.get_data();
     for (auto& it : aux.items()) {
         entity_data[it.key()] = it.value();
     }
@@ -91,6 +96,10 @@ nlohmann::json Player::get_persist_data() const {
     entity_data["class_type"] = class_type;
     entity_data["race_type"] = race_type;
     nlohmann::json aux = combat_component->get_persist_data();
+    for (auto& it : aux.items()) {
+        entity_data[it.key()] = it.value();
+    }
+    aux = experience_component.get_persist_data();
     for (auto& it : aux.items()) {
         entity_data[it.key()] = it.value();
     }

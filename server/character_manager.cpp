@@ -60,6 +60,8 @@ static character_t create_character(const nlohmann::json& character_info) {
     character.inventory = character_info["inventory"];
     character.class_type = character_info["class_type"];
     character.race_type = character_info["race_type"];
+    character.current_level = character_info["curr_level"];
+    character.current_exp = character_info["curr_exp"];
     return std::move(character);
 }
 
@@ -118,6 +120,8 @@ nlohmann::json CharacterManager::get_character(std::string name) {
     character_info["inventory"] = character.inventory;
     character_info["race_type"] = character.race_type;
     character_info["class_type"] = character.class_type;
+    character_info["curr_level"] = character.current_level;
+    character_info["curr_exp"] = character.current_exp;
     return std::move(character_info);
 }
 
@@ -150,5 +154,7 @@ void CharacterManager::print_character(std::string name) {
     std::cout << "Inventory: " << character["inventory"] << std::endl;
     std::cout << "Class type: " << character["class_type"] << std::endl;
     std::cout << "Race type " << character["race_type"] << std::endl;
+    std::cout << "Curr level: " << character["curr_level"] << std::endl;
+    std::cout << "Curr exp " << character["curr_exp"] << std::endl;
     std::cout << std::endl;
 }

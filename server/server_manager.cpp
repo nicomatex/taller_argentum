@@ -34,7 +34,9 @@ ServerManager::ServerManager()
                                     {"curr_hp", 57},
                                     {"curr_mp", 50},
                                     {"class_type", mage},
-                                    {"race_type", human}};
+                                    {"race_type", human},
+                                    {"curr_level", 8},
+                                    {"curr_exp", 34000}};
 
         nico_info["inventory"] = R"({"items_ids":[401,300,200,0,0,0,0,0,0,0,0,0],
                                  "items_stacks":[50,1,1,0,0,0,0,0,0,0,0,0]})"_json;
@@ -46,7 +48,8 @@ ServerManager::ServerManager()
             {"name", "tai"},   {"map_id", 0},      {"pos", position_t{20, 21}},
             {"head_id", 2},    {"body_id", 2},     {"helmet_id", 2},
             {"armor_id", 101}, {"shield_id", 201}, {"weapon_id", 302},
-            {"curr_hp", 70}, {"curr_mp", 30}, {"class_type", warrior}, {"race_type", dwarf}};
+            {"curr_hp", 70}, {"curr_mp", 30}, {"class_type", warrior}, {"race_type", dwarf},
+            {"curr_level", 16}, {"curr_exp", 131000}};
         taiel_info["inventory"] = R"({"items_ids":[401,0,0,0,0,0,0,0,0,0,0,0],
                                  "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0]})"_json;
         character_manager.add_character(taiel_info);
@@ -57,7 +60,8 @@ ServerManager::ServerManager()
             {"name", "fran"},  {"map_id", 0},      {"pos", position_t{13, 20}},
             {"head_id", 2},    {"body_id", 1},     {"helmet_id", 3},
             {"armor_id", 102}, {"shield_id", 201}, {"weapon_id", 301},
-            {"curr_hp", 100}, {"curr_mp", 70}, {"class_type", paladin}, {"race_type", elf}};
+            {"curr_hp", 100}, {"curr_mp", 70}, {"class_type", paladin}, {"race_type", elf},
+            {"curr_level", 1}, {"curr_exp", 300}};
         fran_info["inventory"] = R"({"items_ids":[401,0,0,0,0,0,0,0,0,0,0,0],
                                  "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0]})"_json;
         character_manager.add_character(fran_info);
@@ -68,7 +72,8 @@ ServerManager::ServerManager()
             {"name", "eze"},   {"map_id", 0},      {"pos", position_t{23, 20}},
             {"head_id", 2},    {"body_id", 1},     {"helmet_id", 1},
             {"armor_id", 100}, {"shield_id", 200}, {"weapon_id", 300},
-            {"curr_hp", 100}, {"curr_mp", 36}, {"class_type", cleric}, {"race_type", gnome}};
+            {"curr_hp", 100}, {"curr_mp", 36}, {"class_type", cleric}, {"race_type", gnome},
+            {"curr_level", 16}, {"curr_exp", 131000}};
         eze_info["inventory"] = R"({"items_ids":[401,0,0,0,0,0,0,0,0,0,0,0],
                                  "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0]})"_json;
         character_manager.add_character(eze_info);
@@ -150,7 +155,7 @@ void ServerManager::add_player(ClientId client_id, nlohmann::json player_data,
 
     std::cerr << "ServerManager: sent initialize msg to: " << client_id
               << std::endl;
-
+              
     // Lo agregamos a la session correspondiente
     sessions.at(map_id).add_client(client_id);
     m.unlock();

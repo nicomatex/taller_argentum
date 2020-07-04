@@ -4,11 +4,14 @@
 
 Entity::Entity(EntityId id, const std::string& name,
                MovementComponent* movement_component,
-               CombatComponent* combat_component)
+               CombatComponent* combat_component,
+               unsigned int current_level,
+               unsigned int current_exp)
     : id(id),
       name(name),
       movement_component(movement_component),
-      combat_component(combat_component) {}
+      combat_component(combat_component),
+      experience_component(current_level, current_exp) {}
 
 Entity::~Entity() {}
 
