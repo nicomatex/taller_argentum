@@ -29,4 +29,6 @@ typedef int32_t MapId;
 
 typedef int32_t ItemId;
 
+typedef uint8_t SlotId;
+
 #endif  // TYPES_H

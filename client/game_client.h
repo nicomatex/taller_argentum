@@ -13,6 +13,7 @@
 #include "game_state_monitor.h"
 #include "map_change_buffer.h"
 #include "network/receive_handler.h"
+#include "inventory_buffer.h"
 
 /* Interfaz de la clase */
 class GameClient {
@@ -20,6 +21,7 @@ class GameClient {
     SDLWindow window;
     MapChangeBuffer map_change_buffer;
     ChatBuffer chat_buffer;
+    InventoryBuffer inventory_buffer;
     ClientReceiveHandler receive_handler;
     SocketManager socket_manager;
     nlohmann::json config;

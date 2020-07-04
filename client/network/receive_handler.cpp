@@ -14,9 +14,11 @@ using json = nlohmann::json;
 
 ClientReceiveHandler::ClientReceiveHandler(MapChangeBuffer &map_change_buffer,
                                            ChatBuffer &chat_buffer,
+                                           InventoryBuffer &inventory_buffer,
                                            GameStateMonitor &game_state_monitor)
     : map_change_buffer(map_change_buffer),
       chat_buffer(chat_buffer),
+      inventory_buffer(inventory_buffer),
       game_state_monitor(game_state_monitor) {}
 
 ClientReceiveHandler::~ClientReceiveHandler() {}
@@ -48,6 +50,9 @@ void ClientReceiveHandler::handle(Event &ev) {
             std::cout << "Fui kickeado del servidor." << std::endl;
             game_state_monitor.quit();
             break;
+        case EV_ID_INVENTORY_UPDATE:
+            handle_inventory_update(ev);
+            break;
     };
 }
 
@@ -78,7 +83,9 @@ void ClientReceiveHandler::handle_initialization(Event &ev) {
     json map_description = initialization_info["map_info"];
     std::cout << "Recibido nuevo mapa. Llenando " << std::endl;
     map_change_buffer.fill(map_description, player_info["entity_id"]);
-    game_state_monitor.set_game_state(READY_TO_RUN);
+    std::cout << "Info del inventario: " << std::endl;
+    inventory_buffer.push(initialization_info["player"]["inventory"]);
+    game_state_monitor .set_game_state(READY_TO_RUN);
 }
 
 void ClientReceiveHandler::handle_entity_update(Event &ev) {
@@ -115,4 +122,9 @@ void ClientReceiveHandler::handle_map_change(Event &ev) {
     map_change_buffer.reset();
     game_state_monitor.set_game_state(SWITCHING_MAPS);
     std::cout << "Cargando nuevo mapa..." << std::endl;
+}
+
+
+void ClientReceiveHandler::handle_inventory_update(Event &ev){
+    inventory_buffer.push(ev.get_json()["inventory"]);
 }

@@ -25,9 +25,7 @@ void Player::update(uint64_t delta_t) {
     // TODO: demas updates, como regeneraciones de vida/mana, etc.
 }
 
-entity_type_t Player::get_type() const {
-    return PLAYER;
-}
+entity_type_t Player::get_type() const { return PLAYER; }
 
 nlohmann::json Player::get_data() const {
     nlohmann::json entity_data;
@@ -52,29 +50,33 @@ nlohmann::json Player::get_inventory_data() const {
 }
 
 void Player::use(SlotId slot) {
+    std::cout << inventory.get_data() << std::endl;
     Item* item;
     try {
         item = inventory.remove(slot);
     } catch (...) {
+        std::cout << "Excepcion lanzada" << std::endl;
         return;
     }
     item_type_t type = item->get_type();
-    if (type == TYPE_ARMOR || type == TYPE_ARMOR) {
+    if (type == TYPE_ARMOR || type == TYPE_WEAPON) {
         Item* unequiped;
-        if (type == TYPE_ARMOR) {
+        if (type == TYPE_WEAPON) {
             unequiped = combat_component->equip(static_cast<Weapon*>(item));
         } else {
             unequiped = combat_component->equip(static_cast<Armor*>(item));
         }
-        if (unequiped)
-            try {
+        if (unequiped) try {
                 inventory.add(unequiped);
             } catch (const FullInventoryException& e) {
+                std::cout << "Excepcion lanzada" << std::endl;
+
                 /* tirar? no equipar? */
             }
     } else if (type == TYPE_POTION) {
         /* usar poción */
     }
+    std::cout << inventory.get_data() << std::endl;
 }
 
 nlohmann::json Player::get_persist_data() const {

@@ -6,6 +6,7 @@ add_library(game
   player.cpp
   action_move.cpp
   action_attack.cpp
+  action_inventory.cpp
   combat_component.cpp
   movement_component.cpp
   map_transitions.cpp
@@ -17,5 +18,4 @@ add_library(game
   armor.cpp
   gold.cpp
   potion.cpp
-
 )

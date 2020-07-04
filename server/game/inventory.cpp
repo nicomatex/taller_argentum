@@ -1,5 +1,5 @@
 #include "inventory.h"
-
+#include <iomanip>
 #include "../server_manager.h"
 
 const char* FullInventoryException::what() const throw() {

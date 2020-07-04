@@ -4,6 +4,7 @@
 #include <array>
 
 #include "../../include/nlohmann/json.hpp"
+#include "../../include/types.h"
 #include "item.h"
 
 // Segun mock el inventario tiene 12 slots -> el oro no va en el inventario
@@ -20,7 +21,6 @@ class EmptySlotException : public std::exception {
     const char* what() const throw();
 };
 
-typedef uint8_t SlotId;  // 0 - 11
 
 typedef struct inventory {
     ItemId items_ids[INV_SIZE];

@@ -12,7 +12,7 @@ enum server_to_client {
     EV_ID_NOTIFY_NEW_MAP = 5,
     EV_ID_DEALT_DAMAGE = 6,
     EV_ID_RECEIVED_DAMAGE = 7,
-    EV_ID_INVENTORY_UPDATE
+    EV_ID_INVENTORY_UPDATE = 8
 };
 
 enum client_to_server {
@@ -21,7 +21,8 @@ enum client_to_server {
     EV_ID_CREATE = 1,
     EV_ID_MOVE = 2,
     EV_ID_ATTACK = 3,
-    EV_ID_COMMAND = 4
+    EV_ID_COMMAND = 4,
+    EV_ID_INVENTORY = 5
 };
 
 enum server_to_self { SERVER_DROP_CLIENT = -2, SERVER_CHANGE_MAP = 10 };

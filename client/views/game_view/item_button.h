@@ -11,7 +11,7 @@ class ItemButton : public Button {
 
    public:
     ItemButton(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer* renderer,
-               int slot_number, SocketManager& socket_manager);
+               SlotId slot_number, SocketManager& socket_manager);
 
     void on_click() override;
 };

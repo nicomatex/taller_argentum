@@ -1,5 +1,4 @@
 #include "event_factory.h"
-
 #include "../../include/nlohmann/json.hpp"
 
 using json = nlohmann::json;
@@ -37,5 +36,10 @@ Event EventFactory::disconnect() {
 
 Event EventFactory::attack_event() {
     json event = {{"ev_id", EV_ID_ATTACK}};
-    return event;
+    return Event(event);
+}
+
+Event EventFactory::inventory_event(SlotId slot){
+    json event = {{"ev_id",EV_ID_INVENTORY},{"slot",slot}};
+    return Event(event);
 }

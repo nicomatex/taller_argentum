@@ -12,7 +12,7 @@ ItemButtonGrid::ItemButtonGrid(SDL_Rect inventory_area, SDL_Rect viewport,
                                     inventory_area.y + i * button_height,
                                     button_width, button_height};
             buttons.push_back(ItemButton(button_area, viewport, renderer,
-                                         vector_position, socket_manager));
+                                         (SlotId)vector_position, socket_manager));
         }
     }
 }

@@ -14,11 +14,13 @@ typedef struct armor_info {
 inline void to_json(nlohmann::json& j, const armor_info_t& a) {
     j["min_defense"] = a.min_defense;
     j["max_defense"] = a.max_defense;
+    j["slot_info"] = a.slot_info;
 }
 
 inline void from_json(const nlohmann::json& j, armor_info_t& a) {
     j["min_defense"].get_to(a.min_defense);
     j["max_defense"].get_to(a.max_defense);
+    j["slot_info"].get_to(a.slot_info);
 }
 
 class Armor : public Item {

@@ -28,6 +28,7 @@ add_library(game
   game_client.cpp
   map_change_buffer.cpp
   chat_buffer.cpp
+  inventory_buffer.cpp
   game_state_monitor.cpp
 )
 

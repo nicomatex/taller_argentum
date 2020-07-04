@@ -9,6 +9,7 @@ add_library(events
   movement_handler.cpp
   client_initializer_handler.cpp
   disconnect_handler.cpp
+  inventory_handler.cpp
 )
 
 target_link_libraries(events

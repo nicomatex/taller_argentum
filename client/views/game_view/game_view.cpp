@@ -4,21 +4,20 @@
 #include "../../engine/ECS/entity.h"
 #include "../../engine/ECS/entity_manager.h"
 #include "../../engine/UI/stat_bar.h"
+#include "../../engine/entity_factory.h"
 #include "../../engine/resource_manager.h"
 #include "../responsive_scaler.h"
 
-#include "../../engine/entity_factory.h"
-
 GameView::GameView(ResponsiveScaler &scaler, int follow_entity_id,
                    SocketManager &socket_manager, SDLWindow &window,
-                   ChatBuffer &chat_buffer,
+                   ChatBuffer &chat_buffer, InventoryBuffer &inventory_buffer,
                    GameStateMonitor &game_state_monitor,
                    nlohmann::json map_info)
     : scaler(scaler),
       window(window),
       chat_buffer(chat_buffer),
       game_state_monitor(game_state_monitor),
-      hud(scaler, window, chat_buffer,
+      hud(scaler, window, chat_buffer, inventory_buffer,
           EntityManager::get_instance().get_from_id(follow_entity_id),
           socket_manager),
       camera(EntityManager::get_instance()

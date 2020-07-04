@@ -2,17 +2,18 @@
 #define __HUD_H
 #include "../../chat_buffer.h"
 #include "../../engine/ECS/entity.h"
+#include "../../engine/SDL/sdl_text.h"
 #include "../../engine/SDL/sdl_texture.h"
 #include "../../engine/SDL/sdl_window.h"
-#include "../../engine/SDL/sdl_text.h"
 #include "../../engine/UI/icon_grid.h"
 #include "../../engine/UI/stat_bar.h"
+#include "../../inventory_buffer.h"
 #include "../responsive_scaler.h"
 #include "SDL2/SDL.h"
 #include "cast_button.h"
 #include "chat.h"
 #include "inventory.h"
-#
+
 class StatsComponent;
 
 class Hud {
@@ -21,6 +22,7 @@ class Hud {
     SDLWindow& window;
     Entity& player;
     ChatBuffer& chat_buffer;
+    InventoryBuffer& inventory_buffer;
     Chat chat;
     StatBar mana_bar;
     StatBar health_bar;
@@ -40,7 +42,8 @@ class Hud {
 
    public:
     Hud(ResponsiveScaler& scaler, SDLWindow& window, ChatBuffer& chat_buffers,
-        Entity& player, SocketManager& socket_manager);
+        InventoryBuffer& inventory_buffer, Entity& player,
+        SocketManager& socket_manager);
     ~Hud();
 
     void handle_event(SDL_Event& e);
