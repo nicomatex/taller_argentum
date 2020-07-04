@@ -22,7 +22,7 @@ enum client_to_server {
     EV_ID_MOVE = 2,
     EV_ID_ATTACK = 3,
     EV_ID_COMMAND = 4,
-    EV_ID_INVENTORY = 5
+    EV_ID_INVENTORY = 5,
 };
 
 enum server_to_self { SERVER_DROP_CLIENT = -2, SERVER_CHANGE_MAP = 10 };

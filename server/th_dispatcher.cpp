@@ -59,7 +59,8 @@ ThDispatcher::ThDispatcher() : BlockingThEventHandler() {
         static_cast<EventHandler*>(new AttackHandler());
     handlers[static_cast<int>(EV_ID_INVENTORY)] = 
         static_cast<EventHandler*>(new InventoryHandler());
-        
+    handlers[static_cast<int>(EV_ID_CREATE)] = 
+        static_cast<EventHandler*>(new CreationHandler());    
     // Inicializamos los handlers que sean threads
     for (auto it : handlers) {
         if (it.second->is_threaded()) {
