@@ -1,0 +1,44 @@
+{
+	"classes":[
+		{
+			"type" : 1,
+			"name" : "mage",
+			"multipliers":
+				{
+					"health_multiplier" : 1,
+					"mana_multiplier" : 1,
+					"meditate_multiplier" : 1
+				}
+		},
+		{
+			"type" : 2,
+			"name" : "cleric",
+			"multipliers":
+				{
+					"health_multiplier" : 1,
+					"mana_multiplier" : 1,
+					"meditate_multiplier" : 1
+				}
+		},
+		{
+			"type" : 3,
+			"name" : "paladin",
+			"multipliers":
+				{
+					"health_multiplier" : 1,
+					"mana_multiplier" : 1,
+					"meditate_multiplier" : 1
+				}
+		},
+		{
+			"type" : 4,
+			"name" : "warrior",
+			"multipliers":
+				{
+					"health_multiplier" : 1,
+					"mana_multiplier" : 0,
+					"meditate_multiplier" : 0
+				}
+		}
+	]
+}

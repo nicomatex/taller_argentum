@@ -24,6 +24,7 @@ add_library(server
   character_manager.cpp
   map_changer.cpp
   session.cpp
+  attribute_manager.cpp
 )
 
 target_link_libraries(server

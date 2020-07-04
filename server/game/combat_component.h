@@ -21,6 +21,8 @@ class CombatComponent {
    protected:
     const unsigned int max_hp;
     unsigned int current_hp;
+    const unsigned int max_mp;
+    unsigned int current_mp;
 
     float attack_speed;  // en golpes / segundo.
     int attack_accumulator;
@@ -33,7 +35,8 @@ class CombatComponent {
    public:
     CombatComponent(ItemId helmet_id, ItemId armor_id, ItemId shield_id,
                     ItemId weapon_id, unsigned int current_hp,
-                    float attack_speed);
+                    unsigned int current_mp, float attack_speed);
+                    
     virtual ~CombatComponent();
 
     damage_t attack();

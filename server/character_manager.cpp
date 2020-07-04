@@ -56,7 +56,10 @@ static character_t create_character(const nlohmann::json& character_info) {
     character.shield_id = character_info["shield_id"];
     character.weapon_id = character_info["weapon_id"];
     character.current_hp = character_info["curr_hp"];
+    character.current_mp = character_info["curr_mp"];
     character.inventory = character_info["inventory"];
+    character.class_type = character_info["class_type"];
+    character.race_type = character_info["race_type"];
     return std::move(character);
 }
 
@@ -111,7 +114,10 @@ nlohmann::json CharacterManager::get_character(std::string name) {
     character_info["shield_id"] = character.shield_id;
     character_info["weapon_id"] = character.weapon_id;
     character_info["curr_hp"] = character.current_hp;
+    character_info["curr_mp"] = character.current_mp;
     character_info["inventory"] = character.inventory;
+    character_info["race_type"] = character.race_type;
+    character_info["class_type"] = character.class_type;
     return std::move(character_info);
 }
 
@@ -132,7 +138,7 @@ void CharacterManager::print_character(std::string name) {
     std::cout << "Name: " << character["name"] << std::endl;
     std::cout << "Map id: " << character["map_id"] << std::endl;
     std::cout << "X: " << character["pos"]["x"]
-              << " Y: " << character["pos"]["y"] << std::endl;
+              << "Y: " << character["pos"]["y"] << std::endl;
     std::cout << "Head id: " << character["head_id"] << std::endl;
     std::cout << "Body id: " << character["body_id"] << std::endl;
     std::cout << "Helmet id: " << character["helmet_id"] << std::endl;
@@ -140,6 +146,9 @@ void CharacterManager::print_character(std::string name) {
     std::cout << "Shield id: " << character["shield_id"] << std::endl;
     std::cout << "Weapon id: " << character["weapon_id"] << std::endl;
     std::cout << "Current hp: " << character["curr_hp"] << std::endl;
+    std::cout << "Current mp: " << character["curr_mp"] << std::endl;
     std::cout << "Inventory: " << character["inventory"] << std::endl;
+    std::cout << "Class type: " << character["class_type"] << std::endl;
+    std::cout << "Race type " << character["race_type"] << std::endl;
     std::cout << std::endl;
 }

@@ -6,6 +6,7 @@
 #include "inventory.h"
 #include "map.h"
 #include "position.h"
+#include "../attribute_manager.h"
 
 class Player : public Entity {
    private:
@@ -19,6 +20,9 @@ class Player : public Entity {
     Map& map;  // Mapa en el que esta el jugador en este momento.
                // STATS
                // INVENTARIO
+    class_type_t class_type;
+    race_type_t race_type;
+    stats_t stats;
    public:
     Player(EntityId entity_id, nlohmann::json player_info, Map& map);
     entity_type_t get_type() const override;

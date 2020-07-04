@@ -11,11 +11,19 @@ Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
              new CombatComponent(
                  player_info["helmet_id"], player_info["armor_id"],
                  player_info["shield_id"], player_info["weapon_id"],
-                 player_info["curr_hp"], 2)),
+                 player_info["curr_hp"], player_info["curr_mp"], 2)),
       head_id(player_info["head_id"]),
       body_id(player_info["body_id"]),
       inventory(player_info["inventory"]),
-      map(map) {}
+      map(map),
+      stats(AttributeManager::create_stats(player_info["race_type"])),
+      class_type(player_info["class_type"]),
+      race_type(player_info["race_type"]) {
+        std::cout << stats.strength << std::endl;
+        std::cout << stats.agility << std::endl;
+        std::cout << stats.intelligence << std::endl;
+        std::cout << stats.physique << std::endl;
+      }
 
 void Player::update(uint64_t delta_t) {
     position_t steps = movement_component->update(delta_t);
@@ -85,6 +93,8 @@ nlohmann::json Player::get_persist_data() const {
     entity_data["body_id"] = body_id;
     entity_data["name"] = name;
     entity_data["inventory"] = inventory.get_persist_data();
+    entity_data["class_type"] = class_type;
+    entity_data["race_type"] = race_type;
     nlohmann::json aux = combat_component->get_persist_data();
     for (auto& it : aux.items()) {
         entity_data[it.key()] = it.value();

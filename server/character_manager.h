@@ -9,6 +9,7 @@
 #include "../include/types.h"
 #include "game/position.h"
 #include "game/inventory.h"
+#include "attribute_manager.h"
 
 #define MAX_CHAR_NAME 15
 
@@ -23,7 +24,10 @@ typedef struct character {
     ItemId shield_id;
     ItemId weapon_id;
     unsigned int current_hp;
+    unsigned int current_mp;
     inventory_t inventory;
+    class_type_t class_type;
+    race_type_t race_type;
 } character_t;
 
 typedef uint32_t CharId;

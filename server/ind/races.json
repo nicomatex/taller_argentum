@@ -1,0 +1,72 @@
+{
+	"races":[
+		{	
+			"type" : 1,
+			"name" : "human",
+			"multipliers":
+				{
+					"health_multiplier" : 1,
+					"mana_multiplier" : 1,
+					"regen_multiplier" : 1
+				},
+			"stats_modifiers":
+				{
+					"strength": 1,
+					"agility" : 1,
+					"intelligence": 0,
+					"physique": 2
+				}
+		},
+		{	
+			"type" : 2,
+			"name" : "elf",
+			"multipliers":
+				{
+					"health_multiplier" : 1,
+					"mana_multiplier" : 1,
+					"regen_multiplier" : 1
+				},
+			"stats_modifiers":
+				{
+					"strength": -1,
+					"agility" : 3,
+					"intelligence": 2,
+					"physique": 1
+				}
+		},
+		{
+			"type" : 3,
+			"name" : "dwarf",
+			"multipliers":
+				{
+					"health_multiplier" : 1,
+					"mana_multiplier" : 1,
+					"regen_multiplier" : 1
+				},
+			"stats_modifiers":
+				{
+					"strength": 3,
+					"agility" : 0,
+					"intelligence": -2,
+					"physique": 3
+				}
+		},
+		{
+			"type" : 4,
+			"name" : "gnome",
+			"multipliers":
+				{
+					"health_multiplier" : 1,
+					"mana_multiplier" : 1,
+					"regen_multiplier" : 1
+				},
+			"stats_modifiers":
+				{
+					"strength": -2,
+					"agility" : 3,
+					"intelligence": 4,
+					"physique": 0
+				}
+		}
+	]
+}
