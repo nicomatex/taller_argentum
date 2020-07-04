@@ -2388,6 +2388,294 @@
                         "frames": 6
                     }
                 }
+            },
+            {
+                "id": 2,
+                "texture": 2,
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 35,
+                        "frame width": 53,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 70,
+                        "fps": 1,
+                        "frame height": 35,
+                        "frame width": 53,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 105,
+                        "fps": 1,
+                        "frame height": 35,
+                        "frame width": 53,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 35,
+                        "fps": 1,
+                        "frame height": 35,
+                        "frame width": 53,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 10,
+                        "frame height": 35,
+                        "frame width": 53,
+                        "frames": 4
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 70,
+                        "fps": 10,
+                        "frame height": 35,
+                        "frame width": 53,
+                        "frames": 4
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 105,
+                        "fps": 10,
+                        "frame height": 35,
+                        "frame width": 53,
+                        "frames": 4
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 35,
+                        "fps": 10,
+                        "frame height": 35,
+                        "frame width": 53,
+                        "frames": 4
+                    }
+                }
+            },
+            {
+                "id": 3,
+                "texture": 3,
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 51,
+                        "frame width": 24,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 102,
+                        "fps": 1,
+                        "frame height": 51,
+                        "frame width": 16,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 153,
+                        "fps": 1,
+                        "frame height": 51,
+                        "frame width": 16,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 51,
+                        "fps": 1,
+                        "frame height": 51,
+                        "frame width": 24,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 10,
+                        "frame height": 51,
+                        "frame width": 24,
+                        "frames": 6
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 102,
+                        "fps": 10,
+                        "frame height": 51,
+                        "frame width": 16,
+                        "frames": 5
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 153,
+                        "fps": 10,
+                        "frame height": 51,
+                        "frame width": 16,
+                        "frames": 5
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 51,
+                        "fps": 10,
+                        "frame height": 51,
+                        "frame width": 24,
+                        "frames": 6
+                    }
+                }
+            },
+            {
+                "id": 4,
+                "texture": 4,
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 52,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 104,
+                        "fps": 1,
+                        "frame height": 52,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 156,
+                        "fps": 1,
+                        "frame height": 52,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 52,
+                        "fps": 1,
+                        "frame height": 52,
+                        "frame width": 25,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 10,
+                        "frame height": 52,
+                        "frame width": 25,
+                        "frames": 6
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 104,
+                        "fps": 10,
+                        "frame height": 52,
+                        "frame width": 25,
+                        "frames": 5
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 156,
+                        "fps": 10,
+                        "frame height": 52,
+                        "frame width": 25,
+                        "frames": 5
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 52,
+                        "fps": 10,
+                        "frame height": 52,
+                        "frame width": 25,
+                        "frames": 6
+                    }
+                }
+            },
+            {
+                "id": 5,
+                "texture": 5,
+                "idle": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 1,
+                        "frame height": 32,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 64,
+                        "fps": 1,
+                        "frame height": 32,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 96,
+                        "fps": 1,
+                        "frame height": 32,
+                        "frame width": 25,
+                        "frames": 1
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 32,
+                        "fps": 1,
+                        "frame height": 32,
+                        "frame width": 25,
+                        "frames": 1
+                    }
+                },
+                "moving": {
+                    "down": {
+                        "base x": 0,
+                        "base y": 0,
+                        "fps": 20,
+                        "frame height": 32,
+                        "frame width": 25,
+                        "frames": 8
+                    },
+                    "left": {
+                        "base x": 0,
+                        "base y": 64,
+                        "fps": 20,
+                        "frame height": 32,
+                        "frame width": 25,
+                        "frames": 8
+                    },
+                    "right": {
+                        "base x": 0,
+                        "base y": 96,
+                        "fps": 20,
+                        "frame height": 32,
+                        "frame width": 25,
+                        "frames": 8
+                    },
+                    "up": {
+                        "base x": 0,
+                        "base y": 32,
+                        "fps": 20,
+                        "frame height": 32,
+                        "frame width": 25,
+                        "frames": 8
+                    }
+                }
             }
 		]
     },
