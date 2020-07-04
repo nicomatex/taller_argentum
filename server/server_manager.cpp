@@ -5,22 +5,21 @@
 
 #include "../include/event.h"
 #include "../include/nlohmann/json.hpp"
-#include "events/event_factory.h"
 #include "attribute_manager.h"
+#include "events/event_factory.h"
 
 // Temp
 #include <iostream>
-#include <mutex>
-
-std::recursive_mutex m;
 
 ServerManager::ServerManager()
     : character_manager("database/characters.dat", "database/characters.json"),
       map_manager("ind/maps_index.json"),
       accepter(Socket("27016", 10)),
       game_loop(map_manager),
-      item_factory("ind/items.json") {
-    AttributeManager::init("ind/stats.json", "ind/races.json", "ind/classes.json");
+      item_factory("ind/items.json"),
+      monster_factory("ind/monsters.json") {
+    AttributeManager::init("ind/stats.json", "ind/races.json",
+                           "ind/classes.json");
     if (!character_manager.character_exists("nicomatex")) {
         nlohmann::json nico_info = {{"name", "nicomatex"},
                                     {"map_id", 0},
@@ -33,23 +32,33 @@ ServerManager::ServerManager()
                                     {"weapon_id", 303},
                                     {"curr_hp", 57},
                                     {"curr_mp", 50},
-                                    {"class_type", mage},
-                                    {"race_type", human},
+                                    {"class_type", MAGE},
+                                    {"race_type", HUMAN},
                                     {"curr_level", 8},
                                     {"curr_exp", 34000}};
 
-        nico_info["inventory"] = R"({"items_ids":[401,300,200,0,0,0,0,0,0,0,0,0],
+        nico_info["inventory"] =
+            R"({"items_ids":[401,300,200,0,0,0,0,0,0,0,0,0],
                                  "items_stacks":[50,1,1,0,0,0,0,0,0,0,0,0]})"_json;
         character_manager.add_character(nico_info);
     }
 
     if (!character_manager.character_exists("tai")) {
-        nlohmann::json taiel_info = {
-            {"name", "tai"},   {"map_id", 0},      {"pos", position_t{20, 21}},
-            {"head_id", 2},    {"body_id", 2},     {"helmet_id", 2},
-            {"armor_id", 101}, {"shield_id", 201}, {"weapon_id", 302},
-            {"curr_hp", 70}, {"curr_mp", 30}, {"class_type", warrior}, {"race_type", dwarf},
-            {"curr_level", 16}, {"curr_exp", 131000}};
+        nlohmann::json taiel_info = {{"name", "tai"},
+                                     {"map_id", 0},
+                                     {"pos", position_t{20, 21}},
+                                     {"head_id", 2},
+                                     {"body_id", 2},
+                                     {"helmet_id", 2},
+                                     {"armor_id", 101},
+                                     {"shield_id", 201},
+                                     {"weapon_id", 302},
+                                     {"curr_hp", 70},
+                                     {"curr_mp", 30},
+                                     {"class_type", WARRIOR},
+                                     {"race_type", DWARF},
+                                     {"curr_level", 16},
+                                     {"curr_exp", 131000}};
         taiel_info["inventory"] = R"({"items_ids":[401,0,0,0,0,0,0,0,0,0,0,0],
                                  "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0]})"_json;
         character_manager.add_character(taiel_info);
@@ -57,23 +66,32 @@ ServerManager::ServerManager()
 
     if (!character_manager.character_exists("fran")) {
         nlohmann::json fran_info = {
-            {"name", "fran"},  {"map_id", 0},      {"pos", position_t{13, 20}},
-            {"head_id", 2},    {"body_id", 1},     {"helmet_id", 3},
-            {"armor_id", 102}, {"shield_id", 201}, {"weapon_id", 301},
-            {"curr_hp", 100}, {"curr_mp", 70}, {"class_type", paladin}, {"race_type", elf},
-            {"curr_level", 1}, {"curr_exp", 300}};
+            {"name", "fran"},   {"map_id", 0},      {"pos", position_t{13, 20}},
+            {"head_id", 2},     {"body_id", 1},     {"helmet_id", 3},
+            {"armor_id", 102},  {"shield_id", 201}, {"weapon_id", 301},
+            {"curr_hp", 100},   {"curr_mp", 70},    {"class_type", PALADIN},
+            {"race_type", ELF}, {"curr_level", 1},  {"curr_exp", 300}};
         fran_info["inventory"] = R"({"items_ids":[401,0,0,0,0,0,0,0,0,0,0,0],
                                  "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0]})"_json;
         character_manager.add_character(fran_info);
     }
 
     if (!character_manager.character_exists("eze")) {
-        nlohmann::json eze_info = {
-            {"name", "eze"},   {"map_id", 0},      {"pos", position_t{23, 20}},
-            {"head_id", 2},    {"body_id", 1},     {"helmet_id", 1},
-            {"armor_id", 100}, {"shield_id", 200}, {"weapon_id", 300},
-            {"curr_hp", 100}, {"curr_mp", 36}, {"class_type", cleric}, {"race_type", gnome},
-            {"curr_level", 16}, {"curr_exp", 131000}};
+        nlohmann::json eze_info = {{"name", "eze"},
+                                   {"map_id", 0},
+                                   {"pos", position_t{23, 20}},
+                                   {"head_id", 2},
+                                   {"body_id", 1},
+                                   {"helmet_id", 1},
+                                   {"armor_id", 100},
+                                   {"shield_id", 200},
+                                   {"weapon_id", 300},
+                                   {"curr_hp", 100},
+                                   {"curr_mp", 36},
+                                   {"class_type", PRIEST},
+                                   {"race_type", GNOME},
+                                   {"curr_level", 16},
+                                   {"curr_exp", 131000}};
         eze_info["inventory"] = R"({"items_ids":[401,0,0,0,0,0,0,0,0,0,0,0],
                                  "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0]})"_json;
         character_manager.add_character(eze_info);
@@ -102,6 +120,9 @@ ThDispatcher& ServerManager::get_dispatcher() {
 
 ItemFactory& ServerManager::get_item_factory() {
     return item_factory;
+}
+MonsterFactory& ServerManager::get_monster_factory() {
+    return monster_factory;
 }
 
 void ServerManager::add_client(ClientId client_id, SocketManager* new_client) {
@@ -138,6 +159,7 @@ void ServerManager::rm_name(ClientId client_id) {
 void ServerManager::add_player(ClientId client_id, nlohmann::json player_data,
                                bool send_map_data) {
     m.lock();
+    // add_name(client_id, player_data["name"]);
     MapId map_id = player_data["map_id"];
     MapMonitor& map_monitor = map_manager[map_id];
     // Añadimos el jugador al mapa
@@ -155,7 +177,7 @@ void ServerManager::add_player(ClientId client_id, nlohmann::json player_data,
 
     std::cerr << "ServerManager: sent initialize msg to: " << client_id
               << std::endl;
-              
+
     // Lo agregamos a la session correspondiente
     sessions.at(map_id).add_client(client_id);
     m.unlock();

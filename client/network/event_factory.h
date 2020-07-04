@@ -1,10 +1,10 @@
 #ifndef __EVENT_FACTORY_H
 #define __EVENT_FACTORY_H
-#include "../../include/types.h"
-#include "../../include/event.h"
-
 #include <string>
 #include <vector>
+
+#include "../../include/event.h"
+#include "../../include/types.h"
 
 #ifndef MOVEMENT_ACTION_T
 #define MOVEMENT_ACTION_T
@@ -40,6 +40,10 @@ class EventFactory {
 
     /* Evento de inventario */
     static Event inventory_event(SlotId slot);
+
+    /* Evento de creación de pj */
+    static Event create_event(std::string name, class_type_t class_type,
+                              race_type_t race_type);
 };
 
 #endif

@@ -5,6 +5,9 @@
 #include "../../include/event.h"
 
 class CreationHandler : public BlockingThEventHandler {
+   private:
+    void disconnect(Event& event) const;
+
    protected:
     void handle(Event& ev) override;
 
@@ -13,4 +16,4 @@ class CreationHandler : public BlockingThEventHandler {
     ~CreationHandler();
 };
 
-#endif // CREATION_HANDLER_H
+#endif  // CREATION_HANDLER_H

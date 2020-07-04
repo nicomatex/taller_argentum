@@ -2,8 +2,6 @@
 #define COMBAT_COMPONENT_H
 
 #include "../../include/nlohmann/json.hpp"
-#include "items/armor.h"
-#include "items/weapon.h"
 
 typedef struct damage {
     int damage;
@@ -19,41 +17,28 @@ typedef struct attack_result {
 
 class CombatComponent {
    protected:
-    const unsigned int max_hp;
+    unsigned int max_hp;
     unsigned int current_hp;
-    const unsigned int max_mp;
+    unsigned int max_mp;
     unsigned int current_mp;
 
-    float attack_speed;  // en golpes / segundo.
-    int attack_accumulator;
-
-    Armor* helmet;
-    Armor* armor;
-    Armor* shield;
-    Weapon* weapon;
-
    public:
-    CombatComponent(ItemId helmet_id, ItemId armor_id, ItemId shield_id,
-                    ItemId weapon_id, unsigned int current_hp,
-                    unsigned int current_mp, float attack_speed);
-
+    CombatComponent(unsigned int max_hp, unsigned int max_mp);
+    CombatComponent(unsigned int max_hp, unsigned int max_mp,
+                    unsigned int current_hp, unsigned int current_mp);
     virtual ~CombatComponent();
 
-    damage_t attack();
+    void reset_max(unsigned int max_hp, unsigned int max_mp);
 
-    // int special();
-    void update(uint64_t);
+    virtual damage_t attack() = 0;
+    virtual attack_result_t receive_damage(damage_t raw_damage) = 0;
 
-    attack_result_t receive_damage(damage_t raw_damage);
+    virtual void update(uint64_t) = 0;
 
     /* Devuelve true si esta listo para atacar. */
-    bool attack_ready() const;
+    virtual bool attack_ready() const = 0;
 
-    Armor* equip(Armor* armor);
-    Weapon* equip(Weapon* weapon);
-
-    nlohmann::json get_data() const;
-    nlohmann::json get_persist_data() const;
+    virtual nlohmann::json get_data() const;
 };
 
 #endif  // COMBAT_COMPONENT_H

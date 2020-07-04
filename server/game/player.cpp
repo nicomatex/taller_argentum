@@ -1,18 +1,30 @@
 #include "player.h"
 
-#include "combat_component.h"
-#include "movement_component.h"
+#include "player_combat_component.h"
+#include "player_movement_component.h"
 
 // Temp
 #include <iostream>
 
 Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
-    : Entity(entity_id, player_info["name"], new MovementComponent(7),
-             new CombatComponent(
+    : Entity(entity_id, player_info["name"], new PlayerMovementComponent(7),
+             new PlayerCombatComponent(
                  player_info["helmet_id"], player_info["armor_id"],
                  player_info["shield_id"], player_info["weapon_id"],
+                 stats.physique *
+                     AttributeManager::get_class_hp_multiplier(
+                         player_info["class_type"]) *
+                     AttributeManager::get_race_hp_multiplier(
+                         player_info["race_type"]) *
+                     experience_component.get_level(),
+                 stats.intelligence *
+                     AttributeManager::get_class_mp_multiplier(
+                         player_info["class_type"]) *
+                     AttributeManager::get_race_mp_multiplier(
+                         player_info["race_type"]) *
+                     experience_component.get_level(),
                  player_info["curr_hp"], player_info["curr_mp"], 2),
-                 player_info["curr_level"], player_info["curr_exp"]),
+             player_info["curr_level"], player_info["curr_exp"]),
       head_id(player_info["head_id"]),
       body_id(player_info["body_id"]),
       inventory(player_info["inventory"]),
@@ -29,7 +41,9 @@ void Player::update(uint64_t delta_t) {
     // TODO: demas updates, como regeneraciones de vida/mana, etc.
 }
 
-entity_type_t Player::get_type() const { return PLAYER; }
+entity_type_t Player::get_type() const {
+    return PLAYER;
+}
 
 nlohmann::json Player::get_data() const {
     nlohmann::json entity_data;
@@ -70,21 +84,22 @@ void Player::use(SlotId slot) {
     if (type == TYPE_ARMOR || type == TYPE_WEAPON) {
         Item* unequiped;
         if (type == TYPE_WEAPON) {
-            unequiped = combat_component->equip(static_cast<Weapon*>(item));
+            unequiped = static_cast<PlayerCombatComponent*>(combat_component)
+                            ->equip(static_cast<Weapon*>(item));
         } else {
-            unequiped = combat_component->equip(static_cast<Armor*>(item));
+            unequiped = static_cast<PlayerCombatComponent*>(combat_component)
+                            ->equip(static_cast<Armor*>(item));
         }
-        if (unequiped) try {
+        if (unequiped)
+            try {
                 inventory.add(unequiped);
             } catch (const FullInventoryException& e) {
-                std::cout << "Excepcion lanzada" << std::endl;
-
+                std::cout << "Player Equip: Inventory full." << std::endl;
                 /* tirar? no equipar? */
             }
     } else if (type == TYPE_POTION) {
         /* usar poción */
     }
-    std::cout << inventory.get_data() << std::endl;
 }
 
 nlohmann::json Player::get_persist_data() const {
@@ -95,7 +110,8 @@ nlohmann::json Player::get_persist_data() const {
     entity_data["inventory"] = inventory.get_persist_data();
     entity_data["class_type"] = class_type;
     entity_data["race_type"] = race_type;
-    nlohmann::json aux = combat_component->get_persist_data();
+    nlohmann::json aux = static_cast<PlayerCombatComponent*>(combat_component)
+                             ->get_persist_data();
     for (auto& it : aux.items()) {
         entity_data[it.key()] = it.value();
     }
@@ -107,5 +123,6 @@ nlohmann::json Player::get_persist_data() const {
 }
 
 void Player::set_movement(mov_action_t action, direction_t direction) {
-    movement_component->set_movement(action, direction);
+    static_cast<PlayerMovementComponent*>(movement_component)
+        ->set_movement(action, direction);
 }

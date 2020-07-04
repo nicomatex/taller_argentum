@@ -1,4 +1,5 @@
 #include "event_factory.h"
+
 #include "../../include/nlohmann/json.hpp"
 
 using json = nlohmann::json;
@@ -39,7 +40,16 @@ Event EventFactory::attack_event() {
     return Event(event);
 }
 
-Event EventFactory::inventory_event(SlotId slot){
-    json event = {{"ev_id",EV_ID_INVENTORY},{"slot",slot}};
+Event EventFactory::inventory_event(SlotId slot) {
+    json event = {{"ev_id", EV_ID_INVENTORY}, {"slot", slot}};
+    return Event(event);
+}
+
+Event EventFactory::create_event(std::string name, class_type_t class_type,
+                                 race_type_t race_type) {
+    json event = {{"ev_id", EV_ID_CREATE},
+                  {"name", name},
+                  {"class_type", class_type},
+                  {"race_type", race_type}};
     return Event(event);
 }

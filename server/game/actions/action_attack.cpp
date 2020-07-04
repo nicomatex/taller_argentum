@@ -13,7 +13,8 @@ void ActionAttack::execute(Map& map, EntityId entity_id) const {
     position_t attacked_pos =
         attacker->get_facing_position(map.get_position(entity_id));
     Entity* attacked = Action::get_entity(map, attacked_pos);
-    if (!attacked)  // || !attacked->is_alive() TODO
+    if (!attacked)  // || !attacked->is_alive() ||
+                    // !attacker->can_attack(attacked) TODO
         return;
     attack_result_t result = attacker->attack(attacked);
     if (!result.success)

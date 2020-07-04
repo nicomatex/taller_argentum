@@ -1,0 +1,12 @@
+{
+    "monsters": [
+        {
+            "id": 1,
+            "name": "monster1",
+            "sprite_id": 1,
+            "movement_speed": 5,
+            "max_hp": 200,
+            "damage": 30
+        }
+    ]
+}

@@ -33,8 +33,8 @@ void ThObserver::send_update_logs() {
                     // server_manager.send_to(
                     //     client_id,
                     //     EventFactory::dealt_damage(dmg, it["to_id"]));
-                    std::string msg = "Recibido " + std::to_string(dmg) +
-                                      " de danio por " + to;
+                    std::string msg =
+                        "Hecho " + std::to_string(dmg) + " de danio a " + to;
                     server_manager.send_to(client_id,
                                            EventFactory::chat_message(msg));
                 } break;

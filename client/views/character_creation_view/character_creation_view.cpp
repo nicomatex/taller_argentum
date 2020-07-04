@@ -20,7 +20,9 @@ CharacterCreationView::CharacterCreationView(
                      window.get_renderer(), game_state_monitor),
       req_char_creation_button(scaler.scale(REQ_CHAR_CREATION_BUTTON_AREA),
                                scaler.scale(CHAR_CREATION_VIEWPORT),
-                               window.get_renderer(), socket_manager),
+                               window.get_renderer(), socket_manager,
+                               character_name_input, race_and_class_selector,
+                               game_state_monitor),
       ui_event_handler(character_name_input, race_and_class_selector,
                        go_back_button, req_char_creation_button,
                        game_state_monitor) {

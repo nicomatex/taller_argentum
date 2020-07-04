@@ -6,10 +6,11 @@
 #include "events/client_drop_handler.h"
 #include "events/client_initializer_handler.h"
 #include "events/command_handler.h"
+#include "events/creation_handler.h"
 #include "events/disconnect_handler.h"
+#include "events/inventory_handler.h"
 #include "events/movement_handler.h"
 #include "server_manager.h"
-#include "events/inventory_handler.h"
 
 // Temp
 #include <iostream>
@@ -57,10 +58,10 @@ ThDispatcher::ThDispatcher() : BlockingThEventHandler() {
         static_cast<EventHandler*>(new CommandHandler());
     handlers[static_cast<int>(EV_ID_ATTACK)] =
         static_cast<EventHandler*>(new AttackHandler());
-    handlers[static_cast<int>(EV_ID_INVENTORY)] = 
+    handlers[static_cast<int>(EV_ID_INVENTORY)] =
         static_cast<EventHandler*>(new InventoryHandler());
-    handlers[static_cast<int>(EV_ID_CREATE)] = 
-        static_cast<EventHandler*>(new CreationHandler());    
+    handlers[static_cast<int>(EV_ID_CREATE)] =
+        static_cast<EventHandler*>(new CreationHandler());
     // Inicializamos los handlers que sean threads
     for (auto it : handlers) {
         if (it.second->is_threaded()) {

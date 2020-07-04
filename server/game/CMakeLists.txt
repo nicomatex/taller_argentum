@@ -6,6 +6,7 @@ add_library(game
   combat_component.cpp
   experience_component.cpp
   entity.cpp
+  entity_factory.cpp
   game_loop.cpp
   inventory.cpp
   items/item_factory.cpp
@@ -17,6 +18,12 @@ add_library(game
   map.cpp
   map_transitions.cpp
   movement_component.cpp
+  monster.cpp
+  monster_combat_component.cpp
+  monster_movement_component.cpp
+  monster_factory.cpp
   player.cpp
+  player_combat_component.cpp
+  player_movement_component.cpp
   random_event_generator.cpp
 )

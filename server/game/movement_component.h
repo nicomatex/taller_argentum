@@ -7,24 +7,19 @@
 #include "position.h"
 
 class MovementComponent {
-   private:
-    unsigned int movement_speed;  // en tiles per second
-    std::vector<direction_t> direction_history;
-    bool moving;
-    int move_accumulator;
+   protected:
+    unsigned int movement_speed;
 
-    direction_t current_direction() const;
+    virtual direction_t current_direction() const = 0;
     position_t get_displacement(position_t pos, int dis) const;
 
    public:
-    MovementComponent(unsigned int ms);
+    MovementComponent(unsigned int movement_speed);
     ~MovementComponent();
 
-    nlohmann::json get_data() const;
+    virtual nlohmann::json get_data() const;
 
-    void set_movement(mov_action_t action, direction_t direction);
-
-    position_t update(uint64_t delta_t);
+    virtual position_t update(uint64_t delta_t) = 0;
 
     position_t get_facing_position(position_t position);
 };

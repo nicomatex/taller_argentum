@@ -44,10 +44,10 @@ void RaceAndClassSelector::handle_event(SDL_Event& e) {
     warrior_button.handle_event(e);
 }
 
-character_option_t RaceAndClassSelector::get_selected_class(){
+class_type_t RaceAndClassSelector::get_selected_class() {
     return selected_class;
 }
 
-character_option_t RaceAndClassSelector::get_selected_race(){
+race_type_t RaceAndClassSelector::get_selected_race() {
     return selected_race;
 }

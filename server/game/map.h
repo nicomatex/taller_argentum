@@ -11,6 +11,7 @@
 #include "../map_changer.h"
 #include "actions/action.h"
 #include "entity.h"
+#include "entity_factory.h"
 #include "map_transitions.h"
 #include "position.h"
 
@@ -50,6 +51,7 @@ class Map {
     CollisionMap collision_map;
     EntityMap entity_map;
     MapTransitions transitions;
+    EntityFactory entity_factory;
 
     std::queue<entity_action_t> actions;
     std::queue<nlohmann::json> update_logs;
@@ -63,9 +65,6 @@ class Map {
     /* Indica si la posicion indicada tiene un elemento colisionable (no se
      * puede pisar). */
     bool collides(position_t position);
-
-    // Devuelve el siguiente id a asignar a una nueva entidad.
-    EntityId get_next_id();
 
     /* Agrega una nueva entidad asociada al entity_id en la posicion indicada.*/
     void add_entity(Entity* entity, position_t position);

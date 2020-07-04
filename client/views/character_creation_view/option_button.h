@@ -1,30 +1,27 @@
-#ifndef __RACE_BUTTON_H
-#define __RACE_BUTTON_H
+#ifndef __OPTION_BUTTON_H
+#define __OPTION_BUTTON_H
+
 #include "../../engine/UI/button.h"
+#include "../../engine/resource_manager.h"
 
-typedef enum {
-    HUMAN,
-    ELF,
-    DWARF,
-    GNOME,
-    MAGE,
-    PRIEST,
-    PALADIN,
-    WARRIOR
-} character_option_t;
-
+template <typename T>
 class OptionButton : public Button {
    private:
-    character_option_t& selected_option;
-    character_option_t this_button_option;
+    T& selected_option;
+    T this_button_option;
 
    public:
     OptionButton(SDL_Rect button_area, SDL_Rect viewport,
-                 SDL_Renderer* renderer, character_option_t this_button_option,
-                 character_option_t& selected_option);
-    ~OptionButton();
+                 SDL_Renderer* renderer, T this_button_option,
+                 T& selected_option)
+        : Button(button_area, viewport, renderer),
+          this_button_option(this_button_option),
+          selected_option(selected_option) {}
 
-    void on_click() override;
+    void on_click() override {
+        selected_option = this_button_option;
+        ResourceManager::get_instance().get_sound_fx(3).play();
+    }
 };
 
 #endif

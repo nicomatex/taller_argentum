@@ -30,13 +30,12 @@ class Entity {
 
     /* Saber el tipo de la entidad sirve para saber si es colisionable o no.
     Los players y npcs son colisionables; el loot no.*/
-    virtual entity_type_t get_type() const = 0;
 
     std::string get_name() const;
 
+    virtual entity_type_t get_type() const = 0;
     virtual nlohmann::json get_data() const = 0;
-    virtual nlohmann::json get_persist_data() const = 0;
-    virtual void update(uint64_t delta_t);
+    virtual void update(uint64_t delta_t) = 0;
 
     virtual position_t get_facing_position(position_t position);
 

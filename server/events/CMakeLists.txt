@@ -5,6 +5,7 @@ add_library(events
   event_factory.cpp
   client_drop_handler.cpp
   change_map_handler.cpp
+  creation_handler.cpp
   attack_handler.cpp
   movement_handler.cpp
   client_initializer_handler.cpp

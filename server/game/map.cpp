@@ -12,7 +12,8 @@ Map::Map(nlohmann::json map_description)
       dirty(false),
       width(map_description["width"]),
       height(map_description["height"]),
-      transitions(map_description["transitions"], width, height) {
+      transitions(map_description["transitions"], width, height),
+      entity_factory(*this) {
     for (auto& layer : map_description["layers"].items()) {
         if (layer.value()["name"] == "Collision") {
             for (int i = 0; i < height; i++) {
@@ -29,12 +30,8 @@ Map::Map(nlohmann::json map_description)
     visual_map_info = map_description;
 }
 
-EntityId Map::get_next_id() {
-    static EntityId entity_id = 0;
-    return entity_id++;
-}
-
 void Map::add_entity(Entity* entity, position_t position) {
+    position = get_nearest_free_position(position);
     dirty = true;
     position_map[entity->get_id()] = position;
     entity_matrix[position] = entity;
@@ -120,12 +117,9 @@ position_t Map::get_nearest_free_position(position_t position) {
 }
 
 nlohmann::json Map::add_player(nlohmann::json player_info) {
-    EntityId entity_id = get_next_id();
-    Player* player = new Player(entity_id, player_info, *this);
-    position_t player_position = player_info["pos"];
-    position_t nearest_position = get_nearest_free_position(player_position);
+    Player* player = entity_factory.create_player(player_info);
 
-    add_entity(player, nearest_position);
+    add_entity(player, player_info["pos"]);
 
     player_info = player->get_data();
     player_info["inventory"] = player->get_inventory_data();
@@ -133,7 +127,7 @@ nlohmann::json Map::add_player(nlohmann::json player_info) {
 }
 
 nlohmann::json Map::rm_player(EntityId entity_id) {
-    Entity* player = entity_map.at(entity_id);
+    Player* player = static_cast<Player*>(entity_map.at(entity_id));
     entity_map.erase(entity_id);
     nlohmann::json player_data = player->get_persist_data();
     position_t position = position_map.at(entity_id);

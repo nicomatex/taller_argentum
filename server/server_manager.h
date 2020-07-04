@@ -2,6 +2,7 @@
 #define SERVER_MANAGER_H
 
 #include <boost/bimap.hpp>
+#include <mutex>
 #include <stdexcept>
 #include <string>
 
@@ -11,6 +12,7 @@
 #include "character_manager.h"
 #include "game/game_loop.h"
 #include "game/items/item_factory.h"
+#include "game/monster_factory.h"
 #include "game/player.h"
 #include "map_manager.h"
 #include "map_monitor.h"
@@ -71,6 +73,9 @@ class ServerManager {
     ThClientAccepter accepter;
 
     ItemFactory item_factory;
+    MonsterFactory monster_factory;
+
+    std::recursive_mutex m;
 
     ServerManager();
 
@@ -80,6 +85,7 @@ class ServerManager {
     ThDispatcher& get_dispatcher();
 
     ItemFactory& get_item_factory();
+    MonsterFactory& get_monster_factory();
 
     void add_client(ClientId client_id, SocketManager* new_client);
     void rm_client(ClientId client_id);

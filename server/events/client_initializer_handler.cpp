@@ -22,6 +22,9 @@ void ClientInitializeHandler::handle(Event& event) {
         disconnect(event);
     } catch (const DuplicatedPlayerException& e) {
         disconnect(event);
+    } catch (const std::exception& e) {
+        std::cerr << "initialize_handler: " << e.what() << std::endl;
+        return;
     }
 }
 
