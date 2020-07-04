@@ -344,6 +344,23 @@
             }
         ]
     },
+    "potion_icons": {
+        "basedir" : "assets/sprites/potions/",
+        "textures":[
+            {
+                "id":1,
+                "filename": "1.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
+            },
+            {
+                "id":2,
+                "filename": "2.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
+            }
+        ]
+    },
     "npcs": {
         "basedir" : "assets/sprites/npc/",
         "textures":[

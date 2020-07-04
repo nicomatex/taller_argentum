@@ -2,12 +2,12 @@
 
 #include <unordered_map>
 
+#include "../../../include/types.h"
 #include "../../client_config.h"
 #include "../../engine/components/stats_component.h"
 #include "../../engine/components/visual_character_component.h"
 #include "../../engine/resource_manager.h"
 #include "../responsive_scaler.h"
-#include "../../../include/types.h"
 
 Hud::Hud(ResponsiveScaler& scaler, SDLWindow& window, ChatBuffer& chat_buffer,
          InventoryBuffer& inventory_buffer, Entity& player,
@@ -75,9 +75,14 @@ void Hud::_update_inventory() {
                         quantity = slot_info["actual_stack"];
                         break;
                 }
-            break;
+                break;
+            case TYPE_POTION:
+                icon = &ResourceManager::get_instance().get_texture(
+                    "potion_icons", slot_info["item_id"]);
+                quantity = slot_info["actual_stack"];
+                break;
         }
-        inventory.set_item(i,icon,quantity);
+        inventory.set_item(i, icon, quantity);
     }
 }
 

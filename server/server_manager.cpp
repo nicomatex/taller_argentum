@@ -32,7 +32,7 @@ ServerManager::ServerManager()
                                     {"curr_hp", 57}};
 
         nico_info["inventory"] = R"({"items_ids":[401,300,200,0,0,0,0,0,0,0,0,0],
-                                 "items_stacks":[1200,1,1,0,0,0,0,0,0,0,0,0]})"_json;
+                                 "items_stacks":[50,1,1,0,0,0,0,0,0,0,0,0]})"_json;
         character_manager.add_character(nico_info);
     }
 
