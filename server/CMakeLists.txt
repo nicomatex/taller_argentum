@@ -25,6 +25,7 @@ add_library(server
   map_changer.cpp
   session.cpp
   attribute_manager.cpp
+  race_graphics_manager.cpp
 )
 
 target_link_libraries(server

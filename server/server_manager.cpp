@@ -7,6 +7,7 @@
 #include "../include/nlohmann/json.hpp"
 #include "attribute_manager.h"
 #include "events/event_factory.h"
+#include "race_graphics_manager.h"
 
 // Temp
 #include <iostream>
@@ -20,6 +21,7 @@ ServerManager::ServerManager()
       monster_factory("ind/monsters.json") {
     AttributeManager::init("ind/stats.json", "ind/races.json",
                            "ind/classes.json");
+    RaceGraphicsManager::init("ind/races_graphics.json");
     if (!character_manager.character_exists("nicomatex")) {
         nlohmann::json nico_info = {{"name", "nicomatex"},
                                     {"map_id", 0},

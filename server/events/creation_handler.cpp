@@ -4,6 +4,7 @@
 #include "../game/position.h"
 #include "../server_manager.h"
 #include "event_factory.h"
+#include "../race_graphics_manager.h"
 
 CreationHandler::CreationHandler() : BlockingThEventHandler() {
     std::cerr << "CreationHandler: starting.." << std::endl;
@@ -24,8 +25,8 @@ void CreationHandler::handle(Event& event) {
         nlohmann::json player_info = {{"name", player_name},
                                       {"map_id", 0},
                                       {"pos", position_t{25, 25}},
-                                      {"head_id", 1},
-                                      {"body_id", 2},
+                                      {"head_id", RaceGraphicsManager::get_race_head(create_info["race_type"])},
+                                      {"body_id", RaceGraphicsManager::get_race_body(create_info["race_type"])},
                                       {"helmet_id", 0},
                                       {"armor_id", 0},
                                       {"shield_id", 0},
