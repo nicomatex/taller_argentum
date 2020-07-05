@@ -73,15 +73,16 @@ void ThObserver::run() {
             dirty_entities = map.dirty_entities();
             dirty_loot = map.dirty_loot();
             if (++counter % ENTITY_UPDATE_INTERVAL == 0) {
-                added_client = true;
+                dirty_entities = true;
                 counter = 0;
             }
-            nlohmann::json map_data = map.get_update_data();
-            if (added_client || dirty_loot) {
+            nlohmann::json map_data = map.get_update_data(dirty_entities);
+            if ((added_client || dirty_entities) &&
+                !map_data["entities"].empty()) {
                 handler.push_event(
                     EventFactory::update_entities(map_data["entities"]));
             }
-            if (added_client || dirty_loot) {
+            if ((added_client || dirty_loot) && !map_data["items"].empty()) {
                 std::cerr << "Observer: items: " << map_data["items"]
                           << std::endl;
                 handler.push_event(

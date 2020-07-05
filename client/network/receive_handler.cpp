@@ -91,6 +91,7 @@ void ClientReceiveHandler::handle_initialization(Event &ev) {
 
 void ClientReceiveHandler::handle_entity_update(Event &ev) {
     json entities_info = ev.get_json();
+    std::cout << std::setw(4) << ev.get_json() << std::endl;
     EntityManager::get_instance().update_initialize();
     for (auto &it : entities_info["entities"].items()) {
         json entity_info = it.value();

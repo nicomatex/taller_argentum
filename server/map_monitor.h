@@ -41,7 +41,7 @@ class MapMonitor {
 
     bool dirty_entities() const;
     bool dirty_loot() const;
-    nlohmann::json get_update_data();
+    nlohmann::json get_update_data(bool update_entities);
 
     nlohmann::json get_map_data();
 };
