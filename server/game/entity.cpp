@@ -13,7 +13,10 @@ Entity::Entity(EntityId id, const std::string& name,
       combat_component(combat_component),
       experience_component(current_level, current_exp) {}
 
-Entity::~Entity() {}
+Entity::~Entity() {
+    delete movement_component;
+    delete combat_component;  
+}
 
 unsigned int Entity::get_id() const {
     return id;
