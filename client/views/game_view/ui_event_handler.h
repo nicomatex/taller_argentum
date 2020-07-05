@@ -17,7 +17,8 @@ class UiEventHandler {
     bool text_input_enabled;
     Camera &camera;
     SDL_Rect main_render_viewport;
-    
+    position_t current_target;
+
    public:
     UiEventHandler(SocketManager &socket_manager,
                    GameStateMonitor &game_state_monitor, Hud &hud,

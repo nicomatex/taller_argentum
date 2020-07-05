@@ -36,8 +36,10 @@ Hud::Hud(ResponsiveScaler& scaler, SDLWindow& window, ChatBuffer& chat_buffer,
           INVENTORY_ROWS, INVENTORY_COLS,
           ResourceManager::get_instance().get_font(INVENTORY_QTIES_FONT_ID),
           window.get_renderer(), socket_manager),
+      attempting_cast(false),
       cast_button(scaler.scale(CAST_BUTTON_AREA),
-                  scaler.scale(VIEWPORT_SIDE_PANEL), window.get_renderer()),
+                  scaler.scale(VIEWPORT_SIDE_PANEL), window.get_renderer(),
+                  attempting_cast),
       side_panel_background(
           ResourceManager::get_instance().get_texture("interface", 1)),
       gold_text("9999", ResourceManager::get_instance().get_font(1),
@@ -151,11 +153,11 @@ void Hud::_render_gold_amount() {
     gold_text.render(dest);
 }
 
-void Hud::_render_level(){
+void Hud::_render_level() {
     SDL_Rect dest = scaler.scale(LEVEL_TEXT_AREA);
     float scale_factor = (float)dest.h / (float)level_text.get_height();
     dest.w = level_text.get_width() * scale_factor;
-    dest.x -= dest.w/2; //Centrado del texto
+    dest.x -= dest.w / 2;  // Centrado del texto
     level_text.render(dest);
 }
 

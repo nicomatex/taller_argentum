@@ -29,6 +29,7 @@ class Hud {
     StatBar experience_bar;
     IconGrid equipped_items;
     Inventory inventory;
+    bool attempting_cast;
     CastButton cast_button;
     SDLTexture& side_panel_background;
     SDLText gold_text;

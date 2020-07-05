@@ -16,7 +16,8 @@ UiEventHandler::UiEventHandler(SocketManager &socket_manager,
       text_input_enabled(false),
       game_state_monitor(game_state_monitor),
       camera(camera),
-      main_render_viewport(main_render_viewport) {
+      main_render_viewport(main_render_viewport),
+      current_target({0, 0}) {
     SDL_StopTextInput();
 }
 
@@ -69,7 +70,7 @@ void UiEventHandler::handle_keydown_return() {
         SDL_StopTextInput();
         text_input_enabled = false;
         std::string chat_input = hud.chat.get_input_and_erase();
-        if(chat_input != ""){
+        if (chat_input != "") {
             send_event(EventFactory::chat_event(chat_input));
         }
     } else {
@@ -107,15 +108,21 @@ void UiEventHandler::handle_keydown_sound_toggle() {
 void UiEventHandler::handle_click(SDL_Event &e) {
     int x, y;
     SDL_GetMouseState(&x, &y);
+    bool cast_requested = hud.attempting_cast;
+    hud.attempting_cast = false;
     if (x < main_render_viewport.x ||
-        x > main_render_viewport.x + main_render_viewport.w)
+        x > main_render_viewport.x + main_render_viewport.w) {
         return;
+    }
     if (y < main_render_viewport.y ||
-        y > main_render_viewport.y + main_render_viewport.h)
+        y > main_render_viewport.y + main_render_viewport.h) {
         return;
-    position_t tile_clicked = camera.tile_at(x, y);
-    std::cout << "Tile clicked: " << tile_clicked.x << " - " << tile_clicked.y
-              << std::endl;
+    }
+    current_target = camera.tile_at(x, y);
+    if (cast_requested) {
+        std::cout << "Tirando un hechizo mortal en  " << current_target.x
+                  << " - " << current_target.y << std::endl;
+    }
 }
 
 void UiEventHandler::handle() {

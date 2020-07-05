@@ -92,34 +92,38 @@ AnimationPack &AnimationPack::operator=(const AnimationPack &other) {
 }
 
 int AnimationPack::get_frame_width(direction_t direction) {
+    int width = 0;
     switch (direction) {
         case UP:
-            return up_idle_sprite.get_frame_width();
+            width = up_idle_sprite.get_frame_width();
             break;
         case DOWN:
-            return down_idle_sprite.get_frame_width();
+            width = down_idle_sprite.get_frame_width();
             break;
         case RIGHT:
-            return right_idle_sprite.get_frame_width();
+            width = right_idle_sprite.get_frame_width();
             break;
         case LEFT:
-            return left_idle_sprite.get_frame_width();
+            width =  left_idle_sprite.get_frame_width();
             break;
     }
+    return width;
 }
 int AnimationPack::get_frame_height(direction_t direction) {
+    int height = 0;
     switch (direction) {
         case UP:
-            return up_idle_sprite.get_frame_height();
+            height = up_idle_sprite.get_frame_height();
             break;
         case DOWN:
-            return down_idle_sprite.get_frame_height();
+            height = down_idle_sprite.get_frame_height();
             break;
         case RIGHT:
-            return right_idle_sprite.get_frame_height();
+            height = right_idle_sprite.get_frame_height();
             break;
         case LEFT:
-            return left_idle_sprite.get_frame_height();
+            height = left_idle_sprite.get_frame_height();
             break;
     }
+    return height;
 }

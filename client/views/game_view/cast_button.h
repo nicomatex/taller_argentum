@@ -3,12 +3,15 @@
 
 #include "../../engine/UI/button.h"
 
-class CastButton : public Button{
+class CastButton : public Button {
+   private:
+    bool& attempting_cast;
 
-    public:
-        CastButton(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer* renderer);
+   public:
+    CastButton(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer* renderer,
+               bool& attemtping_cast);
 
-        void on_click() override;
+    void on_click() override;
 };
 
 #endif
