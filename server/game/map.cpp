@@ -118,6 +118,11 @@ position_t Map::get_nearest_free_position(position_t position) {
 }
 
 nlohmann::json Map::add_player(nlohmann::json player_info) {
+    // TODO: sacar esto
+
+    std::cerr << "Agregando bicho" << std::endl;
+    add_entity(entity_factory.create_monster(1), {40, 40});
+
     Player* player = entity_factory.create_player(player_info);
 
     add_entity(player, player_info["pos"]);
@@ -181,13 +186,6 @@ const PositionMap Map::get_position_map() const {
 }
 
 nlohmann::json Map::get_entity_data() {
-    // TODO: sacar esto
-    static int a = 0;
-    if (a == 0) {
-        a++;
-        std::cerr << "Agregando bicho" << std::endl;
-        add_entity(entity_factory.create_monster(1), {40, 40});
-    }
     nlohmann::json entities;
     entities = nlohmann::json::array();
     for (auto& it : entity_map) {
@@ -236,4 +234,11 @@ position_t Map::get_nearest_entity_pos(position_t entity_pos,
     return entity_pos;
 }
 
-Map::~Map() {}
+Map::~Map() {
+    for (auto it : entity_map) delete it.second;
+    while (!actions.empty()) {
+        entity_action_t entity_action = actions.front();
+        actions.pop();
+        delete entity_action.action;
+    }
+}

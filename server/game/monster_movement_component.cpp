@@ -1,5 +1,7 @@
 #include "monster_movement_component.h"
 
+#include <cstdlib>
+
 #include "random_event_generator.h"
 
 #define VIEW_RANGE 8
@@ -9,13 +11,19 @@
 
 direction_t get_direction_to_position(position_t from, position_t to) {
     position_t delta = {{to.x - from.x}, {to.y - from.y}};
-    if (delta.y > 0) {
-        return DOWN;
-    } else if (delta.y < 0) {
-        return UP;
+    if (std::abs(delta.y) > std::abs(delta.x)) {
+        if (delta.y > 0) {
+            std::cerr << "Monster DOWN\n";
+            return DOWN;
+        } else {
+            std::cerr << "Monster UP\n";
+            return UP;
+        }
     } else if (delta.x > 0) {
+        std::cerr << "Monster RIGHT\n";
         return RIGHT;
     }
+    std::cerr << "Monster LEFT\n";
     return LEFT;
 }
 
@@ -47,7 +55,8 @@ MonsterMovementComponent::MonsterMovementComponent(unsigned int movement_speed,
     : MovementComponent(movement_speed),
       looking_direction(DOWN),
       map(map),
-      entity_id(entity_id) {}
+      entity_id(entity_id),
+      move_accumulator(0) {}
 MonsterMovementComponent::~MonsterMovementComponent() {}
 
 position_t MonsterMovementComponent::update(uint64_t delta_t) {

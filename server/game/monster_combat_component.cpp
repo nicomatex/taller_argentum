@@ -2,6 +2,9 @@
 
 #include "actions/action_attack.h"
 
+// Temp
+#include <iostream>
+
 MonsterCombatComponent::MonsterCombatComponent(unsigned int max_hp,
                                                unsigned int damage,
                                                float attack_speed, Map& map,
@@ -9,7 +12,9 @@ MonsterCombatComponent::MonsterCombatComponent(unsigned int max_hp,
     : CombatComponent(max_hp, 0),
       damage(damage),
       map(map),
-      entity_id(entity_id) {}
+      entity_id(entity_id),
+      attack_accumulator(0),
+      attack_speed(attack_speed) {}
 MonsterCombatComponent::~MonsterCombatComponent() {}
 
 damage_t MonsterCombatComponent::attack() {
@@ -22,11 +27,10 @@ attack_result_t MonsterCombatComponent::receive_damage(damage_t raw_damage) {
 
 void MonsterCombatComponent::update(uint64_t delta_t) {
     int time_between_attacks = 1000 / attack_speed;
+    attack_accumulator += delta_t;
     if (attack_accumulator >= time_between_attacks) {
         map.push_action(entity_id, new ActionAttack());
         attack_accumulator = attack_accumulator % time_between_attacks;
-    } else {
-        attack_accumulator += delta_t;
     }
 }
 

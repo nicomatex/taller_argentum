@@ -2,8 +2,44 @@
     "monsters": [
         {
             "id": 1,
-            "name": "monster1",
+            "name": "Ciclope",
             "sprite_id": 1,
+            "movement_speed": 5,
+            "max_hp": 200,
+            "attack_speed": 0.5,
+            "damage": 30
+        },
+        {
+            "id": 2,
+            "name": "Arania",
+            "sprite_id": 2,
+            "movement_speed": 5,
+            "max_hp": 200,
+            "attack_speed": 1,
+            "damage": 30
+        },
+        {
+            "id": 3,
+            "name": "Zombie",
+            "sprite_id": 3,
+            "movement_speed": 5,
+            "max_hp": 200,
+            "attack_speed": 1,
+            "damage": 30
+        },
+        {
+            "id": 4,
+            "name": "Esqueleto",
+            "sprite_id": 4,
+            "movement_speed": 5,
+            "max_hp": 200,
+            "attack_speed": 1,
+            "damage": 30
+        },
+        {
+            "id": 5,
+            "name": "Goblin",
+            "sprite_id": 5,
             "movement_speed": 5,
             "max_hp": 200,
             "attack_speed": 1,

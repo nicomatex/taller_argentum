@@ -9,7 +9,7 @@ class MonsterCombatComponent : public CombatComponent {
    private:
     unsigned int damage;
     float attack_speed;
-    uint64_t attack_accumulator;
+    int attack_accumulator;
     Map& map;
     EntityId entity_id;
 
