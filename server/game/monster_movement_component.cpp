@@ -8,7 +8,7 @@
 #include <iostream>
 
 direction_t get_direction_to_position(position_t from, position_t to) {
-    position_t delta = {{to.x - from.x}, {to.y - from.y}};
+    position_t delta = {to.x - from.x, to.y - from.y};
     if (delta.y > 0) {
         return DOWN;
     } else if (delta.y < 0) {
