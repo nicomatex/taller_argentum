@@ -199,7 +199,8 @@ nlohmann::json Map::get_entity_data() {
     nlohmann::json entities;
     entities = nlohmann::json::array();
     for (auto& it : entity_matrix) {
-        entities.push_back(it.second->get_data());
+        entities.push_back(
+            {{"pos", it.first}, {"item_info", it.second->get_data()}});
     }
     _dirty_entities = false;
     return entities;

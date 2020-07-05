@@ -3,7 +3,7 @@
 
 #include "../../include/network/socket.h"
 #include "../../include/thread.h"
-#include "session.h"
+#include "../../include/types.h"
 
 class ThClientAccepter : public Thread {
    private:

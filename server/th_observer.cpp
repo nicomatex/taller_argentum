@@ -16,7 +16,7 @@ ThObserver::ThObserver(MapMonitor& map_monitor, BlockingThEventHandler& handler)
       running(false),
       map(map_monitor),
       handler(handler),
-      update_entities(false) {}
+      added_client(false) {}
 
 void ThObserver::send_update_logs() {
     ServerManager& server_manager = ServerManager::get_instance();
@@ -72,20 +72,22 @@ void ThObserver::run() {
             auto start = std::chrono::steady_clock::now();
             dirty_entities = map.dirty_entities();
             dirty_loot = map.dirty_loot();
-            if (dirty_entities || ++counter % ENTITY_UPDATE_INTERVAL == 0) {
-                update_entities = true;
+            if (++counter % ENTITY_UPDATE_INTERVAL == 0) {
+                added_client = true;
                 counter = 0;
             }
             nlohmann::json map_data = map.get_update_data();
-            if (update_entities) {
-                update_entities = false;
+            if (added_client || dirty_loot) {
                 handler.push_event(
                     EventFactory::update_entities(map_data["entities"]));
             }
-            if (dirty_loot) {
+            if (added_client || dirty_loot) {
+                std::cerr << "Observer: items: " << map_data["items"]
+                          << std::endl;
                 handler.push_event(
                     EventFactory::update_items(map_data["items"]));
             }
+            added_client = false;
             handler.push_event(EventFactory::update_map(map_data["positions"]));
             send_update_logs();
             auto dif =
@@ -105,7 +107,7 @@ void ThObserver::stop() {
 }
 
 void ThObserver::refresh_entities() {
-    update_entities = true;
+    added_client = true;
 }
 
 ThObserver::~ThObserver() {}

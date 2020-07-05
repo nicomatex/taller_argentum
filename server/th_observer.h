@@ -10,7 +10,7 @@
 
 class ThObserver : public Thread {
    private:
-    std::atomic_bool update_entities;
+    std::atomic_bool added_client;
     std::atomic_bool running;
     MapMonitor& map;
     BlockingThEventHandler& handler;

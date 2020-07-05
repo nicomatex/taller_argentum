@@ -17,8 +17,8 @@
 #include "map_manager.h"
 #include "map_monitor.h"
 #include "network/clients_monitor.h"
-#include "network/session.h"
 #include "network/th_client_accepter.h"
+#include "session.h"
 
 class ClientDisconnectedException : public std::exception {
    private:
