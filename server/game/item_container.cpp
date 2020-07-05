@@ -1,6 +1,7 @@
 #include "item_container.h"
 #include <iomanip>
 #include "../server_manager.h"
+#include <iostream>
 
 const char* FullItemContainerException::what() const throw() {
     return "ItemContainer is full!";
@@ -10,15 +11,15 @@ const char* EmptySlotException::what() const throw() {
     return "Slot is empty!";
 }
 
-ItemContainer::ItemContainer() {
-    item_container = {};
+ItemContainer::ItemContainer(unsigned int slots_amount) {
+    item_container.resize(slots_amount);
 }
 
-ItemContainer::ItemContainer(const nlohmann::json& inv_json) : ItemContainer() {
+ItemContainer::ItemContainer(const nlohmann::json& inv_json) : ItemContainer(INV_SIZE) {
     ServerManager& server_manager = ServerManager::get_instance();
     ItemFactory& item_factory = server_manager.get_item_factory();
     inventory_t inventory = inv_json;
-    for (SlotId slot_id = 0; slot_id < INV_SIZE; slot_id++) {
+    for (SlotId slot_id = 0; slot_id < item_container.size(); slot_id++) {
         ItemId item_id = inventory.items_ids[slot_id];
         if (item_id == 0)
             continue;  // El 0 es un id invalido (ausencia)
@@ -28,7 +29,7 @@ ItemContainer::ItemContainer(const nlohmann::json& inv_json) : ItemContainer() {
 }
 
 ItemContainer::~ItemContainer() {
-    for (SlotId slot_id = 0; slot_id < INV_SIZE; slot_id++) {
+    for (SlotId slot_id = 0; slot_id < item_container.size(); slot_id++) {
         delete item_container[slot_id];
     }
 }
@@ -103,7 +104,7 @@ Item* ItemContainer::remove(SlotId slot_id, uint32_t stack) {
 nlohmann::json ItemContainer::get_data() const {
     nlohmann::json json_inv;
     json_inv["items"] = nlohmann::json::array();
-    for (SlotId slot_id = 0; slot_id < INV_SIZE; slot_id++) {
+    for (SlotId slot_id = 0; slot_id < item_container.size(); slot_id++) {
         if (slot_is_free(slot_id)) {
             json_inv["items"].push_back({{"type", TYPE_INVALID}});
         } else {
@@ -117,7 +118,7 @@ nlohmann::json ItemContainer::get_persist_data() const {
     nlohmann::json json_inv;
     inventory_t inventory = {};
     Item item;
-    for (SlotId slot_id = 0; slot_id < INV_SIZE; slot_id++) {
+    for (SlotId slot_id = 0; slot_id < item_container.size(); slot_id++) {
         if (slot_is_free(slot_id)) {
             inventory.items_ids[slot_id] = 0;
             inventory.items_stacks[slot_id] = 0;
@@ -148,7 +149,7 @@ const Item& ItemContainer::get_item(SlotId slot_id) const {
 SlotId ItemContainer::get_available_slot(ItemId item_id) {
     if (has_item(item_id))
         return item_id_to_slot.at(item_id);
-    for (SlotId slot_id = 0; slot_id < INV_SIZE; slot_id++) {
+    for (SlotId slot_id = 0; slot_id < item_container.size(); slot_id++) {
         if (slot_is_free(slot_id)) {
             return slot_id;
         }

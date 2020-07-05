@@ -1,7 +1,7 @@
 #ifndef ITEM_CONTAINER_H
 #define ITEM_CONTAINER_H
 
-#include <array>
+#include <vector>
 
 #include "../../include/nlohmann/json.hpp"
 #include "../../include/types.h"
@@ -38,13 +38,13 @@ inline void from_json(const nlohmann::json& j, inventory_t& i) {
 
 class ItemContainer {
    private:
-    std::array<Item*, INV_SIZE> item_container;
+    std::vector<Item*> item_container;
     std::map<ItemId, SlotId> item_id_to_slot;
     nlohmann::json _get_data(bool need_sprite_id) const;
 
    public:
 
-    ItemContainer();
+    ItemContainer(unsigned int slots_amount);
     /*
         Crea un inventario a partir del json.
     */
