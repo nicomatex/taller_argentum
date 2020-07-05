@@ -11,7 +11,7 @@ VisualCharacterComponent::VisualCharacterComponent(int head_id, int body_id,
                                                    int weapon_id, int shield_id,
                                                    int helmet_id, int armor_id,
                                                    int speed)
-    : speed(speed), initialized(false) {
+    : speed(speed), initialized(false),transition_offset_x(0),transition_offset_y(0) {
     part_ids["body"] = body_id;
     part_ids["head"] = head_id;
     part_ids["armor"] = armor_id;
