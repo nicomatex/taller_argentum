@@ -4,6 +4,8 @@
 #include "items/item.h"
 #include "items/item_factory.h"
 
+// Temp
+
 #define NOT_EQUIPED 0
 
 PlayerCombatComponent::PlayerCombatComponent(

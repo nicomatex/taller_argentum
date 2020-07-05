@@ -11,25 +11,27 @@ Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
              new PlayerCombatComponent(
                  player_info["helmet_id"], player_info["armor_id"],
                  player_info["shield_id"], player_info["weapon_id"],
-                 stats.physique *
+                 AttributeManager::create_stats(player_info["race_type"])
+                         .physique *
                      AttributeManager::get_class_hp_multiplier(
                          player_info["class_type"]) *
                      AttributeManager::get_race_hp_multiplier(
                          player_info["race_type"]) *
-                     experience_component.get_level(),
-                 stats.intelligence *
+                     static_cast<unsigned int>(player_info["curr_level"]),
+                 AttributeManager::create_stats(player_info["race_type"])
+                         .intelligence *
                      AttributeManager::get_class_mp_multiplier(
                          player_info["class_type"]) *
                      AttributeManager::get_race_mp_multiplier(
                          player_info["race_type"]) *
-                     experience_component.get_level(),
+                     static_cast<unsigned int>(player_info["curr_level"]),
                  player_info["curr_hp"], player_info["curr_mp"], 2),
              player_info["curr_level"], player_info["curr_exp"]),
       head_id(player_info["head_id"]),
       body_id(player_info["body_id"]),
       inventory(player_info["inventory"]),
-      map(map),
       stats(AttributeManager::create_stats(player_info["race_type"])),
+      map(map),
       class_type(player_info["class_type"]),
       race_type(player_info["race_type"]) {}
 
