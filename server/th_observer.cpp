@@ -77,11 +77,11 @@ void ThObserver::run() {
                 counter = 0;
             }
             nlohmann::json map_data = map.get_update_data();
-            if (added_client || dirty_loot) {
+            if ((added_client || dirty_entities) && !map_data["entities"].empty()) {
                 handler.push_event(
                     EventFactory::update_entities(map_data["entities"]));
             }
-            if (added_client || dirty_loot) {
+            if ((added_client || dirty_loot) && !map_data["items"].empty()) {
                 std::cerr << "Observer: items: " << map_data["items"]
                           << std::endl;
                 handler.push_event(

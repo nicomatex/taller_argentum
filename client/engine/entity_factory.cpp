@@ -21,7 +21,6 @@ Entity &EntityFactory::create_player(nlohmann::json entity_info) {
         entity_info["curr_mp"], entity_info["limit_exp"],
         entity_info["curr_exp"], entity_info["curr_level"]);
     player.add_component<SoundComponent>();
-    std::cout << "Added player with info " << entity_info << std::endl;
     return player;
 }
 
