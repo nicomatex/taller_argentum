@@ -6,6 +6,7 @@
             "sprite_id": 1,
             "movement_speed": 5,
             "max_hp": 200,
+            "attack_speed": 1,
             "damage": 30
         }
     ]

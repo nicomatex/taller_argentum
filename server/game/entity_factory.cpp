@@ -16,6 +16,7 @@ Player* EntityFactory::create_player(nlohmann::json player_info) {
 }
 
 Monster* EntityFactory::create_monster(MonsterId monster_id) {
-    return ServerManager::get_instance().get_monster_factory().create_monster(
-        get_next_id(), monster_id, map);
+    ServerManager& server_manager = ServerManager::get_instance();
+    MonsterFactory& monster_factory = server_manager.get_monster_factory();
+    return monster_factory.create_monster(get_next_id(), monster_id, map);
 }

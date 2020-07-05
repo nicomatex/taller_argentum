@@ -7,15 +7,19 @@
 
 class MonsterMovementComponent : public MovementComponent {
    private:
+    EntityId entity_id;
     Map& map;
     int move_accumulator;
     direction_t looking_direction;
+
+    void update_direction();
 
    protected:
     direction_t current_direction() const override;
 
    public:
-    MonsterMovementComponent(unsigned int movement_speed, Map& map);
+    MonsterMovementComponent(unsigned int movement_speed, Map& map,
+                             EntityId entity_id);
     ~MonsterMovementComponent();
 
     position_t update(uint64_t delta_t) override;

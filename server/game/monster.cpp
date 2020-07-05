@@ -6,9 +6,11 @@
 
 Monster::Monster(EntityId entity_id, nlohmann::json monster_info, Map& map)
     : Entity(entity_id, monster_info["name"],
-             new MonsterMovementComponent(monster_info["movement_speed"], map),
-             new MonsterCombatComponent(monster_info["max_hp"],
-                                        monster_info["damage"]),
+             new MonsterMovementComponent(monster_info["movement_speed"], map,
+                                          entity_id),
+             new MonsterCombatComponent(
+                 monster_info["max_hp"], monster_info["damage"],
+                 monster_info["attack_speed"], map, entity_id),
              1, 0),
       map(map),
       sprite_id(monster_info["sprite_id"]) {}

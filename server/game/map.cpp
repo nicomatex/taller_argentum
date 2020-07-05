@@ -1,5 +1,6 @@
 #include "map.h"
 
+#include <cstdlib>
 #include <iostream>  //temp
 #include <mutex>
 #include <queue>
@@ -180,6 +181,12 @@ const PositionMap Map::get_position_map() const {
 }
 
 nlohmann::json Map::get_entity_data() {
+    // TODO: sacar esto
+    static int a = 0;
+    if (a == 0) {
+        a++;
+        add_entity(entity_factory.create_monster(1), {40, 40});
+    }
     nlohmann::json entities;
     entities = nlohmann::json::array();
     for (auto& it : entity_map) {
@@ -194,6 +201,38 @@ nlohmann::json Map::get_map_data() {
 
 bool Map::is_dirty() const {
     return dirty;
+}
+
+position_t Map::get_nearest_entity_pos(position_t entity_pos,
+                                       unsigned int max_distance,
+                                       entity_type_t entity_type) {
+    std::queue<position_t> queue;
+    std::unordered_set<position_t, PositionHasher, PositionComparator> visited;
+    queue.push(entity_pos);
+    while (!queue.empty()) {
+        position_t p = queue.front();
+        queue.pop();
+        if (visited.count(p))
+            continue;
+        visited.emplace(p);
+        position_t aux[4] = {
+            {p.x + 1, p.y}, {p.x, p.y + 1}, {p.x - 1, p.y}, {p.x, p.y - 1}};
+        for (position_t it : aux) {
+            unsigned int distance =
+                std::abs(it.x - entity_pos.x) + std::abs(it.y - entity_pos.y);
+            if (distance > max_distance)
+                continue;
+            if (!entity_matrix.count(it)) {
+                queue.push(it);
+                visited.emplace(it);
+                continue;
+            }
+            Entity* entity = entity_matrix.at(it);
+            if (entity->get_type() == entity_type)
+                return position_map.at(entity->get_id());
+        }
+    }
+    return entity_pos;
 }
 
 Map::~Map() {}

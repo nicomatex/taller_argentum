@@ -88,7 +88,9 @@ class Map {
 
     position_t get_position(EntityId entity_id);
 
-    EntityId get_entity_id(position_t position);
+    position_t get_nearest_entity_pos(position_t entity_pos,
+                                      unsigned int distance,
+                                      entity_type_t entity_type);
 
     /* Actualiza todas las entidades que contiene segun el delta_t
      * transcurrido.*/
