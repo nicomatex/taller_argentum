@@ -12,7 +12,7 @@
 
 int main(int argc, char const *argv[]) {
 	ItemFactory item_factory("items.json");
-	Inventory inventory;
+	ItemContainer inventory;
 	Gold* gold = static_cast<Gold*>(item_factory.create(500, 2000));
 	inventory.add(gold);
 	Potion* potion = static_cast<Potion*>(item_factory.create(401, 1000));
@@ -27,7 +27,7 @@ int main(int argc, char const *argv[]) {
 	std::cout << "\n";
 	nlohmann::json inv_json = inventory.get_persist_data();
 
-	Inventory inv_from_json(inv_json);
+	ItemContainer inv_from_json(inv_json);
 	std::cout << inv_from_json.get_data() << std::endl;
 	std::cout << inv_from_json.get_persist_data() << std::endl;
 	std::cout << "\n";

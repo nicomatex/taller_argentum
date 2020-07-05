@@ -4,7 +4,7 @@
 
 #include "../attribute_manager.h"
 #include "entity.h"
-#include "inventory.h"
+#include "item_container.h"
 #include "map.h"
 #include "position.h"
 
@@ -13,7 +13,7 @@ class Player : public Entity {
     const int head_id;
     const int body_id;
 
-    Inventory inventory;
+    ItemContainer inventory;
 
     Map& map;  // Mapa en el que esta el jugador en este momento.
     class_type_t class_type;

@@ -1,5 +1,5 @@
-#ifndef INVENTORY_H
-#define INVENTORY_H
+#ifndef ITEM_CONTAINER_H
+#define ITEM_CONTAINER_H
 
 #include <array>
 
@@ -11,7 +11,7 @@
 
 #define INV_SIZE 12
 
-class FullInventoryException : public std::exception {
+class FullItemContainerException : public std::exception {
    public:
     const char* what() const throw();
 };
@@ -36,22 +36,23 @@ inline void from_json(const nlohmann::json& j, inventory_t& i) {
     j["items_stacks"].get_to(i.items_stacks);
 }
 
-class Inventory {
+class ItemContainer {
    private:
-    std::array<Item*, INV_SIZE> inventory;
+    std::array<Item*, INV_SIZE> item_container;
     std::map<ItemId, SlotId> item_id_to_slot;
     nlohmann::json _get_data(bool need_sprite_id) const;
 
    public:
-    Inventory();
+
+    ItemContainer();
     /*
         Crea un inventario a partir del json.
     */
-    Inventory(const nlohmann::json& inv_json);
+    ItemContainer(const nlohmann::json& inv_json);
     /*
         Se hace delete de todos los items que quedaron el el inventario.
     */
-    ~Inventory();
+    ~ItemContainer();
     /*
         Agrega el item entero (con todo su stack) al inventario.
         Lo invalida haciendo delete del puntero (en caso de que ya existiese
@@ -59,7 +60,7 @@ class Inventory {
         Si ya existia ese item en el inventario, se agrega en la posicion
         existente, en caso contrario, se agrega en el slot de menor orden
         numerico.
-        Lanza FullInventoryException en caso de que el inventario este lleno.
+        Lanza FullItemContainerException en caso de que el inventario este lleno.
     */
     void add(Item* item);
      /*
@@ -71,7 +72,7 @@ class Inventory {
         existente, en caso contrario, se agrega en el slot de menor orden
         numerico.
         Reduce el stack actual del item a depositar en "stack" cantidad.
-        Lanza FullInventoryException en caso de que el inventario este lleno.
+        Lanza FullItemContainerException en caso de que el inventario este lleno.
     */
     void add(Item* item, uint32_t stack);
     // void add(Item* item, SlotId slot_id);
@@ -101,7 +102,7 @@ class Inventory {
     nlohmann::json get_data() const;
 };
 
-#endif  // INVENTORY_H
+#endif  // ITEM_CONTAINER_H
 
 /*
     Metodologia al agregar (la que es mas complicada):

@@ -93,8 +93,8 @@ void Player::use(SlotId slot) {
         if (unequiped)
             try {
                 inventory.add(unequiped);
-            } catch (const FullInventoryException& e) {
-                std::cout << "Player Equip: Inventory full." << std::endl;
+            } catch (const FullItemContainerException& e) {
+                std::cout << "Player Equip: ItemContainer full." << std::endl;
                 /* tirar? no equipar? */
             }
     } else if (type == TYPE_POTION) {

@@ -1,7 +1,7 @@
 #ifndef ACTION_INVENTORY_H
 #define ACTION_INVENTORY_H
 
-#include "../inventory.h"
+#include "../item_container.h"
 #include "action.h"
 
 class ActionInventory : public Action {

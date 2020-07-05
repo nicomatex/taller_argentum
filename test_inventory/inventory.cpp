@@ -1,15 +1,15 @@
 #include "inventory.h"
 #include "item_factory.h"
 
-const char* FullInventoryException::what() const throw() {
-    return "Inventory is full!";
+const char* FullItemContainerException::what() const throw() {
+    return "ItemContainer is full!";
 }
 
-Inventory::Inventory(){
+ItemContainer::ItemContainer(){
 	inventory = {};
 }
 
-Inventory::Inventory(const nlohmann::json& inv_json) : Inventory() {
+ItemContainer::ItemContainer(const nlohmann::json& inv_json) : ItemContainer() {
 	//ItemFactory& item_factory = server_manager.get_item_factory();
 	ItemFactory item_factory("items.json"); // en realidad se lo pide al server_manager!!!!
 	inventory_t inventory = inv_json;
@@ -21,13 +21,13 @@ Inventory::Inventory(const nlohmann::json& inv_json) : Inventory() {
 	}
 }
 
-Inventory::~Inventory() {
+ItemContainer::~ItemContainer() {
 	for (SlotId slot_id = 0; slot_id < INV_SIZE; slot_id++) {
 		delete inventory[slot_id];
 	}
 }
 
-void Inventory::add(Item* item) {
+void ItemContainer::add(Item* item) {
 	ItemId item_id = item->get_id();
 	SlotId slot_id = get_available_slot(item_id);
 	if (!has_item(item_id)) {
@@ -40,7 +40,7 @@ void Inventory::add(Item* item) {
 	}
 }
 
-void Inventory::add(Item* item, uint32_t stack) {
+void ItemContainer::add(Item* item, uint32_t stack) {
 	ItemId item_id = item->get_id();
 	if (item->get_stack() <= stack) add(item); // estoy agregando todo el item
 	SlotId slot_id = get_available_slot(item_id);
@@ -58,7 +58,7 @@ void Inventory::add(Item* item, uint32_t stack) {
 /*
 	No es posible tener varios stacks del mismo item spliteados en el inventario
 */
-void Inventory::add(Item* item, SlotId slot_id) {
+void ItemContainer::add(Item* item, SlotId slot_id) {
 	ItemId item_id = item->get_id();
 	if (slot_is_free(slot_id)) {
 		inventory[slot_id] = item;
@@ -71,7 +71,7 @@ void Inventory::add(Item* item, SlotId slot_id) {
 	}
 }
 
-Item* Inventory::remove(SlotId slot_id) {
+Item* ItemContainer::remove(SlotId slot_id) {
 	if (slot_is_free(slot_id)) throw std::exception();
 	Item *item = inventory[slot_id];
 	inventory[slot_id] = nullptr;
@@ -79,7 +79,7 @@ Item* Inventory::remove(SlotId slot_id) {
 	return item;
 }
 
-Item* Inventory::remove(SlotId slot_id, uint32_t stack) {
+Item* ItemContainer::remove(SlotId slot_id, uint32_t stack) {
 	//ItemFactory& item_factory = server_manager.get_item_factory();
 	ItemFactory item_factory("items.json"); // en realidad se lo pide al server_manager!!!!
 	if (slot_is_free(slot_id)) throw std::exception();
@@ -91,7 +91,7 @@ Item* Inventory::remove(SlotId slot_id, uint32_t stack) {
 	return new_item;
 }
 
-nlohmann::json Inventory::get_data() {
+nlohmann::json ItemContainer::get_data() {
 	nlohmann::json json_inv;
 	for (SlotId slot_id = 0; slot_id < INV_SIZE; slot_id++) {
 		if (slot_is_free(slot_id)) continue;
@@ -100,7 +100,7 @@ nlohmann::json Inventory::get_data() {
 	return std::move(json_inv);
 }
 
-nlohmann::json Inventory::get_persist_data() {
+nlohmann::json ItemContainer::get_persist_data() {
 	nlohmann::json json_inv;
 	inventory_t inventory = {};
 	ItemId item_id;
@@ -122,25 +122,25 @@ nlohmann::json Inventory::get_persist_data() {
 	return std::move(json_inv);
 }
 
-bool Inventory::slot_is_free(SlotId slot_id) {
+bool ItemContainer::slot_is_free(SlotId slot_id) {
 	return (inventory[slot_id] == nullptr) ? true : false;
 }
 
-bool Inventory::has_item(ItemId item_id) {
+bool ItemContainer::has_item(ItemId item_id) {
 	return item_id_to_slot.count(item_id);
 }
 
-Item* Inventory::get_item(SlotId slot_id) {
+Item* ItemContainer::get_item(SlotId slot_id) {
 	if (slot_is_free(slot_id)) return nullptr;
 	return inventory[slot_id];
 }
 
-SlotId Inventory::get_available_slot(ItemId item_id) {
+SlotId ItemContainer::get_available_slot(ItemId item_id) {
 	if (has_item(item_id)) return item_id_to_slot.at(item_id);
 	for (SlotId slot_id = 0; slot_id < INV_SIZE; slot_id++) {
 		if (slot_is_free(slot_id)) {
 			return slot_id;
 		}
 	}
-	throw FullInventoryException();	
+	throw FullItemContainerException();	
 }

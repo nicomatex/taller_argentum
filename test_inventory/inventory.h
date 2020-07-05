@@ -1,5 +1,5 @@
-#ifndef INVENTORY_H
-#define INVENTORY_H
+#ifndef ITEM_CONTAINER_H
+#define ITEM_CONTAINER_H
 
 #include <array>
 #include <bitset>
@@ -10,7 +10,7 @@
 
 #define INV_SIZE 12
 
-class FullInventoryException : public std::exception {
+class FullItemContainerException : public std::exception {
    public:
     const char *what() const throw();
 };
@@ -32,14 +32,14 @@ inline void from_json(const nlohmann::json &j, inventory_t &i) {
 	j["items_stacks"].get_to(i.items_stacks);
 }
 
-class Inventory {
+class ItemContainer {
    private:
    	std::array<Item*, INV_SIZE> inventory;
  	std::map<ItemId, SlotId> item_id_to_slot;
    public:
-   	Inventory();
-   	Inventory(const nlohmann::json &inv_json);
-   	~Inventory();
+   	ItemContainer();
+   	ItemContainer(const nlohmann::json &inv_json);
+   	~ItemContainer();
    	void add(Item* item);
    	void add(Item* item, uint32_t stack);
 	void add(Item* item, SlotId slot_id);
@@ -53,7 +53,7 @@ class Inventory {
 	nlohmann::json get_data();
 };
 
-#endif // INVENTORY_H
+#endif // ITEM_CONTAINER_H
 
 /*																				
 	Metodologia al agregar (la que es mas complicada):
