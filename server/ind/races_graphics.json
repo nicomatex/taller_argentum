@@ -1,0 +1,28 @@
+{
+	"races": [
+		{	
+			"type" : 1,
+			"name" : "human",
+			"head_id":1,
+			"body_id":1 
+		},
+		{	
+			"type" : 2,
+			"name" : "elf",
+			"head_id":4,
+			"body_id":1 
+		},
+		{	
+			"type" : 3,
+			"name" : "dwarf",
+			"head_id":6,
+			"body_id":1
+		},
+		{	
+			"type" : 4,
+			"name" : "gnome",
+			"head_id":10,
+			"body_id":1 
+		}
+	]
+}
