@@ -4,10 +4,12 @@
 #include <iostream>
 
 #include "../../include/nlohmann/json.hpp"
+#include "../../include/types.h"
 #include "../engine/ECS/entity.h"
 #include "../engine/components/position_component.h"
 #include "../engine/components/stats_component.h"
 #include "../engine/components/visual_character_component.h"
+#include "../engine/components/visual_npc_component.h"
 #include "../engine/entity_factory.h"
 
 using json = nlohmann::json;
@@ -85,7 +87,7 @@ void ClientReceiveHandler::handle_initialization(Event &ev) {
     map_change_buffer.fill(map_description, player_info["entity_id"]);
     std::cout << "Info del inventario: " << std::endl;
     inventory_buffer.push(initialization_info["player"]["inventory"]);
-    game_state_monitor .set_game_state(READY_TO_RUN);
+    game_state_monitor.set_game_state(READY_TO_RUN);
 }
 
 void ClientReceiveHandler::handle_entity_update(Event &ev) {
@@ -93,17 +95,36 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
     EntityManager::get_instance().update_initialize();
     for (auto &it : entities_info["entities"].items()) {
         json entity_info = it.value();
+
         if (!EntityManager::get_instance().has_entity(
                 entity_info["entity_id"])) {
-            Entity &new_player = EntityFactory::create_player(entity_info);
-            new_player.get_component<VisualCharacterComponent>()
-                .set_orientation(entity_info["direction"]);
+            switch ((entity_type_t)entity_info["type_id"]) {
+                case PLAYER:
+                    EntityFactory::create_player(entity_info)
+                        .get_component<VisualCharacterComponent>()
+                        .set_orientation(entity_info["direction"]);
+                    break;
+                case MONSTER:
+                    EntityFactory::create_npc(entity_info)
+                        .get_component<VisualNPCComponent>()
+                        .set_orientation(entity_info["direction"]);
+                    break;
+            }
         } else {
             Entity &entity = EntityManager::get_instance().get_from_id(
                 entity_info["entity_id"]);
-            entity.get_component<VisualCharacterComponent>().server_update(
-                entity_info);
-            entity.get_component<StatsComponent>().server_update(entity_info);
+            switch ((entity_type_t)entity_info["type_id"]) {
+                case PLAYER:
+                    entity.get_component<VisualCharacterComponent>()
+                        .server_update(entity_info);
+                    entity.get_component<StatsComponent>().server_update(
+                        entity_info);
+                    break;
+                case MONSTER:
+                    entity.get_component<VisualNPCComponent>().server_update(
+                        entity_info);
+                    break;
+            }
         }
     }
     EntityManager::get_instance().remove_non_updated();
@@ -120,7 +141,6 @@ void ClientReceiveHandler::handle_map_change(Event &ev) {
     std::cout << "Cargando nuevo mapa..." << std::endl;
 }
 
-
-void ClientReceiveHandler::handle_inventory_update(Event &ev){
+void ClientReceiveHandler::handle_inventory_update(Event &ev) {
     inventory_buffer.push(ev.get_json()["inventory"]);
 }

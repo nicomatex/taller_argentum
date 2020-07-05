@@ -10,7 +10,6 @@
 #include "experience_component.h"
 #include "position.h"
 
-enum entity_type_t { PLAYER, NPC, MONSTER };
 
 class Entity {
    protected:

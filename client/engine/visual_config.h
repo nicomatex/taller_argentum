@@ -12,6 +12,6 @@
 #define FLOOR_TILE_CONFIG {100,100,0,0}
 
 #define PATTERN_TILE_SIZE 32 //Los tiles patron tienen 32px. 
-#define NPC_SIZE_FACTOR 2 //Para hacer los npcs mas grandes.
+#define NPC_SIZE_FACTOR 1.3 //Para hacer los npcs mas grandes.
 
 #endif

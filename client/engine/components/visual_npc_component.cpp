@@ -18,9 +18,9 @@ VisualNPCComponent::VisualNPCComponent(int body_id, int speed)
                           .get_animation_pack("npcs", body_id)
                           .get_frame_height(DOWN);
     
-    int arbitrary_width = (real_width * SIZE_GRANULARITY * NPC_SIZE_FACTOR) / PATTERN_TILE_SIZE;
+    int arbitrary_width = (real_width * SIZE_GRANULARITY * (float)NPC_SIZE_FACTOR) / PATTERN_TILE_SIZE;
     int arbitrary_height = (real_height * SIZE_GRANULARITY * NPC_SIZE_FACTOR) / PATTERN_TILE_SIZE;
-    body.set_visual_info({arbitrary_width,arbitrary_height,0,0});
+    body.set_visual_info({arbitrary_width,arbitrary_height,(-arbitrary_width)/3,0});
 }
 
 VisualNPCComponent::~VisualNPCComponent() {}
@@ -116,4 +116,14 @@ void VisualNPCComponent::update() {
 
 bool VisualNPCComponent::is_moving() {
     return transition_offset_x != 0 || transition_offset_y != 0;
+}
+
+void VisualNPCComponent::set_orientation(direction_t new_orientation){
+    std::unique_lock<std::recursive_mutex> l(m);
+    body.set_orientation(new_orientation);
+}
+
+void VisualNPCComponent::server_update(nlohmann::json update_info){
+    std::unique_lock<std::recursive_mutex> l(m);
+    set_orientation(update_info["direction"]);
 }

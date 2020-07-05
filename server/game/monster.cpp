@@ -25,6 +25,7 @@ nlohmann::json Monster::get_data() const {
     entity_data["entity_id"] = get_id();
     entity_data["type_id"] = get_type();
     entity_data["name"] = get_name();
+    entity_data["sprite_id"] = sprite_id;
     nlohmann::json aux = movement_component->get_data();
     for (auto& it : aux.items()) {
         entity_data[it.key()] = it.value();

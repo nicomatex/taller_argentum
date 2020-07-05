@@ -2,6 +2,7 @@
 #define __VISUAL_NPC_COMPONENT_H
 
 #include "../../../include/types.h"
+#include "../../../include/nlohmann/json.hpp"
 #include "../ECS/component.h"
 #include "../actor.h"
 #include "../camera.h"
@@ -32,6 +33,8 @@ class VisualNPCComponent : public Component {
     void init() override;
     void update() override;
     void draw(Camera &camera);
+
+    void server_update(nlohmann::json update_info);
 
     bool is_moving();
 };

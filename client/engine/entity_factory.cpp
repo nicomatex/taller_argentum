@@ -29,10 +29,7 @@ Entity &EntityFactory::create_npc(nlohmann::json entity_info) {
     Entity &npc =
         EntityManager::get_instance().create(entity_info["entity_id"]);
     npc.add_component<PositionComponent>(10, 10);
-    npc.add_component<VisualNPCComponent>(entity_info["body_id"],
+    npc.add_component<VisualNPCComponent>(entity_info["sprite_id"],
                                           entity_info["move_speed"]);
-    npc.add_component<StatsComponent>(130, 80, 100, 30, 100, 100,88);
-    std::cout << "Added npc with entity_id " << entity_info["entity_id"]
-              << std::endl;
     return npc;
 }

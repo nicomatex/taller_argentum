@@ -36,4 +36,7 @@ typedef uint8_t SlotId;
 typedef enum { HUMAN = 1, ELF = 2, DWARF = 3, GNOME = 4 } race_type_t;
 typedef enum { MAGE = 1, PRIEST = 2, PALADIN = 3, WARRIOR = 4 } class_type_t;
 
+
+enum entity_type_t { PLAYER, NPC, MONSTER };
+
 #endif  // TYPES_H
