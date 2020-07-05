@@ -37,6 +37,9 @@ class RandomEventGenerator {
     RandomEventGenerator();
     ~RandomEventGenerator();
     random_event_t roll();
+    /*
+        Devuelve un numero entero entre min y max
+    */
     static uint16_t random_in(uint16_t min, uint16_t max);
 };
 
