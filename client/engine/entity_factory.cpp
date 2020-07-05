@@ -16,10 +16,12 @@ Entity &EntityFactory::create_player(nlohmann::json entity_info) {
         entity_info["weapon_id"], entity_info["shield_id"],
         entity_info["helmet_id"], entity_info["armor_id"],
         entity_info["move_speed"]);
-    player.add_component<StatsComponent>(130, 80, 100, 30);
+    player.add_component<StatsComponent>(
+        entity_info["max_hp"], entity_info["curr_hp"], entity_info["max_mp"],
+        entity_info["curr_mp"], entity_info["limit_exp"],
+        entity_info["curr_exp"], entity_info["curr_level"]);
     player.add_component<SoundComponent>();
-    std::cout << "Added player with entity_id " << entity_info["entity_id"]
-              << std::endl;
+    std::cout << "Added player with info " << entity_info << std::endl;
     return player;
 }
 
@@ -28,8 +30,8 @@ Entity &EntityFactory::create_npc(nlohmann::json entity_info) {
         EntityManager::get_instance().create(entity_info["entity_id"]);
     npc.add_component<PositionComponent>(10, 10);
     npc.add_component<VisualNPCComponent>(entity_info["body_id"],
-                                                entity_info["move_speed"]);
-    npc.add_component<StatsComponent>(130, 80, 100, 30);
+                                          entity_info["move_speed"]);
+    npc.add_component<StatsComponent>(130, 80, 100, 30, 100, 100,88);
     std::cout << "Added npc with entity_id " << entity_info["entity_id"]
               << std::endl;
     return npc;

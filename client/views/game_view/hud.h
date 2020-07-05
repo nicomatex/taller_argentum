@@ -26,17 +26,20 @@ class Hud {
     Chat chat;
     StatBar mana_bar;
     StatBar health_bar;
-    // StatBar experience_bar;
+    StatBar experience_bar;
     IconGrid equipped_items;
     Inventory inventory;
     CastButton cast_button;
     SDLTexture& side_panel_background;
     SDLText gold_text;
+    SDLText level_text;
+
     friend class UiEventHandler;
 
     void _render_gold_amount();
+    void _render_level();
 
-    void _update_stat_bars();
+    void _update_stats();
     void _update_inventory();
     void _update_equipped_items();
 

@@ -22,7 +22,7 @@
 // --- Barras de estado --- 
 #define HP_BAR_COLOR {205, 0, 0, 255}
 #define MP_BAR_COLOR {16,0,200,255}
-
+#define XP_BAR_COLOR {47, 145, 0, 255}
 #define STAT_BAR_FONT_COLOR {255,255,255,255}
 
 // --- Items Equipados ---
@@ -47,6 +47,7 @@
 
 #define HP_BAR_AREA {65, 576, 129, 15}
 #define MP_BAR_AREA {65, 616, 129, 15}
+#define XP_BAR_AREA {65, 130, 129, 15}
 
 #define EQUIPPED_ITEMS_AREA {205,296,45,181}
 #define INVENTORY_AREA {19,296,180,136}
@@ -60,6 +61,10 @@
 
 #define GOLD_TEXT_AREA {85,435,114,25}
 #define GOLD_TEXT_COLOR {218,182,6,255}
+
+#define LEVEL_TEXT_AREA {131,75,23,33}
+
+#define LEVEL_TEXT_COLOR {39,135,0,255}
 
 // ---- Pantalla de login ----
 

@@ -25,6 +25,10 @@ Hud::Hud(ResponsiveScaler& scaler, SDLWindow& window, ChatBuffer& chat_buffer,
       health_bar(scaler.scale(HP_BAR_AREA),
                  ResourceManager::get_instance().get_font(STAT_FONT_ID),
                  window.get_renderer(), 999, HP_BAR_COLOR, STAT_BAR_FONT_COLOR),
+      experience_bar(scaler.scale(XP_BAR_AREA),
+                     ResourceManager::get_instance().get_font(STAT_FONT_ID),
+                     window.get_renderer(), 999, XP_BAR_COLOR,
+                     STAT_BAR_FONT_COLOR),
       equipped_items(scaler.scale(EQUIPPED_ITEMS_AREA), window.get_renderer(),
                      4, 1, 1),
       inventory(
@@ -37,7 +41,9 @@ Hud::Hud(ResponsiveScaler& scaler, SDLWindow& window, ChatBuffer& chat_buffer,
       side_panel_background(
           ResourceManager::get_instance().get_texture("interface", 1)),
       gold_text("9999", ResourceManager::get_instance().get_font(1),
-                GOLD_TEXT_COLOR, window.get_renderer()) {}
+                GOLD_TEXT_COLOR, window.get_renderer()),
+      level_text("99", ResourceManager::get_instance().get_font(1),
+                 LEVEL_TEXT_COLOR, window.get_renderer()) {}
 
 Hud::~Hud() {}
 
@@ -123,7 +129,7 @@ void Hud::_update_equipped_items() {
     equipped_items.set_icon(POS_WEAPON, weapon_icon);
 }
 
-void Hud::_update_stat_bars() {
+void Hud::_update_stats() {
     StatsComponent& player_stats = player.get_component<StatsComponent>();
 
     health_bar.set_max_value(player_stats.get_stat_max_value("hp"));
@@ -131,6 +137,11 @@ void Hud::_update_stat_bars() {
 
     mana_bar.set_max_value(player_stats.get_stat_max_value("mp"));
     mana_bar.set_current_value(player_stats.get_stat_current_value("mp"));
+
+    experience_bar.set_max_value(player_stats.get_stat_max_value("xp"));
+    experience_bar.set_current_value(player_stats.get_stat_current_value("xp"));
+
+    level_text.update_text(std::to_string(player_stats.get_level()));
 }
 
 void Hud::_render_gold_amount() {
@@ -140,8 +151,16 @@ void Hud::_render_gold_amount() {
     gold_text.render(dest);
 }
 
+void Hud::_render_level(){
+    SDL_Rect dest = scaler.scale(LEVEL_TEXT_AREA);
+    float scale_factor = (float)dest.h / (float)level_text.get_height();
+    dest.w = level_text.get_width() * scale_factor;
+    dest.x -= dest.w/2; //Centrado del texto
+    level_text.render(dest);
+}
+
 void Hud::update() {
-    _update_stat_bars();
+    _update_stats();
     _update_equipped_items();
     _update_inventory();
     chat_buffer.flush(chat);
@@ -154,9 +173,11 @@ void Hud::render() {
     side_panel_background.render(scaler.scale(AREA_SIDE_PANEL));
     health_bar.render();
     mana_bar.render();
+    experience_bar.render();
     equipped_items.render();
     inventory.render();
     _render_gold_amount();
+    _render_level();
 }
 
 void Hud::handle_event(SDL_Event& e) {

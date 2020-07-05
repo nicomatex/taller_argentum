@@ -103,14 +103,7 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                 entity_info["entity_id"]);
             entity.get_component<VisualCharacterComponent>().server_update(
                 entity_info);
-            entity.get_component<StatsComponent>().set_stat_max_value(
-                "hp", entity_info["max_hp"]);
-            entity.get_component<StatsComponent>().set_stat_current_value(
-                "hp", entity_info["curr_hp"]);
-            entity.get_component<StatsComponent>().set_stat_max_value(
-                "mp", entity_info["max_mp"]);
-            entity.get_component<StatsComponent>().set_stat_current_value(
-                "mp", entity_info["curr_mp"]);
+            entity.get_component<StatsComponent>().server_update(entity_info);
         }
     }
     EntityManager::get_instance().remove_non_updated();
