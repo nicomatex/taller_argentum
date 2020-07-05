@@ -85,7 +85,6 @@ void ClientReceiveHandler::handle_initialization(Event &ev) {
     json map_description = initialization_info["map_info"];
     std::cout << "Recibido nuevo mapa. Llenando " << std::endl;
     map_change_buffer.fill(map_description, player_info["entity_id"]);
-    std::cout << "Info del inventario: " << std::endl;
     inventory_buffer.push(initialization_info["player"]["inventory"]);
     game_state_monitor.set_game_state(READY_TO_RUN);
 }
@@ -105,6 +104,7 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                         .set_orientation(entity_info["direction"]);
                     break;
                 case MONSTER:
+                    std::cerr << "Creating Monster\n";
                     EntityFactory::create_npc(entity_info)
                         .get_component<VisualNPCComponent>()
                         .set_orientation(entity_info["direction"]);
@@ -121,6 +121,7 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                         entity_info);
                     break;
                 case MONSTER:
+                    std::cerr << "Updating Monster\n";
                     entity.get_component<VisualNPCComponent>().server_update(
                         entity_info);
                     break;

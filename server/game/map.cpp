@@ -185,6 +185,7 @@ nlohmann::json Map::get_entity_data() {
     static int a = 0;
     if (a == 0) {
         a++;
+        std::cerr << "Agregando bicho" << std::endl;
         add_entity(entity_factory.create_monster(1), {40, 40});
     }
     nlohmann::json entities;
@@ -224,12 +225,12 @@ position_t Map::get_nearest_entity_pos(position_t entity_pos,
                 continue;
             if (!entity_matrix.count(it)) {
                 queue.push(it);
-                visited.emplace(it);
                 continue;
             }
             Entity* entity = entity_matrix.at(it);
-            if (entity->get_type() == entity_type)
+            if (entity->get_type() == entity_type) {
                 return position_map.at(entity->get_id());
+            }
         }
     }
     return entity_pos;

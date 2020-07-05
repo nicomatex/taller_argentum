@@ -37,4 +37,8 @@ nlohmann::json Monster::get_data() const {
     return entity_data;
 }
 
-void Monster::update(uint64_t delta_t) {}
+void Monster::update(uint64_t delta_t) {
+    position_t displacement = movement_component->update(delta_t);
+    map.move(id, displacement);
+    combat_component->update(delta_t);
+}

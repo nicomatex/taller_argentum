@@ -7,29 +7,26 @@
 #include <iostream>
 
 Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
-    : Entity(entity_id, player_info["name"], player_info["curr_level"], player_info["curr_exp"]),
+    : Entity(entity_id, player_info["name"], player_info["curr_level"],
+             player_info["curr_exp"]),
       head_id(player_info["head_id"]),
       body_id(player_info["body_id"]),
       inventory(player_info["inventory"]),
       map(map),
       class_type(player_info["class_type"]),
       race_type(player_info["race_type"]) {
-       
     movement_component = new PlayerMovementComponent(7);
     combat_component = new PlayerCombatComponent(
-                 player_info["helmet_id"], player_info["armor_id"],
-                 player_info["shield_id"], player_info["weapon_id"],
-                 player_info["curr_hp"], player_info["curr_mp"],
-                 AttributeManager::create_stats(player_info["race_type"]),
-                 *this, 2);
-      }
+        player_info["helmet_id"], player_info["armor_id"],
+        player_info["shield_id"], player_info["weapon_id"],
+        player_info["curr_hp"], player_info["curr_mp"],
+        AttributeManager::create_stats(player_info["race_type"]), *this, 2);
+}
 
 void Player::update(uint64_t delta_t) {
     position_t steps = movement_component->update(delta_t);
     combat_component->update(delta_t);
     map.move(this->id, steps);
-
-    // TODO: demas updates, como regeneraciones de vida/mana, etc.
 }
 
 entity_type_t Player::get_type() const {

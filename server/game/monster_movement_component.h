@@ -12,7 +12,7 @@ class MonsterMovementComponent : public MovementComponent {
     int move_accumulator;
     direction_t looking_direction;
 
-    void update_direction();
+    bool update_direction();
 
    protected:
     direction_t current_direction() const override;
