@@ -26,4 +26,6 @@ add_library(game
   player_combat_component.cpp
   player_movement_component.cpp
   random_event_generator.cpp
+  npc_combat_component.cpp
+  npc.cpp
 )
