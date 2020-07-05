@@ -69,14 +69,14 @@ bool MapMonitor::dirty_loot() const {
     return map.dirty_loot();
 }
 
-nlohmann::json MapMonitor::get_update_data(bool update_entities) {
+nlohmann::json MapMonitor::get_update_data(bool forced_update) {
     nlohmann::json map_data;
     std::unique_lock<std::recursive_mutex> l(m);
     PositionMap position_map_copy = map.get_position_map();
-    if (map.dirty_entities() || update_entities) {
+    if (map.dirty_entities() || forced_update) {
         map_data["entities"] = map.get_entity_data();
     }
-    if (map.dirty_loot()) {
+    if (map.dirty_loot() || forced_update) {
         map_data["items"] = map.get_loot_data();
     }
     l.unlock();

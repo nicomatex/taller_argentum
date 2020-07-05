@@ -16,7 +16,7 @@ ThObserver::ThObserver(MapMonitor& map_monitor, BlockingThEventHandler& handler)
       running(false),
       map(map_monitor),
       handler(handler),
-      added_client(false) {}
+      forced_update(false) {}
 
 void ThObserver::send_update_logs() {
     ServerManager& server_manager = ServerManager::get_instance();
@@ -65,35 +65,34 @@ void ThObserver::send_update_logs() {
 void ThObserver::run() {
     running = true;
     int counter = 0;
-    bool dirty_entities = false;
-    bool dirty_loot = false;
+    // bool dirty_entities = false;
+    // bool dirty_loot = false;
     while (running) {
         try {
             auto start = std::chrono::steady_clock::now();
-            dirty_entities = map.dirty_entities();
-            dirty_loot = map.dirty_loot();
-            if (++counter % ENTITY_UPDATE_INTERVAL == 0) {
-                dirty_entities = true;
+            // dirty_entities = map.dirty_entities();
+            // dirty_loot = map.dirty_loot();
+            if (forced_update || ++counter % ENTITY_UPDATE_INTERVAL == 0) {
+                forced_update = true;
                 counter = 0;
             }
-            nlohmann::json map_data = map.get_update_data(dirty_entities);
-            if ((added_client || dirty_entities) &&
-                !map_data["entities"].empty()) {
+            nlohmann::json map_data = map.get_update_data(forced_update);
+            if (forced_update || map_data.contains("entities")) {
+                forced_update = false;
                 handler.push_event(
                     EventFactory::update_entities(map_data["entities"]));
             }
-            if ((added_client || dirty_loot) && !map_data["items"].empty()) {
-                std::cerr << "Observer: items: " << map_data["items"]
-                          << std::endl;
-                handler.push_event(
-                    EventFactory::update_items(map_data["items"]));
+            if (forced_update || map_data.contains("items")) {
+                // forced_update = false;
+                // handler.push_event(
+                //     EventFactory::update_entities(map_data["items"]));
             }
-            added_client = false;
             handler.push_event(EventFactory::update_map(map_data["positions"]));
             send_update_logs();
             auto dif =
                 OBSERVER_INTERVAL - (std::chrono::steady_clock::now() - start);
             sleep(dif);
+
         } catch (const std::exception& e) {
             std::cerr << "Observer: " << e.what() << std::endl;
         } catch (...) {
@@ -108,7 +107,7 @@ void ThObserver::stop() {
 }
 
 void ThObserver::refresh_entities() {
-    added_client = true;
+    forced_update = true;
 }
 
 ThObserver::~ThObserver() {}
