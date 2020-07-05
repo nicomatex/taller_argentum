@@ -13,17 +13,13 @@ direction_t get_direction_to_position(position_t from, position_t to) {
     position_t delta = {{to.x - from.x}, {to.y - from.y}};
     if (std::abs(delta.y) > std::abs(delta.x)) {
         if (delta.y > 0) {
-            std::cerr << "Monster DOWN\n";
             return DOWN;
         } else {
-            std::cerr << "Monster UP\n";
             return UP;
         }
     } else if (delta.x > 0) {
-        std::cerr << "Monster RIGHT\n";
         return RIGHT;
     }
-    std::cerr << "Monster LEFT\n";
     return LEFT;
 }
 
