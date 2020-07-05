@@ -6,10 +6,9 @@
 #include "../../include/nlohmann/json.hpp"
 #include "../../include/types.h"
 #include "combat_component.h"
-#include "movement_component.h"
 #include "experience_component.h"
+#include "movement_component.h"
 #include "position.h"
-
 
 class Entity {
    protected:
@@ -21,18 +20,20 @@ class Entity {
     ExperienceComponent experience_component;
 
    public:
-
     Entity(EntityId id, const std::string& name,
            MovementComponent* movement_component,
-           CombatComponent* combat_component,
-           unsigned int current_level, unsigned int current_exp);
-    Entity(EntityId id, const std::string& name, unsigned int current_level, unsigned int current_exp);
+           CombatComponent* combat_component, unsigned int current_level,
+           unsigned int current_exp);
+    Entity(EntityId id, const std::string& name, unsigned int current_level,
+           unsigned int current_exp);
     virtual ~Entity();
 
-    /* Saber el tipo de la entidad sirve para saber si es colisionable o no.
-    Los players y npcs son colisionables; el loot no.*/
+    virtual void die() = 0;
+    virtual bool is_alive() const = 0;
 
     std::string get_name() const;
+    unsigned int get_level() const;
+    unsigned int get_max_hp() const;
 
     virtual entity_type_t get_type() const = 0;
     virtual nlohmann::json get_data() const = 0;
@@ -42,7 +43,6 @@ class Entity {
 
     attack_result_t attack(Entity* attacked);
 
-    virtual bool is_alive() const;
     EntityId get_id() const;
 };
 

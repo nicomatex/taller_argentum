@@ -65,20 +65,26 @@ void ThObserver::send_update_logs() {
 void ThObserver::run() {
     running = true;
     int counter = 0;
+    bool dirty_entities = false;
+    bool dirty_loot = false;
     while (running) {
         try {
             auto start = std::chrono::steady_clock::now();
-            if (update_entities || ++counter % ENTITY_UPDATE_INTERVAL == 0) {
+            dirty_entities = map.dirty_entities();
+            dirty_loot = map.dirty_loot();
+            if (dirty_entities || ++counter % ENTITY_UPDATE_INTERVAL == 0) {
                 update_entities = true;
                 counter = 0;
             }
-            bool aux = update_entities;
-            nlohmann::json map_data = map.get_update_data(aux);
-            update_entities = aux;
+            nlohmann::json map_data = map.get_update_data();
             if (update_entities) {
                 update_entities = false;
                 handler.push_event(
                     EventFactory::update_entities(map_data["entities"]));
+            }
+            if (dirty_loot) {
+                handler.push_event(
+                    EventFactory::update_items(map_data["items"]));
             }
             handler.push_event(EventFactory::update_map(map_data["positions"]));
             send_update_logs();

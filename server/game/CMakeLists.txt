@@ -8,7 +8,7 @@ add_library(game
   entity.cpp
   entity_factory.cpp
   game_loop.cpp
-  item_container.cpp
+  items/item_container.cpp
   items/item_factory.cpp
   items/item.cpp
   items/armor.cpp

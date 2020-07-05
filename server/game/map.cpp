@@ -10,7 +10,8 @@
 
 Map::Map(nlohmann::json map_description)
     : map_id(map_description["map_id"]),
-      dirty(false),
+      _dirty_entities(false),
+      _dirty_loot(false),
       width(map_description["width"]),
       height(map_description["height"]),
       transitions(map_description["transitions"], width, height),
@@ -31,23 +32,60 @@ Map::Map(nlohmann::json map_description)
     visual_map_info = map_description;
 }
 
+Map::~Map() {
+    for (auto it : entity_map) delete it.second;
+    for (auto it : loot_matrix) delete it.second;
+    while (!actions.empty()) {
+        entity_action_t entity_action = actions.front();
+        actions.pop();
+        delete entity_action.action;
+    }
+}
+
 void Map::add_entity(Entity* entity, position_t position) {
-    position = get_nearest_free_position(position);
-    dirty = true;
+    position = get_nearest_free_position(entity_matrix, position);
+    _dirty_entities = true;
     position_map[entity->get_id()] = position;
     entity_matrix[position] = entity;
     entity_map.emplace(entity->get_id(), entity);
     std::cout << "Added entity with id " << entity->get_id() << std::endl;
 }
 
-bool Map::collides(position_t position) {
+template <typename T>
+position_t Map::get_nearest_free_position(ObjectMatrix<T> object_matrix,
+                                          position_t position) {
+    if (!collides(object_matrix, position))
+        return position;
+    std::queue<position_t> queue;
+    std::unordered_set<position_t, PositionHasher, PositionComparator> visited;
+    queue.push(position);
+    while (!queue.empty()) {
+        position_t p = queue.front();
+        queue.pop();
+        if (visited.count(p))
+            continue;
+        visited.emplace(p);
+        position_t aux[4] = {
+            {p.x + 1, p.y}, {p.x, p.y + 1}, {p.x - 1, p.y}, {p.x, p.y - 1}};
+        for (position_t it : aux) {
+            if (!collides(object_matrix, it))
+                return it;
+            else
+                queue.push(it);
+        }
+    }
+    return position;
+}
+
+template <typename T>
+bool Map::collides(ObjectMatrix<T> object_matrix, position_t position) {
     if (collision_map.count(position) > 0)
         return true;
     if (position.x < 0 || position.y < 0 || position.x >= width ||
         position.y >= height) {
         return true;
     }
-    if (entity_matrix.count(position))
+    if (object_matrix.count(position))
         return true;
     return false;
 }
@@ -63,7 +101,7 @@ void Map::move(EntityId entity_id, position_t steps) {
 
     if (entity->get_type() == PLAYER && transitions.is_transition(new_position))
         transitions.push_change(entity->get_name(), new_position);
-    if (collides(new_position))
+    if (collides(entity_matrix, new_position))
         return;
 
     // Borrado de la matriz de entidad en la vieja posicion.
@@ -78,43 +116,6 @@ void Map::move(EntityId entity_id, position_t steps) {
 
 std::queue<map_change_t>& Map::get_transitions() {
     return transitions.get_changes();
-}
-
-position_t Map::get_nearest_free_position(position_t position) {
-    if (!collides(position))
-        return position;
-    std::queue<position_t> queue;
-    std::unordered_set<position_t, PositionHasher, PositionComparator> visited;
-    queue.push(position);
-    while (!queue.empty()) {
-        position_t p = queue.front();
-        queue.pop();
-        if (visited.count(p))
-            continue;
-        visited.emplace(p);
-        position_t aux = {p.x + 1, p.y};
-        if (!collides(aux))
-            return aux;
-        else
-            queue.push(aux);
-        aux = {p.x, p.y + 1};
-        if (!collides(aux))
-            return aux;
-        else
-            queue.push(aux);
-        aux = {p.x - 1, p.y};
-        if (!collides(aux))
-            return aux;
-        else
-            queue.push(aux);
-        aux = {p.x, p.y - 1};
-        if (!collides(aux))
-            return aux;
-        else
-            queue.push(aux);
-    }
-
-    return position;
 }
 
 nlohmann::json Map::add_player(nlohmann::json player_info) {
@@ -134,14 +135,20 @@ nlohmann::json Map::add_player(nlohmann::json player_info) {
 
 nlohmann::json Map::rm_player(EntityId entity_id) {
     Player* player = static_cast<Player*>(entity_map.at(entity_id));
-    entity_map.erase(entity_id);
     nlohmann::json player_data = player->get_persist_data();
     position_t position = position_map.at(entity_id);
-    position_map.erase(entity_id);
-    entity_matrix.erase(position);
+    rm_entity(entity_id);
     player_data["pos"] = position;
-    delete player;
     return player_data;
+}
+
+void Map::rm_entity(EntityId entity_id) {
+    Entity* entity = entity_map.at(entity_id);
+    position_t position = position_map.at(entity_id);
+    entity_map.erase(entity_id);
+    entity_matrix.erase(position);
+    position_map.erase(entity_id);
+    delete entity;
 }
 
 position_t Map::get_position(EntityId entity_id) {
@@ -185,21 +192,34 @@ const PositionMap Map::get_position_map() const {
     return position_map;
 }
 
+bool Map::dirty_entities() const {
+    return _dirty_entities;
+}
 nlohmann::json Map::get_entity_data() {
     nlohmann::json entities;
     entities = nlohmann::json::array();
-    for (auto& it : entity_map) {
+    for (auto& it : entity_matrix) {
         entities.push_back(it.second->get_data());
     }
+    _dirty_entities = false;
     return entities;
+}
+
+bool Map::dirty_loot() const {
+    return _dirty_loot;
+}
+nlohmann::json Map::get_loot_data() {
+    nlohmann::json drops;
+    drops = nlohmann::json::array();
+    for (auto& it : loot_matrix) {
+        drops.push_back(it.second->get_data());
+    }
+    _dirty_loot = false;
+    return drops;
 }
 
 nlohmann::json Map::get_map_data() {
     return visual_map_info;
-}
-
-bool Map::is_dirty() const {
-    return dirty;
 }
 
 position_t Map::get_nearest_entity_pos(position_t entity_pos,
@@ -234,11 +254,12 @@ position_t Map::get_nearest_entity_pos(position_t entity_pos,
     return entity_pos;
 }
 
-Map::~Map() {
-    for (auto it : entity_map) delete it.second;
-    while (!actions.empty()) {
-        entity_action_t entity_action = actions.front();
-        actions.pop();
-        delete entity_action.action;
-    }
+void Map::drop_loot(EntityId entity_id, Item* item) {
+    position_t entity_pos = position_map.at(entity_id);
+    position_t item_pos = get_nearest_free_position(loot_matrix, entity_pos);
+    loot_matrix.emplace(item_pos, item);
+}
+
+void Map::drop_loot(EntityId entity_id, const std::vector<Item*>& drops) {
+    for (auto it : drops) drop_loot(entity_id, it);
 }

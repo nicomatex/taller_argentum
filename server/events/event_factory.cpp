@@ -41,6 +41,13 @@ Event EventFactory::update_entities(const nlohmann::json& entity_data) {
     return Event(ev_json);
 }
 
+Event EventFactory::update_items(const nlohmann::json& items_data) {
+    nlohmann::json ev_json;
+    ev_json["ev_id"] = EV_ID_UPDATE_ITEMS;
+    ev_json["items"] = items_data;
+    return Event(ev_json);
+}
+
 Event EventFactory::chat_message(const std::string& message) {
     nlohmann::json ev_json;
     ev_json["ev_id"] = EV_ID_CHAT_MESSAGE;

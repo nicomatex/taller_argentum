@@ -12,6 +12,10 @@ CombatComponent::CombatComponent(unsigned int max_hp, unsigned int max_mp,
 
 CombatComponent::~CombatComponent() {}
 
+unsigned int CombatComponent::get_max_hp() const {
+    return max_hp;
+}
+
 void CombatComponent::reset_max(unsigned int new_max_hp,
                                 unsigned int new_max_mp) {
     max_hp = new_max_hp;

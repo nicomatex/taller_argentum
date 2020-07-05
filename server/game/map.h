@@ -5,6 +5,7 @@
 #include <queue>
 #include <unordered_map>
 #include <unordered_set>
+#include <vector>
 
 #include "../../include/nlohmann/json.hpp"
 #include "../../include/types.h"
@@ -12,6 +13,7 @@
 #include "actions/action.h"
 #include "entity.h"
 #include "entity_factory.h"
+#include "items/item.h"
 #include "map_transitions.h"
 #include "position.h"
 
@@ -24,19 +26,26 @@ typedef struct entity_action {
     Action* action;
 } entity_action_t;
 
+template <typename T>
+using ObjectMatrix =
+    std::unordered_map<position_t, T, PositionHasher, PositionComparator>;
+
 // clave: id de entidad, valor: position_t
 typedef std::unordered_map<EntityId, position_t> PositionMap;
 
+// TODO: deshacerse de este map
 // Clave: id de entidad, valor: puntero a la entidad
 typedef std::unordered_map<EntityId, Entity*> EntityMap;
 
-typedef std::unordered_map<position_t, Entity*, PositionHasher,
-                           PositionComparator>
-    EntityMatrix;
+// Clave: position_t, valor: puntero a una entidad
+typedef ObjectMatrix<Entity*> EntityMatrix;
 
-// Clave: position_t. Contiene los bloques colisionables.
+// Clave: position_t. Contiene los bloques colisionables del mapa
 typedef std::unordered_set<position_t, PositionHasher, PositionComparator>
     CollisionMap;
+
+// Clave: position_t, valor: puntero a un item
+typedef ObjectMatrix<Item*> LootMatrix;
 
 class Map {
    private:
@@ -45,11 +54,15 @@ class Map {
     int height;
     int width;
 
-    bool dirty;
     PositionMap position_map;
-    EntityMatrix entity_matrix;
-    CollisionMap collision_map;
+    bool _dirty_entities;
     EntityMap entity_map;
+    EntityMatrix entity_matrix;
+    bool _dirty_loot;
+    LootMatrix loot_matrix;
+
+    CollisionMap collision_map;
+
     MapTransitions transitions;
     EntityFactory entity_factory;
 
@@ -60,11 +73,14 @@ class Map {
     nlohmann::json visual_map_info;
 
     // Devuelve la posicion no-colisionable mas cercana.
-    position_t get_nearest_free_position(position_t position);
+    template <typename T>
+    position_t get_nearest_free_position(ObjectMatrix<T> object_matrix,
+                                         position_t position);
 
     /* Indica si la posicion indicada tiene un elemento colisionable (no se
      * puede pisar). */
-    bool collides(position_t position);
+    template <typename T>
+    bool collides(ObjectMatrix<T> object_matrix, position_t position);
 
     /* Agrega una nueva entidad asociada al entity_id en la posicion indicada.*/
     void add_entity(Entity* entity, position_t position);
@@ -86,6 +102,8 @@ class Map {
 
     nlohmann::json rm_player(EntityId entity_id);
 
+    void rm_entity(EntityId entity_id);
+
     position_t get_position(EntityId entity_id);
 
     position_t get_nearest_entity_pos(position_t entity_pos,
@@ -96,18 +114,25 @@ class Map {
      * transcurrido.*/
     void update(uint64_t delta_t);
 
-    /* */
+    /* Agrega un log de accion al mapa */
     void push_log(const nlohmann::json& log);
 
     /* Ejecuta sobre la entidad asociada al id la accion. */
     void push_action(EntityId entity_id, Action* action);
 
-    std::queue<nlohmann::json>& get_update_logs();
+    void drop_loot(EntityId entity_id, Item* item);
+    void drop_loot(EntityId entity_id, const std::vector<Item*>& item);
+
     static nlohmann::json get_position_data(const PositionMap& position_map);
     const PositionMap get_position_map() const;
+
+    bool dirty_entities() const;
     nlohmann::json get_entity_data();
+    bool dirty_loot() const;
+    nlohmann::json get_loot_data();
+
+    std::queue<nlohmann::json>& get_update_logs();
     nlohmann::json get_map_data();
-    bool is_dirty() const;
 };
 
 #endif

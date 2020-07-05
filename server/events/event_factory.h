@@ -20,6 +20,8 @@ class EventFactory {
 
     static Event update_entities(const nlohmann::json& entity_data);
 
+    static Event update_items(const nlohmann::json& items_data);
+
     static Event chat_message(const std::string& message);
 
     static Event disconnect();

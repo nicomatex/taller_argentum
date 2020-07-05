@@ -7,9 +7,9 @@
 #include <mutex>
 
 #include "../include/types.h"
-#include "game/position.h"
-#include "game/item_container.h"
 #include "attribute_manager.h"
+#include "game/items/item_container.h"
+#include "game/position.h"
 
 #define MAX_CHAR_NAME 15
 

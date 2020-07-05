@@ -1,6 +1,9 @@
 #include "item_container.h"
+
+#include "../../server_manager.h"
+
+// Temp
 #include <iomanip>
-#include "../server_manager.h"
 #include <iostream>
 
 const char* FullItemContainerException::what() const throw() {
@@ -15,7 +18,8 @@ ItemContainer::ItemContainer(unsigned int slots_amount) {
     item_container.resize(slots_amount);
 }
 
-ItemContainer::ItemContainer(const nlohmann::json& inv_json) : ItemContainer(INV_SIZE) {
+ItemContainer::ItemContainer(const nlohmann::json& inv_json)
+    : ItemContainer(INV_SIZE) {
     ServerManager& server_manager = ServerManager::get_instance();
     ItemFactory& item_factory = server_manager.get_item_factory();
     inventory_t inventory = inv_json;
@@ -99,6 +103,15 @@ Item* ItemContainer::remove(SlotId slot_id, uint32_t stack) {
         return remove(slot_id);
     item->decrease_stack(stack);
     return item_factory.create(item->get_id(), stack);
+}
+
+std::vector<Item*> ItemContainer::remove_all() {
+    std::vector<Item*> items;
+    for (SlotId slot_id = 0; slot_id < item_container.size(); slot_id++) {
+        if (!slot_is_free(slot_id))
+            items.push_back(remove(slot_id));
+    }
+    return items;
 }
 
 nlohmann::json ItemContainer::get_data() const {

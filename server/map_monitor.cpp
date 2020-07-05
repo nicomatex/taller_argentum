@@ -62,15 +62,24 @@ std::vector<nlohmann::json> MapMonitor::get_update_logs() {
     return logs;
 }
 
-nlohmann::json MapMonitor::get_update_data(bool& update_entities) {
+bool MapMonitor::dirty_entities() const {
+    return map.dirty_entities();
+}
+bool MapMonitor::dirty_loot() const {
+    return map.dirty_loot();
+}
+
+nlohmann::json MapMonitor::get_update_data() {
     nlohmann::json map_data;
-    m.lock();
+    std::unique_lock<std::recursive_mutex> l(m);
     PositionMap position_map_copy = map.get_position_map();
-    if (update_entities || map.is_dirty()) {
-        update_entities = true;
+    if (map.dirty_entities()) {
         map_data["entities"] = map.get_entity_data();
     }
-    m.unlock();
+    if (map.dirty_loot()) {
+        map_data["items"] = map.get_loot_data();
+    }
+    l.unlock();
     map_data["positions"] = Map::get_position_data(position_map_copy);
     return map_data;
 }

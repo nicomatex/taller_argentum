@@ -1,15 +1,15 @@
 #ifndef PLAYER_COMBAT_COMPONENT_H
 #define PLAYER_COMBAT_COMPONENT_H
 
+#include "../attribute_manager.h"
 #include "combat_component.h"
 #include "items/armor.h"
 #include "items/weapon.h"
-#include "../attribute_manager.h"
 #include "player.h"
 
 class PlayerCombatComponent : public CombatComponent {
    private:
-    Player &player;
+    Player& player;
     Armor* helmet;
     Armor* armor;
     Armor* shield;
@@ -31,6 +31,10 @@ class PlayerCombatComponent : public CombatComponent {
 
     Armor* equip(Armor* armor);
     Weapon* equip(Weapon* weapon);
+    Armor* unequip_helmet();
+    Armor* unequip_chest();
+    Armor* unequip_shield();
+    Weapon* unequip_weapon();
 
     void update(uint64_t delta_t) override;
     bool attack_ready() const override;

@@ -1,7 +1,12 @@
 #include "player.h"
 
+#include <vector>
+
 #include "player_combat_component.h"
 #include "player_movement_component.h"
+
+#define DEAD_HEAD_ID 0
+#define DEAD_BODY_ID 0
 
 // Temp
 #include <iostream>
@@ -14,7 +19,8 @@ Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
       inventory(player_info["inventory"]),
       map(map),
       class_type(player_info["class_type"]),
-      race_type(player_info["race_type"]) {
+      race_type(player_info["race_type"]),
+      alive(true) {
     movement_component = new PlayerMovementComponent(7);
     combat_component = new PlayerCombatComponent(
         player_info["helmet_id"], player_info["armor_id"],
@@ -41,16 +47,17 @@ race_type_t Player::get_race_type() const {
     return race_type;
 }
 
-unsigned int Player::get_level() const {
-    return experience_component.get_level();
-}
-
 nlohmann::json Player::get_data() const {
     nlohmann::json entity_data;
     entity_data["entity_id"] = id;
     entity_data["type_id"] = get_type();
-    entity_data["head_id"] = head_id;
-    entity_data["body_id"] = body_id;
+    if (alive) {
+        entity_data["head_id"] = head_id;
+        entity_data["body_id"] = body_id;
+    } else {
+        entity_data["head_id"] = DEAD_HEAD_ID;
+        entity_data["body_id"] = DEAD_BODY_ID;
+    }
     entity_data["name"] = name;
     nlohmann::json aux = movement_component->get_data();
     for (auto& it : aux.items()) {
@@ -125,4 +132,21 @@ nlohmann::json Player::get_persist_data() const {
 void Player::set_movement(mov_action_t action, direction_t direction) {
     static_cast<PlayerMovementComponent*>(movement_component)
         ->set_movement(action, direction);
+}
+
+void Player::die() {
+    experience_component.reduce();
+    alive = false;
+    std::vector<Item*> drops = inventory.remove_all();
+    PlayerCombatComponent* p_combat_component =
+        static_cast<PlayerCombatComponent*>(combat_component);
+    drops.push_back(p_combat_component->unequip_weapon());
+    drops.push_back(p_combat_component->unequip_helmet());
+    drops.push_back(p_combat_component->unequip_chest());
+    drops.push_back(p_combat_component->unequip_shield());
+    map.drop_loot(id, drops);
+}
+
+bool Player::is_alive() const {
+    return alive;
 }

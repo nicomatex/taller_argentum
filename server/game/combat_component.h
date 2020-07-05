@@ -35,6 +35,8 @@ class CombatComponent {
 
     virtual void update(uint64_t) = 0;
 
+    unsigned int get_max_hp() const;
+
     /* Devuelve true si esta listo para atacar. */
     virtual bool attack_ready() const = 0;
 

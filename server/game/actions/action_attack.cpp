@@ -19,9 +19,6 @@ void ActionAttack::execute(Map& map, EntityId entity_id) const {
     attack_result_t result = attacker->attack(attacked);
     if (!result.success)
         return;
-    if (result.killed)
-        /* KILL, drops & give exp */;
-
     if (attacker->get_type() == PLAYER)
         map.push_log({{"log_type", 1},
                       {"player_name", attacker->get_name()},
@@ -34,5 +31,10 @@ void ActionAttack::execute(Map& map, EntityId entity_id) const {
                       {"player_name", attacked->get_name()},
                       {"damage", result.damage_dealt},
                       //   {"dodged", bool},
-                      {"from", attacked->get_name()}});
+                      {"from", attacker->get_name()}});
+    if (result.killed) {
+        attacked->die();
+        if (attacked->get_type() == MONSTER)
+            map.rm_entity(attacked->get_id());
+    }
 }

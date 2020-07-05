@@ -5,7 +5,7 @@
 #include <cstdlib>
 #include <random>
 
-#define N_EVENTS 4
+#define N_DROP_TYPES 4
 
 #define NOTHING_PROB 80
 #define GOLD_PROB 8
@@ -16,9 +16,9 @@ typedef enum {
     nothing,
     rand_gold,
     rand_potion,
-    random_object,
+    rand_item,
     invalid
-} random_event_t;
+} random_drop_t;
 
 typedef struct range_t {
     float min_value;
@@ -27,19 +27,21 @@ typedef struct range_t {
 
 class RandomEventGenerator {
    private:
-    std::array<random_event_t, N_EVENTS> events;
-    std::array<range_t, N_EVENTS> range_events;
+    std::array<random_drop_t, N_DROP_TYPES> events;
+    std::array<range_t, N_DROP_TYPES> range_events;
     std::random_device rd;
     std::mt19937 gen;
-    std::uniform_real_distribution<> dist;
+    std::uniform_real_distribution<> drops_dist;
+
+    RandomEventGenerator();
 
    public:
-    RandomEventGenerator();
     ~RandomEventGenerator();
-    random_event_t roll();
-    /*
-        Devuelve un numero entero entre min y max
-    */
+    static RandomEventGenerator& get_instance();
+
+    static random_drop_t roll();
+
+    /* Devuelve un numero entero entre min y max */
     static uint16_t random_in(uint16_t min, uint16_t max);
 };
 

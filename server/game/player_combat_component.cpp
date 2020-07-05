@@ -139,3 +139,26 @@ Weapon* PlayerCombatComponent::equip(Weapon* new_weapon) {
     weapon = new_weapon;
     return old;
 }
+Armor* PlayerCombatComponent::unequip_helmet() {
+    Armor* unequiped = helmet;
+    helmet = nullptr;
+    return unequiped;
+}
+
+Armor* PlayerCombatComponent::unequip_chest() {
+    Armor* unequiped = armor;
+    armor = nullptr;
+    return unequiped;
+}
+
+Armor* PlayerCombatComponent::unequip_shield() {
+    Armor* unequiped = shield;
+    shield = nullptr;
+    return unequiped;
+}
+
+Weapon* PlayerCombatComponent::unequip_weapon() {
+    Weapon* unequiped = weapon;
+    weapon = nullptr;
+    return unequiped;
+}
