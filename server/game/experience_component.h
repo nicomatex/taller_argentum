@@ -22,7 +22,7 @@ class ExperienceComponent {
     void add_exp(int exp);
     void reduce();
     int get_xp_limit_level(unsigned int level) const;
-    unsigned int get_level();
+    unsigned int get_level() const;
     void set_level(unsigned int level);
     nlohmann::json get_data() const;
     nlohmann::json get_persist_data() const;

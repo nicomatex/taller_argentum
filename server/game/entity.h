@@ -22,10 +22,12 @@ class Entity {
     ExperienceComponent experience_component;
 
    public:
+
     Entity(EntityId id, const std::string& name,
            MovementComponent* movement_component,
            CombatComponent* combat_component,
            unsigned int current_level, unsigned int current_exp);
+    Entity(EntityId id, const std::string& name, unsigned int current_level, unsigned int current_exp);
     virtual ~Entity();
 
     /* Saber el tipo de la entidad sirve para saber si es colisionable o no.

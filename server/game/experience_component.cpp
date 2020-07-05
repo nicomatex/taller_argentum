@@ -29,7 +29,7 @@ void ExperienceComponent::reduce() {
 	current_exp -= exp_lost;
 }
 
-unsigned int ExperienceComponent::get_level() {
+unsigned int ExperienceComponent::get_level() const {
 	return current_level;
 }
 

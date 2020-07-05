@@ -7,33 +7,22 @@
 #include <iostream>
 
 Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
-    : Entity(entity_id, player_info["name"], new PlayerMovementComponent(7),
-             new PlayerCombatComponent(
-                 player_info["helmet_id"], player_info["armor_id"],
-                 player_info["shield_id"], player_info["weapon_id"],
-                 AttributeManager::create_stats(player_info["race_type"])
-                         .physique *
-                     AttributeManager::get_class_hp_multiplier(
-                         player_info["class_type"]) *
-                     AttributeManager::get_race_hp_multiplier(
-                         player_info["race_type"]) *
-                     static_cast<unsigned int>(player_info["curr_level"]),
-                 AttributeManager::create_stats(player_info["race_type"])
-                         .intelligence *
-                     AttributeManager::get_class_mp_multiplier(
-                         player_info["class_type"]) *
-                     AttributeManager::get_race_mp_multiplier(
-                         player_info["race_type"]) *
-                     static_cast<unsigned int>(player_info["curr_level"]),
-                 player_info["curr_hp"], player_info["curr_mp"], 2),
-             player_info["curr_level"], player_info["curr_exp"]),
+    : Entity(entity_id, player_info["name"], player_info["curr_level"], player_info["curr_exp"]),
       head_id(player_info["head_id"]),
       body_id(player_info["body_id"]),
       inventory(player_info["inventory"]),
-      stats(AttributeManager::create_stats(player_info["race_type"])),
       map(map),
       class_type(player_info["class_type"]),
-      race_type(player_info["race_type"]) {}
+      race_type(player_info["race_type"]) {
+       
+    movement_component = new PlayerMovementComponent(7);
+    combat_component = new PlayerCombatComponent(
+                 player_info["helmet_id"], player_info["armor_id"],
+                 player_info["shield_id"], player_info["weapon_id"],
+                 player_info["curr_hp"], player_info["curr_mp"],
+                 AttributeManager::create_stats(player_info["race_type"]),
+                 *this, 2);
+      }
 
 void Player::update(uint64_t delta_t) {
     position_t steps = movement_component->update(delta_t);
@@ -45,6 +34,18 @@ void Player::update(uint64_t delta_t) {
 
 entity_type_t Player::get_type() const {
     return PLAYER;
+}
+
+class_type_t Player::get_class_type() const {
+    return class_type;
+}
+
+race_type_t Player::get_race_type() const {
+    return race_type;
+}
+
+unsigned int Player::get_level() const {
+    return experience_component.get_level();
 }
 
 nlohmann::json Player::get_data() const {

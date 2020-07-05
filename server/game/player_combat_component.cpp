@@ -10,9 +10,23 @@
 
 PlayerCombatComponent::PlayerCombatComponent(
     ItemId helmet_id, ItemId armor_id, ItemId shield_id, ItemId weapon_id,
-    unsigned int max_hp, unsigned int max_mp, unsigned int current_hp,
-    unsigned int current_mp, float attack_speed)
-    : CombatComponent(max_hp, max_mp, current_hp, current_mp),
+    unsigned int current_hp, unsigned int current_mp, stats_t stats,
+    Player& player, float attack_speed)
+    : CombatComponent(stats.physique *
+                     AttributeManager::get_class_hp_multiplier(
+                         player.get_class_type()) *
+                     AttributeManager::get_race_hp_multiplier(
+                         player.get_race_type()) *
+                     player.get_level(),
+                     stats.intelligence *
+                     AttributeManager::get_class_mp_multiplier(
+                         player.get_class_type()) *
+                     AttributeManager::get_race_mp_multiplier(
+                         player.get_race_type()) *
+                     player.get_level(),
+                    current_hp, current_mp),
+      player(player),
+      stats(stats),
       attack_speed(attack_speed),
       attack_accumulator(0),
       helmet(nullptr),

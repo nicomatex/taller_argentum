@@ -4,22 +4,25 @@
 #include "combat_component.h"
 #include "items/armor.h"
 #include "items/weapon.h"
+#include "../attribute_manager.h"
+#include "player.h"
 
 class PlayerCombatComponent : public CombatComponent {
    private:
+    Player &player;
     Armor* helmet;
     Armor* armor;
     Armor* shield;
     Weapon* weapon;
-
+    stats_t stats;
     float attack_speed;
     unsigned int attack_accumulator;
 
    public:
     PlayerCombatComponent(ItemId helmet_id, ItemId armor_id, ItemId shield_id,
-                          ItemId weapon_id, unsigned int max_hp,
-                          unsigned int max_mp, unsigned int current_hp,
-                          unsigned int current_mp, float attack_speed);
+                          ItemId weapon_id, unsigned int current_hp,
+                          unsigned int current_mp, stats_t stats,
+                          Player& player, float attack_speed);
     ~PlayerCombatComponent();
 
     // int special();
