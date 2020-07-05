@@ -14,8 +14,12 @@ class ExperienceComponent {
    private:
     unsigned int current_level;
     unsigned int current_exp;
-    /*
-        Devuelve la experiencia necesaria para pasar al siguiente nivel.
+   /**
+    * @brief Devuelve la experiencia necesaria para pasar al siguiente nivel.
+    * 
+    * @param current_level 
+    * @param current_exp 
+    * @return int 
     */
     int exp_to_next_level(unsigned int current_level, unsigned int current_exp);
 

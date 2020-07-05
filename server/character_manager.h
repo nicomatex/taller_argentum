@@ -54,28 +54,38 @@ class CharacterManager {
 
    public:
     CharacterManager(const char *f_char, const char *f_map);
-    /*
-        Devuelve true si existe el character, false si no.
-    */
+    /**
+     * @brief Devuelve true si existe el character, false si no.
+     * 
+     * @param name 
+     * @return true 
+     * @return false 
+     */
     bool character_exists(std::string name);
 
-    /*
-        Agrega un personaje al archivo de structs y al diccionario,
-        si ya existe, lanza CharacterAlreadyExistsException()
+   /**
+    * @brief Agrega un personaje al archivo de structs y al diccionario,
+    *       si ya existe, lanza CharacterAlreadyExistsException()
+    * 
+    * @param character_info 
     */
     void add_character(const nlohmann::json &character_info);
-
-    /*
-        Se utiliza para persistir el estado actual de la entidad character,
-        al archivo de structs.
-        Si no existe el character, lanza excepcion.
-    */
+    /**
+     * @brief Se utiliza para persistir el estado actual de la entidad character,
+     *        al archivo de structs.
+     *        Si no existe el character, lanza excepcion.
+     * 
+     * @param character_info 
+     */
     void set_character(const nlohmann::json &character_info);
 
-    /*
-        Devuelve el CharId asociado al player_name.
-        Si no existe, lanza CharacterNotFoundException.
-    */
+    /**
+     * @brief Devuelve el CharId asociado al player_name.
+     *   Si no existe, lanza CharacterNotFoundException.
+     * 
+     * @param name 
+     * @return CharId 
+     */
     CharId get_char_id(std::string name);
 
     /*

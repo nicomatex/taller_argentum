@@ -36,10 +36,13 @@ CharacterManager::~CharacterManager() {
     save();
 }
 
-/*
-    Devuelve un character por movimiento.
-    Lanza std::exception() en caso de que name exceda MAX_LENGTH
-*/
+/**
+ * @brief Devuelve un character por movimiento.
+ *  Lanza std::exception() en caso de que name exceda MAX_LENGTH
+ * 
+ * @param character_info 
+ * @return character_t 
+ */
 static character_t create_character(const nlohmann::json& character_info) {
     std::string name = character_info["name"];
     if (name.length() > MAX_CHAR_NAME)
