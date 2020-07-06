@@ -29,9 +29,9 @@ void ThObserver::send_update_logs() {
                 case LOG_DEAL_DAMAGE: {
                     int dmg = log.info["damage"];
                     const std::string& to = log.info["to"];
-                    // server_manager.send_to(
-                    //     client_id,
-                    //     EventFactory::dealt_damage(dmg, it["to_id"]));
+                    server_manager.send_to(
+                        client_id,
+                        EventFactory::dealt_damage(dmg, log.info["to_id"]));
                     std::string msg =
                         "Hecho " + std::to_string(dmg) + " de danio a " + to;
                     server_manager.send_to(client_id,
@@ -40,8 +40,8 @@ void ThObserver::send_update_logs() {
                 case LOG_RECV_DAMAGE: {
                     int dmg = log.info["damage"];
                     const std::string& from = log.info["from"];
-                    // server_manager.send_to(client_id,
-                    //                        EventFactory::received_damage(dmg));
+                    server_manager.send_to(client_id,
+                                           EventFactory::received_damage(dmg));
                     std::string msg = "Recibido " + std::to_string(dmg) +
                                       " de danio por " + from;
                     server_manager.send_to(client_id,
@@ -103,8 +103,6 @@ void ThObserver::run() {
     std::cerr << "Observer finished" << std::endl;
 }
 
-void ThObserver::stop() {
-    running = false;
-}
+void ThObserver::stop() { running = false; }
 
 ThObserver::~ThObserver() {}
