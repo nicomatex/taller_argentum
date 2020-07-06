@@ -82,10 +82,12 @@ void ThObserver::run() {
                 handler.push_event(
                     EventFactory::update_entities(map_data["entities"]));
             }
-            if (forced_update || map_data.contains("items")) {
-                // forced_update = false;
-                // handler.push_event(
-                //     EventFactory::update_entities(map_data["items"]));
+            if (map_data.contains("items") && !map_data["items"].empty()) {
+                forced_update = false;
+                std::cout << "Sending loot data" << std::endl;
+                std::cout << map_data["items"] << std::endl;
+                handler.push_event(
+                    EventFactory::update_items(map_data["items"]));
             }
             handler.push_event(EventFactory::update_map(map_data["positions"]));
             send_update_logs();
@@ -102,12 +104,8 @@ void ThObserver::run() {
     std::cerr << "Observer finished" << std::endl;
 }
 
-void ThObserver::stop() {
-    running = false;
-}
+void ThObserver::stop() { running = false; }
 
-void ThObserver::refresh_entities() {
-    forced_update = true;
-}
+void ThObserver::refresh_entities() { forced_update = true; }
 
 ThObserver::~ThObserver() {}

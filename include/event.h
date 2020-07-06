@@ -8,7 +8,7 @@ enum server_to_client {
     EV_ID_INITIALIZE_MAP = 0,
     EV_ID_UPDATE_MAP = 2,
     EV_ID_UPDATE_ENTITIES = 3,
-    EV_ID_UPDATE_ITEMS = 9,
+    EV_ID_UPDATE_LOOT = 9,
     EV_ID_CHAT_MESSAGE = 4,
     EV_ID_NOTIFY_NEW_MAP = 5,
     EV_ID_DEALT_DAMAGE = 6,

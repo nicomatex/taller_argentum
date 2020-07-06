@@ -11,6 +11,7 @@
 #include "../game_state_monitor.h"
 #include "../inventory_buffer.h"
 #include "../map_change_buffer.h"
+#include "../loot_buffer.h"
 
 class ClientReceiveHandler : public BlockingThEventHandler {
    private:
@@ -21,18 +22,20 @@ class ClientReceiveHandler : public BlockingThEventHandler {
     void handle_chat_message(Event &ev);
     void handle_map_change(Event &ev);
     void handle_inventory_update(Event &ev);
-    
+    void handle_loot_update(Event &ev);
+
     MapChangeBuffer &map_change_buffer;
     ChatBuffer &chat_buffer;
     GameStateMonitor &game_state_monitor;
     InventoryBuffer &inventory_buffer;
-
+    LootBuffer &loot_buffer;
     // la idea es tener los handlers todos aca
 
    public:
     ClientReceiveHandler(MapChangeBuffer &map_change_buffer,
                          ChatBuffer &chat_buffer,
                          InventoryBuffer &inventory_buffer,
+                         LootBuffer &loot_buffer,
                          GameStateMonitor &game_state_monitor);
     ~ClientReceiveHandler();
 };

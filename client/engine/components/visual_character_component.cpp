@@ -70,7 +70,7 @@ void VisualCharacterComponent::set_part(const std::string& type,
         } else {
             if(parts.count(type) != 0){
                 parts.erase(type);
-                part_ids.erase(type);
+                part_ids[type] = 0;
             }
         }
     } catch (std::exception& e) {

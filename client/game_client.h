@@ -14,6 +14,7 @@
 #include "map_change_buffer.h"
 #include "network/receive_handler.h"
 #include "inventory_buffer.h"
+#include "loot_buffer.h"
 
 /* Interfaz de la clase */
 class GameClient {
@@ -22,6 +23,7 @@ class GameClient {
     MapChangeBuffer map_change_buffer;
     ChatBuffer chat_buffer;
     InventoryBuffer inventory_buffer;
+    LootBuffer loot_buffer;
     ClientReceiveHandler receive_handler;
     SocketManager socket_manager;
     nlohmann::json config;

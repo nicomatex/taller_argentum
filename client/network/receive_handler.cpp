@@ -17,10 +17,12 @@ using json = nlohmann::json;
 ClientReceiveHandler::ClientReceiveHandler(MapChangeBuffer &map_change_buffer,
                                            ChatBuffer &chat_buffer,
                                            InventoryBuffer &inventory_buffer,
+                                           LootBuffer &loot_buffer,
                                            GameStateMonitor &game_state_monitor)
     : map_change_buffer(map_change_buffer),
       chat_buffer(chat_buffer),
       inventory_buffer(inventory_buffer),
+      loot_buffer(loot_buffer),
       game_state_monitor(game_state_monitor) {}
 
 ClientReceiveHandler::~ClientReceiveHandler() {}
@@ -54,6 +56,9 @@ void ClientReceiveHandler::handle(Event &ev) {
             break;
         case EV_ID_INVENTORY_UPDATE:
             handle_inventory_update(ev);
+            break;
+        case EV_ID_UPDATE_LOOT:
+            handle_loot_update(ev);
             break;
     };
 }
@@ -91,7 +96,6 @@ void ClientReceiveHandler::handle_initialization(Event &ev) {
 
 void ClientReceiveHandler::handle_entity_update(Event &ev) {
     json entities_info = ev.get_json();
-    std::cout << std::setw(4) << ev.get_json() << std::endl;
     EntityManager::get_instance().update_initialize();
     for (auto &it : entities_info["entities"].items()) {
         json entity_info = it.value();
@@ -145,4 +149,8 @@ void ClientReceiveHandler::handle_map_change(Event &ev) {
 
 void ClientReceiveHandler::handle_inventory_update(Event &ev) {
     inventory_buffer.push(ev.get_json()["inventory"]);
+}
+
+void ClientReceiveHandler::handle_loot_update(Event &ev) {
+    loot_buffer.load_buffer(ev.get_json());
 }

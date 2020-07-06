@@ -11,10 +11,12 @@
 GameView::GameView(ResponsiveScaler &scaler, int follow_entity_id,
                    SocketManager &socket_manager, SDLWindow &window,
                    ChatBuffer &chat_buffer, InventoryBuffer &inventory_buffer,
+                   LootBuffer &loot_buffer,
                    GameStateMonitor &game_state_monitor,
                    nlohmann::json map_info)
     : scaler(scaler),
       window(window),
+      loot_buffer(loot_buffer),
       chat_buffer(chat_buffer),
       game_state_monitor(game_state_monitor),
       hud(scaler, window, chat_buffer, inventory_buffer,
@@ -44,7 +46,7 @@ void GameView::run() {
         EntityManager::get_instance().update();
         hud.update();
         camera.update();
-
+        loot_buffer.flush(map);
         window.set_viewport(main_render_viewport);
         camera.render_map_layers(map.get_background_layers());
         camera.draw_all();

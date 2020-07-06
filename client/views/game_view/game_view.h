@@ -10,15 +10,16 @@
 #include "../../engine/map.h"
 #include "../../game_state_monitor.h"
 #include "../../inventory_buffer.h"
+#include "../../loot_buffer.h"
 #include "../responsive_scaler.h"
 #include "hud.h"
 #include "ui_event_handler.h"
-
 class GameView {
    private:
     ResponsiveScaler &scaler;
     SDLWindow &window;
     ChatBuffer &chat_buffer;
+    LootBuffer &loot_buffer;
     GameStateMonitor &game_state_monitor;
     Hud hud;
     Camera camera;
@@ -29,7 +30,8 @@ class GameView {
     GameView(ResponsiveScaler &scaler, int follow_entity_id,
              SocketManager &socket_manager, SDLWindow &window,
              ChatBuffer &chat_buffer, InventoryBuffer &inventory_buffer,
-             GameStateMonitor &game_state_monitor, nlohmann::json map_info);
+             LootBuffer &loot_buffer, GameStateMonitor &game_state_monitor,
+             nlohmann::json map_info);
 
     void run();
 

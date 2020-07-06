@@ -5,8 +5,8 @@
 #include "player_combat_component.h"
 #include "player_movement_component.h"
 
-#define DEAD_HEAD_ID 0
-#define DEAD_BODY_ID 0
+#define DEAD_HEAD_ID 9
+#define DEAD_BODY_ID 5
 
 // Temp
 #include <iostream>
@@ -35,17 +35,11 @@ void Player::update(uint64_t delta_t) {
     map.move(this->id, steps);
 }
 
-entity_type_t Player::get_type() const {
-    return PLAYER;
-}
+entity_type_t Player::get_type() const { return PLAYER; }
 
-class_type_t Player::get_class_type() const {
-    return class_type;
-}
+class_type_t Player::get_class_type() const { return class_type; }
 
-race_type_t Player::get_race_type() const {
-    return race_type;
-}
+race_type_t Player::get_race_type() const { return race_type; }
 
 nlohmann::json Player::get_data() const {
     nlohmann::json entity_data;
@@ -97,8 +91,7 @@ void Player::use(SlotId slot) {
             unequiped = static_cast<PlayerCombatComponent*>(combat_component)
                             ->equip(static_cast<Armor*>(item));
         }
-        if (unequiped)
-            try {
+        if (unequiped) try {
                 inventory.add(unequiped);
             } catch (const FullItemContainerException& e) {
                 std::cout << "Player Equip: ItemContainer full." << std::endl;
@@ -145,8 +138,9 @@ void Player::die() {
     drops.push_back(p_combat_component->unequip_chest());
     drops.push_back(p_combat_component->unequip_shield());
     map.drop_loot(id, drops);
+    map.push_log({{"log_type", 3},
+                  {"player_name", get_name()},
+                  {"inventory", get_inventory_data()}});
 }
 
-bool Player::is_alive() const {
-    return alive;
-}
+bool Player::is_alive() const { return alive; }

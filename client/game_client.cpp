@@ -26,7 +26,7 @@ GameClient::GameClient(json config)
           Socket(std::string(config["server"]), std::string(config["port"])),
           receive_handler),
       config(config),
-      receive_handler(map_change_buffer, chat_buffer, inventory_buffer,
+      receive_handler(map_change_buffer, chat_buffer, inventory_buffer, loot_buffer,
                       game_state_monitor) {
     SDLTextureLoader texture_loader(window.init_renderer());
     ResourceManager::get_instance().init(texture_loader);
@@ -50,6 +50,7 @@ void GameClient::run() {
             case READY_TO_RUN:
                 GameView(scaler, map_change_buffer.get_follow_entity_id(),
                          socket_manager, window, chat_buffer, inventory_buffer,
+                         loot_buffer,
                          game_state_monitor, map_change_buffer.get_map_info())
                     .run();
                 break;

@@ -29,7 +29,7 @@ class Map {
      * mapa. */
 
     //TODO
-    void update_loot_layer();
+    void update_loot_layer(nlohmann::json loot_info);
 
     std::vector<std::vector<Decoration>>& get_background_layers();
     std::vector<std::vector<Decoration>>& get_foreground_layers();
