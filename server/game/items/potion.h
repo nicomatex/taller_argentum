@@ -2,6 +2,7 @@
 #define POTION_H
 
 #include "item.h"
+#include "../entities/components/player_combat_component.h"
 
 typedef struct potion_info {
     short health_var;
@@ -27,6 +28,7 @@ class Potion : public Item {
     Potion(item_info_t item_info, potion_info_t potion_info,
            uint32_t stack = 0);
     nlohmann::json get_data() const override;
+    void use(PlayerCombatComponent& player_combat_component);
     ~Potion();
 };
 

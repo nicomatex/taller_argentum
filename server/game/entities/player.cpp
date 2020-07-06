@@ -5,6 +5,7 @@
 #include "../map_log_factory.h"
 #include "components/player_combat_component.h"
 #include "components/player_movement_component.h"
+#include "../items/potion.h"
 
 #define DEAD_HEAD_ID 9
 #define DEAD_BODY_ID 5
@@ -83,7 +84,7 @@ void Player::use(SlotId slot) {
     std::cout << inventory.get_data() << std::endl;
     Item* item;
     try {
-        item = inventory.remove(slot);
+        item = inventory.remove(slot, 1);
     } catch (...) {
         std::cout << "Excepcion lanzada" << std::endl;
         return;
@@ -106,7 +107,8 @@ void Player::use(SlotId slot) {
                 /* tirar? no equipar? */
             }
     } else if (type == TYPE_POTION) {
-        /* usar poción */
+        (static_cast<Potion*>(item))->use(*static_cast<PlayerCombatComponent*>(combat_component));
+        delete item;
     }
 }
 

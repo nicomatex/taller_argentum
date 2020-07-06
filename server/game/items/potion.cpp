@@ -12,3 +12,7 @@ nlohmann::json Potion::get_data() const {
     info["potion_info"] = potion_info;
     return std::move(info);
 }
+
+void Potion::use(PlayerCombatComponent& player_combat_component) {
+    player_combat_component.regen(potion_info.health_var, potion_info.mana_var);
+}

@@ -24,8 +24,7 @@ class Npc : public Entity {
 
     nlohmann::json get_data() const override;
 
-    void update(uint64_t delta_t) {
-    }  // Esto tiene que ser virtual, y lo va a definir cada npc (proximamente)
+    void update(uint64_t delta_t) override;
 };
 
 #endif  // NPC_H

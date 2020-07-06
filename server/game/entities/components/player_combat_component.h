@@ -17,6 +17,7 @@ class PlayerCombatComponent : public CombatComponent {
     stats_t stats;
     float attack_speed;
     unsigned int attack_accumulator;
+    unsigned int regen_counter;
 
    public:
     PlayerCombatComponent(ItemId helmet_id, ItemId armor_id, ItemId shield_id,
@@ -35,6 +36,10 @@ class PlayerCombatComponent : public CombatComponent {
     Armor* unequip_chest();
     Armor* unequip_shield();
     Weapon* unequip_weapon();
+
+    void regen(unsigned int amount_hp, unsigned int amount_mp);
+    void regen_hp(unsigned int amount_hp);
+    void regen_mp(unsigned int amount_mp);
 
     void update(uint64_t delta_t) override;
     bool attack_ready() const override;

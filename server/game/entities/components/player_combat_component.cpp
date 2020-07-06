@@ -33,7 +33,8 @@ PlayerCombatComponent::PlayerCombatComponent(ItemId helmet_id, ItemId armor_id,
       helmet(nullptr),
       armor(nullptr),
       shield(nullptr),
-      weapon(nullptr) {
+      weapon(nullptr),
+      regen_counter(0) {
     ServerManager& server_manager = ServerManager::get_instance();
     ItemFactory& item_factory = server_manager.get_item_factory();
     if (helmet_id)
@@ -57,8 +58,8 @@ damage_t PlayerCombatComponent::attack() {
     attack_accumulator = 0;
     // TODO: critical strike
     if (weapon)
-        return {weapon->deal_damage(), 0};
-    return {10, 0};
+        return {(int)stats.strength + weapon->deal_damage(), 0};
+    return {(int)stats.strength, 0};
 }
 
 attack_result_t PlayerCombatComponent::receive_damage(damage_t raw_damage) {
@@ -108,6 +109,14 @@ void PlayerCombatComponent::update(uint64_t delta_t) {
     int time_between_attacks = 1000 / attack_speed;
     if (attack_accumulator < time_between_attacks)
         attack_accumulator += delta_t;
+    regen_counter += delta_t;
+    if (regen_counter >= 1000) {
+        int regen_multiplier = AttributeManager::get_regen_multiplier(player.get_race_type());
+        regen(regen_multiplier, regen_multiplier);
+        regen_counter = 0;
+    } else {
+        regen_counter += delta_t;
+    }
 }
 
 bool PlayerCombatComponent::attack_ready() const {
@@ -161,4 +170,24 @@ Weapon* PlayerCombatComponent::unequip_weapon() {
     Weapon* unequiped = weapon;
     weapon = nullptr;
     return unequiped;
+}
+
+void PlayerCombatComponent::regen_hp(unsigned int amount_hp) {
+    if (current_hp + amount_hp > max_hp)
+        current_hp = max_hp;
+    else
+        current_hp += amount_hp;
+}
+
+void PlayerCombatComponent::regen_mp(unsigned int amount_mp) {
+    if (current_mp + amount_mp > max_mp)
+        current_mp = max_mp;
+    else
+        current_mp += amount_mp;
+}
+
+void PlayerCombatComponent::regen(unsigned int amount_hp,
+                                  unsigned int amount_mp) {
+    regen_hp(amount_hp);
+    regen_mp(amount_mp);
 }

@@ -28,3 +28,5 @@ nlohmann::json Npc::get_data() const {
     entity_data["sprite_id"] = sprite_id;
     return entity_data;
 }
+
+void Npc::update(uint64_t delta_t) {}
