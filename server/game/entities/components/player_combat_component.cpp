@@ -78,6 +78,7 @@ attack_result_t PlayerCombatComponent::receive_damage(damage_t raw_damage) {
 
     if ((int)current_hp - result.damage_dealt <= 0) {
         current_hp = 0;
+        current_mp = 0;
         result.killed = true;
     } else {
         current_hp -= result.damage_dealt;
@@ -109,13 +110,16 @@ void PlayerCombatComponent::update(uint64_t delta_t) {
     int time_between_attacks = 1000 / attack_speed;
     if (attack_accumulator < time_between_attacks)
         attack_accumulator += delta_t;
-    regen_counter += delta_t;
-    if (regen_counter >= 1000) {
-        int regen_multiplier = AttributeManager::get_regen_multiplier(player.get_race_type());
-        regen(regen_multiplier, regen_multiplier);
-        regen_counter = 0;
-    } else {
+    if (player.is_alive()) {
         regen_counter += delta_t;
+        if (regen_counter >= 1000) {
+            int regen_multiplier =
+                AttributeManager::get_regen_multiplier(player.get_race_type());
+            regen(regen_multiplier, regen_multiplier);
+            regen_counter = 0;
+        } else {
+            regen_counter += delta_t;
+        }
     }
 }
 

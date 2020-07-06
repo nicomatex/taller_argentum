@@ -115,7 +115,12 @@ void Player::use(SlotId slot) {
 void Player::add_item(Item* item) {
     if (!item)
         return;
-    inventory.add(item);
+    if (item->get_type() == TYPE_GOLD) {
+        inventory.add_gold(static_cast<Gold*>(item));
+        delete item; //TODO: hablar con los chicos sobre esto
+    } else {
+        inventory.add(item);
+    }      
 }
 
 nlohmann::json Player::get_persist_data() const {

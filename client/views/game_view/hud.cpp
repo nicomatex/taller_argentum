@@ -1,6 +1,7 @@
 #include "hud.h"
 
 #include <unordered_map>
+#include <string>
 
 #include "../../../include/types.h"
 #include "../../client_config.h"
@@ -92,6 +93,7 @@ void Hud::_update_inventory() {
         }
         inventory.set_item(i, icon, quantity);
     }
+    gold_text.update_text(std::to_string(int(inventory_data["curr_gold"])));
 }
 
 void Hud::_update_equipped_items() {

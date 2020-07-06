@@ -42,7 +42,8 @@ ServerManager::ServerManager()
 
         nico_info["inventory"] =
             R"({"items_ids":[401,300,200,0,0,0,0,0,0,0,0,0],
-                                 "items_stacks":[50,1,1,0,0,0,0,0,0,0,0,0]})"_json;
+                                 "items_stacks":[50,1,1,0,0,0,0,0,0,0,0,0],
+                                 "curr_gold":10})"_json;
         character_manager.add_character(nico_info);
     }
 
@@ -64,7 +65,8 @@ ServerManager::ServerManager()
                                      {"curr_exp", 131000},
                                      {"alive", true}};
         taiel_info["inventory"] = R"({"items_ids":[401,0,0,0,0,0,0,0,0,0,0,0],
-                                 "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0]})"_json;
+                                 "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0],
+                                 "curr_gold":0})"_json;
         character_manager.add_character(taiel_info);
     }
 
@@ -77,7 +79,8 @@ ServerManager::ServerManager()
             {"race_type", ELF}, {"curr_level", 1},  {"curr_exp", 300},
             {"alive", true}};
         fran_info["inventory"] = R"({"items_ids":[401,0,0,0,0,0,0,0,0,0,0,0],
-                                 "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0]})"_json;
+                                 "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0],
+                                 "curr_gold":20})"_json;
         character_manager.add_character(fran_info);
     }
 
@@ -99,7 +102,8 @@ ServerManager::ServerManager()
                                    {"curr_exp", 131000},
                                    {"alive", true}};
         eze_info["inventory"] = R"({"items_ids":[401,0,0,0,0,0,0,0,0,0,0,0],
-                                 "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0]})"_json;
+                                 "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0],
+                                 "curr_gold":100})"_json;
         character_manager.add_character(eze_info);
     }
 

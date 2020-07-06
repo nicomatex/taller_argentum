@@ -7,6 +7,7 @@
 #include "../../../include/nlohmann/json.hpp"
 #include "../../../include/types.h"
 #include "item.h"
+#include "gold.h"
 
 // Segun mock el inventario tiene 12 slots -> el oro no va en el inventario
 
@@ -25,20 +26,24 @@ class EmptySlotException : public std::exception {
 typedef struct inventory {
     ItemId items_ids[INV_SIZE];
     uint32_t items_stacks[INV_SIZE];
+    unsigned int current_gold;
 } inventory_t;
 
 inline void to_json(nlohmann::json& j, const inventory_t& i) {
     j["items_ids"] = i.items_ids;
     j["items_stacks"] = i.items_stacks;
+    j["curr_gold"] = i.current_gold;
 }
 
 inline void from_json(const nlohmann::json& j, inventory_t& i) {
     j["items_ids"].get_to(i.items_ids);
     j["items_stacks"].get_to(i.items_stacks);
+    j["curr_gold"].get_to(i.current_gold);
 }
 
 class ItemContainer {
    private:
+    Gold *gold;
     std::vector<Item*> item_container;
     std::map<ItemId, SlotId> item_id_to_slot;
     nlohmann::json _get_data(bool need_sprite_id) const;
@@ -94,6 +99,11 @@ class ItemContainer {
     const Item& get_item(SlotId slot_id) const;
     bool slot_is_free(SlotId slot_id) const;
     bool has_item(ItemId item_id);
+
+    void add_gold(Gold* gold);
+    void add_gold(Gold* gold, uint32_t stack);
+    Gold* remove_gold();
+    Gold* remove_gold(uint32_t stack);
     /*
         Informacion para persistir el inventario en el personaje.
     */

@@ -30,12 +30,14 @@ ItemContainer::ItemContainer(const nlohmann::json& inv_json)
         uint32_t stack = inventory.items_stacks[slot_id];
         this->add(item_factory.create(item_id, stack));
     }
+    gold = static_cast<Gold*>(item_factory.create(500, inv_json["curr_gold"]));
 }
 
 ItemContainer::~ItemContainer() {
     for (SlotId slot_id = 0; slot_id < item_container.size(); slot_id++) {
         delete item_container[slot_id];
     }
+    delete gold;
 }
 
 void ItemContainer::add(Item* item) {
@@ -56,7 +58,7 @@ void ItemContainer::add(Item* item, uint32_t stack) {
     ItemFactory& item_factory = server_manager.get_item_factory();
     ItemId item_id = item->get_id();
     if (item->get_stack() <= stack)
-        add(item);  // estoy agregando todo el item
+        return add(item);  // estoy agregando todo el item
     SlotId slot_id = get_available_slot(item_id);
     if (!has_item(item_id)) {
         item_container[slot_id] = item_factory.create(item_id, stack);
@@ -124,6 +126,7 @@ nlohmann::json ItemContainer::get_data() const {
             json_inv["items"].push_back(get_item(slot_id).get_data());
         }
     }
+    json_inv["curr_gold"] = gold->get_stack();
     return json_inv;
 }
 
@@ -141,6 +144,7 @@ nlohmann::json ItemContainer::get_persist_data() const {
             inventory.items_stacks[slot_id] = item.get_stack();
         }
     }
+    inventory.current_gold = gold->get_stack();
     json_inv = inventory;
     return json_inv;
 }
@@ -168,4 +172,36 @@ SlotId ItemContainer::get_available_slot(ItemId item_id) {
         }
     }
     throw FullItemContainerException();
+}
+
+void ItemContainer::add_gold(Gold* other_gold) {
+    gold->increase_stack(other_gold->get_stack());
+    other_gold->set_stack(0);
+}
+
+void ItemContainer::add_gold(Gold* other_gold, uint32_t stack) {
+    if (other_gold->get_stack() <= stack) {
+        add_gold(other_gold);
+    } else {
+        gold->increase_stack(stack);
+        other_gold->decrease_stack(stack);
+    }
+}
+
+Gold* ItemContainer::remove_gold() {
+    ServerManager& server_manager = ServerManager::get_instance();
+    ItemFactory& item_factory = server_manager.get_item_factory();
+    Gold* new_gold = static_cast<Gold*>(
+        item_factory.create(gold->get_id(), gold->get_stack()));
+    gold->set_stack(0);
+    return new_gold;
+}
+
+Gold* ItemContainer::remove_gold(uint32_t stack) {
+    ServerManager& server_manager = ServerManager::get_instance();
+    ItemFactory& item_factory = server_manager.get_item_factory();
+    if (gold->stack_difference(stack) <= 0)
+        return remove_gold();
+    gold->decrease_stack(stack);
+    return static_cast<Gold*>(item_factory.create(gold->get_id(), stack));
 }
