@@ -41,7 +41,6 @@ void MapManager::update(uint64_t delta_t) {
             map_changer.push_change(change);
         }
     }
-    map_changer.change_maps();
 }
 
 MapManager::~MapManager() {}
