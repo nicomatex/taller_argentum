@@ -23,7 +23,9 @@ class ClientReceiveHandler : public BlockingThEventHandler {
     void handle_map_change(Event &ev);
     void handle_inventory_update(Event &ev);
     void handle_loot_update(Event &ev);
-
+    void handle_incoming_damage(Event &ev);
+    void handle_outcoming_damage(Event &ev);
+    
     MapChangeBuffer &map_change_buffer;
     ChatBuffer &chat_buffer;
     GameStateMonitor &game_state_monitor;
