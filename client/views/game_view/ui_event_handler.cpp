@@ -65,6 +65,11 @@ void UiEventHandler::handle_keyup_move_right() {
     send_event(EventFactory::movement_event(STOP, RIGHT));
 }
 
+
+void UiEventHandler::handle_keydown_pickup(){
+    send_event(EventFactory::pickup_event());
+}
+
 void UiEventHandler::handle_keydown_return() {
     hud.chat.toggle();
     if (text_input_enabled) {
@@ -130,7 +135,7 @@ void UiEventHandler::handle() {
         if (e.type == SDL_QUIT) handle_quit();
         if (e.type == SDL_KEYDOWN) {
             if (e.key.repeat == 0) {
-                switch (e.key.keysym.sym) {
+                switch (e.key.keysym.sym) { //Teclas de movimiento
                     case SDLK_UP:
                         handle_keydown_move_up();
                         break;
@@ -145,7 +150,7 @@ void UiEventHandler::handle() {
                         break;
                 }
             }
-            switch (e.key.keysym.sym) {
+            switch (e.key.keysym.sym) { //Teclas de uso general
                 case SDLK_BACKSPACE:
                     handle_keydown_backspace();
                     break;
@@ -161,9 +166,12 @@ void UiEventHandler::handle() {
                 case SDLK_m:
                     if (!text_input_enabled) handle_keydown_sound_toggle();
                     break;
+                case SDLK_a:
+                    handle_keydown_pickup();
+                    break;
             }
 
-        } else if (e.type == SDL_KEYUP) {
+        } else if (e.type == SDL_KEYUP) { //Teclas de movimiento pero para parar.
             if (e.key.repeat == 0) {
                 switch (e.key.keysym.sym) {
                     case SDLK_UP:
@@ -180,9 +188,9 @@ void UiEventHandler::handle() {
                         break;
                 }
             }
-        } else if (e.type == SDL_TEXTINPUT) {
+        } else if (e.type == SDL_TEXTINPUT) { // Input de texto
             hud.chat.add_characters(e.text.text);
-        } else if (e.type == SDL_MOUSEBUTTONUP) {
+        } else if (e.type == SDL_MOUSEBUTTONUP) { // Clicks
             handle_click(e);
         }
         hud.handle_event(e);

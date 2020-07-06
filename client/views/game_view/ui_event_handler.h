@@ -35,13 +35,14 @@ class UiEventHandler {
     void handle_keydown_return();
     void handle_keydown_backspace();
     void handle_keydown_sound_toggle();
+    void handle_keydown_attack();
+    void handle_keydown_pickup();
 
     void handle_keyup_move_up();
     void handle_keyup_move_down();
     void handle_keyup_move_left();
     void handle_keyup_move_right();
 
-    void handle_keydown_attack();
 
     void handle_click(SDL_Event &e);
 

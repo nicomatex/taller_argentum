@@ -44,6 +44,8 @@ class EventFactory {
     /* Evento de creación de pj */
     static Event create_event(std::string name, class_type_t class_type,
                               race_type_t race_type);
+
+    static Event pickup_event();
 };
 
 #endif

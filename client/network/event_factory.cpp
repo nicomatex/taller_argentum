@@ -53,3 +53,8 @@ Event EventFactory::create_event(std::string name, class_type_t class_type,
                   {"race_type", race_type}};
     return Event(event);
 }
+
+Event EventFactory::pickup_event() {
+    json event = {{"ev_id", EV_ID_PICKUP_LOOT}};
+    return Event(event);
+} 
