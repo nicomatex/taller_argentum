@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.19"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Argentum Online - Cliente: Fichero Fuente /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/engine/components/visual_npc_component.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Argentum Online - Cliente
+   </div>
+  </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.19 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('visual__npc__component_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">visual_npc_component.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __VISUAL_NPC_COMPONENT_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __VISUAL_NPC_COMPONENT_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../../../include/nlohmann/json.hpp&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../../../include/types.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../ECS/component.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../actor.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;../camera.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classVisualNPCComponent.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classVisualNPCComponent.html">VisualNPCComponent</a> : <span class="keyword">public</span> <a class="code" href="classComponent.html">Component</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classCamera.html">Camera</a> *camera;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classActor.html">Actor</a> body;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">int</span> transition_offset_x;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">int</span> transition_offset_y;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classSDLTimer.html">SDLTimer</a> transition_timer;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment">/* Actualiza el offset de renderizacion. */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> _update_offset();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> _update_animation(<span class="keywordtype">int</span> delta_x, <span class="keywordtype">int</span> delta_y);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">int</span> current_x;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> current_y;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">int</span> speed;  <span class="comment">// En tiles/segundo.</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">/* Indica si ya se recibio el primer mensaje de actualizacion de posicion.*/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">bool</span> initialized;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std::recursive_mutex m;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classVisualNPCComponent.html#af7d8e0bf63ea418f7f493af55deb71dd">VisualNPCComponent</a>(<span class="keywordtype">int</span> body_id, <span class="keywordtype">int</span> speed);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    ~<a class="code" href="classVisualNPCComponent.html">VisualNPCComponent</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classVisualNPCComponent.html#a773c384ddd57fd9bc9e37e990370ef6f">set_orientation</a>(direction_t new_orientation);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classVisualNPCComponent.html#a608c2189996e7e63fe4248f4d9fd09b1">init</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classVisualNPCComponent.html#a587b9db877c487ce93faeaba088d604c">update</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classVisualNPCComponent.html#a46807420c1ed0f0a1c2c077d1d6612b8">draw</a>(<a class="code" href="classCamera.html">Camera</a> &amp;camera);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classVisualNPCComponent.html#a23de67563c630d8b17897e3bc093f67d">server_update</a>(nlohmann::json update_info);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classVisualNPCComponent.html#a3c972bb8571f05c3c109db3850a6cc8b">is_moving</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;};</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclassVisualNPCComponent_html_a23de67563c630d8b17897e3bc093f67d"><div class="ttname"><a href="classVisualNPCComponent.html#a23de67563c630d8b17897e3bc093f67d">VisualNPCComponent::server_update</a></div><div class="ttdeci">void server_update(nlohmann::json update_info)</div><div class="ttdoc">Actualiza el NPC segun la informacion recibida en una actualizacion proveniente del servidor.</div><div class="ttdef"><b>Definition:</b> visual_npc_component.cpp:132</div></div>
+<div class="ttc" id="aclassCamera_html"><div class="ttname"><a href="classCamera.html">Camera</a></div><div class="ttdef"><b>Definition:</b> camera.h:16</div></div>
+<div class="ttc" id="aclassVisualNPCComponent_html_a608c2189996e7e63fe4248f4d9fd09b1"><div class="ttname"><a href="classVisualNPCComponent.html#a608c2189996e7e63fe4248f4d9fd09b1">VisualNPCComponent::init</a></div><div class="ttdeci">void init() override</div><div class="ttdoc">Inicializa el componente con lo que necesite, es llamado en el momento de agregarlo a la entity.</div><div class="ttdef"><b>Definition:</b> visual_npc_component.cpp:34</div></div>
+<div class="ttc" id="aclassActor_html"><div class="ttname"><a href="classActor.html">Actor</a></div><div class="ttdef"><b>Definition:</b> actor.h:9</div></div>
+<div class="ttc" id="aclassSDLTimer_html"><div class="ttname"><a href="classSDLTimer.html">SDLTimer</a></div><div class="ttdef"><b>Definition:</b> sdl_timer.h:5</div></div>
+<div class="ttc" id="aclassVisualNPCComponent_html_af7d8e0bf63ea418f7f493af55deb71dd"><div class="ttname"><a href="classVisualNPCComponent.html#af7d8e0bf63ea418f7f493af55deb71dd">VisualNPCComponent::VisualNPCComponent</a></div><div class="ttdeci">VisualNPCComponent(int body_id, int speed)</div><div class="ttdoc">Crea un objeto VisualNPCComponent.</div><div class="ttdef"><b>Definition:</b> visual_npc_component.cpp:8</div></div>
+<div class="ttc" id="aclassVisualNPCComponent_html_a46807420c1ed0f0a1c2c077d1d6612b8"><div class="ttname"><a href="classVisualNPCComponent.html#a46807420c1ed0f0a1c2c077d1d6612b8">VisualNPCComponent::draw</a></div><div class="ttdeci">void draw(Camera &amp;camera)</div><div class="ttdoc">Dibuja el npc.</div><div class="ttdef"><b>Definition:</b> visual_npc_component.cpp:41</div></div>
+<div class="ttc" id="aclassVisualNPCComponent_html_a773c384ddd57fd9bc9e37e990370ef6f"><div class="ttname"><a href="classVisualNPCComponent.html#a773c384ddd57fd9bc9e37e990370ef6f">VisualNPCComponent::set_orientation</a></div><div class="ttdeci">void set_orientation(direction_t new_orientation)</div><div class="ttdoc">Setea la orientacion del NPC.</div><div class="ttdef"><b>Definition:</b> visual_npc_component.cpp:127</div></div>
+<div class="ttc" id="aclassComponent_html"><div class="ttname"><a href="classComponent.html">Component</a></div><div class="ttdef"><b>Definition:</b> component.h:6</div></div>
+<div class="ttc" id="aclassVisualNPCComponent_html"><div class="ttname"><a href="classVisualNPCComponent.html">VisualNPCComponent</a></div><div class="ttdef"><b>Definition:</b> visual_npc_component.h:10</div></div>
+<div class="ttc" id="aclassVisualNPCComponent_html_a587b9db877c487ce93faeaba088d604c"><div class="ttname"><a href="classVisualNPCComponent.html#a587b9db877c487ce93faeaba088d604c">VisualNPCComponent::update</a></div><div class="ttdeci">void update() override</div><div class="ttdoc">Actualiza el componente.</div><div class="ttdef"><b>Definition:</b> visual_npc_component.cpp:105</div></div>
+<div class="ttc" id="aclassVisualNPCComponent_html_a3c972bb8571f05c3c109db3850a6cc8b"><div class="ttname"><a href="classVisualNPCComponent.html#a3c972bb8571f05c3c109db3850a6cc8b">VisualNPCComponent::is_moving</a></div><div class="ttdeci">bool is_moving()</div><div class="ttdoc">Indica si el NPC se esta moviendo.</div><div class="ttdef"><b>Definition:</b> visual_npc_component.cpp:123</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_3f8315192904255f2bd3453e0fee5a42.html">engine</a></li><li class="navelem"><a class="el" href="dir_52b899ec8a91933e723c5e02cb2b7b86.html">components</a></li><li class="navelem"><b>visual_npc_component.h</b></li>
+    <li class="footer">Generado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.19 </li>
+  </ul>
+</div>
+</body>
+</html>

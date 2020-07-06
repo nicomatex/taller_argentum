@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.19"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Argentum Online - Cliente: Fichero Fuente /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/engine/camera.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Argentum Online - Cliente
+   </div>
+  </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.19 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('camera_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">camera.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __CAMERA_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __CAMERA_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;SDL/sdl_timer.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;components/position_component.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;decoration.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;renderizable_object.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structposition.html">   11</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structposition.html">position</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">int</span> x;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">int</span> y;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;} <a class="code" href="structposition.html">position_t</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classCamera.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCamera.html">Camera</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">/* Ancho que se va a renderizar en tiles. */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">int</span> width_tiles;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="comment">/* Altura que se va a renderizar en tiles. */</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">int</span> height_tiles;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">/* Coordenadas del tile donde esta centrada la camara. */</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">int</span> x_center_tile;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">int</span> y_center_tile;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">int</span> camera_offset_x;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">int</span> camera_offset_y;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classSDLTimer.html">SDLTimer</a> movement_timer;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">int</span> map_size; <span class="comment">/* Lado del mapa, en tiles (los mapas son cuadrados). */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">int</span> tile_size; <span class="comment">/* Lado de cada tile, en pixeles.*/</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">int</span> speed;  <span class="comment">// En tiles/segundo.</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    SDL_Rect viewport;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classPositionComponent.html">PositionComponent</a> &amp;follow_component;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">/* Devuelve true si un componente visual esta dentro del campo</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">    de vision de la camara.*/</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">bool</span> _is_within_visual_range(<a class="code" href="classRenderizableObject.html">RenderizableObject</a> *component);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">/* Devuelve el area fisica donde deberia ser dibujado el componente.*/</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    SDL_Rect _get_render_area(<a class="code" href="classRenderizableObject.html">RenderizableObject</a> *component, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                              <span class="keywordtype">int</span> x_tmp_offset, <span class="keywordtype">int</span> y_tmp_offset);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    SDL_Rect _get_render_area(<a class="code" href="classDecoration.html">Decoration</a> &amp;decoration);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> _update_offset();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="classCamera.html#ad8006f3c941cfb20c070f276ff2fded5">Camera</a>(<a class="code" href="classPositionComponent.html">PositionComponent</a> &amp;follow_component, SDL_Rect viewport, <span class="keywordtype">int</span> map_size,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;           <span class="keywordtype">int</span> tile_size, <span class="keywordtype">int</span> viewport_width, <span class="keywordtype">int</span> viewport_height, <span class="keywordtype">int</span> speed);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    ~<a class="code" href="classCamera.html">Camera</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classCamera.html#a42cda7239981a5618660d04bd5893556">update</a>();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classCamera.html#ab4594414daf3874e7139c79dec541449">draw</a>(<a class="code" href="classRenderizableObject.html">RenderizableObject</a> *component, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> x_tmp_offset,</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;              <span class="keywordtype">int</span> y_tmp_offset);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classCamera.html#a95eaaace775843647d6f2e3886ba672b">draw_all</a>();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classCamera.html#a740604372eb53b0414a3177788608d97">render_map_layers</a>(std::vector&lt;std::vector&lt;Decoration&gt;&gt; &amp;layers);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="structposition.html">position_t</a> <a class="code" href="classCamera.html#ada76a773c9a20e52c06b1ec88696c980">tile_at</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;};</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclassRenderizableObject_html"><div class="ttname"><a href="classRenderizableObject.html">RenderizableObject</a></div><div class="ttdoc">Interfaz que deben implementar todos los componentes que vayan a ser renderizados por la camara.</div><div class="ttdef"><b>Definition:</b> renderizable_object.h:29</div></div>
+<div class="ttc" id="aclassDecoration_html"><div class="ttname"><a href="classDecoration.html">Decoration</a></div><div class="ttdef"><b>Definition:</b> decoration.h:7</div></div>
+<div class="ttc" id="aclassCamera_html"><div class="ttname"><a href="classCamera.html">Camera</a></div><div class="ttdef"><b>Definition:</b> camera.h:16</div></div>
+<div class="ttc" id="aclassCamera_html_a740604372eb53b0414a3177788608d97"><div class="ttname"><a href="classCamera.html#a740604372eb53b0414a3177788608d97">Camera::render_map_layers</a></div><div class="ttdeci">void render_map_layers(std::vector&lt; std::vector&lt; Decoration &gt;&gt; &amp;layers)</div><div class="ttdoc">Renderiza un conjunto de capas del mapa.</div><div class="ttdef"><b>Definition:</b> camera.cpp:169</div></div>
+<div class="ttc" id="aclassCamera_html_ada76a773c9a20e52c06b1ec88696c980"><div class="ttname"><a href="classCamera.html#ada76a773c9a20e52c06b1ec88696c980">Camera::tile_at</a></div><div class="ttdeci">position_t tile_at(int x, int y)</div><div class="ttdoc">Indica cual fue el tile clickeado.</div><div class="ttdef"><b>Definition:</b> camera.cpp:206</div></div>
+<div class="ttc" id="aclassPositionComponent_html"><div class="ttname"><a href="classPositionComponent.html">PositionComponent</a></div><div class="ttdef"><b>Definition:</b> position_component.h:9</div></div>
+<div class="ttc" id="aclassSDLTimer_html"><div class="ttname"><a href="classSDLTimer.html">SDLTimer</a></div><div class="ttdef"><b>Definition:</b> sdl_timer.h:5</div></div>
+<div class="ttc" id="aclassCamera_html_ab4594414daf3874e7139c79dec541449"><div class="ttname"><a href="classCamera.html#ab4594414daf3874e7139c79dec541449">Camera::draw</a></div><div class="ttdeci">void draw(RenderizableObject *component, int x, int y, int x_tmp_offset, int y_tmp_offset)</div><div class="ttdoc">Renderiza un objeto renderizable.</div><div class="ttdef"><b>Definition:</b> camera.cpp:162</div></div>
+<div class="ttc" id="aclassCamera_html_a42cda7239981a5618660d04bd5893556"><div class="ttname"><a href="classCamera.html#a42cda7239981a5618660d04bd5893556">Camera::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">Actualiza la posicion de la camara segun el objeto que esta siguiendo.</div><div class="ttdef"><b>Definition:</b> camera.cpp:133</div></div>
+<div class="ttc" id="aclassCamera_html_a95eaaace775843647d6f2e3886ba672b"><div class="ttname"><a href="classCamera.html#a95eaaace775843647d6f2e3886ba672b">Camera::draw_all</a></div><div class="ttdeci">void draw_all()</div><div class="ttdoc">Renderiza todas las entidades que contengan una componente visual.</div><div class="ttdef"><b>Definition:</b> camera.cpp:178</div></div>
+<div class="ttc" id="aclassCamera_html_ad8006f3c941cfb20c070f276ff2fded5"><div class="ttname"><a href="classCamera.html#ad8006f3c941cfb20c070f276ff2fded5">Camera::Camera</a></div><div class="ttdeci">Camera(PositionComponent &amp;follow_component, SDL_Rect viewport, int map_size, int tile_size, int viewport_width, int viewport_height, int speed)</div><div class="ttdoc">Crea un objeto Camera.</div><div class="ttdef"><b>Definition:</b> camera.cpp:14</div></div>
+<div class="ttc" id="astructposition_html"><div class="ttname"><a href="structposition.html">position</a></div><div class="ttdef"><b>Definition:</b> camera.h:11</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_3f8315192904255f2bd3453e0fee5a42.html">engine</a></li><li class="navelem"><b>camera.h</b></li>
+    <li class="footer">Generado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.19 </li>
+  </ul>
+</div>
+</body>
+</html>
