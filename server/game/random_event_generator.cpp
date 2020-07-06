@@ -1,13 +1,28 @@
 #include "random_event_generator.h"
 
+#include <fstream>
+#include <iostream>
 #include <random>
 
-RandomEventGenerator::RandomEventGenerator()
+#include "../../include/my_exception.h"
+#include "../../include/nlohmann/json.hpp"
+
+RandomEventGenerator::RandomEventGenerator(const char* random_events_file)
     : events{nothing, rand_gold, rand_potion, rand_item},
       gen(rd()),
       drops_dist(0, 1) {
-    std::array<float, N_DROP_TYPES> prob_events{NOTHING_PROB, GOLD_PROB,
-                                                POTION_PROB, RANDOM_OBJECT};
+    std::ifstream random_istream(random_events_file);
+    if (!random_istream.is_open())
+        throw MyException("RandomEventGenerator: Error opening races file: %s",
+                          random_events_file);
+    nlohmann::json json_random;
+    random_istream >> json_random;
+    std::cout << json_random << std::endl;
+    std::array<float, N_DROP_TYPES> prob_events{
+        json_random["random_events"]["nothing_prob"],
+        json_random["random_events"]["gold_prob"],
+        json_random["random_events"]["potion_prob"],
+        json_random["random_events"]["rand_obj_prob"]};
     std::array<float, N_DROP_TYPES> norm_events;
     int sum_prob =
         std::accumulate(std::begin(prob_events), std::end(prob_events), 0);
@@ -39,11 +54,11 @@ RandomEventGenerator& RandomEventGenerator::get_instance() {
 /**
  * @brief Devuelve true si value se encuentra entre [min_value, max_value),
  * false en caso contrario.
- * 
- * @param value 
- * @param range 
- * @return true 
- * @return false 
+ *
+ * @param value
+ * @param range
+ * @return true
+ * @return false
  */
 static bool isInRange(float value, range_t& range) {
     return value >= range.min_value && value < range.max_value;
@@ -66,3 +81,12 @@ uint16_t RandomEventGenerator::random_in(uint16_t min, uint16_t max) {
     std::uniform_int_distribution<uint16_t> distrib(min, max);
     return distrib(gen);
 }
+
+unsigned int RandomEventGenerator::rand_idx_in_vec(unsigned int vec_size) {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> uid(0, vec_size - 1);
+    return uid(gen);
+}
+
+

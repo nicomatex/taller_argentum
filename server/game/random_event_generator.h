@@ -7,11 +7,6 @@
 
 #define N_DROP_TYPES 4
 
-#define NOTHING_PROB 80
-#define GOLD_PROB 8
-#define POTION_PROB 1
-#define RANDOM_OBJECT 11
-
 typedef enum {
     nothing,
     rand_gold,
@@ -33,7 +28,7 @@ class RandomEventGenerator {
     std::mt19937 gen;
     std::uniform_real_distribution<> drops_dist;
 
-    RandomEventGenerator();
+    RandomEventGenerator(const char* random_events = "../ind/random_events.json");
 
    public:
     ~RandomEventGenerator();
@@ -48,6 +43,14 @@ class RandomEventGenerator {
 
     /* Devuelve un numero entero entre min y max */
     static uint16_t random_in(uint16_t min, uint16_t max);
+    /**
+     * @brief Devuelve un indice random entre 0 y tamaño del vector-1
+     * 
+     * @param list_size 
+     * @return unsigned int 
+     */
+    static unsigned int rand_idx_in_vec(unsigned int vec_size);
+
 };
 
 #endif  // RANDOM_EVENT_GENERATOR_H

@@ -22,7 +22,14 @@ damage_t MonsterCombatComponent::attack() {
 }
 
 attack_result_t MonsterCombatComponent::receive_damage(damage_t raw_damage) {
-    return {true, raw_damage.damage, false, false};
+    attack_result_t result = {true, raw_damage.damage, false, false};
+    if ((int)current_hp - result.damage_dealt <= 0) {
+        current_hp = 0;
+        result.killed = true;
+    } else {
+        current_hp -= result.damage_dealt;
+    }
+    return result;
 }
 
 void MonsterCombatComponent::update(uint64_t delta_t) {
