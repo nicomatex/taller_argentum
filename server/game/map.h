@@ -45,10 +45,6 @@ using ObjectMatrix =
 // clave: id de entidad, valor: position_t
 typedef std::unordered_map<EntityId, position_t> PositionMap;
 
-// TODO: deshacerse de este map
-// Clave: id de entidad, valor: puntero a la entidad
-typedef std::unordered_map<EntityId, Entity*> EntityMap;
-
 // Clave: position_t, valor: puntero a una entidad
 typedef ObjectMatrix<Entity*> EntityMatrix;
 
@@ -68,7 +64,6 @@ class Map {
 
     PositionMap position_map;
     bool _dirty_entities;
-    EntityMap entity_map;
     EntityMatrix entity_matrix;
     bool _dirty_loot;
     LootMatrix loot_matrix;

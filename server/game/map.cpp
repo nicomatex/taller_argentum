@@ -33,7 +33,7 @@ Map::Map(nlohmann::json map_description)
 }
 
 Map::~Map() {
-    for (auto it : entity_map) delete it.second;
+    for (auto it : entity_matrix) delete it.second;
     for (auto it : loot_matrix) delete it.second;
     while (!actions.empty()) {
         entity_action_t entity_action = actions.front();
@@ -47,7 +47,6 @@ void Map::add_entity(Entity* entity, position_t position) {
     _dirty_entities = true;
     position_map[entity->get_id()] = position;
     entity_matrix[position] = entity;
-    entity_map.emplace(entity->get_id(), entity);
     std::cout << "Added entity with id " << entity->get_id() << std::endl;
 }
 
@@ -93,15 +92,15 @@ bool Map::collides(ObjectMatrix<T> object_matrix, position_t position) {
 void Map::move(EntityId entity_id, position_t steps) {
     if (steps.x == 0 && steps.y == 0)
         return;
-    position_t new_position = position_map[entity_id];
-    Entity* entity = entity_map.at(entity_id);
+    position_t position = position_map[entity_id];
+    Entity* entity = entity_matrix.at(position);
 
-    new_position.x += steps.x;
-    new_position.y += steps.y;
+    position.x += steps.x;
+    position.y += steps.y;
 
-    if (entity->get_type() == PLAYER && transitions.is_transition(new_position))
-        transitions.push_change(entity->get_name(), new_position);
-    if (collides(entity_matrix, new_position))
+    if (entity->get_type() == PLAYER && transitions.is_transition(position))
+        transitions.push_change(entity->get_name(), position);
+    if (collides(entity_matrix, position))
         return;
 
     // Borrado de la matriz de entidad en la vieja posicion.
@@ -110,8 +109,8 @@ void Map::move(EntityId entity_id, position_t steps) {
 
     // Agregado en la matriz de entidad y mapa de posiciones en la nueva
     // posicion.
-    entity_matrix[new_position] = entity;
-    position_map[entity_id] = new_position;
+    entity_matrix[position] = entity;
+    position_map[entity_id] = position;
 }
 
 std::queue<map_change_t>& Map::get_transitions() {
@@ -134,7 +133,8 @@ nlohmann::json Map::add_player(nlohmann::json player_info) {
 }
 
 nlohmann::json Map::rm_player(EntityId entity_id) {
-    Player* player = static_cast<Player*>(entity_map.at(entity_id));
+    Player* player =
+        static_cast<Player*>(entity_matrix.at(position_map[entity_id]));
     nlohmann::json player_data = player->get_persist_data();
     position_t position = position_map.at(entity_id);
     rm_entity(entity_id);
@@ -143,9 +143,8 @@ nlohmann::json Map::rm_player(EntityId entity_id) {
 }
 
 void Map::rm_entity(EntityId entity_id) {
-    Entity* entity = entity_map.at(entity_id);
     position_t position = position_map.at(entity_id);
-    entity_map.erase(entity_id);
+    Entity* entity = entity_matrix.at(position);
     entity_matrix.erase(position);
     position_map.erase(entity_id);
     delete entity;
@@ -162,7 +161,8 @@ void Map::update(uint64_t delta_t) {
         ent_act.action->execute(*this, ent_act.entity);
         delete ent_act.action;
     }
-    for (auto& it : entity_map) {
+    EntityMatrix copy = entity_matrix;
+    for (auto& it : copy) {
         it.second->update(delta_t);
     }
 }

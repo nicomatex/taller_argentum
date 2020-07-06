@@ -24,7 +24,7 @@ void ThObserver::send_update_logs() {
     for (auto& log : logs) {
         try {
             ClientId client_id =
-                server_manager.get_client_by_name(log.info["player_name"]);
+                server_manager.get_client_by_name(log.player_name);
             switch (log.type) {
                 case LOG_DEAL_DAMAGE: {
                     int dmg = log.info["damage"];
