@@ -1,6 +1,7 @@
 #include "action_attack.h"
 
 #include "../map.h"
+#include "../map_log_factory.h"
 #include "../position.h"
 
 ActionAttack::ActionAttack() {}
@@ -13,24 +14,23 @@ void ActionAttack::execute(Map& map, EntityId entity_id) const {
     position_t attacked_pos =
         attacker->get_facing_position(map.get_position(entity_id));
     Entity* attacked = Action::get_entity(map, attacked_pos);
-    if (!attacked || !attacked->is_alive())  // || !attacker->can_attack(attacked)
-          return;
+    if (!attacked ||
+        !attacked->is_alive())  // || !attacker->can_attack(attacked)
+        return;
     attack_result_t result = attacker->attack(attacked);
     if (!result.success)
         return;
     if (attacker->get_type() == PLAYER)
-        map.push_log({{"log_type", 1},
-                      {"player_name", attacker->get_name()},
-                      {"damage", result.damage_dealt},
-                      //   {"dodged", bool},
-                      {"to", attacked->get_name()},
-                      {"to_id", attacked->get_id()}});
+        map.push_log(MapLogFactory::deal_damage(
+            attacker->get_name(), {{"damage", result.damage_dealt},
+                                   //   {"dodged", bool},
+                                   {"to", attacked->get_name()},
+                                   {"to_id", attacked->get_id()}}));
     if (attacked->get_type() == PLAYER)
-        map.push_log({{"log_type", 2},
-                      {"player_name", attacked->get_name()},
-                      {"damage", result.damage_dealt},
-                      //   {"dodged", bool},
-                      {"from", attacker->get_name()}});
+        map.push_log(MapLogFactory::receive_damage(
+            attacked->get_name(), {{"damage", result.damage_dealt},
+                                   //   {"dodged", bool},
+                                   {"from", attacker->get_name()}}));
     if (result.killed) {
         attacked->die();
         if (attacked->get_type() == MONSTER)

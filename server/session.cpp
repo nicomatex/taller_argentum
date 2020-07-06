@@ -28,7 +28,6 @@ void Session::add_client(ClientId new_client) {
 }
 
 void Session::rm_client(ClientId id) {
-    observer.refresh_entities();
     clients.rm_client(id);
 }
 

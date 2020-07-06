@@ -54,14 +54,16 @@ void Map::add_entity(Entity* entity, position_t position) {
 template <typename T>
 position_t Map::get_nearest_free_position(ObjectMatrix<T> object_matrix,
                                           position_t position) {
-    if (!collides(object_matrix, position)) return position;
+    if (!collides(object_matrix, position))
+        return position;
     std::queue<position_t> queue;
     std::unordered_set<position_t, PositionHasher, PositionComparator> visited;
     queue.push(position);
     while (!queue.empty()) {
         position_t p = queue.front();
         queue.pop();
-        if (visited.count(p)) continue;
+        if (visited.count(p))
+            continue;
         visited.emplace(p);
         position_t aux[4] = {
             {p.x + 1, p.y}, {p.x, p.y + 1}, {p.x - 1, p.y}, {p.x, p.y - 1}};
@@ -77,17 +79,20 @@ position_t Map::get_nearest_free_position(ObjectMatrix<T> object_matrix,
 
 template <typename T>
 bool Map::collides(ObjectMatrix<T> object_matrix, position_t position) {
-    if (collision_map.count(position) > 0) return true;
+    if (collision_map.count(position) > 0)
+        return true;
     if (position.x < 0 || position.y < 0 || position.x >= width ||
         position.y >= height) {
         return true;
     }
-    if (object_matrix.count(position)) return true;
+    if (object_matrix.count(position))
+        return true;
     return false;
 }
 
 void Map::move(EntityId entity_id, position_t steps) {
-    if (steps.x == 0 && steps.y == 0) return;
+    if (steps.x == 0 && steps.y == 0)
+        return;
     position_t new_position = position_map[entity_id];
     Entity* entity = entity_map.at(entity_id);
 
@@ -96,7 +101,8 @@ void Map::move(EntityId entity_id, position_t steps) {
 
     if (entity->get_type() == PLAYER && transitions.is_transition(new_position))
         transitions.push_change(entity->get_name(), new_position);
-    if (collides(entity_matrix, new_position)) return;
+    if (collides(entity_matrix, new_position))
+        return;
 
     // Borrado de la matriz de entidad en la vieja posicion.
     position_t old_position = position_map[entity_id];
@@ -161,13 +167,17 @@ void Map::update(uint64_t delta_t) {
     }
 }
 
-void Map::push_log(const nlohmann::json& log) { update_logs.push(log); }
+void Map::push_log(const map_log_t& log) {
+    update_logs.push(log);
+}
 
 void Map::push_action(EntityId entity_id, Action* action) {
     actions.push({entity_id, action});
 }
 
-std::queue<nlohmann::json>& Map::get_update_logs() { return update_logs; }
+std::queue<map_log_t>& Map::get_update_logs() {
+    return update_logs;
+}
 
 nlohmann::json Map::get_position_data(const PositionMap& position_map) {
     nlohmann::json positions = nlohmann::json::array();
@@ -178,9 +188,13 @@ nlohmann::json Map::get_position_data(const PositionMap& position_map) {
     return positions;
 }
 
-const PositionMap Map::get_position_map() const { return position_map; }
+const PositionMap Map::get_position_map() const {
+    return position_map;
+}
 
-bool Map::dirty_entities() const { return _dirty_entities; }
+bool Map::dirty_entities() const {
+    return _dirty_entities;
+}
 nlohmann::json Map::get_entity_data() {
     nlohmann::json entities;
     entities = nlohmann::json::array();
@@ -191,7 +205,9 @@ nlohmann::json Map::get_entity_data() {
     return entities;
 }
 
-bool Map::dirty_loot() const { return _dirty_loot; }
+bool Map::dirty_loot() const {
+    return _dirty_loot;
+}
 nlohmann::json Map::get_loot_data() {
     nlohmann::json drops;
     drops = nlohmann::json::array();
@@ -203,7 +219,9 @@ nlohmann::json Map::get_loot_data() {
     return drops;
 }
 
-nlohmann::json Map::get_map_data() { return visual_map_info; }
+nlohmann::json Map::get_map_data() {
+    return visual_map_info;
+}
 
 position_t Map::get_nearest_entity_pos(position_t entity_pos,
                                        unsigned int max_distance,
@@ -214,21 +232,24 @@ position_t Map::get_nearest_entity_pos(position_t entity_pos,
     while (!queue.empty()) {
         position_t p = queue.front();
         queue.pop();
-        if (visited.count(p)) continue;
+        if (visited.count(p))
+            continue;
         visited.emplace(p);
         position_t aux[4] = {
             {p.x + 1, p.y}, {p.x, p.y + 1}, {p.x - 1, p.y}, {p.x, p.y - 1}};
         for (position_t it : aux) {
             unsigned int distance =
                 std::abs(it.x - entity_pos.x) + std::abs(it.y - entity_pos.y);
-            if (distance > max_distance) continue;
+            if (distance > max_distance)
+                continue;
             if (!entity_matrix.count(it)) {
                 queue.push(it);
                 continue;
             }
             Entity* entity = entity_matrix.at(it);
             if (entity->get_type() == entity_type) {
-                if (entity_type == PLAYER && !(Player*)entity->is_alive()) continue; // check
+                if (entity_type == PLAYER && !(Player*)entity->is_alive())
+                    continue;  // check
                 return position_map.at(entity->get_id());
             }
         }

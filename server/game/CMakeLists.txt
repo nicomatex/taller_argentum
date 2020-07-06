@@ -17,6 +17,7 @@ add_library(game
   items/potion.cpp
   map.cpp
   map_transitions.cpp
+  map_log_factory.cpp
   movement_component.cpp
   monster.cpp
   monster_combat_component.cpp

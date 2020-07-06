@@ -51,10 +51,10 @@ void MapMonitor::push_action(ClientId client_id, Action* action) {
     map.push_action(client_map.at(client_id), action);
 }
 
-std::vector<nlohmann::json> MapMonitor::get_update_logs() {
+std::vector<map_log_t> MapMonitor::get_update_logs() {
     std::unique_lock<std::recursive_mutex> l(m);
-    std::queue<nlohmann::json>& logs_queue = map.get_update_logs();
-    std::vector<nlohmann::json> logs;
+    std::queue<map_log_t>& logs_queue = map.get_update_logs();
+    std::vector<map_log_t> logs;
     while (!logs_queue.empty()) {
         logs.push_back(logs_queue.front());
         logs_queue.pop();

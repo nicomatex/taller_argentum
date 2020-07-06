@@ -37,7 +37,7 @@ class MapMonitor {
     /* Ejecuta sobre la entidad asociada al client_id la accion. */
     void push_action(ClientId client_id, Action* action);
 
-    std::vector<nlohmann::json> get_update_logs();
+    std::vector<map_log_t> get_update_logs();
 
     bool dirty_entities() const;
     bool dirty_loot() const;

@@ -20,16 +20,15 @@ ThObserver::ThObserver(MapMonitor& map_monitor, BlockingThEventHandler& handler)
 
 void ThObserver::send_update_logs() {
     ServerManager& server_manager = ServerManager::get_instance();
-    std::vector<nlohmann::json> logs = map.get_update_logs();
-    for (auto& it : logs) {
+    std::vector<map_log_t> logs = map.get_update_logs();
+    for (auto& log : logs) {
         try {
             ClientId client_id =
-                server_manager.get_client_by_name(it["player_name"]);
-            int log_type = it["log_type"];
-            switch (log_type) {
-                case 1: {
-                    int dmg = it["damage"];
-                    const std::string& to = it["to"];
+                server_manager.get_client_by_name(log.info["player_name"]);
+            switch (log.type) {
+                case LOG_DEAL_DAMAGE: {
+                    int dmg = log.info["damage"];
+                    const std::string& to = log.info["to"];
                     // server_manager.send_to(
                     //     client_id,
                     //     EventFactory::dealt_damage(dmg, it["to_id"]));
@@ -38,9 +37,9 @@ void ThObserver::send_update_logs() {
                     server_manager.send_to(client_id,
                                            EventFactory::chat_message(msg));
                 } break;
-                case 2: {
-                    int dmg = it["damage"];
-                    const std::string& from = it["from"];
+                case LOG_RECV_DAMAGE: {
+                    int dmg = log.info["damage"];
+                    const std::string& from = log.info["from"];
                     // server_manager.send_to(client_id,
                     //                        EventFactory::received_damage(dmg));
                     std::string msg = "Recibido " + std::to_string(dmg) +
@@ -48,16 +47,17 @@ void ThObserver::send_update_logs() {
                     server_manager.send_to(client_id,
                                            EventFactory::chat_message(msg));
                 } break;
-                case 3: {
+                case LOG_INVENTORY: {
                     server_manager.send_to(
                         client_id,
-                        EventFactory::inventory_update(it["inventory"]));
+                        EventFactory::inventory_update(log.info["inventory"]));
                 } break;
                 default:
                     break;
             }
         } catch (const std::exception& e) {
-            std::cerr << "Observer: update_logs: " << it << std::endl;
+            std::cerr << "Observer: update_logs error: type " << log.type
+                      << " info: " << log.info << std::endl;
         }
     }
 }

@@ -26,6 +26,18 @@ typedef struct entity_action {
     Action* action;
 } entity_action_t;
 
+typedef enum log_type {
+    LOG_INVENTORY,
+    LOG_DEAL_DAMAGE,
+    LOG_RECV_DAMAGE
+} log_type_t;
+
+typedef struct map_log {
+    log_type_t type;
+    std::string player_name;
+    nlohmann::json info;
+} map_log_t;
+
 template <typename T>
 using ObjectMatrix =
     std::unordered_map<position_t, T, PositionHasher, PositionComparator>;
@@ -67,7 +79,7 @@ class Map {
     EntityFactory entity_factory;
 
     std::queue<entity_action_t> actions;
-    std::queue<nlohmann::json> update_logs;
+    std::queue<map_log_t> update_logs;
 
     // Para mandarsela a los clientes.
     nlohmann::json visual_map_info;
@@ -115,7 +127,7 @@ class Map {
     void update(uint64_t delta_t);
 
     /* Agrega un log de accion al mapa */
-    void push_log(const nlohmann::json& log);
+    void push_log(const map_log_t& log);
 
     /* Ejecuta sobre la entidad asociada al id la accion. */
     void push_action(EntityId entity_id, Action* action);
@@ -131,7 +143,7 @@ class Map {
     bool dirty_loot() const;
     nlohmann::json get_loot_data();
 
-    std::queue<nlohmann::json>& get_update_logs();
+    std::queue<map_log_t>& get_update_logs();
     nlohmann::json get_map_data();
 };
 
