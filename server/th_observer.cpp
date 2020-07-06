@@ -84,8 +84,6 @@ void ThObserver::run() {
             }
             if (map_data.contains("items") && !map_data["items"].empty()) {
                 forced_update = false;
-                std::cout << "Sending loot data" << std::endl;
-                std::cout << map_data["items"] << std::endl;
                 handler.push_event(
                     EventFactory::update_items(map_data["items"]));
             }

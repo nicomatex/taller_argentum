@@ -1,8 +1,9 @@
 #include "map.h"
 
 #include <fstream>
-#include <iostream>
 #include <iomanip>
+#include <iostream>
+
 #include "../../include/nlohmann/json.hpp"
 #include "../../include/types.h"
 #include "decoration.h"
@@ -68,11 +69,17 @@ void Map::generate(json map_description) {
 
 Map::Map() : is_valid(false) {}
 
-Map::Map(json map_description) { generate(map_description); }
+Map::Map(json map_description) {
+    generate(map_description);
+}
 
-int Map::get_width() { return width; }
+int Map::get_width() {
+    return width;
+}
 
-int Map::get_height() { return height; }
+int Map::get_height() {
+    return height;
+}
 
 std::vector<std::vector<Decoration>>& Map::get_background_layers() {
     if (!is_valid) {
@@ -92,8 +99,6 @@ Map::~Map() {}
 
 void Map::update_loot_layer(nlohmann::json loot_info) {
     background_layers[loot_layer_index].clear();
-    std::cout << "updating loot layer with info" << std::endl;
-    std::cout << std::setw(4) << loot_info << std::endl;
     for (auto& item : loot_info["items"].items()) {
         nlohmann::json item_info = item.value();
         SDLTexture* texture = NULL;
@@ -105,7 +110,8 @@ void Map::update_loot_layer(nlohmann::json loot_info) {
                     "weapon_icons", item_info["item_info"]["item_id"]);
                 break;
             case TYPE_ARMOR:
-                switch (int(item_info["item_info"]["armor_info"]["slot_info"])) {
+                switch (
+                    int(item_info["item_info"]["armor_info"]["slot_info"])) {
                     case 0:
                         texture = &ResourceManager::get_instance().get_texture(
                             "helmet_icons", item_info["item_info"]["item_id"]);
