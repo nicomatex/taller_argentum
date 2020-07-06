@@ -63,11 +63,23 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Métodos públicos</a> &#124;
+<a href="#pro-attribs">Atributos protegidos</a> &#124;
 <a href="classEntity-members.html">Lista de todos los miembros</a>  </div>
   <div class="headertitle">
-<div class="title">Referencia de la Clase Entity</div>  </div>
+<div class="title">Referencia de la Clase Entity<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="dynheader">
+Diagrama de herencias de Entity</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classEntity.png" usemap="#Entity_map" alt=""/>
+  <map id="Entity_map" name="Entity_map">
+<area href="classMonster.html" alt="Monster" shape="rect" coords="0,56,58,80"/>
+<area href="classNpc.html" alt="Npc" shape="rect" coords="68,56,126,80"/>
+<area href="classPlayer.html" alt="Player" shape="rect" coords="136,56,194,80"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
@@ -99,6 +111,63 @@ template&lt;class T &gt; </td></tr>
 <tr class="memitem:aaa0e2ad1e0472efbe352dfe6357179b6"><td class="memTemplItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classEntity.html#aaa0e2ad1e0472efbe352dfe6357179b6">get_component</a> () const</td></tr>
 <tr class="memdesc:aaa0e2ad1e0472efbe352dfe6357179b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve una componente.  <a href="classEntity.html#aaa0e2ad1e0472efbe352dfe6357179b6">Más...</a><br /></td></tr>
 <tr class="separator:aaa0e2ad1e0472efbe352dfe6357179b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affb5580e3b255c4195ac0b281a2e5c85"><td class="memItemLeft" align="right" valign="top"><a id="affb5580e3b255c4195ac0b281a2e5c85"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (EntityId id, const std::string &amp;name, <a class="el" href="classMovementComponent.html">MovementComponent</a> *movement_component, <a class="el" href="classCombatComponent.html">CombatComponent</a> *combat_component, unsigned int current_level, unsigned int current_exp)</td></tr>
+<tr class="separator:affb5580e3b255c4195ac0b281a2e5c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53e4bc69804b88dfc98840455ac69730"><td class="memItemLeft" align="right" valign="top"><a id="a53e4bc69804b88dfc98840455ac69730"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (EntityId id, const std::string &amp;name, unsigned int current_level, unsigned int current_exp)</td></tr>
+<tr class="separator:a53e4bc69804b88dfc98840455ac69730"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a3cf13d22d4f8a6ac5b6ffaff41205e"><td class="memItemLeft" align="right" valign="top"><a id="a2a3cf13d22d4f8a6ac5b6ffaff41205e"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>die</b> ()=0</td></tr>
+<tr class="separator:a2a3cf13d22d4f8a6ac5b6ffaff41205e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab952b9ac298af820e2e48dc797a73a79"><td class="memItemLeft" align="right" valign="top"><a id="ab952b9ac298af820e2e48dc797a73a79"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_alive</b> () const =0</td></tr>
+<tr class="separator:ab952b9ac298af820e2e48dc797a73a79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a692b4047a0d7092b2af3772928c27193"><td class="memItemLeft" align="right" valign="top"><a id="a692b4047a0d7092b2af3772928c27193"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_name</b> () const</td></tr>
+<tr class="separator:a692b4047a0d7092b2af3772928c27193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ce8fdf13580b69b844e007c55ece004"><td class="memItemLeft" align="right" valign="top"><a id="a8ce8fdf13580b69b844e007c55ece004"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>get_level</b> () const</td></tr>
+<tr class="separator:a8ce8fdf13580b69b844e007c55ece004"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1677440a8239dd8b867fa7be7bc838e5"><td class="memItemLeft" align="right" valign="top"><a id="a1677440a8239dd8b867fa7be7bc838e5"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>get_max_hp</b> () const</td></tr>
+<tr class="separator:a1677440a8239dd8b867fa7be7bc838e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18fc666856ebe2913b7c8c7247cd7b0b"><td class="memItemLeft" align="right" valign="top"><a id="a18fc666856ebe2913b7c8c7247cd7b0b"></a>
+virtual entity_type_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_type</b> () const =0</td></tr>
+<tr class="separator:a18fc666856ebe2913b7c8c7247cd7b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98c48903baf0ec4cddb64b8feb02488c"><td class="memItemLeft" align="right" valign="top"><a id="a98c48903baf0ec4cddb64b8feb02488c"></a>
+virtual nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_data</b> () const =0</td></tr>
+<tr class="separator:a98c48903baf0ec4cddb64b8feb02488c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8393a39a1df66d1280955e4ee53177b"><td class="memItemLeft" align="right" valign="top"><a id="ac8393a39a1df66d1280955e4ee53177b"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (uint64_t delta_t)=0</td></tr>
+<tr class="separator:ac8393a39a1df66d1280955e4ee53177b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a810425d3c0a917cffc9f0f950695a9e5"><td class="memItemLeft" align="right" valign="top"><a id="a810425d3c0a917cffc9f0f950695a9e5"></a>
+virtual <a class="el" href="structposition.html">position_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_facing_position</b> (<a class="el" href="structposition.html">position_t</a> <a class="el" href="structposition.html">position</a>)</td></tr>
+<tr class="separator:a810425d3c0a917cffc9f0f950695a9e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a86fb1dc1cf3fab4f5b744e156f1304"><td class="memItemLeft" align="right" valign="top"><a id="a4a86fb1dc1cf3fab4f5b744e156f1304"></a>
+<a class="el" href="structattack__result.html">attack_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>attack</b> (<a class="el" href="classEntity.html">Entity</a> *attacked)</td></tr>
+<tr class="separator:a4a86fb1dc1cf3fab4f5b744e156f1304"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a264bc5680fecd00ad6377c389b0caf24"><td class="memItemLeft" align="right" valign="top"><a id="a264bc5680fecd00ad6377c389b0caf24"></a>
+EntityId&#160;</td><td class="memItemRight" valign="bottom"><b>get_id</b> () const</td></tr>
+<tr class="separator:a264bc5680fecd00ad6377c389b0caf24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Atributos protegidos</h2></td></tr>
+<tr class="memitem:a06d5b271091635ff8f53007061abb417"><td class="memItemLeft" align="right" valign="top"><a id="a06d5b271091635ff8f53007061abb417"></a>
+EntityId&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
+<tr class="separator:a06d5b271091635ff8f53007061abb417"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a7d9df9b47e597a6abd76235e0b726c"><td class="memItemLeft" align="right" valign="top"><a id="a9a7d9df9b47e597a6abd76235e0b726c"></a>
+const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+<tr class="separator:a9a7d9df9b47e597a6abd76235e0b726c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64b02aea30fa8cf3dfadce25ae5db5ff"><td class="memItemLeft" align="right" valign="top"><a id="a64b02aea30fa8cf3dfadce25ae5db5ff"></a>
+<a class="el" href="classMovementComponent.html">MovementComponent</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>movement_component</b></td></tr>
+<tr class="separator:a64b02aea30fa8cf3dfadce25ae5db5ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f6e5d2acdd957fb94b8f87e3dd88324"><td class="memItemLeft" align="right" valign="top"><a id="a2f6e5d2acdd957fb94b8f87e3dd88324"></a>
+<a class="el" href="classCombatComponent.html">CombatComponent</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>combat_component</b></td></tr>
+<tr class="separator:a2f6e5d2acdd957fb94b8f87e3dd88324"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39a94207146592dcafa6e199f3288c69"><td class="memItemLeft" align="right" valign="top"><a id="a39a94207146592dcafa6e199f3288c69"></a>
+<a class="el" href="classExperienceComponent.html">ExperienceComponent</a>&#160;</td><td class="memItemRight" valign="bottom"><b>experience_component</b></td></tr>
+<tr class="separator:a39a94207146592dcafa6e199f3288c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentación de las funciones miembro</h2>
 <a id="a42839e8a677669a37b25e1d19d84952a"></a>
@@ -277,8 +346,8 @@ false si no continuara activa. </dd></dl>
 </div>
 </div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
-<li>repo/client/engine/ECS/<a class="el" href="entity_8h_source.html">entity.h</a></li>
-<li>repo/client/engine/ECS/entity.cpp</li>
+<li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/engine/ECS/<a class="el" href="client_2engine_2ECS_2entity_8h_source.html">entity.h</a></li>
+<li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/engine/ECS/entity.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

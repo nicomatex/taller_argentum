@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.19"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Argentum Online: Fichero Fuente repo/server/server_manager.h</title>
+<title>Argentum Online: Fichero Fuente /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/server/server_manager.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_752f9258976072ab3e06b31dacb87d2d.html">repo</a></li><li class="navelem"><a class="el" href="dir_5e300388746d29b53ced338b46d48b99.html">server</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -83,7 +83,7 @@ $(function() {
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;character_manager.h&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;game/game_loop.h&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;game/items/item_factory.h&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;game/monster_factory.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;game/mob_factory.h&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;game/player.h&quot;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;map_manager.h&quot;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;map_monitor.h&quot;</span></div>
@@ -144,7 +144,7 @@ $(function() {
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="classThClientAccepter.html">ThClientAccepter</a> accepter;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="classItemFactory.html">ItemFactory</a> item_factory;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="classMonsterFactory.html">MonsterFactory</a> monster_factory;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="classMobFactory.html">MobFactory</a> mob_factory;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::recursive_mutex m;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
@@ -156,7 +156,7 @@ $(function() {
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="classThDispatcher.html">ThDispatcher</a>&amp; get_dispatcher();</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="classItemFactory.html">ItemFactory</a>&amp; get_item_factory();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="classMonsterFactory.html">MonsterFactory</a>&amp; get_monster_factory();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="classMobFactory.html">MobFactory</a>&amp; get_mob_factory();</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> add_client(ClientId client_id, SocketManager* new_client);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> rm_client(ClientId client_id);</div>
@@ -193,15 +193,15 @@ $(function() {
 <div class="ttc" id="aclassMapManager_html"><div class="ttname"><a href="classMapManager.html">MapManager</a></div><div class="ttdef"><b>Definition:</b> map_manager.h:11</div></div>
 <div class="ttc" id="aclassDuplicatedPlayerException_html"><div class="ttname"><a href="classDuplicatedPlayerException.html">DuplicatedPlayerException</a></div><div class="ttdef"><b>Definition:</b> server_manager.h:46</div></div>
 <div class="ttc" id="aclassSession_html"><div class="ttname"><a href="classSession.html">Session</a></div><div class="ttdef"><b>Definition:</b> session.h:13</div></div>
-<div class="ttc" id="aclassCharacterManager_html"><div class="ttname"><a href="classCharacterManager.html">CharacterManager</a></div><div class="ttdef"><b>Definition:</b> character_manager.h:47</div></div>
+<div class="ttc" id="aclassCharacterManager_html"><div class="ttname"><a href="classCharacterManager.html">CharacterManager</a></div><div class="ttdef"><b>Definition:</b> character_manager.h:48</div></div>
 <div class="ttc" id="aclassClientDisconnectedException_html"><div class="ttname"><a href="classClientDisconnectedException.html">ClientDisconnectedException</a></div><div class="ttdef"><b>Definition:</b> server_manager.h:23</div></div>
 <div class="ttc" id="aclassServerManager_html"><div class="ttname"><a href="classServerManager.html">ServerManager</a></div><div class="ttdef"><b>Definition:</b> server_manager.h:63</div></div>
 <div class="ttc" id="aclassMapMonitor_html"><div class="ttname"><a href="classMapMonitor.html">MapMonitor</a></div><div class="ttdef"><b>Definition:</b> map_monitor.h:16</div></div>
 <div class="ttc" id="aclassGameLoop_html"><div class="ttname"><a href="classGameLoop.html">GameLoop</a></div><div class="ttdef"><b>Definition:</b> game_loop.h:9</div></div>
 <div class="ttc" id="aclassThDispatcher_html"><div class="ttname"><a href="classThDispatcher.html">ThDispatcher</a></div><div class="ttdef"><b>Definition:</b> th_dispatcher.h:11</div></div>
+<div class="ttc" id="aclassMobFactory_html"><div class="ttname"><a href="classMobFactory.html">MobFactory</a></div><div class="ttdef"><b>Definition:</b> mob_factory.h:10</div></div>
 <div class="ttc" id="aclassThClientAccepter_html"><div class="ttname"><a href="classThClientAccepter.html">ThClientAccepter</a></div><div class="ttdef"><b>Definition:</b> th_client_accepter.h:8</div></div>
 <div class="ttc" id="aclassItemFactory_html"><div class="ttname"><a href="classItemFactory.html">ItemFactory</a></div><div class="ttdef"><b>Definition:</b> item_factory.h:17</div></div>
-<div class="ttc" id="aclassMonsterFactory_html"><div class="ttname"><a href="classMonsterFactory.html">MonsterFactory</a></div><div class="ttdef"><b>Definition:</b> monster_factory.h:9</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generado por &#160;<a href="http://www.doxygen.org/index.html">

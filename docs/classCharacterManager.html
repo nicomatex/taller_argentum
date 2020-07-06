@@ -74,31 +74,235 @@ Métodos públicos</h2></td></tr>
 <tr class="memitem:a920ae45591a4c1a74c2eff72a84ce866"><td class="memItemLeft" align="right" valign="top"><a id="a920ae45591a4c1a74c2eff72a84ce866"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>CharacterManager</b> (const char *f_char, const char *f_map)</td></tr>
 <tr class="separator:a920ae45591a4c1a74c2eff72a84ce866"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b4ac8c88e00cdca8be32689039716c1"><td class="memItemLeft" align="right" valign="top"><a id="a5b4ac8c88e00cdca8be32689039716c1"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>character_exists</b> (std::string name)</td></tr>
+<tr class="memitem:a5b4ac8c88e00cdca8be32689039716c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterManager.html#a5b4ac8c88e00cdca8be32689039716c1">character_exists</a> (std::string name)</td></tr>
+<tr class="memdesc:a5b4ac8c88e00cdca8be32689039716c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve true si existe el character, false si no.  <a href="classCharacterManager.html#a5b4ac8c88e00cdca8be32689039716c1">Más...</a><br /></td></tr>
 <tr class="separator:a5b4ac8c88e00cdca8be32689039716c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac279671cf6101000fc771a937849aa1a"><td class="memItemLeft" align="right" valign="top"><a id="ac279671cf6101000fc771a937849aa1a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add_character</b> (const nlohmann::json &amp;character_info)</td></tr>
+<tr class="memitem:ac279671cf6101000fc771a937849aa1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterManager.html#ac279671cf6101000fc771a937849aa1a">add_character</a> (const nlohmann::json &amp;character_info)</td></tr>
+<tr class="memdesc:ac279671cf6101000fc771a937849aa1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega un personaje al archivo de structs y al diccionario, si ya existe, lanza <a class="el" href="classCharacterAlreadyExistsException.html">CharacterAlreadyExistsException()</a>  <a href="classCharacterManager.html#ac279671cf6101000fc771a937849aa1a">Más...</a><br /></td></tr>
 <tr class="separator:ac279671cf6101000fc771a937849aa1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7bc2d09b52a2a5a62b5ac7dbc07d2c5"><td class="memItemLeft" align="right" valign="top"><a id="ae7bc2d09b52a2a5a62b5ac7dbc07d2c5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_character</b> (const nlohmann::json &amp;character_info)</td></tr>
+<tr class="memitem:ae7bc2d09b52a2a5a62b5ac7dbc07d2c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterManager.html#ae7bc2d09b52a2a5a62b5ac7dbc07d2c5">set_character</a> (const nlohmann::json &amp;character_info)</td></tr>
+<tr class="memdesc:ae7bc2d09b52a2a5a62b5ac7dbc07d2c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Se utiliza para persistir el estado actual de la entidad character, al archivo de structs. Si no existe el character, lanza excepcion.  <a href="classCharacterManager.html#ae7bc2d09b52a2a5a62b5ac7dbc07d2c5">Más...</a><br /></td></tr>
 <tr class="separator:ae7bc2d09b52a2a5a62b5ac7dbc07d2c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5c9aa4fe7c9aa26da0d423d75968d0b"><td class="memItemLeft" align="right" valign="top"><a id="ad5c9aa4fe7c9aa26da0d423d75968d0b"></a>
-CharId&#160;</td><td class="memItemRight" valign="bottom"><b>get_char_id</b> (std::string name)</td></tr>
+<tr class="memitem:ad5c9aa4fe7c9aa26da0d423d75968d0b"><td class="memItemLeft" align="right" valign="top">CharId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterManager.html#ad5c9aa4fe7c9aa26da0d423d75968d0b">get_char_id</a> (std::string name)</td></tr>
+<tr class="memdesc:ad5c9aa4fe7c9aa26da0d423d75968d0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el CharId asociado al player_name. Si no existe, lanza <a class="el" href="classCharacterNotFoundException.html">CharacterNotFoundException</a>.  <a href="classCharacterManager.html#ad5c9aa4fe7c9aa26da0d423d75968d0b">Más...</a><br /></td></tr>
 <tr class="separator:ad5c9aa4fe7c9aa26da0d423d75968d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05d300b5c096a69761989020b91961ad"><td class="memItemLeft" align="right" valign="top"><a id="a05d300b5c096a69761989020b91961ad"></a>
-nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_character</b> (std::string name)</td></tr>
+<tr class="memitem:a05d300b5c096a69761989020b91961ad"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterManager.html#a05d300b5c096a69761989020b91961ad">get_character</a> (std::string name)</td></tr>
+<tr class="memdesc:a05d300b5c096a69761989020b91961ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el character asociado al name por movimiento. Si no existe, lanza <a class="el" href="classCharacterNotFoundException.html">CharacterNotFoundException</a>.  <a href="classCharacterManager.html#a05d300b5c096a69761989020b91961ad">Más...</a><br /></td></tr>
 <tr class="separator:a05d300b5c096a69761989020b91961ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2fccf76c8a3d1eaa426331cf3be5877"><td class="memItemLeft" align="right" valign="top"><a id="ac2fccf76c8a3d1eaa426331cf3be5877"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>save</b> ()</td></tr>
+<tr class="memitem:ac2fccf76c8a3d1eaa426331cf3be5877"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterManager.html#ac2fccf76c8a3d1eaa426331cf3be5877">save</a> ()</td></tr>
+<tr class="memdesc:ac2fccf76c8a3d1eaa426331cf3be5877"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hace el dump del diccionario actual al archivo de diccionarios, junto con el char_count.  <a href="classCharacterManager.html#ac2fccf76c8a3d1eaa426331cf3be5877">Más...</a><br /></td></tr>
 <tr class="separator:ac2fccf76c8a3d1eaa426331cf3be5877"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af73cb2ac45ff28d8deefb99e3b0185ca"><td class="memItemLeft" align="right" valign="top"><a id="af73cb2ac45ff28d8deefb99e3b0185ca"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>print_character</b> (std::string name)</td></tr>
+<tr class="memitem:af73cb2ac45ff28d8deefb99e3b0185ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterManager.html#af73cb2ac45ff28d8deefb99e3b0185ca">print_character</a> (std::string name)</td></tr>
+<tr class="memdesc:af73cb2ac45ff28d8deefb99e3b0185ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imprime la informacion de un personaje. Si no existe, lanza <a class="el" href="classCharacterNotFoundException.html">CharacterNotFoundException</a>.  <a href="classCharacterManager.html#af73cb2ac45ff28d8deefb99e3b0185ca">Más...</a><br /></td></tr>
 <tr class="separator:af73cb2ac45ff28d8deefb99e3b0185ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f47c4d30d5d863f09e6665927f158a0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterManager.html#a0f47c4d30d5d863f09e6665927f158a0">~CharacterManager</a> ()</td></tr>
+<tr class="memdesc:a0f47c4d30d5d863f09e6665927f158a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Debe realizarse un save.  <a href="classCharacterManager.html#a0f47c4d30d5d863f09e6665927f158a0">Más...</a><br /></td></tr>
+<tr class="separator:a0f47c4d30d5d863f09e6665927f158a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Documentación del constructor y destructor</h2>
+<a id="a0f47c4d30d5d863f09e6665927f158a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f47c4d30d5d863f09e6665927f158a0">&#9670;&nbsp;</a></span>~CharacterManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CharacterManager::~CharacterManager </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Debe realizarse un save. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="ac279671cf6101000fc771a937849aa1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac279671cf6101000fc771a937849aa1a">&#9670;&nbsp;</a></span>add_character()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterManager::add_character </td>
+          <td>(</td>
+          <td class="paramtype">const nlohmann::json &amp;&#160;</td>
+          <td class="paramname"><em>character_info</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega un personaje al archivo de structs y al diccionario, si ya existe, lanza <a class="el" href="classCharacterAlreadyExistsException.html">CharacterAlreadyExistsException()</a> </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">character_info</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5b4ac8c88e00cdca8be32689039716c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b4ac8c88e00cdca8be32689039716c1">&#9670;&nbsp;</a></span>character_exists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CharacterManager::character_exists </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve true si existe el character, false si no. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true </dd>
+<dd>
+false </dd></dl>
+
+</div>
+</div>
+<a id="ad5c9aa4fe7c9aa26da0d423d75968d0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5c9aa4fe7c9aa26da0d423d75968d0b">&#9670;&nbsp;</a></span>get_char_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CharId CharacterManager::get_char_id </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve el CharId asociado al player_name. Si no existe, lanza <a class="el" href="classCharacterNotFoundException.html">CharacterNotFoundException</a>. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>CharId </dd></dl>
+
+</div>
+</div>
+<a id="a05d300b5c096a69761989020b91961ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05d300b5c096a69761989020b91961ad">&#9670;&nbsp;</a></span>get_character()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">nlohmann::json CharacterManager::get_character </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve el character asociado al name por movimiento. Si no existe, lanza <a class="el" href="classCharacterNotFoundException.html">CharacterNotFoundException</a>. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>nlohmann::json </dd></dl>
+
+</div>
+</div>
+<a id="af73cb2ac45ff28d8deefb99e3b0185ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af73cb2ac45ff28d8deefb99e3b0185ca">&#9670;&nbsp;</a></span>print_character()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterManager::print_character </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Imprime la informacion de un personaje. Si no existe, lanza <a class="el" href="classCharacterNotFoundException.html">CharacterNotFoundException</a>. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac2fccf76c8a3d1eaa426331cf3be5877"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2fccf76c8a3d1eaa426331cf3be5877">&#9670;&nbsp;</a></span>save()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterManager::save </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Hace el dump del diccionario actual al archivo de diccionarios, junto con el char_count. </p>
+
+</div>
+</div>
+<a id="ae7bc2d09b52a2a5a62b5ac7dbc07d2c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7bc2d09b52a2a5a62b5ac7dbc07d2c5">&#9670;&nbsp;</a></span>set_character()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterManager::set_character </td>
+          <td>(</td>
+          <td class="paramtype">const nlohmann::json &amp;&#160;</td>
+          <td class="paramname"><em>character_info</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Se utiliza para persistir el estado actual de la entidad character, al archivo de structs. Si no existe el character, lanza excepcion. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">character_info</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
-<li>repo/server/<a class="el" href="character__manager_8h_source.html">character_manager.h</a></li>
-<li>repo/server/character_manager.cpp</li>
+<li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/server/<a class="el" href="character__manager_8h_source.html">character_manager.h</a></li>
+<li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/server/character_manager.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

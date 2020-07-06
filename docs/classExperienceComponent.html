@@ -74,14 +74,14 @@ Métodos públicos</h2></td></tr>
 <tr class="memitem:a09072be2da9eaa01a388ab05e0d793b9"><td class="memItemLeft" align="right" valign="top"><a id="a09072be2da9eaa01a388ab05e0d793b9"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ExperienceComponent</b> (unsigned int level=1, unsigned int exp=0)</td></tr>
 <tr class="separator:a09072be2da9eaa01a388ab05e0d793b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa37e4f758d742fe2a37cfc947b0d32ef"><td class="memItemLeft" align="right" valign="top"><a id="aa37e4f758d742fe2a37cfc947b0d32ef"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add_exp</b> (int exp)</td></tr>
+<tr class="memitem:aa37e4f758d742fe2a37cfc947b0d32ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExperienceComponent.html#aa37e4f758d742fe2a37cfc947b0d32ef">add_exp</a> (int exp)</td></tr>
+<tr class="memdesc:aa37e4f758d742fe2a37cfc947b0d32ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega "exp" a la experencia actual, actualizando los niveles.  <a href="classExperienceComponent.html#aa37e4f758d742fe2a37cfc947b0d32ef">Más...</a><br /></td></tr>
 <tr class="separator:aa37e4f758d742fe2a37cfc947b0d32ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73adcf8df8faa089c5a2cae761326f84"><td class="memItemLeft" align="right" valign="top"><a id="a73adcf8df8faa089c5a2cae761326f84"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>reduce</b> ()</td></tr>
+<tr class="memitem:a73adcf8df8faa089c5a2cae761326f84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExperienceComponent.html#a73adcf8df8faa089c5a2cae761326f84">reduce</a> ()</td></tr>
+<tr class="memdesc:a73adcf8df8faa089c5a2cae761326f84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reduce la experiencia actual en un X% sobre la diferencia entre la experiencia base del nivel actual, y la experiencia actual (se puede obtener la experiencia base pidiendo el limite del nivel anterior) En ningun momento puede bajar de nivel el personaje.  <a href="classExperienceComponent.html#a73adcf8df8faa089c5a2cae761326f84">Más...</a><br /></td></tr>
 <tr class="separator:a73adcf8df8faa089c5a2cae761326f84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04a9270824db5ec68bc5f90605d3febf"><td class="memItemLeft" align="right" valign="top"><a id="a04a9270824db5ec68bc5f90605d3febf"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>get_xp_limit_level</b> (unsigned int level) const</td></tr>
+<tr class="memitem:a04a9270824db5ec68bc5f90605d3febf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExperienceComponent.html#a04a9270824db5ec68bc5f90605d3febf">get_xp_limit_level</a> (unsigned int level) const</td></tr>
+<tr class="memdesc:a04a9270824db5ec68bc5f90605d3febf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el limite de experiencia asociado al nivel (se entiende por limite de experiencia, a aquel valor para el cual se produce un aumento de nivel al igualarlo/superarlo)  <a href="classExperienceComponent.html#a04a9270824db5ec68bc5f90605d3febf">Más...</a><br /></td></tr>
 <tr class="separator:a04a9270824db5ec68bc5f90605d3febf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a744ff5eaa4c6c46ea86ddd6dc6d774e7"><td class="memItemLeft" align="right" valign="top"><a id="a744ff5eaa4c6c46ea86ddd6dc6d774e7"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>get_level</b> () const</td></tr>
@@ -96,9 +96,82 @@ nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_data</b
 nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_persist_data</b> () const</td></tr>
 <tr class="separator:a57fa093efd72f77a0364c32894b411e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="aa37e4f758d742fe2a37cfc947b0d32ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa37e4f758d742fe2a37cfc947b0d32ef">&#9670;&nbsp;</a></span>add_exp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ExperienceComponent::add_exp </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>exp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega "exp" a la experencia actual, actualizando los niveles. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">exp</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a04a9270824db5ec68bc5f90605d3febf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04a9270824db5ec68bc5f90605d3febf">&#9670;&nbsp;</a></span>get_xp_limit_level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ExperienceComponent::get_xp_limit_level </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>level</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve el limite de experiencia asociado al nivel (se entiende por limite de experiencia, a aquel valor para el cual se produce un aumento de nivel al igualarlo/superarlo) </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="a73adcf8df8faa089c5a2cae761326f84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73adcf8df8faa089c5a2cae761326f84">&#9670;&nbsp;</a></span>reduce()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ExperienceComponent::reduce </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reduce la experiencia actual en un X% sobre la diferencia entre la experiencia base del nivel actual, y la experiencia actual (se puede obtener la experiencia base pidiendo el limite del nivel anterior) En ningun momento puede bajar de nivel el personaje. </p>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
-<li>repo/server/game/<a class="el" href="experience__component_8h_source.html">experience_component.h</a></li>
-<li>repo/server/game/experience_component.cpp</li>
+<li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/server/game/<a class="el" href="experience__component_8h_source.html">experience_component.h</a></li>
+<li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/server/game/experience_component.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
