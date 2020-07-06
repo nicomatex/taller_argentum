@@ -17,7 +17,7 @@ RandomEventGenerator::RandomEventGenerator(const char* random_events_file)
                           random_events_file);
     nlohmann::json json_random;
     random_istream >> json_random;
-    std::cout << json_random << std::endl;
+    std::cout << "RandomEventGenerator: " << json_random << std::endl;
     std::array<float, N_DROP_TYPES> prob_events{
         json_random["random_events"]["nothing_prob"],
         json_random["random_events"]["gold_prob"],
@@ -88,5 +88,3 @@ unsigned int RandomEventGenerator::rand_idx_in_vec(unsigned int vec_size) {
     std::uniform_int_distribution<int> uid(0, vec_size - 1);
     return uid(gen);
 }
-
-

@@ -13,7 +13,6 @@ class CreationHandler : public BlockingThEventHandler {
 
    public:
     CreationHandler();
-    ~CreationHandler();
 };
 
 #endif  // CREATION_HANDLER_H

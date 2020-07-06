@@ -256,6 +256,7 @@ position_t Map::get_nearest_entity_pos(position_t entity_pos,
 }
 
 void Map::drop_loot(EntityId entity_id, Item* item) {
+    _dirty_loot = true;
     position_t entity_pos = position_map.at(entity_id);
     position_t item_pos = get_nearest_free_position(loot_matrix, entity_pos);
     loot_matrix.emplace(item_pos, item);
@@ -263,4 +264,14 @@ void Map::drop_loot(EntityId entity_id, Item* item) {
 
 void Map::drop_loot(EntityId entity_id, const std::vector<Item*>& drops) {
     for (auto it : drops) drop_loot(entity_id, it);
+}
+
+Item* Map::pickup_loot(EntityId entity_id) {
+    position_t position = position_map.at(entity_id);
+    if (!loot_matrix.count(position))
+        return nullptr;
+    _dirty_loot = true;
+    Item* item = loot_matrix.at(position);
+    loot_matrix.erase(position);
+    return item;
 }

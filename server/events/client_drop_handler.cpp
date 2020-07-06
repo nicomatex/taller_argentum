@@ -24,5 +24,3 @@ void ClientDropHandler::handle(Event& event) {
 ClientDropHandler::ClientDropHandler() : BlockingThEventHandler() {
     std::cerr << "ClientDropHandler: starting.." << std::endl;
 }
-
-ClientDropHandler::~ClientDropHandler() {}

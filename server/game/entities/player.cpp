@@ -81,7 +81,6 @@ nlohmann::json Player::get_inventory_data() const {
 }
 
 void Player::use(SlotId slot) {
-    std::cout << inventory.get_data() << std::endl;
     Item* item;
     try {
         item = inventory.remove(slot, 1);
@@ -110,6 +109,12 @@ void Player::use(SlotId slot) {
         (static_cast<Potion*>(item))->use(*static_cast<PlayerCombatComponent*>(combat_component));
         delete item;
     }
+}
+
+void Player::add_item(Item* item) {
+    if (!item)
+        return;
+    inventory.add(item);
 }
 
 nlohmann::json Player::get_persist_data() const {

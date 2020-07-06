@@ -11,6 +11,7 @@
 #include "../engine/components/visual_character_component.h"
 #include "../engine/components/visual_npc_component.h"
 #include "../engine/entity_factory.h"
+#include "../engine/sound_system.h"
 
 using json = nlohmann::json;
 
@@ -59,6 +60,12 @@ void ClientReceiveHandler::handle(Event &ev) {
             break;
         case EV_ID_UPDATE_LOOT:
             handle_loot_update(ev);
+            break;
+        case EV_ID_RECEIVED_DAMAGE:
+            handle_incoming_damage(ev);
+            break;
+        case EV_ID_DEALT_DAMAGE:
+            handle_outcoming_damage(ev);
             break;
     };
 }
@@ -153,4 +160,12 @@ void ClientReceiveHandler::handle_inventory_update(Event &ev) {
 
 void ClientReceiveHandler::handle_loot_update(Event &ev) {
     loot_buffer.load_buffer(ev.get_json());
+}
+
+void ClientReceiveHandler::handle_incoming_damage(Event &ev) {
+    SoundSystem::get_instance().play_game_sfx(5);
+}
+
+void ClientReceiveHandler::handle_outcoming_damage(Event &ev) {
+    SoundSystem::get_instance().play_game_sfx(4);
 }

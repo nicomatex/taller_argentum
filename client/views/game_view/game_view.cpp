@@ -7,6 +7,7 @@
 #include "../../engine/entity_factory.h"
 #include "../../engine/resource_manager.h"
 #include "../responsive_scaler.h"
+#include "../../engine/sound_system.h"
 
 GameView::GameView(ResponsiveScaler &scaler, int follow_entity_id,
                    SocketManager &socket_manager, SDLWindow &window,
@@ -36,7 +37,7 @@ GameView::~GameView() {}
 
 void GameView::run() {
     SDL_Rect main_render_viewport = scaler.scale(VIEWPORT_MAIN_RENDER);
-    ResourceManager::get_instance().get_music(2).play();
+    SoundSystem::get_instance().play_music(2);
     game_state_monitor.set_game_state(RUNNING);
     while (game_state_monitor.get_game_state() == RUNNING) {
         window.fill(0, 0, 0, 255);

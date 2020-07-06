@@ -6,7 +6,6 @@
 class ActionAttack : public Action {
    public:
     ActionAttack();
-    ~ActionAttack();
 
     void execute(Map& map, EntityId entity_id) const override;
 };

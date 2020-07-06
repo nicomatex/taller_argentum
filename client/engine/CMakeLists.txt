@@ -8,6 +8,7 @@ add_library(engine
   renderizable_object.cpp
   resource_manager.cpp
   engine_error.cpp
+  sound_system.cpp
 )
 
 

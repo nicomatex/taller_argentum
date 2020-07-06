@@ -22,6 +22,10 @@
 #define MSG_ERR_LOADING_TEXTURE "Error cargando la textura."
 #define MSG_ERR_MAP_NOT_INITIALIZED "El mapa no fue inicializado."
 
+/* Sonidos */
+#define MAX_CONCURRENT_SOUNDS 3
+#define SOUND_TIMEOUT 200 //Tiempo cada el cual se libera un slot de sonido.
+
 /* Indices */
 #define TILESET_ID_INDEX 0
 #endif

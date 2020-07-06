@@ -47,12 +47,15 @@ void ThObserver::send_update_logs() {
                     server_manager.send_to(client_id,
                                            EventFactory::chat_message(msg));
                 } break;
-                case LOG_INVENTORY: {
+                case LOG_INVENTORY:
                     server_manager.send_to(
                         client_id,
                         EventFactory::inventory_update(log.info["inventory"]));
-                } break;
-                default:
+                    break;
+                case LOG_FULL_INVENTORY:
+                    server_manager.send_to(client_id,
+                                           EventFactory::chat_message(
+                                               "El inventario está lleno!"));
                     break;
             }
         } catch (const std::exception& e) {
@@ -65,39 +68,34 @@ void ThObserver::send_update_logs() {
 void ThObserver::run() {
     running = true;
     int counter = 0;
-    // bool dirty_entities = false;
-    // bool dirty_loot = false;
     while (running) {
+        auto start = std::chrono::steady_clock::now();
         try {
-            auto start = std::chrono::steady_clock::now();
-            // dirty_entities = map.dirty_entities();
-            // dirty_loot = map.dirty_loot();
             if (forced_update || ++counter % ENTITY_UPDATE_INTERVAL == 0) {
                 forced_update = true;
                 counter = 0;
             }
             nlohmann::json map_data = map.get_update_data(forced_update);
-            if (forced_update || map_data.contains("entities")) {
-                forced_update = false;
+            forced_update = false;
+            if (map_data.contains("entities")) {
                 handler.push_event(
                     EventFactory::update_entities(map_data["entities"]));
             }
-            if (map_data.contains("items") && !map_data["items"].empty()) {
-                forced_update = false;
+            if (map_data.contains("items")) {
                 handler.push_event(
                     EventFactory::update_items(map_data["items"]));
             }
             handler.push_event(EventFactory::update_map(map_data["positions"]));
             send_update_logs();
-            auto dif =
-                OBSERVER_INTERVAL - (std::chrono::steady_clock::now() - start);
-            sleep(dif);
 
         } catch (const std::exception& e) {
             std::cerr << "Observer: " << e.what() << std::endl;
         } catch (...) {
             std::cerr << "Observer: Unknown exception" << std::endl;
         }
+        auto dif =
+            OBSERVER_INTERVAL - (std::chrono::steady_clock::now() - start);
+        sleep(dif);
     }
     std::cerr << "Observer finished" << std::endl;
 }

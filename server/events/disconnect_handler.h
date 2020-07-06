@@ -7,7 +7,6 @@
 class DisconnectHandler : public EventHandler {
    public:
     DisconnectHandler();
-    ~DisconnectHandler();
 
     void push_event(const Event& ev) override;
 };

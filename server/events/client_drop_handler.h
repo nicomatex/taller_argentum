@@ -9,7 +9,6 @@ class ClientDropHandler : public BlockingThEventHandler {
 
    public:
     ClientDropHandler();
-    ~ClientDropHandler();
 };
 
 #endif  // CLIENT_DROP_HANDLER_H

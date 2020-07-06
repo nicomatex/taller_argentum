@@ -2,6 +2,7 @@
 
 #include "../../client_config.h"
 #include "../../engine/resource_manager.h"
+#include "../../engine/sound_system.h"
 
 LoginView::LoginView(SDLWindow &window, ResponsiveScaler &scaler,
                      GameStateMonitor &game_state_monitor,
@@ -30,7 +31,9 @@ LoginView::~LoginView() {}
 
 void LoginView::run() {
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
-    ResourceManager::get_instance().get_music(1).play();
+    if(!SoundSystem::get_instance().music_playing()){
+        SoundSystem::get_instance().play_music(1);
+    }
     while (game_state_monitor.get_game_state() == LOGGING) {
         window.fill(0, 0, 0, 255);
         SDL_Event e;

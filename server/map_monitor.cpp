@@ -62,13 +62,6 @@ std::vector<map_log_t> MapMonitor::get_update_logs() {
     return logs;
 }
 
-bool MapMonitor::dirty_entities() const {
-    return map.dirty_entities();
-}
-bool MapMonitor::dirty_loot() const {
-    return map.dirty_loot();
-}
-
 nlohmann::json MapMonitor::get_update_data(bool forced_update) {
     nlohmann::json map_data;
     std::unique_lock<std::recursive_mutex> l(m);

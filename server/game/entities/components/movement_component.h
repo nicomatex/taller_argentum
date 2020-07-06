@@ -15,7 +15,7 @@ class MovementComponent {
 
    public:
     MovementComponent(unsigned int movement_speed);
-    ~MovementComponent();
+    virtual ~MovementComponent();
 
     virtual nlohmann::json get_data() const;
 

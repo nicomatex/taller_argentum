@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "../../../include/network/socket_exception.h"
+#include "../../engine/sound_system.h"
 #include "../../network/event_factory.h"
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_mixer.h"
@@ -95,12 +96,10 @@ void UiEventHandler::handle_keydown_attack() {
 void UiEventHandler::handle_keydown_sound_toggle() {
     static bool sound_enabled = true;
     if (sound_enabled) {
-        Mix_VolumeMusic(0);
-        Mix_Volume(-1, 0);
-        sound_enabled = false;
+        SoundSystem::get_instance().set_master_volume(0);
     } else {
-        Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
-        Mix_Volume(-1, MIX_MAX_VOLUME / 3);
+        SoundSystem::get_instance().set_music_volume(MIX_MAX_VOLUME / 5);
+        SoundSystem::get_instance().set_sfx_volume(MIX_MAX_VOLUME / 3);
         sound_enabled = true;
     }
 }

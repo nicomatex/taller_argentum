@@ -13,7 +13,6 @@ class ClientInitializeHandler : public BlockingThEventHandler {
 
    public:
     ClientInitializeHandler();
-    ~ClientInitializeHandler();
 };
 
 #endif  // CLIENT_INITIALIZER_H

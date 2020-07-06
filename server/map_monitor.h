@@ -39,8 +39,6 @@ class MapMonitor {
 
     std::vector<map_log_t> get_update_logs();
 
-    bool dirty_entities() const;
-    bool dirty_loot() const;
     nlohmann::json get_update_data(bool update_entities);
 
     nlohmann::json get_map_data();

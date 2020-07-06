@@ -3,6 +3,7 @@ add_library(game
   actions/action_move.cpp
   actions/action_attack.cpp
   actions/action_inventory.cpp
+  actions/action_loot.cpp
   entities/components/combat_component.cpp
   entities/components/experience_component.cpp
   entities/entity.cpp

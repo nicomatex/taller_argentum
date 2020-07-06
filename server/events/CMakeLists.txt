@@ -11,6 +11,7 @@ add_library(events
   client_initializer_handler.cpp
   disconnect_handler.cpp
   inventory_handler.cpp
+  pickup_loot_handler.cpp
 )
 
 target_link_libraries(events

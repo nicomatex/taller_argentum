@@ -8,7 +8,6 @@
 class InventoryHandler : public EventHandler {
    public:
     InventoryHandler();
-    ~InventoryHandler();
 
     void push_event(const Event& ev) override;
 };
