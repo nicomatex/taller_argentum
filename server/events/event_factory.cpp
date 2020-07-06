@@ -26,11 +26,10 @@ Event EventFactory::notify_map_change() {
 }
 
 Event EventFactory::change_map(ClientId client_id,
-                               const nlohmann::json& player_data) {
-    nlohmann::json ev_json;
+                               const nlohmann::json& new_position) {
+    nlohmann::json ev_json = new_position;
     ev_json["ev_id"] = SERVER_CHANGE_MAP;
     ev_json["client_id"] = client_id;
-    ev_json["player_info"] = player_data;
     return Event(ev_json);
 }
 
