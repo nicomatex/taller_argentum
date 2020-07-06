@@ -2,7 +2,7 @@
 
 #include <cstdlib>
 
-#include "random_event_generator.h"
+#include "../../random_event_generator.h"
 
 #define VIEW_RANGE 8
 

@@ -1,9 +1,10 @@
 #include "npc.h"
-#include "npc_combat_component.h"
+
+#include "components/npc_combat_component.h"
 
 Npc::Npc(EntityId entity_id, nlohmann::json npc_info, Map& map)
-    : Entity(entity_id, npc_info["name"], nullptr,
-             new NpcCombatComponent(), 1, 0),
+    : Entity(entity_id, npc_info["name"], nullptr, new NpcCombatComponent(), 1,
+             0),
       map(map),
       sprite_id(npc_info["sprite_id"]) {}
 

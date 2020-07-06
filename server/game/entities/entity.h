@@ -3,12 +3,12 @@
 
 #include <cstdint>
 
-#include "../../include/nlohmann/json.hpp"
-#include "../../include/types.h"
-#include "combat_component.h"
-#include "experience_component.h"
-#include "movement_component.h"
-#include "position.h"
+#include "../../../include/nlohmann/json.hpp"
+#include "../../../include/types.h"
+#include "../position.h"
+#include "components/combat_component.h"
+#include "components/experience_component.h"
+#include "components/movement_component.h"
 
 class Entity {
    protected:

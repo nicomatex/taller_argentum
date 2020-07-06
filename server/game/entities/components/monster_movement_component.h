@@ -1,8 +1,8 @@
 #ifndef MONSTER_MOVEMENT_COMPONENT_H
 #define MONSTER_MOVEMENT_COMPONENT_H
 
-#include "../../include/types.h"
-#include "map.h"
+#include "../../../../include/types.h"
+#include "../../map.h"
 #include "movement_component.h"
 
 class MonsterMovementComponent : public MovementComponent {

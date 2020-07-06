@@ -1,11 +1,11 @@
 #ifndef PLAYER_COMBAT_COMPONENT_H
 #define PLAYER_COMBAT_COMPONENT_H
 
-#include "../attribute_manager.h"
+#include "../../../attribute_manager.h"
+#include "../../items/armor.h"
+#include "../../items/weapon.h"
+#include "../player.h"
 #include "combat_component.h"
-#include "items/armor.h"
-#include "items/weapon.h"
-#include "player.h"
 
 class PlayerCombatComponent : public CombatComponent {
    private:

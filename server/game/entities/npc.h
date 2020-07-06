@@ -1,14 +1,14 @@
 #ifndef NPC_H
 #define NPC_H
 
-#include "../../include/nlohmann/json.hpp"
-#include "../../include/types.h"
+#include "../../../include/nlohmann/json.hpp"
+#include "../../../include/types.h"
 #include "entity.h"
 
 class Map;
 
 class Npc : public Entity {
-  private:
+   private:
     Map& map;
     uint32_t sprite_id;
 
@@ -24,7 +24,8 @@ class Npc : public Entity {
 
     nlohmann::json get_data() const override;
 
-    void update(uint64_t delta_t) {} // Esto tiene que ser virtual, y lo va a definir cada npc (proximamente)
+    void update(uint64_t delta_t) {
+    }  // Esto tiene que ser virtual, y lo va a definir cada npc (proximamente)
 };
 
 #endif  // NPC_H

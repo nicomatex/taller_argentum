@@ -1,13 +1,13 @@
 #include "monster.h"
 
 #include <vector>
-#include "../server_manager.h"
-#include "items/item_factory.h"
-#include "map.h"
-#include "monster_combat_component.h"
-#include "monster_movement_component.h"
-#include "random_event_generator.h"
 
+#include "../../server_manager.h"
+#include "../items/item_factory.h"
+#include "../map.h"
+#include "../random_event_generator.h"
+#include "components/monster_combat_component.h"
+#include "components/monster_movement_component.h"
 
 Monster::Monster(EntityId entity_id, nlohmann::json monster_info, Map& map)
     : Entity(entity_id, monster_info["name"],
@@ -52,22 +52,26 @@ void Monster::die() {
             std::cerr << "Monster dropped "
                       << int(0.2 * combat_component->get_max_hp()) << " gold"
                       << std::endl;
-            item = item_factory.create(500, int(0.2 * combat_component->get_max_hp()));
+            item = item_factory.create(
+                500, int(0.2 * combat_component->get_max_hp()));
             break;
         case rand_potion:
             std::cerr << "Monster dropped a potion" << std::endl;
             {
-                std::vector<ItemId> vec = {400,401};
-                unsigned int idx = RandomEventGenerator::rand_idx_in_vec(vec.size());
-                item = item_factory.create(vec[idx], 1);        
+                std::vector<ItemId> vec = {400, 401};
+                unsigned int idx =
+                    RandomEventGenerator::rand_idx_in_vec(vec.size());
+                item = item_factory.create(vec[idx], 1);
             }
             break;
-        case rand_item: 
-            {
-                std::vector<ItemId> vec = {1,2,3,100,101,102,200,201,300,301,302,303,304,305,306,307,308};
-                unsigned int idx = RandomEventGenerator::rand_idx_in_vec(vec.size());
-                item = item_factory.create(vec[idx], 1);  
-            }       
+        case rand_item: {
+            std::vector<ItemId> vec = {1,   2,   3,   100, 101, 102,
+                                       200, 201, 300, 301, 302, 303,
+                                       304, 305, 306, 307, 308};
+            unsigned int idx =
+                RandomEventGenerator::rand_idx_in_vec(vec.size());
+            item = item_factory.create(vec[idx], 1);
+        }
             std::cerr << "Monster dropped a random item" << std::endl;
             break;
         case nothing:

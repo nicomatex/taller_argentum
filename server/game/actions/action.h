@@ -1,7 +1,7 @@
 #ifndef __ACTION_H
 #define __ACTION_H
 
-#include "../entity.h"
+#include "../entities/entity.h"
 #include "../position.h"
 
 class Map;

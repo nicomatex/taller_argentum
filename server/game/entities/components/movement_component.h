@@ -3,8 +3,8 @@
 
 #include <vector>
 
-#include "../../include/types.h"
-#include "position.h"
+#include "../../../../include/types.h"
+#include "../../position.h"
 
 class MovementComponent {
    protected:

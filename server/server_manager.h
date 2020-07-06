@@ -13,7 +13,6 @@
 #include "game/game_loop.h"
 #include "game/items/item_factory.h"
 #include "game/mob_factory.h"
-#include "game/player.h"
 #include "map_manager.h"
 #include "map_monitor.h"
 #include "network/clients_monitor.h"

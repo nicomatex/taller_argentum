@@ -2,7 +2,8 @@
 #define NPC_COMBAT_COMPONENT_H
 
 #include <exception>
-#include "../../include/types.h"
+
+#include "../../../../include/types.h"
 #include "combat_component.h"
 
 class CantAttackNpcException : public std::exception {

@@ -2,11 +2,11 @@
 #define PLAYER_H
 #include <string>
 
-#include "../attribute_manager.h"
+#include "../../attribute_manager.h"
+#include "../items/item_container.h"
+#include "../map.h"
+#include "../position.h"
 #include "entity.h"
-#include "items/item_container.h"
-#include "map.h"
-#include "position.h"
 
 class Player : public Entity {
    private:

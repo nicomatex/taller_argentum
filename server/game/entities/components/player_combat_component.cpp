@@ -1,8 +1,8 @@
 #include "player_combat_component.h"
 
-#include "../server_manager.h"
-#include "items/item.h"
-#include "items/item_factory.h"
+#include "../../../server_manager.h"
+#include "../../items/item.h"
+#include "../../items/item_factory.h"
 
 // Temp
 

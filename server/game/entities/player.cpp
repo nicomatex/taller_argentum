@@ -2,9 +2,9 @@
 
 #include <vector>
 
-#include "map_log_factory.h"
-#include "player_combat_component.h"
-#include "player_movement_component.h"
+#include "../map_log_factory.h"
+#include "components/player_combat_component.h"
+#include "components/player_movement_component.h"
 
 #define DEAD_HEAD_ID 9
 #define DEAD_BODY_ID 5

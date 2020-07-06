@@ -1,7 +1,7 @@
 #ifndef COMBAT_COMPONENT_H
 #define COMBAT_COMPONENT_H
 
-#include "../../include/nlohmann/json.hpp"
+#include "../../../../include/nlohmann/json.hpp"
 
 typedef struct damage {
     int damage;

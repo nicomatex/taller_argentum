@@ -3,9 +3,9 @@ add_library(game
   actions/action_move.cpp
   actions/action_attack.cpp
   actions/action_inventory.cpp
-  combat_component.cpp
-  experience_component.cpp
-  entity.cpp
+  entities/components/combat_component.cpp
+  entities/components/experience_component.cpp
+  entities/entity.cpp
   entity_factory.cpp
   game_loop.cpp
   items/item_container.cpp
@@ -18,15 +18,15 @@ add_library(game
   map.cpp
   map_transitions.cpp
   map_log_factory.cpp
-  movement_component.cpp
-  monster.cpp
-  monster_combat_component.cpp
-  monster_movement_component.cpp
+  entities/components/movement_component.cpp
+  entities/monster.cpp
+  entities/components/monster_combat_component.cpp
+  entities/components/monster_movement_component.cpp
   mob_factory.cpp
-  player.cpp
-  player_combat_component.cpp
-  player_movement_component.cpp
+  entities/player.cpp
+  entities/components/player_combat_component.cpp
+  entities/components/player_movement_component.cpp
   random_event_generator.cpp
-  npc_combat_component.cpp
-  npc.cpp
+  entities/components/npc_combat_component.cpp
+  entities/npc.cpp
 )

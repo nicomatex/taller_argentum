@@ -1,6 +1,6 @@
 #include "monster_combat_component.h"
 
-#include "actions/action_attack.h"
+#include "../../actions/action_attack.h"
 
 // Temp
 #include <iostream>

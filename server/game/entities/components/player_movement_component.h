@@ -1,6 +1,7 @@
 #ifndef PLAYER_MOVEMENT_COMPONENT_H
 #define PLAYER_MOVEMENT_COMPONENT_H
 
+#include "../../../../include/types.h"
 #include "movement_component.h"
 
 class PlayerMovementComponent : public MovementComponent {

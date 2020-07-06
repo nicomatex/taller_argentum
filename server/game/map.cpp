@@ -6,7 +6,7 @@
 #include <queue>
 #include <unordered_set>
 
-#include "player.h"
+#include "entities/player.h"
 
 Map::Map(nlohmann::json map_description)
     : map_id(map_description["map_id"]),

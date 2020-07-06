@@ -1,9 +1,9 @@
 #ifndef MONSTER_COMBAT_COMPONENT_H
 #define MONSTER_COMBAT_COMPONENT_H
 
-#include "../../include/types.h"
+#include "../../../../include/types.h"
+#include "../../map.h"
 #include "combat_component.h"
-#include "map.h"
 
 class MonsterCombatComponent : public CombatComponent {
    private:

@@ -1,8 +1,8 @@
 #ifndef MONSTER_H
 #define MONSTER_H
 
-#include "../../include/nlohmann/json.hpp"
-#include "../../include/types.h"
+#include "../../../include/nlohmann/json.hpp"
+#include "../../../include/types.h"
 #include "entity.h"
 
 class Map;

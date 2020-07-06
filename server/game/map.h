@@ -11,7 +11,7 @@
 #include "../../include/types.h"
 #include "../map_changer.h"
 #include "actions/action.h"
-#include "entity.h"
+#include "entities/entity.h"
 #include "entity_factory.h"
 #include "items/item.h"
 #include "map_transitions.h"
