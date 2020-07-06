@@ -18,7 +18,7 @@ ServerManager::ServerManager()
       accepter(Socket("27016", 10)),
       game_loop(map_manager),
       item_factory("ind/items.json"),
-      monster_factory("ind/monsters.json") {
+      mob_factory("ind/mobs.json") {
     AttributeManager::init("ind/stats.json", "ind/races.json",
                            "ind/classes.json");
     RaceGraphicsManager::init("ind/races_graphics.json");
@@ -127,8 +127,8 @@ ThDispatcher& ServerManager::get_dispatcher() {
 ItemFactory& ServerManager::get_item_factory() {
     return item_factory;
 }
-MonsterFactory& ServerManager::get_monster_factory() {
-    return monster_factory;
+MobFactory& ServerManager::get_mob_factory() {
+    return mob_factory;
 }
 
 void ServerManager::add_client(ClientId client_id, SocketManager* new_client) {

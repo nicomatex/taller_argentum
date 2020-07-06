@@ -21,7 +21,7 @@ add_library(game
   monster.cpp
   monster_combat_component.cpp
   monster_movement_component.cpp
-  monster_factory.cpp
+  mob_factory.cpp
   player.cpp
   player_combat_component.cpp
   player_movement_component.cpp

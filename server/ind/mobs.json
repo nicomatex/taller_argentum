@@ -45,5 +45,22 @@
             "attack_speed": 1,
             "damage": 30
         }
-    ]
+    ],
+    "npcs": [
+		{
+			"id": 6,
+			"name": "Banquero",
+			"sprite_id": 6
+		},
+		{
+			"id": 7,
+			"name": "Comerciante",
+			"sprite_id": 7
+		},
+		{
+			"id": 8,
+			"name": "Sacerdotiza",
+			"sprite_id": 8
+		}
+	]
 }

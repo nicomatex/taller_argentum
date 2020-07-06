@@ -13,6 +13,12 @@ entity_type_t Npc::get_type() const {
     return NPC;
 }
 
+void Npc::die() {}
+
+bool Npc::is_alive() const {
+    return false;
+}
+
 nlohmann::json Npc::get_data() const {
     nlohmann::json entity_data;
     entity_data["entity_id"] = get_id();

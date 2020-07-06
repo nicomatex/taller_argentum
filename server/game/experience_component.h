@@ -26,23 +26,29 @@ class ExperienceComponent {
    public:
     ExperienceComponent(unsigned int level = 1, unsigned int exp = 0);
     ~ExperienceComponent();
-    /*
-        Agrega "exp" a la experencia actual, actualizando los niveles.
-    */
+    /**
+     * @brief Agrega "exp" a la experencia actual, actualizando los niveles.
+     * 
+     * @param exp 
+     */
     void add_exp(int exp);
-    /*
-        Reduce la experiencia actual en un X% sobre la diferencia entre
-        la experiencia base del nivel actual, y la experiencia actual
-        (se puede obtener la experiencia base pidiendo el limite del nivel
-        anterior)
-        En ningun momento puede bajar de nivel el personaje.
-    */
+    /**
+     * @brief Reduce la experiencia actual en un X% sobre la diferencia entre
+     *        la experiencia base del nivel actual, y la experiencia actual
+     *        (se puede obtener la experiencia base pidiendo el limite del nivel
+     *        anterior)
+     *        En ningun momento puede bajar de nivel el personaje.
+     * 
+     */
     void reduce();
-    /*
-        Devuelve el limite de experiencia asociado al nivel (se entiende
-        por limite de experiencia, a aquel valor para el cual se produce
-        un aumento de nivel al igualarlo/superarlo)
-    */
+    /**
+     * @brief Devuelve el limite de experiencia asociado al nivel (se entiende
+     *        por limite de experiencia, a aquel valor para el cual se produce
+     *        un aumento de nivel al igualarlo/superarlo)
+     * 
+     * @param level 
+     * @return int 
+     */
     int get_xp_limit_level(unsigned int level) const;
     unsigned int get_level() const;
     void set_level(unsigned int level);

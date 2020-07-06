@@ -36,10 +36,15 @@ RandomEventGenerator& RandomEventGenerator::get_instance() {
     return reg;
 }
 
-/*
-    Devuelve true si value se encuentra entre [min_value, max_value),
-    false en caso contrario.
-*/
+/**
+ * @brief Devuelve true si value se encuentra entre [min_value, max_value),
+ * false en caso contrario.
+ * 
+ * @param value 
+ * @param range 
+ * @return true 
+ * @return false 
+ */
 static bool isInRange(float value, range_t& range) {
     return value >= range.min_value && value < range.max_value;
 }

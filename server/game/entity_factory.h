@@ -2,7 +2,7 @@
 #define ENTITY_FACTORY_H
 
 #include "../../include/types.h"
-#include "monster_factory.h"
+#include "mob_factory.h"
 
 class Player;
 class Map;
@@ -18,7 +18,8 @@ class EntityFactory {
     ~EntityFactory();
 
     Player* create_player(nlohmann::json player_info);
-    Monster* create_monster(MonsterId monster_id);
+    Monster* create_monster(MobId monster_id);
+    Npc* create_npc(MobId npc_id);
 };
 
 #endif  // ENTITY_FACTORY_H

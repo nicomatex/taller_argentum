@@ -12,7 +12,7 @@
 #include "character_manager.h"
 #include "game/game_loop.h"
 #include "game/items/item_factory.h"
-#include "game/monster_factory.h"
+#include "game/mob_factory.h"
 #include "game/player.h"
 #include "map_manager.h"
 #include "map_monitor.h"
@@ -73,7 +73,7 @@ class ServerManager {
     ThClientAccepter accepter;
 
     ItemFactory item_factory;
-    MonsterFactory monster_factory;
+    MobFactory mob_factory;
 
     std::recursive_mutex m;
 
@@ -85,7 +85,7 @@ class ServerManager {
     ThDispatcher& get_dispatcher();
 
     ItemFactory& get_item_factory();
-    MonsterFactory& get_monster_factory();
+    MobFactory& get_mob_factory();
 
     void add_client(ClientId client_id, SocketManager* new_client);
     void rm_client(ClientId client_id);

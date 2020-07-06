@@ -38,7 +38,12 @@ class RandomEventGenerator {
    public:
     ~RandomEventGenerator();
     static RandomEventGenerator& get_instance();
-
+    /**
+     * @brief Devuelve un evento de forma random en base a las probabilidades
+     * provistas
+     * 
+     * @return random_drop_t 
+     */
     static random_drop_t roll();
 
     /* Devuelve un numero entero entre min y max */

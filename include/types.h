@@ -29,7 +29,7 @@ typedef int32_t MapId;
 
 typedef int32_t ItemId;
 
-typedef uint32_t MonsterId;
+typedef uint32_t MobId;
 
 typedef uint8_t SlotId;
 
