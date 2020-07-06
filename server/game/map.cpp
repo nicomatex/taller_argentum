@@ -228,6 +228,7 @@ position_t Map::get_nearest_entity_pos(position_t entity_pos,
             }
             Entity* entity = entity_matrix.at(it);
             if (entity->get_type() == entity_type) {
+                if (entity_type == PLAYER && !(Player*)entity->is_alive()) continue; // check
                 return position_map.at(entity->get_id());
             }
         }
