@@ -2,15 +2,13 @@
 
 #include "../game/map.h"
 #include "../game/position.h"
+#include "../race_graphics_manager.h"
 #include "../server_manager.h"
 #include "event_factory.h"
-#include "../race_graphics_manager.h"
 
 CreationHandler::CreationHandler() : BlockingThEventHandler() {
     std::cerr << "CreationHandler: starting.." << std::endl;
 }
-
-CreationHandler::~CreationHandler() {}
 
 void CreationHandler::handle(Event& event) {
     try {
@@ -22,22 +20,25 @@ void CreationHandler::handle(Event& event) {
         if (character_manager.character_exists(player_name))
             throw DuplicatedPlayerException(player_name);
         server_manager.add_name(create_info["client_id"], player_name);
-        nlohmann::json player_info = {{"name", player_name},
-                                      {"map_id", 0},
-                                      {"pos", position_t{25, 25}},
-                                      {"head_id", RaceGraphicsManager::get_race_head(create_info["race_type"])},
-                                      {"body_id", RaceGraphicsManager::get_race_body(create_info["race_type"])},
-                                      {"helmet_id", 0},
-                                      {"armor_id", 0},
-                                      {"shield_id", 0},
-                                      {"weapon_id", 0},
-                                      {"curr_hp", 5},
-                                      {"curr_mp", 5},
-                                      {"class_type", create_info["class_type"]},
-                                      {"race_type", create_info["race_type"]},
-                                      {"curr_level", 1},
-                                      {"curr_exp", 0},
-                                      {"alive", true}};
+        nlohmann::json player_info = {
+            {"name", player_name},
+            {"map_id", 0},
+            {"pos", position_t{25, 25}},
+            {"head_id",
+             RaceGraphicsManager::get_race_head(create_info["race_type"])},
+            {"body_id",
+             RaceGraphicsManager::get_race_body(create_info["race_type"])},
+            {"helmet_id", 0},
+            {"armor_id", 0},
+            {"shield_id", 0},
+            {"weapon_id", 0},
+            {"curr_hp", 5},
+            {"curr_mp", 5},
+            {"class_type", create_info["class_type"]},
+            {"race_type", create_info["race_type"]},
+            {"curr_level", 1},
+            {"curr_exp", 0},
+            {"alive", true}};
         player_info["inventory"] = R"({"items_ids":[0,0,0,0,0,0,0,0,0,0,0,0],
                                  "items_stacks":[0,0,0,0,0,0,0,0,0,0,0,0]})"_json;
         character_manager.add_character(player_info);

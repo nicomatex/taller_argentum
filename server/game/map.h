@@ -28,6 +28,7 @@ typedef struct entity_action {
 
 typedef enum log_type {
     LOG_INVENTORY,
+    LOG_FULL_INVENTORY,
     LOG_DEAL_DAMAGE,
     LOG_RECV_DAMAGE
 } log_type_t;
@@ -129,6 +130,7 @@ class Map {
 
     void drop_loot(EntityId entity_id, Item* item);
     void drop_loot(EntityId entity_id, const std::vector<Item*>& item);
+    Item* pickup_loot(EntityId entity_id);
 
     static nlohmann::json get_position_data(const PositionMap& position_map);
     const PositionMap get_position_map() const;

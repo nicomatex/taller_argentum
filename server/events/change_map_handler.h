@@ -9,7 +9,6 @@ class ChangeMapHandler : public BlockingThEventHandler {
 
    public:
     ChangeMapHandler();
-    ~ChangeMapHandler();
 };
 
 #endif  // CHANGE_MAP_HANDLER_H

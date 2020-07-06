@@ -25,4 +25,3 @@ void ChangeMapHandler::handle(Event& event) {
 ChangeMapHandler::ChangeMapHandler() : BlockingThEventHandler() {
     std::cerr << "ChangeMapHandler: starting.." << std::endl;
 }
-ChangeMapHandler::~ChangeMapHandler() {}

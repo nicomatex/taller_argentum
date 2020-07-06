@@ -8,7 +8,6 @@
 #include <iostream>
 
 AttackHandler::AttackHandler() {}
-AttackHandler::~AttackHandler() {}
 
 void AttackHandler::push_event(const Event& event) {
     ClientId client_id = event.get_json()["client_id"];

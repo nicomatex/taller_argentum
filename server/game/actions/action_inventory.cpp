@@ -6,7 +6,6 @@
 #include "../map_log_factory.h"
 
 ActionInventory::ActionInventory(SlotId slot) : slot(slot) {}
-ActionInventory::~ActionInventory() {}
 
 void ActionInventory::execute(Map& map, EntityId entity_id) const {
     Entity* entity = Action::get_entity(map, entity_id);

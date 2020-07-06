@@ -41,5 +41,3 @@ void ClientInitializeHandler::disconnect(Event& event) const {
 ClientInitializeHandler::ClientInitializeHandler() : BlockingThEventHandler() {
     std::cerr << "ClientInitializeHandler: starting.." << std::endl;
 }
-
-ClientInitializeHandler::~ClientInitializeHandler() {}

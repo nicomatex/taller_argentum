@@ -11,7 +11,6 @@ class ActionMove : public Action {
 
    public:
     ActionMove(mov_action_t action, direction_t direction);
-    ~ActionMove();
 
     void execute(Map& map, EntityId entity_id) const override;
 };

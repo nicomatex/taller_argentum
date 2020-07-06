@@ -4,7 +4,6 @@
 #include "../server_manager.h"
 
 DisconnectHandler::DisconnectHandler() {}
-DisconnectHandler::~DisconnectHandler() {}
 
 void DisconnectHandler::push_event(const Event& event) {
     nlohmann::json json_ev = event.get_json();

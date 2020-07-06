@@ -10,7 +10,6 @@ class ActionInventory : public Action {
 
    public:
     ActionInventory(SlotId slot);
-    ~ActionInventory();
 
     void execute(Map& map, EntityId entity_id) const override;
 };

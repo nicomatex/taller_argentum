@@ -1,5 +1,6 @@
 #include "movement_handler.h"
 
+#include "../../include/types.h"
 #include "../game/actions/action_move.h"
 #include "../map_monitor.h"
 #include "../server_manager.h"
@@ -8,7 +9,6 @@
 #include <iostream>
 
 MovementHandler::MovementHandler() {}
-MovementHandler::~MovementHandler() {}
 
 void MovementHandler::push_event(const Event& event) {
     ServerManager& server_manager = ServerManager::get_instance();

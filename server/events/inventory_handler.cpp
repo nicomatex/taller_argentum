@@ -5,7 +5,6 @@
 #include "../server_manager.h"
 
 InventoryHandler::InventoryHandler() {}
-InventoryHandler::~InventoryHandler() {}
 
 void InventoryHandler::push_event(const Event& event) {
     ServerManager& server_manager = ServerManager::get_instance();

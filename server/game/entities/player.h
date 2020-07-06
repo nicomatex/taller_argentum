@@ -31,6 +31,8 @@ class Player : public Entity {
     bool is_alive() const override;
 
     void use(SlotId slot);
+    void add_item(Item* item);
+
     void set_movement(mov_action_t action, direction_t direction);
     void update(uint64_t delta_t) override;
 

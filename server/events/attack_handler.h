@@ -7,7 +7,6 @@
 class AttackHandler : public EventHandler {
    public:
     AttackHandler();
-    ~AttackHandler();
 
     void push_event(const Event& ev) override;
 };

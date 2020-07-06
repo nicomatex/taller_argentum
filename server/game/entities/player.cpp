@@ -80,10 +80,9 @@ nlohmann::json Player::get_inventory_data() const {
 }
 
 void Player::use(SlotId slot) {
-    std::cout << inventory.get_data() << std::endl;
     Item* item;
     try {
-        item = inventory.remove(slot);
+        item = inventory.remove(slot, 1);
     } catch (...) {
         std::cout << "Excepcion lanzada" << std::endl;
         return;
@@ -108,6 +107,12 @@ void Player::use(SlotId slot) {
     } else if (type == TYPE_POTION) {
         /* usar poción */
     }
+}
+
+void Player::add_item(Item* item) {
+    if (!item)
+        return;
+    inventory.add(item);
 }
 
 nlohmann::json Player::get_persist_data() const {

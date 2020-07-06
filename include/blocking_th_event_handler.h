@@ -30,7 +30,7 @@ class BlockingThEventHandler : public Thread, public EventHandler {
 
    public:
     BlockingThEventHandler();
-    ~BlockingThEventHandler();
+    virtual ~BlockingThEventHandler();
 
     BlockingThEventHandler(BlockingThEventHandler&& other);
     BlockingThEventHandler& operator=(BlockingThEventHandler&& other);

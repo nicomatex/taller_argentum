@@ -5,7 +5,6 @@
 #include "../position.h"
 
 ActionAttack::ActionAttack() {}
-ActionAttack::~ActionAttack() {}
 
 void ActionAttack::execute(Map& map, EntityId entity_id) const {
     Entity* attacker = Action::get_entity(map, entity_id);
