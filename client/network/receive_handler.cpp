@@ -75,6 +75,13 @@ void ClientReceiveHandler::handle_move(Event &ev) {
     for (auto &it : event["positions"].items()) {
         json entity_position = it.value();
         int entity_id = entity_position["entity_id"];
+
+        if (!EntityManager::get_instance().has_entity(entity_id)) {
+            std::cerr << "Tried to move entity with id " << entity_id
+                      << "but it was not found." << std::endl;
+            continue;
+        }
+
         int x = entity_position["x"];
         int y = entity_position["y"];
         EntityManager::get_instance()
