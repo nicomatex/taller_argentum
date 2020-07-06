@@ -52,23 +52,63 @@ class Camera {
     void _update_offset();
 
    public:
+    /**
+     * @brief Crea un objeto Camera
+     *
+     * @param follow_component Componente de posicion que la camara va a seguir.
+     * @param viewport Viewport asociado a la camara. Utilizado para detectar el
+     * tile clickeado.
+     * @param map_size Tamanio del mapa que se esta mostrando en este momento.
+     * @param tile_size Lado en pixeles de cada tile.
+     * @param viewport_width Ancho del renderer, en tiles.
+     * @param viewport_height Alto del renderer, en tiles.
+     * @param speed Velocidad de la camara, en tiles/segundo.
+     */
     Camera(PositionComponent &follow_component, SDL_Rect viewport, int map_size,
            int tile_size, int viewport_width, int viewport_height, int speed);
     ~Camera();
 
-    /* Actualiza la posicion de la camara segun el objeto que esta siguiendo. */
+    /**
+     * @brief Actualiza la posicion de la camara segun el objeto que esta
+     * siguiendo.
+     *
+     */
     void update();
 
+    /**
+     * @brief Renderiza un objeto renderizable.
+     *
+     * @param component Objeto a renderizar.
+     * @param x Coordenada X (en tiles) en la cual se reenderizara el objeto.
+     * @param y Coordenada Y (en tiles) en la cual se reenderizara el objeto.
+     * @param x_tmp_offset Offset en centesimas de tile temporal. Utilizado para
+     * animaciones.
+     * @param y_tmp_offset Offset en centesimas de tile temporal. Utilizado para
+     * animaciones.
+     */
     void draw(RenderizableObject *component, int x, int y, int x_tmp_offset,
               int y_tmp_offset);
 
-    /* Renderiza todos las entidades con una componente visual.*/
+    /**
+     * @brief Renderiza todas las entidades que contengan una componente visual.
+     *
+     */
     void draw_all();
 
+    /**
+     * @brief Renderiza un conjunto de capas del mapa.
+     * 
+     * @param layers Vector de capas del mapa. 
+     */
     void render_map_layers(std::vector<std::vector<Decoration>> &layers);
 
-    /* Recibe coordenadas absolutas de pixeles de la pantalla
-    y devuelve las coordenadas del tile dibujado en esas coords. */
+    /**
+     * @brief Indica cual fue el tile clickeado.
+     * 
+     * @param x Coordenada X (en pixeles) donde ocurrio el click.
+     * @param y Coordenada Y (en pixeles) donde ocurrio el click.
+     * @return position_t 
+     */
     position_t tile_at(int x, int y);
 };
 

@@ -2,47 +2,80 @@
 #define __TIMER_H
 #include <cstdint>
 
-class SDLTimer{
-    private:
-        bool _is_started;
-        bool _is_paused;
+class SDLTimer {
+   private:
+    bool _is_started;
+    bool _is_paused;
 
-        uint32_t start_ticks;
-        uint32_t pause_ticks;
-    public:
-        /* Crea un timer que permite medir paso del tiempo en la ejecucion
-        del programa. */
-        SDLTimer();
-        ~SDLTimer();
+    uint32_t start_ticks;
+    uint32_t pause_ticks;
 
-        /* Constructor por copia. */
-        SDLTimer(const SDLTimer &other);
-        SDLTimer& operator=(const SDLTimer &other);
+   public:
+    /**
+     * @brief Crea un objeto SDLTimer
+     * @details Permite medir el paso del tiempo en la ejecucion del programa.
+     */
+    SDLTimer();
+    ~SDLTimer();
 
-        /* Constructor por movimiento. */
-        SDLTimer(SDLTimer &&other);
-        SDLTimer& operator=(SDLTimer &&other);
+    /**
+     * @brief Crea un objeto SDLTimer por copia.
+     *
+     * @param other Otro timer.
+     */
+    SDLTimer(const SDLTimer &other);
+    SDLTimer &operator=(const SDLTimer &other);
 
-        /* Inicia la cuenta del timer. */
-        void start();
+    /* Constructor por movimiento. */
+    SDLTimer(SDLTimer &&other);
+    SDLTimer &operator=(SDLTimer &&other);
 
-        /* Detiene la cuenta del timer. */
-        void stop();
+    /**
+     * @brief Inicia la cuenta del timer.
+     *
+     */
+    void start();
 
-        /* Pausa la cuenta del timer. */
-        void pause();
+    /**
+     * @brief Detiene la cuenta del timer.
+     *
+     */
+    void stop();
 
-        /* Despausa la cuenta del timer.*/
-        void unpause();
+    /**
+     * @brief Pausa la cuenta del timer.
+     *
+     */
+    void pause();
 
-        /* Obtiene el tiempo pasado desde que se inicio el timer. */
-        uint32_t get_ticks() const;
+    /**
+     * @brief Despausa la cuenta del timer.
+     *
+     */
+    void unpause();
 
-        /* Devuelve true si el timer esta iniciado. */
-        bool is_started() const;
+    /**
+     * @brief Devuelve el tiempo transcurrido desde que se inicio el timer.
+     *
+     * @return uint32_t
+     */
+    uint32_t get_ticks() const;
 
-        /* Devuelve true si el timer esta pausado. */
-        bool is_paused() const;
+    /**
+     * @brief Indica si el timer esta iniciado.
+     * 
+     * @return true 
+     * @return false 
+     */
+    bool is_started() const;
+
+    /**
+     * @brief Indica si el timer esta pausado.
+     * 
+     * @return true 
+     * @return false 
+     */
+    bool is_paused() const;
 };
 
 #endif

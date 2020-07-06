@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.19"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Argentum Online: Fichero Fuente repo/client/engine/components/position_component.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Argentum Online
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.19 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_752f9258976072ab3e06b31dacb87d2d.html">repo</a></li><li class="navelem"><a class="el" href="dir_d25a467ca773a8baa4b1577f05f454ca.html">client</a></li><li class="navelem"><a class="el" href="dir_bdf952ed7ff9844fe0f3d57d51845a66.html">engine</a></li><li class="navelem"><a class="el" href="dir_84b014ecb14b7be9263811dea5ab1fd3.html">components</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">position_component.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef POSITION_COMPONENT_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define POSITION_COMPONENT_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../ECS/component.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../SDL/sdl_timer.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classPositionComponent.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPositionComponent.html">PositionComponent</a> : <span class="keyword">public</span> <a class="code" href="classComponent.html">Component</a> {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">int</span> x;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">int</span> y;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    std::mutex m;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="comment">/* Indica si se llamo a set_position al menos una vez. */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">bool</span> initialized;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classPositionComponent.html">PositionComponent</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classPositionComponent.html">PositionComponent</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    ~<a class="code" href="classPositionComponent.html">PositionComponent</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPositionComponent.html#a1fec86ea0fbe0c6b013abda7dbdd9403">init</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPositionComponent.html#af66901f5b75d3a5d438f82c3e3e61e32">update</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classPositionComponent.html#a3c511db75c37f97680c543d1eeb18e06">get_x</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classPositionComponent.html#a292e407388cedb5439dc22fc5017fb72">get_y</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPositionComponent.html#a4e442dda8627b569a5404ab85eaecd08">set_position</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classPositionComponent.html#af9f16062b9e44b45c4c7ca0e6294d113">position_initialized</a>();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassPositionComponent_html_a4e442dda8627b569a5404ab85eaecd08"><div class="ttname"><a href="classPositionComponent.html#a4e442dda8627b569a5404ab85eaecd08">PositionComponent::set_position</a></div><div class="ttdeci">void set_position(int x, int y)</div><div class="ttdoc">Setea la posicion.</div><div class="ttdef"><b>Definition:</b> position_component.cpp:28</div></div>
+<div class="ttc" id="aclassPositionComponent_html_af9f16062b9e44b45c4c7ca0e6294d113"><div class="ttname"><a href="classPositionComponent.html#af9f16062b9e44b45c4c7ca0e6294d113">PositionComponent::position_initialized</a></div><div class="ttdeci">bool position_initialized()</div><div class="ttdoc">Indica si ya hubo un set_position.</div><div class="ttdef"><b>Definition:</b> position_component.cpp:37</div></div>
+<div class="ttc" id="aclassPositionComponent_html"><div class="ttname"><a href="classPositionComponent.html">PositionComponent</a></div><div class="ttdef"><b>Definition:</b> position_component.h:9</div></div>
+<div class="ttc" id="aclassPositionComponent_html_a292e407388cedb5439dc22fc5017fb72"><div class="ttname"><a href="classPositionComponent.html#a292e407388cedb5439dc22fc5017fb72">PositionComponent::get_y</a></div><div class="ttdeci">int get_y()</div><div class="ttdoc">Devuelve la coordenada Y.</div><div class="ttdef"><b>Definition:</b> position_component.cpp:23</div></div>
+<div class="ttc" id="aclassPositionComponent_html_a3c511db75c37f97680c543d1eeb18e06"><div class="ttname"><a href="classPositionComponent.html#a3c511db75c37f97680c543d1eeb18e06">PositionComponent::get_x</a></div><div class="ttdeci">int get_x()</div><div class="ttdoc">Devuelve la coordenada X.</div><div class="ttdef"><b>Definition:</b> position_component.cpp:18</div></div>
+<div class="ttc" id="aclassPositionComponent_html_a1fec86ea0fbe0c6b013abda7dbdd9403"><div class="ttname"><a href="classPositionComponent.html#a1fec86ea0fbe0c6b013abda7dbdd9403">PositionComponent::init</a></div><div class="ttdeci">void init() override</div><div class="ttdoc">Inicializa el componente con lo que necesite, es llamado en el momento de agregarlo a la entity.</div><div class="ttdef"><b>Definition:</b> position_component.cpp:14</div></div>
+<div class="ttc" id="aclassComponent_html"><div class="ttname"><a href="classComponent.html">Component</a></div><div class="ttdef"><b>Definition:</b> component.h:6</div></div>
+<div class="ttc" id="aclassPositionComponent_html_af66901f5b75d3a5d438f82c3e3e61e32"><div class="ttname"><a href="classPositionComponent.html#af66901f5b75d3a5d438f82c3e3e61e32">PositionComponent::update</a></div><div class="ttdeci">void update() override</div><div class="ttdoc">Actualiza el componente.</div><div class="ttdef"><b>Definition:</b> position_component.cpp:16</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.19
+</small></address>
+</body>
+</html>

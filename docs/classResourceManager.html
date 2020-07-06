@@ -1,0 +1,400 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.19"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Argentum Online: Referencia de la Clase ResourceManager</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Argentum Online
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.19 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Métodos públicos</a> &#124;
+<a href="#pub-static-methods">Métodos públicos estáticos</a> &#124;
+<a href="classResourceManager-members.html">Lista de todos los miembros</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia de la Clase ResourceManager</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Singleton para el manager de texturas.  
+ <a href="classResourceManager.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="resource__manager_8h_source.html">resource_manager.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:a75d0eead1e899959c0b9fea954d77697"><td class="memItemLeft" align="right" valign="top"><a id="a75d0eead1e899959c0b9fea954d77697"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ResourceManager</b> (const <a class="el" href="classResourceManager.html">ResourceManager</a> &amp;other)=delete</td></tr>
+<tr class="separator:a75d0eead1e899959c0b9fea954d77697"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23330c92f9a655b1dba98fd4bcd24083"><td class="memItemLeft" align="right" valign="top"><a id="a23330c92f9a655b1dba98fd4bcd24083"></a>
+<a class="el" href="classResourceManager.html">ResourceManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classResourceManager.html">ResourceManager</a> &amp;other)=delete</td></tr>
+<tr class="separator:a23330c92f9a655b1dba98fd4bcd24083"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfe84f445c79af00fd044db3ee1ac163"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSDLTexture.html">SDLTexture</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResourceManager.html#abfe84f445c79af00fd044db3ee1ac163">get_texture</a> (const std::string &amp;type, int id)</td></tr>
+<tr class="memdesc:abfe84f445c79af00fd044db3ee1ac163"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene una textura.  <a href="classResourceManager.html#abfe84f445c79af00fd044db3ee1ac163">Más...</a><br /></td></tr>
+<tr class="separator:abfe84f445c79af00fd044db3ee1ac163"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5e2ba2fdff5b73d49ac8cf1557c0201"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAnimationPack.html">AnimationPack</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResourceManager.html#aa5e2ba2fdff5b73d49ac8cf1557c0201">get_animation_pack</a> (const std::string &amp;type, int id)</td></tr>
+<tr class="memdesc:aa5e2ba2fdff5b73d49ac8cf1557c0201"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve un pack de animacion.  <a href="classResourceManager.html#aa5e2ba2fdff5b73d49ac8cf1557c0201">Más...</a><br /></td></tr>
+<tr class="separator:aa5e2ba2fdff5b73d49ac8cf1557c0201"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96ebc6c7e8c752b9d36467b15b0d0680"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSDLSprite.html">SDLSprite</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResourceManager.html#a96ebc6c7e8c752b9d36467b15b0d0680">get_sprite</a> (const std::string &amp;type, int id)</td></tr>
+<tr class="memdesc:a96ebc6c7e8c752b9d36467b15b0d0680"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve un sprite.  <a href="classResourceManager.html#a96ebc6c7e8c752b9d36467b15b0d0680">Más...</a><br /></td></tr>
+<tr class="separator:a96ebc6c7e8c752b9d36467b15b0d0680"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96bc66da71f1cb97bce4de788e27b2dd"><td class="memItemLeft" align="right" valign="top">TTF_Font *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResourceManager.html#a96bc66da71f1cb97bce4de788e27b2dd">get_font</a> (int id)</td></tr>
+<tr class="memdesc:a96bc66da71f1cb97bce4de788e27b2dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve una fuente de SDL.  <a href="classResourceManager.html#a96bc66da71f1cb97bce4de788e27b2dd">Más...</a><br /></td></tr>
+<tr class="separator:a96bc66da71f1cb97bce4de788e27b2dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc77b0a5569c4188904f4ab7e5dab5a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSDLMusic.html">SDLMusic</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResourceManager.html#acc77b0a5569c4188904f4ab7e5dab5a9">get_music</a> (int id)</td></tr>
+<tr class="memdesc:acc77b0a5569c4188904f4ab7e5dab5a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve un objeto <a class="el" href="classSDLMusic.html">SDLMusic</a>.  <a href="classResourceManager.html#acc77b0a5569c4188904f4ab7e5dab5a9">Más...</a><br /></td></tr>
+<tr class="separator:acc77b0a5569c4188904f4ab7e5dab5a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6aae652fb730686c56796c2dc25615df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSDLSoundFx.html">SDLSoundFx</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResourceManager.html#a6aae652fb730686c56796c2dc25615df">get_sound_fx</a> (int id)</td></tr>
+<tr class="memdesc:a6aae652fb730686c56796c2dc25615df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve un objeto <a class="el" href="classSDLSoundFx.html">SDLSoundFx</a>.  <a href="classResourceManager.html#a6aae652fb730686c56796c2dc25615df">Más...</a><br /></td></tr>
+<tr class="separator:a6aae652fb730686c56796c2dc25615df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb13dbf42c9ae5a2a7b9f98660e4bf16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResourceManager.html#afb13dbf42c9ae5a2a7b9f98660e4bf16">free_resources</a> ()</td></tr>
+<tr class="memdesc:afb13dbf42c9ae5a2a7b9f98660e4bf16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libera recursos alocados por el manager.  <a href="classResourceManager.html#afb13dbf42c9ae5a2a7b9f98660e4bf16">Más...</a><br /></td></tr>
+<tr class="separator:afb13dbf42c9ae5a2a7b9f98660e4bf16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e11ea02e68a4434e2a3b578d4bded3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResourceManager.html#a7e11ea02e68a4434e2a3b578d4bded3e">init</a> (<a class="el" href="classSDLTextureLoader.html">SDLTextureLoader</a> &amp;loader)</td></tr>
+<tr class="memdesc:a7e11ea02e68a4434e2a3b578d4bded3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Realiza la carga a memoria de todos los assets. Solo debe ser llamado una vez.  <a href="classResourceManager.html#a7e11ea02e68a4434e2a3b578d4bded3e">Más...</a><br /></td></tr>
+<tr class="separator:a7e11ea02e68a4434e2a3b578d4bded3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Métodos públicos estáticos</h2></td></tr>
+<tr class="memitem:a33b466c53250b7431976a04d42d59036"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classResourceManager.html">ResourceManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResourceManager.html#a33b466c53250b7431976a04d42d59036">get_instance</a> ()</td></tr>
+<tr class="memdesc:a33b466c53250b7431976a04d42d59036"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve la instancia del resource manager.  <a href="classResourceManager.html#a33b466c53250b7431976a04d42d59036">Más...</a><br /></td></tr>
+<tr class="separator:a33b466c53250b7431976a04d42d59036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Singleton para el manager de texturas. </p>
+</div><h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="afb13dbf42c9ae5a2a7b9f98660e4bf16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb13dbf42c9ae5a2a7b9f98660e4bf16">&#9670;&nbsp;</a></span>free_resources()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ResourceManager::free_resources </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Libera recursos alocados por el manager. </p>
+
+</div>
+</div>
+<a id="aa5e2ba2fdff5b73d49ac8cf1557c0201"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5e2ba2fdff5b73d49ac8cf1557c0201">&#9670;&nbsp;</a></span>get_animation_pack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classAnimationPack.html">AnimationPack</a> &amp; ResourceManager::get_animation_pack </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve un pack de animacion. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Tipo del pack de animacion. </td></tr>
+    <tr><td class="paramname">id</td><td>Id del pack de animacion, dentro de su tipo. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classAnimationPack.html">AnimationPack</a>&amp; </dd></dl>
+
+</div>
+</div>
+<a id="a96bc66da71f1cb97bce4de788e27b2dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96bc66da71f1cb97bce4de788e27b2dd">&#9670;&nbsp;</a></span>get_font()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TTF_Font * ResourceManager::get_font </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve una fuente de SDL. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Id de la fuente. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>TTF_Font* </dd></dl>
+
+</div>
+</div>
+<a id="a33b466c53250b7431976a04d42d59036"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33b466c53250b7431976a04d42d59036">&#9670;&nbsp;</a></span>get_instance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classResourceManager.html">ResourceManager</a> &amp; ResourceManager::get_instance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Devuelve la instancia del resource manager. </p>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classResourceManager.html" title="Singleton para el manager de texturas.">ResourceManager</a>&amp; </dd></dl>
+
+</div>
+</div>
+<a id="acc77b0a5569c4188904f4ab7e5dab5a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc77b0a5569c4188904f4ab7e5dab5a9">&#9670;&nbsp;</a></span>get_music()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSDLMusic.html">SDLMusic</a> &amp; ResourceManager::get_music </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve un objeto <a class="el" href="classSDLMusic.html">SDLMusic</a>. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>id de la musica a obtener. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classSDLMusic.html">SDLMusic</a>&amp; </dd></dl>
+
+</div>
+</div>
+<a id="a6aae652fb730686c56796c2dc25615df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6aae652fb730686c56796c2dc25615df">&#9670;&nbsp;</a></span>get_sound_fx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSDLSoundFx.html">SDLSoundFx</a> &amp; ResourceManager::get_sound_fx </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve un objeto <a class="el" href="classSDLSoundFx.html">SDLSoundFx</a>. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Id del efecto de sonido. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classSDLSoundFx.html">SDLSoundFx</a>&amp; </dd></dl>
+
+</div>
+</div>
+<a id="a96ebc6c7e8c752b9d36467b15b0d0680"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96ebc6c7e8c752b9d36467b15b0d0680">&#9670;&nbsp;</a></span>get_sprite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSDLSprite.html">SDLSprite</a> &amp; ResourceManager::get_sprite </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve un sprite. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Tipo del sprite a obtener. </td></tr>
+    <tr><td class="paramname">id</td><td>Id del sprite, dentro de su tipo. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classSDLSprite.html">SDLSprite</a>&amp; </dd></dl>
+
+</div>
+</div>
+<a id="abfe84f445c79af00fd044db3ee1ac163"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfe84f445c79af00fd044db3ee1ac163">&#9670;&nbsp;</a></span>get_texture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSDLTexture.html">SDLTexture</a> &amp; ResourceManager::get_texture </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene una textura. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Tipo de la textura a obtener. </td></tr>
+    <tr><td class="paramname">id</td><td>Id de la textura, dentro del tipo. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classSDLTexture.html">SDLTexture</a>&amp; </dd></dl>
+
+</div>
+</div>
+<a id="a7e11ea02e68a4434e2a3b578d4bded3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e11ea02e68a4434e2a3b578d4bded3e">&#9670;&nbsp;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ResourceManager::init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSDLTextureLoader.html">SDLTextureLoader</a> &amp;&#160;</td>
+          <td class="paramname"><em>loader</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Realiza la carga a memoria de todos los assets. Solo debe ser llamado una vez. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">loader</td><td>Loader a partir del cual se cargaran las texturas. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
+<li>repo/client/engine/<a class="el" href="resource__manager_8h_source.html">resource_manager.h</a></li>
+<li>repo/client/engine/resource_manager.cpp</li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.19
+</small></address>
+</body>
+</html>

@@ -33,9 +33,20 @@ class AnimationPack {
 
     void render(direction_t direction, movement_status_t status, SDL_Rect dest);
 
-    /* Devuelve el ancho/alto en pixeles de un cuadro de la animacion asociada a 
-    la direccion indicada. */
+    /**
+     * @brief Devuelve el ancho en pixeles de un cuadro de la animacion.
+     * 
+     * @param direction Direccion para la cual se desea conocer el ancho del cuadro.
+     * @return int 
+     */
     int get_frame_width(direction_t direction);
+
+    /**
+     * @brief Devuelve el alto en pixeles de un cuadro de la animacion.
+     * 
+     * @param direction Direccion para la cual se desea conocer el alto del cuadro.
+     * @return int 
+     */
     int get_frame_height(direction_t direction);
 
     /* Constructor y asignador por copia. */

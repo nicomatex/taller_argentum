@@ -17,21 +17,63 @@ class Map {
     int loot_layer_index;
 
     bool is_valid;
+
    public:
+    /**
+     * @brief Crea un objeto Map
+     *
+     * @param map_description json de informacion del mapa, generado por TILED
+     * con las modificaciones adecuadas (ver seccion de mapas de la
+     * documentacion).
+     */
     Map(json map_description);
     Map();
+
+    /**
+     * @brief Regenera el mapa.
+     *
+     * @param map_description json de informacion del mapa, generado por TILED
+     * con las modificaciones adecuadas (ver seccion de mapas de la
+     * documentacion).
+     */
     void generate(json map_description);
     ~Map();
+
+    /**
+     * @brief Devuelve el ancho en tiles del mapa.
+     *
+     * @return int
+     */
     int get_width();
+
+    /**
+     * @brief Devuelve el alto en tiles del mapa.
+     *
+     * @return int
+     */
     int get_height();
 
-    /* Devuelve una referencia a los componentes visuales en la n-esima capa del
-     * mapa. */
-
-    //TODO
+    /**
+     * @brief Actualiza la capa de loot del mapa.
+     *
+     * @param loot_info informacion de loot provista por el servidor.
+     */
     void update_loot_layer(nlohmann::json loot_info);
 
+    /**
+     * @brief Devuelve las capas que deben ser renderizadas por detras de las
+     * entidades.
+     *
+     * @return std::vector<std::vector<Decoration>>&
+     */
     std::vector<std::vector<Decoration>>& get_background_layers();
+
+    /**
+     * @brief Devuelve las capas que deben ser renderizadas por delante
+     * de las entidades.
+     *
+     * @return std::vector<std::vector<Decoration>>&
+     */
     std::vector<std::vector<Decoration>>& get_foreground_layers();
 };
 

@@ -26,7 +26,10 @@ typedef std::unordered_map<int, SDLMusic> MusicMap;
 
 typedef std::unordered_map<int, SDLSoundFx> SoundFxMap;
 
-/* Singleton para el manager de texturas. */
+/**
+ * @brief Singleton para el manager de texturas.
+ *
+ */
 class ResourceManager {
    private:
     TextureMap texture_map;
@@ -37,51 +40,115 @@ class ResourceManager {
     SoundFxMap sound_fx_map;
     ResourceManager();
 
-    /* Realiza la carga de texturas indexadas en el texture_index_file, llenando
-    el texture_map. */
+    /**
+     * @brief Realiza la carga de texturas.
+     *
+     * @param loader Loader con el cual se van a cargar las texturas.
+     * @param texture_index_file archivo de indice que contiene
+     * las rutas e informacion de las texturas a cargar.
+     */
     void _load_textures(SDLTextureLoader& loader,
                         const std::string& texture_index_file);
 
-    /* Genera las animaciones indicadas en el sprite_index_file, llenando
-    el animation_pack_map y el sprite_map */
+    /**
+     * @brief Realiza la generacion de sprites.
+     *
+     * @param sprite_index_file Archivo de indice que contiene
+     * toda la informacion de las sprites a generar.
+     */
     void _load_animations(const std::string& sprite_index_file);
 
-    /* Carga las fuentes para texto. */
+    /**
+     * @brief Realiza la carga de fuentes.
+     *
+     * @param font_index_file Archivo de indice que contiene
+     * las rutas e informacion de cada fuente.
+     */
     void _load_fonts(const std::string& font_index_file);
 
-    /* Carga todos los archivos de audio. */
+    /**
+     * @brief Realiza la carga de archivos de audio.
+     *
+     * @param audio_index_file Archivo de indice
+     * que contiene la informacion de los archivos de audio.
+     */
     void _load_audio(const std::string& audio_index_file);
 
    public:
-    /* Devuelve la instancia */
     ~ResourceManager();
+
+    /**
+     * @brief Devuelve la instancia del resource manager.
+     *
+     * @return ResourceManager&
+     */
     static ResourceManager& get_instance();
     ResourceManager(const ResourceManager& other) = delete;
     ResourceManager& operator=(const ResourceManager& other) = delete;
 
-    /* Devuelve una referencia a la textura del tipo e id indicados. */
+    /**
+     * @brief Obtiene una textura.
+     *
+     * @param type Tipo de la textura a obtener.
+     * @param id Id de la textura, dentro del tipo.
+     * @return SDLTexture&
+     */
     SDLTexture& get_texture(const std::string& type, int id);
 
-    /* Devuelve una referencia al pack de animacion del tipo e id indicados. */
+    /**
+     * @brief Devuelve un pack de animacion.
+     *
+     * @param type Tipo del pack de animacion.
+     * @param id Id del pack de animacion, dentro de su tipo.
+     * @return AnimationPack&
+     */
     AnimationPack& get_animation_pack(const std::string& type, int id);
 
-    /* Devuelve una referencia al sprite de tipo e id indicados. */
+    /**
+     * @brief Devuelve un sprite.
+     *
+     * @param type Tipo del sprite a obtener.
+     * @param id Id del sprite, dentro de su tipo.
+     * @return SDLSprite&
+     */
     SDLSprite& get_sprite(const std::string& type, int id);
 
-    /* Devuelve la fuente con el id asociado solicitado. */
+    /**
+     * @brief Devuelve una fuente de SDL.
+     *
+     * @param id Id de la fuente.
+     * @return TTF_Font*
+     */
     TTF_Font* get_font(int id);
 
-    /* Devuelve la musica asociada al id. */
+    /**
+     * @brief Devuelve un objeto SDLMusic.
+     *
+     * @param id id de la musica a obtener.
+     * @return SDLMusic&
+     */
     SDLMusic& get_music(int id);
 
-    /* Devuelve el efecto de sonido asociado al id. */
+    /**
+     * @brief Devuelve un objeto SDLSoundFx
+     *
+     * @param id Id del efecto de sonido.
+     * @return SDLSoundFx&
+     */
     SDLSoundFx& get_sound_fx(int id);
 
-    /* Debe ser llamado para liberar recursos que pueda
-    haber alocado el manager.*/
+    /**
+     * @brief Libera recursos alocados por el manager.
+     *
+     */
     void free_resources();
 
-    /* Realiza la carga y generacion de todos los sprites y sonidos.*/
+    /**
+     * @brief Realiza la carga a memoria de todos los assets. Solo debe ser
+     * llamado una vez
+     *
+     * @param loader Loader a partir del cual se cargaran las texturas.
+     */
     void init(SDLTextureLoader& loader);
 };
 

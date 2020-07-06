@@ -12,8 +12,14 @@ class SDLText : public SDLTexture {
     SDL_Color text_color;
 
    public:
-    /* Crea una textura renderizable que contiene el texto text, del color
-     * indicado.*/
+    /**
+     * @brief Crea un objeto SDLText
+     *
+     * @param text Texto a renderizar.
+     * @param font Fuente a utilizar para el texto.
+     * @param color Color del texto.
+     * @param renderer Renderer al cual se asociara la textura del texto.
+     */
     SDLText(const std::string& text, TTF_Font* font, SDL_Color color,
             SDL_Renderer* renderer);
 
@@ -26,7 +32,11 @@ class SDLText : public SDLTexture {
     SDLText& operator=(SDLText&& other);
     ~SDLText();
 
-    /* Cambia el texto a renderizar al pasado por parametro. */
+    /**
+     * @brief Cambia el texto a renderizar
+     *
+     * @param text Nuevo texto a renderizar.
+     */
     void update_text(const std::string& text);
 };
 

@@ -18,11 +18,37 @@ class TextBox {
     SDL_Color background_color;
 
    public:
+   /**
+    * @brief Crea un objeto TextBox
+    * 
+    * @param render_area Area donde se va a renderizar el textbox.
+    * @param renderer Renderer con el cual se va a renderizar el textbox.
+    * @param nlines Cantidad de lineas del textbox.
+    * @param font_color Color del texto.
+    * @param background_color Color de fondo.
+    * @param font Fuente tipografica del texto.
+    */
     TextBox(SDL_Rect render_area, SDL_Renderer* renderer, int nlines,
             SDL_Color font_color, SDL_Color background_color, TTF_Font* font);
     ~TextBox();
+
+    /**
+     * @brief Borra todo el texto del textbox.
+     * 
+     */
     void erase_all();
+
+    /**
+     * @brief Agrega una nueva linea al textbox.
+     * 
+     * @param string Linea a agregar.
+     */
     void add_line(std::string string);
+
+    /**
+     * @brief Renderiza el textbox.
+     * 
+     */
     void render();
 };
 

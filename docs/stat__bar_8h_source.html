@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.19"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Argentum Online: Fichero Fuente repo/client/engine/UI/stat_bar.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Argentum Online
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.19 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_752f9258976072ab3e06b31dacb87d2d.html">repo</a></li><li class="navelem"><a class="el" href="dir_d25a467ca773a8baa4b1577f05f454ca.html">client</a></li><li class="navelem"><a class="el" href="dir_bdf952ed7ff9844fe0f3d57d51845a66.html">engine</a></li><li class="navelem"><a class="el" href="dir_799e0dc4b3454eeb2567548c64ac0d29.html">UI</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">stat_bar.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __STAT_BAR_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __STAT_BAR_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../SDL/sdl_text.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;SDL2/SDL.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classStatBar.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="classStatBar.html">StatBar</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    SDL_Renderer* renderer;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    SDL_Rect render_area;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    SDL_Color bar_color;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classSDLText.html">SDLText</a> render_text;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> max_value;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> current_value;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">void</span> _render_bar();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">void</span> _render_text();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classStatBar.html#a8d8c67b3d9753d5fe2a8b62c2b49ac75">StatBar</a>(SDL_Rect render_area, TTF_Font* font, SDL_Renderer* renderer,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> max_value, SDL_Color bar_color, SDL_Color text_color);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    ~<a class="code" href="classStatBar.html">StatBar</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classStatBar.html#a764a8275ef581a5e2ca11dc3b43c0793">set_current_value</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> new_current_value);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classStatBar.html#ad291f9a3736fa4d88fcc2c2e0bc5d1e6">set_max_value</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> new_max_value);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classStatBar.html#a2029bab17f0671ae056bcc5b473ed3b3">render</a>();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassStatBar_html_a764a8275ef581a5e2ca11dc3b43c0793"><div class="ttname"><a href="classStatBar.html#a764a8275ef581a5e2ca11dc3b43c0793">StatBar::set_current_value</a></div><div class="ttdeci">void set_current_value(unsigned int new_current_value)</div><div class="ttdoc">Setea el valor actual del stat.</div><div class="ttdef"><b>Definition:</b> stat_bar.cpp:43</div></div>
+<div class="ttc" id="aclassStatBar_html_ad291f9a3736fa4d88fcc2c2e0bc5d1e6"><div class="ttname"><a href="classStatBar.html#ad291f9a3736fa4d88fcc2c2e0bc5d1e6">StatBar::set_max_value</a></div><div class="ttdeci">void set_max_value(unsigned int new_max_value)</div><div class="ttdoc">Setea el nuevo valor maximo del stat.</div><div class="ttdef"><b>Definition:</b> stat_bar.cpp:50</div></div>
+<div class="ttc" id="aclassStatBar_html_a8d8c67b3d9753d5fe2a8b62c2b49ac75"><div class="ttname"><a href="classStatBar.html#a8d8c67b3d9753d5fe2a8b62c2b49ac75">StatBar::StatBar</a></div><div class="ttdeci">StatBar(SDL_Rect render_area, TTF_Font *font, SDL_Renderer *renderer, unsigned int max_value, SDL_Color bar_color, SDL_Color text_color)</div><div class="ttdoc">Crea un objeto StatBar.</div><div class="ttdef"><b>Definition:</b> stat_bar.cpp:3</div></div>
+<div class="ttc" id="aclassStatBar_html_a2029bab17f0671ae056bcc5b473ed3b3"><div class="ttname"><a href="classStatBar.html#a2029bab17f0671ae056bcc5b473ed3b3">StatBar::render</a></div><div class="ttdeci">void render()</div><div class="ttdoc">Renderiza la statbar.</div><div class="ttdef"><b>Definition:</b> stat_bar.cpp:58</div></div>
+<div class="ttc" id="aclassSDLText_html"><div class="ttname"><a href="classSDLText.html">SDLText</a></div><div class="ttdef"><b>Definition:</b> sdl_text.h:9</div></div>
+<div class="ttc" id="aclassStatBar_html"><div class="ttname"><a href="classStatBar.html">StatBar</a></div><div class="ttdef"><b>Definition:</b> stat_bar.h:7</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.19
+</small></address>
+</body>
+</html>

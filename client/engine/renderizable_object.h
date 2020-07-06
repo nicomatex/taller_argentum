@@ -8,35 +8,70 @@ a ser renderizados por pantalla. */
 #include "SDL/sdl_animated_sprite.h"
 #include "SDL/sdl_timer.h"
 
-/* Valores expresados en centesimas de tile. */
+/**
+ * @brief Struct de informacion visual.
+ *
+ */
 typedef struct part_visual_info {
-    int width;
-    int height;
-    int offset_x;
-    int offset_y;
+    int width;    /**< Ancho del objeto en centesimas de tile. */
+    int height;   /**< Alto del objeto en centesimas de tile. */
+    int offset_x; /**< Offset X respecto de la esquina del tile, en centesimas
+                     de tile. */
+    int offset_y; /**< Offset Y respecto de la esquina del tile, en centesimas
+                     de tile. */
 } visual_info_t;
 
-/* Interfaz que deben implementar todos los componentes
-que vayan a ser renderizados por la camara.*/
+/**
+ * @brief Interfaz que deben implementar todos los componentes que vayan a
+ * ser renderizados por la camara.
+ *
+ */
 class RenderizableObject {
    protected:
     visual_info_t visual_info;
 
    public:
+    /**
+     * @brief Crea un objeto RenderizableObject
+     *
+     * @param visual_info Struct de informacion visual.
+     */
     RenderizableObject(visual_info_t visual_info);
     virtual ~RenderizableObject() {}
 
-    /* Renderiza el objeto en pantalla. */
+    /**
+     * @brief Renderiza el objeto en pantalla.
+     *
+     * @param dest Cuadro de la pantalla donde se va a renderizar.
+     */
     virtual void render(SDL_Rect dest) = 0;
 
-    /* Devuelve el ancho en tiles del objeto. */
+    /**
+     * @brief Devuelve el ancho en centesimas de tile.
+     *
+     * @return int
+     */
     int get_width() const;
 
-    /* Devuelve la altura en tiles del objeto. */
+    /**
+     * @brief Devuelve el alto en centesimas de tile.
+     *
+     * @return int
+     */
     int get_height() const;
 
-    /* Devuelve el offset total de renderizacion en centesimas de tile. */
+    /**
+     * @brief Devuelve el offset X total.
+     *
+     * @return int
+     */
     virtual int get_x_offset() const;
+
+    /**
+     * @brief Devuelve el offset Y total.
+     *
+     * @return int
+     */
     virtual int get_y_offset() const;
 
     RenderizableObject(const RenderizableObject& other);
@@ -44,8 +79,17 @@ class RenderizableObject {
     /* Debe ser llamado luego de renderizar para actualizar el estado de las
     constantes visuales.*/
 
+    /**
+     * @brief Setea la informacion visual.
+     * 
+     * @param new_visual_info Nuevo struct de informacion visual.
+     */
     void set_visual_info(visual_info_t new_visual_info);
-    
+
+    /**
+     * @brief Actualiza el objeto.
+     * 
+     */
     virtual void update();
 };
 

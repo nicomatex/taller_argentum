@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.19"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Argentum Online: Fichero Fuente repo/client/engine/SDL/sdl_timer.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Argentum Online
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.19 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_752f9258976072ab3e06b31dacb87d2d.html">repo</a></li><li class="navelem"><a class="el" href="dir_d25a467ca773a8baa4b1577f05f454ca.html">client</a></li><li class="navelem"><a class="el" href="dir_bdf952ed7ff9844fe0f3d57d51845a66.html">engine</a></li><li class="navelem"><a class="el" href="dir_2c6113f8187ec695436941e19bd5d491.html">SDL</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">sdl_timer.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __TIMER_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __TIMER_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="classSDLTimer.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSDLTimer.html">SDLTimer</a> {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keywordtype">bool</span> _is_started;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordtype">bool</span> _is_paused;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    uint32_t start_ticks;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    uint32_t pause_ticks;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classSDLTimer.html#a88a8ce004a403bb505cc9473d295b5f4">SDLTimer</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    ~<a class="code" href="classSDLTimer.html">SDLTimer</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classSDLTimer.html#a88a8ce004a403bb505cc9473d295b5f4">SDLTimer</a>(<span class="keyword">const</span> <a class="code" href="classSDLTimer.html">SDLTimer</a> &amp;other);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classSDLTimer.html">SDLTimer</a> &amp;operator=(<span class="keyword">const</span> <a class="code" href="classSDLTimer.html">SDLTimer</a> &amp;other);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">/* Constructor por movimiento. */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classSDLTimer.html#a88a8ce004a403bb505cc9473d295b5f4">SDLTimer</a>(<a class="code" href="classSDLTimer.html">SDLTimer</a> &amp;&amp;other);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classSDLTimer.html">SDLTimer</a> &amp;operator=(<a class="code" href="classSDLTimer.html">SDLTimer</a> &amp;&amp;other);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSDLTimer.html#a58b2ce855df05aa9293d000db0cefe5c">start</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSDLTimer.html#a92b01aba6e079b249a91299b2ed97392">stop</a>();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSDLTimer.html#a131315313a59676cfdca86091a6f45e0">pause</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSDLTimer.html#a87f3846cafebb2fbc2589c4f2683a219">unpause</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    uint32_t <a class="code" href="classSDLTimer.html#ad1ef8ba7be01c721825d6f73db317353">get_ticks</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classSDLTimer.html#ad25b9e0dabdc8af12d5ac3b8003dd06f">is_started</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classSDLTimer.html#ac0efbe043951d488cc014f578916bd1b">is_paused</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;};</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassSDLTimer_html_a88a8ce004a403bb505cc9473d295b5f4"><div class="ttname"><a href="classSDLTimer.html#a88a8ce004a403bb505cc9473d295b5f4">SDLTimer::SDLTimer</a></div><div class="ttdeci">SDLTimer()</div><div class="ttdoc">Crea un objeto SDLTimer.</div><div class="ttdef"><b>Definition:</b> sdl_timer.cpp:5</div></div>
+<div class="ttc" id="aclassSDLTimer_html_ad1ef8ba7be01c721825d6f73db317353"><div class="ttname"><a href="classSDLTimer.html#ad1ef8ba7be01c721825d6f73db317353">SDLTimer::get_ticks</a></div><div class="ttdeci">uint32_t get_ticks() const</div><div class="ttdoc">Devuelve el tiempo transcurrido desde que se inicio el timer.</div><div class="ttdef"><b>Definition:</b> sdl_timer.cpp:70</div></div>
+<div class="ttc" id="aclassSDLTimer_html_a131315313a59676cfdca86091a6f45e0"><div class="ttname"><a href="classSDLTimer.html#a131315313a59676cfdca86091a6f45e0">SDLTimer::pause</a></div><div class="ttdeci">void pause()</div><div class="ttdoc">Pausa la cuenta del timer.</div><div class="ttdef"><b>Definition:</b> sdl_timer.cpp:54</div></div>
+<div class="ttc" id="aclassSDLTimer_html"><div class="ttname"><a href="classSDLTimer.html">SDLTimer</a></div><div class="ttdef"><b>Definition:</b> sdl_timer.h:5</div></div>
+<div class="ttc" id="aclassSDLTimer_html_a58b2ce855df05aa9293d000db0cefe5c"><div class="ttname"><a href="classSDLTimer.html#a58b2ce855df05aa9293d000db0cefe5c">SDLTimer::start</a></div><div class="ttdeci">void start()</div><div class="ttdoc">Inicia la cuenta del timer.</div><div class="ttdef"><b>Definition:</b> sdl_timer.cpp:39</div></div>
+<div class="ttc" id="aclassSDLTimer_html_ac0efbe043951d488cc014f578916bd1b"><div class="ttname"><a href="classSDLTimer.html#ac0efbe043951d488cc014f578916bd1b">SDLTimer::is_paused</a></div><div class="ttdeci">bool is_paused() const</div><div class="ttdoc">Indica si el timer esta pausado.</div><div class="ttdef"><b>Definition:</b> sdl_timer.cpp:80</div></div>
+<div class="ttc" id="aclassSDLTimer_html_a87f3846cafebb2fbc2589c4f2683a219"><div class="ttname"><a href="classSDLTimer.html#a87f3846cafebb2fbc2589c4f2683a219">SDLTimer::unpause</a></div><div class="ttdeci">void unpause()</div><div class="ttdoc">Despausa la cuenta del timer.</div><div class="ttdef"><b>Definition:</b> sdl_timer.cpp:62</div></div>
+<div class="ttc" id="aclassSDLTimer_html_ad25b9e0dabdc8af12d5ac3b8003dd06f"><div class="ttname"><a href="classSDLTimer.html#ad25b9e0dabdc8af12d5ac3b8003dd06f">SDLTimer::is_started</a></div><div class="ttdeci">bool is_started() const</div><div class="ttdoc">Indica si el timer esta iniciado.</div><div class="ttdef"><b>Definition:</b> sdl_timer.cpp:78</div></div>
+<div class="ttc" id="aclassSDLTimer_html_a92b01aba6e079b249a91299b2ed97392"><div class="ttname"><a href="classSDLTimer.html#a92b01aba6e079b249a91299b2ed97392">SDLTimer::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdoc">Detiene la cuenta del timer.</div><div class="ttdef"><b>Definition:</b> sdl_timer.cpp:47</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.19
+</small></address>
+</body>
+</html>

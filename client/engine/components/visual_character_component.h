@@ -28,25 +28,80 @@ class VisualCharacterComponent : public Component {
     bool initialized;
     std::recursive_mutex m;
 
-    void _draw_if_present(Camera &camera, const std::string& part_name);
+    void _draw_if_present(Camera &camera, const std::string &part_name);
+
    public:
+    /**
+     * @brief Crea un objeto VisualCharacterComponent
+     *
+     * @details Si alguno de los id es cero, no se renderizara la parte con id
+     * 0.
+     *
+     * @param head_id id de la cabeza.
+     * @param body_id id del cuerpo.
+     * @param weapon_id id del arma.
+     * @param shield_id id del escudo.
+     * @param helmet_id id del casco.
+     * @param armor_id id de la armadura.
+     * @param speed velocidad de movimiento del jugador.
+     */
     VisualCharacterComponent(int head_id, int body_id, int weapon_id,
                              int shield_id, int helmet_id, int armor_id,
                              int speed);
     ~VisualCharacterComponent();
+
+    /**
+     * @brief Devuelve una de las partes visuales.
+     *
+     * @param type Tipo de la parte que se desea obtener.
+     * @return Actor&
+     */
     Actor &get_part(const std::string &type);
-    
+
+    /**
+     * @brief Actualiza el jugador segun la informacion de actualizacion
+     * obtenida del servidor.
+     *
+     * @param update_info json con la informacion de actualizacion
+     * correspondiente.
+     */
     void server_update(nlohmann::json update_info);
 
+    /**
+     * @brief Cambia una parte.
+     *
+     * @param type Tipo de la parte que se desea cambiar.
+     * @param texture_family Familia de texturas de la parte que se desea
+     * cambiar.
+     * @param new_part_id id de la nueva parte.
+     * @param visual_info struct de informacion visual.
+     */
     void set_part(const std::string &type, const std::string &texture_family,
                   int new_part_id, visual_info_t visual_info);
 
+    /**
+     * @brief Setea la nueva orientacion del personaje.
+     *
+     * @param new_orientation Nueva orientacion.
+     */
     void set_orientation(direction_t new_orientation);
     void init() override;
     void update() override;
+
+    /**
+     * @brief Dibuja el personaje.
+     *
+     * @param camera Camara con la que se desea renderizar el personaje.
+     */
     void draw(Camera &camera);
 
-    int get_part_id(const std::string& part_name);
+    /**
+     * @brief Devuelve el id asociado a una parte.
+     *
+     * @param part_name Tipo de la parte para la cual se desea obtener el id.
+     * @return int
+     */
+    int get_part_id(const std::string &part_name);
 
     bool is_moving();
 };

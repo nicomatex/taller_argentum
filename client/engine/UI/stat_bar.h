@@ -17,17 +17,40 @@ class StatBar {
     void _render_text();
 
    public:
+   /**
+    * @brief Crea un objeto StatBar
+    * 
+    * @param render_area Area donde se va a renderizar la statbar en pantalla.
+    * @param font Fuente tipografica para los numeros.
+    * @param renderer Renderer con el cual se va a renderizar la statbar.
+    * @param max_value Maximo valor que puede tomar el stat representado.
+    * @param bar_color Color de la barra.
+    * @param text_color Color de los numeros.
+    */
     StatBar(SDL_Rect render_area, TTF_Font* font, SDL_Renderer* renderer,
             unsigned int max_value, SDL_Color bar_color, SDL_Color text_color);
     ~StatBar();
 
-    /* Setea el valor actual del stat que se representa en la barra.
-    Si es mayor al valor maximo, se trunca al valor maximo.
-    void set_current_value(unsigned int new_current_value);*/
+    /**
+     * @brief Setea el valor actual del stat.
+     * 
+     * @details Si es mayor al valor maximo, se trunca al valor maximo.
+     * 
+     * @param new_current_value Nuevo valor actual.
+     */
     void set_current_value(unsigned int new_current_value);
-    /* Setea el valor maximo del stat que se representa en la barra. Debe ser
-    un entero positivo.*/
+
+    /**
+     * @brief Setea el nuevo valor maximo del stat.
+     * 
+     * @param new_max_value Nuevo valor maximo.
+     */
     void set_max_value(unsigned int new_max_value);
+
+    /**
+     * @brief Renderiza la statbar.
+     * 
+     */
     void render();
 };
 

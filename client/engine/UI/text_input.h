@@ -21,25 +21,56 @@ class TextInput {
     SDL_Color background_color;
 
    public:
+    /**
+     * @brief Crea un objeto TextInput
+     *
+     * @param render_area Area de la pantalla donde se va a renderizar el
+     * input.
+     * @param renderer Renderer con el cual se renderizara el input.
+     * @param font_color Color del texto.
+     * @param background_color Color del fondo del input.
+     * @param font Fuente tipografica del texto.
+     */
     TextInput(SDL_Rect render_area, SDL_Renderer* renderer,
               SDL_Color font_color, SDL_Color background_color, TTF_Font* font);
     ~TextInput();
-    /* Agrega caracteres al texto. */
+
+    /**
+     * @brief Agrega caracteres al texto.
+     *
+     * @param characters Caracteres a agregar.
+     */
     void add_characters(char* characters);
 
-    /* Borra un caracter del texto. */
+    /**
+     * @brief Borra un caracter del texto.
+     * @details Si el texto esta vacio, no hace nada.
+     */
     void erase();
 
-    /* Borra todo el texto escrito. */
+    /**
+     * @brief Borra todo el texto escrito.
+     *
+     */
     void erase_all();
 
-    /* Renderiza el textbox. */
+    /**
+     * @brief Renderiza el textbox y todo su texto.
+     *
+     */
     void render();
 
-    /* Devuelve el texto escrito en el input. */
+    /**
+     * @brief Devuelve el texto escrito.
+     * 
+     * @return std::string 
+     */
     std::string get_text();
 
-    /* Activa/desactiva el cursor. */
+    /**
+     * @brief Activa/desactiva el cursor.
+     * 
+     */
     void toggle();
 };
 

@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.19"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Argentum Online: Referencia de la Clase CombatComponent</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Argentum Online
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.19 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Métodos públicos</a> &#124;
+<a href="#pro-attribs">Atributos protegidos</a> &#124;
+<a href="classCombatComponent-members.html">Lista de todos los miembros</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia de la Clase CombatComponent<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+Diagrama de herencias de CombatComponent</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classCombatComponent.png" usemap="#CombatComponent_map" alt=""/>
+  <map id="CombatComponent_map" name="CombatComponent_map">
+<area href="classMonsterCombatComponent.html" alt="MonsterCombatComponent" shape="rect" coords="0,56,163,80"/>
+<area href="classPlayerCombatComponent.html" alt="PlayerCombatComponent" shape="rect" coords="173,56,336,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:a7e46f7ec52c7b71be9879200d60f43f9"><td class="memItemLeft" align="right" valign="top"><a id="a7e46f7ec52c7b71be9879200d60f43f9"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>CombatComponent</b> (unsigned int max_hp, unsigned int max_mp)</td></tr>
+<tr class="separator:a7e46f7ec52c7b71be9879200d60f43f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82e572ab75731e007cca6c3dca41f3f2"><td class="memItemLeft" align="right" valign="top"><a id="a82e572ab75731e007cca6c3dca41f3f2"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>CombatComponent</b> (unsigned int max_hp, unsigned int max_mp, unsigned int current_hp, unsigned int current_mp)</td></tr>
+<tr class="separator:a82e572ab75731e007cca6c3dca41f3f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8499a30a9ef82fe6124bf4d20cbdedd"><td class="memItemLeft" align="right" valign="top"><a id="ac8499a30a9ef82fe6124bf4d20cbdedd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>reset_max</b> (unsigned int max_hp, unsigned int max_mp)</td></tr>
+<tr class="separator:ac8499a30a9ef82fe6124bf4d20cbdedd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a296cc01916a81d780d7db831effd9eb3"><td class="memItemLeft" align="right" valign="top"><a id="a296cc01916a81d780d7db831effd9eb3"></a>
+virtual <a class="el" href="structdamage.html">damage_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>attack</b> ()=0</td></tr>
+<tr class="separator:a296cc01916a81d780d7db831effd9eb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b1a17a3dbedc052814eeae0ce1b20b5"><td class="memItemLeft" align="right" valign="top"><a id="a1b1a17a3dbedc052814eeae0ce1b20b5"></a>
+virtual <a class="el" href="structattack__result.html">attack_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>receive_damage</b> (<a class="el" href="structdamage.html">damage_t</a> raw_damage)=0</td></tr>
+<tr class="separator:a1b1a17a3dbedc052814eeae0ce1b20b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42aeefaeb52bf0c23c6c667607379b93"><td class="memItemLeft" align="right" valign="top"><a id="a42aeefaeb52bf0c23c6c667607379b93"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (uint64_t)=0</td></tr>
+<tr class="separator:a42aeefaeb52bf0c23c6c667607379b93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3a03f31d112349f02392297b45ad9a3"><td class="memItemLeft" align="right" valign="top"><a id="ab3a03f31d112349f02392297b45ad9a3"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>get_max_hp</b> () const</td></tr>
+<tr class="separator:ab3a03f31d112349f02392297b45ad9a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a930ee633285d1b2b768324d8a7fba3f6"><td class="memItemLeft" align="right" valign="top"><a id="a930ee633285d1b2b768324d8a7fba3f6"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>attack_ready</b> () const =0</td></tr>
+<tr class="separator:a930ee633285d1b2b768324d8a7fba3f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17a5248d300f0d62baa042af7fbb985f"><td class="memItemLeft" align="right" valign="top"><a id="a17a5248d300f0d62baa042af7fbb985f"></a>
+virtual nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_data</b> () const</td></tr>
+<tr class="separator:a17a5248d300f0d62baa042af7fbb985f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Atributos protegidos</h2></td></tr>
+<tr class="memitem:a1c153660797ada18c231c17c2de027c5"><td class="memItemLeft" align="right" valign="top"><a id="a1c153660797ada18c231c17c2de027c5"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>max_hp</b></td></tr>
+<tr class="separator:a1c153660797ada18c231c17c2de027c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84c04c764532527ce3e7025ead61fb41"><td class="memItemLeft" align="right" valign="top"><a id="a84c04c764532527ce3e7025ead61fb41"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>current_hp</b></td></tr>
+<tr class="separator:a84c04c764532527ce3e7025ead61fb41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86526ff17a5b2a06913d7eed4f4a98c8"><td class="memItemLeft" align="right" valign="top"><a id="a86526ff17a5b2a06913d7eed4f4a98c8"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>max_mp</b></td></tr>
+<tr class="separator:a86526ff17a5b2a06913d7eed4f4a98c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7a1e41356b7dd659416bfe4c3fb78f4"><td class="memItemLeft" align="right" valign="top"><a id="aa7a1e41356b7dd659416bfe4c3fb78f4"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>current_mp</b></td></tr>
+<tr class="separator:aa7a1e41356b7dd659416bfe4c3fb78f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
+<li>repo/server/game/<a class="el" href="combat__component_8h_source.html">combat_component.h</a></li>
+<li>repo/server/game/combat_component.cpp</li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.19
+</small></address>
+</body>
+</html>
