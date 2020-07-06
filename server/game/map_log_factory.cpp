@@ -2,7 +2,7 @@
 
 map_log_t MapLogFactory::inventory_change(const std::string& player_name,
                                           nlohmann::json inventory_data) {
-    return {LOG_INVENTORY, player_name, inventory_data};
+    return {LOG_INVENTORY, player_name, {{"inventory", inventory_data}}};
 }
 
 map_log_t MapLogFactory::inventory_full(const std::string& player_name) {

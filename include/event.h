@@ -27,7 +27,7 @@ enum client_to_server {
     EV_ID_PICKUP_LOOT
 };
 
-enum server_to_self { SERVER_DROP_CLIENT, SERVER_CHANGE_MAP };
+enum server_to_self { SERVER_DROP_CLIENT = 1000, SERVER_CHANGE_MAP = 1001 };
 
 class Event {
    private:

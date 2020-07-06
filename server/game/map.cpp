@@ -135,6 +135,7 @@ nlohmann::json Map::add_player(nlohmann::json player_info) {
 nlohmann::json Map::rm_player(EntityId entity_id) {
     Player* player =
         static_cast<Player*>(entity_matrix.at(position_map[entity_id]));
+    std::cerr << "Map: deleted " << player->get_name() << std::endl;
     nlohmann::json player_data = player->get_persist_data();
     position_t position = position_map.at(entity_id);
     rm_entity(entity_id);

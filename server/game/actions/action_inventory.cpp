@@ -14,6 +14,6 @@ void ActionInventory::execute(Map& map, EntityId entity_id) const {
     Player* player = static_cast<Player*>(entity);
 
     player->use(slot);
-    map.push_log(MapLogFactory::inventory_change(
-        player->get_name(), {{"inventory", player->get_inventory_data()}}));
+    map.push_log(MapLogFactory::inventory_change(player->get_name(),
+                                                 player->get_inventory_data()));
 }

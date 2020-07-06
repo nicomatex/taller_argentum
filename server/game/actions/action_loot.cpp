@@ -3,6 +3,9 @@
 #include "../entities/player.h"
 #include "../map_log_factory.h"
 
+// Temp
+#include <iostream>
+
 ActionLoot::ActionLoot() {}
 
 void ActionLoot::execute(Map& map, EntityId entity_id) const {

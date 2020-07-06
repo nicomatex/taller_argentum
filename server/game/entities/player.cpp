@@ -2,10 +2,10 @@
 
 #include <vector>
 
+#include "../items/potion.h"
 #include "../map_log_factory.h"
 #include "components/player_combat_component.h"
 #include "components/player_movement_component.h"
-#include "../items/potion.h"
 
 #define DEAD_HEAD_ID 9
 #define DEAD_BODY_ID 5
@@ -106,7 +106,8 @@ void Player::use(SlotId slot) {
                 /* tirar? no equipar? */
             }
     } else if (type == TYPE_POTION) {
-        (static_cast<Potion*>(item))->use(*static_cast<PlayerCombatComponent*>(combat_component));
+        (static_cast<Potion*>(item))
+            ->use(*static_cast<PlayerCombatComponent*>(combat_component));
         delete item;
     }
 }
@@ -154,8 +155,8 @@ void Player::die() {
     drops.push_back(p_combat_component->unequip_chest());
     drops.push_back(p_combat_component->unequip_shield());
     map.drop_loot(id, drops);
-    map.push_log(MapLogFactory::inventory_change(
-        get_name(), {{"inventory", get_inventory_data()}}));
+    map.push_log(
+        MapLogFactory::inventory_change(get_name(), get_inventory_data()));
 }
 
 bool Player::is_alive() const {
