@@ -179,7 +179,10 @@ void ServerManager::add_player(ClientId client_id, nlohmann::json player_data,
 
     // Enviamos la información de inicialización del mapa y del jugador
     nlohmann::json map_data = map_monitor.get_map_data();
+    nlohmann::json map_updates = map_monitor.get_update_data(true);
     send_to(client_id, EventFactory::initialize_map(map_data, player_data));
+    send_to(client_id, EventFactory::update_entities(map_updates["entities"]));
+    send_to(client_id, EventFactory::update_items(map_updates["items"]));
 
     std::cerr << "ServerManager: sent initialize msg to: " << client_id
               << std::endl;

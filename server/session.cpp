@@ -24,7 +24,6 @@ void Session::join() {
 }
 
 void Session::add_client(ClientId new_client) {
-    observer.refresh_entities();
     clients.add_client(new_client);
 }
 

@@ -24,8 +24,6 @@ class ThObserver : public Thread {
 
     void stop();
 
-    void refresh_entities();
-
     ~ThObserver();
 };
 

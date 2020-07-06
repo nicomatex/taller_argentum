@@ -104,8 +104,8 @@ void ThObserver::run() {
     std::cerr << "Observer finished" << std::endl;
 }
 
-void ThObserver::stop() { running = false; }
-
-void ThObserver::refresh_entities() { forced_update = true; }
+void ThObserver::stop() {
+    running = false;
+}
 
 ThObserver::~ThObserver() {}
