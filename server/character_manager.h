@@ -30,6 +30,7 @@ typedef struct character {
     race_type_t race_type;
     unsigned int current_level;
     unsigned int current_exp;
+    bool alive;
 } character_t;
 
 typedef uint32_t CharId;
@@ -65,7 +66,7 @@ class CharacterManager {
 
    /**
     * @brief Agrega un personaje al archivo de structs y al diccionario,
-    *       si ya existe, lanza CharacterAlreadyExistsException()
+    *        si ya existe, lanza CharacterAlreadyExistsException()
     * 
     * @param character_info 
     */
@@ -81,34 +82,41 @@ class CharacterManager {
 
     /**
      * @brief Devuelve el CharId asociado al player_name.
-     *   Si no existe, lanza CharacterNotFoundException.
+     *        Si no existe, lanza CharacterNotFoundException.
      * 
      * @param name 
      * @return CharId 
      */
     CharId get_char_id(std::string name);
 
-    /*
-        Devuelve el character asociado al name por movimiento.
-        Si no existe, lanza CharacterNotFoundException.
-    */
+    /**
+     * @brief  Devuelve el character asociado al name por movimiento.
+     *         Si no existe, lanza CharacterNotFoundException.
+     * 
+     * @param name 
+     * @return nlohmann::json 
+     */
     nlohmann::json get_character(std::string name);
 
-    /*
-        Hace el dump del diccionario actual al archivo de diccionarios, junto
-        con el char_count.
-    */
+    /**
+     * @brief  Hace el dump del diccionario actual al archivo de diccionarios, junto
+     *         con el char_count.
+     * 
+     */
     void save();
 
-    /*
-        Imprime la informacion de un personaje.
-        Si no existe, lanza CharacterNotFoundException.
+   /**
+    * @brief Imprime la informacion de un personaje.
+    *        Si no existe, lanza CharacterNotFoundException.
+    * 
+    * @param name 
     */
     void print_character(std::string name);
 
-    /*
-        Debe realizarse un save.
-    */
+    /**
+     * @brief Debe realizarse un save.
+     * 
+     */
     ~CharacterManager();
 };
 

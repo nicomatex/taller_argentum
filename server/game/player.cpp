@@ -20,7 +20,7 @@ Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
       map(map),
       class_type(player_info["class_type"]),
       race_type(player_info["race_type"]),
-      alive(true) {
+      alive(player_info["alive"]) {
     movement_component = new PlayerMovementComponent(7);
     combat_component = new PlayerCombatComponent(
         player_info["helmet_id"], player_info["armor_id"],
@@ -110,6 +110,7 @@ nlohmann::json Player::get_persist_data() const {
     entity_data["inventory"] = inventory.get_persist_data();
     entity_data["class_type"] = class_type;
     entity_data["race_type"] = race_type;
+    entity_data["alive"] = alive;
     nlohmann::json aux = static_cast<PlayerCombatComponent*>(combat_component)
                              ->get_persist_data();
     for (auto& it : aux.items()) {

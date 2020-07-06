@@ -36,7 +36,8 @@ void CreationHandler::handle(Event& event) {
                                       {"class_type", create_info["class_type"]},
                                       {"race_type", create_info["race_type"]},
                                       {"curr_level", 1},
-                                      {"curr_exp", 0}};
+                                      {"curr_exp", 0},
+                                      {"alive", true}};
         player_info["inventory"] = R"({"items_ids":[0,0,0,0,0,0,0,0,0,0,0,0],
                                  "items_stacks":[0,0,0,0,0,0,0,0,0,0,0,0]})"_json;
         character_manager.add_character(player_info);

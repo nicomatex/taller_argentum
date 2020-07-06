@@ -38,7 +38,7 @@ CharacterManager::~CharacterManager() {
 
 /**
  * @brief Devuelve un character por movimiento.
- *  Lanza std::exception() en caso de que name exceda MAX_LENGTH
+ *        Lanza std::exception() en caso de que name exceda MAX_LENGTH
  * 
  * @param character_info 
  * @return character_t 
@@ -65,6 +65,7 @@ static character_t create_character(const nlohmann::json& character_info) {
     character.race_type = character_info["race_type"];
     character.current_level = character_info["curr_level"];
     character.current_exp = character_info["curr_exp"];
+    character.alive = character_info["alive"];
     return std::move(character);
 }
 
@@ -125,6 +126,7 @@ nlohmann::json CharacterManager::get_character(std::string name) {
     character_info["class_type"] = character.class_type;
     character_info["curr_level"] = character.current_level;
     character_info["curr_exp"] = character.current_exp;
+    character_info["alive"] = character.alive;
     return std::move(character_info);
 }
 
@@ -159,5 +161,6 @@ void CharacterManager::print_character(std::string name) {
     std::cout << "Race type " << character["race_type"] << std::endl;
     std::cout << "Curr level: " << character["curr_level"] << std::endl;
     std::cout << "Curr exp " << character["curr_exp"] << std::endl;
+    std::cout << "Is alive " << character["alive"] << std::endl;
     std::cout << std::endl;
 }
