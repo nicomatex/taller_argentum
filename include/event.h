@@ -4,29 +4,30 @@
 #include "nlohmann/json.hpp"
 
 enum server_to_client {
-    EV_ID_DROP_CLIENT = -1,
-    EV_ID_INITIALIZE_MAP = 0,
-    EV_ID_UPDATE_MAP = 2,
-    EV_ID_UPDATE_ENTITIES = 3,
-    EV_ID_UPDATE_LOOT = 9,
-    EV_ID_CHAT_MESSAGE = 4,
-    EV_ID_NOTIFY_NEW_MAP = 5,
-    EV_ID_DEALT_DAMAGE = 6,
-    EV_ID_RECEIVED_DAMAGE = 7,
-    EV_ID_INVENTORY_UPDATE = 8
+    EV_ID_DROP_CLIENT,
+    EV_ID_INITIALIZE_MAP,
+    EV_ID_UPDATE_MAP,
+    EV_ID_UPDATE_ENTITIES,
+    EV_ID_UPDATE_LOOT,
+    EV_ID_CHAT_MESSAGE,
+    EV_ID_NOTIFY_NEW_MAP,
+    EV_ID_DEALT_DAMAGE,
+    EV_ID_RECEIVED_DAMAGE,
+    EV_ID_INVENTORY_UPDATE
 };
 
 enum client_to_server {
-    EV_ID_DISCONNECT = -1,
-    EV_ID_CONNECT = 0,
-    EV_ID_CREATE = 1,
-    EV_ID_MOVE = 2,
-    EV_ID_ATTACK = 3,
-    EV_ID_COMMAND = 4,
-    EV_ID_INVENTORY = 5,
+    EV_ID_DISCONNECT,
+    EV_ID_CONNECT,
+    EV_ID_CREATE,
+    EV_ID_MOVE,
+    EV_ID_ATTACK,
+    EV_ID_COMMAND,
+    EV_ID_INVENTORY,
+    EV_ID_PICKUP_LOOT
 };
 
-enum server_to_self { SERVER_DROP_CLIENT = -2, SERVER_CHANGE_MAP = 10 };
+enum server_to_self { SERVER_DROP_CLIENT, SERVER_CHANGE_MAP };
 
 class Event {
    private:

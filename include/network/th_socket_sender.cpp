@@ -23,5 +23,3 @@ ThSocketSender& ThSocketSender::operator=(ThSocketSender&& other) {
     protocol = other.protocol;
     return *this;
 }
-
-ThSocketSender::~ThSocketSender() {}

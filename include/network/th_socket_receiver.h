@@ -29,8 +29,6 @@ class ThSocketReceiver : public Thread {
     virtual void run() override;
 
     void stop();
-
-    ~ThSocketReceiver();
 };
 
 #endif  // TH_SOCKET_RECEIVER

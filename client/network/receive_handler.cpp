@@ -35,7 +35,7 @@ void ClientReceiveHandler::handle(Event &ev) {
             // std::cout << "Recibido mensaje de inicializacion" << std::endl;
             handle_initialization(ev);
             break;
-        case EV_ID_MOVE:
+        case EV_ID_UPDATE_MAP:
             // std::cout << "Recibido evento de movimiento" << std::endl;
             handle_move(ev);
             break;

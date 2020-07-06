@@ -19,8 +19,6 @@ class ThSocketSender : public BlockingThEventHandler {
 
     ThSocketSender(ThSocketSender&& other);
     ThSocketSender& operator=(ThSocketSender&& other);
-
-    ~ThSocketSender();
 };
 
 #endif  // TH_CLIENT_SENDER_H

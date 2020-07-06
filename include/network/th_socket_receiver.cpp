@@ -49,5 +49,3 @@ void ThSocketReceiver::run() {
 void ThSocketReceiver::stop() {
     running = false;
 }
-
-ThSocketReceiver::~ThSocketReceiver() {}

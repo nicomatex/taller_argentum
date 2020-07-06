@@ -10,6 +10,7 @@
 #include "events/disconnect_handler.h"
 #include "events/inventory_handler.h"
 #include "events/movement_handler.h"
+#include "events/pickup_loot_handler.h"
 #include "server_manager.h"
 
 // Temp
@@ -62,6 +63,8 @@ ThDispatcher::ThDispatcher() : BlockingThEventHandler() {
         static_cast<EventHandler*>(new InventoryHandler());
     handlers[static_cast<int>(EV_ID_CREATE)] =
         static_cast<EventHandler*>(new CreationHandler());
+    handlers[static_cast<int>(EV_ID_PICKUP_LOOT)] =
+        static_cast<EventHandler*>(new PickupLootHandler());
     // Inicializamos los handlers que sean threads
     for (auto it : handlers) {
         if (it.second->is_threaded()) {
