@@ -396,6 +396,17 @@
             }
         ]
     },
+    "misc_icons": {
+        "basedir" : "assets/sprites/misc/",
+        "textures":[
+            {
+                "id":1,
+                "filename": "1.png",
+                "needs ckey": true,
+                "ckey": [0,0,0]
+            }
+        ]
+    },
     "tilesets": {
         "basedir" : "assets/sprites/tilesets/",
         "textures":[

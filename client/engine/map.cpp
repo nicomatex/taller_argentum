@@ -69,17 +69,11 @@ void Map::generate(json map_description) {
 
 Map::Map() : is_valid(false) {}
 
-Map::Map(json map_description) {
-    generate(map_description);
-}
+Map::Map(json map_description) { generate(map_description); }
 
-int Map::get_width() {
-    return width;
-}
+int Map::get_width() { return width; }
 
-int Map::get_height() {
-    return height;
-}
+int Map::get_height() { return height; }
 
 std::vector<std::vector<Decoration>>& Map::get_background_layers() {
     if (!is_valid) {
@@ -129,6 +123,10 @@ void Map::update_loot_layer(nlohmann::json loot_info) {
             case TYPE_POTION:
                 texture = &ResourceManager::get_instance().get_texture(
                     "potion_icons", item_info["item_info"]["item_id"]);
+                break;
+            case TYPE_GOLD:
+                texture = &ResourceManager::get_instance().get_texture(
+                    "misc_icons", item_info["item_info"]["item_id"]);
                 break;
         }
         if (texture) {
