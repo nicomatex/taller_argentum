@@ -12,6 +12,9 @@ add_library(events
   disconnect_handler.cpp
   inventory_handler.cpp
   pickup_loot_handler.cpp
+  drop_loot_handler.cpp
+  resuscitate_handler.cpp
+  unequip_handler.cpp
 )
 
 target_link_libraries(events

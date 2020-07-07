@@ -13,12 +13,5 @@ void ActionLoot::execute(Map& map, EntityId entity_id) const {
     Item* item = map.pickup_loot(player->get_id());
     if (!item)
         return;
-    try {
-        player->add_item(item);
-        map.push_log(MapLogFactory::inventory_change(
-            player->get_name(), player->get_inventory_data()));
-    } catch (const FullItemContainerException& e) {
-        map.drop_loot(player->get_id(), item);
-        map.push_log(MapLogFactory::inventory_full(player->get_name()));
-    }
+    player->add_item(item);
 }

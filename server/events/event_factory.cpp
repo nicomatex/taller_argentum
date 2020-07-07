@@ -83,3 +83,31 @@ Event EventFactory::inventory_update(const nlohmann::json& inventory_data) {
                               {"inventory", inventory_data}};
     return Event(ev_json);
 }
+
+Event EventFactory::pickup_event(ClientId client_id) {
+    nlohmann::json ev_json = {{"ev_id", EV_ID_PICKUP_LOOT},
+                              {"client_id", client_id}};
+    return Event(ev_json);
+}
+
+Event EventFactory::drop_event(ClientId client_id, SlotId slot,
+                               uint32_t amount) {
+    nlohmann::json ev_json = {{"ev_id", EV_ID_DROP_LOOT},
+                              {"client_id", client_id},
+                              {"slot", slot},
+                              {"amount", amount}};
+    return Event(ev_json);
+}
+
+Event EventFactory::unequip_event(ClientId client_id) {
+    nlohmann::json ev_json = {{"ev_id", SERVER_UNEQUIP},
+                              {"client_id", client_id}};
+    return Event(ev_json);
+}
+
+Event EventFactory::resuscitate_event(ClientId client_id, position_t target) {
+    nlohmann::json ev_json = {{"ev_id", SERVER_RESUSCITATE},
+                              {"client_id", client_id},
+                              {"target", target}};
+    return Event(ev_json);
+}

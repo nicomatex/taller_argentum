@@ -122,20 +122,45 @@ void Player::use(SlotId slot) {
 void Player::add_item(Item* item) {
     if (!item)
         return;
-    if (item->get_type() == TYPE_GOLD) {
-        Gold* gold = static_cast<Gold*>(item);
-        unsigned int actual_gold = inventory.get_gold_stack();
-        unsigned int max_secure_gold =
-            (GOLD_MAX_MULT * std::pow((double)get_level(), GOLD_MAX_EXP));
-        if (actual_gold + gold->get_stack() <= max_secure_gold * GOLD_EXCESS) {
-            inventory.add_gold(gold);
-            delete item;
+    try {
+        if (item->get_type() == TYPE_GOLD) {
+            Gold* gold = static_cast<Gold*>(item);
+            unsigned int actual_gold = inventory.get_gold_stack();
+            unsigned int max_secure_gold =
+                (GOLD_MAX_MULT * std::pow((double)get_level(), GOLD_MAX_EXP));
+            if (actual_gold + gold->get_stack() <=
+                max_secure_gold * GOLD_EXCESS) {
+                inventory.add_gold(gold);
+                delete item;
+            } else {
+                throw FullItemContainerException();
+            }
         } else {
-            throw FullItemContainerException();
+            inventory.add(item);
         }
-    } else {
-        inventory.add(item);
+        map.push_log(
+            MapLogFactory::inventory_change(name, get_inventory_data()));
+    } catch (const FullItemContainerException& e) {
+        map.drop_loot(get_id(), item);
+        map.push_log(MapLogFactory::inventory_full(name));
     }
+}
+
+Item* Player::remove_item(SlotId slot, uint32_t amount) {
+    Item* item = inventory.remove(slot, amount);
+    if (item)
+        map.push_log(
+            MapLogFactory::inventory_change(name, get_inventory_data()));
+    return item;
+}
+
+void Player::unequip() {
+    PlayerCombatComponent* p_combat_component =
+        static_cast<PlayerCombatComponent*>(combat_component);
+    add_item(p_combat_component->unequip_helmet());
+    add_item(p_combat_component->unequip_chest());
+    add_item(p_combat_component->unequip_shield());
+    add_item(p_combat_component->unequip_weapon());
 }
 
 nlohmann::json Player::get_persist_data() const {
@@ -164,6 +189,11 @@ void Player::set_movement(mov_action_t action, direction_t direction) {
         ->set_movement(action, direction);
 }
 
+void Player::revive() {
+    alive = true;
+    static_cast<PlayerCombatComponent*>(combat_component)->regen_max();
+}
+
 void Player::die() {
     experience_component.reduce();
     alive = false;
@@ -189,8 +219,7 @@ void Player::die() {
     if (shield)
         drops.push_back(shield);
     map.drop_loot(id, drops);
-    map.push_log(
-        MapLogFactory::inventory_change(get_name(), get_inventory_data()));
+    map.push_log(MapLogFactory::inventory_change(name, get_inventory_data()));
 }
 
 bool Player::is_alive() const {

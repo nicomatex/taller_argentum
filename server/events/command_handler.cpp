@@ -33,6 +33,15 @@ void CommandHandler::parse_line(const std::string& line) {
             cmd_type = CMD_WHISPER;
             cmd.push_back(line.substr(space + 1, line.npos));
             return;
+        } else if (cmd[0] == "tomar") {
+            cmd_type = CMD_PICKUP;
+        } else if (cmd[0] == "tirar") {
+            cmd.push_back(line.substr(space, line.find(space + 1, line.npos)));
+            cmd_type = CMD_DROP;
+        } else if (cmd[0] == "revivir") {
+            cmd_type = CMD_RESUSCITATE;
+        } else if (cmd[0] == "desequipar") {
+            cmd_type = CMD_UNEQUIP;
         } else if (cmd[0] == "salir") {
             cmd_type = CMD_DISCONNECT;
         } else if (cmd[0] == "ayuda") {
@@ -84,15 +93,41 @@ void CommandHandler::cmd_disconnect(ClientId client_id) {
     server_manager.drop_client(client_id);
 }
 
+void CommandHandler::cmd_pickup(ClientId client_id) {
+    ServerManager& server_manager = ServerManager::get_instance();
+    server_manager.dispatch(EventFactory::pickup_event(client_id));
+}
+
+void CommandHandler::cmd_drop(ClientId client_id, SlotId slot) {
+    ServerManager& server_manager = ServerManager::get_instance();
+    uint32_t amount = 1;
+    if (cmd.size() > 1) {
+        try {
+            amount = std::stoul(cmd[1]);
+        } catch (const std::invalid_argument& e) {
+            throw CommandErrorException();
+        } catch (const std::out_of_range& e) {
+            amount = UINT32_MAX;
+        }
+    }
+    server_manager.dispatch(EventFactory::drop_event(client_id, slot, amount));
+}
+
+void CommandHandler::cmd_unequip(ClientId client_id /*, SlotId slot */) {
+    ServerManager& server_manager = ServerManager::get_instance();
+    server_manager.dispatch(EventFactory::unequip_event(client_id /*, slot*/));
+}
+
+void CommandHandler::cmd_resuscitate(ClientId client_id, position_t target) {
+    ServerManager& server_manager = ServerManager::get_instance();
+    server_manager.dispatch(EventFactory::resuscitate_event(client_id, target));
+}
+
 void CommandHandler::handle(Event& event) {
     nlohmann::json json = event.get_json();
     try {
         std::string msg = json["msg"];
         parse_line(msg);
-
-        ServerManager& server_manager = ServerManager::get_instance();
-        Session& session = server_manager.get_session(json["client_id"]);
-        std::string chat_msg;
 
         switch (cmd_type) {
             case CMD_WHISPER:
@@ -107,8 +142,20 @@ void CommandHandler::handle(Event& event) {
             case CMD_HELP:
                 cmd_help(json["client_id"]);
                 break;
+            case CMD_PICKUP:
+                cmd_pickup(json["client_id"]);
+                break;
+            case CMD_DROP:
+                cmd_drop(json["client_id"], json["slot"]);
+                break;
+            case CMD_RESUSCITATE:
+                cmd_resuscitate(json["client_id"], json["target"]);
+                break;
             case CMD_DISCONNECT:
                 cmd_disconnect(json["client_id"]);
+                break;
+            case CMD_UNEQUIP:
+                cmd_unequip(json["client_id"] /*, json["slot"]*/);
                 break;
             default:
                 throw CommandErrorException();
@@ -118,6 +165,8 @@ void CommandHandler::handle(Event& event) {
         ServerManager::get_instance().send_to(
             json["client_id"],
             EventFactory::chat_message("[info] " + std::string(e.what())));
+    } catch (const std::exception& e) {
+        std::cerr << "Observer: error during line parse.\n";
     }
     space = 0;
     cmd = std::vector<std::string>();

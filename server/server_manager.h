@@ -82,6 +82,7 @@ class ServerManager {
     static ServerManager& get_instance();
 
     ThDispatcher& get_dispatcher();
+    void dispatch(const Event& ev);
 
     ItemFactory& get_item_factory();
     MobFactory& get_mob_factory();

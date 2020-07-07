@@ -129,7 +129,6 @@ nlohmann::json Map::add_player(nlohmann::json player_info) {
 
     player_info = player->get_data();
     player_info["inventory"] = player->get_inventory_data();
-    std::cout << player_info << std::endl;
     return player_info;
 }
 

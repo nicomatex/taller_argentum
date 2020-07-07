@@ -11,7 +11,7 @@ ItemButton::ItemButton(SDL_Rect button_area, SDL_Rect viewport,
     : Button(button_area, viewport, renderer),
       slot_number(slot_number),
       last_clicked_slot(last_clicked_slot),
-      socket_manager(socket_manager){}
+      socket_manager(socket_manager) {}
 
 void ItemButton::on_click() {
     last_clicked_slot = slot_number;
@@ -28,8 +28,7 @@ void ItemButton::on_click() {
     }
 }
 
-
 void ItemButton::on_right_click() {
-  std::cout << "Sending drop event on slot " << slot_number << std::endl;
-  //socket_manager.send(EventFactory::drop_item_event(slot_number));
+    std::cout << "Sending drop event on slot " << slot_number << std::endl;
+    socket_manager.send(EventFactory::drop_item_event(slot_number));
 }

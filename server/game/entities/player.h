@@ -53,6 +53,8 @@ class Player : public Entity {
      */
     race_type_t get_race_type() const;
 
+    void revive();
+
     void die() override;
     bool is_alive() const override;
 
@@ -62,7 +64,29 @@ class Player : public Entity {
      * @param slot Selecciona el casillero del inventario a utilizar.
      */
     void use(SlotId slot);
+
+    /**
+     * @brief Agrega un item al inventario del jugador.
+     *
+     * @param item Item a ser agregado.
+     */
     void add_item(Item* item);
+
+    /**
+     * @brief Quita un item del inventario del jugador.
+     *
+     * @param slot Slot del item que se quiere quitar.
+     * @param amount Cantidad del item a ser quitada.
+     * @return Item* El item quitado o NULL en caso de que no hubiera un item en
+     * esa posicion.
+     */
+    Item* remove_item(SlotId slot, uint32_t amount);
+
+    /**
+     * @brief Desequipa de todo su armamento al jugador.
+     *
+     */
+    void unequip();
 
     /**
      * @brief Setea el movimiento del jugador.
@@ -71,6 +95,12 @@ class Player : public Entity {
      * @param direction Selecciona la dirección del movimiento.
      */
     void set_movement(mov_action_t action, direction_t direction);
+
+    /**
+     * @brief Player update.
+     *
+     * @param delta_t
+     */
     void update(uint64_t delta_t) override;
 
     /**

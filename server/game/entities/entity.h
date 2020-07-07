@@ -12,7 +12,7 @@
 
 class Entity {
    protected:
-    EntityId id;
+    const EntityId id;
     const std::string name;
 
     MovementComponent* movement_component;

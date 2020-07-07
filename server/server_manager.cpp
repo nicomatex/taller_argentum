@@ -128,6 +128,10 @@ ThDispatcher& ServerManager::get_dispatcher() {
     return dispatcher;
 }
 
+void ServerManager::dispatch(const Event& ev) {
+    dispatcher.push_event(ev);
+}
+
 ItemFactory& ServerManager::get_item_factory() {
     return item_factory;
 }

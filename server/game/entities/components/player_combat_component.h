@@ -37,6 +37,7 @@ class PlayerCombatComponent : public CombatComponent {
     Armor* unequip_shield();
     Weapon* unequip_weapon();
 
+    void regen_max();
     void regen(unsigned int amount_hp, unsigned int amount_mp);
     void regen_hp(unsigned int amount_hp);
     void regen_mp(unsigned int amount_mp);

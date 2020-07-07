@@ -6,11 +6,12 @@
 #include "../../include/blocking_th_event_handler.h"
 #include "../../include/event.h"
 #include "../../include/types.h"
+#include "../game/position.h"
 
 enum cmd_type {
     CMD_MESSAGE,
     CMD_MEDITATE,
-    CMD_RESUCITATE,
+    CMD_RESUSCITATE,
     CMD_HEAL,
     CMD_DEPOSIT_ITEM,
     CMD_DEPOSIT_GOLD,
@@ -22,6 +23,7 @@ enum cmd_type {
     CMD_DROP,
     CMD_WHISPER,
     CMD_DISCONNECT,
+    CMD_UNEQUIP,
     CMD_HELP
 };
 
@@ -40,6 +42,14 @@ class CommandHandler : public BlockingThEventHandler {
     void cmd_help(ClientId client_id);
 
     void cmd_disconnect(ClientId client_id);
+
+    void cmd_pickup(ClientId client_id);
+
+    void cmd_drop(ClientId client_id, SlotId slot);
+
+    void cmd_resuscitate(ClientId client_id, position_t target);
+
+    void cmd_unequip(ClientId client_id);
 
    protected:
     void handle(Event& ev) override;

@@ -4,6 +4,9 @@ add_library(game
   actions/action_attack.cpp
   actions/action_inventory.cpp
   actions/action_loot.cpp
+  actions/action_drop.cpp
+  actions/action_unequip.cpp
+  actions/action_resuscitate.cpp
   entities/components/combat_component.cpp
   entities/components/experience_component.cpp
   entities/entity.cpp

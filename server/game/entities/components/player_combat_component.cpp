@@ -192,6 +192,11 @@ Weapon* PlayerCombatComponent::unequip_weapon() {
     return unequiped;
 }
 
+void PlayerCombatComponent::regen_max() {
+    current_hp = max_hp;
+    current_mp = max_mp;
+}
+
 void PlayerCombatComponent::regen_hp(unsigned int amount_hp) {
     if (current_hp + amount_hp > max_hp)
         current_hp = max_hp;
