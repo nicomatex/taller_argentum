@@ -32,10 +32,16 @@ class Button {
     void handle_event(SDL_Event& e);
 
     /**
-     * @brief Accion a ejecutar cuando se clickea el boton.
+     * @brief Accion a ejecutar cuando se clickea el boton izquierdo.
      *
      */
-    virtual void on_click() = 0;
+    virtual void on_click();
+
+    /**
+     * @brief Accion a ejecutar cuando se clickea el boton derecho.
+     * 
+     */
+    virtual void on_right_click();
 };
 
 #endif

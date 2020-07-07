@@ -18,7 +18,8 @@ UiEventHandler::UiEventHandler(SocketManager &socket_manager,
       game_state_monitor(game_state_monitor),
       camera(camera),
       main_render_viewport(main_render_viewport),
-      current_target({0, 0}) {
+      current_target({0, 0}),
+      selected_inventory_slot(0) {
     SDL_StopTextInput();
 }
 
@@ -65,8 +66,7 @@ void UiEventHandler::handle_keyup_move_right() {
     send_event(EventFactory::movement_event(STOP, RIGHT));
 }
 
-
-void UiEventHandler::handle_keydown_pickup(){
+void UiEventHandler::handle_keydown_pickup() {
     send_event(EventFactory::pickup_event());
 }
 
@@ -77,7 +77,9 @@ void UiEventHandler::handle_keydown_return() {
         text_input_enabled = false;
         std::string chat_input = hud.chat.get_input_and_erase();
         if (chat_input != "") {
-            send_event(EventFactory::chat_event(chat_input));
+            send_event(EventFactory::chat_event(chat_input, current_target.x,
+                                                current_target.y,
+                                                selected_inventory_slot));
         }
     } else {
         SDL_StartTextInput();
@@ -114,6 +116,8 @@ void UiEventHandler::handle_click(SDL_Event &e) {
     SDL_GetMouseState(&x, &y);
     bool cast_requested = hud.attempting_cast;
     hud.attempting_cast = false;
+    selected_inventory_slot = hud.inventory.get_last_clicked_slot();
+
     if (x < main_render_viewport.x ||
         x > main_render_viewport.x + main_render_viewport.w) {
         return;
@@ -133,9 +137,10 @@ void UiEventHandler::handle() {
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
         if (e.type == SDL_QUIT) handle_quit();
+        hud.handle_event(e);
         if (e.type == SDL_KEYDOWN) {
             if (e.key.repeat == 0) {
-                switch (e.key.keysym.sym) { //Teclas de movimiento
+                switch (e.key.keysym.sym) {  // Teclas de movimiento
                     case SDLK_UP:
                         handle_keydown_move_up();
                         break;
@@ -150,7 +155,7 @@ void UiEventHandler::handle() {
                         break;
                 }
             }
-            switch (e.key.keysym.sym) { //Teclas de uso general
+            switch (e.key.keysym.sym) {  // Teclas de uso general
                 case SDLK_BACKSPACE:
                     handle_keydown_backspace();
                     break;
@@ -171,7 +176,8 @@ void UiEventHandler::handle() {
                     break;
             }
 
-        } else if (e.type == SDL_KEYUP) { //Teclas de movimiento pero para parar.
+        } else if (e.type ==
+                   SDL_KEYUP) {  // Teclas de movimiento pero para parar.
             if (e.key.repeat == 0) {
                 switch (e.key.keysym.sym) {
                     case SDLK_UP:
@@ -188,11 +194,10 @@ void UiEventHandler::handle() {
                         break;
                 }
             }
-        } else if (e.type == SDL_TEXTINPUT) { // Input de texto
+        } else if (e.type == SDL_TEXTINPUT) {  // Input de texto
             hud.chat.add_characters(e.text.text);
-        } else if (e.type == SDL_MOUSEBUTTONUP) { // Clicks
+        } else if (e.type == SDL_MOUSEBUTTONUP) {  // Clicks
             handle_click(e);
         }
-        hud.handle_event(e);
     }
 }
