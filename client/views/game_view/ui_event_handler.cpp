@@ -104,6 +104,7 @@ void UiEventHandler::handle_keydown_sound_toggle() {
     static bool sound_enabled = true;
     if (sound_enabled) {
         SoundSystem::get_instance().set_master_volume(0);
+        sound_enabled = false;
     } else {
         SoundSystem::get_instance().set_music_volume(MIX_MAX_VOLUME / 5);
         SoundSystem::get_instance().set_sfx_volume(MIX_MAX_VOLUME / 3);
