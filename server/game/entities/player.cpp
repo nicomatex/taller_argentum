@@ -10,7 +10,7 @@
 
 #define DEAD_HEAD_ID 9
 #define DEAD_BODY_ID 5
-#define NEWBIE_LVL 4
+#define NEWBIE_LVL 0
 #define LVL_DIFFERENCE 10
 
 #define GOLD_MAX_MULT 100
@@ -203,6 +203,6 @@ bool Player::can_attack(Entity* attacked) const {
     else if (attacked->get_type() == NPC)
         return false;
     Player* player = static_cast<Player*>(attacked);
-    return player->get_level() > NEWBIE_LVL && get_level() > NEWBIE_LVL &&
-           (std::abs<int>(get_level() - player->get_level()) > LVL_DIFFERENCE);
+    return (player->get_level() > NEWBIE_LVL) && (get_level() > NEWBIE_LVL) &&
+           (std::abs<int>(get_level() - player->get_level()) < LVL_DIFFERENCE);
 }
