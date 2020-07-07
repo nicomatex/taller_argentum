@@ -18,7 +18,9 @@ class ResponsiveScaler {
     SDL_Rect scale(SDL_Rect unscaled_rect);
 
     /* Devuelve un valor escalado segun el factor de escalado de ancho. */
-    int simple_scale(int dimension);
+    int tile_scale(int dimension);
+    
+    int viewport_height_scale(int height);
 };
 
 #endif

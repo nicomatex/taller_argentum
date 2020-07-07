@@ -11,16 +11,15 @@
 #include "decoration.h"
 #include "engine_config.h"
 
-Camera::Camera(PositionComponent &follow_component, SDL_Rect viewport,
-               int map_size, int tile_size, int viewport_width,
-               int viewport_height, int speed)
+Camera::Camera(PositionComponent &follow_component, SDL_Rect viewport, int map_size,
+           int tile_size, int speed)
     : follow_component(follow_component),
       x_center_tile(follow_component.get_x()),
       y_center_tile(follow_component.get_y()),
       map_size(map_size),
       tile_size(tile_size),
-      width_tiles(viewport_width),
-      height_tiles(viewport_height),
+      width_tiles((viewport.w / tile_size)),
+      height_tiles((viewport.h / tile_size)),
       speed(speed),
       viewport(viewport),
       camera_offset_x(0),
@@ -68,7 +67,6 @@ SDL_Rect Camera::_get_render_area(RenderizableObject *component, int x, int y,
 SDL_Rect Camera::_get_render_area(Decoration &decoration) {
     int camera_corner_x_tile = x_center_tile - (width_tiles / 2);
     int camera_corner_y_tile = y_center_tile - (height_tiles / 2);
-
     int relative_x_tile = decoration.get_x() - camera_corner_x_tile;
     int relative_y_tile = decoration.get_y() - camera_corner_y_tile;
 
@@ -95,7 +93,9 @@ void Camera::_update_offset() {
 
     int delta_offset = (tile_size * movement_timer.get_ticks());
     delta_offset /= movement_transition_time;
-
+    if(delta_offset < 1){  
+        delta_offset = 1;
+    }
     bool stop_x = false;
     bool stop_y = false;
 
@@ -132,6 +132,7 @@ void Camera::_update_offset() {
 
 void Camera::update() {
     _update_offset();
+
     if (follow_component.get_x() <= map_size - (width_tiles / 2) &&
         follow_component.get_x() >= (width_tiles / 2)) {
         int new_center_x = follow_component.get_x();

@@ -6,8 +6,8 @@
 #include "../../engine/UI/stat_bar.h"
 #include "../../engine/entity_factory.h"
 #include "../../engine/resource_manager.h"
-#include "../responsive_scaler.h"
 #include "../../engine/sound_system.h"
+#include "../responsive_scaler.h"
 
 GameView::GameView(ResponsiveScaler &scaler, int follow_entity_id,
                    SocketManager &socket_manager, SDLWindow &window,
@@ -27,8 +27,7 @@ GameView::GameView(ResponsiveScaler &scaler, int follow_entity_id,
                  .get_from_id(follow_entity_id)
                  .get_component<PositionComponent>(),
              scaler.scale(VIEWPORT_MAIN_RENDER), map_info["width"],
-             scaler.simple_scale(TILE_SIZE), VIEWPORT_WIDTH, VIEWPORT_HEIGHT,
-             CAMERA_SPEED),
+             scaler.tile_scale(TILE_SIZE), CAMERA_SPEED),
       ui_event_handler(socket_manager, game_state_monitor, hud, camera,
                        scaler.scale(VIEWPORT_MAIN_RENDER)),
       map(map_info) {}

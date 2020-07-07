@@ -20,7 +20,7 @@
 using json = nlohmann::json;
 
 GameClient::GameClient(json config)
-    : window(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT, WINDOW_TITLE,
+    : window(config["window_width"], config["window_height"], WINDOW_TITLE,
              config["fullscreen"]),
       socket_manager(
           Socket(std::string(config["server"]), std::string(config["port"])),

@@ -1,5 +1,7 @@
 {
 	"server": "localhost",
 	"port": "27016",
-	"fullscreen": false
+	"fullscreen": false,
+	"window_width":960,
+	"window_height":640
 }

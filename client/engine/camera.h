@@ -65,7 +65,7 @@ class Camera {
      * @param speed Velocidad de la camara, en tiles/segundo.
      */
     Camera(PositionComponent &follow_component, SDL_Rect viewport, int map_size,
-           int tile_size, int viewport_width, int viewport_height, int speed);
+           int tile_size, int speed);
     ~Camera();
 
     /**

@@ -14,6 +14,7 @@ class IconGrid {
     int icon_height;
     int cols;
     int rows;
+    bool original_proportions;
 
     /* Indica que proporcion del cuadrito correspondiente ocupa el icono. Va de
      * 0 a 1.*/
@@ -31,9 +32,12 @@ class IconGrid {
      * @param cols Cantidad de columnas de la grilla.
      * @param size_proportion Proporcion de tamanio de cada cuadro que ocuparan
      * los iconos. Debe ir entre 0 y 1.
+     * @param original_proportions indica si se debe resizear los iconos para
+     * que matcheen el tamanio de cada cuadradito, o si se debe conservar las
+     * proporciones de la textura original.
      */
     IconGrid(SDL_Rect render_area, SDL_Renderer* renderer, int rows, int cols,
-             float size_proportion);
+             float size_proportion, bool original_proportions = false);
     ~IconGrid();
 
     /* Inserta un icono en la posicion indicada. */
@@ -54,7 +58,7 @@ class IconGrid {
 
     /**
      * @brief Renderiza el icongrid.
-     * 
+     *
      */
     void render();
 };
