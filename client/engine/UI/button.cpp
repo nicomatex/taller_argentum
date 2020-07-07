@@ -24,6 +24,13 @@ void Button::handle_event(SDL_Event& e) {
     if (e.type == SDL_MOUSEBUTTONUP) {
         int x, y;
         SDL_GetMouseState(&x, &y);
-        if(_button_clicked(x,y)) on_click();
+        if(_button_clicked(x,y)){
+            if(e.button.button == SDL_BUTTON_LEFT) on_click();
+            if(e.button.button == SDL_BUTTON_RIGHT) on_right_click();
+        }
     }
 }
+
+void Button::on_click(){}
+
+void Button::on_right_click(){}

@@ -26,7 +26,8 @@ class EventFactory {
                                std::string password);
 
     /* Evento del chat. */
-    static Event chat_event(std::string message);
+    static Event chat_event(std::string message, int target_x, int target_y,
+                            int inventory_slot);
 
     /* Evento de movimiento. Recibe si se esta comenzando o finalizando el
     movimiento y en que direccion.*/
@@ -46,6 +47,8 @@ class EventFactory {
                               race_type_t race_type);
 
     static Event pickup_event();
+
+    static Event drop_item_event(int slot);
 };
 
 #endif

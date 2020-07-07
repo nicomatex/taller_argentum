@@ -1,6 +1,7 @@
 #include "event_factory.h"
 
 #include "../../include/nlohmann/json.hpp"
+#include <iostream>
 
 using json = nlohmann::json;
 
@@ -19,8 +20,21 @@ Event EventFactory::connect_event(std::string character_name,
     return Event(event);
 }
 
-Event EventFactory::chat_event(std::string message) {
-    json event = {{"ev_id", EV_ID_COMMAND}, {"msg", message}};
+Event EventFactory::chat_event(std::string message, int target_x, int target_y, int inventory_slot) {
+    json event = {
+        {"ev_id", EV_ID_COMMAND}, 
+        {"msg", message},
+        {"target",
+            {
+                {"x",target_x},
+                {"y",target_y}
+            }
+        },
+        {"slot", inventory_slot}
+    };
+
+    std::cout << "Generating chat event, with target position " << target_x << " - " << target_y << std::endl;
+    std::cout << "And target inventory slot " << inventory_slot << std::endl;
     return Event(event);
 }
 
@@ -58,3 +72,12 @@ Event EventFactory::pickup_event() {
     json event = {{"ev_id", EV_ID_PICKUP_LOOT}};
     return Event(event);
 } 
+
+
+Event EventFactory::drop_item_event(int slot) {
+    json event = {
+        {"ev_id",0},
+        {"slot",slot}
+    };
+    return Event(event);
+}

@@ -9,6 +9,7 @@
 class ItemButtonGrid {
    private:
     std::vector<ItemButton> buttons;
+    int last_clicked_slot;
 
    public:
     ItemButtonGrid(SDL_Rect inventory_area, SDL_Rect viewport,
@@ -16,7 +17,9 @@ class ItemButtonGrid {
                    SocketManager& socket_manager);
     ~ItemButtonGrid();
 
-    void handle_event(SDL_Event &e);
+    void handle_event(SDL_Event& e);
+
+    int get_last_clicked_slot();
 };
 
 #endif

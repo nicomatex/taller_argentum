@@ -15,7 +15,7 @@ class Inventory {
     ItemButtonGrid item_button_grid;
 
    public:
-    Inventory(SDL_Rect inventory_area, SDL_Rect viewport, int rows, int cols,
+    Inventory(SDL_Rect inventory_area, SDL_Rect viewport, int rows, int cols, 
               TTF_Font* numbers_font, SDL_Renderer* renderer,
               SocketManager& socket_manager);
     ~Inventory();
@@ -23,6 +23,7 @@ class Inventory {
     void render();
     void set_item(int slot, SDLTexture* icon, int quantity);
     void handle_event(SDL_Event& e);
+    int get_last_clicked_slot();
 };
 
 #endif

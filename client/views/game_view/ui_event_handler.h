@@ -18,7 +18,8 @@ class UiEventHandler {
     Camera &camera;
     SDL_Rect main_render_viewport;
     position_t current_target;
-
+    int selected_inventory_slot;
+    
    public:
     UiEventHandler(SocketManager &socket_manager,
                    GameStateMonitor &game_state_monitor, Hud &hud,

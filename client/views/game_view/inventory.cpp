@@ -23,3 +23,8 @@ void Inventory::set_item(int slot, SDLTexture* icon, int quantity) {
 }
 
 void Inventory::handle_event(SDL_Event& e) { item_button_grid.handle_event(e); }
+
+
+int Inventory::get_last_clicked_slot(){
+    return item_button_grid.get_last_clicked_slot();
+}
