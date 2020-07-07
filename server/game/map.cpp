@@ -120,8 +120,12 @@ std::queue<map_change_t>& Map::get_transitions() {
 nlohmann::json Map::add_player(nlohmann::json player_info) {
     // TODO: sacar esto
 
-    std::cerr << "Agregando bicho" << std::endl;
+    std::cerr << "Agregando bichos" << std::endl;
     add_entity(entity_factory.create_monster(1), {40, 40});
+    add_entity(entity_factory.create_monster(2), {35, 35});
+    add_entity(entity_factory.create_monster(3), {30,20});
+    add_entity(entity_factory.create_monster(4), {38, 22});
+    add_entity(entity_factory.create_monster(5), {27, 26});
 
     Player* player = entity_factory.create_player(player_info);
 

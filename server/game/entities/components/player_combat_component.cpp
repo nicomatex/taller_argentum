@@ -78,7 +78,6 @@ attack_result_t PlayerCombatComponent::receive_damage(damage_t raw_damage) {
     std::mt19937 gen(rd());
     std::uniform_real_distribution<> dist(0,1);
     if (!raw_damage.crit && (std::pow(dist(gen), stats.agility) < DODGE_THRESHOLD)) {
-        std::cout << "Dodged" << std::endl;
         result = {true, 0, true, false};
     }
     int received_dmg = raw_damage.damage;
