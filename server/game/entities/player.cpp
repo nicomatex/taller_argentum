@@ -10,6 +10,10 @@
 #define DEAD_HEAD_ID 9
 #define DEAD_BODY_ID 5
 
+#define GOLD_MAX_MULT 100
+#define GOLD_MAX_EXP 1.1
+#define GOLD_EXCESS 1.5
+
 // Temp
 #include <iostream>
 
@@ -116,8 +120,15 @@ void Player::add_item(Item* item) {
     if (!item)
         return;
     if (item->get_type() == TYPE_GOLD) {
-        inventory.add_gold(static_cast<Gold*>(item));
-        delete item; //TODO: hablar con los chicos sobre esto
+        Gold* gold = static_cast<Gold*>(item);
+        unsigned int actual_gold = inventory.get_gold_stack();
+        unsigned int max_secure_gold = (GOLD_MAX_MULT * std::pow((double)get_level(), GOLD_MAX_EXP));
+        if (actual_gold + gold->get_stack() <= max_secure_gold * GOLD_EXCESS) {
+            inventory.add_gold(gold);
+            delete item;
+        } else {
+            throw FullItemContainerException();
+        }
     } else {
         inventory.add(item);
     }      
@@ -151,9 +162,13 @@ void Player::set_movement(mov_action_t action, direction_t direction) {
 
 void Player::die() {
     experience_component.reduce();
-    //inventory.remove_gold();
     alive = false;
     std::vector<Item*> drops = inventory.remove_all();
+    unsigned int actual_gold = inventory.get_gold_stack();
+    unsigned int max_secure_gold = (GOLD_MAX_MULT * std::pow((double)get_level(), GOLD_MAX_EXP));
+    if (actual_gold > max_secure_gold) {
+        drops.push_back(inventory.remove_gold(actual_gold - max_secure_gold));
+    }
     PlayerCombatComponent* p_combat_component =
         static_cast<PlayerCombatComponent*>(combat_component);
     Weapon *weapon = p_combat_component->unequip_weapon();

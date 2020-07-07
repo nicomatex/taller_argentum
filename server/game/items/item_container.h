@@ -99,7 +99,7 @@ class ItemContainer {
     const Item& get_item(SlotId slot_id) const;
     bool slot_is_free(SlotId slot_id) const;
     bool has_item(ItemId item_id);
-
+    unsigned int get_gold_stack() const;
     void add_gold(Gold* gold);
     void add_gold(Gold* gold, uint32_t stack);
     Gold* remove_gold();

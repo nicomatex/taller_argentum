@@ -80,7 +80,7 @@ ServerManager::ServerManager()
             {"alive", true}};
         fran_info["inventory"] = R"({"items_ids":[401,0,0,0,0,0,0,0,0,0,0,0],
                                  "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0],
-                                 "curr_gold":20})"_json;
+                                 "curr_gold":140})"_json;
         character_manager.add_character(fran_info);
     }
 
@@ -94,16 +94,16 @@ ServerManager::ServerManager()
                                    {"armor_id", 100},
                                    {"shield_id", 200},
                                    {"weapon_id", 300},
-                                   {"curr_hp", 100},
-                                   {"curr_mp", 36},
+                                   {"curr_hp", 10},
+                                   {"curr_mp", 10},
                                    {"class_type", PRIEST},
                                    {"race_type", GNOME},
-                                   {"curr_level", 16},
-                                   {"curr_exp", 131000},
+                                   {"curr_level", 1},
+                                   {"curr_exp", 200},
                                    {"alive", true}};
         eze_info["inventory"] = R"({"items_ids":[401,0,0,0,0,0,0,0,0,0,0,0],
                                  "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0],
-                                 "curr_gold":100})"_json;
+                                 "curr_gold":120})"_json;
         character_manager.add_character(eze_info);
     }
 

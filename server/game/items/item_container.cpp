@@ -187,6 +187,9 @@ void ItemContainer::add_gold(Gold* other_gold, uint32_t stack) {
         other_gold->decrease_stack(stack);
     }
 }
+unsigned int ItemContainer::get_gold_stack() const {
+    return gold->get_stack();
+}
 
 Gold* ItemContainer::remove_gold() {
     ServerManager& server_manager = ServerManager::get_instance();
