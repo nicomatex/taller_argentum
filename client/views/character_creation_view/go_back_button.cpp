@@ -1,6 +1,5 @@
 #include "go_back_button.h"
-#include "../../engine/resource_manager.h"
-
+#include "../../engine/sound_system.h"
 GoBackButton::GoBackButton(SDL_Rect button_area, SDL_Rect viewport,
                            SDL_Renderer* renderer,
                            GameStateMonitor& game_state_monitor)
@@ -9,6 +8,6 @@ GoBackButton::GoBackButton(SDL_Rect button_area, SDL_Rect viewport,
 
 
 void GoBackButton::on_click(){
-    ResourceManager::get_instance().get_sound_fx(3).play();
+    SoundSystem::get_instance().play_ui_sfx(3);
     game_state_monitor.set_game_state(LOGGING);
 }

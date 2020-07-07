@@ -1,5 +1,6 @@
 #ifndef __MAP_H
 #define __MAP_H
+#include <exception>
 #include <vector>
 
 #include "../../include/nlohmann/json.hpp"
@@ -8,10 +9,20 @@
 
 using json = nlohmann::json;
 
+class MapError : public std::exception {
+   private:
+    char msg_error[256];
+
+   public:
+    explicit MapError(const char* msg) noexcept;
+    const char* what() const noexcept;
+    ~MapError() noexcept {}
+};
+
 /**
  * @brief Mapa. Contiene toda la informacion estatica del mapa, asi como
  * tambien el loot que esta tirado en el suelo.
- * 
+ *
  */
 class Map {
    private:

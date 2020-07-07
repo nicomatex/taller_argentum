@@ -16,6 +16,7 @@
 #include "views/game_view/game_view.h"
 #include "views/login_view/login_view.h"
 #include "views/responsive_scaler.h"
+#include "engine/asset_loading_error.h"
 
 using json = nlohmann::json;
 
@@ -29,7 +30,13 @@ GameClient::GameClient(json config)
       receive_handler(map_change_buffer, chat_buffer, inventory_buffer, loot_buffer,
                       game_state_monitor) {
     SDLTextureLoader texture_loader(window.init_renderer());
-    ResourceManager::get_instance().init(texture_loader);
+    try{
+        ResourceManager::get_instance().init(texture_loader);
+    }catch(AssetLoadingError &e){
+        std::cerr << e.what() << std::endl;
+        std::cerr << "Is the game installed correctly? run 'make install' " << std::endl;
+        throw;
+    }
     receive_handler.start();
     socket_manager.start();
     game_state_monitor.set_connected_status(true);

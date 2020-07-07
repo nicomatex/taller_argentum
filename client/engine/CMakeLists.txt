@@ -7,8 +7,9 @@ add_library(engine
   map.cpp
   renderizable_object.cpp
   resource_manager.cpp
-  engine_error.cpp
+  asset_loading_error.cpp
   sound_system.cpp
+  engine_error.cpp
 )
 
 
