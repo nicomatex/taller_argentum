@@ -151,14 +151,19 @@ void Player::set_movement(mov_action_t action, direction_t direction) {
 
 void Player::die() {
     experience_component.reduce();
+    //inventory.remove_gold();
     alive = false;
     std::vector<Item*> drops = inventory.remove_all();
     PlayerCombatComponent* p_combat_component =
         static_cast<PlayerCombatComponent*>(combat_component);
-    drops.push_back(p_combat_component->unequip_weapon());
-    drops.push_back(p_combat_component->unequip_helmet());
-    drops.push_back(p_combat_component->unequip_chest());
-    drops.push_back(p_combat_component->unequip_shield());
+    Weapon *weapon = p_combat_component->unequip_weapon();
+    if (weapon) drops.push_back(weapon);
+    Armor *helmet = p_combat_component->unequip_helmet();
+    if (helmet) drops.push_back(helmet);
+    Armor *chest = p_combat_component->unequip_chest();
+    if (chest) drops.push_back(chest);
+    Armor *shield = p_combat_component->unequip_shield(); 
+    if (shield)  drops.push_back(shield);
     map.drop_loot(id, drops);
     map.push_log(
         MapLogFactory::inventory_change(get_name(), get_inventory_data()));
