@@ -1,6 +1,6 @@
 #include "request_char_creation_button.h"
 
-#include "../../engine/resource_manager.h"
+#include "../../engine/sound_system.h"
 #include "../../network/event_factory.h"
 
 RequestCharacterCreationButton::RequestCharacterCreationButton(
@@ -15,7 +15,8 @@ RequestCharacterCreationButton::RequestCharacterCreationButton(
       game_state_monitor(game_state_monitor) {}
 
 void RequestCharacterCreationButton::on_click() {
-    ResourceManager::get_instance().get_sound_fx(3).play();
+    SoundSystem::get_instance().play_ui_sfx(3);
+
     socket_manager.send(EventFactory::create_event(
         character_name_input.get_text(),
         race_and_class_selector.get_selected_class(),

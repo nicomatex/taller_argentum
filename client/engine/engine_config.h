@@ -24,7 +24,7 @@
 
 /* Sonidos */
 #define MAX_CONCURRENT_SOUNDS 3
-#define SOUND_TIMEOUT 200 //Tiempo cada el cual se libera un slot de sonido.
+#define SOUND_TIMEOUT 60 //Tiempo cada el cual se libera un slot de sonido.
 
 /* Indices */
 #define TILESET_ID_INDEX 0

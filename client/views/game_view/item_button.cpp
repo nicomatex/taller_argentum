@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "../../engine/resource_manager.h"
+#include "../../engine/sound_system.h"
 #include "../../network/event_factory.h"
 
 ItemButton::ItemButton(SDL_Rect button_area, SDL_Rect viewport,
@@ -21,7 +21,8 @@ void ItemButton::on_click() {
     }
     if (double_click_timer.get_ticks() <= 500) {
         socket_manager.send(EventFactory::inventory_event(slot_number));
-        ResourceManager::get_instance().get_sound_fx(3).play();
+        SoundSystem::get_instance().play_ui_sfx(3);
+
         double_click_timer.stop();
     } else {
         double_click_timer.start();

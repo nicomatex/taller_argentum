@@ -6,13 +6,19 @@
 
 #include "../../include/nlohmann/json.hpp"
 #include "../../include/types.h"
+#include "asset_loading_error.h"
 #include "decoration.h"
 #include "engine_config.h"
-#include "engine_error.h"
 #include "resource_manager.h"
 #include "visual_config.h"
 
 using json = nlohmann::json;
+
+MapError::MapError(const char* msg) noexcept {
+    snprintf(msg_error, 256, "%s", msg);
+}
+
+const char* MapError::what() const noexcept { return msg_error; }
 
 void Map::generate(json map_description) {
     background_layers.clear();
@@ -77,14 +83,14 @@ int Map::get_height() { return height; }
 
 std::vector<std::vector<Decoration>>& Map::get_background_layers() {
     if (!is_valid) {
-        throw EngineError(MSG_ERR_MAP_NOT_INITIALIZED);
+        throw MapError(MSG_ERR_MAP_NOT_INITIALIZED);
     }
     return background_layers;
 }
 
 std::vector<std::vector<Decoration>>& Map::get_foreground_layers() {
     if (!is_valid) {
-        throw EngineError(MSG_ERR_MAP_NOT_INITIALIZED);
+        throw MapError(MSG_ERR_MAP_NOT_INITIALIZED);
     }
     return foreground_layers;
 }
@@ -93,48 +99,60 @@ Map::~Map() {}
 
 void Map::update_loot_layer(nlohmann::json loot_info) {
     background_layers[loot_layer_index].clear();
-    for (auto& item : loot_info["items"].items()) {
-        nlohmann::json item_info = item.value();
-        SDLTexture* texture = NULL;
-        switch (int(item_info["item_info"]["type"])) {
-            case TYPE_INVALID:
-                break;
-            case TYPE_WEAPON:
-                texture = &ResourceManager::get_instance().get_texture(
-                    "weapon_icons", item_info["item_info"]["item_id"]);
-                break;
-            case TYPE_ARMOR:
-                switch (
-                    int(item_info["item_info"]["armor_info"]["slot_info"])) {
-                    case 0:
-                        texture = &ResourceManager::get_instance().get_texture(
-                            "helmet_icons", item_info["item_info"]["item_id"]);
-                        break;
-                    case 1:
-                        texture = &ResourceManager::get_instance().get_texture(
-                            "armor_icons", item_info["item_info"]["item_id"]);
-                        break;
-                    case 2:
-                        texture = &ResourceManager::get_instance().get_texture(
-                            "shield_icons", item_info["item_info"]["item_id"]);
-                        break;
-                }
-                break;
-            case TYPE_POTION:
-                texture = &ResourceManager::get_instance().get_texture(
-                    "potion_icons", item_info["item_info"]["item_id"]);
-                break;
-            case TYPE_GOLD:
-                texture = &ResourceManager::get_instance().get_texture(
-                    "misc_icons", item_info["item_info"]["item_id"]);
-                break;
+    try {
+        for (auto& item : loot_info["items"].items()) {
+            nlohmann::json item_info = item.value();
+            SDLTexture* texture = NULL;
+            switch (int(item_info["item_info"]["type"])) {
+                case TYPE_INVALID:
+                    break;
+                case TYPE_WEAPON:
+                    texture = &ResourceManager::get_instance().get_texture(
+                        "weapon_icons", item_info["item_info"]["item_id"]);
+                    break;
+                case TYPE_ARMOR:
+                    switch (int(
+                        item_info["item_info"]["armor_info"]["slot_info"])) {
+                        case 0:
+                            texture =
+                                &ResourceManager::get_instance().get_texture(
+                                    "helmet_icons",
+                                    item_info["item_info"]["item_id"]);
+                            break;
+                        case 1:
+                            texture =
+                                &ResourceManager::get_instance().get_texture(
+                                    "armor_icons",
+                                    item_info["item_info"]["item_id"]);
+                            break;
+                        case 2:
+                            texture =
+                                &ResourceManager::get_instance().get_texture(
+                                    "shield_icons",
+                                    item_info["item_info"]["item_id"]);
+                            break;
+                    }
+                    break;
+                case TYPE_POTION:
+                    texture = &ResourceManager::get_instance().get_texture(
+                        "potion_icons", item_info["item_info"]["item_id"]);
+                    break;
+                case TYPE_GOLD:
+                    texture = &ResourceManager::get_instance().get_texture(
+                        "misc_icons", item_info["item_info"]["item_id"]);
+                    break;
+            }
+            if (texture) {
+                SDLSprite loot_sprite(*texture, 1, 1, 0, 0,
+                                      texture->get_width(),
+                                      texture->get_height());
+                background_layers[loot_layer_index].push_back(
+                    Decoration(loot_sprite, item_info["pos"]["x"],
+                               item_info["pos"]["y"], FLOOR_TILE_CONFIG));
+            }
         }
-        if (texture) {
-            SDLSprite loot_sprite(*texture, 1, 1, 0, 0, texture->get_width(),
-                                  texture->get_height());
-            background_layers[loot_layer_index].push_back(
-                Decoration(loot_sprite, item_info["pos"]["x"],
-                           item_info["pos"]["y"], FLOOR_TILE_CONFIG));
-        }
+    } catch (std::exception& e) {
+        std::cerr << e.what() << std::endl;
+        throw MapError("Error updating map");
     }
 }

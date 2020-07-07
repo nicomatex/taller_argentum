@@ -2,7 +2,7 @@
 
 #include "../../client_config.h"
 #include "../../engine/resource_manager.h"
-
+#include "../../engine/sound_system.h"
 CharacterCreationView::CharacterCreationView(
     SDLWindow &window, ResponsiveScaler &scaler,
     GameStateMonitor &game_state_monitor, SocketManager &socket_manager)
