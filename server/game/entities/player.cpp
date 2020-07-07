@@ -10,7 +10,7 @@
 
 #define DEAD_HEAD_ID 9
 #define DEAD_BODY_ID 5
-#define NEWBIE_LVL 0
+#define NEWBIE_LVL 12
 #define LVL_DIFFERENCE 10
 
 #define GOLD_MAX_MULT 100

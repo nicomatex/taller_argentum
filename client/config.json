@@ -2,6 +2,6 @@
 	"server": "localhost",
 	"port": "27016",
 	"fullscreen": false,
-	"window_width":960,
+	"window_width":1138,
 	"window_height":640
 }

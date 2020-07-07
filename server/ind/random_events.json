@@ -2,8 +2,8 @@
 	"random_events":
 		{
 			"nothing_prob": 8,
-			"gold_prob" : 80,
+			"gold_prob" : 30,
 			"potion_prob": 11,
-			"rand_obj_prob": 1
+			"rand_obj_prob": 51
 		}
 }
