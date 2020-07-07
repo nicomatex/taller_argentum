@@ -7,6 +7,10 @@
 #include "../SDL/sdl_timer.h"
 #include "SDL2/SDL_ttf.h"
 
+/**
+ * @brief Input de texto. 
+ * 
+ */
 class TextInput {
    private:
     std::string text;

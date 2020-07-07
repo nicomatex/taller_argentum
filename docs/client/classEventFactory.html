@@ -101,28 +101,394 @@ $(document).ready(function(){initNavTree('classEventFactory.html',''); initResiz
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Métodos públicos estáticos</h2></td></tr>
-<tr class="memitem:afc7e0719e855450d9c01afd6edcf365a"><td class="memItemLeft" align="right" valign="top"><a id="afc7e0719e855450d9c01afd6edcf365a"></a>
-static Event&#160;</td><td class="memItemRight" valign="bottom"><b>connect_event</b> (std::string character_name, std::string password)</td></tr>
+<tr class="memitem:afc7e0719e855450d9c01afd6edcf365a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEventFactory.html#afc7e0719e855450d9c01afd6edcf365a">connect_event</a> (std::string character_name, std::string password)</td></tr>
+<tr class="memdesc:afc7e0719e855450d9c01afd6edcf365a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evento de conexion.  <a href="classEventFactory.html#afc7e0719e855450d9c01afd6edcf365a">Más...</a><br /></td></tr>
 <tr class="separator:afc7e0719e855450d9c01afd6edcf365a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7100dd47dc50a122fd95c7929c4e8d3a"><td class="memItemLeft" align="right" valign="top"><a id="a7100dd47dc50a122fd95c7929c4e8d3a"></a>
-static Event&#160;</td><td class="memItemRight" valign="bottom"><b>chat_event</b> (std::string message)</td></tr>
-<tr class="separator:a7100dd47dc50a122fd95c7929c4e8d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1a7098e50cf83f9c8929e60a9d1a51b"><td class="memItemLeft" align="right" valign="top"><a id="ae1a7098e50cf83f9c8929e60a9d1a51b"></a>
-static Event&#160;</td><td class="memItemRight" valign="bottom"><b>movement_event</b> (mov_action_t action, direction_t direction)</td></tr>
+<tr class="memitem:acf33f2b27d51851ae04c9dae15567d6a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEventFactory.html#acf33f2b27d51851ae04c9dae15567d6a">chat_event</a> (std::string message, int target_x, int target_y, int inventory_slot)</td></tr>
+<tr class="memdesc:acf33f2b27d51851ae04c9dae15567d6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evento de chat.  <a href="classEventFactory.html#acf33f2b27d51851ae04c9dae15567d6a">Más...</a><br /></td></tr>
+<tr class="separator:acf33f2b27d51851ae04c9dae15567d6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1a7098e50cf83f9c8929e60a9d1a51b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEventFactory.html#ae1a7098e50cf83f9c8929e60a9d1a51b">movement_event</a> (mov_action_t action, direction_t direction)</td></tr>
+<tr class="memdesc:ae1a7098e50cf83f9c8929e60a9d1a51b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evento de movimiento.  <a href="classEventFactory.html#ae1a7098e50cf83f9c8929e60a9d1a51b">Más...</a><br /></td></tr>
 <tr class="separator:ae1a7098e50cf83f9c8929e60a9d1a51b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d306dcc36a87dd295f5e1f46a995594"><td class="memItemLeft" align="right" valign="top"><a id="a9d306dcc36a87dd295f5e1f46a995594"></a>
-static Event&#160;</td><td class="memItemRight" valign="bottom"><b>disconnect</b> ()</td></tr>
+<tr class="memitem:a9d306dcc36a87dd295f5e1f46a995594"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEventFactory.html#a9d306dcc36a87dd295f5e1f46a995594">disconnect</a> ()</td></tr>
+<tr class="memdesc:a9d306dcc36a87dd295f5e1f46a995594"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evento de desconexion.  <a href="classEventFactory.html#a9d306dcc36a87dd295f5e1f46a995594">Más...</a><br /></td></tr>
 <tr class="separator:a9d306dcc36a87dd295f5e1f46a995594"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c2a95ed0d67d62f921eb68d24c3e91f"><td class="memItemLeft" align="right" valign="top"><a id="a3c2a95ed0d67d62f921eb68d24c3e91f"></a>
-static Event&#160;</td><td class="memItemRight" valign="bottom"><b>attack_event</b> ()</td></tr>
+<tr class="memitem:a3c2a95ed0d67d62f921eb68d24c3e91f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEventFactory.html#a3c2a95ed0d67d62f921eb68d24c3e91f">attack_event</a> ()</td></tr>
+<tr class="memdesc:a3c2a95ed0d67d62f921eb68d24c3e91f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evento de ataque.  <a href="classEventFactory.html#a3c2a95ed0d67d62f921eb68d24c3e91f">Más...</a><br /></td></tr>
 <tr class="separator:a3c2a95ed0d67d62f921eb68d24c3e91f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6d13e4f8cfa26d76b5ded1a3abe30eb"><td class="memItemLeft" align="right" valign="top"><a id="ab6d13e4f8cfa26d76b5ded1a3abe30eb"></a>
-static Event&#160;</td><td class="memItemRight" valign="bottom"><b>inventory_event</b> (SlotId slot)</td></tr>
+<tr class="memitem:ab6d13e4f8cfa26d76b5ded1a3abe30eb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEventFactory.html#ab6d13e4f8cfa26d76b5ded1a3abe30eb">inventory_event</a> (SlotId slot)</td></tr>
+<tr class="memdesc:ab6d13e4f8cfa26d76b5ded1a3abe30eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evento de uso del inventario.  <a href="classEventFactory.html#ab6d13e4f8cfa26d76b5ded1a3abe30eb">Más...</a><br /></td></tr>
 <tr class="separator:ab6d13e4f8cfa26d76b5ded1a3abe30eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a921b0cb5908e28e3b729594e26ce0741"><td class="memItemLeft" align="right" valign="top"><a id="a921b0cb5908e28e3b729594e26ce0741"></a>
-static Event&#160;</td><td class="memItemRight" valign="bottom"><b>create_event</b> (std::string name, class_type_t class_type, race_type_t race_type)</td></tr>
+<tr class="memitem:a921b0cb5908e28e3b729594e26ce0741"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEventFactory.html#a921b0cb5908e28e3b729594e26ce0741">create_event</a> (std::string name, class_type_t class_type, race_type_t race_type)</td></tr>
+<tr class="memdesc:a921b0cb5908e28e3b729594e26ce0741"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evento de creacion de personaje.  <a href="classEventFactory.html#a921b0cb5908e28e3b729594e26ce0741">Más...</a><br /></td></tr>
 <tr class="separator:a921b0cb5908e28e3b729594e26ce0741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0ac7ffc3084a2d8dece025b8dce810d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEventFactory.html#ab0ac7ffc3084a2d8dece025b8dce810d">pickup_event</a> ()</td></tr>
+<tr class="memdesc:ab0ac7ffc3084a2d8dece025b8dce810d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evento de levantar items del suelo.  <a href="classEventFactory.html#ab0ac7ffc3084a2d8dece025b8dce810d">Más...</a><br /></td></tr>
+<tr class="separator:ab0ac7ffc3084a2d8dece025b8dce810d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad5186427d285af0a32261766718ec5e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEventFactory.html#aad5186427d285af0a32261766718ec5e">drop_item_event</a> (int slot)</td></tr>
+<tr class="memdesc:aad5186427d285af0a32261766718ec5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evento de tirar un item al suelo.  <a href="classEventFactory.html#aad5186427d285af0a32261766718ec5e">Más...</a><br /></td></tr>
+<tr class="separator:aad5186427d285af0a32261766718ec5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="a3c2a95ed0d67d62f921eb68d24c3e91f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c2a95ed0d67d62f921eb68d24c3e91f">&#9670;&nbsp;</a></span>attack_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEvent.html">Event</a> EventFactory::attack_event </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evento de ataque. </p>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classEvent.html">Event</a> </dd></dl>
+
+</div>
+</div>
+<a id="acf33f2b27d51851ae04c9dae15567d6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf33f2b27d51851ae04c9dae15567d6a">&#9670;&nbsp;</a></span>chat_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEvent.html">Event</a> EventFactory::chat_event </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>target_x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>target_y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>inventory_slot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evento de chat. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>Mensaje o comando a enviar </td></tr>
+    <tr><td class="paramname">target_x</td><td>Coordenada X del target en el mapa. </td></tr>
+    <tr><td class="paramname">target_y</td><td>Coordenada Y del target en el mapa. </td></tr>
+    <tr><td class="paramname">inventory_slot</td><td>Slot del inventario seleccionado. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classEvent.html">Event</a> </dd></dl>
+
+</div>
+</div>
+<a id="afc7e0719e855450d9c01afd6edcf365a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc7e0719e855450d9c01afd6edcf365a">&#9670;&nbsp;</a></span>connect_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEvent.html">Event</a> EventFactory::connect_event </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>character_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>password</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evento de conexion. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">character_name</td><td>Nombre del personaje </td></tr>
+    <tr><td class="paramname">password</td><td>Contrasenia. No usada por ahora. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classEvent.html">Event</a> </dd></dl>
+
+</div>
+</div>
+<a id="a921b0cb5908e28e3b729594e26ce0741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a921b0cb5908e28e3b729594e26ce0741">&#9670;&nbsp;</a></span>create_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEvent.html">Event</a> EventFactory::create_event </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">class_type_t&#160;</td>
+          <td class="paramname"><em>class_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">race_type_t&#160;</td>
+          <td class="paramname"><em>race_type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evento de creacion de personaje. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Nombre del personaje </td></tr>
+    <tr><td class="paramname">class_type</td><td>Clase del personaje </td></tr>
+    <tr><td class="paramname">race_type</td><td>Raza del personaje </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classEvent.html">Event</a> </dd></dl>
+
+</div>
+</div>
+<a id="a9d306dcc36a87dd295f5e1f46a995594"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d306dcc36a87dd295f5e1f46a995594">&#9670;&nbsp;</a></span>disconnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEvent.html">Event</a> EventFactory::disconnect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evento de desconexion. </p>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classEvent.html">Event</a> </dd></dl>
+
+</div>
+</div>
+<a id="aad5186427d285af0a32261766718ec5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad5186427d285af0a32261766718ec5e">&#9670;&nbsp;</a></span>drop_item_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEvent.html">Event</a> EventFactory::drop_item_event </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>slot</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evento de tirar un item al suelo. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slot</td><td>Slot del cual se desea tirar un item. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classEvent.html">Event</a> </dd></dl>
+
+</div>
+</div>
+<a id="ab6d13e4f8cfa26d76b5ded1a3abe30eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6d13e4f8cfa26d76b5ded1a3abe30eb">&#9670;&nbsp;</a></span>inventory_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEvent.html">Event</a> EventFactory::inventory_event </td>
+          <td>(</td>
+          <td class="paramtype">SlotId&#160;</td>
+          <td class="paramname"><em>slot</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evento de uso del inventario. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slot</td><td>Slot sobre el cual ejecutar la accion. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classEvent.html">Event</a> </dd></dl>
+
+</div>
+</div>
+<a id="ae1a7098e50cf83f9c8929e60a9d1a51b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1a7098e50cf83f9c8929e60a9d1a51b">&#9670;&nbsp;</a></span>movement_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEvent.html">Event</a> EventFactory::movement_event </td>
+          <td>(</td>
+          <td class="paramtype">mov_action_t&#160;</td>
+          <td class="paramname"><em>action</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">direction_t&#160;</td>
+          <td class="paramname"><em>direction</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evento de movimiento. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action</td><td>Accion (empezar o detener) </td></tr>
+    <tr><td class="paramname">direction</td><td>Direccion del movimiento. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classEvent.html">Event</a> </dd></dl>
+
+</div>
+</div>
+<a id="ab0ac7ffc3084a2d8dece025b8dce810d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0ac7ffc3084a2d8dece025b8dce810d">&#9670;&nbsp;</a></span>pickup_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEvent.html">Event</a> EventFactory::pickup_event </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evento de levantar items del suelo. </p>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classEvent.html">Event</a> </dd></dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/network/<a class="el" href="event__factory_8h_source.html">event_factory.h</a></li>
 <li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/network/event_factory.cpp</li>

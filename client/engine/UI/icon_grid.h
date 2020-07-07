@@ -6,6 +6,10 @@
 #include "../SDL/sdl_texture.h"
 #include "SDL2/SDL.h"
 
+/**
+ * @brief Cuadricula de iconos
+ * 
+ */
 class IconGrid {
    private:
     SDL_Rect render_area;

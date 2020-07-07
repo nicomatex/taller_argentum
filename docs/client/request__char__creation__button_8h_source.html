@@ -104,32 +104,34 @@ $(document).ready(function(){initNavTree('request__char__creation__button_8h_sou
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../../game_state_monitor.h&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;race_and_class_selector.h&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classRequestCharacterCreationButton.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classRequestCharacterCreationButton.html">RequestCharacterCreationButton</a> : <span class="keyword">public</span> <a class="code" href="classButton.html">Button</a> {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    SocketManager&amp; socket_manager;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classTextInput.html">TextInput</a>&amp; character_name_input;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classRaceAndClassSelector.html">RaceAndClassSelector</a>&amp; race_and_class_selector;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>&amp; game_state_monitor;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classRequestCharacterCreationButton.html">RequestCharacterCreationButton</a>(</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer* renderer,</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        SocketManager&amp; socket_manager, <a class="code" href="classTextInput.html">TextInput</a>&amp; character_name_input,</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="classRaceAndClassSelector.html">RaceAndClassSelector</a>&amp; race_and_class_selector,</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>&amp; game_state_monitor);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRequestCharacterCreationButton.html#a7b6b5d1c0addb9044e0555fc2ba209a3">on_click</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classRequestCharacterCreationButton.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classRequestCharacterCreationButton.html">RequestCharacterCreationButton</a> : <span class="keyword">public</span> <a class="code" href="classButton.html">Button</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classSocketManager.html">SocketManager</a>&amp; socket_manager;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classTextInput.html">TextInput</a>&amp; character_name_input;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classRaceAndClassSelector.html">RaceAndClassSelector</a>&amp; race_and_class_selector;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>&amp; game_state_monitor;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classRequestCharacterCreationButton.html#ae25ae2b4458de6d30de246b1d2a13de1">RequestCharacterCreationButton</a>(</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer* renderer,</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="classSocketManager.html">SocketManager</a>&amp; socket_manager, <a class="code" href="classTextInput.html">TextInput</a>&amp; character_name_input,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="classRaceAndClassSelector.html">RaceAndClassSelector</a>&amp; race_and_class_selector,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>&amp; game_state_monitor);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRequestCharacterCreationButton.html#a7b6b5d1c0addb9044e0555fc2ba209a3">on_click</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassButton_html"><div class="ttname"><a href="classButton.html">Button</a></div><div class="ttdef"><b>Definition:</b> button.h:6</div></div>
-<div class="ttc" id="aclassRequestCharacterCreationButton_html"><div class="ttname"><a href="classRequestCharacterCreationButton.html">RequestCharacterCreationButton</a></div><div class="ttdef"><b>Definition:</b> request_char_creation_button.h:10</div></div>
+<div class="ttc" id="aclassSocketManager_html"><div class="ttname"><a href="classSocketManager.html">SocketManager</a></div><div class="ttdef"><b>Definition:</b> socket_manager.h:12</div></div>
+<div class="ttc" id="aclassButton_html"><div class="ttname"><a href="classButton.html">Button</a></div><div class="ttdoc">Boton abstracto. Todos los botones heredan de esta clase.</div><div class="ttdef"><b>Definition:</b> button.h:10</div></div>
+<div class="ttc" id="aclassRequestCharacterCreationButton_html"><div class="ttname"><a href="classRequestCharacterCreationButton.html">RequestCharacterCreationButton</a></div><div class="ttdoc">Boton de &quot;Crear Personaje&quot; en la vista de creacion de personaje.</div><div class="ttdef"><b>Definition:</b> request_char_creation_button.h:15</div></div>
 <div class="ttc" id="aclassGameStateMonitor_html"><div class="ttname"><a href="classGameStateMonitor.html">GameStateMonitor</a></div><div class="ttdef"><b>Definition:</b> game_state_monitor.h:17</div></div>
-<div class="ttc" id="aclassRequestCharacterCreationButton_html_a7b6b5d1c0addb9044e0555fc2ba209a3"><div class="ttname"><a href="classRequestCharacterCreationButton.html#a7b6b5d1c0addb9044e0555fc2ba209a3">RequestCharacterCreationButton::on_click</a></div><div class="ttdeci">void on_click() override</div><div class="ttdoc">Accion a ejecutar cuando se clickea el boton.</div><div class="ttdef"><b>Definition:</b> request_char_creation_button.cpp:17</div></div>
-<div class="ttc" id="aclassRaceAndClassSelector_html"><div class="ttname"><a href="classRaceAndClassSelector.html">RaceAndClassSelector</a></div><div class="ttdef"><b>Definition:</b> race_and_class_selector.h:8</div></div>
-<div class="ttc" id="aclassTextInput_html"><div class="ttname"><a href="classTextInput.html">TextInput</a></div><div class="ttdef"><b>Definition:</b> text_input.h:10</div></div>
+<div class="ttc" id="aclassRequestCharacterCreationButton_html_ae25ae2b4458de6d30de246b1d2a13de1"><div class="ttname"><a href="classRequestCharacterCreationButton.html#ae25ae2b4458de6d30de246b1d2a13de1">RequestCharacterCreationButton::RequestCharacterCreationButton</a></div><div class="ttdeci">RequestCharacterCreationButton(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer *renderer, SocketManager &amp;socket_manager, TextInput &amp;character_name_input, RaceAndClassSelector &amp;race_and_class_selector, GameStateMonitor &amp;game_state_monitor)</div><div class="ttdoc">Boton de &quot;Crear Personaje.&quot;.</div><div class="ttdef"><b>Definition:</b> request_char_creation_button.cpp:6</div></div>
+<div class="ttc" id="aclassRequestCharacterCreationButton_html_a7b6b5d1c0addb9044e0555fc2ba209a3"><div class="ttname"><a href="classRequestCharacterCreationButton.html#a7b6b5d1c0addb9044e0555fc2ba209a3">RequestCharacterCreationButton::on_click</a></div><div class="ttdeci">void on_click() override</div><div class="ttdoc">Envia el evento de creacion de personaje al servidor, con los parametros seleccionados en la interfaz...</div><div class="ttdef"><b>Definition:</b> request_char_creation_button.cpp:17</div></div>
+<div class="ttc" id="aclassRaceAndClassSelector_html"><div class="ttname"><a href="classRaceAndClassSelector.html">RaceAndClassSelector</a></div><div class="ttdoc">Wrapper del conjunto de botones de seleccion de raza y clase.</div><div class="ttdef"><b>Definition:</b> race_and_class_selector.h:13</div></div>
+<div class="ttc" id="aclassTextInput_html"><div class="ttname"><a href="classTextInput.html">TextInput</a></div><div class="ttdoc">Input de texto.</div><div class="ttdef"><b>Definition:</b> text_input.h:14</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

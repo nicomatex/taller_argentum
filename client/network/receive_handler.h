@@ -34,6 +34,15 @@ class ClientReceiveHandler : public BlockingThEventHandler {
     // la idea es tener los handlers todos aca
 
    public:
+   /**
+    * @brief Objeto manejador de eventos provenientes del servidor.
+    * 
+    * @param map_change_buffer Buffer de cambio de mapa.
+    * @param chat_buffer Buffer de chat.
+    * @param inventory_buffer Buffer de inventario.
+    * @param loot_buffer Buffer de loot en el mapa.
+    * @param game_state_monitor Monitor del estado del juego.
+    */
     ClientReceiveHandler(MapChangeBuffer &map_change_buffer,
                          ChatBuffer &chat_buffer,
                          InventoryBuffer &inventory_buffer,

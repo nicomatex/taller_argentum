@@ -101,26 +101,26 @@ $(document).ready(function(){initNavTree('sound__component_8h_source.html',''); 
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../ECS/component.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../SDL/sdl_timer.h&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classSoundComponent.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSoundComponent.html">SoundComponent</a> : <span class="keyword">public</span> <a class="code" href="classComponent.html">Component</a> {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="classSDLTimer.html">SDLTimer</a> step_sound_timer;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classSoundComponent.html">SoundComponent</a>();</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    ~<a class="code" href="classSoundComponent.html">SoundComponent</a>();</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classSoundComponent.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSoundComponent.html">SoundComponent</a> : <span class="keyword">public</span> <a class="code" href="classComponent.html">Component</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classSDLTimer.html">SDLTimer</a> step_sound_timer;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSoundComponent.html#ad90d1b4af79db1edd89e9f006e7e9596">update</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSoundComponent.html#abb497ae1fa031834add3bb8bae494cee">init</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classSoundComponent.html">SoundComponent</a>();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    ~<a class="code" href="classSoundComponent.html">SoundComponent</a>();</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSoundComponent.html#ad90d1b4af79db1edd89e9f006e7e9596">update</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSoundComponent.html#abb497ae1fa031834add3bb8bae494cee">init</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassSoundComponent_html"><div class="ttname"><a href="classSoundComponent.html">SoundComponent</a></div><div class="ttdef"><b>Definition:</b> sound_component.h:7</div></div>
-<div class="ttc" id="aclassSDLTimer_html"><div class="ttname"><a href="classSDLTimer.html">SDLTimer</a></div><div class="ttdef"><b>Definition:</b> sdl_timer.h:5</div></div>
-<div class="ttc" id="aclassSoundComponent_html_ad90d1b4af79db1edd89e9f006e7e9596"><div class="ttname"><a href="classSoundComponent.html#ad90d1b4af79db1edd89e9f006e7e9596">SoundComponent::update</a></div><div class="ttdeci">void update() override</div><div class="ttdoc">Actualiza el componente.</div><div class="ttdef"><b>Definition:</b> sound_component.cpp:13</div></div>
-<div class="ttc" id="aclassSoundComponent_html_abb497ae1fa031834add3bb8bae494cee"><div class="ttname"><a href="classSoundComponent.html#abb497ae1fa031834add3bb8bae494cee">SoundComponent::init</a></div><div class="ttdeci">void init() override</div><div class="ttdoc">Inicializa el componente con lo que necesite, es llamado en el momento de agregarlo a la entity.</div><div class="ttdef"><b>Definition:</b> sound_component.cpp:22</div></div>
-<div class="ttc" id="aclassComponent_html"><div class="ttname"><a href="classComponent.html">Component</a></div><div class="ttdef"><b>Definition:</b> component.h:6</div></div>
+<div class="ttc" id="aclassSoundComponent_html"><div class="ttname"><a href="classSoundComponent.html">SoundComponent</a></div><div class="ttdoc">Componente de sonido de los personajes.</div><div class="ttdef"><b>Definition:</b> sound_component.h:11</div></div>
+<div class="ttc" id="aclassSDLTimer_html"><div class="ttname"><a href="classSDLTimer.html">SDLTimer</a></div><div class="ttdoc">Timer basado en la cuenta de SDL.</div><div class="ttdef"><b>Definition:</b> sdl_timer.h:9</div></div>
+<div class="ttc" id="aclassSoundComponent_html_ad90d1b4af79db1edd89e9f006e7e9596"><div class="ttname"><a href="classSoundComponent.html#ad90d1b4af79db1edd89e9f006e7e9596">SoundComponent::update</a></div><div class="ttdeci">void update() override</div><div class="ttdoc">Actualiza el componente.</div><div class="ttdef"><b>Definition:</b> sound_component.cpp:14</div></div>
+<div class="ttc" id="aclassSoundComponent_html_abb497ae1fa031834add3bb8bae494cee"><div class="ttname"><a href="classSoundComponent.html#abb497ae1fa031834add3bb8bae494cee">SoundComponent::init</a></div><div class="ttdeci">void init() override</div><div class="ttdoc">Inicializa el componente con lo que necesite, es llamado en el momento de agregarlo a la entity.</div><div class="ttdef"><b>Definition:</b> sound_component.cpp:23</div></div>
+<div class="ttc" id="aclassComponent_html"><div class="ttname"><a href="classComponent.html">Component</a></div><div class="ttdoc">Componente agregable a entidades.</div><div class="ttdef"><b>Definition:</b> component.h:10</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

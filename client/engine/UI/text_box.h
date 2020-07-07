@@ -7,6 +7,10 @@
 #include "../SDL/sdl_text.h"
 #include "SDL2/SDL.h"
 
+/**
+ * @brief Caja de texto. Usada en el chat.
+ * 
+ */
 class TextBox {
    private:
     std::deque<std::string> lines;

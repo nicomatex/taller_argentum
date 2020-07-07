@@ -7,6 +7,10 @@
 #include "../actor.h"
 #include "../camera.h"
 
+/**
+ * @brief Componente visual de los NPCs.
+ * 
+ */
 class VisualNPCComponent : public Component {
    private:
     Camera *camera;

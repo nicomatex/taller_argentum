@@ -14,6 +14,11 @@
 #include "../responsive_scaler.h"
 #include "hud.h"
 #include "ui_event_handler.h"
+
+/**
+ * @brief Vista principal del juego.
+ * 
+ */
 class GameView {
    private:
     ResponsiveScaler &scaler;
@@ -27,12 +32,30 @@ class GameView {
     Map map;
 
    public:
+    /**
+     * @brief Constructor de la vista principal.
+     *
+     * @param scaler Escalador para responsiveness.
+     * @param follow_entity_id Id de la entidad que la camara debe seguir.
+     * @param socket_manager Socket manager del juego.
+     * @param window Ventana donde se va a renderizar el juego.
+     * @param chat_buffer Buffer de chat.
+     * @param inventory_buffer Buffer de inventario.
+     * @param loot_buffer Buffer de loot.
+     * @param game_state_monitor Monitor de estado del juego.
+     * @param map_info json que contiene la informacion visual para construir el
+     * mapa.
+     */
     GameView(ResponsiveScaler &scaler, int follow_entity_id,
              SocketManager &socket_manager, SDLWindow &window,
              ChatBuffer &chat_buffer, InventoryBuffer &inventory_buffer,
              LootBuffer &loot_buffer, GameStateMonitor &game_state_monitor,
              nlohmann::json map_info);
 
+    /**
+     * @brief Inicia la vista.
+     *
+     */
     void run();
 
     ~GameView();

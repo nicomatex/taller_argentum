@@ -104,36 +104,36 @@ $(document).ready(function(){initNavTree('text__box_8h_source.html',''); initRes
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../SDL/sdl_text.h&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;SDL2/SDL.h&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classTextBox.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTextBox.html">TextBox</a> {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    std::deque&lt;std::string&gt; lines;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    std::vector&lt;SDLText&gt; render_lines;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    SDL_Renderer* renderer;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    SDL_Rect render_area;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">void</span> render_background();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span> nlines;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    SDL_Color background_color;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classTextBox.html#aee926d4ffdbf01d9b91a4ef6b8094d75">TextBox</a>(SDL_Rect render_area, SDL_Renderer* renderer, <span class="keywordtype">int</span> nlines,</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            SDL_Color font_color, SDL_Color background_color, TTF_Font* font);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    ~<a class="code" href="classTextBox.html">TextBox</a>();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTextBox.html#a7225e48344088f6f588ebc9a60b290a7">erase_all</a>();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTextBox.html#a3cc39d92aa86bd408e2781ec52625780">add_line</a>(std::string <span class="keywordtype">string</span>);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTextBox.html#a786758eb5ae6caa0ed299bf45d5715a5">render</a>();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classTextBox.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTextBox.html">TextBox</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    std::deque&lt;std::string&gt; lines;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    std::vector&lt;SDLText&gt; render_lines;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    SDL_Renderer* renderer;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    SDL_Rect render_area;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> render_background();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> nlines;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    SDL_Color background_color;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classTextBox.html#aee926d4ffdbf01d9b91a4ef6b8094d75">TextBox</a>(SDL_Rect render_area, SDL_Renderer* renderer, <span class="keywordtype">int</span> nlines,</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            SDL_Color font_color, SDL_Color background_color, TTF_Font* font);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    ~<a class="code" href="classTextBox.html">TextBox</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTextBox.html#a7225e48344088f6f588ebc9a60b290a7">erase_all</a>();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTextBox.html#a3cc39d92aa86bd408e2781ec52625780">add_line</a>(std::string <span class="keywordtype">string</span>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTextBox.html#a786758eb5ae6caa0ed299bf45d5715a5">render</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassTextBox_html_a7225e48344088f6f588ebc9a60b290a7"><div class="ttname"><a href="classTextBox.html#a7225e48344088f6f588ebc9a60b290a7">TextBox::erase_all</a></div><div class="ttdeci">void erase_all()</div><div class="ttdoc">Borra todo el texto del textbox.</div><div class="ttdef"><b>Definition:</b> text_box.cpp:19</div></div>
 <div class="ttc" id="aclassTextBox_html_a3cc39d92aa86bd408e2781ec52625780"><div class="ttname"><a href="classTextBox.html#a3cc39d92aa86bd408e2781ec52625780">TextBox::add_line</a></div><div class="ttdeci">void add_line(std::string string)</div><div class="ttdoc">Agrega una nueva linea al textbox.</div><div class="ttdef"><b>Definition:</b> text_box.cpp:21</div></div>
 <div class="ttc" id="aclassTextBox_html_aee926d4ffdbf01d9b91a4ef6b8094d75"><div class="ttname"><a href="classTextBox.html#aee926d4ffdbf01d9b91a4ef6b8094d75">TextBox::TextBox</a></div><div class="ttdeci">TextBox(SDL_Rect render_area, SDL_Renderer *renderer, int nlines, SDL_Color font_color, SDL_Color background_color, TTF_Font *font)</div><div class="ttdoc">Crea un objeto TextBox.</div><div class="ttdef"><b>Definition:</b> text_box.cpp:5</div></div>
 <div class="ttc" id="aclassTextBox_html_a786758eb5ae6caa0ed299bf45d5715a5"><div class="ttname"><a href="classTextBox.html#a786758eb5ae6caa0ed299bf45d5715a5">TextBox::render</a></div><div class="ttdeci">void render()</div><div class="ttdoc">Renderiza el textbox.</div><div class="ttdef"><b>Definition:</b> text_box.cpp:40</div></div>
-<div class="ttc" id="aclassTextBox_html"><div class="ttname"><a href="classTextBox.html">TextBox</a></div><div class="ttdef"><b>Definition:</b> text_box.h:10</div></div>
+<div class="ttc" id="aclassTextBox_html"><div class="ttname"><a href="classTextBox.html">TextBox</a></div><div class="ttdoc">Caja de texto. Usada en el chat.</div><div class="ttdef"><b>Definition:</b> text_box.h:14</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

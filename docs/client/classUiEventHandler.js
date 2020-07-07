@@ -10,6 +10,7 @@ var classUiEventHandler =
     [ "handle_keydown_move_left", "classUiEventHandler.html#abb16e1accc3eedcd1b4a4f3733e39259", null ],
     [ "handle_keydown_move_right", "classUiEventHandler.html#a9f7015a5690056624f1190594612a503", null ],
     [ "handle_keydown_move_up", "classUiEventHandler.html#af9376c674b95f5f8a35863bde7f2b2a8", null ],
+    [ "handle_keydown_pickup", "classUiEventHandler.html#aeaf9f243cde53d4103227b1a1c4b1fd4", null ],
     [ "handle_keydown_return", "classUiEventHandler.html#a0602c376ccb32f58d5ac80f32ba4c4a5", null ],
     [ "handle_keydown_sound_toggle", "classUiEventHandler.html#aefce3a3eb828790df4e0753a9b4f08e1", null ],
     [ "handle_keyup_move_down", "classUiEventHandler.html#a0e1c7286991076ac4ac400eff77ae8a4", null ],

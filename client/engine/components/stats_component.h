@@ -9,6 +9,10 @@
 
 typedef std::unordered_map<std::string, unsigned int> StatValues;
 
+/**
+ * @brief Componente de stats de cualquier entidad.
+ * 
+ */
 class StatsComponent : public Component {
    private:
     StatValues max_stat_values;

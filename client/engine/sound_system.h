@@ -2,6 +2,10 @@
 #define __SOUND_SYSTEM_H
 #include "SDL/sdl_timer.h"
 
+/**
+ * @brief Singleton para el sistema de sonido del juego.
+ * 
+ */
 class SoundSystem {
    private:
     SoundSystem();

@@ -6,6 +6,10 @@
 #include "../ECS/component.h"
 #include "../SDL/sdl_timer.h"
 
+/**
+ * @brief Componente de posicion. Usada en NPCs y jugadores.
+ * 
+ */
 class PositionComponent : public Component {
    private:
     int x;

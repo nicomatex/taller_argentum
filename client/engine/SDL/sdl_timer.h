@@ -2,6 +2,10 @@
 #define __TIMER_H
 #include <cstdint>
 
+/**
+ * @brief Timer basado en la cuenta de SDL.
+ * 
+ */
 class SDLTimer {
    private:
     bool _is_started;

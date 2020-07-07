@@ -31,8 +31,8 @@ var NAVTREE =
       [ "Índice de clases", "classes.html", null ],
       [ "Jerarquía de la clase", "hierarchy.html", "hierarchy" ],
       [ "Miembros de las clases", "functions.html", [
-        [ "Todo", "functions.html", null ],
-        [ "Funciones", "functions_func.html", null ],
+        [ "Todo", "functions.html", "functions_dup" ],
+        [ "Funciones", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
@@ -45,8 +45,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "actor_8h_source.html",
-"classResourceManager.html#aa5e2ba2fdff5b73d49ac8cf1557c0201",
-"visual__character__component_8h_source.html"
+"classMapChangeBuffer.html#a0626cd72705629c57c57de0b4bfd65cc",
+"classThread.html#abd935e9d64c786860dcac09504f52337"
 ];
 
 var SYNCONMSG = 'click en deshabilitar sincronización';

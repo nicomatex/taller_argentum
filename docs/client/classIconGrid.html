@@ -98,12 +98,17 @@ $(document).ready(function(){initNavTree('classIconGrid.html',''); initResizable
 <div class="title">Referencia de la Clase IconGrid</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Cuadricula de iconos.  
+ <a href="classIconGrid.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="icon__grid_8h_source.html">icon_grid.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:aba06341560f712f77909745c7da119b0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIconGrid.html#aba06341560f712f77909745c7da119b0">IconGrid</a> (SDL_Rect render_area, SDL_Renderer *renderer, int rows, int cols, float size_proportion)</td></tr>
-<tr class="memdesc:aba06341560f712f77909745c7da119b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un objeto Icon Grid.  <a href="classIconGrid.html#aba06341560f712f77909745c7da119b0">Más...</a><br /></td></tr>
-<tr class="separator:aba06341560f712f77909745c7da119b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94f00e0198bbe9820e8adfacbbad39ae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIconGrid.html#a94f00e0198bbe9820e8adfacbbad39ae">IconGrid</a> (SDL_Rect render_area, SDL_Renderer *renderer, int rows, int cols, float size_proportion, bool original_proportions=false)</td></tr>
+<tr class="memdesc:a94f00e0198bbe9820e8adfacbbad39ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un objeto Icon Grid.  <a href="classIconGrid.html#a94f00e0198bbe9820e8adfacbbad39ae">Más...</a><br /></td></tr>
+<tr class="separator:a94f00e0198bbe9820e8adfacbbad39ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11da0a263d86683445637c60e5324104"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIconGrid.html#a11da0a263d86683445637c60e5324104">set_icon</a> (int <a class="el" href="structposition.html">position</a>, <a class="el" href="classSDLTexture.html">SDLTexture</a> *icon)</td></tr>
 <tr class="memdesc:a11da0a263d86683445637c60e5324104"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setea el icono en una posicion dada.  <a href="classIconGrid.html#a11da0a263d86683445637c60e5324104">Más...</a><br /></td></tr>
 <tr class="separator:a11da0a263d86683445637c60e5324104"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -111,9 +116,11 @@ Métodos públicos</h2></td></tr>
 <tr class="memdesc:af109e943c9506f431e8cc03ff9ee21f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renderiza el icongrid.  <a href="classIconGrid.html#af109e943c9506f431e8cc03ff9ee21f9">Más...</a><br /></td></tr>
 <tr class="separator:af109e943c9506f431e8cc03ff9ee21f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentación del constructor y destructor</h2>
-<a id="aba06341560f712f77909745c7da119b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba06341560f712f77909745c7da119b0">&#9670;&nbsp;</a></span>IconGrid()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Cuadricula de iconos. </p>
+</div><h2 class="groupheader">Documentación del constructor y destructor</h2>
+<a id="a94f00e0198bbe9820e8adfacbbad39ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94f00e0198bbe9820e8adfacbbad39ae">&#9670;&nbsp;</a></span>IconGrid()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -146,7 +153,13 @@ Métodos públicos</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>size_proportion</em>&#160;</td>
+          <td class="paramname"><em>size_proportion</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>original_proportions</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -164,6 +177,7 @@ Métodos públicos</h2></td></tr>
     <tr><td class="paramname">rows</td><td>Cantidad de filas de la grilla. </td></tr>
     <tr><td class="paramname">cols</td><td>Cantidad de columnas de la grilla. </td></tr>
     <tr><td class="paramname">size_proportion</td><td>Proporcion de tamanio de cada cuadro que ocuparan los iconos. Debe ir entre 0 y 1. </td></tr>
+    <tr><td class="paramname">original_proportions</td><td>indica si se debe resizear los iconos para que matcheen el tamanio de cada cuadradito, o si se debe conservar las proporciones de la textura original. </td></tr>
   </table>
   </dd>
 </dl>

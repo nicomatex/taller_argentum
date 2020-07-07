@@ -98,48 +98,48 @@ $(document).ready(function(){initNavTree('chat_8h_source.html',''); initResizabl
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __CHAT_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __CHAT_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;SDL2/SDL_ttf.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../../engine/UI/text_box.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../../engine/UI/text_input.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../../engine/UI/text_box.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../../engine/UI/text_input.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;SDL2/SDL_ttf.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classChat.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classChat.html">Chat</a> {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classTextInput.html">TextInput</a> text_input;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classTextBox.html">TextBox</a> text_box;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="comment">/* La altura del area pasada por parametro sera dividida entre las n lineas,</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    una de las cuales se utilizara para la entrada de texto, y las otras</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    n - 1 para mostrar los mensajes del chat. */</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classChat.html">Chat</a>(SDL_Rect chat_area, <span class="keywordtype">int</span> nlines, SDL_Renderer* renderer,</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;         TTF_Font* font);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    ~<a class="code" href="classChat.html">Chat</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="comment">/* Agrega caracteres al input box del chat. */</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> add_characters(<span class="keywordtype">char</span>* characters);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">/* Borra un caracter del input de texto.*/</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> input_erase();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">/* Devuelve el texto escrito en el input y deja el input en blanco.*/</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    std::string get_input_and_erase();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">/* Imprime una nueva linea en el chat. */</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> print_line(std::string line);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">/* Renderiza el chat. */</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> render();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">/* Activa/desactiva el cursor. */</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> toggle();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;};</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classChat.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classChat.html">Chat</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classTextInput.html">TextInput</a> text_input;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classTextBox.html">TextBox</a> text_box;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classChat.html#a3b650960f26148a104c1128cbd35698d">Chat</a>(SDL_Rect chat_area, <span class="keywordtype">int</span> nlines, SDL_Renderer* renderer,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;         TTF_Font* font);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    ~<a class="code" href="classChat.html">Chat</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChat.html#afd423a494524749f4f8f79249cad9a72">add_characters</a>(<span class="keywordtype">char</span>* characters);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChat.html#accaf8b9c1790c3a7d82963dd5e6be76e">input_erase</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">/* Devuelve el texto escrito en el input y deja el input en blanco.*/</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    std::string <a class="code" href="classChat.html#ad8b29870989af4a7eb4383cb7cb8f76c">get_input_and_erase</a>();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChat.html#a8ab7e0b575648345a4921fdf21d768d6">print_line</a>(std::string line);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChat.html#a79f43f7830f49ea5e58789f57151a844">render</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChat.html#aae7f8cf1bc0daf8ab2fa11908747b7f3">toggle</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;};</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassChat_html"><div class="ttname"><a href="classChat.html">Chat</a></div><div class="ttdef"><b>Definition:</b> chat.h:8</div></div>
-<div class="ttc" id="aclassTextInput_html"><div class="ttname"><a href="classTextInput.html">TextInput</a></div><div class="ttdef"><b>Definition:</b> text_input.h:10</div></div>
-<div class="ttc" id="aclassTextBox_html"><div class="ttname"><a href="classTextBox.html">TextBox</a></div><div class="ttdef"><b>Definition:</b> text_box.h:10</div></div>
+<div class="ttc" id="aclassChat_html_a79f43f7830f49ea5e58789f57151a844"><div class="ttname"><a href="classChat.html#a79f43f7830f49ea5e58789f57151a844">Chat::render</a></div><div class="ttdeci">void render()</div><div class="ttdoc">Renderiza el chat.</div><div class="ttdef"><b>Definition:</b> chat.cpp:36</div></div>
+<div class="ttc" id="aclassChat_html"><div class="ttname"><a href="classChat.html">Chat</a></div><div class="ttdoc">Chat del juego.</div><div class="ttdef"><b>Definition:</b> chat.h:12</div></div>
+<div class="ttc" id="aclassChat_html_a3b650960f26148a104c1128cbd35698d"><div class="ttname"><a href="classChat.html#a3b650960f26148a104c1128cbd35698d">Chat::Chat</a></div><div class="ttdeci">Chat(SDL_Rect chat_area, int nlines, SDL_Renderer *renderer, TTF_Font *font)</div><div class="ttdoc">Crea un objeto Chat.</div><div class="ttdef"><b>Definition:</b> chat.cpp:5</div></div>
+<div class="ttc" id="aclassChat_html_a8ab7e0b575648345a4921fdf21d768d6"><div class="ttname"><a href="classChat.html#a8ab7e0b575648345a4921fdf21d768d6">Chat::print_line</a></div><div class="ttdeci">void print_line(std::string line)</div><div class="ttdoc">Imprime una linea en el chat.</div><div class="ttdef"><b>Definition:</b> chat.cpp:32</div></div>
+<div class="ttc" id="aclassChat_html_ad8b29870989af4a7eb4383cb7cb8f76c"><div class="ttname"><a href="classChat.html#ad8b29870989af4a7eb4383cb7cb8f76c">Chat::get_input_and_erase</a></div><div class="ttdeci">std::string get_input_and_erase()</div><div class="ttdoc">Devuelve el texto ingresado en el input, y lo borra.</div><div class="ttdef"><b>Definition:</b> chat.cpp:26</div></div>
+<div class="ttc" id="aclassChat_html_accaf8b9c1790c3a7d82963dd5e6be76e"><div class="ttname"><a href="classChat.html#accaf8b9c1790c3a7d82963dd5e6be76e">Chat::input_erase</a></div><div class="ttdeci">void input_erase()</div><div class="ttdoc">Borra un caracter del input de texto.</div><div class="ttdef"><b>Definition:</b> chat.cpp:22</div></div>
+<div class="ttc" id="aclassChat_html_aae7f8cf1bc0daf8ab2fa11908747b7f3"><div class="ttname"><a href="classChat.html#aae7f8cf1bc0daf8ab2fa11908747b7f3">Chat::toggle</a></div><div class="ttdeci">void toggle()</div><div class="ttdoc">Activa / desactiva el cursor del chat.</div><div class="ttdef"><b>Definition:</b> chat.cpp:41</div></div>
+<div class="ttc" id="aclassTextInput_html"><div class="ttname"><a href="classTextInput.html">TextInput</a></div><div class="ttdoc">Input de texto.</div><div class="ttdef"><b>Definition:</b> text_input.h:14</div></div>
+<div class="ttc" id="aclassTextBox_html"><div class="ttname"><a href="classTextBox.html">TextBox</a></div><div class="ttdoc">Caja de texto. Usada en el chat.</div><div class="ttdef"><b>Definition:</b> text_box.h:14</div></div>
+<div class="ttc" id="aclassChat_html_afd423a494524749f4f8f79249cad9a72"><div class="ttname"><a href="classChat.html#afd423a494524749f4f8f79249cad9a72">Chat::add_characters</a></div><div class="ttdeci">void add_characters(char *characters)</div><div class="ttdoc">Agrega caracteres al input box del chat.</div><div class="ttdef"><b>Definition:</b> chat.cpp:18</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

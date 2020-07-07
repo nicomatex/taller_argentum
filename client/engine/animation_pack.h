@@ -10,6 +10,10 @@ enum direction_t { UP, DOWN, LEFT, RIGHT };
 
 enum movement_status_t { MOVING, IDLE };
 
+/**
+ * @brief Wrapper de sprites de un mismo conjunto.
+ * 
+ */
 class AnimationPack {
    private:
     /* Sprites de movimiento. */

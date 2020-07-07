@@ -6,6 +6,10 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 
+/**
+ * @brief Objeto de textura de SDL.
+ * 
+ */
 class SDLTexture {
    protected:
     SDL_Texture* texture;

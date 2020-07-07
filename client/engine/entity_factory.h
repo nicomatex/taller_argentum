@@ -5,6 +5,10 @@
 #include "ECS/entity.h"
 #include "ECS/entity_manager.h"
 
+/**
+ * @brief Fabrica de entidades.
+ * 
+ */
 class EntityFactory {
    private:
    public:

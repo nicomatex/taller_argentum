@@ -4,6 +4,10 @@
 #include "SDL/sdl_animated_sprite.h"
 #include "renderizable_object.h"
 
+/**
+ * @brief Objeto renderizable estatico.
+ * 
+ */
 class Decoration : public RenderizableObject {
    private:
     SDLSprite sprite;

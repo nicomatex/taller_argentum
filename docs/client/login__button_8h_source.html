@@ -102,27 +102,30 @@ $(document).ready(function(){initNavTree('login__button_8h_source.html',''); ini
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../../engine/UI/text_input.h&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../../game_state_monitor.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classLoginButton.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classLoginButton.html">LoginButton</a> : <span class="keyword">public</span> <a class="code" href="classButton.html">Button</a> {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>&amp; game_state_monitor;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    SocketManager&amp; socket_manager;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classTextInput.html">TextInput</a>&amp; character_name_input;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classLoginButton.html">LoginButton</a>(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer* renderer,</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>&amp; game_state_monitor,</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                SocketManager&amp; socket_manager,</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                <a class="code" href="classTextInput.html">TextInput</a>&amp; character_name_input);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classLoginButton.html#a2de2887758f6b6b9319003ef2b907cd1">on_click</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classLoginButton.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classLoginButton.html">LoginButton</a> : <span class="keyword">public</span> <a class="code" href="classButton.html">Button</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>&amp; game_state_monitor;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classSocketManager.html">SocketManager</a>&amp; socket_manager;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classTextInput.html">TextInput</a>&amp; character_name_input;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classLoginButton.html#afcd8492c2a597eae9703b4878a73cf33">LoginButton</a>(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer* renderer,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>&amp; game_state_monitor,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                <a class="code" href="classSocketManager.html">SocketManager</a>&amp; socket_manager,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                <a class="code" href="classTextInput.html">TextInput</a>&amp; character_name_input);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classLoginButton.html#a2de2887758f6b6b9319003ef2b907cd1">on_click</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;};</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassButton_html"><div class="ttname"><a href="classButton.html">Button</a></div><div class="ttdef"><b>Definition:</b> button.h:6</div></div>
-<div class="ttc" id="aclassLoginButton_html"><div class="ttname"><a href="classLoginButton.html">LoginButton</a></div><div class="ttdef"><b>Definition:</b> login_button.h:8</div></div>
+<div class="ttc" id="aclassSocketManager_html"><div class="ttname"><a href="classSocketManager.html">SocketManager</a></div><div class="ttdef"><b>Definition:</b> socket_manager.h:12</div></div>
+<div class="ttc" id="aclassButton_html"><div class="ttname"><a href="classButton.html">Button</a></div><div class="ttdoc">Boton abstracto. Todos los botones heredan de esta clase.</div><div class="ttdef"><b>Definition:</b> button.h:10</div></div>
+<div class="ttc" id="aclassLoginButton_html"><div class="ttname"><a href="classLoginButton.html">LoginButton</a></div><div class="ttdoc">Boton para iniciar sesion.</div><div class="ttdef"><b>Definition:</b> login_button.h:12</div></div>
 <div class="ttc" id="aclassGameStateMonitor_html"><div class="ttname"><a href="classGameStateMonitor.html">GameStateMonitor</a></div><div class="ttdef"><b>Definition:</b> game_state_monitor.h:17</div></div>
-<div class="ttc" id="aclassLoginButton_html_a2de2887758f6b6b9319003ef2b907cd1"><div class="ttname"><a href="classLoginButton.html#a2de2887758f6b6b9319003ef2b907cd1">LoginButton::on_click</a></div><div class="ttdeci">void on_click() override</div><div class="ttdoc">Accion a ejecutar cuando se clickea el boton.</div><div class="ttdef"><b>Definition:</b> login_button.cpp:15</div></div>
-<div class="ttc" id="aclassTextInput_html"><div class="ttname"><a href="classTextInput.html">TextInput</a></div><div class="ttdef"><b>Definition:</b> text_input.h:10</div></div>
+<div class="ttc" id="aclassLoginButton_html_afcd8492c2a597eae9703b4878a73cf33"><div class="ttname"><a href="classLoginButton.html#afcd8492c2a597eae9703b4878a73cf33">LoginButton::LoginButton</a></div><div class="ttdeci">LoginButton(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer *renderer, GameStateMonitor &amp;game_state_monitor, SocketManager &amp;socket_manager, TextInput &amp;character_name_input)</div><div class="ttdoc">Crea un objeto Login Button.</div><div class="ttdef"><b>Definition:</b> login_button.cpp:5</div></div>
+<div class="ttc" id="aclassLoginButton_html_a2de2887758f6b6b9319003ef2b907cd1"><div class="ttname"><a href="classLoginButton.html#a2de2887758f6b6b9319003ef2b907cd1">LoginButton::on_click</a></div><div class="ttdeci">void on_click() override</div><div class="ttdoc">Envia el evento de inicio de sesion.</div><div class="ttdef"><b>Definition:</b> login_button.cpp:15</div></div>
+<div class="ttc" id="aclassTextInput_html"><div class="ttname"><a href="classTextInput.html">TextInput</a></div><div class="ttdoc">Input de texto.</div><div class="ttdef"><b>Definition:</b> text_input.h:14</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

@@ -17,9 +17,4 @@ int ResponsiveScaler::tile_scale(int dimension) {
     return (int)(dimension * scale_factor_w);
 }
 
-
-int ResponsiveScaler::viewport_height_scale(int height){
-    return (int)(height * (scale_factor_w / scale_factor_h));
-}
-
 ResponsiveScaler::~ResponsiveScaler() {}

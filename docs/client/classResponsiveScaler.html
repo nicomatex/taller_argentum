@@ -98,19 +98,126 @@ $(document).ready(function(){initNavTree('classResponsiveScaler.html',''); initR
 <div class="title">Referencia de la Clase ResponsiveScaler</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Escalador para hacer las areas responsive.  
+ <a href="classResponsiveScaler.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="responsive__scaler_8h_source.html">responsive_scaler.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:ae7c80cc239b298e4e723490896d5c784"><td class="memItemLeft" align="right" valign="top"><a id="ae7c80cc239b298e4e723490896d5c784"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ResponsiveScaler</b> (<a class="el" href="classSDLWindow.html">SDLWindow</a> &amp;window, int prototype_width, int prototype_height)</td></tr>
+<tr class="memitem:ae7c80cc239b298e4e723490896d5c784"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResponsiveScaler.html#ae7c80cc239b298e4e723490896d5c784">ResponsiveScaler</a> (<a class="el" href="classSDLWindow.html">SDLWindow</a> &amp;window, int prototype_width, int prototype_height)</td></tr>
+<tr class="memdesc:ae7c80cc239b298e4e723490896d5c784"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un objeto Responsive Scaler.  <a href="classResponsiveScaler.html#ae7c80cc239b298e4e723490896d5c784">Más...</a><br /></td></tr>
 <tr class="separator:ae7c80cc239b298e4e723490896d5c784"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adba4b4138066a05d2b34b150c7def420"><td class="memItemLeft" align="right" valign="top"><a id="adba4b4138066a05d2b34b150c7def420"></a>
-SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>scale</b> (SDL_Rect unscaled_rect)</td></tr>
+<tr class="memitem:adba4b4138066a05d2b34b150c7def420"><td class="memItemLeft" align="right" valign="top">SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResponsiveScaler.html#adba4b4138066a05d2b34b150c7def420">scale</a> (SDL_Rect unscaled_rect)</td></tr>
+<tr class="memdesc:adba4b4138066a05d2b34b150c7def420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve un SDL_Rect escalado segun los factores de la ventana.  <a href="classResponsiveScaler.html#adba4b4138066a05d2b34b150c7def420">Más...</a><br /></td></tr>
 <tr class="separator:adba4b4138066a05d2b34b150c7def420"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4872c28ec85bcd70d38c736c3663014d"><td class="memItemLeft" align="right" valign="top"><a id="a4872c28ec85bcd70d38c736c3663014d"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>simple_scale</b> (int dimension)</td></tr>
-<tr class="separator:a4872c28ec85bcd70d38c736c3663014d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0717c789a4dd03ff62019bda25041cd7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResponsiveScaler.html#a0717c789a4dd03ff62019bda25041cd7">tile_scale</a> (int dimension)</td></tr>
+<tr class="memdesc:a0717c789a4dd03ff62019bda25041cd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Escala simple, segun el factor de escalado en anchura.  <a href="classResponsiveScaler.html#a0717c789a4dd03ff62019bda25041cd7">Más...</a><br /></td></tr>
+<tr class="separator:a0717c789a4dd03ff62019bda25041cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Escalador para hacer las areas responsive. </p>
+</div><h2 class="groupheader">Documentación del constructor y destructor</h2>
+<a id="ae7c80cc239b298e4e723490896d5c784"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7c80cc239b298e4e723490896d5c784">&#9670;&nbsp;</a></span>ResponsiveScaler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ResponsiveScaler::ResponsiveScaler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSDLWindow.html">SDLWindow</a> &amp;&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>prototype_width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>prototype_height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crea un objeto Responsive Scaler. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>Ventana para la cual se desean generar las areas responsive. </td></tr>
+    <tr><td class="paramname">prototype_width</td><td>Ancho "prototipo", en base al cual se escalara todo. </td></tr>
+    <tr><td class="paramname">prototype_height</td><td>Alto "prototipo", en base al cual se escalara todo. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="adba4b4138066a05d2b34b150c7def420"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adba4b4138066a05d2b34b150c7def420">&#9670;&nbsp;</a></span>scale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Rect ResponsiveScaler::scale </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>unscaled_rect</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve un SDL_Rect escalado segun los factores de la ventana. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">unscaled_rect</td><td>Rectangulo sin escalar o prototipo. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>SDL_Rect </dd></dl>
+
+</div>
+</div>
+<a id="a0717c789a4dd03ff62019bda25041cd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0717c789a4dd03ff62019bda25041cd7">&#9670;&nbsp;</a></span>tile_scale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ResponsiveScaler::tile_scale </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dimension</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Escala simple, segun el factor de escalado en anchura. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dimension</td><td>Dimension sin escalar o prototipo. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>int </dd></dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/views/<a class="el" href="responsive__scaler_8h_source.html">responsive_scaler.h</a></li>
 <li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/views/responsive_scaler.cpp</li>

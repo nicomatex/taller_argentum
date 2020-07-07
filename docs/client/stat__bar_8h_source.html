@@ -101,39 +101,39 @@ $(document).ready(function(){initNavTree('stat__bar_8h_source.html',''); initRes
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../SDL/sdl_text.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;SDL2/SDL.h&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classStatBar.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="classStatBar.html">StatBar</a> {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    SDL_Renderer* renderer;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    SDL_Rect render_area;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    SDL_Color bar_color;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classSDLText.html">SDLText</a> render_text;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> max_value;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> current_value;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">void</span> _render_bar();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">void</span> _render_text();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classStatBar.html#a8d8c67b3d9753d5fe2a8b62c2b49ac75">StatBar</a>(SDL_Rect render_area, TTF_Font* font, SDL_Renderer* renderer,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> max_value, SDL_Color bar_color, SDL_Color text_color);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    ~<a class="code" href="classStatBar.html">StatBar</a>();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classStatBar.html#a764a8275ef581a5e2ca11dc3b43c0793">set_current_value</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> new_current_value);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classStatBar.html#ad291f9a3736fa4d88fcc2c2e0bc5d1e6">set_max_value</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> new_max_value);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classStatBar.html#a2029bab17f0671ae056bcc5b473ed3b3">render</a>();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classStatBar.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classStatBar.html">StatBar</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    SDL_Renderer* renderer;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    SDL_Rect render_area;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    SDL_Color bar_color;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classSDLText.html">SDLText</a> render_text;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> max_value;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> current_value;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> _render_bar();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> _render_text();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classStatBar.html#a8d8c67b3d9753d5fe2a8b62c2b49ac75">StatBar</a>(SDL_Rect render_area, TTF_Font* font, SDL_Renderer* renderer,</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> max_value, SDL_Color bar_color, SDL_Color text_color);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    ~<a class="code" href="classStatBar.html">StatBar</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classStatBar.html#a764a8275ef581a5e2ca11dc3b43c0793">set_current_value</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> new_current_value);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classStatBar.html#ad291f9a3736fa4d88fcc2c2e0bc5d1e6">set_max_value</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> new_max_value);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classStatBar.html#a2029bab17f0671ae056bcc5b473ed3b3">render</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassStatBar_html_a764a8275ef581a5e2ca11dc3b43c0793"><div class="ttname"><a href="classStatBar.html#a764a8275ef581a5e2ca11dc3b43c0793">StatBar::set_current_value</a></div><div class="ttdeci">void set_current_value(unsigned int new_current_value)</div><div class="ttdoc">Setea el valor actual del stat.</div><div class="ttdef"><b>Definition:</b> stat_bar.cpp:43</div></div>
 <div class="ttc" id="aclassStatBar_html_ad291f9a3736fa4d88fcc2c2e0bc5d1e6"><div class="ttname"><a href="classStatBar.html#ad291f9a3736fa4d88fcc2c2e0bc5d1e6">StatBar::set_max_value</a></div><div class="ttdeci">void set_max_value(unsigned int new_max_value)</div><div class="ttdoc">Setea el nuevo valor maximo del stat.</div><div class="ttdef"><b>Definition:</b> stat_bar.cpp:50</div></div>
 <div class="ttc" id="aclassStatBar_html_a8d8c67b3d9753d5fe2a8b62c2b49ac75"><div class="ttname"><a href="classStatBar.html#a8d8c67b3d9753d5fe2a8b62c2b49ac75">StatBar::StatBar</a></div><div class="ttdeci">StatBar(SDL_Rect render_area, TTF_Font *font, SDL_Renderer *renderer, unsigned int max_value, SDL_Color bar_color, SDL_Color text_color)</div><div class="ttdoc">Crea un objeto StatBar.</div><div class="ttdef"><b>Definition:</b> stat_bar.cpp:3</div></div>
 <div class="ttc" id="aclassStatBar_html_a2029bab17f0671ae056bcc5b473ed3b3"><div class="ttname"><a href="classStatBar.html#a2029bab17f0671ae056bcc5b473ed3b3">StatBar::render</a></div><div class="ttdeci">void render()</div><div class="ttdoc">Renderiza la statbar.</div><div class="ttdef"><b>Definition:</b> stat_bar.cpp:58</div></div>
-<div class="ttc" id="aclassSDLText_html"><div class="ttname"><a href="classSDLText.html">SDLText</a></div><div class="ttdef"><b>Definition:</b> sdl_text.h:9</div></div>
-<div class="ttc" id="aclassStatBar_html"><div class="ttname"><a href="classStatBar.html">StatBar</a></div><div class="ttdef"><b>Definition:</b> stat_bar.h:7</div></div>
+<div class="ttc" id="aclassSDLText_html"><div class="ttname"><a href="classSDLText.html">SDLText</a></div><div class="ttdoc">Objeto de texto de SDL.</div><div class="ttdef"><b>Definition:</b> sdl_text.h:13</div></div>
+<div class="ttc" id="aclassStatBar_html"><div class="ttname"><a href="classStatBar.html">StatBar</a></div><div class="ttdoc">Barra de stat, usado en HP, MP y Experiencia.</div><div class="ttdef"><b>Definition:</b> stat_bar.h:11</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

@@ -100,28 +100,31 @@ $(document).ready(function(){initNavTree('button_8h_source.html',''); initResiza
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;SDL2/SDL.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classButton.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classButton.html">Button</a> {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    SDL_Rect button_area;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    SDL_Rect viewport;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    SDL_Renderer* renderer;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">bool</span> _button_clicked(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classButton.html#a05d300c72f55575c82a61b157bf2fa51">Button</a>(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer* renderer);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classButton.html">Button</a>();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classButton.html#a9fb9ff3e5d51bc2a2057cdb6f8faa2cd">handle_event</a>(SDL_Event&amp; e);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classButton.html#aa19e4697422dbf7bd3a638688d218d79">   38</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classButton.html#aa19e4697422dbf7bd3a638688d218d79">on_click</a>() = 0;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classButton.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classButton.html">Button</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    SDL_Rect button_area;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    SDL_Rect viewport;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    SDL_Renderer* renderer;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">bool</span> _button_clicked(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classButton.html#a05d300c72f55575c82a61b157bf2fa51">Button</a>(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer* renderer);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classButton.html">Button</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classButton.html#a9fb9ff3e5d51bc2a2057cdb6f8faa2cd">handle_event</a>(SDL_Event&amp; e);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classButton.html#a609cacd830c5afe5082ffb61861abb3c">on_click</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classButton.html#a5e264381a741ddd478e8462c9d50251c">on_right_click</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassButton_html"><div class="ttname"><a href="classButton.html">Button</a></div><div class="ttdef"><b>Definition:</b> button.h:6</div></div>
+<div class="ttc" id="aclassButton_html"><div class="ttname"><a href="classButton.html">Button</a></div><div class="ttdoc">Boton abstracto. Todos los botones heredan de esta clase.</div><div class="ttdef"><b>Definition:</b> button.h:10</div></div>
+<div class="ttc" id="aclassButton_html_a5e264381a741ddd478e8462c9d50251c"><div class="ttname"><a href="classButton.html#a5e264381a741ddd478e8462c9d50251c">Button::on_right_click</a></div><div class="ttdeci">virtual void on_right_click()</div><div class="ttdoc">Accion a ejecutar cuando se clickea el boton derecho.</div><div class="ttdef"><b>Definition:</b> button.cpp:36</div></div>
+<div class="ttc" id="aclassButton_html_a609cacd830c5afe5082ffb61861abb3c"><div class="ttname"><a href="classButton.html#a609cacd830c5afe5082ffb61861abb3c">Button::on_click</a></div><div class="ttdeci">virtual void on_click()</div><div class="ttdoc">Accion a ejecutar cuando se clickea el boton izquierdo.</div><div class="ttdef"><b>Definition:</b> button.cpp:34</div></div>
 <div class="ttc" id="aclassButton_html_a05d300c72f55575c82a61b157bf2fa51"><div class="ttname"><a href="classButton.html#a05d300c72f55575c82a61b157bf2fa51">Button::Button</a></div><div class="ttdeci">Button(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer *renderer)</div><div class="ttdoc">Crea un objeto Button.</div><div class="ttdef"><b>Definition:</b> button.cpp:3</div></div>
-<div class="ttc" id="aclassButton_html_aa19e4697422dbf7bd3a638688d218d79"><div class="ttname"><a href="classButton.html#aa19e4697422dbf7bd3a638688d218d79">Button::on_click</a></div><div class="ttdeci">virtual void on_click()=0</div><div class="ttdoc">Accion a ejecutar cuando se clickea el boton.</div></div>
 <div class="ttc" id="aclassButton_html_a9fb9ff3e5d51bc2a2057cdb6f8faa2cd"><div class="ttname"><a href="classButton.html#a9fb9ff3e5d51bc2a2057cdb6f8faa2cd">Button::handle_event</a></div><div class="ttdeci">void handle_event(SDL_Event &amp;e)</div><div class="ttdoc">Analiza si se trata de un click en el boton, y de ser asi llama a on_click().</div><div class="ttdef"><b>Definition:</b> button.cpp:23</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

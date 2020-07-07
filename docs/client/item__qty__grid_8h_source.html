@@ -97,35 +97,39 @@ $(document).ready(function(){initNavTree('item__qty__grid_8h_source.html',''); i
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __ITEM_QTY_GRID_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __ITEM_QTY_GRID_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;../../engine/UI/icon_grid.h&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../../engine/SDL/sdl_text.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;SDL2/SDL.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;SDL2/SDL_ttf.h&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../../engine/SDL/sdl_text.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../../engine/UI/icon_grid.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;SDL2/SDL.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;SDL2/SDL_ttf.h&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classItemQtyGrid.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classItemQtyGrid.html">ItemQtyGrid</a> {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classIconGrid.html">IconGrid</a> number_grid;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    std::vector&lt;SDLText&gt; quantities;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classItemQtyGrid.html">ItemQtyGrid</a>(SDL_Rect inventory_area, <span class="keywordtype">int</span> rows, <span class="keywordtype">int</span> cols,</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;              TTF_Font* numbers_font, SDL_Renderer* renderer);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    ~<a class="code" href="classItemQtyGrid.html">ItemQtyGrid</a>();</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classItemQtyGrid.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classItemQtyGrid.html">ItemQtyGrid</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classIconGrid.html">IconGrid</a> number_grid;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    std::vector&lt;SDLText&gt; quantities;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">/* Setea la cantidad a mostrar en un determinado slot. Si la cantidad</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">    es 0, el numero no se renderiza. */</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> set_quantity(<span class="keywordtype">int</span> slot,<span class="keywordtype">int</span> quantity);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> render();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classItemQtyGrid.html#a62dabf45b864079ad62d56b869ebd1b5">ItemQtyGrid</a>(SDL_Rect inventory_area, <span class="keywordtype">int</span> rows, <span class="keywordtype">int</span> cols,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                TTF_Font* numbers_font, SDL_Renderer* renderer);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    ~<a class="code" href="classItemQtyGrid.html">ItemQtyGrid</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">/* Setea la cantidad a mostrar en un determinado slot. Si la cantidad</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">    es 0, el numero no se renderiza. */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classItemQtyGrid.html#a952b65f460a1198d132bbf02869ad769">set_quantity</a>(<span class="keywordtype">int</span> slot, <span class="keywordtype">int</span> quantity);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classItemQtyGrid.html#abe320834c740a0e140b37f357576e0bc">render</a>();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassIconGrid_html"><div class="ttname"><a href="classIconGrid.html">IconGrid</a></div><div class="ttdef"><b>Definition:</b> icon_grid.h:9</div></div>
-<div class="ttc" id="aclassItemQtyGrid_html"><div class="ttname"><a href="classItemQtyGrid.html">ItemQtyGrid</a></div><div class="ttdef"><b>Definition:</b> item_qty_grid.h:10</div></div>
+<div class="ttc" id="aclassIconGrid_html"><div class="ttname"><a href="classIconGrid.html">IconGrid</a></div><div class="ttdoc">Cuadricula de iconos.</div><div class="ttdef"><b>Definition:</b> icon_grid.h:13</div></div>
+<div class="ttc" id="aclassItemQtyGrid_html_abe320834c740a0e140b37f357576e0bc"><div class="ttname"><a href="classItemQtyGrid.html#abe320834c740a0e140b37f357576e0bc">ItemQtyGrid::render</a></div><div class="ttdeci">void render()</div><div class="ttdoc">Renderiza las cantidades de los objetos.</div><div class="ttdef"><b>Definition:</b> item_qty_grid.cpp:26</div></div>
+<div class="ttc" id="aclassItemQtyGrid_html_a62dabf45b864079ad62d56b869ebd1b5"><div class="ttname"><a href="classItemQtyGrid.html#a62dabf45b864079ad62d56b869ebd1b5">ItemQtyGrid::ItemQtyGrid</a></div><div class="ttdeci">ItemQtyGrid(SDL_Rect inventory_area, int rows, int cols, TTF_Font *numbers_font, SDL_Renderer *renderer)</div><div class="ttdoc">Crea un objeto Item Qty Grid.</div><div class="ttdef"><b>Definition:</b> item_qty_grid.cpp:6</div></div>
+<div class="ttc" id="aclassItemQtyGrid_html"><div class="ttname"><a href="classItemQtyGrid.html">ItemQtyGrid</a></div><div class="ttdoc">Utilizada para renderizar las cantidades de los items en el inventario.</div><div class="ttdef"><b>Definition:</b> item_qty_grid.h:15</div></div>
+<div class="ttc" id="aclassItemQtyGrid_html_a952b65f460a1198d132bbf02869ad769"><div class="ttname"><a href="classItemQtyGrid.html#a952b65f460a1198d132bbf02869ad769">ItemQtyGrid::set_quantity</a></div><div class="ttdeci">void set_quantity(int slot, int quantity)</div><div class="ttdoc">Setea la cantidad de un item que hay en un slot.</div><div class="ttdef"><b>Definition:</b> item_qty_grid.cpp:17</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

@@ -4,6 +4,10 @@
 #include "sdl_text.h"
 #include "sdl_texture.h"
 
+/**
+ * @brief Cargador de texturas de SDL.
+ * 
+ */
 class SDLTextureLoader {
    private:
     SDL_Renderer *renderer;

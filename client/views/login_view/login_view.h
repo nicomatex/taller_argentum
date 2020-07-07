@@ -10,6 +10,10 @@
 #include "create_character_button.h"
 #include "login_view_ui_handler.h"
 
+/**
+ * @brief Vista de inicio de sesion.
+ * 
+ */
 class LoginView {
    private:
     SDLWindow &window;
@@ -22,11 +26,23 @@ class LoginView {
     LoginUiEventHandler ui_event_handler;
 
    public:
+    /**
+     * @brief Crea un objeto Login View
+     * 
+     * @param window Ventana dodne se va a mostrar la vista.
+     * @param scaler Escalador para responsiveness.
+     * @param game_state_monitor Monitor de estado de juego.
+     * @param socket_manager Socket Manager del juego.
+     */
     LoginView(SDLWindow &window, ResponsiveScaler &scaler,
               GameStateMonitor &game_state_monitor,
               SocketManager &socket_manager);
     ~LoginView();
 
+    /**
+     * @brief Inicia la vista.
+     * 
+     */
     void run();
 };
 

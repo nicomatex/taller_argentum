@@ -107,37 +107,37 @@ $(document).ready(function(){initNavTree('entity__manager_8h_source.html',''); i
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">class </span><a class="code" href="classEntity.html">Entity</a>;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classEntityManager.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEntityManager.html">EntityManager</a> {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    std::unordered_map&lt;EntityId, std::unique_ptr&lt;Entity&gt;&gt; entities;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    std::unordered_map&lt;EntityId, bool&gt; updated;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    std::mutex m;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classEntityManager.html">EntityManager</a>();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">static</span> <a class="code" href="classEntityManager.html">EntityManager</a>&amp; <a class="code" href="classEntityManager.html#a547828c70976622281781eefd2dfe8a9">get_instance</a>();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEntityManager.html#abc6a2cc5077501f4b06d88f4ed3e7e31">update</a>();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    ~<a class="code" href="classEntityManager.html">EntityManager</a>();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classEntity.html">Entity</a>&amp; <a class="code" href="classEntityManager.html#a2b1819ebd08f219e5cff5d8ab86bbf4e">create</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> entity_id);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classEntity.html">Entity</a>&amp; <a class="code" href="classEntityManager.html#a1dff6949261f017ea5b0d4cfd33d2c19">get_from_id</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> entity_id);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classEntityManager.html#ae84c1e2dcd3d9fc1072a061bbd50c99b">has_entity</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> entity_id);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    std::vector&lt;EntityId&gt; <a class="code" href="classEntityManager.html#ad02353e2ae2f99bf46b514c845405695">get_entity_id_list</a>();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEntityManager.html#a31efdfb2e797b87a0a12fb78196e22dd">update_initialize</a>();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEntityManager.html#a2a74af5ce8070e0cb4d6f72d45be7204">remove_non_updated</a>();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEntityManager.html#a42a14c36a2dcc38227f480b3b3b20da4">clean</a>();</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEntityManager.html#aee06b6001633ae95ce8c148d8dfe51df">empty</a>();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;};</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif  // ENTITY_MANAGER_H</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classEntityManager.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEntityManager.html">EntityManager</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::unordered_map&lt;EntityId, std::unique_ptr&lt;Entity&gt;&gt; entities;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    std::unordered_map&lt;EntityId, bool&gt; updated;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    std::mutex m;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classEntityManager.html">EntityManager</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">static</span> <a class="code" href="classEntityManager.html">EntityManager</a>&amp; <a class="code" href="classEntityManager.html#a547828c70976622281781eefd2dfe8a9">get_instance</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEntityManager.html#abc6a2cc5077501f4b06d88f4ed3e7e31">update</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    ~<a class="code" href="classEntityManager.html">EntityManager</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="classEntity.html">Entity</a>&amp; <a class="code" href="classEntityManager.html#a2b1819ebd08f219e5cff5d8ab86bbf4e">create</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> entity_id);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="classEntity.html">Entity</a>&amp; <a class="code" href="classEntityManager.html#a1dff6949261f017ea5b0d4cfd33d2c19">get_from_id</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> entity_id);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classEntityManager.html#ae84c1e2dcd3d9fc1072a061bbd50c99b">has_entity</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> entity_id);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    std::vector&lt;EntityId&gt; <a class="code" href="classEntityManager.html#ad02353e2ae2f99bf46b514c845405695">get_entity_id_list</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEntityManager.html#a31efdfb2e797b87a0a12fb78196e22dd">update_initialize</a>();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEntityManager.html#a2a74af5ce8070e0cb4d6f72d45be7204">remove_non_updated</a>();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEntityManager.html#a42a14c36a2dcc38227f480b3b3b20da4">clean</a>();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEntityManager.html#aee06b6001633ae95ce8c148d8dfe51df">empty</a>();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;};</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif  // ENTITY_MANAGER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassEntityManager_html_aee06b6001633ae95ce8c148d8dfe51df"><div class="ttname"><a href="classEntityManager.html#aee06b6001633ae95ce8c148d8dfe51df">EntityManager::empty</a></div><div class="ttdeci">void empty()</div><div class="ttdoc">Remueve todas las entidades.</div><div class="ttdef"><b>Definition:</b> entity_manager.cpp:83</div></div>
@@ -146,12 +146,12 @@ $(document).ready(function(){initNavTree('entity__manager_8h_source.html',''); i
 <div class="ttc" id="aclassEntityManager_html_a2b1819ebd08f219e5cff5d8ab86bbf4e"><div class="ttname"><a href="classEntityManager.html#a2b1819ebd08f219e5cff5d8ab86bbf4e">EntityManager::create</a></div><div class="ttdeci">Entity &amp; create(unsigned int entity_id)</div><div class="ttdoc">Crea una nueva entidad.</div><div class="ttdef"><b>Definition:</b> entity_manager.cpp:21</div></div>
 <div class="ttc" id="aclassEntityManager_html_ae84c1e2dcd3d9fc1072a061bbd50c99b"><div class="ttname"><a href="classEntityManager.html#ae84c1e2dcd3d9fc1072a061bbd50c99b">EntityManager::has_entity</a></div><div class="ttdeci">bool has_entity(unsigned int entity_id)</div><div class="ttdoc">Indica si una entidad existe.</div><div class="ttdef"><b>Definition:</b> entity_manager.cpp:42</div></div>
 <div class="ttc" id="aclassEntityManager_html_ad02353e2ae2f99bf46b514c845405695"><div class="ttname"><a href="classEntityManager.html#ad02353e2ae2f99bf46b514c845405695">EntityManager::get_entity_id_list</a></div><div class="ttdeci">std::vector&lt; EntityId &gt; get_entity_id_list()</div><div class="ttdoc">Devuelve un vector con los ids de todas las entidades existentes.</div><div class="ttdef"><b>Definition:</b> entity_manager.cpp:56</div></div>
-<div class="ttc" id="aclassEntity_html"><div class="ttname"><a href="classEntity.html">Entity</a></div><div class="ttdef"><b>Definition:</b> entity.h:15</div></div>
+<div class="ttc" id="aclassEntity_html"><div class="ttname"><a href="classEntity.html">Entity</a></div><div class="ttdoc">Entidad (NPCs y personajes)</div><div class="ttdef"><b>Definition:</b> entity.h:19</div></div>
 <div class="ttc" id="aclassEntityManager_html_abc6a2cc5077501f4b06d88f4ed3e7e31"><div class="ttname"><a href="classEntityManager.html#abc6a2cc5077501f4b06d88f4ed3e7e31">EntityManager::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">Actualiza todas las entidades.</div><div class="ttdef"><b>Definition:</b> entity_manager.cpp:16</div></div>
 <div class="ttc" id="aclassEntityManager_html_a2a74af5ce8070e0cb4d6f72d45be7204"><div class="ttname"><a href="classEntityManager.html#a2a74af5ce8070e0cb4d6f72d45be7204">EntityManager::remove_non_updated</a></div><div class="ttdeci">void remove_non_updated()</div><div class="ttdoc">Indica que todas las entidades no actualizadas deben ser quitadas en el proximo clean.</div><div class="ttdef"><b>Definition:</b> entity_manager.cpp:72</div></div>
 <div class="ttc" id="aclassEntityManager_html_a31efdfb2e797b87a0a12fb78196e22dd"><div class="ttname"><a href="classEntityManager.html#a31efdfb2e797b87a0a12fb78196e22dd">EntityManager::update_initialize</a></div><div class="ttdeci">void update_initialize()</div><div class="ttdoc">Marca todas las entidades como no actualizadas.</div><div class="ttdef"><b>Definition:</b> entity_manager.cpp:65</div></div>
 <div class="ttc" id="aclassEntityManager_html_a42a14c36a2dcc38227f480b3b3b20da4"><div class="ttname"><a href="classEntityManager.html#a42a14c36a2dcc38227f480b3b3b20da4">EntityManager::clean</a></div><div class="ttdeci">void clean()</div><div class="ttdoc">Quita todas las entidades marcadas con alive = false.</div><div class="ttdef"><b>Definition:</b> entity_manager.cpp:28</div></div>
-<div class="ttc" id="aclassEntityManager_html"><div class="ttname"><a href="classEntityManager.html">EntityManager</a></div><div class="ttdef"><b>Definition:</b> entity_manager.h:13</div></div>
+<div class="ttc" id="aclassEntityManager_html"><div class="ttname"><a href="classEntityManager.html">EntityManager</a></div><div class="ttdoc">Manager de entidades.</div><div class="ttdef"><b>Definition:</b> entity_manager.h:17</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

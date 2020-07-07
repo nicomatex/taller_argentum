@@ -6,6 +6,10 @@
 #include "SDL2/SDL_ttf.h"
 #include "sdl_texture.h"
 
+/**
+ * @brief Objeto de texto de SDL.
+ * 
+ */
 class SDLText : public SDLTexture {
    private:
     TTF_Font* font;

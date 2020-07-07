@@ -14,5 +14,6 @@ var dir_3f8315192904255f2bd3453e0fee5a42 =
     [ "map.h", "map_8h_source.html", null ],
     [ "renderizable_object.h", "renderizable__object_8h_source.html", null ],
     [ "resource_manager.h", "resource__manager_8h_source.html", null ],
+    [ "sound_system.h", "sound__system_8h_source.html", null ],
     [ "visual_config.h", "visual__config_8h_source.html", null ]
 ];

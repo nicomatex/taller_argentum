@@ -95,40 +95,50 @@ $(document).ready(function(){initNavTree('classButton.html',''); initResizable()
 <a href="#pub-methods">Métodos públicos</a> &#124;
 <a href="classButton-members.html">Lista de todos los miembros</a>  </div>
   <div class="headertitle">
-<div class="title">Referencia de la Clase Button<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+<div class="title">Referencia de la Clase Button</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Boton abstracto. Todos los botones heredan de esta clase.  
+ <a href="classButton.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="button_8h_source.html">button.h</a>&gt;</code></p>
 <div class="dynheader">
 Diagrama de herencias de Button</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classButton.png" usemap="#Button_map" alt=""/>
   <map id="Button_map" name="Button_map">
-<area href="classCastButton.html" alt="CastButton" shape="rect" coords="206,56,402,80"/>
-<area href="classCreateCharacterButton.html" alt="CreateCharacterButton" shape="rect" coords="206,112,402,136"/>
-<area href="classGoBackButton.html" alt="GoBackButton" shape="rect" coords="206,168,402,192"/>
-<area href="classItemButton.html" alt="ItemButton" shape="rect" coords="206,224,402,248"/>
-<area href="classLoginButton.html" alt="LoginButton" shape="rect" coords="206,280,402,304"/>
-<area href="classOptionButton.html" alt="OptionButton&lt; T &gt;" shape="rect" coords="206,336,402,360"/>
+<area href="classCastButton.html" title="Boton de &quot;Lanzar&quot; en el juego." alt="CastButton" shape="rect" coords="206,56,402,80"/>
+<area href="classCreateCharacterButton.html" title="Boton para cambiar a la vista de creacion de personaje." alt="CreateCharacterButton" shape="rect" coords="206,112,402,136"/>
+<area href="classGoBackButton.html" title="Boton de &quot;volver&quot; de la pantalla de creacion de personajes." alt="GoBackButton" shape="rect" coords="206,168,402,192"/>
+<area href="classItemButton.html" title="Boton clickeable para cada item del inventario." alt="ItemButton" shape="rect" coords="206,224,402,248"/>
+<area href="classLoginButton.html" title="Boton para iniciar sesion." alt="LoginButton" shape="rect" coords="206,280,402,304"/>
+<area href="classOptionButton.html" title="Boton de seleccion de opcion." alt="OptionButton&lt; T &gt;" shape="rect" coords="206,336,402,360"/>
 <area href="classOptionButton.html" alt="OptionButton&lt; class_type_t &gt;" shape="rect" coords="206,392,402,416"/>
 <area href="classOptionButton.html" alt="OptionButton&lt; race_type_t &gt;" shape="rect" coords="206,448,402,472"/>
-<area href="classRequestCharacterCreationButton.html" alt="RequestCharacterCreationButton" shape="rect" coords="206,504,402,528"/>
+<area href="classRequestCharacterCreationButton.html" title="Boton de &quot;Crear Personaje&quot; en la vista de creacion de personaje." alt="RequestCharacterCreationButton" shape="rect" coords="206,504,402,528"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
 <tr class="memitem:a05d300c72f55575c82a61b157bf2fa51"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#a05d300c72f55575c82a61b157bf2fa51">Button</a> (SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer *renderer)</td></tr>
-<tr class="memdesc:a05d300c72f55575c82a61b157bf2fa51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un objeto <a class="el" href="classButton.html">Button</a>.  <a href="classButton.html#a05d300c72f55575c82a61b157bf2fa51">Más...</a><br /></td></tr>
+<tr class="memdesc:a05d300c72f55575c82a61b157bf2fa51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un objeto <a class="el" href="classButton.html" title="Boton abstracto. Todos los botones heredan de esta clase.">Button</a>.  <a href="classButton.html#a05d300c72f55575c82a61b157bf2fa51">Más...</a><br /></td></tr>
 <tr class="separator:a05d300c72f55575c82a61b157bf2fa51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fb9ff3e5d51bc2a2057cdb6f8faa2cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#a9fb9ff3e5d51bc2a2057cdb6f8faa2cd">handle_event</a> (SDL_Event &amp;e)</td></tr>
-<tr class="memdesc:a9fb9ff3e5d51bc2a2057cdb6f8faa2cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Analiza si se trata de un click en el boton, y de ser asi llama a <a class="el" href="classButton.html#aa19e4697422dbf7bd3a638688d218d79" title="Accion a ejecutar cuando se clickea el boton.">on_click()</a>.  <a href="classButton.html#a9fb9ff3e5d51bc2a2057cdb6f8faa2cd">Más...</a><br /></td></tr>
+<tr class="memdesc:a9fb9ff3e5d51bc2a2057cdb6f8faa2cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Analiza si se trata de un click en el boton, y de ser asi llama a <a class="el" href="classButton.html#a609cacd830c5afe5082ffb61861abb3c" title="Accion a ejecutar cuando se clickea el boton izquierdo.">on_click()</a>.  <a href="classButton.html#a9fb9ff3e5d51bc2a2057cdb6f8faa2cd">Más...</a><br /></td></tr>
 <tr class="separator:a9fb9ff3e5d51bc2a2057cdb6f8faa2cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa19e4697422dbf7bd3a638688d218d79"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#aa19e4697422dbf7bd3a638688d218d79">on_click</a> ()=0</td></tr>
-<tr class="memdesc:aa19e4697422dbf7bd3a638688d218d79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accion a ejecutar cuando se clickea el boton.  <a href="classButton.html#aa19e4697422dbf7bd3a638688d218d79">Más...</a><br /></td></tr>
-<tr class="separator:aa19e4697422dbf7bd3a638688d218d79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a609cacd830c5afe5082ffb61861abb3c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#a609cacd830c5afe5082ffb61861abb3c">on_click</a> ()</td></tr>
+<tr class="memdesc:a609cacd830c5afe5082ffb61861abb3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accion a ejecutar cuando se clickea el boton izquierdo.  <a href="classButton.html#a609cacd830c5afe5082ffb61861abb3c">Más...</a><br /></td></tr>
+<tr class="separator:a609cacd830c5afe5082ffb61861abb3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e264381a741ddd478e8462c9d50251c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#a5e264381a741ddd478e8462c9d50251c">on_right_click</a> ()</td></tr>
+<tr class="memdesc:a5e264381a741ddd478e8462c9d50251c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accion a ejecutar cuando se clickea el boton derecho.  <a href="classButton.html#a5e264381a741ddd478e8462c9d50251c">Más...</a><br /></td></tr>
+<tr class="separator:a5e264381a741ddd478e8462c9d50251c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentación del constructor y destructor</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Boton abstracto. Todos los botones heredan de esta clase. </p>
+</div><h2 class="groupheader">Documentación del constructor y destructor</h2>
 <a id="a05d300c72f55575c82a61b157bf2fa51"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a05d300c72f55575c82a61b157bf2fa51">&#9670;&nbsp;</a></span>Button()</h2>
 
@@ -161,7 +171,7 @@ Métodos públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Crea un objeto <a class="el" href="classButton.html">Button</a>. </p>
+<p>Crea un objeto <a class="el" href="classButton.html" title="Boton abstracto. Todos los botones heredan de esta clase.">Button</a>. </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">button_area</td><td>Area de accion del boton. </td></tr>
@@ -190,7 +200,7 @@ Métodos públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Analiza si se trata de un click en el boton, y de ser asi llama a <a class="el" href="classButton.html#aa19e4697422dbf7bd3a638688d218d79" title="Accion a ejecutar cuando se clickea el boton.">on_click()</a>. </p>
+<p>Analiza si se trata de un click en el boton, y de ser asi llama a <a class="el" href="classButton.html#a609cacd830c5afe5082ffb61861abb3c" title="Accion a ejecutar cuando se clickea el boton izquierdo.">on_click()</a>. </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">e</td><td>Evento de SDL. </td></tr>
@@ -200,8 +210,8 @@ Métodos públicos</h2></td></tr>
 
 </div>
 </div>
-<a id="aa19e4697422dbf7bd3a638688d218d79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa19e4697422dbf7bd3a638688d218d79">&#9670;&nbsp;</a></span>on_click()</h2>
+<a id="a609cacd830c5afe5082ffb61861abb3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a609cacd830c5afe5082ffb61861abb3c">&#9670;&nbsp;</a></span>on_click()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -210,7 +220,7 @@ Métodos públicos</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void Button::on_click </td>
+          <td class="memname">void Button::on_click </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -218,14 +228,43 @@ Métodos públicos</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Accion a ejecutar cuando se clickea el boton. </p>
+<p>Accion a ejecutar cuando se clickea el boton izquierdo. </p>
 
-<p>Implementado en <a class="el" href="classLoginButton.html#a2de2887758f6b6b9319003ef2b907cd1">LoginButton</a>, <a class="el" href="classCreateCharacterButton.html#aad61bee94b5d3c9579fb757e89c8a066">CreateCharacterButton</a>, <a class="el" href="classItemButton.html#a5bef66680b17830e3049b1ceb183a77a">ItemButton</a>, <a class="el" href="classCastButton.html#a4223a97952a35aee8889d7cb3315d249">CastButton</a>, <a class="el" href="classRequestCharacterCreationButton.html#a7b6b5d1c0addb9044e0555fc2ba209a3">RequestCharacterCreationButton</a>, <a class="el" href="classOptionButton.html#aabe13f61dcf543ccaa1f6bcca1fe0a47">OptionButton&lt; T &gt;</a>, <a class="el" href="classOptionButton.html#aabe13f61dcf543ccaa1f6bcca1fe0a47">OptionButton&lt; class_type_t &gt;</a>, <a class="el" href="classOptionButton.html#aabe13f61dcf543ccaa1f6bcca1fe0a47">OptionButton&lt; race_type_t &gt;</a> y <a class="el" href="classGoBackButton.html#ab9e3d2dd96e4ed928c9a4c4c505ab0c3">GoBackButton</a>.</p>
+<p>Reimplementado en <a class="el" href="classLoginButton.html#a2de2887758f6b6b9319003ef2b907cd1">LoginButton</a>, <a class="el" href="classCreateCharacterButton.html#aad61bee94b5d3c9579fb757e89c8a066">CreateCharacterButton</a>, <a class="el" href="classItemButton.html#a5bef66680b17830e3049b1ceb183a77a">ItemButton</a>, <a class="el" href="classCastButton.html#a4223a97952a35aee8889d7cb3315d249">CastButton</a>, <a class="el" href="classRequestCharacterCreationButton.html#a7b6b5d1c0addb9044e0555fc2ba209a3">RequestCharacterCreationButton</a>, <a class="el" href="classOptionButton.html#aabe13f61dcf543ccaa1f6bcca1fe0a47">OptionButton&lt; T &gt;</a>, <a class="el" href="classOptionButton.html#aabe13f61dcf543ccaa1f6bcca1fe0a47">OptionButton&lt; class_type_t &gt;</a>, <a class="el" href="classOptionButton.html#aabe13f61dcf543ccaa1f6bcca1fe0a47">OptionButton&lt; race_type_t &gt;</a> y <a class="el" href="classGoBackButton.html#ab9e3d2dd96e4ed928c9a4c4c505ab0c3">GoBackButton</a>.</p>
+
+</div>
+</div>
+<a id="a5e264381a741ddd478e8462c9d50251c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e264381a741ddd478e8462c9d50251c">&#9670;&nbsp;</a></span>on_right_click()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Button::on_right_click </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Accion a ejecutar cuando se clickea el boton derecho. </p>
+
+<p>Reimplementado en <a class="el" href="classItemButton.html#a92c95bbe244a7d39688ca6b3ea3fd744">ItemButton</a>.</p>
 
 </div>
 </div>

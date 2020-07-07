@@ -12,6 +12,10 @@
 #include "go_back_button.h"
 #include "request_char_creation_button.h"
 
+/**
+ * @brief Vista de creacion de personajes.
+ * 
+ */
 class CharacterCreationView {
    private:
     SDLWindow &window;
@@ -28,6 +32,14 @@ class CharacterCreationView {
     void render_selected_class_info();
 
    public:
+   /**
+    * @brief Vista de creacion de personaje
+    * 
+    * @param window Ventana en la cual se va a mostrar la vista
+    * @param scaler Escalador para la responsiveness
+    * @param game_state_monitor Monitor de estado del juego
+    * @param socket_manager Socket de conexion del juego.
+    */
     CharacterCreationView(SDLWindow &window, ResponsiveScaler &scaler,
                           GameStateMonitor &game_state_monitor,
                           SocketManager &socket_manager);

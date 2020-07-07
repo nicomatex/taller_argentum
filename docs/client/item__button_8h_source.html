@@ -99,29 +99,36 @@ $(document).ready(function(){initNavTree('item__button_8h_source.html',''); init
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __ITEM_BUTTON_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../../../include/network/socket_manager.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../../engine/UI/button.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../../engine/SDL/sdl_timer.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../../engine/SDL/sdl_timer.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../../engine/UI/button.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classItemButton.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classItemButton.html">ItemButton</a> : <span class="keyword">public</span> <a class="code" href="classButton.html">Button</a> {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">int</span> slot_number;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    SocketManager&amp; socket_manager;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classSDLTimer.html">SDLTimer</a> double_click_timer;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classItemButton.html">ItemButton</a>(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer* renderer,</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;               SlotId slot_number, SocketManager&amp; socket_manager);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classItemButton.html#a5bef66680b17830e3049b1ceb183a77a">on_click</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classItemButton.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classItemButton.html">ItemButton</a> : <span class="keyword">public</span> <a class="code" href="classButton.html">Button</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">int</span> slot_number;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classSocketManager.html">SocketManager</a>&amp; socket_manager;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classSDLTimer.html">SDLTimer</a> double_click_timer;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span>&amp; last_clicked_slot;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classItemButton.html#a6ded00b9286614ce2ab49ee8aed3ab82">ItemButton</a>(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer* renderer,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;               SlotId slot_number, <span class="keywordtype">int</span>&amp; last_clicked_slot,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;               <a class="code" href="classSocketManager.html">SocketManager</a>&amp; socket_manager);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classItemButton.html#a5bef66680b17830e3049b1ceb183a77a">on_click</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classItemButton.html#a92c95bbe244a7d39688ca6b3ea3fd744">on_right_click</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassButton_html"><div class="ttname"><a href="classButton.html">Button</a></div><div class="ttdef"><b>Definition:</b> button.h:6</div></div>
-<div class="ttc" id="aclassSDLTimer_html"><div class="ttname"><a href="classSDLTimer.html">SDLTimer</a></div><div class="ttdef"><b>Definition:</b> sdl_timer.h:5</div></div>
-<div class="ttc" id="aclassItemButton_html"><div class="ttname"><a href="classItemButton.html">ItemButton</a></div><div class="ttdef"><b>Definition:</b> item_button.h:8</div></div>
-<div class="ttc" id="aclassItemButton_html_a5bef66680b17830e3049b1ceb183a77a"><div class="ttname"><a href="classItemButton.html#a5bef66680b17830e3049b1ceb183a77a">ItemButton::on_click</a></div><div class="ttdeci">void on_click() override</div><div class="ttdoc">Accion a ejecutar cuando se clickea el boton.</div><div class="ttdef"><b>Definition:</b> item_button.cpp:14</div></div>
+<div class="ttc" id="aclassSocketManager_html"><div class="ttname"><a href="classSocketManager.html">SocketManager</a></div><div class="ttdef"><b>Definition:</b> socket_manager.h:12</div></div>
+<div class="ttc" id="aclassButton_html"><div class="ttname"><a href="classButton.html">Button</a></div><div class="ttdoc">Boton abstracto. Todos los botones heredan de esta clase.</div><div class="ttdef"><b>Definition:</b> button.h:10</div></div>
+<div class="ttc" id="aclassSDLTimer_html"><div class="ttname"><a href="classSDLTimer.html">SDLTimer</a></div><div class="ttdoc">Timer basado en la cuenta de SDL.</div><div class="ttdef"><b>Definition:</b> sdl_timer.h:9</div></div>
+<div class="ttc" id="aclassItemButton_html"><div class="ttname"><a href="classItemButton.html">ItemButton</a></div><div class="ttdoc">Boton clickeable para cada item del inventario.</div><div class="ttdef"><b>Definition:</b> item_button.h:12</div></div>
+<div class="ttc" id="aclassItemButton_html_a6ded00b9286614ce2ab49ee8aed3ab82"><div class="ttname"><a href="classItemButton.html#a6ded00b9286614ce2ab49ee8aed3ab82">ItemButton::ItemButton</a></div><div class="ttdeci">ItemButton(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer *renderer, SlotId slot_number, int &amp;last_clicked_slot, SocketManager &amp;socket_manager)</div><div class="ttdoc">Crea un objeto Item Button.</div><div class="ttdef"><b>Definition:</b> item_button.cpp:8</div></div>
+<div class="ttc" id="aclassItemButton_html_a92c95bbe244a7d39688ca6b3ea3fd744"><div class="ttname"><a href="classItemButton.html#a92c95bbe244a7d39688ca6b3ea3fd744">ItemButton::on_right_click</a></div><div class="ttdeci">void on_right_click() override</div><div class="ttdoc">Envia un evento de tirar item al piso sobre el slot.</div><div class="ttdef"><b>Definition:</b> item_button.cpp:32</div></div>
+<div class="ttc" id="aclassItemButton_html_a5bef66680b17830e3049b1ceb183a77a"><div class="ttname"><a href="classItemButton.html#a5bef66680b17830e3049b1ceb183a77a">ItemButton::on_click</a></div><div class="ttdeci">void on_click() override</div><div class="ttdoc">Un click setea el ultimo slot clickeado. Doble click envia un evento de usar sobre el slot.</div><div class="ttdef"><b>Definition:</b> item_button.cpp:16</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

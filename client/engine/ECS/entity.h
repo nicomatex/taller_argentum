@@ -12,6 +12,10 @@
 #include "component_util.h"
 #include "entity_manager.h"
 
+/**
+ * @brief Entidad (NPCs y personajes)
+ * 
+ */
 class Entity {
    private:
     unsigned int id;

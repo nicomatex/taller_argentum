@@ -3,6 +3,10 @@
 
 #include "SDL2/SDL.h"
 
+/**
+ * @brief Boton abstracto. Todos los botones heredan de esta clase.
+ * 
+ */
 class Button {
    private:
     SDL_Rect button_area;

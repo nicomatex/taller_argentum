@@ -9,6 +9,11 @@
 #include "../../network/event_factory.h"
 #include "chat.h"
 #include "hud.h"
+
+/**
+ * @brief Handler de eventos de usuario de la vista principal.
+ *
+ */
 class UiEventHandler {
    private:
     GameStateMonitor &game_state_monitor;
@@ -19,8 +24,18 @@ class UiEventHandler {
     SDL_Rect main_render_viewport;
     position_t current_target;
     int selected_inventory_slot;
-    
+
    public:
+    /**
+     * @brief Crea un objeto Ui Event Handler
+     *
+     * @param socket_manager Socket manager del juego.
+     * @param game_state_monitor Monitor de estado del juego.
+     * @param hud Referencia al hud.
+     * @param camera Referencia a la camara.
+     * @param main_render_viewport Viewport del main render (o sea, de la
+     * camara).
+     */
     UiEventHandler(SocketManager &socket_manager,
                    GameStateMonitor &game_state_monitor, Hud &hud,
                    Camera &camera, SDL_Rect main_render_viewport);
@@ -43,7 +58,6 @@ class UiEventHandler {
     void handle_keyup_move_down();
     void handle_keyup_move_left();
     void handle_keyup_move_right();
-
 
     void handle_click(SDL_Event &e);
 

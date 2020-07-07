@@ -10,6 +10,10 @@
 typedef std::unordered_map<std::string, Actor> Parts;
 typedef std::unordered_map<std::string, int> PartIds;
 
+/**
+ * @brief Componente visual de los personajes.
+ * 
+ */
 class VisualCharacterComponent : public Component {
    private:
     Parts parts;

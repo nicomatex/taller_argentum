@@ -103,34 +103,34 @@ $(document).ready(function(){initNavTree('sdl__text_8h_source.html',''); initRes
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;SDL2/SDL_ttf.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;sdl_texture.h&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classSDLText.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSDLText.html">SDLText</a> : <span class="keyword">public</span> <a class="code" href="classSDLTexture.html">SDLTexture</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    TTF_Font* font;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    SDL_Color text_color;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classSDLText.html#a41a995268c10a9e5adb73ae670f0318e">SDLText</a>(<span class="keyword">const</span> std::string&amp; text, TTF_Font* font, SDL_Color color,</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            SDL_Renderer* renderer);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">/* No se permite construccion por copia*/</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classSDLText.html#a41a995268c10a9e5adb73ae670f0318e">SDLText</a>(<span class="keyword">const</span> <a class="code" href="classSDLText.html">SDLText</a>&amp; other) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classSDLText.html">SDLText</a> operator=(<span class="keyword">const</span> <a class="code" href="classSDLText.html">SDLText</a>&amp; other) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classSDLText.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSDLText.html">SDLText</a> : <span class="keyword">public</span> <a class="code" href="classSDLTexture.html">SDLTexture</a> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    TTF_Font* font;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    SDL_Color text_color;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classSDLText.html#a41a995268c10a9e5adb73ae670f0318e">SDLText</a>(<span class="keyword">const</span> std::string&amp; text, TTF_Font* font, SDL_Color color,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            SDL_Renderer* renderer);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">/* Constructor por movimiento.*/</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classSDLText.html#a41a995268c10a9e5adb73ae670f0318e">SDLText</a>(<a class="code" href="classSDLText.html">SDLText</a>&amp;&amp; other);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classSDLText.html">SDLText</a>&amp; operator=(<a class="code" href="classSDLText.html">SDLText</a>&amp;&amp; other);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    ~<a class="code" href="classSDLText.html">SDLText</a>();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSDLText.html#a7d44fc2e753a73ddf5790245f23a4398">update_text</a>(<span class="keyword">const</span> std::string&amp; text);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;};</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">/* No se permite construccion por copia*/</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classSDLText.html#a41a995268c10a9e5adb73ae670f0318e">SDLText</a>(<span class="keyword">const</span> <a class="code" href="classSDLText.html">SDLText</a>&amp; other) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classSDLText.html">SDLText</a> operator=(<span class="keyword">const</span> <a class="code" href="classSDLText.html">SDLText</a>&amp; other) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">/* Constructor por movimiento.*/</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classSDLText.html#a41a995268c10a9e5adb73ae670f0318e">SDLText</a>(<a class="code" href="classSDLText.html">SDLText</a>&amp;&amp; other);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="classSDLText.html">SDLText</a>&amp; operator=(<a class="code" href="classSDLText.html">SDLText</a>&amp;&amp; other);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    ~<a class="code" href="classSDLText.html">SDLText</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSDLText.html#a7d44fc2e753a73ddf5790245f23a4398">update_text</a>(<span class="keyword">const</span> std::string&amp; text);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassSDLTexture_html"><div class="ttname"><a href="classSDLTexture.html">SDLTexture</a></div><div class="ttdef"><b>Definition:</b> sdl_texture.h:9</div></div>
+<div class="ttc" id="aclassSDLTexture_html"><div class="ttname"><a href="classSDLTexture.html">SDLTexture</a></div><div class="ttdoc">Objeto de textura de SDL.</div><div class="ttdef"><b>Definition:</b> sdl_texture.h:13</div></div>
 <div class="ttc" id="aclassSDLText_html_a41a995268c10a9e5adb73ae670f0318e"><div class="ttname"><a href="classSDLText.html#a41a995268c10a9e5adb73ae670f0318e">SDLText::SDLText</a></div><div class="ttdeci">SDLText(const std::string &amp;text, TTF_Font *font, SDL_Color color, SDL_Renderer *renderer)</div><div class="ttdoc">Crea un objeto SDLText.</div><div class="ttdef"><b>Definition:</b> sdl_text.cpp:8</div></div>
 <div class="ttc" id="aclassSDLText_html_a7d44fc2e753a73ddf5790245f23a4398"><div class="ttname"><a href="classSDLText.html#a7d44fc2e753a73ddf5790245f23a4398">SDLText::update_text</a></div><div class="ttdeci">void update_text(const std::string &amp;text)</div><div class="ttdoc">Cambia el texto a renderizar.</div><div class="ttdef"><b>Definition:</b> sdl_text.cpp:35</div></div>
-<div class="ttc" id="aclassSDLText_html"><div class="ttname"><a href="classSDLText.html">SDLText</a></div><div class="ttdef"><b>Definition:</b> sdl_text.h:9</div></div>
+<div class="ttc" id="aclassSDLText_html"><div class="ttname"><a href="classSDLText.html">SDLText</a></div><div class="ttdoc">Objeto de texto de SDL.</div><div class="ttdef"><b>Definition:</b> sdl_text.h:13</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

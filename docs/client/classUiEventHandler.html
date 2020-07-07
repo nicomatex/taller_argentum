@@ -98,14 +98,19 @@ $(document).ready(function(){initNavTree('classUiEventHandler.html',''); initRes
 <div class="title">Referencia de la Clase UiEventHandler</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Handler de eventos de usuario de la vista principal.  
+ <a href="classUiEventHandler.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="ui__event__handler_8h_source.html">ui_event_handler.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a06798f15f7c0731fd1e2d4d5efed6185"><td class="memItemLeft" align="right" valign="top"><a id="a06798f15f7c0731fd1e2d4d5efed6185"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>UiEventHandler</b> (SocketManager &amp;socket_manager, <a class="el" href="classGameStateMonitor.html">GameStateMonitor</a> &amp;game_state_monitor, <a class="el" href="classHud.html">Hud</a> &amp;hud, <a class="el" href="classCamera.html">Camera</a> &amp;camera, SDL_Rect main_render_viewport)</td></tr>
+<tr class="memitem:a06798f15f7c0731fd1e2d4d5efed6185"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUiEventHandler.html#a06798f15f7c0731fd1e2d4d5efed6185">UiEventHandler</a> (<a class="el" href="classSocketManager.html">SocketManager</a> &amp;socket_manager, <a class="el" href="classGameStateMonitor.html">GameStateMonitor</a> &amp;game_state_monitor, <a class="el" href="classHud.html">Hud</a> &amp;hud, <a class="el" href="classCamera.html">Camera</a> &amp;camera, SDL_Rect main_render_viewport)</td></tr>
+<tr class="memdesc:a06798f15f7c0731fd1e2d4d5efed6185"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un objeto Ui <a class="el" href="classEvent.html">Event</a> Handler.  <a href="classUiEventHandler.html#a06798f15f7c0731fd1e2d4d5efed6185">Más...</a><br /></td></tr>
 <tr class="separator:a06798f15f7c0731fd1e2d4d5efed6185"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2da109ac324063876ca51aba1d70b05"><td class="memItemLeft" align="right" valign="top"><a id="ae2da109ac324063876ca51aba1d70b05"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>send_event</b> (const Event &amp;event)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>send_event</b> (const <a class="el" href="classEvent.html">Event</a> &amp;event)</td></tr>
 <tr class="separator:ae2da109ac324063876ca51aba1d70b05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadb2614b3e73aae5afbc116db95b1681"><td class="memItemLeft" align="right" valign="top"><a id="aadb2614b3e73aae5afbc116db95b1681"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>handle_quit</b> ()</td></tr>
@@ -131,6 +136,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>handle_keydown_backsp
 <tr class="memitem:aefce3a3eb828790df4e0753a9b4f08e1"><td class="memItemLeft" align="right" valign="top"><a id="aefce3a3eb828790df4e0753a9b4f08e1"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>handle_keydown_sound_toggle</b> ()</td></tr>
 <tr class="separator:aefce3a3eb828790df4e0753a9b4f08e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d65c1e81cd3ebbe351aad7793b057f2"><td class="memItemLeft" align="right" valign="top"><a id="a7d65c1e81cd3ebbe351aad7793b057f2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>handle_keydown_attack</b> ()</td></tr>
+<tr class="separator:a7d65c1e81cd3ebbe351aad7793b057f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaf9f243cde53d4103227b1a1c4b1fd4"><td class="memItemLeft" align="right" valign="top"><a id="aeaf9f243cde53d4103227b1a1c4b1fd4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>handle_keydown_pickup</b> ()</td></tr>
+<tr class="separator:aeaf9f243cde53d4103227b1a1c4b1fd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a045e4f6ab32c97c3d926217963c8e473"><td class="memItemLeft" align="right" valign="top"><a id="a045e4f6ab32c97c3d926217963c8e473"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>handle_keyup_move_up</b> ()</td></tr>
 <tr class="separator:a045e4f6ab32c97c3d926217963c8e473"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,9 +154,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>handle_keyup_move_lef
 <tr class="memitem:aab59d42a86143086336d6d63229afecb"><td class="memItemLeft" align="right" valign="top"><a id="aab59d42a86143086336d6d63229afecb"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>handle_keyup_move_right</b> ()</td></tr>
 <tr class="separator:aab59d42a86143086336d6d63229afecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d65c1e81cd3ebbe351aad7793b057f2"><td class="memItemLeft" align="right" valign="top"><a id="a7d65c1e81cd3ebbe351aad7793b057f2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>handle_keydown_attack</b> ()</td></tr>
-<tr class="separator:a7d65c1e81cd3ebbe351aad7793b057f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a293786d3a59eca8f8a755738d7496642"><td class="memItemLeft" align="right" valign="top"><a id="a293786d3a59eca8f8a755738d7496642"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>handle_click</b> (SDL_Event &amp;e)</td></tr>
 <tr class="separator:a293786d3a59eca8f8a755738d7496642"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,6 +161,67 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>handle_click</b> (SDL
 void&#160;</td><td class="memItemRight" valign="bottom"><b>handle</b> ()</td></tr>
 <tr class="separator:a0ff135d2a06e2d3fb718d8a9c4bdf44d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Handler de eventos de usuario de la vista principal. </p>
+</div><h2 class="groupheader">Documentación del constructor y destructor</h2>
+<a id="a06798f15f7c0731fd1e2d4d5efed6185"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06798f15f7c0731fd1e2d4d5efed6185">&#9670;&nbsp;</a></span>UiEventHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UiEventHandler::UiEventHandler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSocketManager.html">SocketManager</a> &amp;&#160;</td>
+          <td class="paramname"><em>socket_manager</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classGameStateMonitor.html">GameStateMonitor</a> &amp;&#160;</td>
+          <td class="paramname"><em>game_state_monitor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classHud.html">Hud</a> &amp;&#160;</td>
+          <td class="paramname"><em>hud</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCamera.html">Camera</a> &amp;&#160;</td>
+          <td class="paramname"><em>camera</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>main_render_viewport</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crea un objeto Ui <a class="el" href="classEvent.html">Event</a> Handler. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">socket_manager</td><td><a class="el" href="classSocket.html">Socket</a> manager del juego. </td></tr>
+    <tr><td class="paramname">game_state_monitor</td><td>Monitor de estado del juego. </td></tr>
+    <tr><td class="paramname">hud</td><td>Referencia al hud. </td></tr>
+    <tr><td class="paramname">camera</td><td>Referencia a la camara. </td></tr>
+    <tr><td class="paramname">main_render_viewport</td><td>Viewport del main render (o sea, de la camara). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/views/game_view/<a class="el" href="ui__event__handler_8h_source.html">ui_event_handler.h</a></li>
 <li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/views/game_view/ui_event_handler.cpp</li>

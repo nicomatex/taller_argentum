@@ -111,44 +111,48 @@ $(document).ready(function(){initNavTree('game__view_8h_source.html',''); initRe
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;../responsive_scaler.h&quot;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;hud.h&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;ui_event_handler.h&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classGameView.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGameView.html">GameView</a> {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classResponsiveScaler.html">ResponsiveScaler</a> &amp;scaler;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classSDLWindow.html">SDLWindow</a> &amp;window;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classChatBuffer.html">ChatBuffer</a> &amp;chat_buffer;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classLootBuffer.html">LootBuffer</a> &amp;loot_buffer;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a> &amp;game_state_monitor;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classHud.html">Hud</a> hud;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classCamera.html">Camera</a> camera;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classUiEventHandler.html">UiEventHandler</a> ui_event_handler;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classMap.html">Map</a> map;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classGameView.html">GameView</a>(<a class="code" href="classResponsiveScaler.html">ResponsiveScaler</a> &amp;scaler, <span class="keywordtype">int</span> follow_entity_id,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;             SocketManager &amp;socket_manager, <a class="code" href="classSDLWindow.html">SDLWindow</a> &amp;window,</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;             <a class="code" href="classChatBuffer.html">ChatBuffer</a> &amp;chat_buffer, <a class="code" href="classInventoryBuffer.html">InventoryBuffer</a> &amp;inventory_buffer,</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;             <a class="code" href="classLootBuffer.html">LootBuffer</a> &amp;loot_buffer, <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a> &amp;game_state_monitor,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;             nlohmann::json map_info);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> run();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    ~<a class="code" href="classGameView.html">GameView</a>();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classGameView.html">   22</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGameView.html">GameView</a> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classResponsiveScaler.html">ResponsiveScaler</a> &amp;scaler;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classSDLWindow.html">SDLWindow</a> &amp;window;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classChatBuffer.html">ChatBuffer</a> &amp;chat_buffer;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classLootBuffer.html">LootBuffer</a> &amp;loot_buffer;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a> &amp;game_state_monitor;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classHud.html">Hud</a> hud;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classCamera.html">Camera</a> camera;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classUiEventHandler.html">UiEventHandler</a> ui_event_handler;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classMap.html">Map</a> map;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classGameView.html#aa3b7413ddbc9f2f0eeae0d33587a6c04">GameView</a>(<a class="code" href="classResponsiveScaler.html">ResponsiveScaler</a> &amp;scaler, <span class="keywordtype">int</span> follow_entity_id,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;             <a class="code" href="classSocketManager.html">SocketManager</a> &amp;socket_manager, <a class="code" href="classSDLWindow.html">SDLWindow</a> &amp;window,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;             <a class="code" href="classChatBuffer.html">ChatBuffer</a> &amp;chat_buffer, <a class="code" href="classInventoryBuffer.html">InventoryBuffer</a> &amp;inventory_buffer,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;             <a class="code" href="classLootBuffer.html">LootBuffer</a> &amp;loot_buffer, <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a> &amp;game_state_monitor,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;             nlohmann::json map_info);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameView.html#a6b0f478e7e3afcaeef442d6cb482a9a1">run</a>();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    ~<a class="code" href="classGameView.html">GameView</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassSDLWindow_html"><div class="ttname"><a href="classSDLWindow.html">SDLWindow</a></div><div class="ttdef"><b>Definition:</b> sdl_window.h:13</div></div>
-<div class="ttc" id="aclassCamera_html"><div class="ttname"><a href="classCamera.html">Camera</a></div><div class="ttdef"><b>Definition:</b> camera.h:16</div></div>
-<div class="ttc" id="aclassResponsiveScaler_html"><div class="ttname"><a href="classResponsiveScaler.html">ResponsiveScaler</a></div><div class="ttdef"><b>Definition:</b> responsive_scaler.h:6</div></div>
+<div class="ttc" id="aclassSDLWindow_html"><div class="ttname"><a href="classSDLWindow.html">SDLWindow</a></div><div class="ttdoc">Objeto ventana de SDL.</div><div class="ttdef"><b>Definition:</b> sdl_window.h:17</div></div>
+<div class="ttc" id="aclassSocketManager_html"><div class="ttname"><a href="classSocketManager.html">SocketManager</a></div><div class="ttdef"><b>Definition:</b> socket_manager.h:12</div></div>
+<div class="ttc" id="aclassCamera_html"><div class="ttname"><a href="classCamera.html">Camera</a></div><div class="ttdoc">Camara, utilizada para renderizar el mapa y las entidades.</div><div class="ttdef"><b>Definition:</b> camera.h:20</div></div>
+<div class="ttc" id="aclassResponsiveScaler_html"><div class="ttname"><a href="classResponsiveScaler.html">ResponsiveScaler</a></div><div class="ttdoc">Escalador para hacer las areas responsive.</div><div class="ttdef"><b>Definition:</b> responsive_scaler.h:10</div></div>
 <div class="ttc" id="aclassChatBuffer_html"><div class="ttname"><a href="classChatBuffer.html">ChatBuffer</a></div><div class="ttdef"><b>Definition:</b> chat_buffer.h:10</div></div>
 <div class="ttc" id="aclassGameStateMonitor_html"><div class="ttname"><a href="classGameStateMonitor.html">GameStateMonitor</a></div><div class="ttdef"><b>Definition:</b> game_state_monitor.h:17</div></div>
-<div class="ttc" id="aclassHud_html"><div class="ttname"><a href="classHud.html">Hud</a></div><div class="ttdef"><b>Definition:</b> hud.h:19</div></div>
+<div class="ttc" id="aclassGameView_html_a6b0f478e7e3afcaeef442d6cb482a9a1"><div class="ttname"><a href="classGameView.html#a6b0f478e7e3afcaeef442d6cb482a9a1">GameView::run</a></div><div class="ttdeci">void run()</div><div class="ttdoc">Inicia la vista.</div><div class="ttdef"><b>Definition:</b> game_view.cpp:37</div></div>
+<div class="ttc" id="aclassHud_html"><div class="ttname"><a href="classHud.html">Hud</a></div><div class="ttdoc">HUD del juego (informacion del jugador).</div><div class="ttdef"><b>Definition:</b> hud.h:22</div></div>
 <div class="ttc" id="aclassLootBuffer_html"><div class="ttname"><a href="classLootBuffer.html">LootBuffer</a></div><div class="ttdef"><b>Definition:</b> loot_buffer.h:8</div></div>
-<div class="ttc" id="aclassGameView_html"><div class="ttname"><a href="classGameView.html">GameView</a></div><div class="ttdef"><b>Definition:</b> game_view.h:17</div></div>
+<div class="ttc" id="aclassGameView_html"><div class="ttname"><a href="classGameView.html">GameView</a></div><div class="ttdoc">Vista principal del juego.</div><div class="ttdef"><b>Definition:</b> game_view.h:22</div></div>
 <div class="ttc" id="aclassInventoryBuffer_html"><div class="ttname"><a href="classInventoryBuffer.html">InventoryBuffer</a></div><div class="ttdef"><b>Definition:</b> inventory_buffer.h:7</div></div>
-<div class="ttc" id="aclassUiEventHandler_html"><div class="ttname"><a href="classUiEventHandler.html">UiEventHandler</a></div><div class="ttdef"><b>Definition:</b> ui_event_handler.h:12</div></div>
-<div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdef"><b>Definition:</b> map.h:11</div></div>
+<div class="ttc" id="aclassUiEventHandler_html"><div class="ttname"><a href="classUiEventHandler.html">UiEventHandler</a></div><div class="ttdoc">Handler de eventos de usuario de la vista principal.</div><div class="ttdef"><b>Definition:</b> ui_event_handler.h:17</div></div>
+<div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdoc">Mapa. Contiene toda la informacion estatica del mapa, asi como tambien el loot que esta tirado en el ...</div><div class="ttdef"><b>Definition:</b> map.h:16</div></div>
+<div class="ttc" id="aclassGameView_html_aa3b7413ddbc9f2f0eeae0d33587a6c04"><div class="ttname"><a href="classGameView.html#aa3b7413ddbc9f2f0eeae0d33587a6c04">GameView::GameView</a></div><div class="ttdeci">GameView(ResponsiveScaler &amp;scaler, int follow_entity_id, SocketManager &amp;socket_manager, SDLWindow &amp;window, ChatBuffer &amp;chat_buffer, InventoryBuffer &amp;inventory_buffer, LootBuffer &amp;loot_buffer, GameStateMonitor &amp;game_state_monitor, nlohmann::json map_info)</div><div class="ttdoc">Constructor de la vista principal.</div><div class="ttdef"><b>Definition:</b> game_view.cpp:12</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

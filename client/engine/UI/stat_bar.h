@@ -4,6 +4,10 @@
 #include "../SDL/sdl_text.h"
 #include "SDL2/SDL.h"
 
+/**
+ * @brief Barra de stat, usado en HP, MP y Experiencia.
+ * 
+ */
 class StatBar {
    private:
     SDL_Renderer* renderer;

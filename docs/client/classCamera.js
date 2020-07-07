@@ -1,6 +1,6 @@
 var classCamera =
 [
-    [ "Camera", "classCamera.html#ad8006f3c941cfb20c070f276ff2fded5", null ],
+    [ "Camera", "classCamera.html#ac6fa4e4cc53a10492c619abbbe8665a5", null ],
     [ "~Camera", "classCamera.html#ad1897942d0ccf91052386388a497349f", null ],
     [ "draw", "classCamera.html#ab4594414daf3874e7139c79dec541449", null ],
     [ "draw_all", "classCamera.html#a95eaaace775843647d6f2e3886ba672b", null ],

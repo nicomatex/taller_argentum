@@ -103,23 +103,30 @@ $(document).ready(function(){initNavTree('item__button__grid_8h_source.html','')
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;SDL2/SDL.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;item_button.h&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classItemButtonGrid.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="classItemButtonGrid.html">ItemButtonGrid</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    std::vector&lt;ItemButton&gt; buttons;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classItemButtonGrid.html">ItemButtonGrid</a>(SDL_Rect inventory_area, SDL_Rect viewport,</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                   SDL_Renderer* renderer, <span class="keywordtype">int</span> rows, <span class="keywordtype">int</span> cols,</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                   SocketManager&amp; socket_manager);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    ~<a class="code" href="classItemButtonGrid.html">ItemButtonGrid</a>();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> handle_event(SDL_Event &amp;e);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classItemButtonGrid.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classItemButtonGrid.html">ItemButtonGrid</a> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    std::vector&lt;ItemButton&gt; buttons;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">int</span> last_clicked_slot;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classItemButtonGrid.html#a92991fd70c3960395fa32be8fbe6e638">ItemButtonGrid</a>(SDL_Rect inventory_area, SDL_Rect viewport,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                   SDL_Renderer* renderer, <span class="keywordtype">int</span> rows, <span class="keywordtype">int</span> cols,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                   <a class="code" href="classSocketManager.html">SocketManager</a>&amp; socket_manager);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    ~<a class="code" href="classItemButtonGrid.html">ItemButtonGrid</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classItemButtonGrid.html#af00edfda56d58aaa83cd4b79fa607632">handle_event</a>(SDL_Event&amp; e);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classItemButtonGrid.html#a7b6f52f721ceac1647ab2a186d0582bd">get_last_clicked_slot</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassItemButtonGrid_html"><div class="ttname"><a href="classItemButtonGrid.html">ItemButtonGrid</a></div><div class="ttdef"><b>Definition:</b> item_button_grid.h:9</div></div>
+<div class="ttc" id="aclassItemButtonGrid_html_af00edfda56d58aaa83cd4b79fa607632"><div class="ttname"><a href="classItemButtonGrid.html#af00edfda56d58aaa83cd4b79fa607632">ItemButtonGrid::handle_event</a></div><div class="ttdeci">void handle_event(SDL_Event &amp;e)</div><div class="ttdoc">Maneja los clicks en el inventario.</div><div class="ttdef"><b>Definition:</b> item_button_grid.cpp:24</div></div>
+<div class="ttc" id="aclassSocketManager_html"><div class="ttname"><a href="classSocketManager.html">SocketManager</a></div><div class="ttdef"><b>Definition:</b> socket_manager.h:12</div></div>
+<div class="ttc" id="aclassItemButtonGrid_html_a7b6f52f721ceac1647ab2a186d0582bd"><div class="ttname"><a href="classItemButtonGrid.html#a7b6f52f721ceac1647ab2a186d0582bd">ItemButtonGrid::get_last_clicked_slot</a></div><div class="ttdeci">int get_last_clicked_slot()</div><div class="ttdoc">Devuelve el ultimo slot clickeado.</div><div class="ttdef"><b>Definition:</b> item_button_grid.cpp:30</div></div>
+<div class="ttc" id="aclassItemButtonGrid_html_a92991fd70c3960395fa32be8fbe6e638"><div class="ttname"><a href="classItemButtonGrid.html#a92991fd70c3960395fa32be8fbe6e638">ItemButtonGrid::ItemButtonGrid</a></div><div class="ttdeci">ItemButtonGrid(SDL_Rect inventory_area, SDL_Rect viewport, SDL_Renderer *renderer, int rows, int cols, SocketManager &amp;socket_manager)</div><div class="ttdoc">Crea un objeto Item Button Grid.</div><div class="ttdef"><b>Definition:</b> item_button_grid.cpp:3</div></div>
+<div class="ttc" id="aclassItemButtonGrid_html"><div class="ttname"><a href="classItemButtonGrid.html">ItemButtonGrid</a></div><div class="ttdoc">Wrapper para todos los botones del inventario.</div><div class="ttdef"><b>Definition:</b> item_button_grid.h:13</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

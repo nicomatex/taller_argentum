@@ -97,32 +97,34 @@ $(document).ready(function(){initNavTree('responsive__scaler_8h_source.html','')
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __RESPONSIVE_SCALER_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __RESPONSIVE_SCALER_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;SDL2/SDL.h&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../engine/SDL/sdl_window.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;../engine/SDL/sdl_window.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;SDL2/SDL.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classResponsiveScaler.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classResponsiveScaler.html">ResponsiveScaler</a> {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="classSDLWindow.html">SDLWindow</a> &amp;window;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">float</span> scale_factor_w;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">float</span> scale_factor_h;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classResponsiveScaler.html">ResponsiveScaler</a>(<a class="code" href="classSDLWindow.html">SDLWindow</a> &amp;window, <span class="keywordtype">int</span> prototype_width,</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                     <span class="keywordtype">int</span> prototype_height);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    ~<a class="code" href="classResponsiveScaler.html">ResponsiveScaler</a>();</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment">/* Devuelve un SDL_Rect escalado segun los factores de la ventana.*/</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    SDL_Rect scale(SDL_Rect unscaled_rect);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">/* Devuelve un valor escalado segun el factor de escalado de ancho. */</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> simple_scale(<span class="keywordtype">int</span> dimension);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classResponsiveScaler.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classResponsiveScaler.html">ResponsiveScaler</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classSDLWindow.html">SDLWindow</a> &amp;window;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">float</span> scale_factor_w;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">float</span> scale_factor_h;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classResponsiveScaler.html#ae7c80cc239b298e4e723490896d5c784">ResponsiveScaler</a>(<a class="code" href="classSDLWindow.html">SDLWindow</a> &amp;window, <span class="keywordtype">int</span> prototype_width,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                     <span class="keywordtype">int</span> prototype_height);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    ~<a class="code" href="classResponsiveScaler.html">ResponsiveScaler</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    SDL_Rect <a class="code" href="classResponsiveScaler.html#adba4b4138066a05d2b34b150c7def420">scale</a>(SDL_Rect unscaled_rect);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classResponsiveScaler.html#a0717c789a4dd03ff62019bda25041cd7">tile_scale</a>(<span class="keywordtype">int</span> dimension);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassSDLWindow_html"><div class="ttname"><a href="classSDLWindow.html">SDLWindow</a></div><div class="ttdef"><b>Definition:</b> sdl_window.h:13</div></div>
-<div class="ttc" id="aclassResponsiveScaler_html"><div class="ttname"><a href="classResponsiveScaler.html">ResponsiveScaler</a></div><div class="ttdef"><b>Definition:</b> responsive_scaler.h:6</div></div>
+<div class="ttc" id="aclassSDLWindow_html"><div class="ttname"><a href="classSDLWindow.html">SDLWindow</a></div><div class="ttdoc">Objeto ventana de SDL.</div><div class="ttdef"><b>Definition:</b> sdl_window.h:17</div></div>
+<div class="ttc" id="aclassResponsiveScaler_html"><div class="ttname"><a href="classResponsiveScaler.html">ResponsiveScaler</a></div><div class="ttdoc">Escalador para hacer las areas responsive.</div><div class="ttdef"><b>Definition:</b> responsive_scaler.h:10</div></div>
+<div class="ttc" id="aclassResponsiveScaler_html_ae7c80cc239b298e4e723490896d5c784"><div class="ttname"><a href="classResponsiveScaler.html#ae7c80cc239b298e4e723490896d5c784">ResponsiveScaler::ResponsiveScaler</a></div><div class="ttdeci">ResponsiveScaler(SDLWindow &amp;window, int prototype_width, int prototype_height)</div><div class="ttdoc">Crea un objeto Responsive Scaler.</div><div class="ttdef"><b>Definition:</b> responsive_scaler.cpp:3</div></div>
+<div class="ttc" id="aclassResponsiveScaler_html_a0717c789a4dd03ff62019bda25041cd7"><div class="ttname"><a href="classResponsiveScaler.html#a0717c789a4dd03ff62019bda25041cd7">ResponsiveScaler::tile_scale</a></div><div class="ttdeci">int tile_scale(int dimension)</div><div class="ttdoc">Escala simple, segun el factor de escalado en anchura.</div><div class="ttdef"><b>Definition:</b> responsive_scaler.cpp:16</div></div>
+<div class="ttc" id="aclassResponsiveScaler_html_adba4b4138066a05d2b34b150c7def420"><div class="ttname"><a href="classResponsiveScaler.html#adba4b4138066a05d2b34b150c7def420">ResponsiveScaler::scale</a></div><div class="ttdeci">SDL_Rect scale(SDL_Rect unscaled_rect)</div><div class="ttdoc">Devuelve un SDL_Rect escalado segun los factores de la ventana.</div><div class="ttdef"><b>Definition:</b> responsive_scaler.cpp:9</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

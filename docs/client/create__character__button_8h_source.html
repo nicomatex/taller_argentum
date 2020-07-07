@@ -100,24 +100,26 @@ $(document).ready(function(){initNavTree('create__character__button_8h_source.ht
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;../../engine/UI/button.h&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../../game_state_monitor.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classCreateCharacterButton.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCreateCharacterButton.html">CreateCharacterButton</a> : <span class="keyword">public</span> <a class="code" href="classButton.html">Button</a>{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>&amp; game_state_monitor;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="classCreateCharacterButton.html">CreateCharacterButton</a>(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer* renderer,</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>&amp; game_state_monitor);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classCreateCharacterButton.html#aad61bee94b5d3c9579fb757e89c8a066">on_click</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;};</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classCreateCharacterButton.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCreateCharacterButton.html">CreateCharacterButton</a> : <span class="keyword">public</span> <a class="code" href="classButton.html">Button</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>&amp; game_state_monitor;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classCreateCharacterButton.html#ac38d82a24bf5e12efcb4303f4aab4f2a">CreateCharacterButton</a>(SDL_Rect button_area, SDL_Rect viewport,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                          SDL_Renderer* renderer,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                          <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>&amp; game_state_monitor);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classCreateCharacterButton.html#aad61bee94b5d3c9579fb757e89c8a066">on_click</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassCreateCharacterButton_html"><div class="ttname"><a href="classCreateCharacterButton.html">CreateCharacterButton</a></div><div class="ttdef"><b>Definition:</b> create_character_button.h:6</div></div>
-<div class="ttc" id="aclassButton_html"><div class="ttname"><a href="classButton.html">Button</a></div><div class="ttdef"><b>Definition:</b> button.h:6</div></div>
-<div class="ttc" id="aclassCreateCharacterButton_html_aad61bee94b5d3c9579fb757e89c8a066"><div class="ttname"><a href="classCreateCharacterButton.html#aad61bee94b5d3c9579fb757e89c8a066">CreateCharacterButton::on_click</a></div><div class="ttdeci">void on_click() override</div><div class="ttdoc">Accion a ejecutar cuando se clickea el boton.</div><div class="ttdef"><b>Definition:</b> create_character_button.cpp:11</div></div>
+<div class="ttc" id="aclassCreateCharacterButton_html"><div class="ttname"><a href="classCreateCharacterButton.html">CreateCharacterButton</a></div><div class="ttdoc">Boton para cambiar a la vista de creacion de personaje.</div><div class="ttdef"><b>Definition:</b> create_character_button.h:10</div></div>
+<div class="ttc" id="aclassButton_html"><div class="ttname"><a href="classButton.html">Button</a></div><div class="ttdoc">Boton abstracto. Todos los botones heredan de esta clase.</div><div class="ttdef"><b>Definition:</b> button.h:10</div></div>
+<div class="ttc" id="aclassCreateCharacterButton_html_aad61bee94b5d3c9579fb757e89c8a066"><div class="ttname"><a href="classCreateCharacterButton.html#aad61bee94b5d3c9579fb757e89c8a066">CreateCharacterButton::on_click</a></div><div class="ttdeci">void on_click() override</div><div class="ttdoc">Cambia la vista a creacion de personaje.</div><div class="ttdef"><b>Definition:</b> create_character_button.cpp:11</div></div>
 <div class="ttc" id="aclassGameStateMonitor_html"><div class="ttname"><a href="classGameStateMonitor.html">GameStateMonitor</a></div><div class="ttdef"><b>Definition:</b> game_state_monitor.h:17</div></div>
+<div class="ttc" id="aclassCreateCharacterButton_html_ac38d82a24bf5e12efcb4303f4aab4f2a"><div class="ttname"><a href="classCreateCharacterButton.html#ac38d82a24bf5e12efcb4303f4aab4f2a">CreateCharacterButton::CreateCharacterButton</a></div><div class="ttdeci">CreateCharacterButton(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer *renderer, GameStateMonitor &amp;game_state_monitor)</div><div class="ttdoc">Crea un CreateCharacterButton.</div><div class="ttdef"><b>Definition:</b> create_character_button.cpp:4</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

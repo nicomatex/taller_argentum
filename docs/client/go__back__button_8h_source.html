@@ -100,24 +100,25 @@ $(document).ready(function(){initNavTree('go__back__button_8h_source.html',''); 
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;../../engine/UI/button.h&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../../game_state_monitor.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classGoBackButton.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGoBackButton.html">GoBackButton</a> : <span class="keyword">public</span> <a class="code" href="classButton.html">Button</a>{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>&amp; game_state_monitor;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="classGoBackButton.html">GoBackButton</a>(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer* renderer,</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>&amp; game_state_monitor);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classGoBackButton.html#ab9e3d2dd96e4ed928c9a4c4c505ab0c3">on_click</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;};</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classGoBackButton.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGoBackButton.html">GoBackButton</a> : <span class="keyword">public</span> <a class="code" href="classButton.html">Button</a>{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>&amp; game_state_monitor;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="classGoBackButton.html#afafac6f554a3691cb1a37e3cc912df73">GoBackButton</a>(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer* renderer,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>&amp; game_state_monitor);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classGoBackButton.html#ab9e3d2dd96e4ed928c9a4c4c505ab0c3">on_click</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassGoBackButton_html"><div class="ttname"><a href="classGoBackButton.html">GoBackButton</a></div><div class="ttdef"><b>Definition:</b> go_back_button.h:6</div></div>
-<div class="ttc" id="aclassButton_html"><div class="ttname"><a href="classButton.html">Button</a></div><div class="ttdef"><b>Definition:</b> button.h:6</div></div>
+<div class="ttc" id="aclassGoBackButton_html"><div class="ttname"><a href="classGoBackButton.html">GoBackButton</a></div><div class="ttdoc">Boton de &quot;volver&quot; de la pantalla de creacion de personajes.</div><div class="ttdef"><b>Definition:</b> go_back_button.h:11</div></div>
+<div class="ttc" id="aclassButton_html"><div class="ttname"><a href="classButton.html">Button</a></div><div class="ttdoc">Boton abstracto. Todos los botones heredan de esta clase.</div><div class="ttdef"><b>Definition:</b> button.h:10</div></div>
+<div class="ttc" id="aclassGoBackButton_html_afafac6f554a3691cb1a37e3cc912df73"><div class="ttname"><a href="classGoBackButton.html#afafac6f554a3691cb1a37e3cc912df73">GoBackButton::GoBackButton</a></div><div class="ttdeci">GoBackButton(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer *renderer, GameStateMonitor &amp;game_state_monitor)</div><div class="ttdoc">Constructor del boton de &quot;volver&quot;.</div><div class="ttdef"><b>Definition:</b> go_back_button.cpp:4</div></div>
 <div class="ttc" id="aclassGameStateMonitor_html"><div class="ttname"><a href="classGameStateMonitor.html">GameStateMonitor</a></div><div class="ttdef"><b>Definition:</b> game_state_monitor.h:17</div></div>
-<div class="ttc" id="aclassGoBackButton_html_ab9e3d2dd96e4ed928c9a4c4c505ab0c3"><div class="ttname"><a href="classGoBackButton.html#ab9e3d2dd96e4ed928c9a4c4c505ab0c3">GoBackButton::on_click</a></div><div class="ttdeci">void on_click() override</div><div class="ttdoc">Accion a ejecutar cuando se clickea el boton.</div><div class="ttdef"><b>Definition:</b> go_back_button.cpp:11</div></div>
+<div class="ttc" id="aclassGoBackButton_html_ab9e3d2dd96e4ed928c9a4c4c505ab0c3"><div class="ttname"><a href="classGoBackButton.html#ab9e3d2dd96e4ed928c9a4c4c505ab0c3">GoBackButton::on_click</a></div><div class="ttdeci">void on_click() override</div><div class="ttdoc">Accion a ejecutar cuando se clickea el boton izquierdo.</div><div class="ttdef"><b>Definition:</b> go_back_button.cpp:11</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

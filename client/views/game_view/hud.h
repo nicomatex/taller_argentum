@@ -15,7 +15,10 @@
 #include "inventory.h"
 
 class StatsComponent;
-
+/**
+ * @brief HUD del juego (informacion del jugador).
+ * 
+ */
 class Hud {
    private:
     ResponsiveScaler& scaler;
@@ -45,14 +48,38 @@ class Hud {
     void _update_equipped_items();
 
    public:
+    /**
+     * @brief Constructor de hud.
+     *
+     * @param scaler Escaler para responsiveness.
+     * @param window Ventana del juego.
+     * @param chat_buffers Buffer de chat.
+     * @param inventory_buffer Buffer de inventario.
+     * @param player Entidad del jugador.
+     * @param socket_manager Socket manager del juego.
+     */
     Hud(ResponsiveScaler& scaler, SDLWindow& window, ChatBuffer& chat_buffers,
         InventoryBuffer& inventory_buffer, Entity& player,
         SocketManager& socket_manager);
     ~Hud();
 
+    /**
+     * @brief Realiza las modificaciones / acciones necesarias segun el evento.
+     *
+     * @param e
+     */
     void handle_event(SDL_Event& e);
 
+    /**
+     * @brief Actualiza el HUD
+     * 
+     */
     void update();
+
+    /**
+     * @brief Renderiza el HUD
+     * 
+     */
     void render();
 };
 

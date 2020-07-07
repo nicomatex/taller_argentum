@@ -103,41 +103,42 @@ $(document).ready(function(){initNavTree('icon__grid_8h_source.html',''); initRe
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../SDL/sdl_texture.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;SDL2/SDL.h&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classIconGrid.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="classIconGrid.html">IconGrid</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    SDL_Rect render_area;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    SDL_Renderer* renderer;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">int</span> icon_width;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">int</span> icon_height;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">int</span> cols;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">int</span> rows;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">/* Indica que proporcion del cuadrito correspondiente ocupa el icono. Va de</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">     * 0 a 1.*/</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">float</span> size_proportion;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    std::vector&lt;SDLTexture*&gt; icons;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classIconGrid.html#aba06341560f712f77909745c7da119b0">IconGrid</a>(SDL_Rect render_area, SDL_Renderer* renderer, <span class="keywordtype">int</span> rows, <span class="keywordtype">int</span> cols,</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;             <span class="keywordtype">float</span> size_proportion);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    ~<a class="code" href="classIconGrid.html">IconGrid</a>();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">/* Inserta un icono en la posicion indicada. */</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classIconGrid.html#a11da0a263d86683445637c60e5324104">set_icon</a>(<span class="keywordtype">int</span> <a class="code" href="structposition.html">position</a>, <a class="code" href="classSDLTexture.html">SDLTexture</a>* icon);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classIconGrid.html#af109e943c9506f431e8cc03ff9ee21f9">render</a>();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;};</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classIconGrid.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classIconGrid.html">IconGrid</a> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    SDL_Rect render_area;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    SDL_Renderer* renderer;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span> icon_width;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">int</span> icon_height;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">int</span> cols;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">int</span> rows;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">bool</span> original_proportions;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment">/* Indica que proporcion del cuadrito correspondiente ocupa el icono. Va de</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">     * 0 a 1.*/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">float</span> size_proportion;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::vector&lt;SDLTexture*&gt; icons;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="classIconGrid.html#a94f00e0198bbe9820e8adfacbbad39ae">IconGrid</a>(SDL_Rect render_area, SDL_Renderer* renderer, <span class="keywordtype">int</span> rows, <span class="keywordtype">int</span> cols,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;             <span class="keywordtype">float</span> size_proportion, <span class="keywordtype">bool</span> original_proportions = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    ~<a class="code" href="classIconGrid.html">IconGrid</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">/* Inserta un icono en la posicion indicada. */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classIconGrid.html#a11da0a263d86683445637c60e5324104">set_icon</a>(<span class="keywordtype">int</span> <a class="code" href="structposition.html">position</a>, <a class="code" href="classSDLTexture.html">SDLTexture</a>* icon);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classIconGrid.html#af109e943c9506f431e8cc03ff9ee21f9">render</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;};</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassIconGrid_html_af109e943c9506f431e8cc03ff9ee21f9"><div class="ttname"><a href="classIconGrid.html#af109e943c9506f431e8cc03ff9ee21f9">IconGrid::render</a></div><div class="ttdeci">void render()</div><div class="ttdoc">Renderiza el icongrid.</div><div class="ttdef"><b>Definition:</b> icon_grid.cpp:30</div></div>
-<div class="ttc" id="aclassIconGrid_html"><div class="ttname"><a href="classIconGrid.html">IconGrid</a></div><div class="ttdef"><b>Definition:</b> icon_grid.h:9</div></div>
-<div class="ttc" id="aclassSDLTexture_html"><div class="ttname"><a href="classSDLTexture.html">SDLTexture</a></div><div class="ttdef"><b>Definition:</b> sdl_texture.h:9</div></div>
-<div class="ttc" id="aclassIconGrid_html_a11da0a263d86683445637c60e5324104"><div class="ttname"><a href="classIconGrid.html#a11da0a263d86683445637c60e5324104">IconGrid::set_icon</a></div><div class="ttdeci">void set_icon(int position, SDLTexture *icon)</div><div class="ttdoc">Setea el icono en una posicion dada.</div><div class="ttdef"><b>Definition:</b> icon_grid.cpp:23</div></div>
-<div class="ttc" id="aclassIconGrid_html_aba06341560f712f77909745c7da119b0"><div class="ttname"><a href="classIconGrid.html#aba06341560f712f77909745c7da119b0">IconGrid::IconGrid</a></div><div class="ttdeci">IconGrid(SDL_Rect render_area, SDL_Renderer *renderer, int rows, int cols, float size_proportion)</div><div class="ttdoc">Crea un objeto Icon Grid.</div><div class="ttdef"><b>Definition:</b> icon_grid.cpp:4</div></div>
+<div class="ttc" id="aclassIconGrid_html_af109e943c9506f431e8cc03ff9ee21f9"><div class="ttname"><a href="classIconGrid.html#af109e943c9506f431e8cc03ff9ee21f9">IconGrid::render</a></div><div class="ttdeci">void render()</div><div class="ttdoc">Renderiza el icongrid.</div><div class="ttdef"><b>Definition:</b> icon_grid.cpp:32</div></div>
+<div class="ttc" id="aclassIconGrid_html"><div class="ttname"><a href="classIconGrid.html">IconGrid</a></div><div class="ttdoc">Cuadricula de iconos.</div><div class="ttdef"><b>Definition:</b> icon_grid.h:13</div></div>
+<div class="ttc" id="aclassSDLTexture_html"><div class="ttname"><a href="classSDLTexture.html">SDLTexture</a></div><div class="ttdoc">Objeto de textura de SDL.</div><div class="ttdef"><b>Definition:</b> sdl_texture.h:13</div></div>
+<div class="ttc" id="aclassIconGrid_html_a94f00e0198bbe9820e8adfacbbad39ae"><div class="ttname"><a href="classIconGrid.html#a94f00e0198bbe9820e8adfacbbad39ae">IconGrid::IconGrid</a></div><div class="ttdeci">IconGrid(SDL_Rect render_area, SDL_Renderer *renderer, int rows, int cols, float size_proportion, bool original_proportions=false)</div><div class="ttdoc">Crea un objeto Icon Grid.</div><div class="ttdef"><b>Definition:</b> icon_grid.cpp:5</div></div>
+<div class="ttc" id="aclassIconGrid_html_a11da0a263d86683445637c60e5324104"><div class="ttname"><a href="classIconGrid.html#a11da0a263d86683445637c60e5324104">IconGrid::set_icon</a></div><div class="ttdeci">void set_icon(int position, SDLTexture *icon)</div><div class="ttdoc">Setea el icono en una posicion dada.</div><div class="ttdef"><b>Definition:</b> icon_grid.cpp:25</div></div>
 <div class="ttc" id="astructposition_html"><div class="ttname"><a href="structposition.html">position</a></div><div class="ttdef"><b>Definition:</b> camera.h:11</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

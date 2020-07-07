@@ -98,19 +98,143 @@ $(document).ready(function(){initNavTree('classItemQtyGrid.html',''); initResiza
 <div class="title">Referencia de la Clase ItemQtyGrid</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Utilizada para renderizar las cantidades de los items en el inventario.  
+ <a href="classItemQtyGrid.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="item__qty__grid_8h_source.html">item_qty_grid.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a62dabf45b864079ad62d56b869ebd1b5"><td class="memItemLeft" align="right" valign="top"><a id="a62dabf45b864079ad62d56b869ebd1b5"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ItemQtyGrid</b> (SDL_Rect inventory_area, int rows, int cols, TTF_Font *numbers_font, SDL_Renderer *renderer)</td></tr>
+<tr class="memitem:a62dabf45b864079ad62d56b869ebd1b5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemQtyGrid.html#a62dabf45b864079ad62d56b869ebd1b5">ItemQtyGrid</a> (SDL_Rect inventory_area, int rows, int cols, TTF_Font *numbers_font, SDL_Renderer *renderer)</td></tr>
+<tr class="memdesc:a62dabf45b864079ad62d56b869ebd1b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un objeto Item Qty Grid.  <a href="classItemQtyGrid.html#a62dabf45b864079ad62d56b869ebd1b5">Más...</a><br /></td></tr>
 <tr class="separator:a62dabf45b864079ad62d56b869ebd1b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a952b65f460a1198d132bbf02869ad769"><td class="memItemLeft" align="right" valign="top"><a id="a952b65f460a1198d132bbf02869ad769"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_quantity</b> (int slot, int quantity)</td></tr>
+<tr class="memitem:a952b65f460a1198d132bbf02869ad769"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemQtyGrid.html#a952b65f460a1198d132bbf02869ad769">set_quantity</a> (int slot, int quantity)</td></tr>
+<tr class="memdesc:a952b65f460a1198d132bbf02869ad769"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setea la cantidad de un item que hay en un slot.  <a href="classItemQtyGrid.html#a952b65f460a1198d132bbf02869ad769">Más...</a><br /></td></tr>
 <tr class="separator:a952b65f460a1198d132bbf02869ad769"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe320834c740a0e140b37f357576e0bc"><td class="memItemLeft" align="right" valign="top"><a id="abe320834c740a0e140b37f357576e0bc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>render</b> ()</td></tr>
+<tr class="memitem:abe320834c740a0e140b37f357576e0bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemQtyGrid.html#abe320834c740a0e140b37f357576e0bc">render</a> ()</td></tr>
+<tr class="memdesc:abe320834c740a0e140b37f357576e0bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renderiza las cantidades de los objetos.  <a href="classItemQtyGrid.html#abe320834c740a0e140b37f357576e0bc">Más...</a><br /></td></tr>
 <tr class="separator:abe320834c740a0e140b37f357576e0bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Utilizada para renderizar las cantidades de los items en el inventario. </p>
+</div><h2 class="groupheader">Documentación del constructor y destructor</h2>
+<a id="a62dabf45b864079ad62d56b869ebd1b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62dabf45b864079ad62d56b869ebd1b5">&#9670;&nbsp;</a></span>ItemQtyGrid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ItemQtyGrid::ItemQtyGrid </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>inventory_area</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rows</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cols</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>numbers_font</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crea un objeto Item Qty Grid. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inventory_area</td><td>Area del inventario. </td></tr>
+    <tr><td class="paramname">rows</td><td>Filas del inventario. </td></tr>
+    <tr><td class="paramname">cols</td><td>Columnas del inventario. </td></tr>
+    <tr><td class="paramname">numbers_font</td><td>Fuente a usar para los numeros. </td></tr>
+    <tr><td class="paramname">renderer</td><td>Renderer a utilizar para las cantidades. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="abe320834c740a0e140b37f357576e0bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe320834c740a0e140b37f357576e0bc">&#9670;&nbsp;</a></span>render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ItemQtyGrid::render </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renderiza las cantidades de los objetos. </p>
+
+</div>
+</div>
+<a id="a952b65f460a1198d132bbf02869ad769"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a952b65f460a1198d132bbf02869ad769">&#9670;&nbsp;</a></span>set_quantity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ItemQtyGrid::set_quantity </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>slot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quantity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setea la cantidad de un item que hay en un slot. </p>
+<p>Si se pasa quantity 0, el numero no se renderiza.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slot</td><td></td></tr>
+    <tr><td class="paramname">quantity</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/views/game_view/<a class="el" href="item__qty__grid_8h_source.html">item_qty_grid.h</a></li>
 <li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/views/game_view/item_qty_grid.cpp</li>

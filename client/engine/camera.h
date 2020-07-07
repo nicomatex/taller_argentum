@@ -13,6 +13,10 @@ typedef struct position {
     int y;
 } position_t;
 
+/**
+ * @brief Camara, utilizada para renderizar el mapa y las entidades.
+ *
+ */
 class Camera {
    private:
     /* Ancho que se va a renderizar en tiles. */
@@ -97,17 +101,17 @@ class Camera {
 
     /**
      * @brief Renderiza un conjunto de capas del mapa.
-     * 
-     * @param layers Vector de capas del mapa. 
+     *
+     * @param layers Vector de capas del mapa.
      */
     void render_map_layers(std::vector<std::vector<Decoration>> &layers);
 
     /**
      * @brief Indica cual fue el tile clickeado.
-     * 
+     *
      * @param x Coordenada X (en pixeles) donde ocurrio el click.
      * @param y Coordenada Y (en pixeles) donde ocurrio el click.
-     * @return position_t 
+     * @return position_t
      */
     position_t tile_at(int x, int y);
 };

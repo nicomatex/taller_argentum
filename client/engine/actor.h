@@ -6,6 +6,11 @@
 
 class AnimationPack;
 
+/**
+ * @brief Objeto renderizable que contiene informacion para las 
+ * cuatro orientaciones posibles, y los dos estados de movimiento.
+ * 
+ */
 class Actor : public RenderizableObject {
    private:
     AnimationPack animation_pack;

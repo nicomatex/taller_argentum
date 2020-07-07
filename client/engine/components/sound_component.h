@@ -4,6 +4,10 @@
 #include "../ECS/component.h"
 #include "../SDL/sdl_timer.h"
 
+/**
+ * @brief Componente de sonido de los personajes.
+ * 
+ */
 class SoundComponent : public Component {
    private:
     SDLTimer step_sound_timer;

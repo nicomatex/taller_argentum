@@ -7,6 +7,10 @@
 #include "sdl_texture.h"
 #include "sdl_timer.h"
 
+/**
+ * @brief Sprite animada de SDL.
+ * 
+ */
 class SDLSprite {
    private:
     std::reference_wrapper<SDLTexture> texture;

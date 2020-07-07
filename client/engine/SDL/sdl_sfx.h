@@ -6,6 +6,10 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_mixer.h"
 
+/**
+ * @brief Objeto de efecto de sonido de SDL.
+ * 
+ */
 class SDLSoundFx {
    private:
     Mix_Chunk* sound;

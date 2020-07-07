@@ -107,44 +107,44 @@ $(document).ready(function(){initNavTree('sdl__window_8h_source.html',''); initR
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;sdl_text.h&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;sdl_texture.h&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classSDLWindow.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSDLWindow.html">SDLWindow</a> {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    SDL_Window *window;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    SDL_Renderer *renderer;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="comment">/* Constructor. Recibe ancho y alto de la ventana en pixeles. */</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classSDLWindow.html#a5b0a60c403768e44a13ab14083ea4118">SDLWindow</a>(<span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height, <span class="keyword">const</span> std::string &amp;title, <span class="keywordtype">bool</span> fullscreen);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    ~<a class="code" href="classSDLWindow.html">SDLWindow</a>();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">/* Llena toda la ventana con el color indicado en los parametros. */</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSDLWindow.html#a8a441bc6b143b07a465479409d66203f">fill</a>(<span class="keywordtype">int</span> r, <span class="keywordtype">int</span> g, <span class="keywordtype">int</span> b, <span class="keywordtype">int</span> alpha);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">/* Renderiza la ventana con todos sus contenidos.*/</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSDLWindow.html#ad37bf616c2c8d1446fa1a378ad26824e">render</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSDLWindow.html#a079d76a6fa83495c930a96504690a41c">set_viewport</a>(SDL_Rect viewport_area);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSDLWindow.html#a2360110b6e0074811ec4a0142701b17f">reset_viewport</a>();</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    SDL_Renderer *<a class="code" href="classSDLWindow.html#aa645f97cfd01c7e813dbca9ce6bd0974">init_renderer</a>();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    SDL_Renderer *<a class="code" href="classSDLWindow.html#ad64ddef2e62940a0cb1c487840fcf9a8">get_renderer</a>();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classSDLWindow.html#a2569acdede1a8b1215b8ab8fb3b9ef15">get_width</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classSDLWindow.html#ab1631461aff60434adc1f6e96266b02e">get_height</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSDLWindow.html#acda0caa6253c9d3a13e778bf117d2091">hide</a>();</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSDLWindow.html#ad9b0d03745e35f06ee354aad600c8437">show</a>();</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;};</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classSDLWindow.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSDLWindow.html">SDLWindow</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    SDL_Window *window;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    SDL_Renderer *renderer;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment">/* Constructor. Recibe ancho y alto de la ventana en pixeles. */</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classSDLWindow.html#a5b0a60c403768e44a13ab14083ea4118">SDLWindow</a>(<span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height, <span class="keyword">const</span> std::string &amp;title, <span class="keywordtype">bool</span> fullscreen);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    ~<a class="code" href="classSDLWindow.html">SDLWindow</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">/* Llena toda la ventana con el color indicado en los parametros. */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSDLWindow.html#a8a441bc6b143b07a465479409d66203f">fill</a>(<span class="keywordtype">int</span> r, <span class="keywordtype">int</span> g, <span class="keywordtype">int</span> b, <span class="keywordtype">int</span> alpha);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">/* Renderiza la ventana con todos sus contenidos.*/</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSDLWindow.html#ad37bf616c2c8d1446fa1a378ad26824e">render</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSDLWindow.html#a079d76a6fa83495c930a96504690a41c">set_viewport</a>(SDL_Rect viewport_area);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSDLWindow.html#a2360110b6e0074811ec4a0142701b17f">reset_viewport</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    SDL_Renderer *<a class="code" href="classSDLWindow.html#aa645f97cfd01c7e813dbca9ce6bd0974">init_renderer</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    SDL_Renderer *<a class="code" href="classSDLWindow.html#ad64ddef2e62940a0cb1c487840fcf9a8">get_renderer</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classSDLWindow.html#a2569acdede1a8b1215b8ab8fb3b9ef15">get_width</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classSDLWindow.html#ab1631461aff60434adc1f6e96266b02e">get_height</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSDLWindow.html#acda0caa6253c9d3a13e778bf117d2091">hide</a>();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSDLWindow.html#ad9b0d03745e35f06ee354aad600c8437">show</a>();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;};</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassSDLWindow_html"><div class="ttname"><a href="classSDLWindow.html">SDLWindow</a></div><div class="ttdef"><b>Definition:</b> sdl_window.h:13</div></div>
+<div class="ttc" id="aclassSDLWindow_html"><div class="ttname"><a href="classSDLWindow.html">SDLWindow</a></div><div class="ttdoc">Objeto ventana de SDL.</div><div class="ttdef"><b>Definition:</b> sdl_window.h:17</div></div>
 <div class="ttc" id="aclassSDLWindow_html_a079d76a6fa83495c930a96504690a41c"><div class="ttname"><a href="classSDLWindow.html#a079d76a6fa83495c930a96504690a41c">SDLWindow::set_viewport</a></div><div class="ttdeci">void set_viewport(SDL_Rect viewport_area)</div><div class="ttdoc">Setea el viewport del renderer.</div><div class="ttdef"><b>Definition:</b> sdl_window.cpp:73</div></div>
 <div class="ttc" id="aclassSDLWindow_html_ab1631461aff60434adc1f6e96266b02e"><div class="ttname"><a href="classSDLWindow.html#ab1631461aff60434adc1f6e96266b02e">SDLWindow::get_height</a></div><div class="ttdeci">int get_height() const</div><div class="ttdoc">Devuelve el alto de la ventana.</div><div class="ttdef"><b>Definition:</b> sdl_window.cpp:83</div></div>
 <div class="ttc" id="aclassSDLWindow_html_a8a441bc6b143b07a465479409d66203f"><div class="ttname"><a href="classSDLWindow.html#a8a441bc6b143b07a465479409d66203f">SDLWindow::fill</a></div><div class="ttdeci">void fill(int r, int g, int b, int alpha)</div><div class="ttdoc">Limpia la ventana, y la pinta de un color.</div><div class="ttdef"><b>Definition:</b> sdl_window.cpp:68</div></div>

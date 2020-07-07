@@ -8,6 +8,11 @@
 
 using json = nlohmann::json;
 
+/**
+ * @brief Mapa. Contiene toda la informacion estatica del mapa, asi como
+ * tambien el loot que esta tirado en el suelo.
+ * 
+ */
 class Map {
    private:
     int height;

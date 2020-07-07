@@ -10,6 +10,10 @@
 #include "sdl_text.h"
 #include "sdl_texture.h"
 
+/**
+ * @brief Objeto ventana de SDL.
+ * 
+ */
 class SDLWindow {
    private:
     SDL_Window *window;

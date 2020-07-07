@@ -10,6 +10,10 @@ typedef unsigned int EntityId;
 
 class Entity;
 
+/**
+ * @brief Manager de entidades
+ * 
+ */
 class EntityManager {
    private:
     std::unordered_map<EntityId, std::unique_ptr<Entity>> entities;

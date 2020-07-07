@@ -3,6 +3,10 @@
 
 class Entity;
 
+/**
+ * @brief Componente agregable a entidades.
+ * 
+ */
 class Component {
    protected:
     Entity *entity;
