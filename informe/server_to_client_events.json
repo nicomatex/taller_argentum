@@ -1,0 +1,175 @@
+// SERVER TO CLIENT 
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_INITIALIZE_MAP,
+    "client_id": ClientId, // Siempre será 0
+    "map_info": {
+        // map_info: Ver "mapas"
+    },
+    "player": {
+        // player_init_data
+        // 
+        // player_entity_data (Ver entity_data)
+        // 
+        "pos": {
+            "x": int,
+            "y": int
+        },
+        "inventory": {
+            // 
+            // inventory_data
+            // 
+        }
+    }
+}
+
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_UPDATE_ENTITIES,
+    "client_id": ClientId, // Siempre será 0
+    "entities": [
+        {
+            //
+            // entity_data
+            //
+            "entity_id": EntityId,
+            "name": string,
+            "direction": direction_t,
+            "move_speed": uint,
+            "type_id": entity_type_t ,
+            "curr_hp": uint,
+            "max_hp": uint,
+            "curr_mp": uint,
+            "max_mp": uint,
+            //
+            // entity_player_data
+            //
+            "type_id": PLAYER,
+            "head_id": uint,
+            "body_id": uint,
+            "helmet_id": uint,
+            "armor_id": uint,
+            "shield_id": uint,
+            "weapon_id": uint,
+            "curr_level": uint,
+            "curr_exp": uint,
+            "limit_exp": uint,
+            //
+            // entity_monster_data
+            //  
+            "type_id": MONSTER,
+            "sprite_id": uint
+        },
+        ...
+    ]
+}
+
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_UPDATE_LOOT,
+    "client_id": ClientId, // Siempre será 0
+    "items": [
+        {
+            // 
+            // item_data
+            // 
+        },
+        ...
+    ]
+}
+
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_UPDATE_MAP,
+    "client_id": ClientId, // Siempre será 0
+    "positions": [
+        {
+            "entity_id": EntityId,
+            "x": int,
+            "y": int
+        },
+        ...
+    ]
+}
+
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_DEALT_DAMAGE,
+    "client_id": ClientId, // Siempre será 0
+    "dmg": int,
+    "to": EntityId
+}
+
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_CHAT_MESSAGE,
+    "client_id": ClientId, // Siempre será 0
+    "msg": string
+}
+
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_RECEIVED_DAMAGE,
+    "client_id": ClientId, // Siempre será 0
+    "dmg": uint
+}
+
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_INVENTORY_UPDATE,
+    "client_id": ClientId, // Siempre será 0
+    "inventory": {
+        "curr_gold": uint,
+        "items": [
+            {
+                // 1era posición del inventario.
+                "type": item_type_t 
+                // 
+                // Si type != TYPE_INVALID
+                // item_data
+                // 
+                "actual_stack": uint,
+                "item_id": ItemId,
+                "name": string,
+                //
+                // Ej: TYPE_POTION
+                //
+                "potion_info": {
+                    "health_var": short,
+                    "mana_var": short
+                },
+            },
+            {
+                // 2da posición del inventario.
+                "type": item_type_t
+            },
+                ...
+                {
+                // 12ava posicion del inventario.
+                "type": item_type_t
+            }
+        ]
+    }
+}
+
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_NOTIFY_NEW_MAP,
+    "client_id": ClientId // Siempre será 0
+}
+
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_DROP_CLIENT,
+    "client_id": ClientId // Siempre será 0
+}

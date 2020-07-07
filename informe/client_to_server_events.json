@@ -1,0 +1,82 @@
+// CLIENT TO SERVER
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_CONNECT,
+    "client_id": ClientId,
+    "player": {
+        "name": string,
+        "password": string // No utilizado
+    }
+}
+
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_MOVE,
+    "client_id": ClientId,
+    "movement": {
+        "action": mov_action_t,
+        "direction": direction_t
+    }
+}
+
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_ATTACK
+    "client_id": ClientId,
+}
+
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_PICKUP_LOOT
+    "client_id": ClientId,
+}
+
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_DROP_LOOT,
+    "client_id": ClientId,
+    "slot": SlotId
+}
+
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_INVENTORY,
+    "client_id": ClientId,
+    "slot": SlotId
+}
+
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_COMMAND,
+    "client_id": ClientId,
+    "msg": string,
+    "slot": SlotId,
+    "target": {
+        "x": int,
+        "y": int
+    }
+}
+
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_CREATE,
+    "client_id": ClientId,
+    "name": string,
+    "class_type": class_type_t,
+    "race_type": race_type_t
+}
+
+
+Nuevo evento!
+{
+    "ev_id": EV_ID_DISCONNECT
+    "client_id": ClientId,
+}
