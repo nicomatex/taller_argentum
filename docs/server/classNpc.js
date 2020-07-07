@@ -6,5 +6,5 @@ var classNpc =
     [ "get_data", "classNpc.html#af667fe69baf71eb439f12f382f338195", null ],
     [ "get_type", "classNpc.html#aa4a3015796fb039d9d78a5ab38860e37", null ],
     [ "is_alive", "classNpc.html#aad8469baeb6e941ad882eccf152f4868", null ],
-    [ "update", "classNpc.html#ac68aa2b0785b1b53ed1782ac713d865c", null ]
+    [ "update", "classNpc.html#ac20ccb1023191a7c896fbb598b45e641", null ]
 ];

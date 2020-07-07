@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.19"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Argentum Online - Servidor: Referencia de la Clase ItemContainer</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.svg"
+          <img id="MSearchSelect" src="search/mag_sel.png"
                onmouseover="return searchBox.OnSearchSelectShow()"
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
@@ -44,7 +44,7 @@
                onblur="searchBox.OnSearchFieldFocus(false)" 
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
           </span>
         </div>
 </td>
@@ -53,7 +53,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.19 -->
+<!-- Generado por Doxygen 1.8.17 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
@@ -134,6 +134,21 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>slot_is_free</b> (Slo
 <tr class="memitem:a445b7677c187dc1537c2c8072d865922"><td class="memItemLeft" align="right" valign="top"><a id="a445b7677c187dc1537c2c8072d865922"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>has_item</b> (ItemId item_id)</td></tr>
 <tr class="separator:a445b7677c187dc1537c2c8072d865922"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1e0b330432c9dbdab545fd905b24bdf"><td class="memItemLeft" align="right" valign="top"><a id="ad1e0b330432c9dbdab545fd905b24bdf"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>get_gold_stack</b> () const</td></tr>
+<tr class="separator:ad1e0b330432c9dbdab545fd905b24bdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd4c108cf9b6b169882aa09761402455"><td class="memItemLeft" align="right" valign="top"><a id="abd4c108cf9b6b169882aa09761402455"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>add_gold</b> (<a class="el" href="classGold.html">Gold</a> *gold)</td></tr>
+<tr class="separator:abd4c108cf9b6b169882aa09761402455"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a395ebbac8f2b24f53ae79ef78a9d6e9a"><td class="memItemLeft" align="right" valign="top"><a id="a395ebbac8f2b24f53ae79ef78a9d6e9a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>add_gold</b> (<a class="el" href="classGold.html">Gold</a> *gold, uint32_t stack)</td></tr>
+<tr class="separator:a395ebbac8f2b24f53ae79ef78a9d6e9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaca7c9668233bf875ebdc3412155e33a"><td class="memItemLeft" align="right" valign="top"><a id="aaca7c9668233bf875ebdc3412155e33a"></a>
+<a class="el" href="classGold.html">Gold</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>remove_gold</b> ()</td></tr>
+<tr class="separator:aaca7c9668233bf875ebdc3412155e33a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81e7b38cee5479d2a4d5300216e01138"><td class="memItemLeft" align="right" valign="top"><a id="a81e7b38cee5479d2a4d5300216e01138"></a>
+<a class="el" href="classGold.html">Gold</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>remove_gold</b> (uint32_t stack)</td></tr>
+<tr class="separator:a81e7b38cee5479d2a4d5300216e01138"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97255a865b88cbd282980a80a4b681c8"><td class="memItemLeft" align="right" valign="top"><a id="a97255a865b88cbd282980a80a4b681c8"></a>
 nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_persist_data</b> () const</td></tr>
 <tr class="separator:a97255a865b88cbd282980a80a4b681c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,8 +157,8 @@ nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_data</b
 <tr class="separator:a7b31165f1f8f57f6dca0a034f8fbb24d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
-<li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/server/game/items/<a class="el" href="item__container_8h_source.html">item_container.h</a></li>
-<li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/server/game/items/item_container.cpp</li>
+<li>/home/tc/Documents/Taller/tp_final/repo/server/game/items/<a class="el" href="item__container_8h_source.html">item_container.h</a></li>
+<li>/home/tc/Documents/Taller/tp_final/repo/server/game/items/item_container.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -153,7 +168,7 @@ nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_data</b
     <li class="navelem"><a class="el" href="classItemContainer.html">ItemContainer</a></li>
     <li class="footer">Generado por
     <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.19 </li>
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
 </div>
 </body>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7echaractermanager_93',['~CharacterManager',['../classCharacterManager.html#a0f47c4d30d5d863f09e6665927f158a0',1,'CharacterManager']]]
+  ['use_123',['use',['../classPlayer.html#a3cd10ee96674c54f60e3f70a344f5e8b',1,'Player']]]
 ];

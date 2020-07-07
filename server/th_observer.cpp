@@ -48,9 +48,6 @@ void ThObserver::send_update_logs() {
                                            EventFactory::chat_message(msg));
                 } break;
                 case LOG_INVENTORY:
-                    std::cerr
-                        << "Observer: inventory: " << log.info["inventory"]
-                        << std::endl;
                     server_manager.send_to(
                         client_id,
                         EventFactory::inventory_update(log.info["inventory"]));
@@ -103,6 +100,8 @@ void ThObserver::run() {
     std::cerr << "Observer finished" << std::endl;
 }
 
-void ThObserver::stop() { running = false; }
+void ThObserver::stop() {
+    running = false;
+}
 
 ThObserver::~ThObserver() {}

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['servermanager_166',['ServerManager',['../classServerManager.html',1,'']]],
-  ['session_167',['Session',['../classSession.html',1,'']]],
-  ['stats_168',['stats',['../structstats.html',1,'']]]
+  ['racegraphicsmanager_211',['RaceGraphicsManager',['../classRaceGraphicsManager.html',1,'']]],
+  ['randomeventgenerator_212',['RandomEventGenerator',['../classRandomEventGenerator.html',1,'']]],
+  ['range_5ft_213',['range_t',['../structrange__t.html',1,'']]]
 ];

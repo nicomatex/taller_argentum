@@ -75,6 +75,10 @@ bool Monster::is_alive() const {
     return alive;
 }
 
+bool Monster::can_attack(Entity* attacked) const {
+    return (attacked->get_type() == PLAYER);
+}
+
 void Monster::update(uint64_t delta_t) {
     position_t displacement = movement_component->update(delta_t);
     map.move(id, displacement);

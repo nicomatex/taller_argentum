@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['reduce_182',['reduce',['../classExperienceComponent.html#a73adcf8df8faa089c5a2cae761326f84',1,'ExperienceComponent']]],
-  ['roll_183',['roll',['../classRandomEventGenerator.html#a531f0010c82576b00cde59d6c8afb229',1,'RandomEventGenerator']]]
+  ['player_244',['Player',['../classPlayer.html#aa04e8a564b40fbda931e4ccceec23f12',1,'Player']]],
+  ['print_5fcharacter_245',['print_character',['../classCharacterManager.html#af73cb2ac45ff28d8deefb99e3b0185ca',1,'CharacterManager']]]
 ];

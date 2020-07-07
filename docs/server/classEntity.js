@@ -4,6 +4,7 @@ var classEntity =
     [ "Entity", "classEntity.html#a53e4bc69804b88dfc98840455ac69730", null ],
     [ "~Entity", "classEntity.html#adf6d3f7cb1b2ba029b6b048a395cc8ae", null ],
     [ "attack", "classEntity.html#a4a86fb1dc1cf3fab4f5b744e156f1304", null ],
+    [ "can_attack", "classEntity.html#a46fffbb5ad3b4b8989ee3aa9e3097f64", null ],
     [ "die", "classEntity.html#a2a3cf13d22d4f8a6ac5b6ffaff41205e", null ],
     [ "get_data", "classEntity.html#a98c48903baf0ec4cddb64b8feb02488c", null ],
     [ "get_facing_position", "classEntity.html#a810425d3c0a917cffc9f0f950695a9e5", null ],

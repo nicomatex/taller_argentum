@@ -46,6 +46,10 @@ position_t Entity::get_facing_position(position_t position) {
     return movement_component->get_facing_position(position);
 }
 
+bool Entity::can_attack(Entity* attacked) const {
+    return false;
+}
+
 attack_result_t Entity::attack(Entity* attacked) {
     if (!combat_component->attack_ready())
         return {false, 0, 0, 0};

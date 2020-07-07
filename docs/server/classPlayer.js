@@ -1,6 +1,8 @@
 var classPlayer =
 [
     [ "Player", "classPlayer.html#aa04e8a564b40fbda931e4ccceec23f12", null ],
+    [ "add_item", "classPlayer.html#aff11834e62d58ca848f5efde8c51e78e", null ],
+    [ "can_attack", "classPlayer.html#a776717fe8fafda98740e74828bab03de", null ],
     [ "die", "classPlayer.html#aa2854fa9a73fdc548f7c0afcdd3367fd", null ],
     [ "get_class_type", "classPlayer.html#a9917a8c8773835b1e2d1737c460b4c76", null ],
     [ "get_data", "classPlayer.html#ad91b3daebc9bdacfc1cf9c9f6e684332", null ],

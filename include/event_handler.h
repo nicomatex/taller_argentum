@@ -3,10 +3,22 @@
 
 #include "event.h"
 
+/**
+ * @brief Clase abstracta para el manejo de eventos.
+ *
+ */
 class EventHandler {
    public:
     virtual ~EventHandler() {}
 
+    /**
+     * @brief Verificar si un EventHandler tiene un thread dedicado.
+     *
+     * La clase base no tiene un thread dedicado, pero alguna clase hija podría
+     * tenerlo.
+     *
+     * @return false
+     */
     virtual bool is_threaded() const {
         return false;
     }

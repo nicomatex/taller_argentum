@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['thbroadcaster_169',['ThBroadcaster',['../classThBroadcaster.html',1,'']]],
-  ['thclientaccepter_170',['ThClientAccepter',['../classThClientAccepter.html',1,'']]],
-  ['thdispatcher_171',['ThDispatcher',['../classThDispatcher.html',1,'']]],
-  ['thobserver_172',['ThObserver',['../classThObserver.html',1,'']]]
+  ['servermanager_214',['ServerManager',['../classServerManager.html',1,'']]],
+  ['session_215',['Session',['../classSession.html',1,'']]],
+  ['socket_216',['Socket',['../classSocket.html',1,'']]],
+  ['socketmanager_217',['SocketManager',['../classSocketManager.html',1,'']]],
+  ['stats_218',['stats',['../structstats.html',1,'']]]
 ];

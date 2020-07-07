@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.19"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Argentum Online - Servidor: Lista de los miembros</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.svg"
+          <img id="MSearchSelect" src="search/mag_sel.png"
                onmouseover="return searchBox.OnSearchSelectShow()"
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
@@ -44,7 +44,7 @@
                onblur="searchBox.OnSearchFieldFocus(false)" 
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
           </span>
         </div>
 </td>
@@ -53,7 +53,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.19 -->
+<!-- Generado por Doxygen 1.8.17 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
@@ -98,31 +98,33 @@ $(document).ready(function(){initNavTree('classPlayer.html',''); initResizable()
 
 <p>Lista completa de los miembros de <a class="el" href="classPlayer.html">Player</a>, incluyendo todos los heredados:</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>attack</b>(Entity *attacked) (definido en <a class="el" href="classEntity.html">Entity</a>)</td><td class="entry"><a class="el" href="classEntity.html">Entity</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>add_item</b>(Item *item) (definido en <a class="el" href="classPlayer.html">Player</a>)</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>attack</b>(Entity *attacked) (definido en <a class="el" href="classEntity.html">Entity</a>)</td><td class="entry"><a class="el" href="classEntity.html">Entity</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPlayer.html#a776717fe8fafda98740e74828bab03de">can_attack</a>(Entity *attacked) const override</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>combat_component</b> (definido en <a class="el" href="classEntity.html">Entity</a>)</td><td class="entry"><a class="el" href="classEntity.html">Entity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>die</b>() override (definido en <a class="el" href="classPlayer.html">Player</a>)</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>Entity</b>(EntityId id, const std::string &amp;name, MovementComponent *movement_component, CombatComponent *combat_component, unsigned int current_level, unsigned int current_exp) (definido en <a class="el" href="classEntity.html">Entity</a>)</td><td class="entry"><a class="el" href="classEntity.html">Entity</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Entity</b>(EntityId id, const std::string &amp;name, unsigned int current_level, unsigned int current_exp) (definido en <a class="el" href="classEntity.html">Entity</a>)</td><td class="entry"><a class="el" href="classEntity.html">Entity</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>experience_component</b> (definido en <a class="el" href="classEntity.html">Entity</a>)</td><td class="entry"><a class="el" href="classEntity.html">Entity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>get_class_type</b>() const (definido en <a class="el" href="classPlayer.html">Player</a>)</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>get_data</b>() const override (definido en <a class="el" href="classPlayer.html">Player</a>)</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPlayer.html#a9917a8c8773835b1e2d1737c460b4c76">get_class_type</a>() const</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classPlayer.html#ad91b3daebc9bdacfc1cf9c9f6e684332">get_data</a>() const override</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>get_facing_position</b>(position_t position) (definido en <a class="el" href="classEntity.html">Entity</a>)</td><td class="entry"><a class="el" href="classEntity.html">Entity</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>get_id</b>() const (definido en <a class="el" href="classEntity.html">Entity</a>)</td><td class="entry"><a class="el" href="classEntity.html">Entity</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>get_inventory_data</b>() const (definido en <a class="el" href="classPlayer.html">Player</a>)</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPlayer.html#ad39e83a4ce2c75731be8ded9e52049a2">get_inventory_data</a>() const</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>get_level</b>() const (definido en <a class="el" href="classEntity.html">Entity</a>)</td><td class="entry"><a class="el" href="classEntity.html">Entity</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>get_max_hp</b>() const (definido en <a class="el" href="classEntity.html">Entity</a>)</td><td class="entry"><a class="el" href="classEntity.html">Entity</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>get_name</b>() const (definido en <a class="el" href="classEntity.html">Entity</a>)</td><td class="entry"><a class="el" href="classEntity.html">Entity</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>get_persist_data</b>() const (definido en <a class="el" href="classPlayer.html">Player</a>)</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>get_race_type</b>() const (definido en <a class="el" href="classPlayer.html">Player</a>)</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>get_type</b>() const override (definido en <a class="el" href="classPlayer.html">Player</a>)</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPlayer.html#a563e42c563e8f7e9a5425095ac140a81">get_persist_data</a>() const</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classPlayer.html#a554e23a070d9b608bbb28f390b4a7f03">get_race_type</a>() const</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPlayer.html#aea4e7068192a40c781aa7d07c68c81ba">get_type</a>() const override</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>id</b> (definido en <a class="el" href="classEntity.html">Entity</a>)</td><td class="entry"><a class="el" href="classEntity.html">Entity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>is_alive</b>() const override (definido en <a class="el" href="classPlayer.html">Player</a>)</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>movement_component</b> (definido en <a class="el" href="classEntity.html">Entity</a>)</td><td class="entry"><a class="el" href="classEntity.html">Entity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>name</b> (definido en <a class="el" href="classEntity.html">Entity</a>)</td><td class="entry"><a class="el" href="classEntity.html">Entity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>Player</b>(EntityId entity_id, nlohmann::json player_info, Map &amp;map) (definido en <a class="el" href="classPlayer.html">Player</a>)</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>set_movement</b>(mov_action_t action, direction_t direction) (definido en <a class="el" href="classPlayer.html">Player</a>)</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classPlayer.html#aa04e8a564b40fbda931e4ccceec23f12">Player</a>(EntityId entity_id, nlohmann::json player_info, Map &amp;map)</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPlayer.html#a3b6984d0310b40ff0754dfe00e7860de">set_movement</a>(mov_action_t action, direction_t direction)</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>update</b>(uint64_t delta_t) override (definido en <a class="el" href="classPlayer.html">Player</a>)</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>use</b>(SlotId slot) (definido en <a class="el" href="classPlayer.html">Player</a>)</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPlayer.html#a3cd10ee96674c54f60e3f70a344f5e8b">use</a>(SlotId slot)</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>~Entity</b>() (definido en <a class="el" href="classEntity.html">Entity</a>)</td><td class="entry"><a class="el" href="classEntity.html">Entity</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
@@ -131,7 +133,7 @@ $(document).ready(function(){initNavTree('classPlayer.html',''); initResizable()
   <ul>
     <li class="footer">Generado por
     <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.19 </li>
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
 </div>
 </body>

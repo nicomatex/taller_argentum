@@ -23,6 +23,8 @@ class Monster : public Entity {
     void die() override;
     bool is_alive() const override;
 
+    bool can_attack(Entity* attacked) const override;
+
     void update(uint64_t delta_t) override;
 };
 

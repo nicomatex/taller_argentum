@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.19"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Argentum Online - Servidor: Referencia de la Clase ThDispatcher</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.svg"
+          <img id="MSearchSelect" src="search/mag_sel.png"
                onmouseover="return searchBox.OnSearchSelectShow()"
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
@@ -44,7 +44,7 @@
                onblur="searchBox.OnSearchFieldFocus(false)" 
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
           </span>
         </div>
 </td>
@@ -53,7 +53,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.19 -->
+<!-- Generado por Doxygen 1.8.17 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
@@ -103,24 +103,78 @@ $(document).ready(function(){initNavTree('classThDispatcher.html',''); initResiz
 Diagrama de herencias de ThDispatcher</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classThDispatcher.png" alt=""/>
- </div></div>
+  <img src="classThDispatcher.png" usemap="#ThDispatcher_map" alt=""/>
+  <map id="ThDispatcher_map" name="ThDispatcher_map">
+<area href="classBlockingThEventHandler.html" alt="BlockingThEventHandler" shape="rect" coords="80,56,231,80"/>
+<area href="classThread.html" alt="Thread" shape="rect" coords="0,0,151,24"/>
+<area href="classEventHandler.html" title="Clase abstracta para el manejo de eventos." alt="EventHandler" shape="rect" coords="161,0,312,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
 <tr class="memitem:aacdad9c0f8f6fe4f947799d5c2e2c8db"><td class="memItemLeft" align="right" valign="top"><a id="aacdad9c0f8f6fe4f947799d5c2e2c8db"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>stop</b> () override</td></tr>
 <tr class="separator:aacdad9c0f8f6fe4f947799d5c2e2c8db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classBlockingThEventHandler"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classBlockingThEventHandler')"><img src="closed.png" alt="-"/>&#160;Métodos públicos heredados desde <a class="el" href="classBlockingThEventHandler.html">BlockingThEventHandler</a></td></tr>
+<tr class="memitem:af75e5dfff75e70cf9bf99b411155f3d0 inherit pub_methods_classBlockingThEventHandler"><td class="memItemLeft" align="right" valign="top"><a id="af75e5dfff75e70cf9bf99b411155f3d0"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>BlockingThEventHandler</b> (<a class="el" href="classBlockingThEventHandler.html">BlockingThEventHandler</a> &amp;&amp;other)</td></tr>
+<tr class="separator:af75e5dfff75e70cf9bf99b411155f3d0 inherit pub_methods_classBlockingThEventHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17e274abfd9f2873eb06430d24f7bd70 inherit pub_methods_classBlockingThEventHandler"><td class="memItemLeft" align="right" valign="top"><a id="a17e274abfd9f2873eb06430d24f7bd70"></a>
+<a class="el" href="classBlockingThEventHandler.html">BlockingThEventHandler</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classBlockingThEventHandler.html">BlockingThEventHandler</a> &amp;&amp;other)</td></tr>
+<tr class="separator:a17e274abfd9f2873eb06430d24f7bd70 inherit pub_methods_classBlockingThEventHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ce8566c878a1c62aa9bbeb826e84ca3 inherit pub_methods_classBlockingThEventHandler"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBlockingThEventHandler.html#a7ce8566c878a1c62aa9bbeb826e84ca3">is_threaded</a> () const override</td></tr>
+<tr class="memdesc:a7ce8566c878a1c62aa9bbeb826e84ca3 inherit pub_methods_classBlockingThEventHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verificar si un <a class="el" href="classEventHandler.html" title="Clase abstracta para el manejo de eventos.">EventHandler</a> tiene un thread dedicado.  <a href="classBlockingThEventHandler.html#a7ce8566c878a1c62aa9bbeb826e84ca3">Más...</a><br /></td></tr>
+<tr class="separator:a7ce8566c878a1c62aa9bbeb826e84ca3 inherit pub_methods_classBlockingThEventHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a741dc58b533efe14fa1a48954a443408 inherit pub_methods_classBlockingThEventHandler"><td class="memItemLeft" align="right" valign="top"><a id="a741dc58b533efe14fa1a48954a443408"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>push_event</b> (const <a class="el" href="classEvent.html">Event</a> &amp;ev) override</td></tr>
+<tr class="separator:a741dc58b533efe14fa1a48954a443408 inherit pub_methods_classBlockingThEventHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e26be617c83844ce82a426256530642 inherit pub_methods_classBlockingThEventHandler"><td class="memItemLeft" align="right" valign="top"><a id="a5e26be617c83844ce82a426256530642"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> () override</td></tr>
+<tr class="separator:a5e26be617c83844ce82a426256530642 inherit pub_methods_classBlockingThEventHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classThread"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classThread')"><img src="closed.png" alt="-"/>&#160;Métodos públicos heredados desde <a class="el" href="classThread.html">Thread</a></td></tr>
+<tr class="memitem:a71c9b9c8fb2e87eb14279f6233a83143 inherit pub_methods_classThread"><td class="memItemLeft" align="right" valign="top"><a id="a71c9b9c8fb2e87eb14279f6233a83143"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Thread</b> (const <a class="el" href="classThread.html">Thread</a> &amp;)=delete</td></tr>
+<tr class="separator:a71c9b9c8fb2e87eb14279f6233a83143 inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a832b2ddff787923f27430d95df55c83d inherit pub_methods_classThread"><td class="memItemLeft" align="right" valign="top"><a id="a832b2ddff787923f27430d95df55c83d"></a>
+<a class="el" href="classThread.html">Thread</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classThread.html">Thread</a> &amp;)=delete</td></tr>
+<tr class="separator:a832b2ddff787923f27430d95df55c83d inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b3684ab3a193d3efe7457b316857ce0 inherit pub_methods_classThread"><td class="memItemLeft" align="right" valign="top"><a id="a3b3684ab3a193d3efe7457b316857ce0"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Thread</b> (<a class="el" href="classThread.html">Thread</a> &amp;&amp;other)</td></tr>
+<tr class="separator:a3b3684ab3a193d3efe7457b316857ce0 inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf4d0268ef1d2c86537d8bdb5f424ada inherit pub_methods_classThread"><td class="memItemLeft" align="right" valign="top"><a id="aaf4d0268ef1d2c86537d8bdb5f424ada"></a>
+virtual <a class="el" href="classThread.html">Thread</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classThread.html">Thread</a> &amp;&amp;other)</td></tr>
+<tr class="separator:aaf4d0268ef1d2c86537d8bdb5f424ada inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd935e9d64c786860dcac09504f52337 inherit pub_methods_classThread"><td class="memItemLeft" align="right" valign="top"><a id="abd935e9d64c786860dcac09504f52337"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> ()</td></tr>
+<tr class="separator:abd935e9d64c786860dcac09504f52337 inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f53ee62bd30a7924186ef26150ce262 inherit pub_methods_classThread"><td class="memItemLeft" align="right" valign="top"><a id="a1f53ee62bd30a7924186ef26150ce262"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> ()</td></tr>
+<tr class="separator:a1f53ee62bd30a7924186ef26150ce262 inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d9d788e98388a3217831a9046709deb inherit pub_methods_classThread"><td class="memItemLeft" align="right" valign="top"><a id="a4d9d788e98388a3217831a9046709deb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>join</b> ()</td></tr>
+<tr class="separator:a4d9d788e98388a3217831a9046709deb inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56db7b092884b5d1e7740bd9db340107 inherit pub_methods_classThread"><td class="memItemLeft" align="right" valign="top"><a id="a56db7b092884b5d1e7740bd9db340107"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>usleep</b> (unsigned int us)</td></tr>
+<tr class="separator:a56db7b092884b5d1e7740bd9db340107 inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9dd25b4a016107dedcd26fea8da68c1 inherit pub_methods_classThread"><td class="memTemplParams" colspan="2"><a id="af9dd25b4a016107dedcd26fea8da68c1"></a>
+template&lt;class Rep , class Period &gt; </td></tr>
+<tr class="memitem:af9dd25b4a016107dedcd26fea8da68c1 inherit pub_methods_classThread"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>sleep</b> (const std::chrono::duration&lt; Rep, Period &gt; &amp;duration)</td></tr>
+<tr class="separator:af9dd25b4a016107dedcd26fea8da68c1 inherit pub_methods_classThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Métodos protegidos</h2></td></tr>
 <tr class="memitem:a753863555a3d1062548dcfe6ab723a6b"><td class="memItemLeft" align="right" valign="top"><a id="a753863555a3d1062548dcfe6ab723a6b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>handle</b> (Event &amp;ev) override</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>handle</b> (<a class="el" href="classEvent.html">Event</a> &amp;ev) override</td></tr>
 <tr class="separator:a753863555a3d1062548dcfe6ab723a6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classBlockingThEventHandler"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classBlockingThEventHandler')"><img src="closed.png" alt="-"/>&#160;Métodos protegidos heredados desde <a class="el" href="classBlockingThEventHandler.html">BlockingThEventHandler</a></td></tr>
+<tr class="memitem:a49ad662806b015eef88326e8efea0c76 inherit pro_methods_classBlockingThEventHandler"><td class="memItemLeft" align="right" valign="top"><a id="a49ad662806b015eef88326e8efea0c76"></a>
+<a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pop_event</b> ()</td></tr>
+<tr class="separator:a49ad662806b015eef88326e8efea0c76 inherit pro_methods_classBlockingThEventHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
-<li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/server/<a class="el" href="th__dispatcher_8h_source.html">th_dispatcher.h</a></li>
-<li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/server/th_dispatcher.cpp</li>
+<li>/home/tc/Documents/Taller/tp_final/repo/server/<a class="el" href="th__dispatcher_8h_source.html">th_dispatcher.h</a></li>
+<li>/home/tc/Documents/Taller/tp_final/repo/server/th_dispatcher.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -130,7 +184,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>handle</b> (Event &am
     <li class="navelem"><a class="el" href="classThDispatcher.html">ThDispatcher</a></li>
     <li class="footer">Generado por
     <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.19 </li>
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
 </div>
 </body>

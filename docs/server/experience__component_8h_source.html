@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.19"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Argentum Online - Servidor: Fichero Fuente /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/server/game/experience_component.h</title>
+<title>Argentum Online - Servidor: Fichero Fuente /home/tc/Documents/Taller/tp_final/repo/server/game/entities/components/experience_component.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -35,7 +35,7 @@
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.svg"
+          <img id="MSearchSelect" src="search/mag_sel.png"
                onmouseover="return searchBox.OnSearchSelectShow()"
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
@@ -44,7 +44,7 @@
                onblur="searchBox.OnSearchFieldFocus(false)" 
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
           </span>
         </div>
 </td>
@@ -53,7 +53,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.19 -->
+<!-- Generado por Doxygen 1.8.17 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('experience__component_8h_source.html',
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef EXPERIENCE_COMPONENT_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define EXPERIENCE_COMPONENT_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../../include/nlohmann/json.hpp&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../../../../include/nlohmann/json.hpp&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// Limite = int(1000 * Nivel^1.8)</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define EXP_MULT 1000</span></div>
@@ -128,17 +128,17 @@ $(document).ready(function(){initNavTree('experience__component_8h_source.html',
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif  // EXPERIENCE_COMPONENT_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassExperienceComponent_html_a04a9270824db5ec68bc5f90605d3febf"><div class="ttname"><a href="classExperienceComponent.html#a04a9270824db5ec68bc5f90605d3febf">ExperienceComponent::get_xp_limit_level</a></div><div class="ttdeci">int get_xp_limit_level(unsigned int level) const</div><div class="ttdoc">Devuelve el limite de experiencia asociado al nivel (se entiende por limite de experiencia,...</div><div class="ttdef"><b>Definition:</b> experience_component.cpp:48</div></div>
-<div class="ttc" id="aclassExperienceComponent_html_a73adcf8df8faa089c5a2cae761326f84"><div class="ttname"><a href="classExperienceComponent.html#a73adcf8df8faa089c5a2cae761326f84">ExperienceComponent::reduce</a></div><div class="ttdeci">void reduce()</div><div class="ttdoc">Reduce la experiencia actual en un X% sobre la diferencia entre la experiencia base del nivel actual,...</div><div class="ttdef"><b>Definition:</b> experience_component.cpp:26</div></div>
-<div class="ttc" id="aclassExperienceComponent_html_aa37e4f758d742fe2a37cfc947b0d32ef"><div class="ttname"><a href="classExperienceComponent.html#aa37e4f758d742fe2a37cfc947b0d32ef">ExperienceComponent::add_exp</a></div><div class="ttdeci">void add_exp(int exp)</div><div class="ttdoc">Agrega &quot;exp&quot; a la experencia actual, actualizando los niveles.</div><div class="ttdef"><b>Definition:</b> experience_component.cpp:10</div></div>
+<div class="ttc" id="aclassExperienceComponent_html_a04a9270824db5ec68bc5f90605d3febf"><div class="ttname"><a href="classExperienceComponent.html#a04a9270824db5ec68bc5f90605d3febf">ExperienceComponent::get_xp_limit_level</a></div><div class="ttdeci">int get_xp_limit_level(unsigned int level) const</div><div class="ttdoc">Devuelve el limite de experiencia asociado al nivel (se entiende por limite de experiencia,...</div><div class="ttdef"><b>Definition:</b> experience_component.cpp:49</div></div>
+<div class="ttc" id="aclassExperienceComponent_html_a73adcf8df8faa089c5a2cae761326f84"><div class="ttname"><a href="classExperienceComponent.html#a73adcf8df8faa089c5a2cae761326f84">ExperienceComponent::reduce</a></div><div class="ttdeci">void reduce()</div><div class="ttdoc">Reduce la experiencia actual en un X% sobre la diferencia entre la experiencia base del nivel actual,...</div><div class="ttdef"><b>Definition:</b> experience_component.cpp:27</div></div>
+<div class="ttc" id="aclassExperienceComponent_html_aa37e4f758d742fe2a37cfc947b0d32ef"><div class="ttname"><a href="classExperienceComponent.html#aa37e4f758d742fe2a37cfc947b0d32ef">ExperienceComponent::add_exp</a></div><div class="ttdeci">void add_exp(int exp)</div><div class="ttdoc">Agrega &quot;exp&quot; a la experencia actual, actualizando los niveles.</div><div class="ttdef"><b>Definition:</b> experience_component.cpp:11</div></div>
 <div class="ttc" id="aclassExperienceComponent_html"><div class="ttname"><a href="classExperienceComponent.html">ExperienceComponent</a></div><div class="ttdef"><b>Definition:</b> experience_component.h:13</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a class="el" href="dir_afb3612a37971015fc09a9ec8e55baac.html">game</a></li><li class="navelem"><b>experience_component.h</b></li>
+    <li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a class="el" href="dir_afb3612a37971015fc09a9ec8e55baac.html">game</a></li><li class="navelem"><a class="el" href="dir_a32322efb43ee2d4c1f8285ba950bcaf.html">entities</a></li><li class="navelem"><a class="el" href="dir_35fcc966bc98cb84a8a71b4530b1f474.html">components</a></li><li class="navelem"><b>experience_component.h</b></li>
     <li class="footer">Generado por
     <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.19 </li>
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
 </div>
 </body>

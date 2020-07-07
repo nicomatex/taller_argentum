@@ -1,5 +1,6 @@
 #include "player.h"
 
+#include <cstdlib>
 #include <vector>
 
 #include "../items/potion.h"
@@ -9,6 +10,8 @@
 
 #define DEAD_HEAD_ID 9
 #define DEAD_BODY_ID 5
+#define NEWBIE_LVL 4
+#define LVL_DIFFERENCE 10
 
 #define GOLD_MAX_MULT 100
 #define GOLD_MAX_EXP 1.1
@@ -122,7 +125,8 @@ void Player::add_item(Item* item) {
     if (item->get_type() == TYPE_GOLD) {
         Gold* gold = static_cast<Gold*>(item);
         unsigned int actual_gold = inventory.get_gold_stack();
-        unsigned int max_secure_gold = (GOLD_MAX_MULT * std::pow((double)get_level(), GOLD_MAX_EXP));
+        unsigned int max_secure_gold =
+            (GOLD_MAX_MULT * std::pow((double)get_level(), GOLD_MAX_EXP));
         if (actual_gold + gold->get_stack() <= max_secure_gold * GOLD_EXCESS) {
             inventory.add_gold(gold);
             delete item;
@@ -131,7 +135,7 @@ void Player::add_item(Item* item) {
         }
     } else {
         inventory.add(item);
-    }      
+    }
 }
 
 nlohmann::json Player::get_persist_data() const {
@@ -165,20 +169,25 @@ void Player::die() {
     alive = false;
     std::vector<Item*> drops = inventory.remove_all();
     unsigned int actual_gold = inventory.get_gold_stack();
-    unsigned int max_secure_gold = (GOLD_MAX_MULT * std::pow((double)get_level(), GOLD_MAX_EXP));
+    unsigned int max_secure_gold =
+        (GOLD_MAX_MULT * std::pow((double)get_level(), GOLD_MAX_EXP));
     if (actual_gold > max_secure_gold) {
         drops.push_back(inventory.remove_gold(actual_gold - max_secure_gold));
     }
     PlayerCombatComponent* p_combat_component =
         static_cast<PlayerCombatComponent*>(combat_component);
-    Weapon *weapon = p_combat_component->unequip_weapon();
-    if (weapon) drops.push_back(weapon);
-    Armor *helmet = p_combat_component->unequip_helmet();
-    if (helmet) drops.push_back(helmet);
-    Armor *chest = p_combat_component->unequip_chest();
-    if (chest) drops.push_back(chest);
-    Armor *shield = p_combat_component->unequip_shield(); 
-    if (shield)  drops.push_back(shield);
+    Weapon* weapon = p_combat_component->unequip_weapon();
+    if (weapon)
+        drops.push_back(weapon);
+    Armor* helmet = p_combat_component->unequip_helmet();
+    if (helmet)
+        drops.push_back(helmet);
+    Armor* chest = p_combat_component->unequip_chest();
+    if (chest)
+        drops.push_back(chest);
+    Armor* shield = p_combat_component->unequip_shield();
+    if (shield)
+        drops.push_back(shield);
     map.drop_loot(id, drops);
     map.push_log(
         MapLogFactory::inventory_change(get_name(), get_inventory_data()));
@@ -186,4 +195,14 @@ void Player::die() {
 
 bool Player::is_alive() const {
     return alive;
+}
+
+bool Player::can_attack(Entity* attacked) const {
+    if (attacked->get_type() == MONSTER)
+        return true;
+    else if (attacked->get_type() == NPC)
+        return false;
+    Player* player = static_cast<Player*>(attacked);
+    return player->get_level() > NEWBIE_LVL && get_level() > NEWBIE_LVL &&
+           (std::abs<int>(get_level() - player->get_level()) > LVL_DIFFERENCE);
 }

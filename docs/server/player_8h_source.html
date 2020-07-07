@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.19"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Argentum Online - Servidor: Fichero Fuente /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/server/game/player.h</title>
+<title>Argentum Online - Servidor: Fichero Fuente /home/tc/Documents/Taller/tp_final/repo/server/game/entities/player.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -35,7 +35,7 @@
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.svg"
+          <img id="MSearchSelect" src="search/mag_sel.png"
                onmouseover="return searchBox.OnSearchSelectShow()"
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
@@ -44,7 +44,7 @@
                onblur="searchBox.OnSearchFieldFocus(false)" 
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
           </span>
         </div>
 </td>
@@ -53,7 +53,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.19 -->
+<!-- Generado por Doxygen 1.8.17 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
@@ -95,62 +95,82 @@ $(document).ready(function(){initNavTree('player_8h_source.html',''); initResiza
 <div class="title">player.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef PLAYER_H</span></div>
+<a href="player_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef PLAYER_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define PLAYER_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../attribute_manager.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;entity.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;items/item_container.h&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;map.h&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;position.h&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classPlayer.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPlayer.html">Player</a> : <span class="keyword">public</span> <a class="code" href="classEntity.html">Entity</a> {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">bool</span> alive;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> head_id;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> body_id;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classItemContainer.html">ItemContainer</a> <a class="code" href="structinventory.html">inventory</a>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../../attribute_manager.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;../items/item_container.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;../map.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../position.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;entity.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classPlayer.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPlayer.html">Player</a> : <span class="keyword">public</span> <a class="code" href="classEntity.html">Entity</a> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">bool</span> alive;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> head_id;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> body_id;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classMap.html">Map</a>&amp; map;  <span class="comment">// Mapa en el que esta el jugador en este momento.</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    class_type_t class_type;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    race_type_t race_type;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classPlayer.html">Player</a>(EntityId entity_id, nlohmann::json player_info, <a class="code" href="classMap.html">Map</a>&amp; map);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    entity_type_t get_type() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    class_type_t get_class_type() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    race_type_t get_race_type() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> die() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">bool</span> is_alive() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> use(SlotId slot);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> set_movement(mov_action_t action, direction_t direction);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> update(uint64_t delta_t) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    nlohmann::json get_data() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    nlohmann::json get_inventory_data() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    nlohmann::json get_persist_data() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classItemContainer.html">ItemContainer</a> <a class="code" href="structinventory.html">inventory</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classMap.html">Map</a>&amp; map;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    class_type_t class_type;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    race_type_t race_type;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classPlayer.html#aa04e8a564b40fbda931e4ccceec23f12">Player</a>(EntityId entity_id, nlohmann::json player_info, <a class="code" href="classMap.html">Map</a>&amp; map);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    entity_type_t <a class="code" href="classPlayer.html#aea4e7068192a40c781aa7d07c68c81ba">get_type</a>() <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#endif  // PLAYER_H</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    class_type_t <a class="code" href="classPlayer.html#a9917a8c8773835b1e2d1737c460b4c76">get_class_type</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    race_type_t <a class="code" href="classPlayer.html#a554e23a070d9b608bbb28f390b4a7f03">get_race_type</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> die() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">bool</span> is_alive() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlayer.html#a3cd10ee96674c54f60e3f70a344f5e8b">use</a>(SlotId slot);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> add_item(<a class="code" href="classItem.html">Item</a>* item);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlayer.html#a3b6984d0310b40ff0754dfe00e7860de">set_movement</a>(mov_action_t action, direction_t direction);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> update(uint64_t delta_t) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classPlayer.html#a776717fe8fafda98740e74828bab03de">can_attack</a>(<a class="code" href="classEntity.html">Entity</a>* attacked) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    nlohmann::json <a class="code" href="classPlayer.html#ad91b3daebc9bdacfc1cf9c9f6e684332">get_data</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    nlohmann::json <a class="code" href="classPlayer.html#ad39e83a4ce2c75731be8ded9e52049a2">get_inventory_data</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    nlohmann::json <a class="code" href="classPlayer.html#a563e42c563e8f7e9a5425095ac140a81">get_persist_data</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;};</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="preprocessor">#endif  // PLAYER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="astructinventory_html"><div class="ttname"><a href="structinventory.html">inventory</a></div><div class="ttdef"><b>Definition:</b> item_container.h:25</div></div>
-<div class="ttc" id="aclassItemContainer_html"><div class="ttname"><a href="classItemContainer.html">ItemContainer</a></div><div class="ttdef"><b>Definition:</b> item_container.h:40</div></div>
+<div class="ttc" id="astructinventory_html"><div class="ttname"><a href="structinventory.html">inventory</a></div><div class="ttdef"><b>Definition:</b> item_container.h:26</div></div>
+<div class="ttc" id="aclassPlayer_html_a776717fe8fafda98740e74828bab03de"><div class="ttname"><a href="classPlayer.html#a776717fe8fafda98740e74828bab03de">Player::can_attack</a></div><div class="ttdeci">bool can_attack(Entity *attacked) const override</div><div class="ttdoc">Define si un jugador podrá o no atacar a otra entidad.</div><div class="ttdef"><b>Definition:</b> player.cpp:199</div></div>
+<div class="ttc" id="aclassItem_html"><div class="ttname"><a href="classItem.html">Item</a></div><div class="ttdef"><b>Definition:</b> item.h:42</div></div>
+<div class="ttc" id="aclassPlayer_html_a3b6984d0310b40ff0754dfe00e7860de"><div class="ttname"><a href="classPlayer.html#a3b6984d0310b40ff0754dfe00e7860de">Player::set_movement</a></div><div class="ttdeci">void set_movement(mov_action_t action, direction_t direction)</div><div class="ttdoc">Setea el movimiento del jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:161</div></div>
+<div class="ttc" id="aclassItemContainer_html"><div class="ttname"><a href="classItemContainer.html">ItemContainer</a></div><div class="ttdef"><b>Definition:</b> item_container.h:44</div></div>
+<div class="ttc" id="aclassPlayer_html_ad39e83a4ce2c75731be8ded9e52049a2"><div class="ttname"><a href="classPlayer.html#ad39e83a4ce2c75731be8ded9e52049a2">Player::get_inventory_data</a></div><div class="ttdeci">nlohmann::json get_inventory_data() const</div><div class="ttdoc">Obtiene la información del inventario del jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:85</div></div>
+<div class="ttc" id="aclassPlayer_html_a563e42c563e8f7e9a5425095ac140a81"><div class="ttname"><a href="classPlayer.html#a563e42c563e8f7e9a5425095ac140a81">Player::get_persist_data</a></div><div class="ttdeci">nlohmann::json get_persist_data() const</div><div class="ttdoc">Obtener la información para persistir a un jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:140</div></div>
+<div class="ttc" id="aclassPlayer_html_ad91b3daebc9bdacfc1cf9c9f6e684332"><div class="ttname"><a href="classPlayer.html#ad91b3daebc9bdacfc1cf9c9f6e684332">Player::get_data</a></div><div class="ttdeci">nlohmann::json get_data() const override</div><div class="ttdoc">Obtiene los datos de la entidad para enviar al cliente. (caso PLAYER)</div><div class="ttdef"><b>Definition:</b> player.cpp:58</div></div>
+<div class="ttc" id="aclassPlayer_html_aea4e7068192a40c781aa7d07c68c81ba"><div class="ttname"><a href="classPlayer.html#aea4e7068192a40c781aa7d07c68c81ba">Player::get_type</a></div><div class="ttdeci">entity_type_t get_type() const override</div><div class="ttdoc">Obtiene el tipo de la entidad: PLAYER.</div><div class="ttdef"><b>Definition:</b> player.cpp:46</div></div>
 <div class="ttc" id="aclassEntity_html"><div class="ttname"><a href="classEntity.html">Entity</a></div><div class="ttdef"><b>Definition:</b> entity.h:13</div></div>
-<div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdef"><b>Definition:</b> map.h:50</div></div>
-<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdef"><b>Definition:</b> player.h:11</div></div>
+<div class="ttc" id="aclassPlayer_html_aa04e8a564b40fbda931e4ccceec23f12"><div class="ttname"><a href="classPlayer.html#aa04e8a564b40fbda931e4ccceec23f12">Player::Player</a></div><div class="ttdeci">Player(EntityId entity_id, nlohmann::json player_info, Map &amp;map)</div><div class="ttdoc">Construye a un jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:22</div></div>
+<div class="ttc" id="aclassPlayer_html_a9917a8c8773835b1e2d1737c460b4c76"><div class="ttname"><a href="classPlayer.html#a9917a8c8773835b1e2d1737c460b4c76">Player::get_class_type</a></div><div class="ttdeci">class_type_t get_class_type() const</div><div class="ttdoc">Obtiene la clase del jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:50</div></div>
+<div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdef"><b>Definition:</b> map.h:59</div></div>
+<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdef"><b>Definition:</b> player.h:13</div></div>
+<div class="ttc" id="aclassPlayer_html_a554e23a070d9b608bbb28f390b4a7f03"><div class="ttname"><a href="classPlayer.html#a554e23a070d9b608bbb28f390b4a7f03">Player::get_race_type</a></div><div class="ttdeci">race_type_t get_race_type() const</div><div class="ttdoc">Obtiene la raza del jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:54</div></div>
+<div class="ttc" id="aclassPlayer_html_a3cd10ee96674c54f60e3f70a344f5e8b"><div class="ttname"><a href="classPlayer.html#a3cd10ee96674c54f60e3f70a344f5e8b">Player::use</a></div><div class="ttdeci">void use(SlotId slot)</div><div class="ttdoc">Utilizar un item del inventario.</div><div class="ttdef"><b>Definition:</b> player.cpp:89</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a class="el" href="dir_afb3612a37971015fc09a9ec8e55baac.html">game</a></li><li class="navelem"><b>player.h</b></li>
+    <li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a class="el" href="dir_afb3612a37971015fc09a9ec8e55baac.html">game</a></li><li class="navelem"><a class="el" href="dir_a32322efb43ee2d4c1f8285ba950bcaf.html">entities</a></li><li class="navelem"><a class="el" href="player_8h.html">player.h</a></li>
     <li class="footer">Generado por
     <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.19 </li>
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
 </div>
 </body>
