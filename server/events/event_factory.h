@@ -32,6 +32,10 @@ class EventFactory {
 
     static Event received_damage(int damage);
 
+    static Event damage_evaded(EntityId to_id);
+    
+    static Event evaded_damage();
+
     static Event inventory_update(const nlohmann::json& inventory_data);
 
     static Event pickup_event(ClientId client_id);

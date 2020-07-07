@@ -78,6 +78,17 @@ Event EventFactory::received_damage(int damage) {
     return Event(ev_json);
 }
 
+Event EventFactory::damage_evaded(EntityId to_id) {
+    nlohmann::json ev_json = {
+        {"ev_id", EV_ID_DAMAGE_EVADED},{"to", to_id}};
+    return Event(ev_json);
+}
+
+Event EventFactory::evaded_damage() {
+    nlohmann::json ev_json = {{"ev_id", EV_ID_EVADED_DAMAGE}};
+    return Event(ev_json);
+}
+
 Event EventFactory::inventory_update(const nlohmann::json& inventory_data) {
     nlohmann::json ev_json = {{"ev_id", EV_ID_INVENTORY_UPDATE},
                               {"inventory", inventory_data}};

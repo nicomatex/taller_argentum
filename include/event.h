@@ -13,7 +13,9 @@ enum server_to_client {
     EV_ID_NOTIFY_NEW_MAP,
     EV_ID_DEALT_DAMAGE,
     EV_ID_RECEIVED_DAMAGE,
-    EV_ID_INVENTORY_UPDATE
+    EV_ID_INVENTORY_UPDATE,
+    EV_ID_EVADED_DAMAGE,
+    EV_ID_DAMAGE_EVADED
 };
 
 enum client_to_server {

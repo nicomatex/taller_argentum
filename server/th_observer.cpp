@@ -39,6 +39,9 @@ void ThObserver::send_update_logs() {
                               to;
 
                     } else {
+                        server_manager.send_to(
+                            client_id,
+                            EventFactory::damage_evaded(log.info["to_id"]));
                         msg = "Me ha evadido el golpe " + to;
                     }
                     server_manager.send_to(client_id,
@@ -55,6 +58,9 @@ void ThObserver::send_update_logs() {
                         msg = "Recibido " + std::to_string(dmg) +
                               " de danio por " + from;
                     } else {
+                        server_manager.send_to(
+                            client_id,
+                            EventFactory::evaded_damage());
                         msg = "He evadido el golpe de " + from;
                     }
 

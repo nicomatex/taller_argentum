@@ -67,6 +67,12 @@ void ClientReceiveHandler::handle(Event &ev) {
         case EV_ID_DEALT_DAMAGE:
             handle_outcoming_damage(ev);
             break;
+        case EV_ID_DAMAGE_EVADED:
+            handle_outcoming_evaded_damage(ev);
+            break;
+        case EV_ID_EVADED_DAMAGE:
+            handle_incoming_damage_evaded(ev);
+            break;
     };
 }
 
@@ -175,4 +181,12 @@ void ClientReceiveHandler::handle_incoming_damage(Event &ev) {
 
 void ClientReceiveHandler::handle_outcoming_damage(Event &ev) {
     SoundSystem::get_instance().play_game_sfx(4);
+}
+
+void ClientReceiveHandler::handle_outcoming_evaded_damage(Event &ev) {
+    SoundSystem::get_instance().play_game_sfx(6);  
+}
+
+void ClientReceiveHandler::handle_incoming_damage_evaded(Event &ev) {
+    SoundSystem::get_instance().play_game_sfx(7);
 }
