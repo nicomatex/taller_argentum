@@ -16,7 +16,7 @@ Monster::Monster(EntityId entity_id, nlohmann::json monster_info, Map& map)
              new MonsterCombatComponent(
                  monster_info["max_hp"], monster_info["damage"],
                  monster_info["attack_speed"], map, entity_id),
-             1, 0),
+             25, 0),
       map(map),
       sprite_id(monster_info["sprite_id"]),
       alive(true) {}
