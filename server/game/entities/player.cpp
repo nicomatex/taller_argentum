@@ -147,10 +147,13 @@ void Player::add_item(Item* item) {
 }
 
 Item* Player::remove_item(SlotId slot, uint32_t amount) {
-    Item* item = inventory.remove(slot, amount);
-    if (item)
+    Item* item = nullptr;
+    try {
+        item = inventory.remove(slot, amount);
         map.push_log(
             MapLogFactory::inventory_change(name, get_inventory_data()));
+    } catch (const EmptySlotException& e) {
+    }
     return item;
 }
 
