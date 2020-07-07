@@ -3,10 +3,15 @@
 #include "../../../server_manager.h"
 #include "../../items/item.h"
 #include "../../items/item_factory.h"
+#include <random>
+#include <cmath>
 
 // Temp
 
 #define NOT_EQUIPED 0
+#define CRITIC_PROB 50
+#define CRITIC_MULT 2
+#define DODGE_THRESHOLD 0.0000001
 
 PlayerCombatComponent::PlayerCombatComponent(ItemId helmet_id, ItemId armor_id,
                                              ItemId shield_id, ItemId weapon_id,
@@ -56,15 +61,26 @@ PlayerCombatComponent::~PlayerCombatComponent() {
 
 damage_t PlayerCombatComponent::attack() {
     attack_accumulator = 0;
-    // TODO: critical strike
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    bool is_critic = (gen() % 100) < CRITIC_PROB;
+    int damage = stats.strength;
     if (weapon)
-        return {(int)stats.strength + weapon->deal_damage(), 0};
-    return {(int)stats.strength, 0};
+        damage += weapon->deal_damage();
+    if (is_critic) damage *= CRITIC_MULT;
+    return {damage, is_critic};
 }
 
 attack_result_t PlayerCombatComponent::receive_damage(damage_t raw_damage) {
     attack_result_t result = {true, raw_damage.damage, false, false};
-    // TODO: dodge
+    // TODO: dodge Esquivar si rand(0, 1) ^ Agilidad < 0.001
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<> dist(0,1);
+    if (!raw_damage.crit && (std::pow(dist(gen), stats.agility) < DODGE_THRESHOLD)) {
+        std::cout << "Dodged" << std::endl;
+        result = {true, 0, true, false};
+    }
     int received_dmg = raw_damage.damage;
     if (helmet)
         received_dmg = helmet->reduce_damage(received_dmg);

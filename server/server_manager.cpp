@@ -25,7 +25,7 @@ ServerManager::ServerManager()
     if (!character_manager.character_exists("nicomatex")) {
         nlohmann::json nico_info = {{"name", "nicomatex"},
                                     {"map_id", 0},
-                                    {"pos", position_t{40, 40}},
+                                    {"pos", position_t{13, 21}},
                                     {"head_id", 1},
                                     {"body_id", 2},
                                     {"helmet_id", 1},
