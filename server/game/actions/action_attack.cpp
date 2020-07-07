@@ -21,13 +21,13 @@ void ActionAttack::execute(Map& map, EntityId entity_id) const {
     if (attacker->get_type() == PLAYER)
         map.push_log(MapLogFactory::deal_damage(
             attacker->get_name(), {{"damage", result.damage_dealt},
-                                   //   {"dodged", bool},
+                                   {"dodged", result.dodged},
                                    {"to", attacked->get_name()},
                                    {"to_id", attacked->get_id()}}));
     if (attacked->get_type() == PLAYER)
         map.push_log(MapLogFactory::receive_damage(
             attacked->get_name(), {{"damage", result.damage_dealt},
-                                   //   {"dodged", bool},
+                                   {"dodged", result.dodged},
                                    {"from", attacker->get_name()}}));
     if (result.killed) {
         attacked->die();

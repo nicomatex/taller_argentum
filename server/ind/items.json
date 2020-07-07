@@ -136,8 +136,8 @@
 				"type": 1
 			},
 			"weapon_info": {
-				"max_damage": 175,
-				"min_damage": 175
+				"max_damage": 4,
+				"min_damage": 2
 			}
 		},
 		{

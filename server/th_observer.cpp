@@ -27,23 +27,37 @@ void ThObserver::send_update_logs() {
                 server_manager.get_client_by_name(log.player_name);
             switch (log.type) {
                 case LOG_DEAL_DAMAGE: {
-                    int dmg = log.info["damage"];
+                    std::string msg;
                     const std::string& to = log.info["to"];
-                    server_manager.send_to(
-                        client_id,
-                        EventFactory::dealt_damage(dmg, log.info["to_id"]));
-                    std::string msg =
-                        "Hecho " + std::to_string(dmg) + " de danio a " + to;
+                    if (!log.info["dodged"]) {
+                        int dmg = log.info["damage"];
+
+                        server_manager.send_to(
+                            client_id,
+                            EventFactory::dealt_damage(dmg, log.info["to_id"]));
+                        msg = "Hecho " + std::to_string(dmg) + " de danio a " +
+                              to;
+
+                    } else {
+                        msg = "Me ha evadido el golpe " + to;
+                    }
                     server_manager.send_to(client_id,
                                            EventFactory::chat_message(msg));
+
                 } break;
                 case LOG_RECV_DAMAGE: {
-                    int dmg = log.info["damage"];
+                    std::string msg;
                     const std::string& from = log.info["from"];
-                    server_manager.send_to(client_id,
-                                           EventFactory::received_damage(dmg));
-                    std::string msg = "Recibido " + std::to_string(dmg) +
-                                      " de danio por " + from;
+                    if (!log.info["dodged"]) {
+                        int dmg = log.info["damage"];
+                        server_manager.send_to(
+                            client_id, EventFactory::received_damage(dmg));
+                        msg = "Recibido " + std::to_string(dmg) +
+                              " de danio por " + from;
+                    } else {
+                        msg = "He evadido el golpe de " + from;
+                    }
+
                     server_manager.send_to(client_id,
                                            EventFactory::chat_message(msg));
                 } break;

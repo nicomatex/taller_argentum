@@ -74,11 +74,11 @@ ServerManager::ServerManager()
         nlohmann::json fran_info = {
             {"name", "fran"},   {"map_id", 0},      {"pos", position_t{13, 20}},
             {"head_id", 2},     {"body_id", 1},     {"helmet_id", 3},
-            {"armor_id", 102},  {"shield_id", 201}, {"weapon_id", 301},
+            {"armor_id", 101},  {"shield_id", 201}, {"weapon_id", 301},
             {"curr_hp", 100},   {"curr_mp", 70},    {"class_type", PALADIN},
             {"race_type", ELF}, {"curr_level", 1},  {"curr_exp", 300},
             {"alive", true}};
-        fran_info["inventory"] = R"({"items_ids":[401,0,0,0,0,0,0,0,0,0,0,0],
+        fran_info["inventory"] = R"({"items_ids":[400,0,0,0,0,0,0,0,0,0,0,0],
                                  "items_stacks":[1200,0,0,0,0,0,0,0,0,0,0,0],
                                  "curr_gold":140})"_json;
         character_manager.add_character(fran_info);
