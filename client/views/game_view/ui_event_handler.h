@@ -24,6 +24,7 @@ class UiEventHandler {
     SDL_Rect main_render_viewport;
     position_t current_target;
     int selected_inventory_slot;
+    int selected_equipment_slot;
 
    public:
     /**

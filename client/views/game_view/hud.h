@@ -5,19 +5,19 @@
 #include "../../engine/SDL/sdl_text.h"
 #include "../../engine/SDL/sdl_texture.h"
 #include "../../engine/SDL/sdl_window.h"
-#include "../../engine/UI/icon_grid.h"
 #include "../../engine/UI/stat_bar.h"
 #include "../../inventory_buffer.h"
 #include "../responsive_scaler.h"
 #include "SDL2/SDL.h"
 #include "cast_button.h"
 #include "chat.h"
+#include "equipment.h"
 #include "inventory.h"
 
 class StatsComponent;
 /**
  * @brief HUD del juego (informacion del jugador).
- * 
+ *
  */
 class Hud {
    private:
@@ -30,7 +30,8 @@ class Hud {
     StatBar mana_bar;
     StatBar health_bar;
     StatBar experience_bar;
-    IconGrid equipped_items;
+    // IconGrid equipped_items;
+    Equipment equipment;
     Inventory inventory;
     bool attempting_cast;
     CastButton cast_button;
@@ -45,7 +46,7 @@ class Hud {
 
     void _update_stats();
     void _update_inventory();
-    void _update_equipped_items();
+    void _update_equipment();
 
    public:
     /**
@@ -72,13 +73,13 @@ class Hud {
 
     /**
      * @brief Actualiza el HUD
-     * 
+     *
      */
     void update();
 
     /**
      * @brief Renderiza el HUD
-     * 
+     *
      */
     void render();
 };

@@ -79,8 +79,7 @@ Event EventFactory::received_damage(int damage) {
 }
 
 Event EventFactory::damage_evaded(EntityId to_id) {
-    nlohmann::json ev_json = {
-        {"ev_id", EV_ID_DAMAGE_EVADED},{"to", to_id}};
+    nlohmann::json ev_json = {{"ev_id", EV_ID_DAMAGE_EVADED}, {"to", to_id}};
     return Event(ev_json);
 }
 
@@ -110,9 +109,9 @@ Event EventFactory::drop_event(ClientId client_id, SlotId slot,
     return Event(ev_json);
 }
 
-Event EventFactory::unequip_event(ClientId client_id) {
-    nlohmann::json ev_json = {{"ev_id", SERVER_UNEQUIP},
-                              {"client_id", client_id}};
+Event EventFactory::unequip_all_event(ClientId client_id) {
+    nlohmann::json ev_json = {
+        {"ev_id", EV_ID_UNEQUIP}, {"client_id", client_id}, {"slot", -1}};
     return Event(ev_json);
 }
 

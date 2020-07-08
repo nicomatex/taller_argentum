@@ -72,7 +72,7 @@ ThDispatcher::ThDispatcher() : BlockingThEventHandler() {
         static_cast<EventHandler*>(new DropLootHandler());
     handlers[static_cast<int>(SERVER_RESUSCITATE)] =
         static_cast<EventHandler*>(new ResuscitateHandler());
-    handlers[static_cast<int>(SERVER_UNEQUIP)] =
+    handlers[static_cast<int>(EV_ID_UNEQUIP)] =
         static_cast<EventHandler*>(new UnequipHandler());
     // Inicializamos los handlers que sean threads
     for (auto it : handlers) {

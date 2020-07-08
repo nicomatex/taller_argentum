@@ -1,5 +1,6 @@
 #ifndef __INVENTORY_H
 #define __INVENTORY_H
+
 #include "../../engine/SDL/sdl_texture.h"
 #include "../../engine/UI/icon_grid.h"
 #include "SDL2/SDL.h"
@@ -9,12 +10,11 @@
 
 /**
  * @brief Inventario del jugador.
- * 
+ *
  */
 class Inventory {
    private:
     IconGrid inventory_icons;
-    SDL_Rect inventory_area;
     ItemQtyGrid item_qty_grid;
     ItemButtonGrid item_button_grid;
 

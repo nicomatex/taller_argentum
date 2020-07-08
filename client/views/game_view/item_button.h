@@ -7,14 +7,16 @@
 
 /**
  * @brief Boton clickeable para cada item del inventario.
- * 
+ *
  */
 class ItemButton : public Button {
    private:
-    int slot_number;
+    SlotId slot_number;
     SocketManager& socket_manager;
     SDLTimer double_click_timer;
     int& last_clicked_slot;
+    Event (*left_click_event)(SlotId);
+    Event (*right_click_event)(SlotId);
 
    public:
     /**
@@ -30,7 +32,8 @@ class ItemButton : public Button {
      */
     ItemButton(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer* renderer,
                SlotId slot_number, int& last_clicked_slot,
-               SocketManager& socket_manager);
+               SocketManager& socket_manager, Event (*left_click_event)(SlotId),
+               Event (*right_click_event)(SlotId));
 
     /**
      * @brief Un click setea el ultimo slot clickeado. Doble click envia un

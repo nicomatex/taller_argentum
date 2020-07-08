@@ -8,6 +8,7 @@ add_library(game_view
     item_qty_grid.cpp
     item_button.cpp
     item_button_grid.cpp
+    equipment.cpp
 )
 
 

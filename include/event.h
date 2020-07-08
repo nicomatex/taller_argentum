@@ -27,13 +27,13 @@ enum client_to_server {
     EV_ID_COMMAND,
     EV_ID_INVENTORY,
     EV_ID_PICKUP_LOOT,
-    EV_ID_DROP_LOOT
+    EV_ID_DROP_LOOT,
+    EV_ID_UNEQUIP
 };
 
 enum server_to_self {
     SERVER_DROP_CLIENT = 1000,
     SERVER_CHANGE_MAP = 1001,
-    SERVER_UNEQUIP = 1002,
     SERVER_RESUSCITATE = 1003
 };
 

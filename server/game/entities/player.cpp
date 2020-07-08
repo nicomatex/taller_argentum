@@ -157,13 +157,29 @@ Item* Player::remove_item(SlotId slot, uint32_t amount) {
     return item;
 }
 
-void Player::unequip() {
+void Player::unequip(SlotId slot) {
     PlayerCombatComponent* p_combat_component =
         static_cast<PlayerCombatComponent*>(combat_component);
-    add_item(p_combat_component->unequip_helmet());
-    add_item(p_combat_component->unequip_chest());
-    add_item(p_combat_component->unequip_shield());
-    add_item(p_combat_component->unequip_weapon());
+    switch (slot) {
+        case 0:
+            add_item(p_combat_component->unequip_helmet());
+            break;
+        case 1:
+            add_item(p_combat_component->unequip_chest());
+            break;
+        case 2:
+            add_item(p_combat_component->unequip_shield());
+            break;
+        case 3:
+            add_item(p_combat_component->unequip_weapon());
+            break;
+        default:
+            add_item(p_combat_component->unequip_helmet());
+            add_item(p_combat_component->unequip_chest());
+            add_item(p_combat_component->unequip_shield());
+            add_item(p_combat_component->unequip_weapon());
+            break;
+    }
 }
 
 nlohmann::json Player::get_persist_data() const {

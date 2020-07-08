@@ -4,8 +4,11 @@
 #include "action.h"
 
 class ActionUnequip : public Action {
+   private:
+    SlotId slot;
+
    public:
-    ActionUnequip();
+    ActionUnequip(SlotId slot);
 
     void execute(Map& map, EntityId entity_id) const override;
 };

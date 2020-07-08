@@ -69,7 +69,12 @@ Event EventFactory::pickup_event() {
     return Event(event);
 }
 
-Event EventFactory::drop_item_event(int slot) {
+Event EventFactory::drop_item_event(SlotId slot) {
     json event = {{"ev_id", EV_ID_DROP_LOOT}, {"slot", slot}};
+    return Event(event);
+}
+
+Event EventFactory::unequip_event(SlotId slot) {
+    json event = {{"ev_id", EV_ID_UNEQUIP}, {"slot", slot}};
     return Event(event);
 }

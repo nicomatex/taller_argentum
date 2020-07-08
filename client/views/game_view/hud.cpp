@@ -1,7 +1,7 @@
 #include "hud.h"
 
-#include <unordered_map>
 #include <string>
+#include <unordered_map>
 
 #include "../../../include/types.h"
 #include "../../client_config.h"
@@ -30,8 +30,9 @@ Hud::Hud(ResponsiveScaler& scaler, SDLWindow& window, ChatBuffer& chat_buffer,
                      ResourceManager::get_instance().get_font(STAT_FONT_ID),
                      window.get_renderer(), 999, XP_BAR_COLOR,
                      STAT_BAR_FONT_COLOR),
-      equipped_items(scaler.scale(EQUIPPED_ITEMS_AREA), window.get_renderer(),
-                     4, 1, 1),
+      equipment(scaler.scale(EQUIPPED_ITEMS_AREA),
+                scaler.scale(VIEWPORT_SIDE_PANEL), window.get_renderer(),
+                socket_manager),
       inventory(
           scaler.scale(INVENTORY_AREA), scaler.scale(VIEWPORT_SIDE_PANEL),
           INVENTORY_ROWS, INVENTORY_COLS,
@@ -96,7 +97,7 @@ void Hud::_update_inventory() {
     gold_text.update_text(std::to_string(int(inventory_data["curr_gold"])));
 }
 
-void Hud::_update_equipped_items() {
+void Hud::_update_equipment() {
     VisualCharacterComponent& character_visuals =
         player.get_component<VisualCharacterComponent>();
 
@@ -127,10 +128,10 @@ void Hud::_update_equipped_items() {
         weapon_icon = &(ResourceManager::get_instance().get_texture(
             "weapon_icons", weapon_id));
     }
-    equipped_items.set_icon(POS_HELMET, helmet_icon);
-    equipped_items.set_icon(POS_ARMOR, armor_icon);
-    equipped_items.set_icon(POS_SHIELD, shield_icon);
-    equipped_items.set_icon(POS_WEAPON, weapon_icon);
+    equipment.set_item(POS_HELMET, helmet_icon);
+    equipment.set_item(POS_ARMOR, armor_icon);
+    equipment.set_item(POS_SHIELD, shield_icon);
+    equipment.set_item(POS_WEAPON, weapon_icon);
 }
 
 void Hud::_update_stats() {
@@ -165,7 +166,7 @@ void Hud::_render_level() {
 
 void Hud::update() {
     _update_stats();
-    _update_equipped_items();
+    _update_equipment();
     _update_inventory();
     chat_buffer.flush(chat);
 }
@@ -178,7 +179,7 @@ void Hud::render() {
     health_bar.render();
     mana_bar.render();
     experience_bar.render();
-    equipped_items.render();
+    equipment.render();
     inventory.render();
     _render_gold_amount();
     _render_level();
@@ -187,4 +188,5 @@ void Hud::render() {
 void Hud::handle_event(SDL_Event& e) {
     cast_button.handle_event(e);
     inventory.handle_event(e);
+    equipment.handle_event(e);
 }

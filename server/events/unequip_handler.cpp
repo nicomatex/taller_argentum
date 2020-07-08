@@ -11,5 +11,5 @@ void UnequipHandler::push_event(const Event& event) {
     nlohmann::json json = event.get_json();
     ClientId client_id = json["client_id"];
     MapMonitor& map_monitor = server_manager.get_map_by_client(client_id);
-    map_monitor.push_action(client_id, new ActionUnequip());
+    map_monitor.push_action(client_id, new ActionUnequip(json["slot"]));
 }

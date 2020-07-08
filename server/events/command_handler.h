@@ -49,7 +49,7 @@ class CommandHandler : public BlockingThEventHandler {
 
     void cmd_resuscitate(ClientId client_id, position_t target);
 
-    void cmd_unequip(ClientId client_id);
+    void cmd_unequip_all(ClientId client_id);
 
    protected:
     void handle(Event& ev) override;

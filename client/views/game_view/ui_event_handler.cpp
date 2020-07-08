@@ -19,7 +19,8 @@ UiEventHandler::UiEventHandler(SocketManager &socket_manager,
       camera(camera),
       main_render_viewport(main_render_viewport),
       current_target({0, 0}),
-      selected_inventory_slot(0) {
+      selected_inventory_slot(0),
+      selected_equipment_slot(0) {
     SDL_StopTextInput();
 }
 
@@ -88,7 +89,8 @@ void UiEventHandler::handle_keydown_return() {
 }
 
 void UiEventHandler::handle_keydown_backspace() {
-    if (text_input_enabled) hud.chat.input_erase();
+    if (text_input_enabled)
+        hud.chat.input_erase();
 }
 
 void UiEventHandler::handle_quit() {
@@ -118,6 +120,7 @@ void UiEventHandler::handle_click(SDL_Event &e) {
     bool cast_requested = hud.attempting_cast;
     hud.attempting_cast = false;
     selected_inventory_slot = hud.inventory.get_last_clicked_slot();
+    selected_equipment_slot = hud.equipment.get_last_clicked_slot();
 
     if (x < main_render_viewport.x ||
         x > main_render_viewport.x + main_render_viewport.w) {
@@ -137,7 +140,8 @@ void UiEventHandler::handle_click(SDL_Event &e) {
 void UiEventHandler::handle() {
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
-        if (e.type == SDL_QUIT) handle_quit();
+        if (e.type == SDL_QUIT)
+            handle_quit();
         hud.handle_event(e);
         if (e.type == SDL_KEYDOWN) {
             if (e.key.repeat == 0) {
@@ -170,7 +174,8 @@ void UiEventHandler::handle() {
                     handle_keydown_attack();
                     break;
                 case SDLK_m:
-                    if (!text_input_enabled) handle_keydown_sound_toggle();
+                    if (!text_input_enabled)
+                        handle_keydown_sound_toggle();
                     break;
                 case SDLK_a:
                     handle_keydown_pickup();

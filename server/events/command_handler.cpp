@@ -113,9 +113,9 @@ void CommandHandler::cmd_drop(ClientId client_id, SlotId slot) {
     server_manager.dispatch(EventFactory::drop_event(client_id, slot, amount));
 }
 
-void CommandHandler::cmd_unequip(ClientId client_id /*, SlotId slot */) {
+void CommandHandler::cmd_unequip_all(ClientId client_id) {
     ServerManager& server_manager = ServerManager::get_instance();
-    server_manager.dispatch(EventFactory::unequip_event(client_id /*, slot*/));
+    server_manager.dispatch(EventFactory::unequip_all_event(client_id));
 }
 
 void CommandHandler::cmd_resuscitate(ClientId client_id, position_t target) {
@@ -155,7 +155,7 @@ void CommandHandler::handle(Event& event) {
                 cmd_disconnect(json["client_id"]);
                 break;
             case CMD_UNEQUIP:
-                cmd_unequip(json["client_id"] /*, json["slot"]*/);
+                cmd_unequip_all(json["client_id"]);
                 break;
             default:
                 throw CommandErrorException();

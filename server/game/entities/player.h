@@ -86,7 +86,7 @@ class Player : public Entity {
      * @brief Desequipa de todo su armamento al jugador.
      *
      */
-    void unequip();
+    void unequip(SlotId slot);
 
     /**
      * @brief Setea el movimiento del jugador.
