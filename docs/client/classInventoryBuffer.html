@@ -98,16 +98,70 @@ $(document).ready(function(){initNavTree('classInventoryBuffer.html',''); initRe
 <div class="title">Referencia de la Clase InventoryBuffer</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Buffer en el cual se almacena la informacion del inventario recibida.  
+ <a href="classInventoryBuffer.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="inventory__buffer_8h_source.html">inventory_buffer.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:ad45256471420b4b318496ad7ec4ae022"><td class="memItemLeft" align="right" valign="top"><a id="ad45256471420b4b318496ad7ec4ae022"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>push</b> (nlohmann::json new_nventory_data)</td></tr>
+<tr class="memitem:ad45256471420b4b318496ad7ec4ae022"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInventoryBuffer.html#ad45256471420b4b318496ad7ec4ae022">push</a> (nlohmann::json new_nventory_data)</td></tr>
+<tr class="memdesc:ad45256471420b4b318496ad7ec4ae022"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega una nueva actualizacion del inventario al buffer.  <a href="classInventoryBuffer.html#ad45256471420b4b318496ad7ec4ae022">Más...</a><br /></td></tr>
 <tr class="separator:ad45256471420b4b318496ad7ec4ae022"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b33d10da7ef3b1c4643e6a94e6f5e40"><td class="memItemLeft" align="right" valign="top"><a id="a8b33d10da7ef3b1c4643e6a94e6f5e40"></a>
-nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_inventory_data</b> ()</td></tr>
+<tr class="memitem:a8b33d10da7ef3b1c4643e6a94e6f5e40"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInventoryBuffer.html#a8b33d10da7ef3b1c4643e6a94e6f5e40">get_inventory_data</a> ()</td></tr>
+<tr class="memdesc:a8b33d10da7ef3b1c4643e6a94e6f5e40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve la informacion del inventario almacenada.  <a href="classInventoryBuffer.html#a8b33d10da7ef3b1c4643e6a94e6f5e40">Más...</a><br /></td></tr>
 <tr class="separator:a8b33d10da7ef3b1c4643e6a94e6f5e40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Buffer en el cual se almacena la informacion del inventario recibida. </p>
+</div><h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="a8b33d10da7ef3b1c4643e6a94e6f5e40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b33d10da7ef3b1c4643e6a94e6f5e40">&#9670;&nbsp;</a></span>get_inventory_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">nlohmann::json InventoryBuffer::get_inventory_data </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve la informacion del inventario almacenada. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>nlohmann::json </dd></dl>
+
+</div>
+</div>
+<a id="ad45256471420b4b318496ad7ec4ae022"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad45256471420b4b318496ad7ec4ae022">&#9670;&nbsp;</a></span>push()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void InventoryBuffer::push </td>
+          <td>(</td>
+          <td class="paramtype">nlohmann::json&#160;</td>
+          <td class="paramname"><em>new_nventory_data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega una nueva actualizacion del inventario al buffer. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_nventory_data</td><td>Nueva informacion del inventario. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/<a class="el" href="inventory__buffer_8h_source.html">inventory_buffer.h</a></li>
 <li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/inventory_buffer.cpp</li>

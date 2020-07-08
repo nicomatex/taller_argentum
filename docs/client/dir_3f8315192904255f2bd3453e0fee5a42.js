@@ -6,6 +6,7 @@ var dir_3f8315192904255f2bd3453e0fee5a42 =
     [ "UI", "dir_ae537f62417bdb1f1bef9f09f19e400c.html", "dir_ae537f62417bdb1f1bef9f09f19e400c" ],
     [ "actor.h", "actor_8h_source.html", null ],
     [ "animation_pack.h", "animation__pack_8h_source.html", null ],
+    [ "asset_loading_error.h", "asset__loading__error_8h_source.html", null ],
     [ "camera.h", "camera_8h_source.html", null ],
     [ "decoration.h", "decoration_8h_source.html", null ],
     [ "engine_config.h", "engine__config_8h_source.html", null ],

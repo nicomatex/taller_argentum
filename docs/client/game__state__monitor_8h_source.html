@@ -101,50 +101,58 @@ $(document).ready(function(){initNavTree('game__state__monitor_8h_source.html','
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;condition_variable&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    LOGGING,</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    WAITING_FOR_INITIALIZATION,</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    READY_TO_RUN,</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    RUNNING,</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    SWITCHING_MAPS,</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    EXITING,</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    CREATING_CHARACTER</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;} game_state_t;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classGameStateMonitor.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGameStateMonitor.html">GameStateMonitor</a> {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::mutex m;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">bool</span> connected;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    game_state_t game_state;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    std::condition_variable cv;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    ~<a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">bool</span> is_connected();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> set_connected_status(<span class="keywordtype">bool</span> new_connection_status);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    LOGGING,</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    WAITING_FOR_INITIALIZATION,</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    READY_TO_RUN,</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    RUNNING,</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    SWITCHING_MAPS,</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    EXITING,</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    CREATING_CHARACTER</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;} game_state_t;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classGameStateMonitor.html">   25</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGameStateMonitor.html">GameStateMonitor</a> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::mutex m;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">bool</span> connected;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    game_state_t game_state;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    std::condition_variable cv;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> set_game_state(game_state_t new_game_state);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    game_state_t get_game_state();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">/* Duerme el thread llamante hasta que el estado del juego</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">    sea el esperado. */</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> wait_for_game_state(game_state_t expected_game_state);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">/* Duerme el thread llamante hasta que haya algun</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">    cambio de estado. */</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> wait_for_next_game_state();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    ~<a class="code" href="classGameStateMonitor.html">GameStateMonitor</a>();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classGameStateMonitor.html#a8eac27c3f39630588b172f7ee5dd965b">is_connected</a>();</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> quit();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameStateMonitor.html#aa592c4fadcacf7105a183cc5ff933499">set_connected_status</a>(<span class="keywordtype">bool</span> new_connection_status);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameStateMonitor.html#a5c43ea98d9234509f02765f8d9597d13">set_game_state</a>(game_state_t new_game_state);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    game_state_t <a class="code" href="classGameStateMonitor.html#ad72862822ffeba5defa184ca94d79679">get_game_state</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">/* Duerme el thread llamante hasta que el estado del juego</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">    sea el esperado. */</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameStateMonitor.html#ae51f3f03408b98cf9983916f3067c2ad">wait_for_game_state</a>(game_state_t expected_game_state);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">/* Duerme el thread llamante hasta que haya algun</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">    cambio de estado. */</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameStateMonitor.html#a0a29daf4f96503dd0a9911a2ee927d45">wait_for_next_game_state</a>();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameStateMonitor.html#a08c96f565e09830b95aa9f791eaaab07">quit</a>();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassGameStateMonitor_html"><div class="ttname"><a href="classGameStateMonitor.html">GameStateMonitor</a></div><div class="ttdef"><b>Definition:</b> game_state_monitor.h:17</div></div>
+<div class="ttc" id="aclassGameStateMonitor_html_ae51f3f03408b98cf9983916f3067c2ad"><div class="ttname"><a href="classGameStateMonitor.html#ae51f3f03408b98cf9983916f3067c2ad">GameStateMonitor::wait_for_game_state</a></div><div class="ttdeci">void wait_for_game_state(game_state_t expected_game_state)</div><div class="ttdoc">Duerme el thread llamante hasta que el estado del juego sea el esperado.</div><div class="ttdef"><b>Definition:</b> game_state_monitor.cpp:31</div></div>
+<div class="ttc" id="aclassGameStateMonitor_html_a08c96f565e09830b95aa9f791eaaab07"><div class="ttname"><a href="classGameStateMonitor.html#a08c96f565e09830b95aa9f791eaaab07">GameStateMonitor::quit</a></div><div class="ttdeci">void quit()</div><div class="ttdoc">Setea el estado como desconectado, y el estado de juego como EXITING.</div><div class="ttdef"><b>Definition:</b> game_state_monitor.cpp:24</div></div>
+<div class="ttc" id="aclassGameStateMonitor_html"><div class="ttname"><a href="classGameStateMonitor.html">GameStateMonitor</a></div><div class="ttdoc">Monitor mediante el cual se sincroniza el flujo entre vistas.</div><div class="ttdef"><b>Definition:</b> game_state_monitor.h:25</div></div>
+<div class="ttc" id="aclassGameStateMonitor_html_a5c43ea98d9234509f02765f8d9597d13"><div class="ttname"><a href="classGameStateMonitor.html#a5c43ea98d9234509f02765f8d9597d13">GameStateMonitor::set_game_state</a></div><div class="ttdeci">void set_game_state(game_state_t new_game_state)</div><div class="ttdoc">Setea el nuevo estado del juego.</div><div class="ttdef"><b>Definition:</b> game_state_monitor.cpp:18</div></div>
+<div class="ttc" id="aclassGameStateMonitor_html_a8eac27c3f39630588b172f7ee5dd965b"><div class="ttname"><a href="classGameStateMonitor.html#a8eac27c3f39630588b172f7ee5dd965b">GameStateMonitor::is_connected</a></div><div class="ttdeci">bool is_connected()</div><div class="ttdoc">Indica si el cliente esta conectado.</div><div class="ttdef"><b>Definition:</b> game_state_monitor.cpp:7</div></div>
+<div class="ttc" id="aclassGameStateMonitor_html_aa592c4fadcacf7105a183cc5ff933499"><div class="ttname"><a href="classGameStateMonitor.html#aa592c4fadcacf7105a183cc5ff933499">GameStateMonitor::set_connected_status</a></div><div class="ttdeci">void set_connected_status(bool new_connection_status)</div><div class="ttdoc">Setea el nuevo estado de conexion.</div><div class="ttdef"><b>Definition:</b> game_state_monitor.cpp:12</div></div>
+<div class="ttc" id="aclassGameStateMonitor_html_ad72862822ffeba5defa184ca94d79679"><div class="ttname"><a href="classGameStateMonitor.html#ad72862822ffeba5defa184ca94d79679">GameStateMonitor::get_game_state</a></div><div class="ttdeci">game_state_t get_game_state()</div><div class="ttdoc">Devuelve el estado del juego.</div><div class="ttdef"><b>Definition:</b> game_state_monitor.cpp:46</div></div>
+<div class="ttc" id="aclassGameStateMonitor_html_a0a29daf4f96503dd0a9911a2ee927d45"><div class="ttname"><a href="classGameStateMonitor.html#a0a29daf4f96503dd0a9911a2ee927d45">GameStateMonitor::wait_for_next_game_state</a></div><div class="ttdeci">void wait_for_next_game_state()</div><div class="ttdoc">Duerme el thread llamante hasta que haya un cambio de estado.</div><div class="ttdef"><b>Definition:</b> game_state_monitor.cpp:41</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

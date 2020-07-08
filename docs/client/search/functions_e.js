@@ -1,12 +1,4 @@
 var searchData=
 [
-  ['raceandclassselector_391',['RaceAndClassSelector',['../classRaceAndClassSelector.html#a1916d9f7f2d36f4aeca18bc421c99996',1,'RaceAndClassSelector']]],
-  ['remove_5fnon_5fupdated_392',['remove_non_updated',['../classEntityManager.html#a2a74af5ce8070e0cb4d6f72d45be7204',1,'EntityManager']]],
-  ['render_393',['render',['../classActor.html#ab7a2711f9422073d70780726be35e358',1,'Actor::render()'],['../classDecoration.html#a01e63fae54ee49d4266137903d58335a',1,'Decoration::render()'],['../classRenderizableObject.html#a34c282cca8cf98cb7a83517b50563e33',1,'RenderizableObject::render()'],['../classSDLSprite.html#aa7e7c629b13e0f517252dfb84a770c08',1,'SDLSprite::render()'],['../classSDLTexture.html#ae5d4623a7a8a64db3780107ab6ae4894',1,'SDLTexture::render(SDL_Rect src, SDL_Rect dest) const'],['../classSDLTexture.html#a89c74ecef3e5715a3a3b6dd13acebe72',1,'SDLTexture::render(SDL_Rect dest) const'],['../classSDLWindow.html#ad37bf616c2c8d1446fa1a378ad26824e',1,'SDLWindow::render()'],['../classIconGrid.html#af109e943c9506f431e8cc03ff9ee21f9',1,'IconGrid::render()'],['../classStatBar.html#a2029bab17f0671ae056bcc5b473ed3b3',1,'StatBar::render()'],['../classTextBox.html#a786758eb5ae6caa0ed299bf45d5715a5',1,'TextBox::render()'],['../classTextInput.html#a667d078b4f9c8367580539fe19d1c673',1,'TextInput::render()'],['../classChat.html#a79f43f7830f49ea5e58789f57151a844',1,'Chat::render()'],['../classHud.html#a52d5f83e4a1c3cdfaa267e059283178d',1,'Hud::render()'],['../classInventory.html#afbf08633742f7d05246bf2b446e4930d',1,'Inventory::render()'],['../classItemQtyGrid.html#abe320834c740a0e140b37f357576e0bc',1,'ItemQtyGrid::render()']]],
-  ['render_5fmap_5flayers_394',['render_map_layers',['../classCamera.html#a740604372eb53b0414a3177788608d97',1,'Camera']]],
-  ['renderizableobject_395',['RenderizableObject',['../classRenderizableObject.html#a7173b305d868928a55aedc1e03e80e49',1,'RenderizableObject']]],
-  ['requestcharactercreationbutton_396',['RequestCharacterCreationButton',['../classRequestCharacterCreationButton.html#ae25ae2b4458de6d30de246b1d2a13de1',1,'RequestCharacterCreationButton']]],
-  ['reset_5fviewport_397',['reset_viewport',['../classSDLWindow.html#a2360110b6e0074811ec4a0142701b17f',1,'SDLWindow']]],
-  ['responsivescaler_398',['ResponsiveScaler',['../classResponsiveScaler.html#ae7c80cc239b298e4e723490896d5c784',1,'ResponsiveScaler']]],
-  ['run_399',['run',['../classGameView.html#a6b0f478e7e3afcaeef442d6cb482a9a1',1,'GameView::run()'],['../classLoginView.html#a1fa86b66869d144e574f55d862ee861d',1,'LoginView::run()']]]
+  ['quit_417',['quit',['../classGameStateMonitor.html#a08c96f565e09830b95aa9f791eaaab07',1,'GameStateMonitor']]]
 ];

@@ -98,16 +98,76 @@ $(document).ready(function(){initNavTree('classLootBuffer.html',''); initResizab
 <div class="title">Referencia de la Clase LootBuffer</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Buffer donde se almacenan los items tirados en el piso.  
+ <a href="classLootBuffer.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="loot__buffer_8h_source.html">loot_buffer.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a85957b6437b25f87dfc8b71dbe4efac3"><td class="memItemLeft" align="right" valign="top"><a id="a85957b6437b25f87dfc8b71dbe4efac3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>load_buffer</b> (nlohmann::json new_loot_info)</td></tr>
+<tr class="memitem:a85957b6437b25f87dfc8b71dbe4efac3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLootBuffer.html#a85957b6437b25f87dfc8b71dbe4efac3">load_buffer</a> (nlohmann::json new_loot_info)</td></tr>
+<tr class="memdesc:a85957b6437b25f87dfc8b71dbe4efac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carga informacion en el buffer.  <a href="classLootBuffer.html#a85957b6437b25f87dfc8b71dbe4efac3">Más...</a><br /></td></tr>
 <tr class="separator:a85957b6437b25f87dfc8b71dbe4efac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8f95516f16497e6f144aa264555a5cd"><td class="memItemLeft" align="right" valign="top"><a id="ad8f95516f16497e6f144aa264555a5cd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>flush</b> (<a class="el" href="classMap.html">Map</a> &amp;map)</td></tr>
+<tr class="memitem:ad8f95516f16497e6f144aa264555a5cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLootBuffer.html#ad8f95516f16497e6f144aa264555a5cd">flush</a> (<a class="el" href="classMap.html">Map</a> &amp;map)</td></tr>
+<tr class="memdesc:ad8f95516f16497e6f144aa264555a5cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flushea la informacion del loot en un mapa.  <a href="classLootBuffer.html#ad8f95516f16497e6f144aa264555a5cd">Más...</a><br /></td></tr>
 <tr class="separator:ad8f95516f16497e6f144aa264555a5cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Buffer donde se almacenan los items tirados en el piso. </p>
+</div><h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="ad8f95516f16497e6f144aa264555a5cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8f95516f16497e6f144aa264555a5cd">&#9670;&nbsp;</a></span>flush()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LootBuffer::flush </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classMap.html">Map</a> &amp;&#160;</td>
+          <td class="paramname"><em>map</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Flushea la informacion del loot en un mapa. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map</td><td>Mapa sobre el cual se descargara la informacion. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a85957b6437b25f87dfc8b71dbe4efac3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85957b6437b25f87dfc8b71dbe4efac3">&#9670;&nbsp;</a></span>load_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LootBuffer::load_buffer </td>
+          <td>(</td>
+          <td class="paramtype">nlohmann::json&#160;</td>
+          <td class="paramname"><em>new_loot_info</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Carga informacion en el buffer. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_loot_info</td><td>Nueva informacion a cargar en el buffer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/<a class="el" href="loot__buffer_8h_source.html">loot_buffer.h</a></li>
 <li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/loot_buffer.cpp</li>

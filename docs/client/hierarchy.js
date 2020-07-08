@@ -39,10 +39,12 @@ var hierarchy =
       ] ]
     ] ],
     [ "exception", null, [
+      [ "AssetLoadingError", "classAssetLoadingError.html", null ],
       [ "ClosedBlockingQueueException", "classClosedBlockingQueueException.html", null ],
       [ "ConnectionClosedSocketException", "classConnectionClosedSocketException.html", null ],
       [ "EngineError", "classEngineError.html", null ],
       [ "EventHandlerStoppedException", "classEventHandlerStoppedException.html", null ],
+      [ "MapError", "classMapError.html", null ],
       [ "MyException", "classMyException.html", null ],
       [ "SDLError", "classSDLError.html", null ]
     ] ],

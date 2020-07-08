@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('option__button_8h_source.html',''); in
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __OPTION_BUTTON_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../../engine/UI/button.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../../engine/resource_manager.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../../engine/sound_system.h&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classOptionButton.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classOptionButton.html">OptionButton</a> : <span class="keyword">public</span> <a class="code" href="classButton.html">Button</a> {</div>
@@ -117,7 +117,7 @@ $(document).ready(function(){initNavTree('option__button_8h_source.html',''); in
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classOptionButton.html#aabe13f61dcf543ccaa1f6bcca1fe0a47">   40</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classOptionButton.html#aabe13f61dcf543ccaa1f6bcca1fe0a47">on_click</a>()<span class="keyword"> override </span>{</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        selected_option = this_button_option;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classResourceManager.html#a33b466c53250b7431976a04d42d59036">ResourceManager::get_instance</a>().<a class="code" href="classResourceManager.html#a6aae652fb730686c56796c2dc25615df">get_sound_fx</a>(3).<a class="code" href="classSDLSoundFx.html#a879e7580cc486fb6eef69bbd69141a11">play</a>();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        SoundSystem::get_instance().<a class="code" href="classSoundSystem.html#aff8f8157af2548b991aba7deda313fa2">play_ui_sfx</a>(3);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
@@ -126,11 +126,9 @@ $(document).ready(function(){initNavTree('option__button_8h_source.html',''); in
 </div><!-- doc-content -->
 <div class="ttc" id="aclassOptionButton_html_adef3c13774d31392a983db622247eca5"><div class="ttname"><a href="classOptionButton.html#adef3c13774d31392a983db622247eca5">OptionButton::OptionButton</a></div><div class="ttdeci">OptionButton(SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer *renderer, T this_button_option, T &amp;selected_option)</div><div class="ttdoc">Boton perteneciente a opciones multiples.</div><div class="ttdef"><b>Definition:</b> option_button.h:29</div></div>
 <div class="ttc" id="aclassButton_html"><div class="ttname"><a href="classButton.html">Button</a></div><div class="ttdoc">Boton abstracto. Todos los botones heredan de esta clase.</div><div class="ttdef"><b>Definition:</b> button.h:10</div></div>
-<div class="ttc" id="aclassSDLSoundFx_html_a879e7580cc486fb6eef69bbd69141a11"><div class="ttname"><a href="classSDLSoundFx.html#a879e7580cc486fb6eef69bbd69141a11">SDLSoundFx::play</a></div><div class="ttdeci">void play()</div><div class="ttdoc">Reproduce el efecto de sonido.</div><div class="ttdef"><b>Definition:</b> sdl_sfx.cpp:16</div></div>
 <div class="ttc" id="aclassOptionButton_html"><div class="ttname"><a href="classOptionButton.html">OptionButton</a></div><div class="ttdoc">Boton de seleccion de opcion.</div><div class="ttdef"><b>Definition:</b> option_button.h:13</div></div>
-<div class="ttc" id="aclassResourceManager_html_a6aae652fb730686c56796c2dc25615df"><div class="ttname"><a href="classResourceManager.html#a6aae652fb730686c56796c2dc25615df">ResourceManager::get_sound_fx</a></div><div class="ttdeci">SDLSoundFx &amp; get_sound_fx(int id)</div><div class="ttdoc">Devuelve un objeto SDLSoundFx.</div><div class="ttdef"><b>Definition:</b> resource_manager.cpp:176</div></div>
-<div class="ttc" id="aclassResourceManager_html_a33b466c53250b7431976a04d42d59036"><div class="ttname"><a href="classResourceManager.html#a33b466c53250b7431976a04d42d59036">ResourceManager::get_instance</a></div><div class="ttdeci">static ResourceManager &amp; get_instance()</div><div class="ttdoc">Devuelve la instancia del resource manager.</div><div class="ttdef"><b>Definition:</b> resource_manager.cpp:144</div></div>
 <div class="ttc" id="aclassOptionButton_html_aabe13f61dcf543ccaa1f6bcca1fe0a47"><div class="ttname"><a href="classOptionButton.html#aabe13f61dcf543ccaa1f6bcca1fe0a47">OptionButton::on_click</a></div><div class="ttdeci">void on_click() override</div><div class="ttdoc">Setea la seleccion a la opcion representada por este boton.</div><div class="ttdef"><b>Definition:</b> option_button.h:40</div></div>
+<div class="ttc" id="aclassSoundSystem_html_aff8f8157af2548b991aba7deda313fa2"><div class="ttname"><a href="classSoundSystem.html#aff8f8157af2548b991aba7deda313fa2">SoundSystem::play_ui_sfx</a></div><div class="ttdeci">void play_ui_sfx(int id)</div><div class="ttdoc">Reproduce un efecto de sonido.</div><div class="ttdef"><b>Definition:</b> sound_system.cpp:23</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

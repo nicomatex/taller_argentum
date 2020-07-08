@@ -98,31 +98,197 @@ $(document).ready(function(){initNavTree('classGameStateMonitor.html',''); initR
 <div class="title">Referencia de la Clase GameStateMonitor</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Monitor mediante el cual se sincroniza el flujo entre vistas.  
+ <a href="classGameStateMonitor.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="game__state__monitor_8h_source.html">game_state_monitor.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a8eac27c3f39630588b172f7ee5dd965b"><td class="memItemLeft" align="right" valign="top"><a id="a8eac27c3f39630588b172f7ee5dd965b"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_connected</b> ()</td></tr>
+<tr class="memitem:a8eac27c3f39630588b172f7ee5dd965b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameStateMonitor.html#a8eac27c3f39630588b172f7ee5dd965b">is_connected</a> ()</td></tr>
+<tr class="memdesc:a8eac27c3f39630588b172f7ee5dd965b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indica si el cliente esta conectado.  <a href="classGameStateMonitor.html#a8eac27c3f39630588b172f7ee5dd965b">Más...</a><br /></td></tr>
 <tr class="separator:a8eac27c3f39630588b172f7ee5dd965b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa592c4fadcacf7105a183cc5ff933499"><td class="memItemLeft" align="right" valign="top"><a id="aa592c4fadcacf7105a183cc5ff933499"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_connected_status</b> (bool new_connection_status)</td></tr>
+<tr class="memitem:aa592c4fadcacf7105a183cc5ff933499"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameStateMonitor.html#aa592c4fadcacf7105a183cc5ff933499">set_connected_status</a> (bool new_connection_status)</td></tr>
+<tr class="memdesc:aa592c4fadcacf7105a183cc5ff933499"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setea el nuevo estado de conexion.  <a href="classGameStateMonitor.html#aa592c4fadcacf7105a183cc5ff933499">Más...</a><br /></td></tr>
 <tr class="separator:aa592c4fadcacf7105a183cc5ff933499"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c43ea98d9234509f02765f8d9597d13"><td class="memItemLeft" align="right" valign="top"><a id="a5c43ea98d9234509f02765f8d9597d13"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_game_state</b> (game_state_t new_game_state)</td></tr>
+<tr class="memitem:a5c43ea98d9234509f02765f8d9597d13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameStateMonitor.html#a5c43ea98d9234509f02765f8d9597d13">set_game_state</a> (game_state_t new_game_state)</td></tr>
+<tr class="memdesc:a5c43ea98d9234509f02765f8d9597d13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setea el nuevo estado del juego.  <a href="classGameStateMonitor.html#a5c43ea98d9234509f02765f8d9597d13">Más...</a><br /></td></tr>
 <tr class="separator:a5c43ea98d9234509f02765f8d9597d13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad72862822ffeba5defa184ca94d79679"><td class="memItemLeft" align="right" valign="top"><a id="ad72862822ffeba5defa184ca94d79679"></a>
-game_state_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_game_state</b> ()</td></tr>
+<tr class="memitem:ad72862822ffeba5defa184ca94d79679"><td class="memItemLeft" align="right" valign="top">game_state_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameStateMonitor.html#ad72862822ffeba5defa184ca94d79679">get_game_state</a> ()</td></tr>
+<tr class="memdesc:ad72862822ffeba5defa184ca94d79679"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el estado del juego.  <a href="classGameStateMonitor.html#ad72862822ffeba5defa184ca94d79679">Más...</a><br /></td></tr>
 <tr class="separator:ad72862822ffeba5defa184ca94d79679"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae51f3f03408b98cf9983916f3067c2ad"><td class="memItemLeft" align="right" valign="top"><a id="ae51f3f03408b98cf9983916f3067c2ad"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>wait_for_game_state</b> (game_state_t expected_game_state)</td></tr>
+<tr class="memitem:ae51f3f03408b98cf9983916f3067c2ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameStateMonitor.html#ae51f3f03408b98cf9983916f3067c2ad">wait_for_game_state</a> (game_state_t expected_game_state)</td></tr>
+<tr class="memdesc:ae51f3f03408b98cf9983916f3067c2ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Duerme el thread llamante hasta que el estado del juego sea el esperado.  <a href="classGameStateMonitor.html#ae51f3f03408b98cf9983916f3067c2ad">Más...</a><br /></td></tr>
 <tr class="separator:ae51f3f03408b98cf9983916f3067c2ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a29daf4f96503dd0a9911a2ee927d45"><td class="memItemLeft" align="right" valign="top"><a id="a0a29daf4f96503dd0a9911a2ee927d45"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>wait_for_next_game_state</b> ()</td></tr>
+<tr class="memitem:a0a29daf4f96503dd0a9911a2ee927d45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameStateMonitor.html#a0a29daf4f96503dd0a9911a2ee927d45">wait_for_next_game_state</a> ()</td></tr>
+<tr class="memdesc:a0a29daf4f96503dd0a9911a2ee927d45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Duerme el thread llamante hasta que haya un cambio de estado.  <a href="classGameStateMonitor.html#a0a29daf4f96503dd0a9911a2ee927d45">Más...</a><br /></td></tr>
 <tr class="separator:a0a29daf4f96503dd0a9911a2ee927d45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08c96f565e09830b95aa9f791eaaab07"><td class="memItemLeft" align="right" valign="top"><a id="a08c96f565e09830b95aa9f791eaaab07"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>quit</b> ()</td></tr>
+<tr class="memitem:a08c96f565e09830b95aa9f791eaaab07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameStateMonitor.html#a08c96f565e09830b95aa9f791eaaab07">quit</a> ()</td></tr>
+<tr class="memdesc:a08c96f565e09830b95aa9f791eaaab07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setea el estado como desconectado, y el estado de juego como EXITING.  <a href="classGameStateMonitor.html#a08c96f565e09830b95aa9f791eaaab07">Más...</a><br /></td></tr>
 <tr class="separator:a08c96f565e09830b95aa9f791eaaab07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Monitor mediante el cual se sincroniza el flujo entre vistas. </p>
+</div><h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="ad72862822ffeba5defa184ca94d79679"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad72862822ffeba5defa184ca94d79679">&#9670;&nbsp;</a></span>get_game_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">game_state_t GameStateMonitor::get_game_state </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve el estado del juego. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>game_state_t </dd></dl>
+
+</div>
+</div>
+<a id="a8eac27c3f39630588b172f7ee5dd965b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8eac27c3f39630588b172f7ee5dd965b">&#9670;&nbsp;</a></span>is_connected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GameStateMonitor::is_connected </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indica si el cliente esta conectado. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>true Si esta conectado </dd>
+<dd>
+false Si no esta conectado. </dd></dl>
+
+</div>
+</div>
+<a id="a08c96f565e09830b95aa9f791eaaab07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08c96f565e09830b95aa9f791eaaab07">&#9670;&nbsp;</a></span>quit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameStateMonitor::quit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setea el estado como desconectado, y el estado de juego como EXITING. </p>
+
+</div>
+</div>
+<a id="aa592c4fadcacf7105a183cc5ff933499"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa592c4fadcacf7105a183cc5ff933499">&#9670;&nbsp;</a></span>set_connected_status()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameStateMonitor::set_connected_status </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>new_connection_status</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setea el nuevo estado de conexion. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_connection_status</td><td>Nuevo estado de conexion. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5c43ea98d9234509f02765f8d9597d13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c43ea98d9234509f02765f8d9597d13">&#9670;&nbsp;</a></span>set_game_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameStateMonitor::set_game_state </td>
+          <td>(</td>
+          <td class="paramtype">game_state_t&#160;</td>
+          <td class="paramname"><em>new_game_state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setea el nuevo estado del juego. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_game_state</td><td>Nuevo estado del juego. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae51f3f03408b98cf9983916f3067c2ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae51f3f03408b98cf9983916f3067c2ad">&#9670;&nbsp;</a></span>wait_for_game_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameStateMonitor::wait_for_game_state </td>
+          <td>(</td>
+          <td class="paramtype">game_state_t&#160;</td>
+          <td class="paramname"><em>expected_game_state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Duerme el thread llamante hasta que el estado del juego sea el esperado. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">expected_game_state</td><td>Estado de juego esperado. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0a29daf4f96503dd0a9911a2ee927d45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a29daf4f96503dd0a9911a2ee927d45">&#9670;&nbsp;</a></span>wait_for_next_game_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameStateMonitor::wait_for_next_game_state </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Duerme el thread llamante hasta que haya un cambio de estado. </p>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/<a class="el" href="game__state__monitor_8h_source.html">game_state_monitor.h</a></li>
 <li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/game_state_monitor.cpp</li>

@@ -98,16 +98,76 @@ $(document).ready(function(){initNavTree('classChatBuffer.html',''); initResizab
 <div class="title">Referencia de la Clase ChatBuffer</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Buffer donde se almacenan los mensajes de chat provenientes del servidor.  
+ <a href="classChatBuffer.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="chat__buffer_8h_source.html">chat_buffer.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a0974e13c6261e355fe6be1c49c5ec952"><td class="memItemLeft" align="right" valign="top"><a id="a0974e13c6261e355fe6be1c49c5ec952"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>push</b> (std::string message)</td></tr>
+<tr class="memitem:a0974e13c6261e355fe6be1c49c5ec952"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChatBuffer.html#a0974e13c6261e355fe6be1c49c5ec952">push</a> (std::string message)</td></tr>
+<tr class="memdesc:a0974e13c6261e355fe6be1c49c5ec952"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega un mensaje al buffer.  <a href="classChatBuffer.html#a0974e13c6261e355fe6be1c49c5ec952">Más...</a><br /></td></tr>
 <tr class="separator:a0974e13c6261e355fe6be1c49c5ec952"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22dc58a958967e177f5635649e2d15ec"><td class="memItemLeft" align="right" valign="top"><a id="a22dc58a958967e177f5635649e2d15ec"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>flush</b> (<a class="el" href="classChat.html">Chat</a> &amp;chat)</td></tr>
+<tr class="memitem:a22dc58a958967e177f5635649e2d15ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChatBuffer.html#a22dc58a958967e177f5635649e2d15ec">flush</a> (<a class="el" href="classChat.html">Chat</a> &amp;chat)</td></tr>
+<tr class="memdesc:a22dc58a958967e177f5635649e2d15ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flushea todos los mensajes almacenados en el buffer en un chat.  <a href="classChatBuffer.html#a22dc58a958967e177f5635649e2d15ec">Más...</a><br /></td></tr>
 <tr class="separator:a22dc58a958967e177f5635649e2d15ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Buffer donde se almacenan los mensajes de chat provenientes del servidor. </p>
+</div><h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="a22dc58a958967e177f5635649e2d15ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22dc58a958967e177f5635649e2d15ec">&#9670;&nbsp;</a></span>flush()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ChatBuffer::flush </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classChat.html">Chat</a> &amp;&#160;</td>
+          <td class="paramname"><em>chat</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Flushea todos los mensajes almacenados en el buffer en un chat. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chat</td><td><a class="el" href="classChat.html" title="Chat del juego.">Chat</a> en el cual se deben imprimir los mensajes. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0974e13c6261e355fe6be1c49c5ec952"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0974e13c6261e355fe6be1c49c5ec952">&#9670;&nbsp;</a></span>push()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ChatBuffer::push </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega un mensaje al buffer. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>Mensaje a agregar. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/<a class="el" href="chat__buffer_8h_source.html">chat_buffer.h</a></li>
 <li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/chat_buffer.cpp</li>

@@ -98,22 +98,126 @@ $(document).ready(function(){initNavTree('classMapChangeBuffer.html',''); initRe
 <div class="title">Referencia de la Clase MapChangeBuffer</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Buffer donde se almacenan los mapas al inicializar, asi como informacion de la entidad que representa al jugador.  
+ <a href="classMapChangeBuffer.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="map__change__buffer_8h_source.html">map_change_buffer.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:aa102bfbb7dc5b87b72a0ca0eb3e3bfe0"><td class="memItemLeft" align="right" valign="top"><a id="aa102bfbb7dc5b87b72a0ca0eb3e3bfe0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>fill</b> (nlohmann::json map_info, unsigned int follow_entity_id)</td></tr>
+<tr class="memitem:aa102bfbb7dc5b87b72a0ca0eb3e3bfe0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMapChangeBuffer.html#aa102bfbb7dc5b87b72a0ca0eb3e3bfe0">fill</a> (nlohmann::json map_info, unsigned int follow_entity_id)</td></tr>
+<tr class="memdesc:aa102bfbb7dc5b87b72a0ca0eb3e3bfe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Llena el buffer con nueva informacion para generar un nuevo mapa y un id de entidad nuevo.  <a href="classMapChangeBuffer.html#aa102bfbb7dc5b87b72a0ca0eb3e3bfe0">Más...</a><br /></td></tr>
 <tr class="separator:aa102bfbb7dc5b87b72a0ca0eb3e3bfe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaad57c66cc760fe808af7ef466235365"><td class="memItemLeft" align="right" valign="top"><a id="aaad57c66cc760fe808af7ef466235365"></a>
-nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_map_info</b> ()</td></tr>
+<tr class="memitem:aaad57c66cc760fe808af7ef466235365"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMapChangeBuffer.html#aaad57c66cc760fe808af7ef466235365">get_map_info</a> ()</td></tr>
+<tr class="memdesc:aaad57c66cc760fe808af7ef466235365"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve la informacion almacenada en el mapa.  <a href="classMapChangeBuffer.html#aaad57c66cc760fe808af7ef466235365">Más...</a><br /></td></tr>
 <tr class="separator:aaad57c66cc760fe808af7ef466235365"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0626cd72705629c57c57de0b4bfd65cc"><td class="memItemLeft" align="right" valign="top"><a id="a0626cd72705629c57c57de0b4bfd65cc"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>get_follow_entity_id</b> ()</td></tr>
+<tr class="memitem:a0626cd72705629c57c57de0b4bfd65cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMapChangeBuffer.html#a0626cd72705629c57c57de0b4bfd65cc">get_follow_entity_id</a> ()</td></tr>
+<tr class="memdesc:a0626cd72705629c57c57de0b4bfd65cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el id de la entidad que se debe seguir.  <a href="classMapChangeBuffer.html#a0626cd72705629c57c57de0b4bfd65cc">Más...</a><br /></td></tr>
 <tr class="separator:a0626cd72705629c57c57de0b4bfd65cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44844e090af8ad48212ca6db5a7a6589"><td class="memItemLeft" align="right" valign="top"><a id="a44844e090af8ad48212ca6db5a7a6589"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> ()</td></tr>
+<tr class="memitem:a44844e090af8ad48212ca6db5a7a6589"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMapChangeBuffer.html#a44844e090af8ad48212ca6db5a7a6589">reset</a> ()</td></tr>
+<tr class="memdesc:a44844e090af8ad48212ca6db5a7a6589"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reinicia el buffer.  <a href="classMapChangeBuffer.html#a44844e090af8ad48212ca6db5a7a6589">Más...</a><br /></td></tr>
 <tr class="separator:a44844e090af8ad48212ca6db5a7a6589"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Buffer donde se almacenan los mapas al inicializar, asi como informacion de la entidad que representa al jugador. </p>
+</div><h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="aa102bfbb7dc5b87b72a0ca0eb3e3bfe0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa102bfbb7dc5b87b72a0ca0eb3e3bfe0">&#9670;&nbsp;</a></span>fill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MapChangeBuffer::fill </td>
+          <td>(</td>
+          <td class="paramtype">nlohmann::json&#160;</td>
+          <td class="paramname"><em>map_info</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>follow_entity_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Llena el buffer con nueva informacion para generar un nuevo mapa y un id de entidad nuevo. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map_info</td><td>Informacion de mapa [Generada por Tiled] </td></tr>
+    <tr><td class="paramname">follow_entity_id</td><td>id de la entidad que la camara debe seguir. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0626cd72705629c57c57de0b4bfd65cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0626cd72705629c57c57de0b4bfd65cc">&#9670;&nbsp;</a></span>get_follow_entity_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MapChangeBuffer::get_follow_entity_id </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve el id de la entidad que se debe seguir. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="aaad57c66cc760fe808af7ef466235365"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaad57c66cc760fe808af7ef466235365">&#9670;&nbsp;</a></span>get_map_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">nlohmann::json MapChangeBuffer::get_map_info </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve la informacion almacenada en el mapa. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>nlohmann::json </dd></dl>
+
+</div>
+</div>
+<a id="a44844e090af8ad48212ca6db5a7a6589"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44844e090af8ad48212ca6db5a7a6589">&#9670;&nbsp;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MapChangeBuffer::reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reinicia el buffer. </p>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/<a class="el" href="map__change__buffer_8h_source.html">map_change_buffer.h</a></li>
 <li>/home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/map_change_buffer.cpp</li>

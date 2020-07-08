@@ -102,35 +102,36 @@ $(document).ready(function(){initNavTree('map__change__buffer_8h_source.html',''
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../include/nlohmann/json.hpp&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classMapChangeBuffer.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMapChangeBuffer.html">MapChangeBuffer</a> {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    std::mutex m;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    std::condition_variable cv;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    nlohmann::json map_info;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> follow_entity_id;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">bool</span> ready;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classMapChangeBuffer.html">MapChangeBuffer</a>();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    ~<a class="code" href="classMapChangeBuffer.html">MapChangeBuffer</a>();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">/* Llena el buffer con map info. */</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> fill(nlohmann::json map_info, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> follow_entity_id);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment">/* Devuelve la informacion de mapa guardada en el buffer.*/</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    nlohmann::json get_map_info();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">/* Devuelve el id de entidad a seguir guardado en el buffer. */</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">int</span> get_follow_entity_id();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">/* Reinicia el buffer. */</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> reset();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classMapChangeBuffer.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMapChangeBuffer.html">MapChangeBuffer</a> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    std::mutex m;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    std::condition_variable cv;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    nlohmann::json map_info;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> follow_entity_id;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">bool</span> ready;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classMapChangeBuffer.html">MapChangeBuffer</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    ~<a class="code" href="classMapChangeBuffer.html">MapChangeBuffer</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">/* Llena el buffer con map info. */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMapChangeBuffer.html#aa102bfbb7dc5b87b72a0ca0eb3e3bfe0">fill</a>(nlohmann::json map_info, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> follow_entity_id);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    nlohmann::json <a class="code" href="classMapChangeBuffer.html#aaad57c66cc760fe808af7ef466235365">get_map_info</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classMapChangeBuffer.html#a0626cd72705629c57c57de0b4bfd65cc">get_follow_entity_id</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMapChangeBuffer.html#a44844e090af8ad48212ca6db5a7a6589">reset</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassMapChangeBuffer_html"><div class="ttname"><a href="classMapChangeBuffer.html">MapChangeBuffer</a></div><div class="ttdef"><b>Definition:</b> map_change_buffer.h:8</div></div>
+<div class="ttc" id="aclassMapChangeBuffer_html_a0626cd72705629c57c57de0b4bfd65cc"><div class="ttname"><a href="classMapChangeBuffer.html#a0626cd72705629c57c57de0b4bfd65cc">MapChangeBuffer::get_follow_entity_id</a></div><div class="ttdeci">int get_follow_entity_id()</div><div class="ttdoc">Devuelve el id de la entidad que se debe seguir.</div><div class="ttdef"><b>Definition:</b> map_change_buffer.cpp:17</div></div>
+<div class="ttc" id="aclassMapChangeBuffer_html_aaad57c66cc760fe808af7ef466235365"><div class="ttname"><a href="classMapChangeBuffer.html#aaad57c66cc760fe808af7ef466235365">MapChangeBuffer::get_map_info</a></div><div class="ttdeci">nlohmann::json get_map_info()</div><div class="ttdoc">Devuelve la informacion almacenada en el mapa.</div><div class="ttdef"><b>Definition:</b> map_change_buffer.cpp:15</div></div>
+<div class="ttc" id="aclassMapChangeBuffer_html_a44844e090af8ad48212ca6db5a7a6589"><div class="ttname"><a href="classMapChangeBuffer.html#a44844e090af8ad48212ca6db5a7a6589">MapChangeBuffer::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdoc">Reinicia el buffer.</div><div class="ttdef"><b>Definition:</b> map_change_buffer.cpp:19</div></div>
+<div class="ttc" id="aclassMapChangeBuffer_html_aa102bfbb7dc5b87b72a0ca0eb3e3bfe0"><div class="ttname"><a href="classMapChangeBuffer.html#aa102bfbb7dc5b87b72a0ca0eb3e3bfe0">MapChangeBuffer::fill</a></div><div class="ttdeci">void fill(nlohmann::json map_info, unsigned int follow_entity_id)</div><div class="ttdoc">Llena el buffer con nueva informacion para generar un nuevo mapa y un id de entidad nuevo.</div><div class="ttdef"><b>Definition:</b> map_change_buffer.cpp:7</div></div>
+<div class="ttc" id="aclassMapChangeBuffer_html"><div class="ttname"><a href="classMapChangeBuffer.html">MapChangeBuffer</a></div><div class="ttdoc">Buffer donde se almacenan los mapas al inicializar, asi como informacion de la entidad que representa...</div><div class="ttdef"><b>Definition:</b> map_change_buffer.h:13</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

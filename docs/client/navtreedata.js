@@ -45,8 +45,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "actor_8h_source.html",
-"classMapChangeBuffer.html#a0626cd72705629c57c57de0b4bfd65cc",
-"classThread.html#abd935e9d64c786860dcac09504f52337"
+"classMap.html#aa403fbe09394ccf39747588f5168e3b2",
+"classThread.html#a37d9edd3a1a776cbc27dedff949c9726"
 ];
 
 var SYNCONMSG = 'click en deshabilitar sincronización';

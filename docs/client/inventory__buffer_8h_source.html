@@ -101,23 +101,26 @@ $(document).ready(function(){initNavTree('inventory__buffer_8h_source.html','');
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;views/game_view/inventory.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classInventoryBuffer.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="classInventoryBuffer.html">InventoryBuffer</a>{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        nlohmann::json inventory_data;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        std::mutex m;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="classInventoryBuffer.html">InventoryBuffer</a>();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        ~<a class="code" href="classInventoryBuffer.html">InventoryBuffer</a>();</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">void</span> push(nlohmann::json new_nventory_data);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        nlohmann::json get_inventory_data();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classInventoryBuffer.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classInventoryBuffer.html">InventoryBuffer</a>{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        nlohmann::json inventory_data;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        std::mutex m;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classInventoryBuffer.html">InventoryBuffer</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        ~<a class="code" href="classInventoryBuffer.html">InventoryBuffer</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classInventoryBuffer.html#ad45256471420b4b318496ad7ec4ae022">push</a>(nlohmann::json new_nventory_data);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        nlohmann::json <a class="code" href="classInventoryBuffer.html#a8b33d10da7ef3b1c4643e6a94e6f5e40">get_inventory_data</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassInventoryBuffer_html"><div class="ttname"><a href="classInventoryBuffer.html">InventoryBuffer</a></div><div class="ttdef"><b>Definition:</b> inventory_buffer.h:7</div></div>
+<div class="ttc" id="aclassInventoryBuffer_html_ad45256471420b4b318496ad7ec4ae022"><div class="ttname"><a href="classInventoryBuffer.html#ad45256471420b4b318496ad7ec4ae022">InventoryBuffer::push</a></div><div class="ttdeci">void push(nlohmann::json new_nventory_data)</div><div class="ttdoc">Agrega una nueva actualizacion del inventario al buffer.</div><div class="ttdef"><b>Definition:</b> inventory_buffer.cpp:8</div></div>
+<div class="ttc" id="aclassInventoryBuffer_html"><div class="ttname"><a href="classInventoryBuffer.html">InventoryBuffer</a></div><div class="ttdoc">Buffer en el cual se almacena la informacion del inventario recibida.</div><div class="ttdef"><b>Definition:</b> inventory_buffer.h:12</div></div>
+<div class="ttc" id="aclassInventoryBuffer_html_a8b33d10da7ef3b1c4643e6a94e6f5e40"><div class="ttname"><a href="classInventoryBuffer.html#a8b33d10da7ef3b1c4643e6a94e6f5e40">InventoryBuffer::get_inventory_data</a></div><div class="ttdeci">nlohmann::json get_inventory_data()</div><div class="ttdoc">Devuelve la informacion del inventario almacenada.</div><div class="ttdef"><b>Definition:</b> inventory_buffer.cpp:14</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

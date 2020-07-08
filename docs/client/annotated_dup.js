@@ -2,6 +2,7 @@ var annotated_dup =
 [
     [ "Actor", "classActor.html", "classActor" ],
     [ "AnimationPack", "classAnimationPack.html", "classAnimationPack" ],
+    [ "AssetLoadingError", "classAssetLoadingError.html", "classAssetLoadingError" ],
     [ "BlockingQueue", "classBlockingQueue.html", "classBlockingQueue" ],
     [ "BlockingThEventHandler", "classBlockingThEventHandler.html", "classBlockingThEventHandler" ],
     [ "Button", "classButton.html", "classButton" ],
@@ -43,6 +44,7 @@ var annotated_dup =
     [ "LootBuffer", "classLootBuffer.html", "classLootBuffer" ],
     [ "Map", "classMap.html", "classMap" ],
     [ "MapChangeBuffer", "classMapChangeBuffer.html", "classMapChangeBuffer" ],
+    [ "MapError", "classMapError.html", "classMapError" ],
     [ "MyException", "classMyException.html", "classMyException" ],
     [ "OptionButton", "classOptionButton.html", "classOptionButton" ],
     [ "part_visual_info", "structpart__visual__info.html", "structpart__visual__info" ],

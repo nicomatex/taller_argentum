@@ -5,5 +5,6 @@ var searchData=
   ['add_5fcomponent_2',['add_component',['../classEntity.html#a42839e8a677669a37b25e1d19d84952a',1,'Entity']]],
   ['add_5fline_3',['add_line',['../classTextBox.html#a3cc39d92aa86bd408e2781ec52625780',1,'TextBox']]],
   ['animationpack_4',['AnimationPack',['../classAnimationPack.html',1,'']]],
-  ['attack_5fevent_5',['attack_event',['../classEventFactory.html#a3c2a95ed0d67d62f921eb68d24c3e91f',1,'EventFactory']]]
+  ['assetloadingerror_5',['AssetLoadingError',['../classAssetLoadingError.html',1,'']]],
+  ['attack_5fevent_6',['attack_event',['../classEventFactory.html#a3c2a95ed0d67d62f921eb68d24c3e91f',1,'EventFactory']]]
 ];
