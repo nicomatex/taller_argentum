@@ -16,7 +16,10 @@
 #include "inventory_buffer.h"
 #include "loot_buffer.h"
 
-/* Interfaz de la clase */
+/**
+ * @brief Clase principal del programa.
+ * 
+ */
 class GameClient {
    private:
     SDLWindow window;
