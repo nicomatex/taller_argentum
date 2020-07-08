@@ -2478,7 +2478,7 @@
                         "base y": 102,
                         "fps": 1,
                         "frame height": 51,
-                        "frame width": 16,
+                        "frame width": 15,
                         "frames": 1
                     },
                     "right": {
@@ -2486,7 +2486,7 @@
                         "base y": 153,
                         "fps": 1,
                         "frame height": 51,
-                        "frame width": 16,
+                        "frame width": 15,
                         "frames": 1
                     },
                     "up": {
@@ -2508,20 +2508,20 @@
                         "frames": 6
                     },
                     "left": {
-                        "base x": 0,
+                        "base x": 16,
                         "base y": 102,
                         "fps": 10,
                         "frame height": 51,
-                        "frame width": 16,
-                        "frames": 5
+                        "frame width": 20,
+                        "frames": 4
                     },
                     "right": {
-                        "base x": 0,
+                        "base x": 16,
                         "base y": 153,
                         "fps": 10,
                         "frame height": 51,
-                        "frame width": 16,
-                        "frames": 5
+                        "frame width": 20,
+                        "frames": 4
                     },
                     "up": {
                         "base x": 0,
@@ -2600,7 +2600,7 @@
                         "base y": 52,
                         "fps": 10,
                         "frame height": 52,
-                        "frame width": 25,
+                        "frame width": 23,
                         "frames": 6
                     }
                 }
@@ -2614,7 +2614,7 @@
                         "base y": 0,
                         "fps": 1,
                         "frame height": 32,
-                        "frame width": 25,
+                        "frame width": 23,
                         "frames": 1
                     },
                     "left": {
@@ -2622,7 +2622,7 @@
                         "base y": 64,
                         "fps": 1,
                         "frame height": 32,
-                        "frame width": 25,
+                        "frame width": 23,
                         "frames": 1
                     },
                     "right": {
@@ -2630,7 +2630,7 @@
                         "base y": 96,
                         "fps": 1,
                         "frame height": 32,
-                        "frame width": 25,
+                        "frame width": 23,
                         "frames": 1
                     },
                     "up": {
@@ -2638,7 +2638,7 @@
                         "base y": 32,
                         "fps": 1,
                         "frame height": 32,
-                        "frame width": 25,
+                        "frame width": 23,
                         "frames": 1
                     }
                 },
@@ -2648,7 +2648,7 @@
                         "base y": 0,
                         "fps": 20,
                         "frame height": 32,
-                        "frame width": 25,
+                        "frame width": 23,
                         "frames": 8
                     },
                     "left": {
@@ -2656,7 +2656,7 @@
                         "base y": 64,
                         "fps": 20,
                         "frame height": 32,
-                        "frame width": 25,
+                        "frame width": 23,
                         "frames": 8
                     },
                     "right": {
@@ -2664,7 +2664,7 @@
                         "base y": 96,
                         "fps": 20,
                         "frame height": 32,
-                        "frame width": 25,
+                        "frame width": 23,
                         "frames": 8
                     },
                     "up": {
@@ -2672,7 +2672,7 @@
                         "base y": 32,
                         "fps": 20,
                         "frame height": 32,
-                        "frame width": 25,
+                        "frame width": 23,
                         "frames": 8
                     }
                 }
