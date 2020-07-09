@@ -4,12 +4,12 @@
 #include <iostream>
 
 #include "../../include/nlohmann/json.hpp"
-#include "asset_loading_error.h"
 #include "engine_config.h"
+#include "asset_loading_error.h"
 
 using json = nlohmann::json;
 
-ResourceManager::ResourceManager() : renderer(NULL) {}
+ResourceManager::ResourceManager() {}
 
 void ResourceManager::_load_textures(SDLTextureLoader& loader,
                                      const std::string& texture_index_file) {
@@ -156,9 +156,7 @@ void ResourceManager::_load_audio(const std::string& audio_index_file) {
     }
 }
 
-void ResourceManager::init(SDLTextureLoader& loader,
-                           SDL_Renderer* window_renderer) {
-    renderer = window_renderer;
+void ResourceManager::init(SDLTextureLoader& loader) {
     _load_textures(loader, TEXTURE_INDEX_FILE);
     _load_animations(SPRITE_INDEX_FILE);
     _load_fonts(FONT_INDEX_FILE);
@@ -176,8 +174,7 @@ SDLTexture& ResourceManager::get_texture(const std::string& type, int id) {
     }
 
     if (texture_map.at(type).count(id) == 0) {
-        throw AssetLoadingError("No such texture id: %d, within type %s", id,
-                                type);
+        throw AssetLoadingError("No such texture id: %d, within type %s", id, type);
     }
     return texture_map.at(type).at(id);
 }
@@ -189,8 +186,8 @@ AnimationPack& ResourceManager::get_animation_pack(const std::string& type,
     }
 
     if (texture_map.at(type).count(id) == 0) {
-        throw AssetLoadingError("No such AnimationPack id: %d, within type %s",
-                                id, type);
+        throw AssetLoadingError("No such AnimationPack id: %d, within type %s", id,
+                          type);
     }
     return animation_pack_map.at(type).at(id);
 }
@@ -201,8 +198,7 @@ SDLSprite& ResourceManager::get_sprite(const std::string& type, int id) {
     }
 
     if (sprite_map.at(type).count(id) == 0) {
-        throw AssetLoadingError("No such Sprite id: %d, within type %s", id,
-                                type);
+        throw AssetLoadingError("No such Sprite id: %d, within type %s", id, type);
     }
     return sprite_map.at(type).at(id);
 }
@@ -232,14 +228,6 @@ SDLSoundFx& ResourceManager::get_sound_fx(int id) {
         throw AssetLoadingError("No such sound fx id: %d", id);
     }
     return sound_fx_map.at(id);
-}
-
-SDLText ResourceManager::create_text(const std::string& text, int font_id,
-                                     SDL_Color text_color) {
-    if(!renderer){
-        throw std::exception();
-    }
-    return SDLText(text, get_font(font_id), text_color, renderer);
 }
 
 ResourceManager::~ResourceManager() {}
