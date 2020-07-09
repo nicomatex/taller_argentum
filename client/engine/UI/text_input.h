@@ -8,12 +8,13 @@
 #include "SDL2/SDL_ttf.h"
 
 /**
- * @brief Input de texto. 
- * 
+ * @brief Input de texto.
+ *
  */
 class TextInput {
    private:
     std::string text;
+    uint64_t max_len;
     SDLText render_text;
     SDLTimer blink_timer;
     SDL_Renderer* renderer;
@@ -36,7 +37,8 @@ class TextInput {
      * @param font Fuente tipografica del texto.
      */
     TextInput(SDL_Rect render_area, SDL_Renderer* renderer,
-              SDL_Color font_color, SDL_Color background_color, TTF_Font* font);
+              SDL_Color font_color, SDL_Color background_color, TTF_Font* font,
+              uint64_t max_len = UINT64_MAX);
     ~TextInput();
 
     /**
@@ -66,14 +68,14 @@ class TextInput {
 
     /**
      * @brief Devuelve el texto escrito.
-     * 
-     * @return std::string 
+     *
+     * @return std::string
      */
     std::string get_text();
 
     /**
      * @brief Activa/desactiva el cursor.
-     * 
+     *
      */
     void toggle();
 };

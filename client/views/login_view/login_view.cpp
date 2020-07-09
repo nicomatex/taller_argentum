@@ -14,7 +14,7 @@ LoginView::LoginView(SDLWindow &window, ResponsiveScaler &scaler,
       character_name_input(
           scaler.scale(USERNAME_INPUT_AREA), window.get_renderer(),
           USERNAME_INPUT_FONT_COLOR, USERNAME_INPUT_BG_COLOR,
-          ResourceManager::get_instance().get_font(USERNAME_INPUT_FONT_ID)),
+          ResourceManager::get_instance().get_font(USERNAME_INPUT_FONT_ID), 15),
       login_button(scaler.scale(LOGIN_BUTTON_AREA),
                    scaler.scale(LOGIN_VIEWPORT), window.get_renderer(),
                    game_state_monitor, socket_manager, character_name_input),
@@ -31,7 +31,7 @@ LoginView::~LoginView() {}
 
 void LoginView::run() {
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
-    if(!SoundSystem::get_instance().music_playing()){
+    if (!SoundSystem::get_instance().music_playing()) {
         SoundSystem::get_instance().play_music(1);
     }
     while (game_state_monitor.get_game_state() == LOGGING) {

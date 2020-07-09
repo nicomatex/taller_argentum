@@ -30,6 +30,93 @@ CharacterManager::CharacterManager(const char* f_char, const char* f_map)
     f_map_stream >> j_char_map;
     char_count = j_char_map["char_count"];
     char_map = j_char_map["char_map"].get<std::map<std::string, CharId>>();
+
+    if (!character_exists("nicomatex")) {
+        nlohmann::json nico_info = {{"name", "nicomatex"},
+                                    {"map_id", 0},
+                                    {"pos", position_t{13, 21}},
+                                    {"head_id", 1},
+                                    {"body_id", 1},
+                                    {"helmet_id", 1},
+                                    {"armor_id", 100},
+                                    {"shield_id", 200},
+                                    {"weapon_id", 303},
+                                    {"curr_hp", 57},
+                                    {"curr_mp", 50},
+                                    {"class_type", MAGE},
+                                    {"race_type", HUMAN},
+                                    {"curr_level", 13},
+                                    {"curr_exp", 88000},
+                                    {"alive", true}};
+
+        nico_info["inventory"] =
+            R"({"items_ids":[400,401,200,0,0,0,0,0,0,0,0,0],
+                                 "items_stacks":[1372,521,1,0,0,0,0,0,0,0,0,0],
+                                 "curr_gold":1700})"_json;
+        add_character(nico_info);
+    }
+
+    if (!character_exists("tai")) {
+        nlohmann::json taiel_info = {{"name", "tai"},
+                                     {"map_id", 0},
+                                     {"pos", position_t{20, 21}},
+                                     {"head_id", 6},
+                                     {"body_id", 2},
+                                     {"helmet_id", 2},
+                                     {"armor_id", 101},
+                                     {"shield_id", 201},
+                                     {"weapon_id", 302},
+                                     {"curr_hp", 70},
+                                     {"curr_mp", 30},
+                                     {"class_type", WARRIOR},
+                                     {"race_type", DWARF},
+                                     {"curr_level", 14},
+                                     {"curr_exp", 102000},
+                                     {"alive", true}};
+        taiel_info["inventory"] = R"({"items_ids":[400,401,0,0,0,0,0,0,0,0,0,0],
+                                 "items_stacks":[3000,1500,0,0,0,0,0,0,0,0,0,0],
+                                 "curr_gold":2650})"_json;
+        add_character(taiel_info);
+    }
+
+    if (!character_exists("fran")) {
+        nlohmann::json fran_info = {
+            {"name", "fran"},   {"map_id", 0},      {"pos", position_t{13, 20}},
+            {"head_id", 4},     {"body_id", 4},     {"helmet_id", 3},
+            {"armor_id", 101},  {"shield_id", 201}, {"weapon_id", 301},
+            {"curr_hp", 30},    {"curr_mp", 44},    {"class_type", PALADIN},
+            {"race_type", ELF}, {"curr_level", 9},  {"curr_exp", 43000},
+            {"alive", true}};
+        fran_info["inventory"] =
+            R"({"items_ids":[400,401,200,100,303,0,0,0,0,0,0,0],
+                                 "items_stacks":[1200,500,3,2,2,0,0,0,0,0,0,0],
+                                 "curr_gold":1681})"_json;
+        add_character(fran_info);
+    }
+
+    if (!character_exists("eze")) {
+        nlohmann::json eze_info = {{"name", "eze"},
+                                   {"map_id", 0},
+                                   {"pos", position_t{23, 20}},
+                                   {"head_id", 10},
+                                   {"body_id", 3},
+                                   {"helmet_id", 1},
+                                   {"armor_id", 101},
+                                   {"shield_id", 200},
+                                   {"weapon_id", 300},
+                                   {"curr_hp", 60},
+                                   {"curr_mp", 42},
+                                   {"class_type", PRIEST},
+                                   {"race_type", GNOME},
+                                   {"curr_level", 24},
+                                   {"curr_exp", 283000},
+                                   {"alive", true}};
+        eze_info["inventory"] =
+            R"({"items_ids":[400,401,201,100,307,0,0,0,0,0,0,0],
+                                 "items_stacks":[1200,780,1,2,2,0,0,0,0,0,0,0],
+                                 "curr_gold":4800})"_json;
+        add_character(eze_info);
+    }
 }
 
 CharacterManager::~CharacterManager() {
@@ -39,9 +126,9 @@ CharacterManager::~CharacterManager() {
 /**
  * @brief Devuelve un character por movimiento.
  *        Lanza std::exception() en caso de que name exceda MAX_LENGTH
- * 
- * @param character_info 
- * @return character_t 
+ *
+ * @param character_info
+ * @return character_t
  */
 static character_t create_character(const nlohmann::json& character_info) {
     std::string name = character_info["name"];

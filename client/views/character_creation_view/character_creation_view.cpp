@@ -13,7 +13,7 @@ CharacterCreationView::CharacterCreationView(
       character_name_input(
           scaler.scale(CHAR_CREATION_NAME_AREA), window.get_renderer(),
           USERNAME_INPUT_FONT_COLOR, CHAR_CREATION_NAME_BG_COLOR,
-          ResourceManager::get_instance().get_font(USERNAME_INPUT_FONT_ID)),
+          ResourceManager::get_instance().get_font(USERNAME_INPUT_FONT_ID), 15),
       race_and_class_selector(scaler, window.get_renderer()),
       go_back_button(scaler.scale(GO_BACK_BUTTON_AREA),
                      scaler.scale(CHAR_CREATION_VIEWPORT),

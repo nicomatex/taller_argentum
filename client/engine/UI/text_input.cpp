@@ -4,19 +4,22 @@
 
 TextInput::TextInput(SDL_Rect render_area, SDL_Renderer* renderer,
                      SDL_Color font_color, SDL_Color background_color,
-                     TTF_Font* font)
+                     TTF_Font* font, uint64_t max_len)
     : render_area(render_area),
       render_text("", font, font_color, renderer),
       enabled(false),
       renderer(renderer),
       render_blink(true),
-      background_color(background_color) {
+      background_color(background_color),
+      max_len(max_len) {
     blink_timer.start();
 }
 
 TextInput::~TextInput() {}
 
 void TextInput::add_characters(char* characters) {
+    if (text.length() >= max_len)
+        return;
     text += characters;
     render_text.update_text(text);
     blink_timer.start();
@@ -43,13 +46,15 @@ void TextInput::toggle() {
 }
 
 void TextInput::render_cursor() {
-    if (!enabled) return;
+    if (!enabled)
+        return;
     if (blink_timer.get_ticks() > 500) {
         render_blink = !render_blink;
         blink_timer.start();
     }
 
-    if (!render_blink) return;
+    if (!render_blink)
+        return;
 
     float scale_factor = (float)render_area.h / (float)render_text.get_height();
     int text_width = render_text.get_width() * scale_factor;
@@ -99,7 +104,9 @@ void TextInput::render() {
     render_cursor();
 }
 
-std::string TextInput::get_text() { return text; }
+std::string TextInput::get_text() {
+    return text;
+}
 
 void TextInput::erase_all() {
     text = "";
