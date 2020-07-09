@@ -8,11 +8,11 @@
  */
 class SDLTimer {
    private:
-    bool _is_started;
-    bool _is_paused;
-
     uint32_t start_ticks;
     uint32_t pause_ticks;
+    bool _is_paused;
+    bool _is_started;
+
 
    public:
     /**

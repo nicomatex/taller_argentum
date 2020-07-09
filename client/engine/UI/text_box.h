@@ -15,11 +15,11 @@ class TextBox {
    private:
     std::deque<std::string> lines;
     std::vector<SDLText> render_lines;
-    SDL_Renderer* renderer;
     SDL_Rect render_area;
-    void render_background();
+    SDL_Renderer* renderer;
     int nlines;
     SDL_Color background_color;
+    void render_background();
 
    public:
    /**

@@ -25,8 +25,8 @@ class CharacterCreationView {
     TextInput character_name_input;
     RaceAndClassSelector race_and_class_selector;
     GoBackButton go_back_button;
-    CreationUiEventHandler ui_event_handler;
     RequestCharacterCreationButton req_char_creation_button;
+    CreationUiEventHandler ui_event_handler;
     
     void render_selected_race_info();
     void render_selected_class_info();

@@ -12,7 +12,6 @@ VisualNPCComponent::VisualNPCComponent(int body_id, int speed)
            {0, 0, 0, 0}),
       transition_offset_x(0),
       transition_offset_y(0) {
-    visual_info_t visual_info;
     int real_width = ResourceManager::get_instance()
                          .get_animation_pack("npcs", body_id)
                          .get_frame_width(DOWN);
@@ -34,8 +33,8 @@ VisualNPCComponent::~VisualNPCComponent() {}
 void VisualNPCComponent::init() {
     /* Se actualiza la posicion de todos los actores para matchear con
 la componente de posicion. */
-    int current_x = entity->get_component<PositionComponent>().get_x();
-    int current_y = entity->get_component<PositionComponent>().get_y();
+    current_x = entity->get_component<PositionComponent>().get_x();
+    current_y = entity->get_component<PositionComponent>().get_y();
 }
 
 void VisualNPCComponent::draw(Camera& camera) {
@@ -92,8 +91,6 @@ void VisualNPCComponent::_update_animation(int delta_x, int delta_y) {
     if (delta_x == 0 && delta_y == 0) return;
     if (!(entity->get_component<PositionComponent>().position_initialized()))
         return;
-
-    movement_status_t movement_status;
 
     transition_offset_x -= delta_x * MOVEMENT_OFFSET;
     transition_offset_y -= delta_y * MOVEMENT_OFFSET;

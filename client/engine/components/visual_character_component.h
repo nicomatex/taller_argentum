@@ -16,20 +16,20 @@ typedef std::unordered_map<std::string, int> PartIds;
  */
 class VisualCharacterComponent : public Component {
    private:
-    Parts parts;
-    PartIds part_ids;
+    int speed;  // En tiles/segundo.
+    bool initialized;
     int transition_offset_x;
     int transition_offset_y;
+    Parts parts;
+    PartIds part_ids;
     SDLTimer transition_timer;
     /* Actualiza el offset de renderizacion. */
     void _update_offset();
     void _update_animation(int delta_x, int delta_y);
     int current_x;
     int current_y;
-    int speed;  // En tiles/segundo.
 
     /* Indica si ya se recibio el primer mensaje de actualizacion de posicion.*/
-    bool initialized;
     std::recursive_mutex m;
 
     void _draw_if_present(Camera &camera, const std::string &part_name);

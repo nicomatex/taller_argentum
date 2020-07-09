@@ -16,11 +16,11 @@ class Actor : public RenderizableObject {
     AnimationPack animation_pack;
     direction_t orientation;
     movement_status_t movement_status;
+    bool is_empty;
 
     /* Actualiza el estado de movimiento. */
     void _update_status();
 
-    bool is_empty;
 
    public:
     /**

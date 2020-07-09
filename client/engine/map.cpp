@@ -35,7 +35,6 @@ void Map::generate(json map_description) {
         ResourceManager::get_instance().get_texture("tilesets", tileset_id);
 
     int tiles_per_row = tileset.get_width() / tile_size;
-    int rows = tileset.get_height() / tile_size;
 
     for (auto& layer : map_description["layers"].items()) {
         std::vector<Decoration> new_layer;

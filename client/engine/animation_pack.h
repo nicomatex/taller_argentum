@@ -19,14 +19,14 @@ class AnimationPack {
     /* Sprites de movimiento. */
     SDLSprite up_move_sprite;
     SDLSprite down_move_sprite;
-    SDLSprite right_move_sprite;
     SDLSprite left_move_sprite;
+    SDLSprite right_move_sprite;
 
     /* Sprites quietos */
     SDLSprite up_idle_sprite;
     SDLSprite down_idle_sprite;
-    SDLSprite right_idle_sprite;
     SDLSprite left_idle_sprite;
+    SDLSprite right_idle_sprite;
 
    public:
     AnimationPack(SDLSprite &up_move_sprite, SDLSprite &down_move_sprite,

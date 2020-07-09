@@ -13,7 +13,9 @@
  */
 class VisualNPCComponent : public Component {
    private:
-    Camera *camera;
+    int speed;  // En tiles/segundo.
+    /* Indica si ya se recibio el primer mensaje de actualizacion de posicion.*/
+    bool initialized;
     Actor body;
     int transition_offset_x;
     int transition_offset_y;
@@ -23,10 +25,7 @@ class VisualNPCComponent : public Component {
     void _update_animation(int delta_x, int delta_y);
     int current_x;
     int current_y;
-    int speed;  // En tiles/segundo.
 
-    /* Indica si ya se recibio el primer mensaje de actualizacion de posicion.*/
-    bool initialized;
     std::recursive_mutex m;
 
    public:

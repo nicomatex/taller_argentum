@@ -23,8 +23,8 @@ class GameView {
    private:
     ResponsiveScaler &scaler;
     SDLWindow &window;
-    ChatBuffer &chat_buffer;
     LootBuffer &loot_buffer;
+    ChatBuffer &chat_buffer;
     GameStateMonitor &game_state_monitor;
     Hud hud;
     Camera camera;

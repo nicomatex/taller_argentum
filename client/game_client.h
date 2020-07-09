@@ -23,13 +23,13 @@
 class GameClient {
    private:
     SDLWindow window;
+    SocketManager socket_manager;
+    nlohmann::json config;
+    ClientReceiveHandler receive_handler;
     MapChangeBuffer map_change_buffer;
     ChatBuffer chat_buffer;
     InventoryBuffer inventory_buffer;
     LootBuffer loot_buffer;
-    ClientReceiveHandler receive_handler;
-    SocketManager socket_manager;
-    nlohmann::json config;
     GameStateMonitor game_state_monitor;
 
    public:

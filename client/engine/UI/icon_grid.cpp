@@ -13,7 +13,7 @@ IconGrid::IconGrid(SDL_Rect render_area, SDL_Renderer* renderer, int rows,
       size_proportion(size_proportion),
       original_proportions(original_proportions) {
     icons.resize(rows * cols);
-    for (int i = 0; i < icons.size(); i++) {
+    for (int i = 0; i < (int)icons.size(); i++) {
         icons[i] = NULL;
     }
     if (size_proportion < 0) size_proportion = 0;
@@ -23,7 +23,7 @@ IconGrid::IconGrid(SDL_Rect render_area, SDL_Renderer* renderer, int rows,
 IconGrid::~IconGrid() {}
 
 void IconGrid::set_icon(int position, SDLTexture* icon) {
-    if (position > icons.size()) {
+    if (position > (int)icons.size()) {
         throw std::out_of_range("Invalid position");
     }
     icons[position] = icon;

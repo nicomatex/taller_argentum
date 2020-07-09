@@ -13,17 +13,17 @@
  */
 class TextInput {
    private:
-    std::string text;
-    uint64_t max_len;
-    SDLText render_text;
-    SDLTimer blink_timer;
-    SDL_Renderer* renderer;
     SDL_Rect render_area;
+    SDLText render_text;
     bool enabled;
+    SDL_Renderer* renderer;
     bool render_blink;
+    std::string text;
+    SDL_Color background_color;
+    uint64_t max_len;
+    SDLTimer blink_timer;
     void render_cursor();
     void render_background();
-    SDL_Color background_color;
 
    public:
     /**

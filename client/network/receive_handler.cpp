@@ -135,6 +135,9 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                         .get_component<VisualNPCComponent>()
                         .set_orientation(entity_info["direction"]);
                     break;
+                case NPC:
+                    //todo
+                    break;
             }
         } else {
             Entity &entity = EntityManager::get_instance().get_from_id(
@@ -149,6 +152,9 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                 case MONSTER:
                     entity.get_component<VisualNPCComponent>().server_update(
                         entity_info);
+                    break;
+                case NPC:
+                    //todo
                     break;
             }
         }

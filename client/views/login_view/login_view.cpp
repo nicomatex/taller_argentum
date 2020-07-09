@@ -36,7 +36,6 @@ void LoginView::run() {
     }
     while (game_state_monitor.get_game_state() == LOGGING) {
         window.fill(0, 0, 0, 255);
-        SDL_Event e;
         ui_event_handler.handle();
         background.render(scaler.scale(LOGIN_BACKGROUND_AREA));
         character_name_input.render();

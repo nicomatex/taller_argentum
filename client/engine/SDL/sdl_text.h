@@ -12,8 +12,8 @@
  */
 class SDLText : public SDLTexture {
    private:
-    TTF_Font* font;
     SDL_Color text_color;
+    TTF_Font* font;
 
    public:
     /**

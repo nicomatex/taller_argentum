@@ -12,8 +12,8 @@
  */
 class SDLTexture {
    protected:
-    SDL_Texture* texture;
     SDL_Renderer* renderer;
+    SDL_Texture* texture;
     int width;
     int height;
 

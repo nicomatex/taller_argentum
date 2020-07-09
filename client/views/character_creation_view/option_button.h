@@ -12,8 +12,8 @@
 template <typename T>
 class OptionButton : public Button {
    private:
-    T& selected_option;
     T this_button_option;
+    T& selected_option;
 
    public:
     /**

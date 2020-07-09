@@ -14,9 +14,9 @@
 class LoginUiEventHandler {
    private:
     TextInput& character_name_input;
-    GameStateMonitor& game_state_monitor;
     LoginButton& login_button;
     CreateCharacterButton& create_character_button;
+    GameStateMonitor& game_state_monitor;
 
    public:
     /**

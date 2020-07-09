@@ -21,10 +21,10 @@ void TextBox::erase_all() { lines.empty(); }
 void TextBox::add_line(std::string line) {
     if (line == "") return;
     lines.emplace_front(line);
-    if (lines.size() > nlines) {
+    if ((int)lines.size() > nlines) {
         lines.pop_back();
     }
-    for (int i = 0; i < lines.size(); i++) {
+    for (int i = 0; i < (int)lines.size(); i++) {
         render_lines[i].update_text(lines[i]);
     }
 }

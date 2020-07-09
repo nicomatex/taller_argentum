@@ -15,11 +15,11 @@ class SDLSprite {
    private:
     std::reference_wrapper<SDLTexture> texture;
     int nframes;
-    int current_frame;
-    int base_y;
-    int base_x;
     int frame_width;
     int frame_height;
+    int current_frame;
+    int base_x;
+    int base_y;
     SDLTimer timer;
     uint32_t time_between_frames;
 

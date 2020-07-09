@@ -16,13 +16,13 @@ class IconGrid {
     SDL_Renderer* renderer;
     int icon_width;
     int icon_height;
-    int cols;
     int rows;
+    int cols;
+    float size_proportion;
     bool original_proportions;
 
     /* Indica que proporcion del cuadrito correspondiente ocupa el icono. Va de
      * 0 a 1.*/
-    float size_proportion;
 
     std::vector<SDLTexture*> icons;
 

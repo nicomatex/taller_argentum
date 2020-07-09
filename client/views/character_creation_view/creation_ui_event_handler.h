@@ -14,10 +14,10 @@
  */
 class CreationUiEventHandler {
     TextInput& character_name_input;
-    GameStateMonitor& game_state_monitor;
     RaceAndClassSelector& race_and_class_selector;
     GoBackButton& go_back_button;
     RequestCharacterCreationButton& req_char_creation_button;
+    GameStateMonitor& game_state_monitor;
 
    public:
     /**

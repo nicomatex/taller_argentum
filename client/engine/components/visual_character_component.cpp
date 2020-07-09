@@ -41,8 +41,8 @@ void VisualCharacterComponent::server_update(nlohmann::json update_info) {
 void VisualCharacterComponent::init() {
     /* Se actualiza la posicion de todos los actores para matchear con
 la componente de posicion. */
-    int current_x = entity->get_component<PositionComponent>().get_x();
-    int current_y = entity->get_component<PositionComponent>().get_y();
+    current_x = entity->get_component<PositionComponent>().get_x();
+    current_y = entity->get_component<PositionComponent>().get_y();
 }
 
 void VisualCharacterComponent::set_part(const std::string& type,

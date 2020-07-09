@@ -81,7 +81,6 @@ void SDLWindow::reset_viewport() {
 void SDLWindow::render() const { SDL_RenderPresent(renderer); }
 
 int SDLWindow::get_height() const {
-    int width;
     int height;
     SDL_GetWindowSize(this->window, NULL, &height);
     return height;
@@ -89,7 +88,6 @@ int SDLWindow::get_height() const {
 
 int SDLWindow::get_width() const {
     int width;
-    int height;
     SDL_GetWindowSize(this->window, &width, NULL);
     return width;
 }

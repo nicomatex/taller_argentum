@@ -19,30 +19,28 @@ typedef struct position {
  */
 class Camera {
    private:
+    PositionComponent &follow_component;
+    /* Coordenadas del tile donde esta centrada la camara. */
+    int x_center_tile;
+    int y_center_tile;
+    int map_size; /* Lado del mapa, en tiles (los mapas son cuadrados). */
+
+    int tile_size; /* Lado de cada tile, en pixeles.*/
     /* Ancho que se va a renderizar en tiles. */
     int width_tiles;
 
     /* Altura que se va a renderizar en tiles. */
     int height_tiles;
 
-    /* Coordenadas del tile donde esta centrada la camara. */
-    int x_center_tile;
-    int y_center_tile;
+    int speed;  // En tiles/segundo.
+    SDL_Rect viewport;
 
     int camera_offset_x;
     int camera_offset_y;
 
     SDLTimer movement_timer;
 
-    int map_size; /* Lado del mapa, en tiles (los mapas son cuadrados). */
 
-    int tile_size; /* Lado de cada tile, en pixeles.*/
-
-    int speed;  // En tiles/segundo.
-
-    SDL_Rect viewport;
-
-    PositionComponent &follow_component;
 
     /* Devuelve true si un componente visual esta dentro del campo
     de vision de la camara.*/

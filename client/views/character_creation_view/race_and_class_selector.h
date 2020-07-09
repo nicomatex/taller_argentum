@@ -11,8 +11,8 @@
  * 
  */
 class RaceAndClassSelector {
-    race_type_t selected_race;
     class_type_t selected_class;
+    race_type_t selected_race;
     OptionButton<race_type_t> human_button;
     OptionButton<race_type_t> elf_button;
     OptionButton<race_type_t> dwarf_button;

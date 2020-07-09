@@ -16,10 +16,10 @@
  */
 class UiEventHandler {
    private:
-    GameStateMonitor &game_state_monitor;
     SocketManager &socket_manager;
     Hud &hud;
     bool text_input_enabled;
+    GameStateMonitor &game_state_monitor;
     Camera &camera;
     SDL_Rect main_render_viewport;
     position_t current_target;

@@ -30,9 +30,9 @@ class ClientReceiveHandler : public BlockingThEventHandler {
     
     MapChangeBuffer &map_change_buffer;
     ChatBuffer &chat_buffer;
-    GameStateMonitor &game_state_monitor;
     InventoryBuffer &inventory_buffer;
     LootBuffer &loot_buffer;
+    GameStateMonitor &game_state_monitor;
     // la idea es tener los handlers todos aca
 
    public:

@@ -25,7 +25,7 @@ Camera::Camera(PositionComponent &follow_component, SDL_Rect viewport, int map_s
       camera_offset_x(0),
       camera_offset_y(0) {}
 
-Camera::~Camera(){};
+Camera::~Camera(){}
 
 bool Camera::_is_within_visual_range(RenderizableObject *component) {
     /* return (

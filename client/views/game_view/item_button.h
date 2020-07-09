@@ -12,11 +12,11 @@
 class ItemButton : public Button {
    private:
     SlotId slot_number;
-    SocketManager& socket_manager;
-    SDLTimer double_click_timer;
     int& last_clicked_slot;
+    SocketManager& socket_manager;
     Event (*left_click_event)(SlotId);
     Event (*right_click_event)(SlotId);
+    SDLTimer double_click_timer;
 
    public:
     /**

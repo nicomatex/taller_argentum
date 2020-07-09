@@ -43,7 +43,7 @@ void ResourceManager::_load_textures(SDLTextureLoader& loader,
                 }
             }
         }
-    } catch (std::exception) {
+    } catch (std::exception &e) {
         throw AssetLoadingError("Error loading textures.");
     }
     std::cout << MSG_TEXTURES_FINISHED << std::endl;
