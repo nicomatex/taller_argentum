@@ -6,18 +6,20 @@
 #include "../ECS/component.h"
 #include "../actor.h"
 #include "../camera.h"
+#include "../in_game_text.h"
 
 typedef std::unordered_map<std::string, Actor> Parts;
 typedef std::unordered_map<std::string, int> PartIds;
 
 /**
  * @brief Componente visual de los personajes.
- * 
+ *
  */
 class VisualCharacterComponent : public Component {
    private:
     Parts parts;
     PartIds part_ids;
+    InGameText render_name;
     int transition_offset_x;
     int transition_offset_y;
     SDLTimer transition_timer;
@@ -51,7 +53,7 @@ class VisualCharacterComponent : public Component {
      */
     VisualCharacterComponent(int head_id, int body_id, int weapon_id,
                              int shield_id, int helmet_id, int armor_id,
-                             int speed);
+                             int speed, std::string name);
     ~VisualCharacterComponent();
 
     /**

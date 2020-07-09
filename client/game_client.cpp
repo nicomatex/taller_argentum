@@ -31,7 +31,7 @@ GameClient::GameClient(json config)
                       game_state_monitor) {
     SDLTextureLoader texture_loader(window.init_renderer());
     try{
-        ResourceManager::get_instance().init(texture_loader);
+        ResourceManager::get_instance().init(texture_loader,window.get_renderer());
     }catch(AssetLoadingError &e){
         std::cerr << e.what() << std::endl;
         std::cerr << "Is the game installed correctly? run 'make install' " << std::endl;

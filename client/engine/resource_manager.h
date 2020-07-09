@@ -7,6 +7,7 @@
 #include "SDL/sdl_sfx.h"
 #include "SDL/sdl_texture.h"
 #include "SDL/sdl_texture_loader.h"
+#include "SDL/sdl_text.h"
 #include "SDL2/SDL_ttf.h"
 #include "animation_pack.h"
 
@@ -38,6 +39,7 @@ class ResourceManager {
     FontMap font_map;
     MusicMap music_map;
     SoundFxMap sound_fx_map;
+    SDL_Renderer* renderer;
     ResourceManager();
 
     /**
@@ -149,7 +151,9 @@ class ResourceManager {
      *
      * @param loader Loader a partir del cual se cargaran las texturas.
      */
-    void init(SDLTextureLoader& loader);
+    void init(SDLTextureLoader& loader, SDL_Renderer* window_renderer);
+
+    SDLText create_text(const std::string& text, int font_id, SDL_Color text_color);
 };
 
 #endif

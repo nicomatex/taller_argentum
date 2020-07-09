@@ -15,7 +15,7 @@ Entity &EntityFactory::create_player(nlohmann::json entity_info) {
         entity_info["head_id"], entity_info["body_id"],
         entity_info["weapon_id"], entity_info["shield_id"],
         entity_info["helmet_id"], entity_info["armor_id"],
-        entity_info["move_speed"]);
+        entity_info["move_speed"],std::string(entity_info["name"]));
     player.add_component<StatsComponent>(
         entity_info["max_hp"], entity_info["curr_hp"], entity_info["max_mp"],
         entity_info["curr_mp"], entity_info["limit_exp"],

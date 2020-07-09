@@ -3,6 +3,7 @@ add_library(engine
   animation_pack.cpp
   camera.cpp
   decoration.cpp
+  in_game_text.cpp
   entity_factory.cpp
   map.cpp
   renderizable_object.cpp
