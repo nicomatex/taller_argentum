@@ -10,8 +10,15 @@
 VisualCharacterComponent::VisualCharacterComponent(int head_id, int body_id,
                                                    int weapon_id, int shield_id,
                                                    int helmet_id, int armor_id,
-                                                   int speed)
-    : speed(speed), initialized(false),transition_offset_x(0),transition_offset_y(0) {
+                                                   int speed,
+                                                   const std::string& name)
+    : speed(speed),
+      initialized(false),
+      transition_offset_x(0),
+      transition_offset_y(0),
+      render_name(name, NAME_COLOR, NAME_FONT_ID, NAME_INFO),
+      render_damage("0", DAMAGE_COLOR, DAMAGE_FONT_ID, DAMAGE_INFO),
+      recently_damaged(false) {
     part_ids["body"] = body_id;
     part_ids["head"] = head_id;
     part_ids["armor"] = armor_id;
@@ -25,6 +32,13 @@ VisualCharacterComponent::VisualCharacterComponent(int head_id, int body_id,
     set_part("weapon", "weapons", weapon_id, WEAPON_CONFIG);
     set_part("shield", "shields", shield_id, BODY_CONFIG);
     set_part("armor", "armors", armor_id, BODY_CONFIG);
+
+    int name_width = render_name.get_width();
+    visual_info_t body_config = BODY_CONFIG;
+
+    int delta_width = body_config.width - name_width;
+    int offset_x = delta_width / 7;
+    render_name.set_offset(offset_x, 0);
 }
 
 void VisualCharacterComponent::server_update(nlohmann::json update_info) {
@@ -68,7 +82,7 @@ void VisualCharacterComponent::set_part(const std::string& type,
             parts.insert(std::make_pair(type, new_part));
             part_ids[type] = new_part_id;
         } else {
-            if(parts.count(type) != 0){
+            if (parts.count(type) != 0) {
                 parts.erase(type);
                 part_ids[type] = 0;
             }
@@ -83,18 +97,22 @@ void VisualCharacterComponent::draw(Camera& camera) {
     std::unique_lock<std::recursive_mutex> l(m);
 
     _draw_if_present(camera, "armor");
-    if (part_ids.at("armor") == 0)
-        _draw_if_present(camera, "body");
+    if (part_ids.at("armor") == 0) _draw_if_present(camera, "body");
     _draw_if_present(camera, "head");
     _draw_if_present(camera, "weapon");
     _draw_if_present(camera, "shield");
     _draw_if_present(camera, "helmet");
+    camera.draw(&render_name, current_x, current_y, transition_offset_x,
+                transition_offset_y);
+    if (recently_damaged) {
+        camera.draw(&render_damage, current_x, current_y, transition_offset_x,
+                    transition_offset_y);
+    }
 }
 
 void VisualCharacterComponent::_draw_if_present(Camera& camera,
                                                 const std::string& part_name) {
-    if (part_ids.at(part_name) == 0)
-        return;
+    if (part_ids.at(part_name) == 0) return;
     camera.draw(&parts.at(part_name), current_x, current_y, transition_offset_x,
                 transition_offset_y);
 }
@@ -117,38 +135,30 @@ void VisualCharacterComponent::_update_offset() {
 
     float speed_factor_x =
         (float)abs(transition_offset_x) / (float)MOVEMENT_OFFSET;
-    if (speed_factor_x < 1)
-        speed_factor_x = 1;
+    if (speed_factor_x < 1) speed_factor_x = 1;
 
     float speed_factor_y =
         (float)abs(transition_offset_y) / (float)MOVEMENT_OFFSET;
-    if (speed_factor_y < 1)
-        speed_factor_y = 1;
+    if (speed_factor_y < 1) speed_factor_y = 1;
 
     if (transition_offset_x > 0) {
         transition_offset_x -= delta_offset * speed_factor_x;
-        if (transition_offset_x <= 0)
-            stop_x = true;
+        if (transition_offset_x <= 0) stop_x = true;
     } else if (transition_offset_x < 0) {
         transition_offset_x += delta_offset * speed_factor_x;
-        if (transition_offset_x >= 0)
-            stop_x = true;
+        if (transition_offset_x >= 0) stop_x = true;
     } else if (transition_offset_y > 0) {
         transition_offset_y -= delta_offset * speed_factor_y;
-        if (transition_offset_y <= 0)
-            stop_y = true;
+        if (transition_offset_y <= 0) stop_y = true;
     } else if (transition_offset_y < 0) {
         transition_offset_y += delta_offset * speed_factor_y;
-        if (transition_offset_y >= 0)
-            stop_x = true;
+        if (transition_offset_y >= 0) stop_x = true;
     }
 
     if (stop_x || stop_y) {
         transition_timer.stop();
-        if (stop_x)
-            transition_offset_x = 0;
-        if (stop_y)
-            transition_offset_y = 0;
+        if (stop_x) transition_offset_x = 0;
+        if (stop_y) transition_offset_y = 0;
     } else {
         transition_timer.start();
     }
@@ -168,8 +178,7 @@ void VisualCharacterComponent::_update_animation(int delta_x, int delta_y) {
         }
     }
 
-    if (delta_x == 0 && delta_y == 0)
-        return;
+    if (delta_x == 0 && delta_y == 0) return;
     if (!(entity->get_component<PositionComponent>().position_initialized()))
         return;
 
@@ -203,6 +212,12 @@ void VisualCharacterComponent::update() {
     for (auto& part : parts) {
         part.second.update();
     }
+    if(recently_damaged){
+        if(damage_render_timer.get_ticks() >= DAMAGE_TEXT_DURATION){
+            recently_damaged = false;
+            damage_render_timer.stop();
+        }
+    }
 }
 
 bool VisualCharacterComponent::is_moving() {
@@ -212,4 +227,10 @@ bool VisualCharacterComponent::is_moving() {
 int VisualCharacterComponent::get_part_id(const std::string& part_name) {
     std::unique_lock<std::recursive_mutex> l(m);
     return part_ids.at(part_name);
+}
+
+void VisualCharacterComponent::display_damage(int damage){
+    render_damage.update_text("-" + std::to_string(damage));
+    recently_damaged = true;
+    damage_render_timer.start();
 }

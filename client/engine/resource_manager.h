@@ -7,6 +7,7 @@
 #include "SDL/sdl_sfx.h"
 #include "SDL/sdl_texture.h"
 #include "SDL/sdl_texture_loader.h"
+#include "SDL/sdl_bitmap_font.h"
 #include "SDL2/SDL_ttf.h"
 #include "animation_pack.h"
 
@@ -26,6 +27,7 @@ typedef std::unordered_map<int, SDLMusic> MusicMap;
 
 typedef std::unordered_map<int, SDLSoundFx> SoundFxMap;
 
+typedef std::unordered_map<int, SDLBitmapFont> BitmapFontMap;
 /**
  * @brief Singleton para el manager de texturas.
  *
@@ -36,6 +38,7 @@ class ResourceManager {
     AnimationPackMap animation_pack_map;
     SpriteMap sprite_map;
     FontMap font_map;
+    BitmapFontMap bitmap_font_map;
     MusicMap music_map;
     SoundFxMap sound_fx_map;
     ResourceManager();
@@ -121,6 +124,8 @@ class ResourceManager {
      */
     TTF_Font* get_font(int id);
 
+    SDLBitmapFont& get_bitmap_font(int id);
+
     /**
      * @brief Devuelve un objeto SDLMusic.
      *
@@ -150,6 +155,8 @@ class ResourceManager {
      * @param loader Loader a partir del cual se cargaran las texturas.
      */
     void init(SDLTextureLoader& loader);
+
+
 };
 
 #endif

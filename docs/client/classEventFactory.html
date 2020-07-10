@@ -125,9 +125,12 @@ Métodos públicos estáticos</h2></td></tr>
 <tr class="memitem:ab0ac7ffc3084a2d8dece025b8dce810d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEventFactory.html#ab0ac7ffc3084a2d8dece025b8dce810d">pickup_event</a> ()</td></tr>
 <tr class="memdesc:ab0ac7ffc3084a2d8dece025b8dce810d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evento de levantar items del suelo.  <a href="classEventFactory.html#ab0ac7ffc3084a2d8dece025b8dce810d">Más...</a><br /></td></tr>
 <tr class="separator:ab0ac7ffc3084a2d8dece025b8dce810d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad5186427d285af0a32261766718ec5e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEventFactory.html#aad5186427d285af0a32261766718ec5e">drop_item_event</a> (int slot)</td></tr>
-<tr class="memdesc:aad5186427d285af0a32261766718ec5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evento de tirar un item al suelo.  <a href="classEventFactory.html#aad5186427d285af0a32261766718ec5e">Más...</a><br /></td></tr>
-<tr class="separator:aad5186427d285af0a32261766718ec5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d9ae6ad0a433d128a4351cf8123a0aa"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEventFactory.html#a4d9ae6ad0a433d128a4351cf8123a0aa">drop_item_event</a> (SlotId slot)</td></tr>
+<tr class="memdesc:a4d9ae6ad0a433d128a4351cf8123a0aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evento de tirar un item al suelo.  <a href="classEventFactory.html#a4d9ae6ad0a433d128a4351cf8123a0aa">Más...</a><br /></td></tr>
+<tr class="separator:a4d9ae6ad0a433d128a4351cf8123a0aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1688530549305478faf23ed2a71c5c6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEventFactory.html#ab1688530549305478faf23ed2a71c5c6">unequip_event</a> (SlotId slot)</td></tr>
+<tr class="memdesc:ab1688530549305478faf23ed2a71c5c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evento de desequipar.  <a href="classEventFactory.html#ab1688530549305478faf23ed2a71c5c6">Más...</a><br /></td></tr>
+<tr class="separator:ab1688530549305478faf23ed2a71c5c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentación de las funciones miembro</h2>
 <a id="a3c2a95ed0d67d62f921eb68d24c3e91f"></a>
@@ -345,8 +348,8 @@ Métodos públicos estáticos</h2></td></tr>
 
 </div>
 </div>
-<a id="aad5186427d285af0a32261766718ec5e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad5186427d285af0a32261766718ec5e">&#9670;&nbsp;</a></span>drop_item_event()</h2>
+<a id="a4d9ae6ad0a433d128a4351cf8123a0aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d9ae6ad0a433d128a4351cf8123a0aa">&#9670;&nbsp;</a></span>drop_item_event()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -357,7 +360,7 @@ Métodos públicos estáticos</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classEvent.html">Event</a> EventFactory::drop_item_event </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">SlotId&#160;</td>
           <td class="paramname"><em>slot</em></td><td>)</td>
           <td></td>
         </tr>
@@ -485,6 +488,41 @@ Métodos públicos estáticos</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Evento de levantar items del suelo. </p>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classEvent.html">Event</a> </dd></dl>
+
+</div>
+</div>
+<a id="ab1688530549305478faf23ed2a71c5c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1688530549305478faf23ed2a71c5c6">&#9670;&nbsp;</a></span>unequip_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEvent.html">Event</a> EventFactory::unequip_event </td>
+          <td>(</td>
+          <td class="paramtype">SlotId&#160;</td>
+          <td class="paramname"><em>slot</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evento de desequipar. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slot</td><td>Slot que se quiere desequipar el item. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classEvent.html">Event</a> </dd></dl>
 
 </div>

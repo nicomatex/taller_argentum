@@ -33,4 +33,9 @@ void RenderizableObject::set_visual_info(visual_info_t new_visual_info){
     visual_info = new_visual_info;
 }
 
+void RenderizableObject::set_offset(int new_x_offset, int new_y_offset){
+    visual_info.offset_x = new_x_offset;
+    visual_info.offset_y = new_y_offset;
+}
+
 void RenderizableObject::update() {}

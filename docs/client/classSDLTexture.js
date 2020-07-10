@@ -12,6 +12,8 @@ var classSDLTexture =
     [ "operator=", "classSDLTexture.html#a66c185dd5b0b800f6024e5da502b48e2", null ],
     [ "render", "classSDLTexture.html#a89c74ecef3e5715a3a3b6dd13acebe72", null ],
     [ "render", "classSDLTexture.html#ae5d4623a7a8a64db3780107ab6ae4894", null ],
+    [ "reset_color_mod", "classSDLTexture.html#ad55d37b150c205b69cb2dd54935f1365", null ],
+    [ "set_color_mod", "classSDLTexture.html#a1cbd5b34b25c75f0504e75982da3495a", null ],
     [ "height", "classSDLTexture.html#a09e2eb6467b2054d9372f06b04b8c8e0", null ],
     [ "renderer", "classSDLTexture.html#ad9db3a49a425b8d09ae4f363b40d935a", null ],
     [ "texture", "classSDLTexture.html#af5d5afb4d3893275bf1aac1bfa3a89b6", null ],

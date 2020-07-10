@@ -6,6 +6,7 @@
 #include "../ECS/component.h"
 #include "../actor.h"
 #include "../camera.h"
+#include "../in_game_text.h"
 
 typedef std::unordered_map<std::string, Actor> Parts;
 typedef std::unordered_map<std::string, int> PartIds;
@@ -22,6 +23,10 @@ class VisualCharacterComponent : public Component {
     int transition_offset_y;
     Parts parts;
     PartIds part_ids;
+    InGameText render_name;
+    InGameText render_damage;
+    bool recently_damaged;
+    SDLTimer damage_render_timer;
     SDLTimer transition_timer;
     /* Actualiza el offset de renderizacion. */
     void _update_offset();
@@ -51,7 +56,7 @@ class VisualCharacterComponent : public Component {
      */
     VisualCharacterComponent(int head_id, int body_id, int weapon_id,
                              int shield_id, int helmet_id, int armor_id,
-                             int speed);
+                             int speed, const std::string& name);
     ~VisualCharacterComponent();
 
     /**
@@ -107,7 +112,20 @@ class VisualCharacterComponent : public Component {
      */
     int get_part_id(const std::string &part_name);
 
+    /**
+     * @brief Indica si el personaje se esta moviendo.
+     * 
+     * @return true si se esta moviendo.
+     * @return false si no se esta moviendo.
+     */
     bool is_moving();
+
+    /**
+     * @brief Indica que se debe renderizar el danio recibido.
+     * 
+     * @param damage Danio recibido.
+     */
+    void display_damage(int damage);
 };
 
 #endif

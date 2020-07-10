@@ -30,6 +30,7 @@ var hierarchy =
     [ "Entity", "classEntity.html", null ],
     [ "EntityFactory", "classEntityFactory.html", null ],
     [ "EntityManager", "classEntityManager.html", null ],
+    [ "Equipment", "classEquipment.html", null ],
     [ "Event", "classEvent.html", null ],
     [ "EventFactory", "classEventFactory.html", null ],
     [ "EventHandler", "classEventHandler.html", [
@@ -68,10 +69,13 @@ var hierarchy =
     [ "RaceAndClassSelector", "classRaceAndClassSelector.html", null ],
     [ "RenderizableObject", "classRenderizableObject.html", [
       [ "Actor", "classActor.html", null ],
-      [ "Decoration", "classDecoration.html", null ]
+      [ "Decoration", "classDecoration.html", null ],
+      [ "InGameText", "classInGameText.html", null ]
     ] ],
     [ "ResourceManager", "classResourceManager.html", null ],
     [ "ResponsiveScaler", "classResponsiveScaler.html", null ],
+    [ "SDLBitmapFont", "classSDLBitmapFont.html", null ],
+    [ "SDLBitmapText", "classSDLBitmapText.html", null ],
     [ "SDLMusic", "classSDLMusic.html", null ],
     [ "SDLSoundFx", "classSDLSoundFx.html", null ],
     [ "SDLSprite", "classSDLSprite.html", null ],

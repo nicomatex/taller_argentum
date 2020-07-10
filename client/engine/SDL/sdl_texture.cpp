@@ -96,3 +96,11 @@ void SDLTexture::render(SDL_Rect src) const {
 int SDLTexture::get_height() const { return this->height; }
 
 int SDLTexture::get_width() const { return this->width; }
+
+void SDLTexture::set_color_mod(uint8_t r, uint8_t g, uint8_t b){
+    SDL_SetTextureColorMod(this->texture,r,g,b);
+}
+
+void SDLTexture::reset_color_mod(){
+    SDL_SetTextureColorMod(this->texture,255,255,255);
+}

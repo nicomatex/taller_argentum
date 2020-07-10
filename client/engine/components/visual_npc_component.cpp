@@ -5,13 +5,15 @@
 #include "../engine_config.h"
 #include "../visual_config.h"
 
-VisualNPCComponent::VisualNPCComponent(int body_id, int speed)
+VisualNPCComponent::VisualNPCComponent(int body_id, int speed,
+                                       const std::string& name)
     : speed(speed),
       initialized(false),
       body(ResourceManager::get_instance().get_animation_pack("npcs", body_id),
            {0, 0, 0, 0}),
       transition_offset_x(0),
-      transition_offset_y(0) {
+      transition_offset_y(0),
+      render_name(name, MONSTER_NAME_COLOR, NAME_FONT_ID, NAME_INFO) {
     int real_width = ResourceManager::get_instance()
                          .get_animation_pack("npcs", body_id)
                          .get_frame_width(DOWN);
@@ -26,6 +28,7 @@ VisualNPCComponent::VisualNPCComponent(int body_id, int speed)
         (real_height * SIZE_GRANULARITY * NPC_SIZE_FACTOR) / PATTERN_TILE_SIZE;
     body.set_visual_info(
         {arbitrary_width, arbitrary_height, (-arbitrary_width) / 3, 0});
+    render_name.set_offset(-20, arbitrary_height / 8);
 }
 
 VisualNPCComponent::~VisualNPCComponent() {}
@@ -40,6 +43,8 @@ la componente de posicion. */
 void VisualNPCComponent::draw(Camera& camera) {
     std::unique_lock<std::recursive_mutex> l(m);
     camera.draw(&body, current_x, current_y, transition_offset_x,
+                transition_offset_y);
+    camera.draw(&render_name, current_x, current_y, transition_offset_x,
                 transition_offset_y);
 }
 

@@ -72,6 +72,10 @@ class SDLTexture {
 
     int get_width() const;
     int get_height() const;
+
+    void set_color_mod(uint8_t r, uint8_t g, uint8_t b);
+
+    void reset_color_mod();
 };
 
 #endif

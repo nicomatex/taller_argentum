@@ -564,5 +564,16 @@
     			"ckey" : [0,0,0]
     		}
     	]
+    },
+    "bitmap_fonts":{
+        "basedir":"assets/bitmap_fonts/",
+        "textures":[
+            {
+                "id":1,
+                "filename":"1.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
+            }
+        ]
     }
 }

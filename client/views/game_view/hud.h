@@ -3,6 +3,7 @@
 #include "../../chat_buffer.h"
 #include "../../engine/ECS/entity.h"
 #include "../../engine/SDL/sdl_text.h"
+#include "../../engine/SDL/sdl_bitmap_text.h"
 #include "../../engine/SDL/sdl_texture.h"
 #include "../../engine/SDL/sdl_window.h"
 #include "../../engine/UI/stat_bar.h"
@@ -38,7 +39,6 @@ class Hud {
     SDLTexture& side_panel_background;
     SDLText gold_text;
     SDLText level_text;
-
     friend class UiEventHandler;
 
     void _render_gold_amount();

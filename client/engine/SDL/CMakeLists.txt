@@ -8,6 +8,8 @@ add_library(sdlutil
   sdl_texture_loader.cpp
   sdl_music.cpp
   sdl_sfx.cpp
+  sdl_bitmap_font.cpp
+  sdl_bitmap_text.cpp
 )
 
 

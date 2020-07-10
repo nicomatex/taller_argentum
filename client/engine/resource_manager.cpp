@@ -4,8 +4,8 @@
 #include <iostream>
 
 #include "../../include/nlohmann/json.hpp"
-#include "engine_config.h"
 #include "asset_loading_error.h"
+#include "engine_config.h"
 
 using json = nlohmann::json;
 
@@ -43,7 +43,7 @@ void ResourceManager::_load_textures(SDLTextureLoader& loader,
                 }
             }
         }
-    } catch (std::exception &e) {
+    } catch (std::exception& e) {
         throw AssetLoadingError("Error loading textures.");
     }
     std::cout << MSG_TEXTURES_FINISHED << std::endl;
@@ -115,14 +115,24 @@ void ResourceManager::_load_fonts(const std::string& font_index_file) {
     std::ifstream input_file(font_index_file);
     json fonts_info = json::parse(input_file);
     try {
-        std::string basedir = fonts_info["basedir"];
-        for (auto& font : fonts_info["fonts"].items()) {
+        std::string basedir = fonts_info["truetype"]["basedir"];
+        for (auto& font : fonts_info["truetype"]["fonts"].items()) {
             json font_info = font.value();
             std::string filename = font_info["filename"];
             std::string font_address = basedir + filename;
             int font_id = font_info["id"];
             TTF_Font* ttf_font = TTF_OpenFont(font_address.c_str(), 28);
             font_map.insert(std::make_pair(font_id, ttf_font));
+        }
+
+        for (auto& font : fonts_info["bitmap"]["fonts"].items()) {
+            json font_info = font.value();
+            int font_id = font_info["id"];
+            SDLBitmapFont bitmap_font(
+                get_texture("bitmap_fonts", font_info["texture_id"]),
+                font_info["first_ascii_char"], font_info["char_width"],
+                font_info["char_height"], font_info["chars_per_row"]);
+            bitmap_font_map.insert(std::make_pair(font_id, bitmap_font));
         }
     } catch (std::exception& e) {
         throw AssetLoadingError("Error loading fonts.");
@@ -174,7 +184,8 @@ SDLTexture& ResourceManager::get_texture(const std::string& type, int id) {
     }
 
     if (texture_map.at(type).count(id) == 0) {
-        throw AssetLoadingError("No such texture id: %d, within type %s", id, type);
+        throw AssetLoadingError("No such texture id: %d, within type %s", id,
+                                type);
     }
     return texture_map.at(type).at(id);
 }
@@ -186,8 +197,8 @@ AnimationPack& ResourceManager::get_animation_pack(const std::string& type,
     }
 
     if (texture_map.at(type).count(id) == 0) {
-        throw AssetLoadingError("No such AnimationPack id: %d, within type %s", id,
-                          type);
+        throw AssetLoadingError("No such AnimationPack id: %d, within type %s",
+                                id, type);
     }
     return animation_pack_map.at(type).at(id);
 }
@@ -198,7 +209,8 @@ SDLSprite& ResourceManager::get_sprite(const std::string& type, int id) {
     }
 
     if (sprite_map.at(type).count(id) == 0) {
-        throw AssetLoadingError("No such Sprite id: %d, within type %s", id, type);
+        throw AssetLoadingError("No such Sprite id: %d, within type %s", id,
+                                type);
     }
     return sprite_map.at(type).at(id);
 }
@@ -208,6 +220,13 @@ TTF_Font* ResourceManager::get_font(int id) {
         throw AssetLoadingError("No such font id: %d");
     }
     return font_map.at(id);
+}
+
+SDLBitmapFont& ResourceManager::get_bitmap_font(int id){
+    if (bitmap_font_map.count(id) == 0) {
+        throw AssetLoadingError("No such font id: %d");
+    }
+    return bitmap_font_map.at(id);
 }
 
 void ResourceManager::free_resources() {

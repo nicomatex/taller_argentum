@@ -9,6 +9,7 @@ var classRenderizableObject =
     [ "get_y_offset", "classRenderizableObject.html#a0b96e2f34fac587bed385fc56a57b556", null ],
     [ "operator=", "classRenderizableObject.html#ab136012f5239550d503e56980f9a8652", null ],
     [ "render", "classRenderizableObject.html#a34c282cca8cf98cb7a83517b50563e33", null ],
+    [ "set_offset", "classRenderizableObject.html#a5d4f2655cd537f6bf62a498566362005", null ],
     [ "set_visual_info", "classRenderizableObject.html#a3e78cd574433bdd73d3a47f69dccf948", null ],
     [ "update", "classRenderizableObject.html#a9cff6dcb5d97a828f3e1983532c79474", null ],
     [ "visual_info", "classRenderizableObject.html#aafc31d301e2528d8275aab5f572cd11f", null ]

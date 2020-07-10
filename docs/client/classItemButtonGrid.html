@@ -106,9 +106,9 @@ $(document).ready(function(){initNavTree('classItemButtonGrid.html',''); initRes
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a92991fd70c3960395fa32be8fbe6e638"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemButtonGrid.html#a92991fd70c3960395fa32be8fbe6e638">ItemButtonGrid</a> (SDL_Rect inventory_area, SDL_Rect viewport, SDL_Renderer *renderer, int rows, int cols, <a class="el" href="classSocketManager.html">SocketManager</a> &amp;socket_manager)</td></tr>
-<tr class="memdesc:a92991fd70c3960395fa32be8fbe6e638"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un objeto Item <a class="el" href="classButton.html" title="Boton abstracto. Todos los botones heredan de esta clase.">Button</a> Grid.  <a href="classItemButtonGrid.html#a92991fd70c3960395fa32be8fbe6e638">Más...</a><br /></td></tr>
-<tr class="separator:a92991fd70c3960395fa32be8fbe6e638"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90b890b4bb37e79e4383e0c211ed9cd8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemButtonGrid.html#a90b890b4bb37e79e4383e0c211ed9cd8">ItemButtonGrid</a> (SDL_Rect inventory_area, SDL_Rect viewport, SDL_Renderer *renderer, int rows, int cols, <a class="el" href="classSocketManager.html">SocketManager</a> &amp;socket_manager, <a class="el" href="classEvent.html">Event</a>(*left_click_event)(SlotId), <a class="el" href="classEvent.html">Event</a>(*right_click_event)(SlotId))</td></tr>
+<tr class="memdesc:a90b890b4bb37e79e4383e0c211ed9cd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un objeto Item <a class="el" href="classButton.html" title="Boton abstracto. Todos los botones heredan de esta clase.">Button</a> Grid.  <a href="classItemButtonGrid.html#a90b890b4bb37e79e4383e0c211ed9cd8">Más...</a><br /></td></tr>
+<tr class="separator:a90b890b4bb37e79e4383e0c211ed9cd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af00edfda56d58aaa83cd4b79fa607632"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemButtonGrid.html#af00edfda56d58aaa83cd4b79fa607632">handle_event</a> (SDL_Event &amp;e)</td></tr>
 <tr class="memdesc:af00edfda56d58aaa83cd4b79fa607632"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maneja los clicks en el inventario.  <a href="classItemButtonGrid.html#af00edfda56d58aaa83cd4b79fa607632">Más...</a><br /></td></tr>
 <tr class="separator:af00edfda56d58aaa83cd4b79fa607632"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,8 +119,8 @@ Métodos públicos</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Wrapper para todos los botones del inventario. </p>
 </div><h2 class="groupheader">Documentación del constructor y destructor</h2>
-<a id="a92991fd70c3960395fa32be8fbe6e638"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92991fd70c3960395fa32be8fbe6e638">&#9670;&nbsp;</a></span>ItemButtonGrid()</h2>
+<a id="a90b890b4bb37e79e4383e0c211ed9cd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90b890b4bb37e79e4383e0c211ed9cd8">&#9670;&nbsp;</a></span>ItemButtonGrid()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -159,7 +159,19 @@ Métodos públicos</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classSocketManager.html">SocketManager</a> &amp;&#160;</td>
-          <td class="paramname"><em>socket_manager</em>&#160;</td>
+          <td class="paramname"><em>socket_manager</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classEvent.html">Event</a>(*)(SlotId)&#160;</td>
+          <td class="paramname"><em>left_click_event</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classEvent.html">Event</a>(*)(SlotId)&#160;</td>
+          <td class="paramname"><em>right_click_event</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -178,6 +190,8 @@ Métodos públicos</h2></td></tr>
     <tr><td class="paramname">rows</td><td>Filas del inventario. </td></tr>
     <tr><td class="paramname">cols</td><td>Columnas del inventario. </td></tr>
     <tr><td class="paramname">socket_manager</td><td><a class="el" href="classSocket.html">Socket</a> manager del juego. </td></tr>
+    <tr><td class="paramname">left_click_event</td><td>Función para crear el evento a partir del slot clickeado (con doble click izquierdo). </td></tr>
+    <tr><td class="paramname">right_click_event</td><td>Función para crear el evento a partir del slot clickeado (con click derecho). </td></tr>
   </table>
   </dd>
 </dl>

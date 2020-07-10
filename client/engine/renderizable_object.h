@@ -86,6 +86,8 @@ class RenderizableObject {
      */
     void set_visual_info(visual_info_t new_visual_info);
 
+    void set_offset(int new_x_offset, int new_y_offset);
+    
     /**
      * @brief Actualiza el objeto.
      * 

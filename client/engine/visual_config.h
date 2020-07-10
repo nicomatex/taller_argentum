@@ -11,6 +11,16 @@
 
 #define FLOOR_TILE_CONFIG {100,100,0,0}
 
+#define NAME_COLOR {0,0,255,0}
+#define MONSTER_NAME_COLOR {255,114,0,0}
+#define NAME_FONT_ID 1
+#define NAME_INFO {0,60,0,0}
+
+#define DAMAGE_COLOR {255,0,0,0}
+#define DAMAGE_FONT_ID 1
+#define DAMAGE_INFO {0,60,20,-100}
+#define DAMAGE_TEXT_DURATION 1100 //ms
+
 #define PATTERN_TILE_SIZE 32 //Los tiles patron tienen 32px. 
 #define NPC_SIZE_FACTOR 1.3 //Para hacer los npcs mas grandes.
 

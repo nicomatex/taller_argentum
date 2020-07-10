@@ -1,7 +1,8 @@
 var classVisualCharacterComponent =
 [
-    [ "VisualCharacterComponent", "classVisualCharacterComponent.html#a1997fe40f79b0a0a932e45975e638613", null ],
+    [ "VisualCharacterComponent", "classVisualCharacterComponent.html#a0b7e2616c9b2d3f59027861930c5d279", null ],
     [ "~VisualCharacterComponent", "classVisualCharacterComponent.html#acb3134bca7ac4286e5761a7da8bc9d50", null ],
+    [ "display_damage", "classVisualCharacterComponent.html#a4733043f939bf677f8f2748068bd653b", null ],
     [ "draw", "classVisualCharacterComponent.html#af4d37ba8f7847989c6b46fdcbf86c2d5", null ],
     [ "get_part", "classVisualCharacterComponent.html#a32fba7953afc47af4fad9cb2a05717f4", null ],
     [ "get_part_id", "classVisualCharacterComponent.html#a5316800eb8af1fff96367a5ee43897a8", null ],

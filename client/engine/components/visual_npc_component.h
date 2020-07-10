@@ -6,10 +6,11 @@
 #include "../ECS/component.h"
 #include "../actor.h"
 #include "../camera.h"
+#include "../in_game_text.h"
 
 /**
  * @brief Componente visual de los NPCs.
- * 
+ *
  */
 class VisualNPCComponent : public Component {
    private:
@@ -19,6 +20,7 @@ class VisualNPCComponent : public Component {
     Actor body;
     int transition_offset_x;
     int transition_offset_y;
+    InGameText render_name;
     SDLTimer transition_timer;
     /* Actualiza el offset de renderizacion. */
     void _update_offset();
@@ -35,7 +37,7 @@ class VisualNPCComponent : public Component {
      * @param body_id id del cuerpo del NPC.
      * @param speed Velocidad de movimiento del npc en tiles/segundo.
      */
-    VisualNPCComponent(int body_id, int speed);
+    VisualNPCComponent(int body_id, int speed, const std::string& name);
     ~VisualNPCComponent();
 
     /**
@@ -52,7 +54,7 @@ class VisualNPCComponent : public Component {
      *
      * @param camera Camara con la cual se desea renderizar el NPC.
      */
-    void draw(Camera &camera);
+    void draw(Camera& camera);
 
     /**
      * @brief Actualiza el NPC segun la informacion recibida en una

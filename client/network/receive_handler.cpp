@@ -136,7 +136,7 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                         .set_orientation(entity_info["direction"]);
                     break;
                 case NPC:
-                    //todo
+                    // todo
                     break;
             }
         } else {
@@ -154,7 +154,7 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                         entity_info);
                     break;
                 case NPC:
-                    //todo
+                    // todo
                     break;
             }
         }
@@ -183,6 +183,11 @@ void ClientReceiveHandler::handle_loot_update(Event &ev) {
 
 void ClientReceiveHandler::handle_incoming_damage(Event &ev) {
     SoundSystem::get_instance().play_game_sfx(5);
+    int player_id = map_change_buffer.get_follow_entity_id();
+    EntityManager::get_instance()
+        .get_from_id(player_id)
+        .get_component<VisualCharacterComponent>()
+        .display_damage(ev.get_json()["dmg"]);
 }
 
 void ClientReceiveHandler::handle_outcoming_damage(Event &ev) {
@@ -190,7 +195,7 @@ void ClientReceiveHandler::handle_outcoming_damage(Event &ev) {
 }
 
 void ClientReceiveHandler::handle_outcoming_evaded_damage(Event &ev) {
-    SoundSystem::get_instance().play_game_sfx(6);  
+    SoundSystem::get_instance().play_game_sfx(6);
 }
 
 void ClientReceiveHandler::handle_incoming_damage_evaded(Event &ev) {

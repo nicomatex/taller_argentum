@@ -106,9 +106,9 @@ $(document).ready(function(){initNavTree('classTextInput.html',''); initResizabl
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a45b1c24d2dd4acc2c18538999d6d4cde"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTextInput.html#a45b1c24d2dd4acc2c18538999d6d4cde">TextInput</a> (SDL_Rect render_area, SDL_Renderer *renderer, SDL_Color font_color, SDL_Color background_color, TTF_Font *font)</td></tr>
-<tr class="memdesc:a45b1c24d2dd4acc2c18538999d6d4cde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un objeto <a class="el" href="classTextInput.html" title="Input de texto.">TextInput</a>.  <a href="classTextInput.html#a45b1c24d2dd4acc2c18538999d6d4cde">Más...</a><br /></td></tr>
-<tr class="separator:a45b1c24d2dd4acc2c18538999d6d4cde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a585eaadddb87fbe76f711f2e1e46a0aa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTextInput.html#a585eaadddb87fbe76f711f2e1e46a0aa">TextInput</a> (SDL_Rect render_area, SDL_Renderer *renderer, SDL_Color font_color, SDL_Color background_color, TTF_Font *font, uint64_t max_len=UINT64_MAX)</td></tr>
+<tr class="memdesc:a585eaadddb87fbe76f711f2e1e46a0aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un objeto <a class="el" href="classTextInput.html" title="Input de texto.">TextInput</a>.  <a href="classTextInput.html#a585eaadddb87fbe76f711f2e1e46a0aa">Más...</a><br /></td></tr>
+<tr class="separator:a585eaadddb87fbe76f711f2e1e46a0aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29ac32ff4c316aa22848b46a14b426f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTextInput.html#a29ac32ff4c316aa22848b46a14b426f2">add_characters</a> (char *characters)</td></tr>
 <tr class="memdesc:a29ac32ff4c316aa22848b46a14b426f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega caracteres al texto.  <a href="classTextInput.html#a29ac32ff4c316aa22848b46a14b426f2">Más...</a><br /></td></tr>
 <tr class="separator:a29ac32ff4c316aa22848b46a14b426f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,8 +131,8 @@ Métodos públicos</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Input de texto. </p>
 </div><h2 class="groupheader">Documentación del constructor y destructor</h2>
-<a id="a45b1c24d2dd4acc2c18538999d6d4cde"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45b1c24d2dd4acc2c18538999d6d4cde">&#9670;&nbsp;</a></span>TextInput()</h2>
+<a id="a585eaadddb87fbe76f711f2e1e46a0aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a585eaadddb87fbe76f711f2e1e46a0aa">&#9670;&nbsp;</a></span>TextInput()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,7 +165,13 @@ Métodos públicos</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">TTF_Font *&#160;</td>
-          <td class="paramname"><em>font</em>&#160;</td>
+          <td class="paramname"><em>font</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>max_len</em> = <code>UINT64_MAX</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

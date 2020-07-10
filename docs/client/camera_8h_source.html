@@ -112,60 +112,58 @@ $(document).ready(function(){initNavTree('camera_8h_source.html',''); initResiza
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classCamera.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCamera.html">Camera</a> {</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="comment">/* Ancho que se va a renderizar en tiles. */</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">int</span> width_tiles;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">/* Altura que se va a renderizar en tiles. */</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">int</span> height_tiles;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classPositionComponent.html">PositionComponent</a> &amp;follow_component;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment">/* Coordenadas del tile donde esta centrada la camara. */</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">int</span> x_center_tile;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">int</span> y_center_tile;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">int</span> map_size; <span class="comment">/* Lado del mapa, en tiles (los mapas son cuadrados). */</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">/* Coordenadas del tile donde esta centrada la camara. */</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">int</span> x_center_tile;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">int</span> y_center_tile;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">int</span> tile_size; <span class="comment">/* Lado de cada tile, en pixeles.*/</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">/* Ancho que se va a renderizar en tiles. */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">int</span> width_tiles;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">int</span> camera_offset_x;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">int</span> camera_offset_y;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">/* Altura que se va a renderizar en tiles. */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">int</span> height_tiles;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classSDLTimer.html">SDLTimer</a> movement_timer;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">int</span> map_size; <span class="comment">/* Lado del mapa, en tiles (los mapas son cuadrados). */</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">int</span> tile_size; <span class="comment">/* Lado de cada tile, en pixeles.*/</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">int</span> speed;  <span class="comment">// En tiles/segundo.</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    SDL_Rect viewport;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">int</span> camera_offset_x;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">int</span> camera_offset_y;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">int</span> speed;  <span class="comment">// En tiles/segundo.</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classSDLTimer.html">SDLTimer</a> movement_timer;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    SDL_Rect viewport;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="classPositionComponent.html">PositionComponent</a> &amp;follow_component;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">/* Devuelve true si un componente visual esta dentro del campo</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">    de vision de la camara.*/</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">bool</span> _is_within_visual_range(<a class="code" href="classRenderizableObject.html">RenderizableObject</a> *component);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">/* Devuelve el area fisica donde deberia ser dibujado el componente.*/</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    SDL_Rect _get_render_area(<a class="code" href="classRenderizableObject.html">RenderizableObject</a> *component, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y,</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                              <span class="keywordtype">int</span> x_tmp_offset, <span class="keywordtype">int</span> y_tmp_offset);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    SDL_Rect _get_render_area(<a class="code" href="classDecoration.html">Decoration</a> &amp;decoration);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">/* Devuelve true si un componente visual esta dentro del campo</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">    de vision de la camara.*/</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">bool</span> _is_within_visual_range(<a class="code" href="classRenderizableObject.html">RenderizableObject</a> *component);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">/* Devuelve el area fisica donde deberia ser dibujado el componente.*/</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    SDL_Rect _get_render_area(<a class="code" href="classRenderizableObject.html">RenderizableObject</a> *component, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                              <span class="keywordtype">int</span> x_tmp_offset, <span class="keywordtype">int</span> y_tmp_offset);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    SDL_Rect _get_render_area(<a class="code" href="classDecoration.html">Decoration</a> &amp;decoration);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> _update_offset();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> _update_offset();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="classCamera.html#ac6fa4e4cc53a10492c619abbbe8665a5">Camera</a>(<a class="code" href="classPositionComponent.html">PositionComponent</a> &amp;follow_component, SDL_Rect viewport, <span class="keywordtype">int</span> map_size,</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;           <span class="keywordtype">int</span> tile_size, <span class="keywordtype">int</span> speed);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    ~<a class="code" href="classCamera.html">Camera</a>();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classCamera.html#a42cda7239981a5618660d04bd5893556">update</a>();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classCamera.html#ab4594414daf3874e7139c79dec541449">draw</a>(<a class="code" href="classRenderizableObject.html">RenderizableObject</a> *component, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> x_tmp_offset,</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;              <span class="keywordtype">int</span> y_tmp_offset);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classCamera.html#a95eaaace775843647d6f2e3886ba672b">draw_all</a>();</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classCamera.html#a740604372eb53b0414a3177788608d97">render_map_layers</a>(std::vector&lt;std::vector&lt;Decoration&gt;&gt; &amp;layers);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="structposition.html">position_t</a> <a class="code" href="classCamera.html#ada76a773c9a20e52c06b1ec88696c980">tile_at</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;};</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="classCamera.html#ac6fa4e4cc53a10492c619abbbe8665a5">Camera</a>(<a class="code" href="classPositionComponent.html">PositionComponent</a> &amp;follow_component, SDL_Rect viewport, <span class="keywordtype">int</span> map_size,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;           <span class="keywordtype">int</span> tile_size, <span class="keywordtype">int</span> speed);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    ~<a class="code" href="classCamera.html">Camera</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classCamera.html#a42cda7239981a5618660d04bd5893556">update</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classCamera.html#ab4594414daf3874e7139c79dec541449">draw</a>(<a class="code" href="classRenderizableObject.html">RenderizableObject</a> *component, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> x_tmp_offset,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;              <span class="keywordtype">int</span> y_tmp_offset);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classCamera.html#a95eaaace775843647d6f2e3886ba672b">draw_all</a>();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classCamera.html#a740604372eb53b0414a3177788608d97">render_map_layers</a>(std::vector&lt;std::vector&lt;Decoration&gt;&gt; &amp;layers);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <a class="code" href="structposition.html">position_t</a> <a class="code" href="classCamera.html#ada76a773c9a20e52c06b1ec88696c980">tile_at</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;};</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassRenderizableObject_html"><div class="ttname"><a href="classRenderizableObject.html">RenderizableObject</a></div><div class="ttdoc">Interfaz que deben implementar todos los componentes que vayan a ser renderizados por la camara.</div><div class="ttdef"><b>Definition:</b> renderizable_object.h:29</div></div>

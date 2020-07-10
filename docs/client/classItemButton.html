@@ -115,9 +115,9 @@ Diagrama de herencias de ItemButton</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a6ded00b9286614ce2ab49ee8aed3ab82"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemButton.html#a6ded00b9286614ce2ab49ee8aed3ab82">ItemButton</a> (SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer *renderer, SlotId slot_number, int &amp;last_clicked_slot, <a class="el" href="classSocketManager.html">SocketManager</a> &amp;socket_manager)</td></tr>
-<tr class="memdesc:a6ded00b9286614ce2ab49ee8aed3ab82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un objeto Item <a class="el" href="classButton.html" title="Boton abstracto. Todos los botones heredan de esta clase.">Button</a>.  <a href="classItemButton.html#a6ded00b9286614ce2ab49ee8aed3ab82">Más...</a><br /></td></tr>
-<tr class="separator:a6ded00b9286614ce2ab49ee8aed3ab82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae56b238aa2611fc7860f8f6522285171"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemButton.html#ae56b238aa2611fc7860f8f6522285171">ItemButton</a> (SDL_Rect button_area, SDL_Rect viewport, SDL_Renderer *renderer, SlotId slot_number, int &amp;last_clicked_slot, <a class="el" href="classSocketManager.html">SocketManager</a> &amp;socket_manager, <a class="el" href="classEvent.html">Event</a>(*left_click_event)(SlotId), <a class="el" href="classEvent.html">Event</a>(*right_click_event)(SlotId))</td></tr>
+<tr class="memdesc:ae56b238aa2611fc7860f8f6522285171"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un objeto Item <a class="el" href="classButton.html" title="Boton abstracto. Todos los botones heredan de esta clase.">Button</a>.  <a href="classItemButton.html#ae56b238aa2611fc7860f8f6522285171">Más...</a><br /></td></tr>
+<tr class="separator:ae56b238aa2611fc7860f8f6522285171"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5bef66680b17830e3049b1ceb183a77a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemButton.html#a5bef66680b17830e3049b1ceb183a77a">on_click</a> () override</td></tr>
 <tr class="memdesc:a5bef66680b17830e3049b1ceb183a77a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Un click setea el ultimo slot clickeado. Doble click envia un evento de usar sobre el slot.  <a href="classItemButton.html#a5bef66680b17830e3049b1ceb183a77a">Más...</a><br /></td></tr>
 <tr class="separator:a5bef66680b17830e3049b1ceb183a77a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,8 +135,8 @@ Métodos públicos</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Boton clickeable para cada item del inventario. </p>
 </div><h2 class="groupheader">Documentación del constructor y destructor</h2>
-<a id="a6ded00b9286614ce2ab49ee8aed3ab82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ded00b9286614ce2ab49ee8aed3ab82">&#9670;&nbsp;</a></span>ItemButton()</h2>
+<a id="ae56b238aa2611fc7860f8f6522285171"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae56b238aa2611fc7860f8f6522285171">&#9670;&nbsp;</a></span>ItemButton()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -175,7 +175,19 @@ Métodos públicos</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classSocketManager.html">SocketManager</a> &amp;&#160;</td>
-          <td class="paramname"><em>socket_manager</em>&#160;</td>
+          <td class="paramname"><em>socket_manager</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classEvent.html">Event</a>(*)(SlotId)&#160;</td>
+          <td class="paramname"><em>left_click_event</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classEvent.html">Event</a>(*)(SlotId)&#160;</td>
+          <td class="paramname"><em>right_click_event</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
