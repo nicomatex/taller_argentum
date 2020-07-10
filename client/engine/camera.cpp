@@ -178,8 +178,7 @@ void Camera::render_map_layers(std::vector<std::vector<Decoration>> &layers) {
 
 void Camera::draw_all() {
     auto comp = [](Entity *a, Entity *b) {
-        return a->get_component<PositionComponent>().get_y() >
-               b->get_component<PositionComponent>().get_y();
+        return a->get_component<PositionComponent>().get_y() >= b->get_component<PositionComponent>().get_y();
     };
 
     std::vector<EntityId> ids =
@@ -191,16 +190,18 @@ void Camera::draw_all() {
     for(auto &id : ids){
         Entity* entity = &EntityManager::get_instance().get_from_id(id);
         entity_render_order.push_back(entity);
-        std::push_heap(entity_render_order.begin(),entity_render_order.end(),comp);
     }
+    std::make_heap(entity_render_order.begin(),entity_render_order.end(),comp);
 
-    
-    for (auto &entity : entity_render_order) {
+    while(!entity_render_order.empty()){
+        Entity* entity = entity_render_order.front();
         if (entity->has_component<VisualCharacterComponent>()) {
             entity->get_component<VisualCharacterComponent>().draw(*this);
         }else if(entity->has_component<VisualNPCComponent>()){
             entity->get_component<VisualNPCComponent>().draw(*this);
         }
+        std::pop_heap(entity_render_order.begin(),entity_render_order.end(),comp);
+        entity_render_order.pop_back();
     }
 }
 
