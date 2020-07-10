@@ -3,15 +3,13 @@
 #include "../../../server_manager.h"
 #include "../../items/item.h"
 #include "../../items/item_factory.h"
+#include "../../../configuration_manager.h"
 #include <random>
 #include <cmath>
 
 // Temp
 
 #define NOT_EQUIPED 0
-#define CRITIC_PROB 50
-#define CRITIC_MULT 2
-#define DODGE_THRESHOLD 0.0000001
 
 PlayerCombatComponent::PlayerCombatComponent(ItemId helmet_id, ItemId armor_id,
                                              ItemId shield_id, ItemId weapon_id,
@@ -63,11 +61,13 @@ damage_t PlayerCombatComponent::attack() {
     attack_accumulator = 0;
     std::random_device rd;
     std::mt19937 gen(rd());
-    bool is_critic = (gen() % 100) < CRITIC_PROB;
+    unsigned int critic_prob = ConfigurationManager::get_critic_prob();
+    float critic_mult = ConfigurationManager::get_critic_mult();
+    bool is_critic = (gen() % 100) < critic_prob;
     int damage = stats.strength;
     if (weapon)
         damage += weapon->deal_damage();
-    if (is_critic) damage *= CRITIC_MULT;
+    if (is_critic) damage *= critic_mult;
     return {damage, is_critic};
 }
 
@@ -77,7 +77,8 @@ attack_result_t PlayerCombatComponent::receive_damage(damage_t raw_damage) {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<> dist(0,1);
-    if (!raw_damage.crit && (std::pow(dist(gen), stats.agility) < DODGE_THRESHOLD)) {
+    double dodge_threshold = ConfigurationManager::get_dodge_thold();
+    if (!raw_damage.crit && (std::pow(dist(gen), stats.agility) < dodge_threshold)) {
         result = {true, 0, true, false};
     }
     int received_dmg = raw_damage.damage;

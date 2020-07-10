@@ -8,6 +8,7 @@
 #include "attribute_manager.h"
 #include "events/event_factory.h"
 #include "race_graphics_manager.h"
+#include "configuration_manager.h"
 
 // Temp
 #include <iostream>
@@ -22,7 +23,7 @@ ServerManager::ServerManager()
     AttributeManager::init("ind/stats.json", "ind/races.json",
                            "ind/classes.json");
     RaceGraphicsManager::init("ind/races_graphics.json");
-
+    ConfigurationManager::init("ind/config.json");
     std::vector<MapId> v = map_manager.get_ids();
     for (auto& it : v) {
         std::cerr << "ServerManager: creating session for map id: " << it

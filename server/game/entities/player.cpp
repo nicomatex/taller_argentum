@@ -7,15 +7,10 @@
 #include "../map_log_factory.h"
 #include "components/player_combat_component.h"
 #include "components/player_movement_component.h"
+#include "../../configuration_manager.h"
 
 #define DEAD_HEAD_ID 9
 #define DEAD_BODY_ID 5
-#define NEWBIE_LVL 12
-#define LVL_DIFFERENCE 10
-
-#define GOLD_MAX_MULT 100
-#define GOLD_MAX_EXP 1.1
-#define GOLD_EXCESS 1.5
 
 // Temp
 #include <iostream>
@@ -124,12 +119,15 @@ void Player::add_item(Item* item) {
         return;
     try {
         if (item->get_type() == TYPE_GOLD) {
+            float gold_max_sec_mult = ConfigurationManager::get_gold_max_sec_mult();
+            float gold_max_sec_expo = ConfigurationManager::get_gold_max_sec_expo();
+            float gold_exc_mult = ConfigurationManager::get_gold_exc_mult();
             Gold* gold = static_cast<Gold*>(item);
             unsigned int actual_gold = inventory.get_gold_stack();
             unsigned int max_secure_gold =
-                (GOLD_MAX_MULT * std::pow((double)get_level(), GOLD_MAX_EXP));
+                (gold_max_sec_mult * std::pow((double)get_level(), gold_max_sec_expo));
             if (actual_gold + gold->get_stack() <=
-                max_secure_gold * GOLD_EXCESS) {
+                max_secure_gold * gold_exc_mult) {
                 inventory.add_gold(gold);
                 delete item;
             } else {
@@ -217,9 +215,11 @@ void Player::die() {
     experience_component.reduce();
     alive = false;
     std::vector<Item*> drops = inventory.remove_all();
+    float gold_max_sec_mult = ConfigurationManager::get_gold_max_sec_mult();
+    float gold_max_sec_expo = ConfigurationManager::get_gold_max_sec_expo();
     unsigned int actual_gold = inventory.get_gold_stack();
     unsigned int max_secure_gold =
-        (GOLD_MAX_MULT * std::pow((double)get_level(), GOLD_MAX_EXP));
+        (gold_max_sec_mult * std::pow((double)get_level(), gold_max_sec_expo));
     if (actual_gold > max_secure_gold) {
         drops.push_back(inventory.remove_gold(actual_gold - max_secure_gold));
     }
@@ -251,6 +251,8 @@ bool Player::can_attack(Entity* attacked) const {
     else if (attacked->get_type() == NPC)
         return false;
     Player* player = static_cast<Player*>(attacked);
-    return (player->get_level() > NEWBIE_LVL) && (get_level() > NEWBIE_LVL) &&
-           (std::abs<int>(get_level() - player->get_level()) < LVL_DIFFERENCE);
+    unsigned int newbie_lvl = ConfigurationManager::get_newbie_lvl();
+    unsigned int max_lvl_diff = ConfigurationManager::get_max_level_diff();
+    return (player->get_level() > newbie_lvl) && (get_level() > newbie_lvl) &&
+           (std::abs<int>(get_level() - player->get_level()) < max_lvl_diff);
 }

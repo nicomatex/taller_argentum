@@ -6,22 +6,17 @@
 
 #include "../../include/my_exception.h"
 #include "../../include/nlohmann/json.hpp"
+#include "../configuration_manager.h"
 
 RandomEventGenerator::RandomEventGenerator(const char* random_events_file)
     : events{nothing, rand_gold, rand_potion, rand_item},
       gen(rd()),
       drops_dist(0, 1) {
-    std::ifstream random_istream(random_events_file);
-    if (!random_istream.is_open())
-        throw MyException("RandomEventGenerator: Error opening races file: %s",
-                          random_events_file);
-    nlohmann::json json_random;
-    random_istream >> json_random;
     std::array<float, N_DROP_TYPES> prob_events{
-        json_random["random_events"]["nothing_prob"],
-        json_random["random_events"]["gold_prob"],
-        json_random["random_events"]["potion_prob"],
-        json_random["random_events"]["rand_obj_prob"]};
+        ConfigurationManager::get_nothing_drop_ev_prob(),
+        ConfigurationManager::get_gold_drop_ev_prob(),
+        ConfigurationManager::get_potion_drop_ev_prob(),
+        ConfigurationManager::get_rand_obj_drop_ev_prob()};
     std::array<float, N_DROP_TYPES> norm_events;
     int sum_prob =
         std::accumulate(std::begin(prob_events), std::end(prob_events), 0);

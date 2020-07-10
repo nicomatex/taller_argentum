@@ -2,10 +2,10 @@
 
 #include <algorithm>
 
+#include "../../configuration_manager.h"
+
 // Temp
 #include <iostream>
-
-#define MAX_LEVEL_DIFERENCE 10
 
 Entity::Entity(EntityId id, const std::string& name,
                MovementComponent* movement_component,
@@ -53,17 +53,18 @@ bool Entity::can_attack(Entity* attacked) const {
 attack_result_t Entity::attack(Entity* attacked) {
     if (!combat_component->attack_ready())
         return {false, 0, 0, 0};
+    unsigned int max_lvl_diff = ConfigurationManager::get_max_level_diff();
     damage_t raw_dmg = combat_component->attack();
     attack_result_t dealt = attacked->combat_component->receive_damage(raw_dmg);
     experience_component.add_exp(
         dealt.damage_dealt *
-        std::max<int>(attacked->get_level() - get_level() + MAX_LEVEL_DIFERENCE,
-                      0));
+        std::max<int>(attacked->get_level() - get_level() + max_lvl_diff, 0));
     if (dealt.killed) {
         experience_component.add_exp(
-            /*(RAND * )*/ attacked->get_max_hp() *
-            std::max<int>(
-                attacked->get_level() - get_level() + MAX_LEVEL_DIFERENCE, 0));
+            attacked->get_max_hp() *
+            std::max<int>(attacked->get_level() - get_level() + max_lvl_diff,
+                          0));
+        // Queda mejor la formula sin el rand
     }
     return dealt;
 }

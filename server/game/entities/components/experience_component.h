@@ -3,13 +3,6 @@
 
 #include "../../../../include/nlohmann/json.hpp"
 
-// Limite = int(1000 * Nivel^1.8)
-#define EXP_MULT 1000
-#define EXP_EXPO 1.8
-// Porcentaje sobre lo minimo del nivel, que pierde de experiencia al
-// morir
-#define EXP_REDU 10
-
 class ExperienceComponent {
    private:
     unsigned int current_level;

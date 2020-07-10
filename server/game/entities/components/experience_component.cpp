@@ -1,4 +1,5 @@
 #include "experience_component.h"
+#include "../../../configuration_manager.h"
 
 #include <cmath>
 #include <iostream>
@@ -25,8 +26,9 @@ void ExperienceComponent::add_exp(int exp) {
 }
 
 void ExperienceComponent::reduce() {
+    unsigned int exp_redu_percentage = ConfigurationManager::get_exp_reduc_percentage();
     unsigned int base_exp = get_xp_limit_level(current_level - 1);
-    int exp_lost = float(current_exp - base_exp) * (EXP_REDU / (float)100);
+    int exp_lost = float(current_exp - base_exp) * (exp_redu_percentage / (float)100);
     current_exp -= exp_lost;
 }
 
@@ -47,7 +49,9 @@ int ExperienceComponent::exp_to_next_level(unsigned int current_level,
 }
 
 int ExperienceComponent::get_xp_limit_level(unsigned int level) const {
-    return (int)(EXP_MULT * std::pow((double)level, EXP_EXPO));
+    float exp_limit_mult = ConfigurationManager::get_exp_limit_mult();
+    float exp_limit_expo = ConfigurationManager::get_exp_limit_expo();
+    return (int)(exp_limit_mult * std::pow((double)level, exp_limit_expo));
 }
 
 nlohmann::json ExperienceComponent::get_persist_data() const {
