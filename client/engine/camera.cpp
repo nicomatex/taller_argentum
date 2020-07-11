@@ -133,7 +133,7 @@ void Camera::_update_offset() {
 void Camera::update() {
     _update_offset();
 
-    if (follow_component.get_x() <= map_size - (width_tiles / 2) &&
+    if (follow_component.get_x() < map_size - (width_tiles / 2) &&
         follow_component.get_x() >= (width_tiles / 2)) {
         int new_center_x = follow_component.get_x();
         camera_offset_x += (x_center_tile - new_center_x) * tile_size;
@@ -142,8 +142,8 @@ void Camera::update() {
     } else {
         if (follow_component.get_x() < width_tiles / 2)
             x_center_tile = (width_tiles / 2);
-        else if (follow_component.get_x() > map_size - (width_tiles / 2))
-            x_center_tile = map_size - (width_tiles / 2);
+        else if (follow_component.get_x() >= (map_size - (width_tiles / 2)))
+            x_center_tile = map_size - (width_tiles / 2) - 1;
     }
 
     if (follow_component.get_y() <= map_size - (height_tiles / 2) &&

@@ -393,6 +393,24 @@
             "filename": "5.png",
             "needs ckey": true,
             "ckey" : [0,0,0]
+            },
+            {
+            "id":6,
+            "filename": "6.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
+            },
+            {
+            "id":7,
+            "filename": "7.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
+            },
+            {
+            "id":8,
+            "filename": "8.png",
+            "needs ckey": true,
+            "ckey" : [0,0,0]
             }
         ]
     },
