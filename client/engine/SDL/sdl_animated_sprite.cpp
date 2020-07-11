@@ -14,7 +14,8 @@ SDLSprite::SDLSprite(SDLTexture& texture, int nframes, int fps, int base_x,
       current_frame(0),
       base_x(base_x),
       base_y(base_y),
-      time_between_frames(1000 / fps) {
+      time_between_frames(1000 / fps),
+      done(false) {
     timer.start();
 }
 
@@ -79,6 +80,8 @@ void SDLSprite::render(SDL_Rect dest) {
     if (timer.get_ticks() > time_between_frames) {
         current_frame = (current_frame + 1) % nframes;
         timer.start();
+        if (current_frame == 0)
+            done = true;  // Ya se reprodujo la animacion completa una vez.
     }
     int frames_per_row = texture.get().get_width() / frame_width;
 
@@ -95,3 +98,8 @@ void SDLSprite::render(SDL_Rect dest) {
 
 int SDLSprite::get_frame_width() { return frame_width; }
 int SDLSprite::get_frame_height() { return frame_height; }
+
+
+bool SDLSprite::is_done(){
+    return done;
+}

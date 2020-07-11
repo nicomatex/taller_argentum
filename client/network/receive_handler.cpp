@@ -129,14 +129,12 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                         .set_orientation(entity_info["direction"]);
                     break;
                 case MONSTER:
+                case NPC:
                     std::cerr << "Creating Monster: " << entity_info["name"]
                               << std::endl;
                     EntityFactory::create_npc(entity_info)
                         .get_component<VisualNPCComponent>()
                         .set_orientation(entity_info["direction"]);
-                    break;
-                case NPC:
-                    // todo
                     break;
             }
         } else {
@@ -150,11 +148,9 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                         entity_info);
                     break;
                 case MONSTER:
+                case NPC:
                     entity.get_component<VisualNPCComponent>().server_update(
                         entity_info);
-                    break;
-                case NPC:
-                    // todo
                     break;
             }
         }

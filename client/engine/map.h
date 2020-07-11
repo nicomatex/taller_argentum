@@ -31,7 +31,7 @@ class Map {
     std::vector<std::vector<Decoration>> background_layers;
     std::vector<std::vector<Decoration>> foreground_layers;
     int loot_layer_index;
-
+    int spell_layer_index;
     bool is_valid;
 
    public:
@@ -75,6 +75,13 @@ class Map {
      * @param loot_info informacion de loot provista por el servidor.
      */
     void update_loot_layer(nlohmann::json loot_info);
+    
+    /**
+     * @brief Actualiza la capa de hechizos lanzados del mapa.
+     * 
+     * @param spell_info Informacion de hechizos provista por el servidor.
+     */
+    void update_spell_layer(nlohmann::json spell_info);
 
     /**
      * @brief Devuelve las capas que deben ser renderizadas por detras de las

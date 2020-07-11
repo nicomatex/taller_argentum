@@ -22,6 +22,7 @@ class SDLSprite {
     int base_y;
     SDLTimer timer;
     uint32_t time_between_frames;
+    bool done;
 
    public:
     /**
@@ -89,5 +90,13 @@ class SDLSprite {
      * @return int 
      */
     int get_frame_height();
+
+    /**
+     * @brief Indica si se reprodujo la animacion al menos una vez.
+     * 
+     * @return true Si se reprodujo al menos una vez.
+     * @return false Si no se reprodujo ni una vez.
+     */
+    bool is_done();
 };
 #endif

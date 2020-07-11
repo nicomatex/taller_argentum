@@ -69,6 +69,11 @@ void Map::generate(json map_description) {
     std::vector<Decoration> loot_layer;
     loot_layer_index = background_layers.size();
     background_layers.push_back(loot_layer);
+
+    std::vector<Decoration> spell_layer;
+    spell_layer_index = foreground_layers.size();
+    foreground_layers.push_back(spell_layer);
+
     is_valid = true;
 }
 
@@ -154,4 +159,8 @@ void Map::update_loot_layer(nlohmann::json loot_info) {
         std::cerr << e.what() << std::endl;
         throw MapError("Error updating map");
     }
+}
+
+void Map::update_spell_layer(nlohmann::json spell_info){
+    //TODO
 }

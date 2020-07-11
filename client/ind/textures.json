@@ -593,5 +593,34 @@
                 "ckey" : [0,0,0]
             }
         ]
+    },
+    "spells":{
+    	"basedir":"assets/sprites/spells/",
+    	"textures":[
+    		{
+    			"id":1,
+    			"filename":"1.png",
+    			"needs ckey":true,
+    			"ckey": [0,0,0]
+    		},
+    		{
+    			"id":2,
+    			"filename":"2.png",
+    			"needs ckey":true,
+    			"ckey": [0,0,0]
+    		},
+    		{
+    			"id":3,
+    			"filename":"3.png",
+    			"needs ckey":true,
+    			"ckey": [0,0,0]
+    		},
+    		{
+    			"id":4,
+    			"filename":"4.png",
+    			"needs ckey":true,
+    			"ckey": [0,0,0]
+    		}
+    	]
     }
 }
