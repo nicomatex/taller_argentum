@@ -10,10 +10,10 @@
 
 class ThObserver : public Thread {
    private:
-    std::atomic_bool forced_update;
     std::atomic_bool running;
     MapMonitor& map;
     BlockingThEventHandler& handler;
+    std::atomic_bool forced_update;
 
     void send_update_logs();
 

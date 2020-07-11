@@ -49,9 +49,9 @@ direction_t MonsterMovementComponent::current_direction() const {
 MonsterMovementComponent::MonsterMovementComponent(unsigned int movement_speed,
                                                    Map& map, EntityId entity_id)
     : MovementComponent(movement_speed),
-      looking_direction(DOWN),
-      map(map),
       entity_id(entity_id),
+      map(map),
+      looking_direction(DOWN),
       move_accumulator(0) {}
 MonsterMovementComponent::~MonsterMovementComponent() {}
 

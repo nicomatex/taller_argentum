@@ -124,7 +124,8 @@
 			},
 			"weapon_info": {
 				"max_damage": 5,
-				"min_damage": 2
+				"min_damage": 2,
+				"attack_speed": 2.8
 			}
 		},
 		{
@@ -137,7 +138,8 @@
 			},
 			"weapon_info": {
 				"max_damage": 4,
-				"min_damage": 2
+				"min_damage": 2,
+				"attack_speed": 2.5
 			}
 		},
 		{
@@ -150,7 +152,8 @@
 			},
 			"weapon_info": {
 				"max_damage": 16,
-				"min_damage": 4
+				"min_damage": 4,
+				"attack_speed": 4
 			}
 		},
 		{
@@ -163,7 +166,8 @@
 			},
 			"weapon_info": {
 				"max_damage": 0,
-				"min_damage": 0
+				"min_damage": 0,
+				"attack_speed": 0
 			}
 		},
 		{
@@ -176,7 +180,8 @@
 			},
 			"weapon_info": {
 				"max_damage": 0,
-				"min_damage": 0
+				"min_damage": 0,
+				"attack_speed": 0
 			}
 		},
 		{
@@ -189,7 +194,8 @@
 			},
 			"weapon_info": {
 				"max_damage": 0,
-				"min_damage": 0
+				"min_damage": 0,
+				"attack_speed": 0
 			}
 		},
 		{
@@ -202,7 +208,8 @@
 			},
 			"weapon_info": {
 				"max_damage": 0,
-				"min_damage": 0
+				"min_damage": 0,
+				"attack_speed": 0
 			}
 		},
 		{
@@ -215,7 +222,8 @@
 			},
 			"weapon_info": {
 				"max_damage": 5,
-				"min_damage": 4
+				"min_damage": 4,
+				"attack_speed": 2
 			}
 		},
 		{
@@ -227,8 +235,9 @@
 				"type": 1
 			},
 			"weapon_info": {
-				"max_damage": 9,
-				"min_damage": 1
+				"max_damage": 23,
+				"min_damage": 17,
+				"attack_speed": 1.7
 			}
 		}
 	],

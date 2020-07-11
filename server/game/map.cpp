@@ -8,14 +8,18 @@
 
 #include "entities/player.h"
 
-Map::Map(nlohmann::json map_description)
-    : map_id(map_description["map_id"]),
+Map::Map(std::tuple<const nlohmann::json&, const nlohmann::json&,
+                    const nlohmann::json&>
+             forward_args)
+    : width(std::get<0, const nlohmann::json&>(forward_args)["width"]),
+      height(std::get<0, const nlohmann::json&>(forward_args)["height"]),
       _dirty_entities(false),
       _dirty_loot(false),
-      width(map_description["width"]),
-      height(map_description["height"]),
-      transitions(map_description["transitions"], width, height),
+      transitions(std::get<2, const nlohmann::json&>(forward_args), width,
+                  height),
       entity_factory(*this) {
+    nlohmann::json map_description =
+        std::get<0, const nlohmann::json&>(forward_args);
     for (auto& layer : map_description["layers"].items()) {
         if (layer.value()["name"] == "Collision") {
             for (int i = 0; i < height; i++) {
@@ -47,7 +51,6 @@ void Map::add_entity(Entity* entity, position_t position) {
     _dirty_entities = true;
     position_map[entity->get_id()] = position;
     entity_matrix[position] = entity;
-    std::cout << "Added entity with id " << entity->get_id() << std::endl;
 }
 
 template <typename T>
@@ -120,15 +123,15 @@ std::queue<map_change_t>& Map::get_transitions() {
 nlohmann::json Map::add_player(nlohmann::json player_info) {
     // TODO: sacar esto
 
-    std::cerr << "Agregando bichos" << std::endl;
-    add_entity(entity_factory.create_monster(1), {40, 40});
-    add_entity(entity_factory.create_monster(2), {35, 35});
-    add_entity(entity_factory.create_monster(3), {30, 20});
-    add_entity(entity_factory.create_monster(4), {38, 22});
-    add_entity(entity_factory.create_monster(5), {27, 26});
+    // std::cerr << "Agregando bichos" << std::endl;
+    // add_entity(entity_factory.create_monster(1), {40, 40});
+    // add_entity(entity_factory.create_monster(2), {35, 35});
+    // add_entity(entity_factory.create_monster(3), {30, 20});
+    // add_entity(entity_factory.create_monster(4), {38, 22});
+    // add_entity(entity_factory.create_monster(5), {27, 26});
 
-    std::cerr << "Agrego cura" << std::endl;
-    add_entity(entity_factory.create_npc(8), {13, 21});
+    // std::cerr << "Agrego cura" << std::endl;
+    // add_entity(entity_factory.create_npc(8), {13, 21});
 
     Player* player = entity_factory.create_player(player_info);
 
@@ -155,6 +158,10 @@ void Map::rm_entity(EntityId entity_id) {
     entity_matrix.erase(position);
     position_map.erase(entity_id);
     delete entity;
+}
+
+bool Map::entity_exists(EntityId entity_id) {
+    return position_map.count(entity_id);
 }
 
 position_t Map::get_position(EntityId entity_id) {

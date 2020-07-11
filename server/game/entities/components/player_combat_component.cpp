@@ -34,11 +34,11 @@ PlayerCombatComponent::PlayerCombatComponent(ItemId helmet_id, ItemId armor_id,
       stats(stats),
       attack_speed(attack_speed),
       attack_accumulator(0),
+      regen_counter(0),
       helmet(nullptr),
       armor(nullptr),
       shield(nullptr),
-      weapon(nullptr),
-      regen_counter(0) {
+      weapon(nullptr) {
     ServerManager& server_manager = ServerManager::get_instance();
     ItemFactory& item_factory = server_manager.get_item_factory();
     if (helmet_id)
@@ -125,7 +125,11 @@ nlohmann::json PlayerCombatComponent::get_persist_data() const {
 }
 
 void PlayerCombatComponent::update(uint64_t delta_t) {
-    int time_between_attacks = 1000 / attack_speed;
+    float curr_attack_speed =
+        weapon ? weapon->get_attack_speed() : attack_speed;
+    uint32_t time_between_attacks = UINT32_MAX;
+    if (curr_attack_speed != 0)
+        time_between_attacks = 1000 / curr_attack_speed;
     if (attack_accumulator < time_between_attacks)
         attack_accumulator += delta_t;
     if (player.is_alive()) {
@@ -142,12 +146,16 @@ void PlayerCombatComponent::update(uint64_t delta_t) {
 }
 
 bool PlayerCombatComponent::attack_ready() const {
-    int time_between_attacks = 1000 / attack_speed;
+    float curr_attack_speed =
+        weapon ? weapon->get_attack_speed() : attack_speed;
+    uint32_t time_between_attacks = UINT32_MAX;
+    if (curr_attack_speed != 0)
+        time_between_attacks = 1000 / curr_attack_speed;
     return attack_accumulator >= time_between_attacks;
 }
 
 Armor* PlayerCombatComponent::equip(Armor* new_armor) {
-    Armor* old;
+    Armor* old = nullptr;
     switch (new_armor->get_slot()) {
         case 0:
             old = helmet;

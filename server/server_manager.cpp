@@ -6,17 +6,17 @@
 #include "../include/event.h"
 #include "../include/nlohmann/json.hpp"
 #include "attribute_manager.h"
+#include "configuration_manager.h"
 #include "events/event_factory.h"
 #include "race_graphics_manager.h"
-#include "configuration_manager.h"
 
 // Temp
 #include <iostream>
 
 ServerManager::ServerManager()
-    : character_manager("database/characters.dat", "database/characters.json"),
+    : accepter(Socket("27016", 10)),
+      character_manager("database/characters.dat", "database/characters.json"),
       map_manager("ind/maps_index.json"),
-      accepter(Socket("27016", 10)),
       game_loop(map_manager),
       item_factory("ind/items.json"),
       mob_factory("ind/mobs.json") {
@@ -79,9 +79,8 @@ void ServerManager::rm_name(ClientId client_id) {
     clients_names.rm_name(client_id);
 }
 
-void ServerManager::add_player(ClientId client_id, nlohmann::json player_data,
-                               bool send_map_data) {
-    m.lock();
+void ServerManager::add_player(ClientId client_id, nlohmann::json player_data) {
+    std::unique_lock<std::recursive_mutex> l(m);
     // add_name(client_id, player_data["name"]);
     MapId map_id = player_data["map_id"];
     MapMonitor& map_monitor = map_manager[map_id];
@@ -90,9 +89,9 @@ void ServerManager::add_player(ClientId client_id, nlohmann::json player_data,
     client_to_map[client_id] = map_id;
     player_data["pos"] = map_monitor.get_position(client_id);
 
-    std::cerr << "ServerManager: adding player: " << player_data["name"]
-              << " in map " << map_id << " at " << player_data["pos"]["x"]
-              << "," << player_data["pos"]["y"] << std::endl;
+    // std::cerr << "ServerManager: adding player: " << player_data["name"]
+    //           << " in map " << map_id << " at " << player_data["pos"]["x"]
+    //           << "," << player_data["pos"]["y"] << std::endl;
 
     // Enviamos la información de inicialización del mapa y del jugador
     nlohmann::json map_data = map_monitor.get_map_data();
@@ -101,31 +100,41 @@ void ServerManager::add_player(ClientId client_id, nlohmann::json player_data,
     send_to(client_id, EventFactory::update_entities(map_updates["entities"]));
     send_to(client_id, EventFactory::update_items(map_updates["items"]));
 
-    std::cerr << "ServerManager: sent initialize msg to: " << client_id
-              << std::endl;
+    // std::cerr << "ServerManager: sent initialize msg to: " << client_id
+    //           << std::endl;
 
     // Lo agregamos a la session correspondiente
     sessions.at(map_id).add_client(client_id);
-    m.unlock();
 }
 
 nlohmann::json ServerManager::rm_player(ClientId client_id) {
-    m.lock();
+    std::unique_lock<std::recursive_mutex> l(m);
     // Eliminamos el jugador del mapa
     MapId map_id = client_to_map.at(client_id);
     client_to_map.erase(client_id);
     nlohmann::json player_data = map_manager[map_id].rm_player(client_id);
     player_data["map_id"] = map_id;
 
-    std::cerr << "ServerManager: removing player: " << player_data["name"]
-              << " in map " << player_data["map_id"] << " at "
-              << player_data["pos"]["x"] << "," << player_data["pos"]["y"]
-              << std::endl;
+    // std::cerr << "ServerManager: removing player: " << player_data["name"]
+    //           << " in map " << player_data["map_id"] << " at "
+    //           << player_data["pos"]["x"] << "," << player_data["pos"]["y"]
+    //           << std::endl;
 
     // Eliminamos el jugador de la session
     sessions.at(map_id).rm_client(client_id);
-    m.unlock();
     return player_data;
+}
+
+void ServerManager::change_player_map(ClientId client_id, position_t new_pos,
+                                      MapId new_map) {
+    std::unique_lock<std::recursive_mutex> l(m);
+    nlohmann::json player_data = rm_player(client_id);
+    player_data["map_id"] = new_map;
+    player_data["pos"] = new_pos;
+    send_to(client_id, EventFactory::notify_map_change());
+    character_manager.save();
+    character_manager.set_character(player_data);
+    add_player(client_id, player_data);
 }
 
 void ServerManager::send_to(ClientId client_id, const Event& ev) {
@@ -133,6 +142,7 @@ void ServerManager::send_to(ClientId client_id, const Event& ev) {
 }
 
 void ServerManager::finish() {
+    std::unique_lock<std::recursive_mutex> l(m);
     accepter.stop();
     accepter.join();
     std::cerr << "Accepter: joined\n";
@@ -159,6 +169,7 @@ ClientId ServerManager::get_client_by_name(const std::string& name) {
 }
 
 MapMonitor& ServerManager::get_map_by_client(ClientId client_id) {
+    std::unique_lock<std::recursive_mutex> l(m);
     return get_map(client_to_map.at(client_id));
 }
 

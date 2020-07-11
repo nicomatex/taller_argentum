@@ -19,19 +19,20 @@
 Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
     : Entity(entity_id, player_info["name"], player_info["curr_level"],
              player_info["curr_exp"]),
+      alive(player_info["alive"]),
       head_id(player_info["head_id"]),
       body_id(player_info["body_id"]),
       inventory(player_info["inventory"]),
       map(map),
       class_type(player_info["class_type"]),
-      race_type(player_info["race_type"]),
-      alive(player_info["alive"]) {
+      race_type(player_info["race_type"]) {
     movement_component = new PlayerMovementComponent(7);
     combat_component = new PlayerCombatComponent(
         player_info["helmet_id"], player_info["armor_id"],
         player_info["shield_id"], player_info["weapon_id"],
         player_info["curr_hp"], player_info["curr_mp"],
-        AttributeManager::create_stats(player_info["race_type"]), *this, 2);
+        AttributeManager::create_stats(player_info["race_type"]), *this,
+        ConfigurationManager::get_player_attack_speed());
 }
 
 void Player::update(uint64_t delta_t) {

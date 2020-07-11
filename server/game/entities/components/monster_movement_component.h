@@ -9,8 +9,8 @@ class MonsterMovementComponent : public MovementComponent {
    private:
     EntityId entity_id;
     Map& map;
-    int move_accumulator;
     direction_t looking_direction;
+    int move_accumulator;
 
     bool update_direction();
 

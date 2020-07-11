@@ -65,6 +65,10 @@ void Monster::die() {
                 RandomEventGenerator::rand_idx_in_vec(vec.size());
             item = item_factory.create(vec[idx], 1);
         } break;
+        case nothing:
+            break;
+        case invalid:
+            break;
     }
     if (item)
         map.drop_loot(id, item);

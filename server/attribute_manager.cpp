@@ -68,7 +68,7 @@ stats_t AttributeManager::create_stats(race_type_t race_type) {
     new_stats.agility += int(stats_modifiers["agility"]);
     new_stats.intelligence += int(stats_modifiers["intelligence"]);
     new_stats.physique += int(stats_modifiers["physique"]);
-    return std::move(new_stats);
+    return new_stats;
 }
 
 bool AttributeManager::race_exists(race_type_t race_type) {

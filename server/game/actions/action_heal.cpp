@@ -10,5 +10,7 @@ void ActionHeal::execute(Map& map, EntityId entity_id) const {
     if (!npc || npc->get_profession() != HEALER)
         return;
     Player* player = static_cast<Player*>(Action::get_entity(map, entity_id));
+    if (!player || !player->is_alive())
+        return;
     npc->heal(player);
 }

@@ -19,8 +19,8 @@ typedef struct attack_result {
 class CombatComponent {
    protected:
     unsigned int max_hp;
-    unsigned int current_hp;
     unsigned int max_mp;
+    unsigned int current_hp;
     unsigned int current_mp;
 
    public:

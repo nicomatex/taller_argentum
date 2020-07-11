@@ -10,14 +10,14 @@
 class PlayerCombatComponent : public CombatComponent {
    private:
     Player& player;
-    Armor* helmet;
-    Armor* armor;
-    Armor* shield;
-    Weapon* weapon;
     stats_t stats;
     float attack_speed;
     unsigned int attack_accumulator;
     unsigned int regen_counter;
+    Armor* helmet;
+    Armor* armor;
+    Armor* shield;
+    Weapon* weapon;
 
    public:
     PlayerCombatComponent(ItemId helmet_id, ItemId armor_id, ItemId shield_id,
