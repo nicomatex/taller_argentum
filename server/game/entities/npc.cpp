@@ -6,7 +6,8 @@ Npc::Npc(EntityId entity_id, nlohmann::json npc_info, Map& map)
     : Entity(entity_id, npc_info["name"], nullptr, new NpcCombatComponent(), 1,
              0),
       map(map),
-      sprite_id(npc_info["sprite_id"]) {}
+      sprite_id(npc_info["sprite_id"]),
+      proffesion(npc_info["profession"]) {}
 
 Npc::~Npc() {}
 
@@ -30,3 +31,7 @@ nlohmann::json Npc::get_data() const {
 }
 
 void Npc::update(uint64_t delta_t) {}
+
+npc_proffesion_t Npc::get_profession() {
+    return proffesion;
+}

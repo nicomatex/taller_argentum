@@ -11,6 +11,7 @@ class Npc : public Entity {
    private:
     Map& map;
     uint32_t sprite_id;
+    npc_proffesion_t proffesion;
 
    public:
     Npc(EntityId entity_id, nlohmann::json npc_info, Map& map);
@@ -25,6 +26,8 @@ class Npc : public Entity {
     nlohmann::json get_data() const override;
 
     void update(uint64_t delta_t) override;
+
+    npc_proffesion_t get_profession();
 };
 
 #endif  // NPC_H
