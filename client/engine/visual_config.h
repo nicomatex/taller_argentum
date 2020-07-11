@@ -11,6 +11,8 @@
 
 #define FLOOR_TILE_CONFIG {100,100,0,0}
 
+#define SPELL_CONFIG {200,200,0,0}
+
 #define NAME_COLOR {0,0,255,0}
 #define MONSTER_NAME_COLOR {255,114,0,0}
 #define NAME_FONT_ID 1

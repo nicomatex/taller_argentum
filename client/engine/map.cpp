@@ -74,6 +74,11 @@ void Map::generate(json map_description) {
     spell_layer_index = foreground_layers.size();
     foreground_layers.push_back(spell_layer);
 
+    /* Temp de prueba
+    foreground_layers[spell_layer_index].push_back(
+        Decoration(ResourceManager::get_instance().get_sprite("spells", 3), 20,
+                   20, SPELL_CONFIG));*/
+
     is_valid = true;
 }
 
@@ -161,6 +166,6 @@ void Map::update_loot_layer(nlohmann::json loot_info) {
     }
 }
 
-void Map::update_spell_layer(nlohmann::json spell_info){
-    //TODO
+void Map::update_spell_layer(nlohmann::json spell_info) {
+    // TODO
 }
