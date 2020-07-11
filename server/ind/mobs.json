@@ -49,17 +49,20 @@
     "npcs": [
 		{
 			"id": 6,
-			"name": "Banquero",
+            "name": "Banquero",
+            "profession": 1,
 			"sprite_id": 6
 		},
 		{
 			"id": 7,
-			"name": "Comerciante",
+            "name": "Comerciante",
+            "profession": 2,
 			"sprite_id": 7
 		},
 		{
 			"id": 8,
-			"name": "Sacerdotiza",
+            "name": "Sacerdotiza",
+            "profession": 3,
 			"sprite_id": 8
 		}
 	]

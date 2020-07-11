@@ -33,4 +33,5 @@ add_library(game
   random_event_generator.cpp
   entities/components/npc_combat_component.cpp
   entities/npc.cpp
+  entities/healer.cpp
 )
