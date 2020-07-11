@@ -1,11 +1,12 @@
 #include "player_combat_component.h"
 
+#include <cmath>
+#include <random>
+
+#include "../../../configuration_manager.h"
 #include "../../../server_manager.h"
 #include "../../items/item.h"
 #include "../../items/item_factory.h"
-#include "../../../configuration_manager.h"
-#include <random>
-#include <cmath>
 
 // Temp
 
@@ -57,7 +58,7 @@ PlayerCombatComponent::~PlayerCombatComponent() {
     delete weapon;
 }
 
-damage_t PlayerCombatComponent::attack() {
+attack_t PlayerCombatComponent::attack() {
     attack_accumulator = 0;
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -67,20 +68,22 @@ damage_t PlayerCombatComponent::attack() {
     int damage = stats.strength;
     if (weapon)
         damage += weapon->deal_damage();
-    if (is_critic) damage *= critic_mult;
+    if (is_critic)
+        damage *= critic_mult;
     return {damage, is_critic};
 }
 
-attack_result_t PlayerCombatComponent::receive_damage(damage_t raw_damage) {
-    attack_result_t result = {true, raw_damage.damage, false, false};
+attack_result_t PlayerCombatComponent::receive_damage(attack_t attack) {
+    attack_result_t result = {attack.damage, false, false};
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_real_distribution<> dist(0,1);
+    std::uniform_real_distribution<> dist(0, 1);
     double dodge_threshold = ConfigurationManager::get_dodge_thold();
-    if (!raw_damage.crit && (std::pow(dist(gen), stats.agility) < dodge_threshold)) {
-        result = {true, 0, true, false};
+    if (!attack.crit &&
+        (std::pow(dist(gen), stats.agility) < dodge_threshold)) {
+        result = {0, true, false};
     }
-    int received_dmg = raw_damage.damage;
+    int received_dmg = attack.damage;
     if (helmet)
         received_dmg = helmet->reduce_damage(received_dmg);
     if (armor)

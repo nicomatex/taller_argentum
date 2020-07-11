@@ -18,8 +18,8 @@ class MonsterCombatComponent : public CombatComponent {
                            float attack_speed, Map& map, EntityId entity_id);
     ~MonsterCombatComponent();
 
-    damage_t attack() override;
-    attack_result_t receive_damage(damage_t raw_damage) override;
+    attack_t attack() override;
+    attack_result_t receive_damage(attack_t attack) override;
 
     void update(uint64_t) override;
 

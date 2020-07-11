@@ -27,8 +27,8 @@ class PlayerCombatComponent : public CombatComponent {
     ~PlayerCombatComponent();
 
     // int special();
-    virtual damage_t attack() override;
-    virtual attack_result_t receive_damage(damage_t raw_damage) override;
+    virtual attack_t attack() override;
+    virtual attack_result_t receive_damage(attack_t attack) override;
 
     Armor* equip(Armor* armor);
     Weapon* equip(Weapon* weapon);

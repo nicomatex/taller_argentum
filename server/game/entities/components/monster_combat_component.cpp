@@ -17,12 +17,12 @@ MonsterCombatComponent::MonsterCombatComponent(unsigned int max_hp,
       attack_speed(attack_speed) {}
 MonsterCombatComponent::~MonsterCombatComponent() {}
 
-damage_t MonsterCombatComponent::attack() {
+attack_t MonsterCombatComponent::attack() {
     return {(int)damage, false};
 }
 
-attack_result_t MonsterCombatComponent::receive_damage(damage_t raw_damage) {
-    attack_result_t result = {true, raw_damage.damage, false, false};
+attack_result_t MonsterCombatComponent::receive_damage(attack_t attack) {
+    attack_result_t result = {attack.damage, false, false};
     if ((int)current_hp - result.damage_dealt <= 0) {
         current_hp = 0;
         result.killed = true;

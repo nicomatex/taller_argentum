@@ -1,15 +1,16 @@
 #ifndef COMBAT_COMPONENT_H
 #define COMBAT_COMPONENT_H
 
+#include <tuple>
+
 #include "../../../../include/nlohmann/json.hpp"
 
-typedef struct damage {
+typedef struct attack {
     int damage;
     bool crit;
-} damage_t;
+} attack_t;
 
 typedef struct attack_result {
-    bool success;
     int damage_dealt;
     bool dodged;
     bool killed;
@@ -30,8 +31,8 @@ class CombatComponent {
 
     void reset_max(unsigned int max_hp, unsigned int max_mp);
 
-    virtual damage_t attack() = 0;
-    virtual attack_result_t receive_damage(damage_t raw_damage) = 0;
+    virtual attack_t attack() = 0;
+    virtual attack_result_t receive_damage(attack_t raw_damage) = 0;
 
     virtual void update(uint64_t) = 0;
 
