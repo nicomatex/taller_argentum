@@ -2,11 +2,8 @@
 
 #include <iostream>
 
+#include "../include/my_exception.h"
 #include "../include/nlohmann/json.hpp"
-
-const char* CharacterAlreadyExistsException::what() const throw() {
-    return "Character already exists!";
-}
 
 const char* CharacterNotFoundException::what() const throw() {
     return "Character not found!";
@@ -16,15 +13,13 @@ CharacterManager::CharacterManager(const char* f_char, const char* f_map)
     : f_char_stream(f_char, std::fstream::binary | std::fstream::in |
                                 std::fstream::out | std::fstream::ate),
       f_map_stream(f_map, std::fstream::in | std::fstream::out) {
-    if (!f_char_stream.is_open()) {
-        std::cerr << "Archivo de personajes inexistente" << std::endl;
-        throw std::exception();
-    }
+    if (!f_char_stream.is_open())
+        throw MyException("CharacterManager: Error opening characters file: %s",
+                          f_char);
 
-    if (!f_map_stream.is_open()) {
-        std::cerr << "Archivo de dict de personajes inexistente" << std::endl;
-        throw std::exception();
-    }
+    if (!f_map_stream.is_open())
+        throw MyException(
+            "CharacterManager: Error opening characters map file: %s", f_map);
 
     nlohmann::json j_char_map;
     f_map_stream >> j_char_map;
@@ -133,7 +128,8 @@ CharacterManager::~CharacterManager() {
 static character_t create_character(const nlohmann::json& character_info) {
     std::string name = character_info["name"];
     if (name.length() > MAX_CHAR_NAME)
-        throw std::exception();
+        throw MyException("CharacterManager: Name: %s, exceeds max length : %d",
+                          name, MAX_CHAR_NAME);
     character_t character;
     memset(&character, 0, sizeof(character_t));
     strncpy(character.name, name.data(), MAX_CHAR_NAME);
@@ -159,9 +155,8 @@ static character_t create_character(const nlohmann::json& character_info) {
 void CharacterManager::add_character(const nlohmann::json& character_info) {
     std::unique_lock<std::mutex> l(m);
     character_t character = create_character(character_info);
-    if (character_exists(character.name)) {
-        throw CharacterAlreadyExistsException();
-    }
+    if (character_exists(character.name))
+        throw MyException("CharacterManager: Character with name: '%s' already exists", character.name);
     f_char_stream.seekg(0, std::ios_base::end);
     f_char_stream.write(reinterpret_cast<const char*>(&character),
                         sizeof(character_t));

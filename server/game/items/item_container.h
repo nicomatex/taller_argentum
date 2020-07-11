@@ -81,7 +81,6 @@ class ItemContainer {
        Lanza FullItemContainerException en caso de que el inventario este lleno.
    */
     void add(Item* item, uint32_t stack);
-    // void add(Item* item, SlotId slot_id);
     /*
         Remueve en su totalidad el item que se encuentra en el slot_id,
         devolviendo un puntero a este.

@@ -1,8 +1,9 @@
 #include "item_factory.h"
 
-#include <exception>
 #include <fstream>
 #include <iostream>
+
+#include "../../../include/my_exception.h"
 
 const char* ItemNotFoundException::what() const throw() {
     return "Item not found!";
@@ -20,7 +21,8 @@ ItemFactory::ItemFactory(const char* items_file) {
     */
     std::ifstream istream(items_file);
     if (!istream.is_open())
-        throw std::exception();
+        throw MyException("ItemFactory: Error opening items file: %s",
+                          items_file);
     nlohmann::json json_items;
     istream >> json_items;
 

@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "entity.h"
+#include "../../../include/my_exception.h"
 
 EntityManager& EntityManager::get_instance() {
     static EntityManager instance;
@@ -46,9 +47,8 @@ bool EntityManager::has_entity(unsigned int entity_id) {
 
 Entity& EntityManager::get_from_id(unsigned int entity_id) {
     std::unique_lock<std::mutex> l(m);
-    if (entities.count(entity_id) == 0) {
-        throw std::exception();
-    }
+    if (entities.count(entity_id) == 0)
+        throw MyException("EntityManager: Entity with id: %lu does not exist", entity_id);
     updated[entity_id] = true;
     return *entities.at(entity_id);
 }

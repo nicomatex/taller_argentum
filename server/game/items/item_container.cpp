@@ -69,23 +69,6 @@ void ItemContainer::add(Item* item, uint32_t stack) {
     item->decrease_stack(stack);
 }
 
-/*
-    No es posible tener varios stacks del mismo item spliteados en el inventario
-
-void ItemContainer::add(Item* item, SlotId slot_id) {
-    ItemId item_id = item->get_id();
-    if (slot_is_free(slot_id)) {
-        item_container[slot_id] = item;
-        item_id_to_slot[item_id] = slot_id;
-    } else {
-        if (item_id != item_container[slot_id]->get_id())
-            throw std::exception();
-        item_container[slot_id]->increase_stack(item->get_stack());
-        item->set_stack(0);
-        delete item;  //?
-    }
-}
-*/
 Item* ItemContainer::remove(SlotId slot_id) {
     if (slot_is_free(slot_id))
         throw EmptySlotException();

@@ -35,11 +35,6 @@ typedef struct character {
 
 typedef uint32_t CharId;
 
-class CharacterAlreadyExistsException : public std::exception {
-   public:
-    const char *what() const throw();
-};
-
 class CharacterNotFoundException : public std::exception {
    public:
     const char *what() const throw();
