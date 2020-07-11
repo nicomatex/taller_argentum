@@ -106,6 +106,18 @@ void CharacterCreationView::render_selected_class_info() {
     }
 }
 
+void CharacterCreationView::render_creation_alert() {
+    switch (game_state_monitor.get_char_creation_state()) {
+        case FIRST_TRY:
+            return;
+        case NAME_TAKEN:
+            ResourceManager::get_instance()
+                .get_texture("interface", ALERT_ID_NAME_TAKEN)
+                .render(scaler.scale(CREATION_ALERT_AREA));
+            break;
+    }
+}
+
 void CharacterCreationView::run() {
     while (game_state_monitor.get_game_state() == CREATING_CHARACTER) {
         window.fill(0, 0, 0, 255);
@@ -114,6 +126,7 @@ void CharacterCreationView::run() {
         character_name_input.render();
         render_selected_race_info();
         render_selected_class_info();
+        render_creation_alert();
         window.render();
     }
 }

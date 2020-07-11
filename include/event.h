@@ -15,7 +15,10 @@ enum server_to_client {
     EV_ID_RECEIVED_DAMAGE,
     EV_ID_INVENTORY_UPDATE,
     EV_ID_EVADED_DAMAGE,
-    EV_ID_DAMAGE_EVADED
+    EV_ID_DAMAGE_EVADED,
+    EV_ID_NAME_NOTFOUND,
+    EV_ID_NAME_TAKEN,
+    EV_ID_NAME_ALREADY_ONLINE
 };
 
 enum client_to_server {

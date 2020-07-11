@@ -25,6 +25,8 @@ class LoginView {
     CreateCharacterButton create_character_button;
     LoginUiEventHandler ui_event_handler;
 
+    void render_login_alert();
+    
    public:
     /**
      * @brief Crea un objeto Login View

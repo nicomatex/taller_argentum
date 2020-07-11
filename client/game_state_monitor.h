@@ -18,6 +18,10 @@ typedef enum {
     CREATING_CHARACTER
 } game_state_t;
 
+typedef enum { FIRST_LOGIN, NAME_NOT_FOUND, NAME_ALREADY_CONECTED } login_state_t;
+
+typedef enum { FIRST_TRY, NAME_TAKEN } char_creation_state_t;
+
 /**
  * @brief Monitor mediante el cual se sincroniza el flujo entre vistas.
  *
@@ -27,6 +31,8 @@ class GameStateMonitor {
     std::mutex m;
     bool connected;
     game_state_t game_state;
+    login_state_t login_state;
+    char_creation_state_t char_creation_state;
     std::condition_variable cv;
 
    public:
@@ -61,6 +67,34 @@ class GameStateMonitor {
      * @return game_state_t
      */
     game_state_t get_game_state();
+
+    /**
+     * @brief Setea el nuevo estado del login.
+     * 
+     * @param new_login_state Nuevo estado del login.
+     */
+    void set_login_state(login_state_t new_login_state);
+
+    /**
+     * @brief Devuelve el estado de login.
+     * 
+     * @return login_state_t 
+     */
+    login_state_t get_login_state();
+
+    /**
+     * @brief Setea el nuevo estado de creacion de personaje.
+     * 
+     * @param new_char_creation_state Nuevo estado de creacion de personaje.
+     */
+    void set_char_creation_state(char_creation_state_t new_char_creation_state);
+
+    /**
+     * @brief Devuelve el estado de creacion de personaje.
+     * 
+     * @return char_creation_state_t 
+     */
+    char_creation_state_t get_char_creation_state();
 
     /* Duerme el thread llamante hasta que el estado del juego
     sea el esperado. */

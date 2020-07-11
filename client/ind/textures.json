@@ -580,7 +580,25 @@
     			"filename": "19.png",
     			"needs ckey": false,
     			"ckey" : [0,0,0]
-    		}
+    		},
+            {
+                "id":20,
+                "filename": "20.png",
+                "needs ckey": false,
+                "ckey" : [0,0,0]
+            },
+            {
+                "id":21,
+                "filename": "21.png",
+                "needs ckey": false,
+                "ckey" : [0,0,0]
+            },
+            {
+                "id":22,
+                "filename": "22.png",
+                "needs ckey": false,
+                "ckey" : [0,0,0]
+            }
     	]
     },
     "bitmap_fonts":{

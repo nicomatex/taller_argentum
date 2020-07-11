@@ -73,6 +73,15 @@ void ClientReceiveHandler::handle(Event &ev) {
         case EV_ID_EVADED_DAMAGE:
             handle_incoming_damage_evaded(ev);
             break;
+        case EV_ID_NAME_NOTFOUND:
+            game_state_monitor.set_login_state(NAME_NOT_FOUND);
+            break;
+        case EV_ID_NAME_ALREADY_ONLINE:
+            game_state_monitor.set_login_state(NAME_ALREADY_CONECTED);
+            break;
+        case EV_ID_NAME_TAKEN:
+            game_state_monitor.set_char_creation_state(NAME_TAKEN);
+            break;
     };
 }
 

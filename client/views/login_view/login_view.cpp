@@ -29,6 +29,23 @@ LoginView::LoginView(SDLWindow &window, ResponsiveScaler &scaler,
 
 LoginView::~LoginView() {}
 
+void LoginView::render_login_alert() {
+    switch (game_state_monitor.get_login_state()) {
+        case FIRST_LOGIN:
+            return;
+        case NAME_NOT_FOUND:
+            ResourceManager::get_instance()
+                .get_texture("interface", ALERT_ID_WRONG_NAME)
+                .render(scaler.scale(LOGIN_VIEW_ALERT_AREA));
+            break;
+        case NAME_ALREADY_CONECTED:
+            ResourceManager::get_instance()
+                .get_texture("interface", ALERT_ID_ALREADY_ONLINE)
+                .render(scaler.scale(LOGIN_VIEW_ALERT_AREA));
+            break;
+    }
+}
+
 void LoginView::run() {
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
     if (!SoundSystem::get_instance().music_playing()) {
@@ -39,6 +56,7 @@ void LoginView::run() {
         ui_event_handler.handle();
         background.render(scaler.scale(LOGIN_BACKGROUND_AREA));
         character_name_input.render();
+        render_login_alert();
         window.render();
     }
 }

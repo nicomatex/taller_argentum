@@ -30,7 +30,8 @@ class CharacterCreationView {
     
     void render_selected_race_info();
     void render_selected_class_info();
-
+    void render_creation_alert();
+    
    public:
    /**
     * @brief Vista de creacion de personaje
