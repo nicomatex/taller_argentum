@@ -31,7 +31,11 @@ void StatBar::_render_text() {
 
 void StatBar::_render_bar() {
     SDL_Rect bar_area = render_area;
-    float fill_proportion = (float)current_value / (float)max_value;
+    float fill_proportion;
+    if (max_value == 0)
+        fill_proportion = 0;
+    else 
+        fill_proportion = (float)current_value / (float)max_value;
     bar_area.w *= fill_proportion;
     
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);

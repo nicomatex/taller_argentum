@@ -32,7 +32,7 @@
 			"name": "warrior",
 			"multipliers": {
 				"health_multiplier": 1,
-				"mana_multiplier": 1,
+				"mana_multiplier": 0,
 				"meditate_multiplier": 0
 			}
 		}

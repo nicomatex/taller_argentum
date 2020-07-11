@@ -33,7 +33,7 @@ void CreationHandler::handle(Event& event) {
             {"shield_id", 0},
             {"weapon_id", 0},
             {"curr_hp", 5},
-            {"curr_mp", 5},
+            {"curr_mp", 0},
             {"class_type", create_info["class_type"]},
             {"race_type", create_info["race_type"]},
             {"curr_level", 1},

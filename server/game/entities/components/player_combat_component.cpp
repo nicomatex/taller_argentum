@@ -73,7 +73,6 @@ damage_t PlayerCombatComponent::attack() {
 
 attack_result_t PlayerCombatComponent::receive_damage(damage_t raw_damage) {
     attack_result_t result = {true, raw_damage.damage, false, false};
-    // TODO: dodge Esquivar si rand(0, 1) ^ Agilidad < 0.001
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<> dist(0,1);

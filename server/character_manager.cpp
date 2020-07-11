@@ -67,7 +67,7 @@ CharacterManager::CharacterManager(const char* f_char, const char* f_map)
                                      {"shield_id", 201},
                                      {"weapon_id", 302},
                                      {"curr_hp", 70},
-                                     {"curr_mp", 30},
+                                     {"curr_mp", 0},
                                      {"class_type", WARRIOR},
                                      {"race_type", DWARF},
                                      {"curr_level", 14},
