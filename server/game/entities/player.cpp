@@ -250,6 +250,8 @@ bool Player::is_alive() const {
 }
 
 bool Player::can_attack(Entity* attacked) const {
+    if (!combat_component->attack_ready())
+        return false;
     if (attacked->get_type() == MONSTER)
         return true;
     else if (attacked->get_type() == NPC)

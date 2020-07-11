@@ -16,8 +16,6 @@ void ActionAttack::execute(Map& map, EntityId entity_id) const {
     if (!attacked || !attacked->is_alive() || !attacker->can_attack(attacked))
         return;
     attack_result_t result = attacker->attack(attacked);
-    if (!result.success)
-        return;
     if (attacker->get_type() == PLAYER)
         map.push_log(MapLogFactory::deal_damage(
             attacker->get_name(), {{"damage", result.damage_dealt},

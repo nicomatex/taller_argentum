@@ -76,6 +76,8 @@ bool Monster::is_alive() const {
 }
 
 bool Monster::can_attack(Entity* attacked) const {
+    if (!combat_component->attack_ready())
+        return false;
     return (attacked->get_type() == PLAYER);
 }
 
