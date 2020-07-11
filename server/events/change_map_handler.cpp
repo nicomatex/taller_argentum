@@ -13,8 +13,7 @@ void ChangeMapHandler::handle(Event& event) {
     nlohmann::json player_data = server_manager.rm_player(json["client_id"]);
     player_data["map_id"] = json["new_map_id"];
     player_data["pos"] = json["new_pos"];
-    server_manager.send_to(json["client_id"],
-                           EventFactory::notify_map_change());
+    server_manager.send_to(json["client_id"], EventFactory::notify_new_map());
     CharacterManager& character_manager =
         server_manager.get_character_manager();
     character_manager.save();

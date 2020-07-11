@@ -15,7 +15,6 @@ LoginButton::LoginButton(SDL_Rect button_area, SDL_Rect viewport,
 
 void LoginButton::on_click() {
     std::string name = character_name_input.get_text();
-    game_state_monitor.set_game_state(WAITING_FOR_INITIALIZATION);
     socket_manager.send(EventFactory::connect_event(name, "123"));
     SoundSystem::get_instance().play_ui_sfx(3);
 }

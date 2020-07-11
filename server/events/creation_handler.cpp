@@ -11,15 +11,15 @@ CreationHandler::CreationHandler() : BlockingThEventHandler() {
 }
 
 void CreationHandler::handle(Event& event) {
+    ServerManager& server_manager = ServerManager::get_instance();
+    nlohmann::json create_info = event.get_json();
+    ClientId client_id = create_info["client_id"];
     try {
-        ServerManager& server_manager = ServerManager::get_instance();
-        nlohmann::json create_info = event.get_json();
         CharacterManager& character_manager =
             server_manager.get_character_manager();
         std::string player_name = create_info["name"];
         if (character_manager.character_exists(player_name))
             throw DuplicatedPlayerException(player_name);
-        server_manager.add_name(create_info["client_id"], player_name);
         nlohmann::json player_info = {
             {"name", player_name},
             {"map_id", 0},
@@ -43,20 +43,11 @@ void CreationHandler::handle(Event& event) {
                                  "items_stacks":[0,0,0,0,0,0,0,0,0,0,0,0],
                                  "curr_gold":0})"_json;
         character_manager.add_character(player_info);
+        server_manager.add_name(client_id, player_name);
         std::cout << "ClientInitializerHandler: Creating player: "
                   << player_name << std::endl;
-        server_manager.add_player(create_info["client_id"], player_info);
+        server_manager.add_player(client_id, player_info);
     } catch (const DuplicatedPlayerException& e) {
-        disconnect(event);
+        server_manager.send_to(client_id, EventFactory::name_taken());
     }
-}
-
-void CreationHandler::disconnect(Event& event) const {
-    // TODO: mejorar este handle
-    ServerManager& server_manager = ServerManager::get_instance();
-    nlohmann::json create_info = event.get_json();
-    server_manager.send_to(create_info["client_id"],
-                           EventFactory::disconnect());
-    std::cout << "Sending drop to " << create_info["client_id"] << std::endl;
-    server_manager.rm_client(create_info["client_id"]);
 }

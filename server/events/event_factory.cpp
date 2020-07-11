@@ -19,7 +19,7 @@ Event EventFactory::update_map(const nlohmann::json& position_data) {
     return Event(ev_json);
 }
 
-Event EventFactory::notify_map_change() {
+Event EventFactory::notify_new_map() {
     nlohmann::json ev_json;
     ev_json["ev_id"] = EV_ID_NOTIFY_NEW_MAP;
     return Event(ev_json);
@@ -123,8 +123,22 @@ Event EventFactory::resuscitate_event(ClientId client_id, position_t target) {
 }
 
 Event EventFactory::heal_event(ClientId client_id, position_t target) {
-    nlohmann::json ev_json = {{"ev_id", SERVER_HEAL},
-                              {"client_id", client_id},
-                              {"target", target}};
+    nlohmann::json ev_json = {
+        {"ev_id", SERVER_HEAL}, {"client_id", client_id}, {"target", target}};
+    return Event(ev_json);
+}
+
+Event EventFactory::name_not_found() {
+    nlohmann::json ev_json = {{"ev_id", EV_ID_NAME_NOTFOUND}};
+    return Event(ev_json);
+}
+
+Event EventFactory::name_already_online() {
+    nlohmann::json ev_json = {{"ev_id", EV_ID_NAME_ALREADY_ONLINE}};
+    return Event(ev_json);
+}
+
+Event EventFactory::name_taken() {
+    nlohmann::json ev_json = {{"ev_id", EV_ID_NAME_TAKEN}};
     return Event(ev_json);
 }

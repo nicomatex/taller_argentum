@@ -13,7 +13,7 @@ class EventFactory {
 
     static Event update_map(const nlohmann::json& position_data);
 
-    static Event notify_map_change();
+    static Event notify_new_map();
 
     static Event change_map(ClientId client_id,
                             const nlohmann::json& player_data);
@@ -47,6 +47,12 @@ class EventFactory {
     static Event resuscitate_event(ClientId client_id, position_t target);
 
     static Event heal_event(ClientId client_id, position_t target);
+
+    static Event name_not_found();
+
+    static Event name_already_online();
+
+    static Event name_taken();
 };
 
 #endif  // EVENT_FACTORY_H

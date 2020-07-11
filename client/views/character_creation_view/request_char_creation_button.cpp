@@ -21,5 +21,4 @@ void RequestCharacterCreationButton::on_click() {
         character_name_input.get_text(),
         race_and_class_selector.get_selected_class(),
         race_and_class_selector.get_selected_race()));
-    game_state_monitor.set_game_state(WAITING_FOR_INITIALIZATION);
 }

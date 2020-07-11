@@ -5,9 +5,6 @@
 #include "../../include/event.h"
 
 class ClientInitializeHandler : public BlockingThEventHandler {
-   private:
-    void disconnect(Event& ev) const;
-
    protected:
     void handle(Event& ev) override;
 

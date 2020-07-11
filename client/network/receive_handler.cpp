@@ -74,12 +74,15 @@ void ClientReceiveHandler::handle(Event &ev) {
             handle_incoming_damage_evaded(ev);
             break;
         case EV_ID_NAME_NOTFOUND:
+            std::cerr << "Name not found\n";
             game_state_monitor.set_login_state(NAME_NOT_FOUND);
             break;
         case EV_ID_NAME_ALREADY_ONLINE:
+            std::cerr << "Name already online\n";
             game_state_monitor.set_login_state(NAME_ALREADY_CONECTED);
             break;
         case EV_ID_NAME_TAKEN:
+            std::cerr << "Name taken\n";
             game_state_monitor.set_char_creation_state(NAME_TAKEN);
             break;
     };
