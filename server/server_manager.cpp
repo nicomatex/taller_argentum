@@ -73,18 +73,10 @@ void ServerManager::drop_client(ClientId client_id) {
 }
 
 void ServerManager::add_name(ClientId client_id, const std::string& name) {
-    if (clients_names.right.count(name))
-        throw DuplicatedPlayerException(name);
-    clients_names.insert({client_id, name});
+    clients_names.add_name(client_id, name);
 }
 void ServerManager::rm_name(ClientId client_id) {
-    if (!clients_names.left.count(client_id))
-        // Este caso sirve si un jugador nunca mandó el mensaje de
-        // inicialización
-        return;
-    std::string name = clients_names.left.at(client_id);
-    clients_names.left.erase(client_id);
-    clients_names.right.erase(name);
+    clients_names.rm_name(client_id);
 }
 
 void ServerManager::add_player(ClientId client_id, nlohmann::json player_data,
@@ -159,15 +151,11 @@ void ServerManager::finish() {
 }
 
 std::string ServerManager::get_name_by_client(ClientId client_id) {
-    if (!clients_names.left.count(client_id))
-        throw ClientDisconnectedException(client_id);
-    return clients_names.left.at(client_id);
+    return clients_names.get_name(client_id);
 }
 
 ClientId ServerManager::get_client_by_name(const std::string& name) {
-    if (!clients_names.right.count(name))
-        throw ClientDisconnectedException(name);
-    return clients_names.right.at(name);
+    return clients_names.get_client(name);
 }
 
 MapMonitor& ServerManager::get_map_by_client(ClientId client_id) {

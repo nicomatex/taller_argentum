@@ -27,6 +27,7 @@ add_library(server
   race_graphics_manager.cpp
   session.cpp
   configuration_manager.cpp
+  clients_names_monitor.cpp
 )
 
 target_link_libraries(server

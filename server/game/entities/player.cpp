@@ -1,13 +1,14 @@
 #include "player.h"
 
+#include <cmath>
 #include <cstdlib>
 #include <vector>
 
+#include "../../configuration_manager.h"
 #include "../items/potion.h"
 #include "../map_log_factory.h"
 #include "components/player_combat_component.h"
 #include "components/player_movement_component.h"
-#include "../../configuration_manager.h"
 
 #define DEAD_HEAD_ID 9
 #define DEAD_BODY_ID 5
@@ -119,13 +120,16 @@ void Player::add_item(Item* item) {
         return;
     try {
         if (item->get_type() == TYPE_GOLD) {
-            float gold_max_sec_mult = ConfigurationManager::get_gold_max_sec_mult();
-            float gold_max_sec_expo = ConfigurationManager::get_gold_max_sec_expo();
+            float gold_max_sec_mult =
+                ConfigurationManager::get_gold_max_sec_mult();
+            float gold_max_sec_expo =
+                ConfigurationManager::get_gold_max_sec_expo();
             float gold_exc_mult = ConfigurationManager::get_gold_exc_mult();
             Gold* gold = static_cast<Gold*>(item);
             unsigned int actual_gold = inventory.get_gold_stack();
             unsigned int max_secure_gold =
-                (gold_max_sec_mult * std::pow((double)get_level(), gold_max_sec_expo));
+                (gold_max_sec_mult *
+                 std::pow((double)get_level(), gold_max_sec_expo));
             if (actual_gold + gold->get_stack() <=
                 max_secure_gold * gold_exc_mult) {
                 inventory.add_gold(gold);
@@ -254,5 +258,6 @@ bool Player::can_attack(Entity* attacked) const {
     unsigned int newbie_lvl = ConfigurationManager::get_newbie_lvl();
     unsigned int max_lvl_diff = ConfigurationManager::get_max_level_diff();
     return (player->get_level() > newbie_lvl) && (get_level() > newbie_lvl) &&
-           (std::abs<int>(get_level() - player->get_level()) < max_lvl_diff);
+           (std::abs(static_cast<int>(get_level() - player->get_level())) <
+            max_lvl_diff);
 }
