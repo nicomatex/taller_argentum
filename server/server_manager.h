@@ -1,15 +1,14 @@
 #ifndef SERVER_MANAGER_H
 #define SERVER_MANAGER_H
 
-#include <boost/bimap.hpp>
 #include <mutex>
-#include <stdexcept>
 #include <string>
 
 #include "../include/network/socket_manager.h"
 #include "../include/nlohmann/json.hpp"
 #include "../include/types.h"
 #include "character_manager.h"
+#include "clients_names_monitor.h"
 #include "game/game_loop.h"
 #include "game/items/item_factory.h"
 #include "game/mob_factory.h"
@@ -17,47 +16,8 @@
 #include "map_monitor.h"
 #include "network/clients_monitor.h"
 #include "network/th_client_accepter.h"
+#include "server_exceptions.h"
 #include "session.h"
-
-class ClientDisconnectedException : public std::exception {
-   private:
-    char err_msg[100];
-
-   public:
-    ClientDisconnectedException(ClientId client_id) {
-        std::string str =
-            "The client: " + std::to_string(client_id) + " has disconnected.";
-        strncpy(err_msg, str.c_str(), 100);
-        err_msg[99] = '\0';
-    }
-    ClientDisconnectedException(std::string name) {
-        std::string str = "The client: " + name + " has disconnected.";
-        strncpy(err_msg, str.c_str(), 100);
-        err_msg[99] = '\0';
-    }
-    ~ClientDisconnectedException() {}
-
-    const char* what() const noexcept override {
-        return err_msg;
-    }
-};
-
-class DuplicatedPlayerException : public std::exception {
-   private:
-    char err_msg[100];
-
-   public:
-    DuplicatedPlayerException(std::string name) {
-        std::string str = "The player: " + name + " is already connected!";
-        strncpy(err_msg, str.c_str(), 100);
-        err_msg[99] = '\0';
-    }
-    ~DuplicatedPlayerException() {}
-
-    const char* what() const noexcept override {
-        return err_msg;
-    }
-};
 
 class ServerManager {
    private:
@@ -65,7 +25,7 @@ class ServerManager {
     MapManager map_manager;
     std::unordered_map<MapId, Session> sessions;
     std::unordered_map<ClientId, MapId> client_to_map;
-    boost::bimap<ClientId, std::string> clients_names;
+    ClientsNamesMonitor clients_names;
     ClientsMonitor clients;
     GameLoop game_loop;
     ThDispatcher dispatcher;
