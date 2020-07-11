@@ -192,6 +192,20 @@ void ClientReceiveHandler::handle_incoming_damage(Event &ev) {
 
 void ClientReceiveHandler::handle_outcoming_damage(Event &ev) {
     SoundSystem::get_instance().play_game_sfx(4);
+    std::cout << std::setw(4) << ev.get_json() << std::endl;
+    Entity &attacked_entity =
+        EntityManager::get_instance().get_from_id(ev.get_json()["to"]);
+    if (attacked_entity.has_component<VisualCharacterComponent>()) {
+        EntityManager::get_instance()
+            .get_from_id(ev.get_json()["to"])
+            .get_component<VisualCharacterComponent>()
+            .display_damage(ev.get_json()["dmg"]);
+    } else if (attacked_entity.has_component<VisualNPCComponent>()) {
+        EntityManager::get_instance()
+            .get_from_id(ev.get_json()["to"])
+            .get_component<VisualNPCComponent>()
+            .display_damage(ev.get_json()["dmg"]);
+    }
 }
 
 void ClientReceiveHandler::handle_outcoming_evaded_damage(Event &ev) {

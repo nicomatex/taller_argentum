@@ -13,7 +13,9 @@ VisualNPCComponent::VisualNPCComponent(int body_id, int speed,
            {0, 0, 0, 0}),
       transition_offset_x(0),
       transition_offset_y(0),
-      render_name(name, MONSTER_NAME_COLOR, NAME_FONT_ID, NAME_INFO) {
+      render_name(name, MONSTER_NAME_COLOR, NAME_FONT_ID, NAME_INFO),
+      render_damage("0", DAMAGE_COLOR, DAMAGE_FONT_ID, DAMAGE_INFO),
+      recently_damaged(false) {
     int real_width = ResourceManager::get_instance()
                          .get_animation_pack("npcs", body_id)
                          .get_frame_width(DOWN);
@@ -46,6 +48,10 @@ void VisualNPCComponent::draw(Camera& camera) {
                 transition_offset_y);
     camera.draw(&render_name, current_x, current_y, transition_offset_x,
                 transition_offset_y);
+    if (recently_damaged) {
+        camera.draw(&render_damage, current_x, current_y, transition_offset_x,
+                    transition_offset_y);
+    }
 }
 
 void VisualNPCComponent::_update_offset() {
@@ -120,6 +126,12 @@ void VisualNPCComponent::update() {
     current_x = new_x;
     current_y = new_y;
     body.update();
+    if (recently_damaged) {
+        if (damage_render_timer.get_ticks() >= DAMAGE_TEXT_DURATION) {
+            recently_damaged = false;
+            damage_render_timer.stop();
+        }
+    }
 }
 
 bool VisualNPCComponent::is_moving() {
@@ -134,4 +146,10 @@ void VisualNPCComponent::set_orientation(direction_t new_orientation) {
 void VisualNPCComponent::server_update(nlohmann::json update_info) {
     std::unique_lock<std::recursive_mutex> l(m);
     set_orientation(update_info["direction"]);
+}
+
+void VisualNPCComponent::display_damage(int damage) {
+    render_damage.update_text("-" + std::to_string(damage));
+    recently_damaged = true;
+    damage_render_timer.start();
 }

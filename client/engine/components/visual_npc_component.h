@@ -21,6 +21,9 @@ class VisualNPCComponent : public Component {
     int transition_offset_x;
     int transition_offset_y;
     InGameText render_name;
+    InGameText render_damage;
+    bool recently_damaged;
+    SDLTimer damage_render_timer;
     SDLTimer transition_timer;
     /* Actualiza el offset de renderizacion. */
     void _update_offset();
@@ -71,6 +74,13 @@ class VisualNPCComponent : public Component {
      * @return false si el NPC no se esta moviendo.
      */
     bool is_moving();
+
+    /**
+     * @brief Indica que se debe renderizar el danio recibido.
+     * 
+     * @param damage Danio recibido.
+     */
+    void display_damage(int damage);
 };
 
 #endif
