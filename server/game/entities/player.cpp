@@ -212,6 +212,10 @@ void Player::set_movement(mov_action_t action, direction_t direction) {
 
 void Player::revive() {
     alive = true;
+    regen_max();
+}
+
+void Player::regen_max() {
     static_cast<PlayerCombatComponent*>(combat_component)->regen_max();
 }
 

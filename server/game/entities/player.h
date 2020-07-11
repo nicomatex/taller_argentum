@@ -54,6 +54,7 @@ class Player : public Entity {
     race_type_t get_race_type() const;
 
     void revive();
+    void regen_max();
 
     void die() override;
     bool is_alive() const override;

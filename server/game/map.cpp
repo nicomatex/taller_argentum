@@ -127,6 +127,9 @@ nlohmann::json Map::add_player(nlohmann::json player_info) {
     add_entity(entity_factory.create_monster(4), {38, 22});
     add_entity(entity_factory.create_monster(5), {27, 26});
 
+    std::cerr << "Agrego cura" << std::endl;
+    add_entity(entity_factory.create_npc(8), {13, 21});
+
     Player* player = entity_factory.create_player(player_info);
 
     add_entity(player, player_info["pos"]);

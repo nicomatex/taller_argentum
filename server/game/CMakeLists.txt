@@ -7,6 +7,7 @@ add_library(game
   actions/action_drop.cpp
   actions/action_unequip.cpp
   actions/action_resuscitate.cpp
+  actions/action_heal.cpp
   entities/components/combat_component.cpp
   entities/components/experience_component.cpp
   entities/entity.cpp
@@ -32,6 +33,7 @@ add_library(game
   entities/components/player_movement_component.cpp
   random_event_generator.cpp
   entities/components/npc_combat_component.cpp
+  entities/components/npc_movement_component.cpp
   entities/npc.cpp
   entities/healer.cpp
 )

@@ -49,6 +49,8 @@ class CommandHandler : public BlockingThEventHandler {
 
     void cmd_resuscitate(ClientId client_id, position_t target);
 
+    void cmd_heal(ClientId client_id, position_t target);
+
     void cmd_unequip_all(ClientId client_id);
 
    protected:

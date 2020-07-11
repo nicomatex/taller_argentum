@@ -40,6 +40,8 @@ void CommandHandler::parse_line(const std::string& line) {
             cmd_type = CMD_DROP;
         } else if (cmd[0] == "revivir") {
             cmd_type = CMD_RESUSCITATE;
+        } else if (cmd[0] == "curar") {
+            cmd_type = CMD_HEAL;
         } else if (cmd[0] == "desequipar") {
             cmd_type = CMD_UNEQUIP;
         } else if (cmd[0] == "salir") {
@@ -123,6 +125,11 @@ void CommandHandler::cmd_resuscitate(ClientId client_id, position_t target) {
     server_manager.dispatch(EventFactory::resuscitate_event(client_id, target));
 }
 
+void CommandHandler::cmd_heal(ClientId client_id, position_t target) {
+    ServerManager& server_manager = ServerManager::get_instance();
+    server_manager.dispatch(EventFactory::heal_event(client_id, target));
+}
+
 void CommandHandler::handle(Event& event) {
     nlohmann::json json = event.get_json();
     try {
@@ -150,6 +157,9 @@ void CommandHandler::handle(Event& event) {
                 break;
             case CMD_RESUSCITATE:
                 cmd_resuscitate(json["client_id"], json["target"]);
+                break;
+            case CMD_HEAL:
+                cmd_heal(json["client_id"], json["target"]);
                 break;
             case CMD_DISCONNECT:
                 cmd_disconnect(json["client_id"]);

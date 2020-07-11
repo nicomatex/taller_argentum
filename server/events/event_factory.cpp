@@ -121,3 +121,10 @@ Event EventFactory::resuscitate_event(ClientId client_id, position_t target) {
                               {"target", target}};
     return Event(ev_json);
 }
+
+Event EventFactory::heal_event(ClientId client_id, position_t target) {
+    nlohmann::json ev_json = {{"ev_id", SERVER_HEAL},
+                              {"client_id", client_id},
+                              {"target", target}};
+    return Event(ev_json);
+}

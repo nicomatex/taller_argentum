@@ -15,6 +15,7 @@ add_library(events
   drop_loot_handler.cpp
   resuscitate_handler.cpp
   unequip_handler.cpp
+  heal_handler.cpp
 )
 
 target_link_libraries(events

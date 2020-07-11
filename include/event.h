@@ -34,7 +34,8 @@ enum client_to_server {
 enum server_to_self {
     SERVER_DROP_CLIENT = 1000,
     SERVER_CHANGE_MAP = 1001,
-    SERVER_RESUSCITATE = 1003
+    SERVER_RESUSCITATE = 1003,
+    SERVER_HEAL = 1004
 };
 
 class Event {
