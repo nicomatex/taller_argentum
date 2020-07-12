@@ -2949,6 +2949,18 @@
         		"frame width": 57,
         		"frames": 35
         	}
+        ],
+        "meditations":[
+            {
+                "id":1,
+                "texture":1,
+                "base x": 0,
+                "base y": 0,
+                "fps": 20,
+                "frame height": 85,
+                "frame width": 40,
+                "frames":10
+            }
         ]
     }
 }

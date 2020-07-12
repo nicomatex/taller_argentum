@@ -640,5 +640,16 @@
     			"ckey": [0,0,0]
     		}
     	]
+    },
+    "meditations":{
+        "basedir": "assets/sprites/meditations/",
+        "textures":[
+            {
+                "id":1,
+                "filename":"1.png",
+                "needs ckey":false,
+                "ckey": [0,0,0]
+            }
+        ]
     }
 }

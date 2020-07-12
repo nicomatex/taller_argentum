@@ -11,6 +11,7 @@ add_library(engine
   sound_system.cpp
   engine_error.cpp
   in_game_text.cpp
+  visual_effect.cpp
 )
 
 

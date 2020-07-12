@@ -13,6 +13,11 @@
 
 #define SPELL_CONFIG {200,200,0,0}
 
+/* Meditacion */
+#define MEDITATION_ID 1
+#define MEDITATION_CONFIG {200, 400, -50, 0}
+
+
 #define NAME_COLOR {0,0,255,0}
 #define MONSTER_NAME_COLOR {255,114,0,0}
 #define NAME_FONT_ID 1

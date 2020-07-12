@@ -18,7 +18,11 @@ VisualCharacterComponent::VisualCharacterComponent(int head_id, int body_id,
       transition_offset_y(0),
       render_name(name, NAME_COLOR, NAME_FONT_ID, NAME_INFO),
       render_damage("0", DAMAGE_COLOR, DAMAGE_FONT_ID, DAMAGE_INFO),
-      recently_damaged(false) {
+      meditation_effect(ResourceManager::get_instance().get_sprite(
+                            "meditations", MEDITATION_ID),
+                        MEDITATION_CONFIG),
+      recently_damaged(false),
+      is_meditating(false) {
     part_ids["body"] = body_id;
     part_ids["head"] = head_id;
     part_ids["armor"] = armor_id;
@@ -102,12 +106,17 @@ void VisualCharacterComponent::draw(Camera& camera) {
     _draw_if_present(camera, "weapon");
     _draw_if_present(camera, "shield");
     _draw_if_present(camera, "helmet");
-    camera.draw(&render_name, current_x, current_y, transition_offset_x,
+    if(is_meditating){
+        camera.draw(&meditation_effect, current_x, current_y, transition_offset_x,
                 transition_offset_y);
+    }
     if (recently_damaged) {
         camera.draw(&render_damage, current_x, current_y, transition_offset_x,
                     transition_offset_y);
     }
+    
+    camera.draw(&render_name, current_x, current_y, transition_offset_x,
+                transition_offset_y);
 }
 
 void VisualCharacterComponent::_draw_if_present(Camera& camera,
@@ -212,8 +221,8 @@ void VisualCharacterComponent::update() {
     for (auto& part : parts) {
         part.second.update();
     }
-    if(recently_damaged){
-        if(damage_render_timer.get_ticks() >= DAMAGE_TEXT_DURATION){
+    if (recently_damaged) {
+        if (damage_render_timer.get_ticks() >= DAMAGE_TEXT_DURATION) {
             recently_damaged = false;
             damage_render_timer.stop();
         }
@@ -229,7 +238,7 @@ int VisualCharacterComponent::get_part_id(const std::string& part_name) {
     return part_ids.at(part_name);
 }
 
-void VisualCharacterComponent::display_damage(int damage){
+void VisualCharacterComponent::display_damage(int damage) {
     render_damage.update_text("-" + std::to_string(damage));
     recently_damaged = true;
     damage_render_timer.start();
