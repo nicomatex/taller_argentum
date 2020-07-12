@@ -6,3 +6,5 @@ client/build/Makefile
 client/.vscode/*
 client/build/*
 server/build/*
+package_generation/*
+!package_generation/Makefile
