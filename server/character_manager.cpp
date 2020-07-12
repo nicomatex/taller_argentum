@@ -83,8 +83,8 @@ CharacterManager::CharacterManager(const char* f_char, const char* f_map)
             {"race_type", ELF}, {"curr_level", 9},  {"curr_exp", 43000},
             {"alive", true}};
         fran_info["inventory"] =
-            R"({"items_ids":[400,401,200,100,303,0,0,0,0,0,0,0],
-                                 "items_stacks":[1200,500,3,2,2,0,0,0,0,0,0,0],
+            R"({"items_ids":[400,401,200,100,303,1,3,102,304,305,306,307],
+                                 "items_stacks":[1200,500,3,2,2,1,1,1,1,1,1,1],
                                  "curr_gold":1681})"_json;
         add_character(fran_info);
     }

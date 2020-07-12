@@ -28,6 +28,7 @@ const std::string Merchant::list_sale() const {
     ss << greeting;
 
     SlotId slot_id = 0;
+    unsigned int counter = 0;
     nlohmann::json json_inv = inventory.get_data();
     for (auto& item : json_inv["items"]) {
         if (item["type"] != 0) {
@@ -35,7 +36,12 @@ const std::string Merchant::list_sale() const {
                << " ";
             ss << "Name: " << item["name"] << ", ";
             ss << "stock: " << item["actual_stack"] << ", ";
-            ss << "precio: $" << item["gold_value"] << "\n";
+            ss << "precio: $" << item["gold_value"] << "               ";
+            counter++;
+            if (counter == 2) {
+                ss << "\n";
+                counter = 0;
+            }   
         }
         slot_id++;
     }
@@ -44,13 +50,18 @@ const std::string Merchant::list_sale() const {
 }
 
 void Merchant::sell(SlotId slot, uint32_t stack, Player* player) {
-    Item* item = player->remove_item(slot, stack);
-    if (!item)
-        return;
-    uint32_t gold_total = item->get_stack() * item->get_gold_value();
-    inventory.add(item);
-    Gold* gold = inventory.remove_gold(gold_total);
-    player->add_item(gold);
+    Item *item = nullptr;
+    try {
+        item = player->remove_item(slot, stack);
+        if (!item)
+            return;
+        uint32_t gold_total = item->get_stack() * item->get_gold_value();
+        inventory.add(item);
+        Gold* gold = inventory.remove_gold(gold_total);
+        player->add_item(gold);
+    } catch (const FullItemContainerException& e) {
+        player->add_item(item);
+    }
 }
 
 void Merchant::buy(SlotId slot, uint32_t stack, Player* player) {
@@ -66,9 +77,9 @@ void Merchant::buy(SlotId slot, uint32_t stack, Player* player) {
     }
     if (purchasable == 0)
         return;
-    Item *item = inventory.remove(slot, purchasable);
+    Item* item = inventory.remove(slot, purchasable);
     player->add_item(item);
-    Gold* gold = player->remove_gold(item->get_stack()*gold_value);
+    Gold* gold = player->remove_gold(item->get_stack() * gold_value);
     inventory.add_gold(gold);
     delete gold;
 }
