@@ -7,8 +7,8 @@
 class PlayerMovementComponent : public MovementComponent {
    private:
     std::vector<direction_t> direction_history;
-    bool moving;
     int move_accumulator;
+    bool moving;
 
    protected:
     direction_t current_direction() const override;

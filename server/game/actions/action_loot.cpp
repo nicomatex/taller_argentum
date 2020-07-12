@@ -10,7 +10,7 @@ ActionLoot::ActionLoot() {}
 
 void ActionLoot::execute(Map& map, EntityId entity_id) const {
     Player* player = static_cast<Player*>(Action::get_entity(map, entity_id));
-    if (!player->is_alive())
+    if (!player || !player->is_alive())
         return;
     Item* item = map.pickup_loot(player->get_id());
     if (!item)

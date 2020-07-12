@@ -21,20 +21,19 @@
 
 class ServerManager {
    private:
+    std::recursive_mutex m;
+    ThClientAccepter accepter;
     CharacterManager character_manager;
     MapManager map_manager;
     std::unordered_map<MapId, Session> sessions;
     std::unordered_map<ClientId, MapId> client_to_map;
     ClientsNamesMonitor clients_names;
     ClientsMonitor clients;
-    GameLoop game_loop;
     ThDispatcher dispatcher;
-    ThClientAccepter accepter;
+    GameLoop game_loop;
 
     ItemFactory item_factory;
     MobFactory mob_factory;
-
-    std::recursive_mutex m;
 
     ServerManager();
 
@@ -51,9 +50,10 @@ class ServerManager {
     void rm_client(ClientId client_id);
     void drop_client(ClientId client_id);
 
-    void add_player(ClientId client_id, nlohmann::json player_info,
-                    bool send_map_data = true);
+    void add_player(ClientId client_id, nlohmann::json player_info);
     nlohmann::json rm_player(ClientId client_id);
+    void change_player_map(ClientId client_id, position_t new_position,
+                           MapId new_map);
 
     void add_name(ClientId client_id, const std::string& name);
     void rm_name(ClientId client_id);

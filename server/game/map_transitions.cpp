@@ -6,9 +6,9 @@
 MapTransitions::MapTransitions(nlohmann::json changes, int width, int height) {
     for (auto& it : changes["teleports"].items()) {
         nlohmann::json& teleport = it.value();
-        position_t position = it.value()["position"];
-        position_t pos_dest = it.value()["destination"];
-        MapId map_dest = it.value()["destination"]["map_id"];
+        position_t position = teleport["position"];
+        position_t pos_dest = teleport["destination"]["pos"];
+        MapId map_dest = teleport["destination"]["map_id"];
         teleports[position] = std::make_pair(map_dest, pos_dest);
     }
     if (changes["upper"] >= 0) {

@@ -6,11 +6,12 @@
 ActionHeal::ActionHeal(position_t target) : target(target) {}
 
 void ActionHeal::execute(Map& map, EntityId entity_id) const {
-    Healer* npc = static_cast<Healer*>(Action::get_entity(map, target));
-    if (!npc || npc->get_profession() != HEALER)
+    Healer* healer = static_cast<Healer*>(Action::get_entity(map, target));
+    if (!healer || healer->get_type() != NPC ||
+        healer->get_profession() != HEALER)
         return;
     Player* player = static_cast<Player*>(Action::get_entity(map, entity_id));
-    if (!player)
+    if (!player || !player->is_alive())
         return;
-    npc->heal(player);
+    healer->heal(player);
 }

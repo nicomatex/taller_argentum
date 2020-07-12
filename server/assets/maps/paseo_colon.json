@@ -135,12 +135,5 @@
  "tilewidth":32,
  "type":"map",
  "version":1.4,
- "width":50,
- "transitions": {
-              "teleports": [],
-              "upper": -1,
-              "lower": -1,
-              "right": 1,
-              "left": -1
-       }
+ "width":50 
 }

@@ -4,19 +4,114 @@
             "map_id": 0,
             "map_name": "Paseo Colon",
             "path": "assets/maps/paseo_colon.json",
-            "monsters_ids": [
-                1,
-                2
-            ]
+            "mobs": [
+                {
+                    "mob_id": 1,
+                    "pos": {
+                        "x": 40,
+                        "y": 40
+                    },
+                    "max_count": 5
+                },
+                {
+                    "mob_id": 5,
+                    "pos": {
+                        "x": 15,
+                        "y": 30
+                    },
+                    "max_count": 5
+                }
+            ],
+            "transitions": {
+                "teleports": [
+                    {
+                        "position": {
+                            "x": 35,
+                            "y": 28
+                        },
+                        "destination": {
+                            "pos": {
+                                "x": 11,
+                                "y": 18
+                            },
+                            "map_id": 0
+                        }
+                    },
+                    {
+                        "position": {
+                            "x": 36,
+                            "y": 28
+                        },
+                        "destination": {
+                            "pos": {
+                                "x": 12,
+                                "y": 18
+                            },
+                            "map_id": 0
+                        }
+                    },
+                    {
+                        "position": {
+                            "x": 11,
+                            "y": 17
+                        },
+                        "destination": {
+                            "pos": {
+                                "x": 35,
+                                "y": 29
+                            },
+                            "map_id": 0
+                        }
+                    },
+                    {
+                        "position": {
+                            "x": 12,
+                            "y": 17
+                        },
+                        "destination": {
+                            "pos": {
+                                "x": 36,
+                                "y": 29
+                            },
+                            "map_id": 0
+                        }
+                    }
+                ],
+                "upper": -1,
+                "lower": -1,
+                "right": 1,
+                "left": -1
+            }
         },
         {
             "map_id": 1,
             "map_name": "Reserva Puerto Madero",
             "path": "assets/maps/reserva_puerto_madero.json",
-            "monsters_ids": [
-                1,
-                2
-            ]
+            "mobs": [
+                {
+                    "mob_id": 2,
+                    "pos": {
+                        "x": 40,
+                        "y": 40
+                    },
+                    "max_count": 5
+                },
+                {
+                    "mob_id": 3,
+                    "pos": {
+                        "x": 20,
+                        "y": 12
+                    },
+                    "max_count": 5
+                }
+            ],
+            "transitions": {
+                "teleports": [],
+                "upper": -1,
+                "lower": -1,
+                "right": -1,
+                "left": 0
+            }
         }
     ]
 }

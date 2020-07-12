@@ -149,14 +149,16 @@ static character_t create_character(const nlohmann::json& character_info) {
     character.current_level = character_info["curr_level"];
     character.current_exp = character_info["curr_exp"];
     character.alive = character_info["alive"];
-    return std::move(character);
+    return character;
 }
 
 void CharacterManager::add_character(const nlohmann::json& character_info) {
     std::unique_lock<std::mutex> l(m);
     character_t character = create_character(character_info);
     if (character_exists(character.name))
-        throw MyException("CharacterManager: Character with name: '%s' already exists", character.name);
+        throw MyException(
+            "CharacterManager: Character with name: '%s' already exists",
+            character.name);
     f_char_stream.seekg(0, std::ios_base::end);
     f_char_stream.write(reinterpret_cast<const char*>(&character),
                         sizeof(character_t));
@@ -209,7 +211,7 @@ nlohmann::json CharacterManager::get_character(std::string name) {
     character_info["curr_level"] = character.current_level;
     character_info["curr_exp"] = character.current_exp;
     character_info["alive"] = character.alive;
-    return std::move(character_info);
+    return character_info;
 }
 
 void CharacterManager::save() {
