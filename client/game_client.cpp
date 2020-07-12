@@ -47,7 +47,6 @@ void GameClient::run() {
     Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
     Mix_Volume(-1, MIX_MAX_VOLUME / 3);
     game_state_monitor.set_game_state(LOGGING);
-
     while (game_state_monitor.is_connected()) {
         switch (game_state_monitor.get_game_state()) {
             case LOGGING:
