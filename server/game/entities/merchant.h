@@ -13,7 +13,7 @@ class Merchant : public Npc {
    public:
     Merchant(EntityId entity_id, nlohmann::json npc_info, Map& map);
     ~Merchant();
-    Gold* sell(Item *item, uint32_t stack);
+    void sell(SlotId slot, uint32_t stack, Player* player);
     void buy(SlotId slot, uint32_t stack, Player* player);
     const std::string list_sale() const;
 };

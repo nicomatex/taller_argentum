@@ -14,7 +14,7 @@ void ActionList::execute(Map& map, EntityId entity_id) const {
     if (!npc || npc->get_type() != NPC)
         return;
     Player* player = static_cast<Player*>(Action::get_entity(map, entity_id));
-    if (!player)
+    if (!player || !player->is_alive())
         return;
     switch (npc->get_profession()) {
         case BANKER:

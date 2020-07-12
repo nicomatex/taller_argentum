@@ -43,10 +43,14 @@ const std::string Merchant::list_sale() const {
     return msg;
 }
 
-Gold* Merchant::sell(Item* item, uint32_t stack) {
-    uint32_t gold_total = stack * item->get_gold_value();
+void Merchant::sell(SlotId slot, uint32_t stack, Player* player) {
+    Item* item = player->remove_item(slot, stack);
+    if (!item)
+        return;
+    uint32_t gold_total = item->get_stack() * item->get_gold_value();
     inventory.add(item);
-    return inventory.remove_gold(gold_total);
+    Gold* gold = inventory.remove_gold(gold_total);
+    player->add_item(gold);
 }
 
 void Merchant::buy(SlotId slot, uint32_t stack, Player* player) {
