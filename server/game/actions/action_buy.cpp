@@ -16,7 +16,7 @@ void ActionBuy::execute(Map& map, EntityId entity_id) const {
         return;
     std::cout << merchant->get_profession() << std::endl;
     Player* player = static_cast<Player*>(Action::get_entity(map, entity_id));
-    if (!player)
+    if (!player || !player->is_alive())
         return;
     try {
         merchant->buy(slot, amount, player);

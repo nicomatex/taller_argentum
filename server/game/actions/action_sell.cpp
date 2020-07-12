@@ -13,16 +13,7 @@ void ActionSell::execute(Map& map, EntityId entity_id) const {
     if (!merchant || merchant->get_profession() != MERCHANT)
         return;
     Player* player = static_cast<Player*>(Action::get_entity(map, entity_id));
-    if (!player)
+    if (!player || !player->is_alive())
         return;
-    Item *item = nullptr;
-    try {
-        item = player->remove_item(slot, amount);
-        if (!item)
-            return;
-        Gold *gold = merchant->sell(item, amount);
-        player->add_item(gold);
-    } catch(const FullItemContainerException& e) { //del lado del merchant
-        player->add_item(item);
-    }
+    merchant->sell(slot, amount, player);
 }
