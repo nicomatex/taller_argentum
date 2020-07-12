@@ -48,12 +48,15 @@ class EventFactory {
 
     static Event heal_event(ClientId client_id, position_t target);
 
+<<<<<<< Updated upstream
     static Event name_not_found();
 
     static Event name_already_online();
 
     static Event name_taken();
     
+=======
+>>>>>>> Stashed changes
     static Event sell_event(ClientId client_id, position_t target, SlotId slot,
                             uint32_t amount);
 

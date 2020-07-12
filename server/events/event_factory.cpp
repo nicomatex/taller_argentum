@@ -128,6 +128,7 @@ Event EventFactory::heal_event(ClientId client_id, position_t target) {
     return Event(ev_json);
 }
 
+<<<<<<< Updated upstream
 Event EventFactory::name_not_found() {
     nlohmann::json ev_json = {{"ev_id", EV_ID_NAME_NOTFOUND}};
     return Event(ev_json);
@@ -143,6 +144,8 @@ Event EventFactory::name_taken() {
     return Event(ev_json);
 }
 
+=======
+>>>>>>> Stashed changes
 Event EventFactory::sell_event(ClientId client_id, position_t target,
                                SlotId slot, uint32_t amount) {
     nlohmann::json ev_json = {{"ev_id", SERVER_SELL},

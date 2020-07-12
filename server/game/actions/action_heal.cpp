@@ -11,7 +11,13 @@ void ActionHeal::execute(Map& map, EntityId entity_id) const {
         healer->get_profession() != HEALER)
         return;
     Player* player = static_cast<Player*>(Action::get_entity(map, entity_id));
+<<<<<<< Updated upstream
     if (!player || !player->is_alive())
         return;
     healer->heal(player);
+=======
+    if (!player)
+        return;
+    npc->heal(player);
+>>>>>>> Stashed changes
 }

@@ -123,13 +123,21 @@ std::queue<map_change_t>& Map::get_transitions() {
 nlohmann::json Map::add_player(nlohmann::json player_info) {
     // TODO: sacar esto
 
+<<<<<<< Updated upstream
     // std::cerr << "Agregando bichos" << std::endl;
+=======
+    //std::cerr << "Agregando bichos" << std::endl;
+>>>>>>> Stashed changes
     add_entity(entity_factory.create_monster(1), {40, 40});
     add_entity(entity_factory.create_monster(2), {35, 35});
     add_entity(entity_factory.create_monster(3), {30, 20});
     add_entity(entity_factory.create_monster(4), {38, 22});
     add_entity(entity_factory.create_monster(5), {27, 26});
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     std::cerr << "Agrego banquero" << std::endl;
     add_entity(entity_factory.create_npc(6), {13, 22});
 
