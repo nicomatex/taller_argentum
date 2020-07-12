@@ -2,6 +2,7 @@
 
 #include <chrono>
 #include <iostream>
+#include <sstream>
 
 #include "../include/nlohmann/json.hpp"
 #include "events/event_factory.h"
@@ -75,8 +76,14 @@ void ThObserver::send_update_logs() {
                 case LOG_FULL_INVENTORY:
                     server_manager.send_to(client_id,
                                            EventFactory::chat_message(
-                                               "El inventario está lleno!"));
+                                               "El inventario esta lleno!"));
                     break;
+                case LOG_MESSAGE:
+                    std::stringstream ss;
+                    ss << "[" << std::string(log.info["from"]) << "]" << " " << std::string(log.info["message"]);
+                    std::string msg = ss.str();
+                    server_manager.send_to(client_id,
+                                           EventFactory::chat_message(msg));
             }
         } catch (const std::exception& e) {
             std::cerr << "Observer: update_logs error: type " << log.type

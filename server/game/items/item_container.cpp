@@ -14,8 +14,15 @@ const char* EmptySlotException::what() const throw() {
     return "Slot is empty!";
 }
 
+const char* OutOfRangeSlotException::what() const throw() {
+    return "SlotId is not between valid ranges!";
+}
+
 ItemContainer::ItemContainer(unsigned int slots_amount) {
     item_container.resize(slots_amount);
+    ServerManager& server_manager = ServerManager::get_instance();
+    ItemFactory& item_factory = server_manager.get_item_factory();
+    gold = static_cast<Gold*>(item_factory.create(500, 0));
 }
 
 ItemContainer::ItemContainer(const nlohmann::json& inv_json)
@@ -30,7 +37,9 @@ ItemContainer::ItemContainer(const nlohmann::json& inv_json)
         uint32_t stack = inventory.items_stacks[slot_id];
         this->add(item_factory.create(item_id, stack));
     }
-    gold = static_cast<Gold*>(item_factory.create(500, inv_json["curr_gold"]));
+    Gold* other_gold = (Gold*)item_factory.create(500, inv_json["curr_gold"]);
+    add_gold(other_gold);
+    delete other_gold;
 }
 
 ItemContainer::~ItemContainer() {
@@ -70,6 +79,8 @@ void ItemContainer::add(Item* item, uint32_t stack) {
 }
 
 Item* ItemContainer::remove(SlotId slot_id) {
+    if (!is_in_range(slot_id))
+        throw OutOfRangeSlotException();
     if (slot_is_free(slot_id))
         throw EmptySlotException();
     Item* item = item_container[slot_id];
@@ -79,6 +90,8 @@ Item* ItemContainer::remove(SlotId slot_id) {
 }
 
 Item* ItemContainer::remove(SlotId slot_id, uint32_t stack) {
+    if (!is_in_range(slot_id))
+        throw OutOfRangeSlotException();
     ServerManager& server_manager = ServerManager::get_instance();
     ItemFactory& item_factory = server_manager.get_item_factory();
     if (slot_is_free(slot_id))
@@ -133,6 +146,8 @@ nlohmann::json ItemContainer::get_persist_data() const {
 }
 
 bool ItemContainer::slot_is_free(SlotId slot_id) const {
+    if (!is_in_range(slot_id))
+        throw OutOfRangeSlotException();
     return (item_container[slot_id] == nullptr) ? true : false;
 }
 
@@ -141,6 +156,8 @@ bool ItemContainer::has_item(ItemId item_id) {
 }
 
 const Item& ItemContainer::get_item(SlotId slot_id) const {
+    if (!is_in_range(slot_id))
+        throw OutOfRangeSlotException();
     if (slot_is_free(slot_id))
         throw EmptySlotException();
     return *item_container[slot_id];
@@ -191,3 +208,8 @@ Gold* ItemContainer::remove_gold(uint32_t stack) {
     gold->decrease_stack(stack);
     return static_cast<Gold*>(item_factory.create(gold->get_id(), stack));
 }
+
+bool ItemContainer::is_in_range(SlotId slotId) const {
+    return (slotId >= 0 && slotId < item_container.size()) ? true : false;
+}
+

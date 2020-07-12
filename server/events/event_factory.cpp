@@ -142,3 +142,29 @@ Event EventFactory::name_taken() {
     nlohmann::json ev_json = {{"ev_id", EV_ID_NAME_TAKEN}};
     return Event(ev_json);
 }
+
+Event EventFactory::sell_event(ClientId client_id, position_t target,
+                               SlotId slot, uint32_t amount) {
+    nlohmann::json ev_json = {{"ev_id", SERVER_SELL},
+                              {"client_id", client_id},
+                              {"target", target},
+                              {"slot", slot},
+                              {"amount", amount}};
+    return Event(ev_json);
+}
+
+Event EventFactory::buy_event(ClientId client_id, position_t target,
+                              SlotId slot, uint32_t amount) {
+    nlohmann::json ev_json = {{"ev_id", SERVER_BUY},
+                              {"client_id", client_id},
+                              {"target", target},
+                              {"slot", slot},
+                              {"amount", amount}};
+    return Event(ev_json);
+}
+
+Event EventFactory::list_event(ClientId client_id, position_t target) {
+    nlohmann::json ev_json = {
+        {"ev_id", SERVER_LIST}, {"client_id", client_id}, {"target", target}};
+    return Event(ev_json);
+}

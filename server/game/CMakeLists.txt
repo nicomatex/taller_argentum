@@ -8,6 +8,9 @@ add_library(game
   actions/action_unequip.cpp
   actions/action_resuscitate.cpp
   actions/action_heal.cpp
+  actions/action_sell.cpp
+  actions/action_buy.cpp
+  actions/action_list.cpp
   entities/components/combat_component.cpp
   entities/components/experience_component.cpp
   entities/entity.cpp
@@ -36,4 +39,6 @@ add_library(game
   entities/components/npc_movement_component.cpp
   entities/npc.cpp
   entities/healer.cpp
+  entities/merchant.cpp
+  entities/banker.cpp
 )

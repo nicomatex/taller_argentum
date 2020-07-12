@@ -24,6 +24,7 @@ nlohmann::json Item::get_data() const {
     info["item_id"] = item_info.sprite_id;
     info["name"] = item_info.name;
     info["type"] = item_info.type;
+    info["gold_value"] = item_info.gold_value;
     return info;
 }
 
@@ -45,6 +46,10 @@ uint32_t Item::get_stack() const {
 
 ItemId Item::get_id() const {
     return item_info.id;
+}
+
+uint32_t Item::get_gold_value() const {
+    return item_info.gold_value;
 }
 
 uint32_t Item::get_sprite_id() const {

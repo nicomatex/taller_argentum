@@ -23,6 +23,7 @@ typedef struct item_info {
     ItemId id;
     item_type_t type;
     uint32_t sprite_id;
+    unsigned int gold_value;
 } item_info_t;
 
 inline void to_json(nlohmann::json &j, const item_info_t &i) {
@@ -30,6 +31,7 @@ inline void to_json(nlohmann::json &j, const item_info_t &i) {
     j["id"] = i.id;
     j["type"] = i.type;
     j["sprite_id"] = i.sprite_id;
+    j["gold_value"] = i.gold_value;
 }
 
 inline void from_json(const nlohmann::json &j, item_info_t &i) {
@@ -37,6 +39,7 @@ inline void from_json(const nlohmann::json &j, item_info_t &i) {
     j["id"].get_to(i.id);
     j["type"].get_to(i.type);
     j["sprite_id"].get_to(i.sprite_id);
+    j["gold_value"].get_to(i.gold_value);
 }
 
 class Item {
@@ -58,6 +61,7 @@ class Item {
     int stack_difference(uint32_t other_stack);
     void increase_stack(uint32_t stack);
     void decrease_stack(uint32_t stack);
+    uint32_t get_gold_value() const;
 };
 
 #endif  // ITEM_H

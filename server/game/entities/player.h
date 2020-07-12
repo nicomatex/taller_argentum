@@ -83,6 +83,9 @@ class Player : public Entity {
      */
     Item* remove_item(SlotId slot, uint32_t amount);
 
+    Gold* remove_gold(uint32_t amount);
+    uint32_t get_gold_stack() const;
+
     /**
      * @brief Desequipa de todo su armamento al jugador.
      *

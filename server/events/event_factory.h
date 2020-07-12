@@ -53,6 +53,14 @@ class EventFactory {
     static Event name_already_online();
 
     static Event name_taken();
+    
+    static Event sell_event(ClientId client_id, position_t target, SlotId slot,
+                            uint32_t amount);
+
+    static Event buy_event(ClientId client_id, position_t target, SlotId slot,
+                           uint32_t amount);
+
+    static Event list_event(ClientId client_id, position_t target);
 };
 
 #endif  // EVENT_FACTORY_H

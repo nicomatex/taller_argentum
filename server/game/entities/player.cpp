@@ -159,6 +159,16 @@ Item* Player::remove_item(SlotId slot, uint32_t amount) {
     return item;
 }
 
+Gold* Player::remove_gold(uint32_t amount) {
+    Gold* gold = inventory.remove_gold(amount);
+    map.push_log(MapLogFactory::inventory_change(name, get_inventory_data()));
+    return gold;
+}
+
+uint32_t Player::get_gold_stack() const {
+    return inventory.get_gold_stack();
+}
+
 void Player::unequip(SlotId slot) {
     PlayerCombatComponent* p_combat_component =
         static_cast<PlayerCombatComponent*>(combat_component);

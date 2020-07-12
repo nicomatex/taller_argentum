@@ -16,6 +16,9 @@ add_library(events
   resuscitate_handler.cpp
   unequip_handler.cpp
   heal_handler.cpp
+  sell_handler.cpp
+  buy_handler.cpp
+  list_handler.cpp
 )
 
 target_link_libraries(events

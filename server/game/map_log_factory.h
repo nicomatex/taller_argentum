@@ -16,6 +16,8 @@ class MapLogFactory {
 
     static map_log_t receive_damage(const std::string& player_name,
                                     nlohmann::json damage_info);
+    static map_log_t message(const std::string& player_name,
+                             nlohmann::json message_info);
 };
 
 #endif  // MAP_LOG_FACTORY_H

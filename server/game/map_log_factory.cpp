@@ -18,3 +18,8 @@ map_log_t MapLogFactory::receive_damage(const std::string& player_name,
                                         nlohmann::json damage_info) {
     return {LOG_RECV_DAMAGE, player_name, damage_info};
 }
+
+map_log_t MapLogFactory::message(const std::string& player_name,
+                                nlohmann::json message_info) {
+    return {LOG_MESSAGE, player_name, message_info};
+}

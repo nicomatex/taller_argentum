@@ -38,7 +38,10 @@ enum server_to_self {
     SERVER_DROP_CLIENT = 1000,
     SERVER_CHANGE_MAP = 1001,
     SERVER_RESUSCITATE = 1003,
-    SERVER_HEAL = 1004
+    SERVER_HEAL = 1004,
+    SERVER_SELL = 1005,
+    SERVER_BUY = 1006,
+    SERVER_LIST = 1007
 };
 
 class Event {

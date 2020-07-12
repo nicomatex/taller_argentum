@@ -4,6 +4,10 @@
 
 #include "../../include/my_exception.h"
 #include "../../include/nlohmann/json.hpp"
+#include "../../include/types.h"
+#include "entities/healer.h"
+#include "entities/banker.h"
+#include "entities/merchant.h"
 
 // Temp
 #include <iostream>
@@ -40,5 +44,21 @@ Monster* MobFactory::create_monster(EntityId entity_id, MobId monster_id,
 Npc* MobFactory::create_npc(EntityId entity_id, MobId npc_id, Map& map) {
     if (!npcs_info.count(npc_id))
         throw MyException("MobFactory: Npc does not exist: %i", npc_id);
-    return new Npc(entity_id, npcs_info.at(npc_id), map);
+    Npc* npc = nullptr;
+    nlohmann::json &npc_info =  npcs_info.at(npc_id);
+    switch((npc_proffesion_t)npc_info["profession"]) {
+        case HEALER:
+            npc = new Healer(entity_id, npc_info, map);
+            break;
+        case MERCHANT:
+            npc = new Merchant(entity_id, npc_info, map);
+            break;
+        case BANKER:
+            npc = new Banker(entity_id, npc_info, map);
+            break;
+        default:
+            std::cerr << "Error al crear npc" << std::endl;
+            break;
+    }
+    return npc;
 }

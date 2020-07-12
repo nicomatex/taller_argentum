@@ -15,6 +15,9 @@
 #include "events/resuscitate_handler.h"
 #include "events/heal_handler.h"
 #include "events/unequip_handler.h"
+#include "events/sell_handler.h"
+#include "events/buy_handler.h"
+#include "events/list_handler.h"
 #include "server_manager.h"
 
 // Temp
@@ -77,6 +80,12 @@ ThDispatcher::ThDispatcher() : BlockingThEventHandler() {
         static_cast<EventHandler*>(new UnequipHandler());
     handlers[static_cast<int>(SERVER_HEAL)] =
         static_cast<EventHandler*>(new HealHandler());
+    handlers[static_cast<int>(SERVER_SELL)] =
+        static_cast<EventHandler*>(new SellHandler());
+    handlers[static_cast<int>(SERVER_BUY)] =
+        static_cast<EventHandler*>(new BuyHandler());
+    handlers[static_cast<int>(SERVER_LIST)] =
+        static_cast<EventHandler*>(new ListHandler());
     // Inicializamos los handlers que sean threads
     for (auto it : handlers) {
         if (it.second->is_threaded()) {

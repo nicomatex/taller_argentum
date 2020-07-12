@@ -23,6 +23,11 @@ class EmptySlotException : public std::exception {
     const char* what() const throw();
 };
 
+class OutOfRangeSlotException : public std::exception {
+   public:
+    const char* what() const throw();
+};
+
 typedef struct inventory {
     ItemId items_ids[INV_SIZE];
     uint32_t items_stacks[INV_SIZE];
@@ -103,6 +108,8 @@ class ItemContainer {
     void add_gold(Gold* gold, uint32_t stack);
     Gold* remove_gold();
     Gold* remove_gold(uint32_t stack);
+    bool is_in_range(SlotId slotId) const;
+
     /*
         Informacion para persistir el inventario en el personaje.
     */

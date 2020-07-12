@@ -30,7 +30,8 @@ typedef enum log_type {
     LOG_INVENTORY,
     LOG_FULL_INVENTORY,
     LOG_DEAL_DAMAGE,
-    LOG_RECV_DAMAGE
+    LOG_RECV_DAMAGE,
+    LOG_MESSAGE
 } log_type_t;
 
 typedef struct map_log {

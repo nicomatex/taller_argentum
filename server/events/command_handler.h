@@ -53,6 +53,12 @@ class CommandHandler : public BlockingThEventHandler {
 
     void cmd_unequip_all(ClientId client_id);
 
+    void cmd_list(ClientId client_id, position_t target);
+
+    void cmd_buy(ClientId client_id, position_t target);
+
+    void cmd_sell(ClientId client_id, position_t target, SlotId slot);
+
    protected:
     void handle(Event& ev) override;
 
