@@ -5,7 +5,10 @@
 // Temp
 #include <iostream>
 
-MapMonitor::MapMonitor(nlohmann::json map_description) : map(map_description) {}
+MapMonitor::MapMonitor(std::tuple<const nlohmann::json&, const nlohmann::json&,
+                                  const nlohmann::json&>
+                           forward_args)
+    : map(forward_args) {}
 
 MapMonitor::~MapMonitor() {}
 
@@ -27,6 +30,11 @@ nlohmann::json MapMonitor::rm_player(ClientId client_id) {
 position_t MapMonitor::get_position(ClientId client_id) {
     std::unique_lock<std::recursive_mutex> l(m);
     return map.get_position(client_map.at(client_id));
+}
+
+bool MapMonitor::entity_exists(EntityId entity_id) {
+    std::unique_lock<std::recursive_mutex> l(m);
+    return map.entity_exists(entity_id);
 }
 
 std::queue<map_change_t> MapMonitor::get_transitions() {

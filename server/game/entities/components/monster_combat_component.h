@@ -8,10 +8,10 @@
 class MonsterCombatComponent : public CombatComponent {
    private:
     unsigned int damage;
-    float attack_speed;
-    int attack_accumulator;
     Map& map;
     EntityId entity_id;
+    int attack_accumulator;
+    float attack_speed;
 
    public:
     MonsterCombatComponent(unsigned int max_hp, unsigned int damage,

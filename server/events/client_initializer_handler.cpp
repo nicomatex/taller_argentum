@@ -24,7 +24,7 @@ void ClientInitializeHandler::handle(Event& event) {
     } catch (const DuplicatedPlayerException& e) {
         server_manager.send_to(client_id, EventFactory::name_already_online());
     } catch (const std::exception& e) {
-        std::cerr << "initialize_handler: " << e.what() << std::endl;
+        std::cerr << "ClientInitializeHandler: " << e.what() << std::endl;
         return;
     }
 }

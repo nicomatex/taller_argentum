@@ -1,8 +1,9 @@
 #include "experience_component.h"
-#include "../../../configuration_manager.h"
 
 #include <cmath>
 #include <iostream>
+
+#include "../../../configuration_manager.h"
 
 ExperienceComponent::ExperienceComponent(unsigned int level, unsigned int exp)
     : current_level(level), current_exp(exp) {}
@@ -26,9 +27,11 @@ void ExperienceComponent::add_exp(int exp) {
 }
 
 void ExperienceComponent::reduce() {
-    unsigned int exp_redu_percentage = ConfigurationManager::get_exp_reduc_percentage();
+    unsigned int exp_redu_percentage =
+        ConfigurationManager::get_exp_reduc_percentage();
     unsigned int base_exp = get_xp_limit_level(current_level - 1);
-    int exp_lost = float(current_exp - base_exp) * (exp_redu_percentage / (float)100);
+    int exp_lost =
+        float(current_exp - base_exp) * (exp_redu_percentage / (float)100);
     current_exp -= exp_lost;
 }
 
@@ -58,7 +61,7 @@ nlohmann::json ExperienceComponent::get_persist_data() const {
     nlohmann::json json_exp;
     json_exp["curr_level"] = current_level;
     json_exp["curr_exp"] = current_exp;
-    return std::move(json_exp);
+    return json_exp;
 }
 
 nlohmann::json ExperienceComponent::get_data() const {
@@ -67,5 +70,5 @@ nlohmann::json ExperienceComponent::get_data() const {
     json_exp["curr_level"] = current_level;
     json_exp["curr_exp"] = current_exp - base_exp;
     json_exp["limit_exp"] = get_xp_limit_level(current_level) - base_exp;
-    return std::move(json_exp);
+    return json_exp;
 }

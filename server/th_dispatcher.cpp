@@ -9,11 +9,11 @@
 #include "events/creation_handler.h"
 #include "events/disconnect_handler.h"
 #include "events/drop_loot_handler.h"
+#include "events/heal_handler.h"
 #include "events/inventory_handler.h"
 #include "events/movement_handler.h"
 #include "events/pickup_loot_handler.h"
 #include "events/resuscitate_handler.h"
-#include "events/heal_handler.h"
 #include "events/unequip_handler.h"
 #include "events/sell_handler.h"
 #include "events/buy_handler.h"
@@ -36,17 +36,20 @@ void ThDispatcher::stop_and_join_handlers() {
 }
 
 void ThDispatcher::handle(Event& event) {
+    nlohmann::json json_ev = event.get_json();
+    int ev_id = json_ev["ev_id"];
     try {
-        nlohmann::json json_ev = event.get_json();
-        int ev_id = json_ev["ev_id"];
         if (!handlers.count(ev_id)) {
             std::cerr << "Dispatcher: No handler for: " << json_ev << std::endl;
         } else {
             handlers[ev_id]->push_event(event);
         }
     } catch (const nlohmann::detail::exception& e) {
-        std::cerr << "Dispatcher: error in json: " << event.get_json()
-                  << std::endl;
+        std::cerr << "Dispatcher: error: " << e.what()
+                  << " in json: " << event.get_json() << std::endl;
+    } catch (const std::exception& e) {
+        std::cerr << "Dispatcher: error: " << e.what()
+                  << " while handling: " << ev_id << std::endl;
     }
 }
 

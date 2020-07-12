@@ -7,14 +7,16 @@
 
 class NpcMovementComponent : public MovementComponent {
    private:
-    EntityId entity_id;
     Map& map;
+    EntityId entity_id;
     direction_t looking_direction;
+
    protected:
     direction_t current_direction() const override;
+
    public:
     NpcMovementComponent(unsigned int movement_speed, Map& map,
-                             EntityId entity_id);
+                         EntityId entity_id);
     ~NpcMovementComponent();
 
     position_t update(uint64_t delta_t) override;

@@ -3,25 +3,25 @@
 #include <fstream>
 #include <iostream>
 
-#include "../include/nlohmann/json.hpp"
 #include "../include/my_exception.h"
+#include "../include/nlohmann/json.hpp"
 
-
-float ConfigurationManager::nothing_drop_ev_prob;
-float ConfigurationManager::gold_drop_ev_prob;
-float ConfigurationManager::potion_drop_ev_prob;
-float ConfigurationManager::rand_obj_drop_ev_prob;
-unsigned int ConfigurationManager::newbie_lvl;
-unsigned int ConfigurationManager::max_level_difference;
-float ConfigurationManager::gold_max_secure_mult;
-float ConfigurationManager::gold_max_secure_expo;
-float ConfigurationManager::gold_excess_mult;
-float ConfigurationManager::exp_limit_mult;
-float ConfigurationManager::exp_limit_expo;
-unsigned int ConfigurationManager::exp_reduc_percentage;
-unsigned int ConfigurationManager::critic_prob;
-float ConfigurationManager::critic_mult;
-double ConfigurationManager::dodge_threshold;
+float ConfigurationManager::nothing_drop_ev_prob = 100;
+float ConfigurationManager::gold_drop_ev_prob = 0;
+float ConfigurationManager::potion_drop_ev_prob = 0;
+float ConfigurationManager::rand_obj_drop_ev_prob = 0;
+unsigned int ConfigurationManager::newbie_lvl = 1;
+unsigned int ConfigurationManager::max_level_difference = UINT32_MAX;
+float ConfigurationManager::gold_max_secure_mult = 1;
+float ConfigurationManager::gold_max_secure_expo = 1;
+float ConfigurationManager::gold_excess_mult = 1;
+float ConfigurationManager::exp_limit_mult = 1;
+float ConfigurationManager::exp_limit_expo = 1;
+unsigned int ConfigurationManager::exp_reduc_percentage = 5;
+unsigned int ConfigurationManager::critic_prob = 0;
+float ConfigurationManager::critic_mult = 1;
+float ConfigurationManager::player_attack_speed = 1;
+double ConfigurationManager::dodge_threshold = 0;
 
 ConfigurationManager::ConfigurationManager() {}
 
@@ -35,7 +35,7 @@ void ConfigurationManager::init(const char *config_file) {
             config_file);
     nlohmann::json config;
     config_istream >> config;
-    
+
     nothing_drop_ev_prob = config["NOTHING_PROB"];
     gold_drop_ev_prob = config["GOLD_PROB"];
     potion_drop_ev_prob = config["POTION_PROB"];
@@ -50,6 +50,7 @@ void ConfigurationManager::init(const char *config_file) {
     exp_reduc_percentage = config["EXP_REDUC_PERCENTAGE"];
     critic_prob = config["CRITIC_PROB"];
     critic_mult = config["CRITIC_MULT"];
+    player_attack_speed = config["PLAYER_ATTACK_SPEED"];
     dodge_threshold = config["DODGE_THRESHOLD"];
 }
 
@@ -107,6 +108,10 @@ unsigned int ConfigurationManager::get_critic_prob() {
 
 float ConfigurationManager::get_critic_mult() {
     return critic_mult;
+}
+
+float ConfigurationManager::get_player_attack_speed() {
+    return player_attack_speed;
 }
 
 double ConfigurationManager::get_dodge_thold() {

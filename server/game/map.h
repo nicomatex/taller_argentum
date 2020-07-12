@@ -60,9 +60,8 @@ typedef ObjectMatrix<Item*> LootMatrix;
 class Map {
    private:
     friend class Action;
-    MapId map_id;
-    int height;
     int width;
+    int height;
 
     PositionMap position_map;
     bool _dirty_entities;
@@ -94,10 +93,10 @@ class Map {
     /* Agrega una nueva entidad asociada al entity_id en la posicion indicada.*/
     void add_entity(Entity* entity, position_t position);
 
-    void solve_combats();
-
    public:
-    Map(nlohmann::json map_info);
+    Map(std::tuple<const nlohmann::json&, const nlohmann::json&,
+                   const nlohmann::json&>
+            forward_args);
     ~Map();
 
     /* Mueve la entidad asociada al entity_id un tile en la direccion
@@ -118,6 +117,8 @@ class Map {
     position_t get_nearest_entity_pos(position_t entity_pos,
                                       unsigned int distance,
                                       entity_type_t entity_type);
+
+    bool entity_exists(EntityId entity_id);
 
     /* Actualiza todas las entidades que contiene segun el delta_t
      * transcurrido.*/

@@ -32,13 +32,13 @@ void ThObserver::send_update_logs() {
                     const std::string& to = log.info["to"];
                     if (!log.info["dodged"]) {
                         int dmg = log.info["damage"];
-
-                        server_manager.send_to(
-                            client_id,
-                            EventFactory::dealt_damage(dmg, log.info["to_id"]));
+                        if (map.entity_exists(log.info["to_id"])) {
+                            server_manager.send_to(client_id,
+                                                   EventFactory::dealt_damage(
+                                                       dmg, log.info["to_id"]));
+                        }
                         msg = "Hecho " + std::to_string(dmg) + " de danio a " +
                               to;
-
                     } else {
                         server_manager.send_to(
                             client_id,
@@ -59,9 +59,8 @@ void ThObserver::send_update_logs() {
                         msg = "Recibido " + std::to_string(dmg) +
                               " de danio por " + from;
                     } else {
-                        server_manager.send_to(
-                            client_id,
-                            EventFactory::evaded_damage());
+                        server_manager.send_to(client_id,
+                                               EventFactory::evaded_damage());
                         msg = "He evadido el golpe de " + from;
                     }
 
