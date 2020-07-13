@@ -7,6 +7,7 @@
 #include "../../../server_manager.h"
 #include "../../items/item.h"
 #include "../../items/item_factory.h"
+#include "../../items/weapon.h"
 
 // Temp
 
@@ -56,6 +57,12 @@ PlayerCombatComponent::~PlayerCombatComponent() {
     delete armor;
     delete shield;
     delete weapon;
+}
+
+std::vector<map_log_t> PlayerCombatComponent::use_ability(Entity* target,
+                                                          position_t source,
+                                                          position_t dest) {
+    return weapon->use_ability(&player, target, source, dest);
 }
 
 attack_t PlayerCombatComponent::attack() {

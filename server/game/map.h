@@ -14,6 +14,7 @@
 #include "entities/entity.h"
 #include "entity_factory.h"
 #include "items/item.h"
+#include "map_log_factory.h"
 #include "map_transitions.h"
 #include "position.h"
 
@@ -25,20 +26,6 @@ typedef struct entity_action {
     EntityId entity;
     Action* action;
 } entity_action_t;
-
-typedef enum log_type {
-    LOG_INVENTORY,
-    LOG_FULL_INVENTORY,
-    LOG_DEAL_DAMAGE,
-    LOG_RECV_DAMAGE,
-    LOG_MESSAGE
-} log_type_t;
-
-typedef struct map_log {
-    log_type_t type;
-    std::string player_name;
-    nlohmann::json info;
-} map_log_t;
 
 template <typename T>
 using ObjectMatrix =

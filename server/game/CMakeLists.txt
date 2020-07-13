@@ -11,6 +11,7 @@ add_library(game
   actions/action_sell.cpp
   actions/action_buy.cpp
   actions/action_list.cpp
+  actions/action_use_ability.cpp
   entities/components/combat_component.cpp
   entities/components/experience_component.cpp
   entities/entity.cpp
@@ -23,6 +24,9 @@ add_library(game
   items/weapon.cpp
   items/gold.cpp
   items/potion.cpp
+  items/special_ability.cpp
+  items/special_attack.cpp
+  items/special_heal.cpp
   map.cpp
   map_transitions.cpp
   map_log_factory.cpp

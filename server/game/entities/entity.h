@@ -28,8 +28,12 @@ class Entity {
            unsigned int current_exp);
     virtual ~Entity();
 
+    unsigned int heal(unsigned int hp);
     virtual void die() = 0;
     virtual bool is_alive() const = 0;
+
+    bool can_spend_mp(unsigned int amount);
+    void spend_mp(unsigned int amount);
 
     std::string get_name() const;
     unsigned int get_level() const;
@@ -43,6 +47,8 @@ class Entity {
 
     virtual bool can_attack(Entity* attacked) const;
     attack_result_t attack(Entity* attacked);
+    attack_result_t receive_damage(attack_t attack);
+    void add_exp(int exp);
 
     EntityId get_id() const;
 };

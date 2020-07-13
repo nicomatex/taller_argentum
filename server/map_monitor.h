@@ -8,6 +8,7 @@
 #include "../include/types.h"
 #include "game/actions/action.h"
 #include "game/map.h"
+#include "game/map_log_factory.h"
 #include "game/map_transitions.h"
 
 // Clave: id de cliente, valor: id de entidad del jugador.

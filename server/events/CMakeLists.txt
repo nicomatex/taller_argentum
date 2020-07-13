@@ -19,6 +19,7 @@ add_library(events
   sell_handler.cpp
   buy_handler.cpp
   list_handler.cpp
+  use_ability_handler.cpp
 )
 
 target_link_libraries(events

@@ -47,14 +47,26 @@ position_t Entity::get_facing_position(position_t position) {
     return movement_component->get_facing_position(position);
 }
 
+unsigned int Entity::heal(unsigned int hp) {
+    return combat_component->restore_hp(hp);
+}
+
+bool Entity::can_spend_mp(unsigned int mp) {
+    return combat_component->can_spend_mp(mp);
+}
+
+void Entity::spend_mp(unsigned int mp) {
+    return combat_component->spend_mp(mp);
+}
+
 bool Entity::can_attack(Entity* attacked) const {
     return false;
 }
 
 attack_result_t Entity::attack(Entity* attacked) {
     unsigned int max_lvl_diff = ConfigurationManager::get_max_level_diff();
-    attack_t raw_dmg = combat_component->attack();
-    attack_result_t dealt = attacked->combat_component->receive_damage(raw_dmg);
+    attack_t attack = combat_component->attack();
+    attack_result_t dealt = attacked->receive_damage(attack);
     experience_component.add_exp(
         dealt.damage_dealt *
         std::max<int>(attacked->get_level() - get_level() + max_lvl_diff, 0));
@@ -66,4 +78,12 @@ attack_result_t Entity::attack(Entity* attacked) {
         // Queda mejor la formula sin el rand
     }
     return dealt;
+}
+
+attack_result_t Entity::receive_damage(attack_t attack) {
+    return combat_component->receive_damage(attack);
+}
+
+void Entity::add_exp(int exp) {
+    experience_component.add_exp(exp);
 }

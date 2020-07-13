@@ -30,6 +30,10 @@ class CombatComponent {
     virtual ~CombatComponent();
 
     void reset_max(unsigned int max_hp, unsigned int max_mp);
+    unsigned int restore_hp(unsigned int hp);
+
+    bool can_spend_mp(unsigned int mp);
+    void spend_mp(unsigned int mp);
 
     virtual attack_t attack() = 0;
     virtual attack_result_t receive_damage(attack_t raw_damage) = 0;

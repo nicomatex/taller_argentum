@@ -18,6 +18,7 @@ enum server_to_client {
     EV_ID_DAMAGE_EVADED,
     EV_ID_NAME_NOTFOUND,
     EV_ID_NAME_TAKEN,
+    EV_ID_SPECIAL_ABILITY,
     EV_ID_NAME_ALREADY_ONLINE
 };
 
@@ -31,6 +32,7 @@ enum client_to_server {
     EV_ID_INVENTORY,
     EV_ID_PICKUP_LOOT,
     EV_ID_DROP_LOOT,
+    EV_ID_USE_ABILITY,
     EV_ID_UNEQUIP
 };
 

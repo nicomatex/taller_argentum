@@ -168,3 +168,9 @@ Event EventFactory::list_event(ClientId client_id, position_t target) {
         {"ev_id", SERVER_LIST}, {"client_id", client_id}, {"target", target}};
     return Event(ev_json);
 }
+
+Event EventFactory::special_ability(const nlohmann::json& cast_info) {
+    nlohmann::json ev_json = cast_info;
+    ev_json["ev_id"] = EV_ID_SPECIAL_ABILITY;
+    return Event(ev_json);
+}

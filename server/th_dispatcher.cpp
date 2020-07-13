@@ -2,6 +2,7 @@
 
 #include "../include/nlohmann/json.hpp"
 #include "events/attack_handler.h"
+#include "events/buy_handler.h"
 #include "events/change_map_handler.h"
 #include "events/client_drop_handler.h"
 #include "events/client_initializer_handler.h"
@@ -11,13 +12,13 @@
 #include "events/drop_loot_handler.h"
 #include "events/heal_handler.h"
 #include "events/inventory_handler.h"
+#include "events/list_handler.h"
 #include "events/movement_handler.h"
 #include "events/pickup_loot_handler.h"
 #include "events/resuscitate_handler.h"
-#include "events/unequip_handler.h"
 #include "events/sell_handler.h"
-#include "events/buy_handler.h"
-#include "events/list_handler.h"
+#include "events/unequip_handler.h"
+#include "events/use_ability_handler.h"
 #include "server_manager.h"
 
 // Temp
@@ -89,6 +90,8 @@ ThDispatcher::ThDispatcher() : BlockingThEventHandler() {
         static_cast<EventHandler*>(new BuyHandler());
     handlers[static_cast<int>(SERVER_LIST)] =
         static_cast<EventHandler*>(new ListHandler());
+    handlers[static_cast<int>(EV_ID_USE_ABILITY)] =
+        static_cast<EventHandler*>(new UseAbilityHandler());
     // Inicializamos los handlers que sean threads
     for (auto it : handlers) {
         if (it.second->is_threaded()) {

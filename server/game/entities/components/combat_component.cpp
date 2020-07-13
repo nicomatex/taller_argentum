@@ -23,6 +23,27 @@ void CombatComponent::reset_max(unsigned int new_max_hp,
     current_hp = new_max_hp;
     current_mp = new_max_mp;
 }
+unsigned int CombatComponent::restore_hp(unsigned int hp) {
+    unsigned int restored;
+    if (current_hp + hp >= max_hp) {
+        restored = max_hp - current_mp;
+        current_hp = max_hp;
+    } else {
+        restored = hp;
+        current_hp += hp;
+    }
+    return restored;
+}
+
+bool CombatComponent::can_spend_mp(unsigned int mp) {
+    return current_mp >= mp;
+}
+
+void CombatComponent::spend_mp(unsigned int mp) {
+    if (!can_spend_mp(mp))
+        return;
+    current_mp -= mp;
+}
 
 nlohmann::json CombatComponent::get_data() const {
     nlohmann::json data;

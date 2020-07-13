@@ -5,7 +5,9 @@
 #include <vector>
 
 #include "../../configuration_manager.h"
+#include "../items/armor.h"
 #include "../items/potion.h"
+#include "../items/weapon.h"
 #include "../map_log_factory.h"
 #include "components/player_combat_component.h"
 #include "components/player_movement_component.h"
@@ -114,6 +116,18 @@ void Player::use(SlotId slot) {
             ->use(*static_cast<PlayerCombatComponent*>(combat_component));
         delete item;
     }
+}
+
+void Player::use_ability(Entity* target) {
+    std::vector<map_log_t> logs =
+        static_cast<PlayerCombatComponent*>(combat_component)
+            ->use_ability(target, map.get_position(get_id()),
+                          map.get_position(target->get_id()));
+    for (const map_log_t& log : logs) {
+        map.push_log(log);
+    }
+    if (!target->is_alive() && target->get_type() == MONSTER)
+        map.rm_entity(target->get_id());
 }
 
 void Player::add_item(Item* item) {

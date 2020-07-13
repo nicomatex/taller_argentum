@@ -53,7 +53,7 @@ class EventFactory {
     static Event name_already_online();
 
     static Event name_taken();
-    
+
     static Event sell_event(ClientId client_id, position_t target, SlotId slot,
                             uint32_t amount);
 
@@ -61,6 +61,8 @@ class EventFactory {
                            uint32_t amount);
 
     static Event list_event(ClientId client_id, position_t target);
+
+    static Event special_ability(const nlohmann::json& cast_info);
 };
 
 #endif  // EVENT_FACTORY_H

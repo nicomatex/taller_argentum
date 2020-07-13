@@ -7,6 +7,7 @@
 #include "armor.h"
 #include "gold.h"
 #include "potion.h"
+#include "special_ability.h"
 #include "weapon.h"
 
 class ItemNotFoundException : public std::exception {
@@ -21,6 +22,9 @@ class ItemFactory {
     std::unordered_map<ItemId, Weapon> weapons_map;
     std::unordered_map<ItemId, Potion> potions_map;
     Gold _gold;
+
+    SpecialAbility *create_ability(const nlohmann::json &json_items,
+                                   const std::string &ability_name);
 
    public:
     ItemFactory(const char *items_file);

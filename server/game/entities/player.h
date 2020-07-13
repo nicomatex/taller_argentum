@@ -5,6 +5,7 @@
 /// \file
 
 #include "../../attribute_manager.h"
+#include "../items/item.h"
 #include "../items/item_container.h"
 #include "../map.h"
 #include "../position.h"
@@ -65,6 +66,13 @@ class Player : public Entity {
      * @param slot Selecciona el casillero del inventario a utilizar.
      */
     void use(SlotId slot);
+
+    /**
+     * @brief Usar la habilidad del arma equipada actualmente.
+     *
+     * @param Entity Entidad objetivo de la habilidad (podría ser sí mismo).
+     */
+    void use_ability(Entity* target);
 
     /**
      * @brief Agrega un item al inventario del jugador.

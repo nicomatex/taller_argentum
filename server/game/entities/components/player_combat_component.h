@@ -1,11 +1,15 @@
 #ifndef PLAYER_COMBAT_COMPONENT_H
 #define PLAYER_COMBAT_COMPONENT_H
 
+#include <vector>
+
 #include "../../../attribute_manager.h"
 #include "../../items/armor.h"
-#include "../../items/weapon.h"
+#include "../../map_log_factory.h"
 #include "../player.h"
 #include "combat_component.h"
+
+class Weapon;
 
 class PlayerCombatComponent : public CombatComponent {
    private:
@@ -26,9 +30,10 @@ class PlayerCombatComponent : public CombatComponent {
                           Player& player, float attack_speed);
     ~PlayerCombatComponent();
 
-    // int special();
-    virtual attack_t attack() override;
-    virtual attack_result_t receive_damage(attack_t attack) override;
+    std::vector<map_log_t> use_ability(Entity* target, position_t source,
+                                       position_t dest);
+    attack_t attack() override;
+    attack_result_t receive_damage(attack_t attack) override;
 
     Armor* equip(Armor* armor);
     Weapon* equip(Weapon* weapon);

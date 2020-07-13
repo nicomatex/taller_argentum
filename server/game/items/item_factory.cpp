@@ -4,9 +4,39 @@
 #include <iostream>
 
 #include "../../../include/my_exception.h"
+#include "special_attack.h"
+#include "special_heal.h"
 
 const char* ItemNotFoundException::what() const throw() {
     return "Item not found!";
+}
+
+SpecialAbility* ItemFactory::create_ability(const nlohmann::json& json_items,
+                                            const std::string& ability_name) {
+    if (ability_name.length() == 0)
+        return nullptr;
+    SpecialAbility* ability = nullptr;
+    const nlohmann::json& ability_data = json_items["abilities"][ability_name];
+    int ability_type = ability_data["ability_type"];
+    switch (ability_type) {
+        case 1:
+            ability =
+                new SpecialHeal(ability_data["ability_id"],
+                                ability_data["heal"], ability_data["mp_cost"]);
+            break;
+        case 2:
+            ability = new SpecialAttack(
+                ability_data["ability_id"], ability_data["min_damage"],
+                ability_data["max_damage"], ability_data["mp_cost"]);
+            break;
+        default:
+            throw MyException(
+                "ItemsFactory: create_ability: Tipo de habilidad desconocido: "
+                "%i",
+                ability_type);
+            break;
+    }
+    return ability;
 }
 
 ItemFactory::ItemFactory(const char* items_file) {
@@ -38,7 +68,9 @@ ItemFactory::ItemFactory(const char* items_file) {
         nlohmann::json item_data = it.value();
         item_info_t item_info = item_data["item_info"];
         weapon_info_t weapon_info = item_data["weapon_info"];
-        weapons_map[item_info.id] = Weapon{item_info, weapon_info};
+        weapons_map[item_info.id] =
+            Weapon(item_info, weapon_info,
+                   create_ability(json_items, weapon_info.ability));
         id_to_type_map[item_info.id] = item_info.type;
     }
 
@@ -50,8 +82,7 @@ ItemFactory::ItemFactory(const char* items_file) {
         id_to_type_map[item_info.id] = item_info.type;
     }
 
-    nlohmann::json item_data = json_items["miscellaneous"][0];  // Oro
-    item_info_t item_info = item_data["item_info"];
+    item_info_t item_info = json_items["miscellaneous"]["Oro"];
     _gold = Gold{item_info};
     id_to_type_map[item_info.id] = item_info.type;
 }

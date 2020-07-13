@@ -7,7 +7,7 @@
 				"name": "Capucha",
 				"sprite_id": 1,
 				"type": 2,
-				"gold_value" : 150
+				"gold_value": 150
 			},
 			"armor_info": {
 				"max_defense": 4,
@@ -22,7 +22,7 @@
 				"name": "Casco de hierro",
 				"sprite_id": 2,
 				"type": 2,
-				"gold_value" : 300
+				"gold_value": 300
 			},
 			"armor_info": {
 				"max_defense": 8,
@@ -37,7 +37,7 @@
 				"name": "Sombrero magico",
 				"sprite_id": 3,
 				"type": 2,
-				"gold_value" : 600
+				"gold_value": 600
 			},
 			"armor_info": {
 				"max_defense": 12,
@@ -52,7 +52,7 @@
 				"name": "Armadura de cuero",
 				"sprite_id": 1,
 				"type": 2,
-				"gold_value" : 100
+				"gold_value": 100
 			},
 			"armor_info": {
 				"max_defense": 6,
@@ -67,7 +67,7 @@
 				"name": "Armadura de placas",
 				"sprite_id": 2,
 				"type": 2,
-				"gold_value" : 1000
+				"gold_value": 1000
 			},
 			"armor_info": {
 				"max_defense": 30,
@@ -82,7 +82,7 @@
 				"name": "Tunica azul",
 				"sprite_id": 3,
 				"type": 2,
-				"gold_value" : 500
+				"gold_value": 500
 			},
 			"armor_info": {
 				"max_defense": 10,
@@ -97,7 +97,7 @@
 				"name": "Escudo de tortuga",
 				"sprite_id": 1,
 				"type": 2,
-				"gold_value" : 150
+				"gold_value": 150
 			},
 			"armor_info": {
 				"max_defense": 2,
@@ -112,7 +112,7 @@
 				"name": "Escudo de hierro",
 				"sprite_id": 2,
 				"type": 2,
-				"gold_value" : 600
+				"gold_value": 600
 			},
 			"armor_info": {
 				"max_defense": 4,
@@ -129,12 +129,13 @@
 				"name": "Espada",
 				"sprite_id": 1,
 				"type": 1,
-				"gold_value" : 150
+				"gold_value": 150
 			},
 			"weapon_info": {
 				"max_damage": 5,
 				"min_damage": 2,
-				"attack_speed": 2.8
+				"attack_speed": 2.8,
+				"ability": ""
 			}
 		},
 		{
@@ -144,12 +145,13 @@
 				"name": "Arco simple",
 				"sprite_id": 2,
 				"type": 1,
-				"gold_value" : 100
+				"gold_value": 100
 			},
 			"weapon_info": {
 				"max_damage": 4,
 				"min_damage": 2,
-				"attack_speed": 2.5
+				"attack_speed": 2.5,
+				"ability": ""
 			}
 		},
 		{
@@ -159,12 +161,13 @@
 				"name": "Arco compuesto",
 				"sprite_id": 3,
 				"type": 1,
-				"gold_value" : 600
+				"gold_value": 600
 			},
 			"weapon_info": {
 				"max_damage": 16,
 				"min_damage": 4,
-				"attack_speed": 4
+				"attack_speed": 4,
+				"ability": ""
 			}
 		},
 		{
@@ -174,12 +177,13 @@
 				"name": "Vara de fresno",
 				"sprite_id": 4,
 				"type": 1,
-				"gold_value" : 200
+				"gold_value": 200
 			},
 			"weapon_info": {
 				"max_damage": 0,
 				"min_damage": 0,
-				"attack_speed": 0
+				"attack_speed": 0,
+				"ability": "Flecha Magica"
 			}
 		},
 		{
@@ -189,12 +193,13 @@
 				"name": "Baculo nudoso",
 				"sprite_id": 5,
 				"type": 1,
-				"gold_value" : 350
+				"gold_value": 350
 			},
 			"weapon_info": {
 				"max_damage": 0,
 				"min_damage": 0,
-				"attack_speed": 0
+				"attack_speed": 0,
+				"ability": "Misil"
 			}
 		},
 		{
@@ -204,12 +209,13 @@
 				"name": "Baculo engarzado",
 				"sprite_id": 6,
 				"type": 1,
-				"gold_value" : 1000
+				"gold_value": 1000
 			},
 			"weapon_info": {
 				"max_damage": 0,
 				"min_damage": 0,
-				"attack_speed": 0
+				"attack_speed": 0,
+				"ability": "Explosion"
 			}
 		},
 		{
@@ -219,12 +225,13 @@
 				"name": "Flauta elfica",
 				"sprite_id": 7,
 				"type": 1,
-				"gold_value" : 500
+				"gold_value": 500
 			},
 			"weapon_info": {
 				"max_damage": 0,
 				"min_damage": 0,
-				"attack_speed": 0
+				"attack_speed": 0,
+				"ability": "Curar"
 			}
 		},
 		{
@@ -234,12 +241,13 @@
 				"name": "Hacha",
 				"sprite_id": 8,
 				"type": 1,
-				"gold_value" : 650
+				"gold_value": 650
 			},
 			"weapon_info": {
 				"max_damage": 5,
 				"min_damage": 4,
-				"attack_speed": 2
+				"attack_speed": 2,
+				"ability": ""
 			}
 		},
 		{
@@ -249,12 +257,13 @@
 				"name": "Martillo",
 				"sprite_id": 9,
 				"type": 1,
-				"gold_value" : 1200
+				"gold_value": 1200
 			},
 			"weapon_info": {
 				"max_damage": 23,
 				"min_damage": 17,
-				"attack_speed": 1.7
+				"attack_speed": 1.7,
+				"ability": ""
 			}
 		}
 	],
@@ -266,7 +275,7 @@
 				"name": "Pocion de vida",
 				"sprite_id": 1,
 				"type": 3,
-				"gold_value" : 2
+				"gold_value": 2
 			},
 			"potion_info": {
 				"health_var": 14,
@@ -280,7 +289,7 @@
 				"name": "Pocion de mana",
 				"sprite_id": 2,
 				"type": 3,
-				"gold_value" : 3
+				"gold_value": 3
 			},
 			"potion_info": {
 				"health_var": 0,
@@ -288,16 +297,43 @@
 			}
 		}
 	],
-	"miscellaneous": [
-		{
+	"miscellaneous": {
+		"Oro": {
+			"id": 500,
 			"name": "Oro",
-			"item_info": {
-				"id": 500,
-				"name": "Oro",
-				"sprite_id": 1,
-				"type": 4,
-				"gold_value" : 1
-			}
+			"sprite_id": 1,
+			"type": 4,
+			"gold_value": 1
 		}
-	]
+	},
+	"abilities": {
+		"Flecha Magica": {
+			"ability_type": 2,
+			"ability_id": 3,
+			"min_damage": 2,
+			"max_damage": 4,
+			"mp_cost": 5
+		},
+		"Explosion": {
+			"ability_type": 2,
+			"ability_id": 2,
+			"min_damage": 8,
+			"max_damage": 20,
+			"mp_cost": 5
+		},
+		"Curar": {
+			"ability_type": 1,
+			"ability_id": 1,
+			"heal": 100,
+			"mp_cost": 100
+		},
+		"Misil": {
+			"ability_type": 2,
+			"ability_id": 4,
+			"min_damage": 4,
+			"max_damage": 8,
+			"mp_cost": 15
+		},
+		"": {}
+	}
 }

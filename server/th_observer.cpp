@@ -6,6 +6,7 @@
 
 #include "../include/nlohmann/json.hpp"
 #include "events/event_factory.h"
+#include "game/map_log_factory.h"
 #include "server_manager.h"
 
 #define ENTITY_UPDATE_INTERVAL 10
@@ -28,7 +29,7 @@ void ThObserver::send_update_logs() {
                 server_manager.get_client_by_name(log.player_name);
             switch (log.type) {
                 case LOG_DEAL_DAMAGE: {
-                    std::string msg;
+                    std::string msg = "[combate] ";
                     const std::string& to = log.info["to"];
                     if (!log.info["dodged"]) {
                         int dmg = log.info["damage"];
@@ -37,31 +38,31 @@ void ThObserver::send_update_logs() {
                                                    EventFactory::dealt_damage(
                                                        dmg, log.info["to_id"]));
                         }
-                        msg = "Hecho " + std::to_string(dmg) + " de danio a " +
-                              to;
+                        msg += "Hecho " + std::to_string(dmg) + " de danio a " +
+                               to;
                     } else {
                         server_manager.send_to(
                             client_id,
                             EventFactory::damage_evaded(log.info["to_id"]));
-                        msg = "Me ha evadido el golpe " + to;
+                        msg += "Me ha evadido el golpe " + to;
                     }
                     server_manager.send_to(client_id,
                                            EventFactory::chat_message(msg));
 
                 } break;
                 case LOG_RECV_DAMAGE: {
-                    std::string msg;
+                    std::string msg = "[combate] ";
                     const std::string& from = log.info["from"];
                     if (!log.info["dodged"]) {
                         int dmg = log.info["damage"];
                         server_manager.send_to(
                             client_id, EventFactory::received_damage(dmg));
-                        msg = "Recibido " + std::to_string(dmg) +
-                              " de danio por " + from;
+                        msg += "Recibido " + std::to_string(dmg) +
+                               " de danio por " + from;
                     } else {
                         server_manager.send_to(client_id,
                                                EventFactory::evaded_damage());
-                        msg = "He evadido el golpe de " + from;
+                        msg += "He evadido el golpe de " + from;
                     }
 
                     server_manager.send_to(client_id,
@@ -69,20 +70,26 @@ void ThObserver::send_update_logs() {
                 } break;
                 case LOG_INVENTORY:
                     server_manager.send_to(
+                        client_id, EventFactory::inventory_update(log.info));
+                    break;
+                case LOG_INVENTORY_FULL:
+                    server_manager.send_to(
                         client_id,
-                        EventFactory::inventory_update(log.info["inventory"]));
+                        EventFactory::chat_message(
+                            "[inventario] El inventario esta lleno!"));
                     break;
-                case LOG_FULL_INVENTORY:
-                    server_manager.send_to(client_id,
-                                           EventFactory::chat_message(
-                                               "El inventario esta lleno!"));
-                    break;
-                case LOG_MESSAGE:
+                case LOG_MESSAGE: {
                     std::stringstream ss;
-                    ss << "[" << std::string(log.info["from"]) << "]" << " " << std::string(log.info["message"]);
+                    ss << "[" << std::string(log.info["from"]) << "]"
+                       << " " << std::string(log.info["message"]);
                     std::string msg = ss.str();
                     server_manager.send_to(client_id,
                                            EventFactory::chat_message(msg));
+                } break;
+                case LOG_SPECIAL_ABILITY:
+                    std::cerr << "Observer: SPECIAL ABILITY LOG!\n";
+                    handler.push_event(EventFactory::special_ability(log.info));
+                    break;
             }
         } catch (const std::exception& e) {
             std::cerr << "Observer: update_logs error: type " << log.type
