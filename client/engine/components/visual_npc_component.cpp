@@ -28,9 +28,14 @@ VisualNPCComponent::VisualNPCComponent(int body_id, int speed,
         PATTERN_TILE_SIZE;
     int arbitrary_height =
         (real_height * SIZE_GRANULARITY * NPC_SIZE_FACTOR) / PATTERN_TILE_SIZE;
+
+    int offset_x = 0;
+
+    if (arbitrary_width > SIZE_GRANULARITY)
+        offset_x = (SIZE_GRANULARITY - arbitrary_width) / 2;
+
     body.set_visual_info(
-        {arbitrary_width, arbitrary_height, (-arbitrary_width) / 3, 0});
-    render_name.set_offset(-20, arbitrary_height / 8);
+        {arbitrary_width, arbitrary_height, offset_x, 0});
 }
 
 VisualNPCComponent::~VisualNPCComponent() {}

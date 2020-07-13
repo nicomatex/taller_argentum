@@ -89,8 +89,7 @@ void UiEventHandler::handle_keydown_return() {
 }
 
 void UiEventHandler::handle_keydown_backspace() {
-    if (text_input_enabled)
-        hud.chat.input_erase();
+    if (text_input_enabled) hud.chat.input_erase();
 }
 
 void UiEventHandler::handle_quit() {
@@ -140,11 +139,10 @@ void UiEventHandler::handle_click(SDL_Event &e) {
 void UiEventHandler::handle() {
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
-        if (e.type == SDL_QUIT)
-            handle_quit();
+        if (e.type == SDL_QUIT) handle_quit();
         hud.handle_event(e);
         if (e.type == SDL_KEYDOWN) {
-            if (e.key.repeat == 0) {
+            if (e.key.repeat == 0 && !text_input_enabled) {
                 switch (e.key.keysym.sym) {  // Teclas de movimiento
                     case SDLK_UP:
                         handle_keydown_move_up();
@@ -160,30 +158,32 @@ void UiEventHandler::handle() {
                         break;
                 }
             }
-            switch (e.key.keysym.sym) {  // Teclas de uso general
+            switch (e.key.keysym.sym) {  // Teclas que alteran el chat
                 case SDLK_BACKSPACE:
                     handle_keydown_backspace();
                     break;
                 case SDLK_RETURN:
                     handle_keydown_return();
                     break;
-                case SDLK_LCTRL:
-                    handle_keydown_attack();
-                    break;
-                case SDLK_RCTRL:
-                    handle_keydown_attack();
-                    break;
-                case SDLK_m:
-                    if (!text_input_enabled)
-                        handle_keydown_sound_toggle();
-                    break;
-                case SDLK_a:
-                    handle_keydown_pickup();
-                    break;
+            }
+            if (!text_input_enabled) {
+                switch (e.key.keysym.sym) {  // Teclas de uso general
+                    case SDLK_LCTRL:
+                        handle_keydown_attack();
+                        break;
+                    case SDLK_RCTRL:
+                        handle_keydown_attack();
+                        break;
+                    case SDLK_m:
+                        if (!text_input_enabled) handle_keydown_sound_toggle();
+                        break;
+                    case SDLK_a:
+                        handle_keydown_pickup();
+                        break;
+                }
             }
 
-        } else if (e.type ==
-                   SDL_KEYUP) {  // Teclas de movimiento pero para parar.
+        } else if (e.type == SDL_KEYUP) {  // Teclas frenado de movimiento.
             if (e.key.repeat == 0) {
                 switch (e.key.keysym.sym) {
                     case SDLK_UP:

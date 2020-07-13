@@ -37,12 +37,6 @@ VisualCharacterComponent::VisualCharacterComponent(int head_id, int body_id,
     set_part("shield", "shields", shield_id, BODY_CONFIG);
     set_part("armor", "armors", armor_id, BODY_CONFIG);
 
-    int name_width = render_name.get_width();
-    visual_info_t body_config = BODY_CONFIG;
-
-    int delta_width = body_config.width - name_width;
-    int offset_x = delta_width / 7;
-    render_name.set_offset(offset_x, 0);
 }
 
 void VisualCharacterComponent::server_update(nlohmann::json update_info) {
