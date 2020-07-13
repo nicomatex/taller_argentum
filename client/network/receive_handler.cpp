@@ -74,16 +74,13 @@ void ClientReceiveHandler::handle(Event &ev) {
             handle_incoming_damage_evaded(ev);
             break;
         case EV_ID_NAME_NOTFOUND:
-            std::cerr << "Name not found\n";
-            game_state_monitor.set_login_state(NAME_NOT_FOUND);
+            handle_name_not_found(ev);
             break;
         case EV_ID_NAME_ALREADY_ONLINE:
-            std::cerr << "Name already online\n";
-            game_state_monitor.set_login_state(NAME_ALREADY_CONECTED);
+            handle_name_already_online(ev);
             break;
         case EV_ID_NAME_TAKEN:
-            std::cerr << "Name taken\n";
-            game_state_monitor.set_char_creation_state(NAME_TAKEN);
+            handle_name_taken(ev);
             break;
     };
 }
@@ -222,4 +219,16 @@ void ClientReceiveHandler::handle_outcoming_evaded_damage(Event &ev) {
 
 void ClientReceiveHandler::handle_incoming_damage_evaded(Event &ev) {
     SoundSystem::get_instance().play_game_sfx(7);
+}
+
+void ClientReceiveHandler::handle_name_not_found(Event &ev){
+    game_state_monitor.set_login_state(NAME_NOT_FOUND);
+}
+
+void ClientReceiveHandler::handle_name_already_online(Event &ev){
+    game_state_monitor.set_login_state(NAME_ALREADY_CONECTED);
+}
+
+void ClientReceiveHandler::handle_name_taken(Event &ev){
+    game_state_monitor.set_char_creation_state(NAME_TAKEN);
 }

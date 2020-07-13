@@ -27,6 +27,9 @@ class ClientReceiveHandler : public BlockingThEventHandler {
     void handle_outcoming_damage(Event &ev);
     void handle_outcoming_evaded_damage(Event &ev);
     void handle_incoming_damage_evaded(Event &ev);
+    void handle_name_not_found(Event &ev);
+    void handle_name_already_online(Event &ev);
+    void handle_name_taken(Event &ev);
     
     MapChangeBuffer &map_change_buffer;
     ChatBuffer &chat_buffer;
