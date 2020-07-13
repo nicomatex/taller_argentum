@@ -9,7 +9,5 @@ void ActionUseAbility::execute(Map& map, EntityId entity_id) const {
     if (!player || !player->is_alive())
         return;
     Entity* targeted = Action::get_entity(map, target);
-    if (!targeted)
-        return;
-    player->use_ability(targeted);
+    player->use_ability(targeted, target);
 }

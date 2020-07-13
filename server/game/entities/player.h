@@ -72,7 +72,7 @@ class Player : public Entity {
      *
      * @param Entity Entidad objetivo de la habilidad (podría ser sí mismo).
      */
-    void use_ability(Entity* target);
+    void use_ability(Entity* target, position_t target_pos);
 
     /**
      * @brief Agrega un item al inventario del jugador.
@@ -93,16 +93,16 @@ class Player : public Entity {
      */
     Item* remove_item(SlotId slot, uint32_t amount);
     /**
-     * @brief Remueve amount del Gold actual 
-     * 
-     * @param amount 
-     * @return Gold* 
+     * @brief Remueve amount del Gold actual
+     *
+     * @param amount
+     * @return Gold*
      */
     Gold* remove_gold(uint32_t amount);
     /**
      * @brief Devuelve la cantidad de oro que tiene actualmente
-     * 
-     * @return uint32_t 
+     *
+     * @return uint32_t
      */
     uint32_t get_gold_stack() const;
 
