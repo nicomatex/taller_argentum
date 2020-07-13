@@ -166,6 +166,20 @@ void Map::update_loot_layer(nlohmann::json loot_info) {
     }
 }
 
-void Map::update_spell_layer(nlohmann::json spell_info) {
-    // TODO
+void Map::push_spell(nlohmann::json spell_info) {
+    foreground_layers[spell_layer_index].push_back(Decoration(
+        ResourceManager::get_instance().get_sprite("spells",
+                                                   spell_info["ability_id"]),
+        spell_info["dest"]["x"], spell_info["dest"]["y"], SPELL_CONFIG));
+}
+
+void Map::clean_spells() {
+    for (auto it = foreground_layers[spell_layer_index].begin();
+         it != foreground_layers[spell_layer_index].end();) {
+        if (it->sprite_is_done()) {
+            it = foreground_layers[spell_layer_index].erase(it);
+        } else {
+            ++it;
+        }
+    }
 }

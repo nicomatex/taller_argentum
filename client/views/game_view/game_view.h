@@ -10,7 +10,7 @@
 #include "../../engine/map.h"
 #include "../../game_state_monitor.h"
 #include "../../inventory_buffer.h"
-#include "../../loot_buffer.h"
+#include "../../map_decorations_buffer.h"
 #include "../../player_info_monitor.h"
 #include "../responsive_scaler.h"
 #include "hud.h"
@@ -24,7 +24,7 @@ class GameView {
    private:
     ResponsiveScaler &scaler;
     SDLWindow &window;
-    LootBuffer &loot_buffer;
+    MapDecorationsBuffer &map_decorations_buffer;
     ChatBuffer &chat_buffer;
     GameStateMonitor &game_state_monitor;
     Hud hud;
@@ -42,7 +42,7 @@ class GameView {
      * @param window Ventana donde se va a renderizar el juego.
      * @param chat_buffer Buffer de chat.
      * @param inventory_buffer Buffer de inventario.
-     * @param loot_buffer Buffer de loot.
+     * @param map_decorations_buffer Buffer de loot.
      * @param game_state_monitor Monitor de estado del juego.
      * @param map_info json que contiene la informacion visual para construir el
      * mapa.
@@ -50,7 +50,7 @@ class GameView {
     GameView(ResponsiveScaler &scaler, int follow_entity_id,
              SocketManager &socket_manager, SDLWindow &window,
              ChatBuffer &chat_buffer, InventoryBuffer &inventory_buffer,
-             LootBuffer &loot_buffer, PlayerInfoMonitor &player_info_monitor,
+             MapDecorationsBuffer &map_decorations_buffer, PlayerInfoMonitor &player_info_monitor,
              GameStateMonitor &game_state_monitor, nlohmann::json map_info);
 
     /**

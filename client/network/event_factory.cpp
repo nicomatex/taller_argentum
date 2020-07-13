@@ -78,3 +78,11 @@ Event EventFactory::unequip_event(SlotId slot) {
     json event = {{"ev_id", EV_ID_UNEQUIP}, {"slot", slot}};
     return Event(event);
 }
+
+Event EventFactory::use_ability_event(int target_x, int target_y) {
+    json event = {
+        {"ev_id", EV_ID_USE_ABILITY},
+        {"target", {{"x", target_x}, {"y", target_y}}}
+    };
+    return Event(event);
+}

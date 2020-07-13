@@ -1,7 +1,8 @@
-#ifndef __LOOT_BUFFER_H
-#define __LOOT_BUFFER_H
+#ifndef __MAP_DECORATIONS_BUFFER_H
+#define __MAP_DECORATIONS_BUFFER_H
 
 #include <mutex>
+#include <queue>
 
 #include "../include/nlohmann/json.hpp"
 #include "engine/map.h"
@@ -10,28 +11,34 @@
  * @brief Buffer donde se almacenan los items tirados en el piso.
  *
  */
-class LootBuffer {
+class MapDecorationsBuffer {
    private:
     std::mutex m;
     nlohmann::json loot_info;
+    std::queue<nlohmann::json> special_ability_queue;
 
    public:
-    LootBuffer();
-    ~LootBuffer();
+    MapDecorationsBuffer();
+    ~MapDecorationsBuffer();
 
     /**
      * @brief Carga informacion en el buffer.
      *
      * @param new_loot_info Nueva informacion a cargar en el buffer.
      */
-    void load_buffer(nlohmann::json new_loot_info);
+    void load_loot_info(nlohmann::json new_loot_info);
+
+
+    void push_special_ability(nlohmann::json ability_info);
 
     /**
      * @brief Flushea la informacion del loot en un mapa.
      *
      * @param map Mapa sobre el cual se descargara la informacion.
      */
-    void flush(Map &map);
+    void flush_loot(Map &map);
+
+    void flush_special_abilities(Map &map);
 };
 
 #endif

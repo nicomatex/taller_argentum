@@ -110,6 +110,10 @@ class EventFactory {
      * @return Event
      */
     static Event unequip_event(SlotId slot);
+
+
+    static Event use_ability_event(int target_x, int target_y);
+
 };
 
 #endif

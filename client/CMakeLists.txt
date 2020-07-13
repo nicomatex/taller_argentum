@@ -30,7 +30,7 @@ add_library(game
   chat_buffer.cpp
   inventory_buffer.cpp
   game_state_monitor.cpp
-  loot_buffer.cpp
+  map_decorations_buffer.cpp
   player_info_monitor.cpp
 )
 

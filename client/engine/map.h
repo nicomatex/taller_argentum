@@ -77,11 +77,13 @@ class Map {
     void update_loot_layer(nlohmann::json loot_info);
     
     /**
-     * @brief Actualiza la capa de hechizos lanzados del mapa.
+     * @brief Agrega un efecto de hechizo al mapa.
      * 
      * @param spell_info Informacion de hechizos provista por el servidor.
      */
-    void update_spell_layer(nlohmann::json spell_info);
+    void push_spell(nlohmann::json spell_info);
+
+    void clean_spells();
 
     /**
      * @brief Devuelve las capas que deben ser renderizadas por detras de las

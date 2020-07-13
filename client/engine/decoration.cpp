@@ -11,3 +11,7 @@ void Decoration::render(SDL_Rect dest) { sprite.render(dest); }
 int Decoration::get_x() const { return x; }
 
 int Decoration::get_y() const { return y; }
+
+bool Decoration::sprite_is_done(){
+  return sprite.is_done();
+}

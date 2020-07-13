@@ -18,12 +18,12 @@ using json = nlohmann::json;
 ClientReceiveHandler::ClientReceiveHandler(MapChangeBuffer &map_change_buffer,
                                            ChatBuffer &chat_buffer,
                                            InventoryBuffer &inventory_buffer,
-                                           LootBuffer &loot_buffer,
+                                           MapDecorationsBuffer &map_decorations_buffer,
                                            GameStateMonitor &game_state_monitor)
     : map_change_buffer(map_change_buffer),
       chat_buffer(chat_buffer),
       inventory_buffer(inventory_buffer),
-      loot_buffer(loot_buffer),
+      map_decorations_buffer(map_decorations_buffer),
       game_state_monitor(game_state_monitor) {}
 
 ClientReceiveHandler::~ClientReceiveHandler() {}
@@ -81,6 +81,10 @@ void ClientReceiveHandler::handle(Event &ev) {
             break;
         case EV_ID_NAME_TAKEN:
             handle_name_taken(ev);
+            break;
+        case EV_ID_SPECIAL_ABILITY:
+            std::cout <<  "Received special ability" << std::endl;
+            map_decorations_buffer.push_special_ability(ev.get_json());
             break;
     };
 }
@@ -183,7 +187,7 @@ void ClientReceiveHandler::handle_inventory_update(Event &ev) {
 }
 
 void ClientReceiveHandler::handle_loot_update(Event &ev) {
-    loot_buffer.load_buffer(ev.get_json());
+    map_decorations_buffer.load_loot_info(ev.get_json());
 }
 
 void ClientReceiveHandler::handle_incoming_damage(Event &ev) {

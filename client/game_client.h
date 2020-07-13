@@ -14,7 +14,7 @@
 #include "map_change_buffer.h"
 #include "network/receive_handler.h"
 #include "inventory_buffer.h"
-#include "loot_buffer.h"
+#include "map_decorations_buffer.h"
 #include "player_info_monitor.h"
 
 /**
@@ -30,7 +30,7 @@ class GameClient {
     MapChangeBuffer map_change_buffer;
     ChatBuffer chat_buffer;
     InventoryBuffer inventory_buffer;
-    LootBuffer loot_buffer;
+    MapDecorationsBuffer map_decorations_buffer;
     PlayerInfoMonitor player_info_monitor;
     GameStateMonitor game_state_monitor;
 

@@ -117,6 +117,7 @@ void UiEventHandler::handle_click(SDL_Event &e) {
     int x, y;
     SDL_GetMouseState(&x, &y);
     bool cast_requested = hud.attempting_cast;
+    std::cout << "Cast attempt is " << hud.attempting_cast << std::endl;
     hud.attempting_cast = false;
     selected_inventory_slot = hud.inventory.get_last_clicked_slot();
     selected_equipment_slot = hud.equipment.get_last_clicked_slot();
@@ -130,9 +131,12 @@ void UiEventHandler::handle_click(SDL_Event &e) {
         return;
     }
     current_target = camera.tile_at(x, y);
+    std::cout << "Main render was clicked. Possibly with a cast intent" << std::endl;
+    std::cout << "Cast requested is " << cast_requested << std::endl;
     if (cast_requested) {
         std::cout << "Tirando un hechizo mortal en  " << current_target.x
                   << " - " << current_target.y << std::endl;
+        send_event(EventFactory::use_ability_event(current_target.x,current_target.y));
     }
 }
 
@@ -140,7 +144,6 @@ void UiEventHandler::handle() {
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
         if (e.type == SDL_QUIT) handle_quit();
-        hud.handle_event(e);
         if (e.type == SDL_KEYDOWN) {
             if (e.key.repeat == 0 && !text_input_enabled) {
                 switch (e.key.keysym.sym) {  // Teclas de movimiento
@@ -204,6 +207,8 @@ void UiEventHandler::handle() {
             hud.chat.add_characters(e.text.text);
         } else if (e.type == SDL_MOUSEBUTTONUP) {  // Clicks
             handle_click(e);
+
         }
+        hud.handle_event(e);
     }
 }

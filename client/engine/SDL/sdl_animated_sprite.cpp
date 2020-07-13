@@ -49,7 +49,7 @@ SDLSprite& SDLSprite::operator=(const SDLSprite& other) {
     return *this;
 }
 
-SDLSprite::SDLSprite(SDLSprite&& other) : texture(other.texture) {
+SDLSprite::SDLSprite(SDLSprite&& other) : texture(other.texture), done(false) {
     this->nframes = std::move(other.nframes);
     this->frame_width = std::move(other.frame_width);
     this->frame_height = std::move(other.frame_height);
@@ -70,6 +70,7 @@ SDLSprite& SDLSprite::operator=(SDLSprite&& other) {
     this->base_y = std::move(other.base_y);
     this->time_between_frames = std::move(other.time_between_frames);
     this->timer = std::move(other.timer);
+    this->done = false;
     return *this;
 }
 
@@ -99,7 +100,4 @@ void SDLSprite::render(SDL_Rect dest) {
 int SDLSprite::get_frame_width() { return frame_width; }
 int SDLSprite::get_frame_height() { return frame_height; }
 
-
-bool SDLSprite::is_done(){
-    return done;
-}
+bool SDLSprite::is_done() { return done; }

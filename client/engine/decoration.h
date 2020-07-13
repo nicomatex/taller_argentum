@@ -44,6 +44,10 @@ class Decoration : public RenderizableObject {
      * @param dest Cuadro en pantalla donde se va a renderizar.
      */
     void render(SDL_Rect dest) override;
+
+
+    bool sprite_is_done();
+    
 };
 
 #endif

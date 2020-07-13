@@ -182,7 +182,7 @@
 			"weapon_info": {
 				"max_damage": 0,
 				"min_damage": 0,
-				"attack_speed": 0,
+				"attack_speed": 1,
 				"ability": "Flecha Magica"
 			}
 		},
@@ -198,7 +198,7 @@
 			"weapon_info": {
 				"max_damage": 0,
 				"min_damage": 0,
-				"attack_speed": 0,
+				"attack_speed": 1,
 				"ability": "Misil"
 			}
 		},
@@ -214,7 +214,7 @@
 			"weapon_info": {
 				"max_damage": 0,
 				"min_damage": 0,
-				"attack_speed": 0,
+				"attack_speed": 1,
 				"ability": "Explosion"
 			}
 		},
@@ -230,7 +230,7 @@
 			"weapon_info": {
 				"max_damage": 0,
 				"min_damage": 0,
-				"attack_speed": 0,
+				"attack_speed": 1,
 				"ability": "Curar"
 			}
 		},
