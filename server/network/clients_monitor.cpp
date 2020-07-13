@@ -26,6 +26,7 @@ SocketManager* ClientsMonitor::rm_client(ClientId client_id) {
         std::cerr << "ClientsMonitor: El cliente : " << client_id
                   << " fue eliminado de forma repentina." << std::endl;
     }
+    std::cerr << "ClientsMonitor: dropping " << client_id << std::endl;
     SocketManager* client = clients.at(client_id);
     clients.erase(client_id);
     return client;
@@ -57,7 +58,6 @@ void ClientsMonitor::drop_all() {
             clients[*it]->send(EventFactory::disconnect());
         } catch (const ConnectionClosedSocketException& e) {
         }
-        std::cerr << "ClientsMonitor: dropping " << *it << std::endl;
         ServerManager::get_instance().get_dispatcher().push_event(
             EventFactory::drop_client(*it));
         it = connected_clients.erase(it);

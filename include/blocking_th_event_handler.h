@@ -37,6 +37,8 @@ class BlockingThEventHandler : public Thread, public EventHandler {
 
     bool is_threaded() const override;
 
+    bool is_done() const;
+
     void push_event(const Event& ev) override;
 
     virtual void run() override;

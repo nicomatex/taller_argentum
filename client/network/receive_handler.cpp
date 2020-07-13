@@ -15,11 +15,11 @@
 
 using json = nlohmann::json;
 
-ClientReceiveHandler::ClientReceiveHandler(MapChangeBuffer &map_change_buffer,
-                                           ChatBuffer &chat_buffer,
-                                           InventoryBuffer &inventory_buffer,
-                                           MapDecorationsBuffer &map_decorations_buffer,
-                                           GameStateMonitor &game_state_monitor)
+ClientReceiveHandler::ClientReceiveHandler(
+    MapChangeBuffer &map_change_buffer, ChatBuffer &chat_buffer,
+    InventoryBuffer &inventory_buffer,
+    MapDecorationsBuffer &map_decorations_buffer,
+    GameStateMonitor &game_state_monitor)
     : map_change_buffer(map_change_buffer),
       chat_buffer(chat_buffer),
       inventory_buffer(inventory_buffer),
@@ -83,7 +83,7 @@ void ClientReceiveHandler::handle(Event &ev) {
             handle_name_taken(ev);
             break;
         case EV_ID_SPECIAL_ABILITY:
-            std::cout <<  "Received special ability" << std::endl;
+            std::cout << "Received special ability" << std::endl;
             map_decorations_buffer.push_special_ability(ev.get_json());
             break;
     };
@@ -143,8 +143,6 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                     break;
                 case MONSTER:
                 case NPC:
-                    std::cerr << "Creating Monster: " << entity_info["name"]
-                              << std::endl;
                     EntityFactory::create_npc(entity_info)
                         .get_component<VisualNPCComponent>()
                         .set_orientation(entity_info["direction"]);
@@ -201,7 +199,6 @@ void ClientReceiveHandler::handle_incoming_damage(Event &ev) {
 
 void ClientReceiveHandler::handle_outcoming_damage(Event &ev) {
     SoundSystem::get_instance().play_game_sfx(4);
-    std::cout << std::setw(4) << ev.get_json() << std::endl;
     Entity &attacked_entity =
         EntityManager::get_instance().get_from_id(ev.get_json()["to"]);
     if (attacked_entity.has_component<VisualCharacterComponent>()) {
@@ -225,14 +222,14 @@ void ClientReceiveHandler::handle_incoming_damage_evaded(Event &ev) {
     SoundSystem::get_instance().play_game_sfx(7);
 }
 
-void ClientReceiveHandler::handle_name_not_found(Event &ev){
+void ClientReceiveHandler::handle_name_not_found(Event &ev) {
     game_state_monitor.set_login_state(NAME_NOT_FOUND);
 }
 
-void ClientReceiveHandler::handle_name_already_online(Event &ev){
+void ClientReceiveHandler::handle_name_already_online(Event &ev) {
     game_state_monitor.set_login_state(NAME_ALREADY_CONECTED);
 }
 
-void ClientReceiveHandler::handle_name_taken(Event &ev){
+void ClientReceiveHandler::handle_name_taken(Event &ev) {
     game_state_monitor.set_char_creation_state(NAME_TAKEN);
 }

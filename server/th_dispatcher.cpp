@@ -24,6 +24,26 @@
 // Temp
 #include <iostream>
 
+void ThDispatcher::apply_to_threaded(void (BlockingThEventHandler::*func)()) {
+    for (auto it : handlers) {
+        if (it.second->is_threaded()) {
+            BlockingThEventHandler* handler =
+                static_cast<BlockingThEventHandler*>(it.second);
+            (handler->*func)();
+        }
+    }
+}
+
+void ThDispatcher::stop_handlers() {
+    apply_to_threaded(&BlockingThEventHandler::stop);
+    std::cerr << "Stopped handlers\n";
+}
+
+void ThDispatcher::join_handlers() {
+    apply_to_threaded(&BlockingThEventHandler::join);
+    std::cerr << "Joined handlers\n";
+}
+
 void ThDispatcher::stop_and_join_handlers() {
     for (auto it : handlers) {
         if (it.second->is_threaded()) {
@@ -32,11 +52,11 @@ void ThDispatcher::stop_and_join_handlers() {
             handler->stop();
             handler->join();
         }
-        delete it.second;
     }
 }
 
 void ThDispatcher::handle(Event& event) {
+    std::unique_lock<std::mutex> l(m);
     nlohmann::json json_ev = event.get_json();
     int ev_id = json_ev["ev_id"];
     try {
@@ -101,9 +121,19 @@ ThDispatcher::ThDispatcher() : BlockingThEventHandler() {
         }
     }
 }
-ThDispatcher::~ThDispatcher() {}
+ThDispatcher::~ThDispatcher() {
+    for (auto it : handlers) {
+        delete it.second;
+    }
+}
 
 void ThDispatcher::stop() {
+    std::unique_lock<std::mutex> l(m);
     BlockingThEventHandler::stop();
-    stop_and_join_handlers();
+    stop_handlers();
+}
+
+void ThDispatcher::join() {
+    Thread::join();
+    join_handlers();
 }

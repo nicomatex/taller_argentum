@@ -10,7 +10,13 @@
 
 class ThDispatcher : public BlockingThEventHandler {
    private:
+    std::mutex m;
     std::unordered_map<int, EventHandler*> handlers;
+
+    void apply_to_threaded(void (BlockingThEventHandler::*func)());
+
+    void stop_handlers();
+    void join_handlers();
 
     void stop_and_join_handlers();
 
@@ -22,6 +28,8 @@ class ThDispatcher : public BlockingThEventHandler {
     ~ThDispatcher();
 
     void stop() override;
+
+    void join() override;
 };
 
 #endif  // TH_DISPATCHER_H

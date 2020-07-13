@@ -30,7 +30,7 @@ class Thread {
     void start();
 
     // Join the thread
-    void join();
+    virtual void join();
 
     // Sleeps for value in us
     void usleep(unsigned int us);

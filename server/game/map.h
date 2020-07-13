@@ -39,7 +39,7 @@ typedef ObjectMatrix<Entity*> EntityMatrix;
 
 // Clave: position_t. Contiene los bloques colisionables del mapa
 typedef std::unordered_set<position_t, PositionHasher, PositionComparator>
-    CollisionMap;
+    PositionSet;
 
 // Clave: position_t, valor: puntero a un item
 typedef ObjectMatrix<Item*> LootMatrix;
@@ -56,7 +56,8 @@ class Map {
     bool _dirty_loot;
     LootMatrix loot_matrix;
 
-    CollisionMap collision_map;
+    PositionSet collision_map;
+    // PositionSet safe_zone;
 
     MapTransitions transitions;
     EntityFactory entity_factory;

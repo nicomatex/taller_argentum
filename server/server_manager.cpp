@@ -63,7 +63,9 @@ void ServerManager::add_client(ClientId client_id, SocketManager* new_client) {
 void ServerManager::rm_client(ClientId client_id) {
     SocketManager* client = clients.rm_client(client_id);
     client->stop(true);
+    std::cerr << "ServerManager: stopped client: " << client_id << std::endl;
     client->join();
+    std::cerr << "ServerManager: joined client: " << client_id << std::endl;
     rm_name(client_id);
     delete client;
 }
@@ -146,18 +148,21 @@ void ServerManager::send_to(ClientId client_id, const Event& ev) {
 void ServerManager::finish() {
     std::unique_lock<std::recursive_mutex> l(m);
     accepter.stop();
-    accepter.join();
-    std::cerr << "Accepter: joined\n";
     clients.drop_all();
     dispatcher.stop();
+    for (auto& it : sessions) {
+        it.second.stop();
+    }
+    game_loop.stop();
+    l.unlock();
+    accepter.join();
+    std::cerr << "Accepter: joined\n";
     dispatcher.join();
     std::cerr << "Dispatcher: joined\n";
     for (auto& it : sessions) {
-        it.second.stop();
         it.second.join();
     }
     std::cerr << "Sessions: joined all\n";
-    game_loop.stop();
     game_loop.join();
     std::cerr << "GameLoop: joined\n";
 }

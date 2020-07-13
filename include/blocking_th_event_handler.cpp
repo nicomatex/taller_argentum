@@ -37,7 +37,7 @@ void BlockingThEventHandler::push_event(const Event& ev) {
 
 void BlockingThEventHandler::run() {
     try {
-        while (!event_queue.is_closed()) {
+        while (!event_queue.is_closed() || !event_queue.is_empty()) {
             Event ev = pop_event();
             handle(ev);
         }
