@@ -68,6 +68,8 @@ class Player : public Entity {
 
     /**
      * @brief Agrega un item al inventario del jugador.
+     * En caso de que el item no entrase en el inventario,
+     * este será dropeado al piso.
      *
      * @param item Item a ser agregado.
      */
@@ -82,8 +84,18 @@ class Player : public Entity {
      * esa posicion.
      */
     Item* remove_item(SlotId slot, uint32_t amount);
-
+    /**
+     * @brief Remueve amount del Gold actual 
+     * 
+     * @param amount 
+     * @return Gold* 
+     */
     Gold* remove_gold(uint32_t amount);
+    /**
+     * @brief Devuelve la cantidad de oro que tiene actualmente
+     * 
+     * @return uint32_t 
+     */
     uint32_t get_gold_stack() const;
 
     /**
