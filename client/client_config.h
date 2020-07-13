@@ -68,6 +68,14 @@
 
 #define LEVEL_TEXT_COLOR {39,135,0,255}
 
+#define SPELL_TEXT_AREA {65,485,129,20}
+#define ATT_PTS_TEXT_AREA {154,200,40,15}
+#define DEF_PTS_TEXT_AREA {154,221,40,15}
+
+#define INFO_TEXT_COLOR {255,255,255,255}
+
+
+
 // ---- Pantalla de login ----
 
 #define LOGIN_VIEWPORT {0,0,1138,640}

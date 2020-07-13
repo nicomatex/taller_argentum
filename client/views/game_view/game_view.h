@@ -11,13 +11,14 @@
 #include "../../game_state_monitor.h"
 #include "../../inventory_buffer.h"
 #include "../../loot_buffer.h"
+#include "../../player_info_monitor.h"
 #include "../responsive_scaler.h"
 #include "hud.h"
 #include "ui_event_handler.h"
 
 /**
  * @brief Vista principal del juego.
- * 
+ *
  */
 class GameView {
    private:
@@ -49,8 +50,8 @@ class GameView {
     GameView(ResponsiveScaler &scaler, int follow_entity_id,
              SocketManager &socket_manager, SDLWindow &window,
              ChatBuffer &chat_buffer, InventoryBuffer &inventory_buffer,
-             LootBuffer &loot_buffer, GameStateMonitor &game_state_monitor,
-             nlohmann::json map_info);
+             LootBuffer &loot_buffer, PlayerInfoMonitor &player_info_monitor,
+             GameStateMonitor &game_state_monitor, nlohmann::json map_info);
 
     /**
      * @brief Inicia la vista.

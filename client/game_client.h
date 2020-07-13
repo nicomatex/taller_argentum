@@ -15,6 +15,7 @@
 #include "network/receive_handler.h"
 #include "inventory_buffer.h"
 #include "loot_buffer.h"
+#include "player_info_monitor.h"
 
 /**
  * @brief Clase principal del programa.
@@ -30,6 +31,7 @@ class GameClient {
     ChatBuffer chat_buffer;
     InventoryBuffer inventory_buffer;
     LootBuffer loot_buffer;
+    PlayerInfoMonitor player_info_monitor;
     GameStateMonitor game_state_monitor;
 
    public:

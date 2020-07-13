@@ -31,6 +31,7 @@ add_library(game
   inventory_buffer.cpp
   game_state_monitor.cpp
   loot_buffer.cpp
+  player_info_monitor.cpp
 )
 
 target_link_libraries(game

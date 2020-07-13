@@ -11,13 +11,15 @@
 #include "../responsive_scaler.h"
 
 Hud::Hud(ResponsiveScaler& scaler, SDLWindow& window, ChatBuffer& chat_buffer,
-         InventoryBuffer& inventory_buffer, Entity& player,
+         InventoryBuffer& inventory_buffer,
+         PlayerInfoMonitor& player_info_monitor, Entity& player,
          SocketManager& socket_manager)
     : scaler(scaler),
       window(window),
       player(player),
       chat_buffer(chat_buffer),
       inventory_buffer(inventory_buffer),
+      player_info_monitor(player_info_monitor),
       chat(scaler.scale(AREA_CHAT), CHAT_LINES, window.get_renderer(),
            ResourceManager::get_instance().get_font(CHAT_FONT_ID)),
       mana_bar(scaler.scale(MP_BAR_AREA),
@@ -47,7 +49,13 @@ Hud::Hud(ResponsiveScaler& scaler, SDLWindow& window, ChatBuffer& chat_buffer,
       gold_text("9999", ResourceManager::get_instance().get_font(1),
                 GOLD_TEXT_COLOR, window.get_renderer()),
       level_text("99", ResourceManager::get_instance().get_font(1),
-                 LEVEL_TEXT_COLOR, window.get_renderer()) {}
+                 LEVEL_TEXT_COLOR, window.get_renderer()),
+      spell_name_text("Nothing", ResourceManager::get_instance().get_font(1),
+                      INFO_TEXT_COLOR, window.get_renderer()),
+      attack_points_text("152", ResourceManager::get_instance().get_font(1),
+                         INFO_TEXT_COLOR, window.get_renderer()),
+      defense_points_text("245", ResourceManager::get_instance().get_font(1),
+                          INFO_TEXT_COLOR, window.get_renderer()) {}
 
 Hud::~Hud() {}
 
@@ -149,25 +157,44 @@ void Hud::_update_stats() {
     level_text.update_text(std::to_string(player_stats.get_level()));
 }
 
+void Hud::_update_player_info() {
+    spell_name_text.update_text(player_info_monitor.get_spell_name());
+    attack_points_text.update_text(
+        std::to_string(player_info_monitor.get_attack_pts()));
+    defense_points_text.update_text(
+        std::to_string(player_info_monitor.get_defense_pts()));
+}
+
+SDL_Rect Hud::_get_scaled_dest(SDLText& text, SDL_Rect dest) {
+    SDL_Rect scaled_dest = scaler.scale(dest);
+    float scale_factor = (float)scaled_dest.h / (float)text.get_height();
+    scaled_dest.w = text.get_width() * scale_factor;
+    return scaled_dest;
+}
+
 void Hud::_render_gold_amount() {
-    SDL_Rect dest = scaler.scale(GOLD_TEXT_AREA);
-    float scale_factor = (float)dest.h / (float)gold_text.get_height();
-    dest.w = gold_text.get_width() * scale_factor;
-    gold_text.render(dest);
+    gold_text.render(_get_scaled_dest(gold_text, GOLD_TEXT_AREA));
 }
 
 void Hud::_render_level() {
-    SDL_Rect dest = scaler.scale(LEVEL_TEXT_AREA);
-    float scale_factor = (float)dest.h / (float)level_text.get_height();
-    dest.w = level_text.get_width() * scale_factor;
-    dest.x -= dest.w / 2;  // Centrado del texto
-    level_text.render(dest);
+    SDL_Rect scaled_dest = _get_scaled_dest(level_text, LEVEL_TEXT_AREA);
+    scaled_dest.x -= scaled_dest.w / 2;  // Centrado del texto
+    level_text.render(scaled_dest);
+}
+
+void Hud::_render_player_info() {
+    spell_name_text.render(_get_scaled_dest(spell_name_text, SPELL_TEXT_AREA));
+    attack_points_text.render(
+        _get_scaled_dest(attack_points_text, ATT_PTS_TEXT_AREA));
+    defense_points_text.render(
+        _get_scaled_dest(defense_points_text, DEF_PTS_TEXT_AREA));
 }
 
 void Hud::update() {
     _update_stats();
     _update_equipment();
     _update_inventory();
+    _update_player_info();
     chat_buffer.flush(chat);
 }
 
@@ -183,6 +210,7 @@ void Hud::render() {
     inventory.render();
     _render_gold_amount();
     _render_level();
+    _render_player_info();
 }
 
 void Hud::handle_event(SDL_Event& e) {
