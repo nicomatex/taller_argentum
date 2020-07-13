@@ -125,6 +125,7 @@ void Player::use_ability(Entity* target, position_t target_pos) {
     for (const map_log_t& log : logs) {
         map.push_log(log);
     }
+    if(!target) return;
     if (!target->is_alive() && target->get_type() == MONSTER)
         map.rm_entity(target->get_id());
 }

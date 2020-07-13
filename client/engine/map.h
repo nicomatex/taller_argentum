@@ -75,14 +75,18 @@ class Map {
      * @param loot_info informacion de loot provista por el servidor.
      */
     void update_loot_layer(nlohmann::json loot_info);
-    
+
     /**
      * @brief Agrega un efecto de hechizo al mapa.
-     * 
+     *
      * @param spell_info Informacion de hechizos provista por el servidor.
      */
     void push_spell(nlohmann::json spell_info);
 
+    /**
+     * @brief Limpia los efectos de hechizo que ya terminaron de reproducirse.
+     *
+     */
     void clean_spells();
 
     /**

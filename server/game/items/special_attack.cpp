@@ -15,8 +15,10 @@ std::vector<map_log_t> SpecialAttack::execute(Player* caster, Entity* target,
                                               position_t source,
                                               position_t dest) const {
     std::vector<map_log_t> logs;
+    if(!caster->can_spend_mp(mp_cost)) return logs;
     logs.push_back(MapLogFactory::special_ability(caster->get_name(),
                                                   ability_id, source, dest));
+    caster->spend_mp(mp_cost);
     if (!target || !caster->can_attack(target) ||
         caster->get_id() == target->get_id())
         return logs;

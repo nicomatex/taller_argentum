@@ -29,6 +29,11 @@ class MapDecorationsBuffer {
     void load_loot_info(nlohmann::json new_loot_info);
 
 
+    /**
+     * @brief Agrega informacion sobre una habilidad especial.
+     * 
+     * @param ability_info Informacion de la habilidad especial.
+     */
     void push_special_ability(nlohmann::json ability_info);
 
     /**
@@ -38,6 +43,11 @@ class MapDecorationsBuffer {
      */
     void flush_loot(Map &map);
 
+    /**
+     * @brief Flushea informacion de habilidades especiales en un mapa.
+     * 
+     * @param map Mapa sobre el cual se descargara la informacion.
+     */
     void flush_special_abilities(Map &map);
 };
 

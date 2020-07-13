@@ -11,7 +11,7 @@
 
 #define FLOOR_TILE_CONFIG {100,100,0,0}
 
-#define SPELL_CONFIG {200,200,0,0}
+#define SPELL_CONFIG {200,200,-50,0}
 
 /* Meditacion */
 #define MEDITATION_ID 1
