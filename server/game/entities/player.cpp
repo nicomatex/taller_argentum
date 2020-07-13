@@ -118,11 +118,10 @@ void Player::use(SlotId slot) {
     }
 }
 
-void Player::use_ability(Entity* target) {
+void Player::use_ability(Entity* target, position_t target_pos) {
     std::vector<map_log_t> logs =
         static_cast<PlayerCombatComponent*>(combat_component)
-            ->use_ability(target, map.get_position(get_id()),
-                          map.get_position(target->get_id()));
+            ->use_ability(target, map.get_position(get_id()), target_pos);
     for (const map_log_t& log : logs) {
         map.push_log(log);
     }
