@@ -8,18 +8,15 @@
 
 #include "entities/player.h"
 
-Map::Map(std::tuple<const nlohmann::json&, const nlohmann::json&,
-                    const nlohmann::json&>
-             forward_args)
-    : width(std::get<0, const nlohmann::json&>(forward_args)["width"]),
-      height(std::get<0, const nlohmann::json&>(forward_args)["height"]),
+Map::Map(const nlohmann::json& map_description, const nlohmann::json& map_mobs,
+         const nlohmann::json& map_transitions)
+    : width(map_description["width"]),
+      height(map_description["height"]),
       _dirty_entities(false),
       _dirty_loot(false),
-      transitions(std::get<2, const nlohmann::json&>(forward_args), width,
-                  height),
+      transitions(map_transitions, width, height),
       entity_factory(*this) {
-    nlohmann::json map_description =
-        std::get<0, const nlohmann::json&>(forward_args);
+    visual_map_info = map_description;
     for (auto& layer : map_description["layers"].items()) {
         if (layer.value()["name"] == "Collision") {
             for (int i = 0; i < height; i++) {
@@ -30,11 +27,34 @@ Map::Map(std::tuple<const nlohmann::json&, const nlohmann::json&,
                     }
                 }
             }
-            map_description["layers"].erase(std::stoi(layer.key()));
+            visual_map_info["layers"].erase(std::stoi(layer.key()));
         }
     }
-    visual_map_info = map_description;
 }
+
+Map::Map(const Map& other)
+    : width(other.width),
+      height(other.height),
+      position_map(other.position_map),
+      _dirty_entities(other._dirty_entities),
+      entity_matrix(other.entity_matrix),
+      _dirty_loot(other._dirty_loot),
+      loot_matrix(other.loot_matrix),
+      collision_map(other.collision_map),
+      transitions(other.transitions),
+      entity_factory(*this),
+      visual_map_info(other.visual_map_info) {}
+
+// Map& Map::operator=(const Map& other) {
+//     width = other.width;
+//     height = other.height;
+//     _dirty_entities = false;
+//     _dirty_loot = false;
+//     transitions = other.transitions;
+//     collision_map = other.collision_map;
+//     visual_map_info = other.visual_map_info;
+//     return *this;
+// }
 
 Map::~Map() {
     for (auto it : entity_matrix) delete it.second;

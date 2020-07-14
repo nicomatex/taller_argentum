@@ -82,10 +82,12 @@ class Map {
     void add_entity(Entity* entity, position_t position);
 
    public:
-    Map(std::tuple<const nlohmann::json&, const nlohmann::json&,
-                   const nlohmann::json&>
-            forward_args);
+    Map(const nlohmann::json& map_description, const nlohmann::json& map_mobs,
+        const nlohmann::json& map_transitions);
     ~Map();
+
+    Map(const Map& other);
+    Map& operator=(const Map& other);
 
     /* Mueve la entidad asociada al entity_id un tile en la direccion
      * indicada.*/

@@ -21,10 +21,13 @@ class MapMonitor {
     ClientMap client_map;
 
    public:
-    MapMonitor(std::tuple<const nlohmann::json&, const nlohmann::json&,
-                          const nlohmann::json&>
-                   forward_args);
+    MapMonitor(const nlohmann::json& map_description,
+               const nlohmann::json& map_mobs,
+               const nlohmann::json& map_transitions);
     ~MapMonitor();
+
+    MapMonitor(const MapMonitor& other);
+
     /* Devuelve el id de entidad asignado dentro del mapa al jugador. */
     nlohmann::json add_player(ClientId client_id, nlohmann::json player_info);
 

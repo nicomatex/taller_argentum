@@ -91,10 +91,10 @@ void ServerManager::add_player(ClientId client_id, nlohmann::json player_data) {
     client_to_map[client_id] = map_id;
     player_data["pos"] = map_monitor.get_position(client_id);
 
-    std::cerr << "ServerManager: adding player: " << player_data["name"]
-              << " in map " << map_id << " at " << player_data["pos"]["x"]
-              << "," << player_data["pos"]["y"] << std::endl;
-    send_to(client_id, EventFactory::notify_new_map());
+    // std::cerr << "ServerManager: adding player: " << player_data["name"]
+    //           << " in map " << map_id << " at " << player_data["pos"]["x"]
+    //           << "," << player_data["pos"]["y"] << std::endl;
+    // send_to(client_id, EventFactory::notify_new_map());
 
     // Enviamos la información de inicialización del mapa y del jugador
     nlohmann::json map_data = map_monitor.get_map_data();
@@ -181,7 +181,7 @@ MapMonitor& ServerManager::get_map_by_client(ClientId client_id) {
 }
 
 MapMonitor& ServerManager::get_map(MapId map_id) {
-    return map_manager[map_id];
+    return sessions.at(map_id).get_map();
 }
 
 Session& ServerManager::get_session(ClientId client_id) {
