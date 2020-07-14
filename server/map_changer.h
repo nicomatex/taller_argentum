@@ -1,16 +1,18 @@
 #ifndef MAP_CHANGER_H
 #define MAP_CHANGER_H
 
-#include <unordered_map>
+#include "../include/thread.h"
+#include "map_manager.h"
 
-#include "game/map_transitions.h"
+class MapChanger : public Thread {
+   private:
+    MapManager& map_manager;
 
-class MapChanger {
    public:
-    MapChanger();
+    MapChanger(MapManager& map_manager);
     ~MapChanger();
 
-    void push_change(map_change_t change);
+    void run() override;
 };
 
 #endif  // MAP_CHANGER_H

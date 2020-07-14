@@ -19,6 +19,7 @@ ServerManager::ServerManager()
     : accepter(Socket("27016", 10)),
       character_manager("database/characters.dat", "database/characters.json"),
       map_manager("ind/maps_index.json"),
+      map_changer(map_manager),
       game_loop(map_manager),
       item_factory("ind/items.json"),
       mob_factory("ind/mobs.json") {
@@ -33,6 +34,7 @@ ServerManager::ServerManager()
         sessions.emplace(it, map_manager[it]);
         sessions.at(it).start();
     }
+    map_changer.start();
     game_loop.start();
     dispatcher.start();
     accepter.start();
@@ -158,6 +160,7 @@ void ServerManager::finish() {
     for (auto& it : sessions) {
         it.second.stop();
     }
+    map_manager.close();
     game_loop.stop();
     l.unlock();
     accepter.join();
@@ -170,6 +173,8 @@ void ServerManager::finish() {
     std::cerr << "Sessions: joined all\n";
     game_loop.join();
     std::cerr << "GameLoop: joined\n";
+    map_changer.join();
+    std::cerr << "MapChanger: joined\n";
 }
 
 std::string ServerManager::get_name_by_client(ClientId client_id) {
