@@ -12,7 +12,7 @@
 #include "../map_changer.h"
 #include "actions/action.h"
 #include "entities/entity.h"
-#include "entity_factory.h"
+#include "entities/entity_factory.h"
 #include "items/item.h"
 #include "map_log_factory.h"
 #include "map_transitions.h"

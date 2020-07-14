@@ -3,9 +3,9 @@
 
 #include <unordered_map>
 
-#include "../../include/types.h"
-#include "entities/monster.h"
-#include "entities/npc.h"
+#include "../../../include/types.h"
+#include "monster.h"
+#include "npc.h"
 
 class MobFactory {
    private:
