@@ -12,6 +12,7 @@
 #include "game/entities/mob_factory.h"
 #include "game/game_loop.h"
 #include "game/items/item_factory.h"
+#include "map_changer.h"
 #include "map_manager.h"
 #include "map_monitor.h"
 #include "network/clients_monitor.h"
@@ -25,6 +26,7 @@ class ServerManager {
     ThClientAccepter accepter;
     CharacterManager character_manager;
     MapManager map_manager;
+    MapChanger map_changer;
     std::unordered_map<MapId, Session> sessions;
     std::unordered_map<ClientId, MapId> client_to_map;
     ClientsNamesMonitor clients_names;

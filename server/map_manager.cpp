@@ -6,7 +6,7 @@
 // Temp
 #include <iostream>
 
-MapManager::MapManager(const char* path) : map_changer() {
+MapManager::MapManager(const char* path) {
     std::ifstream index_file(path);
     nlohmann::json maps_index = nlohmann::json::parse(index_file);
     for (auto& it : maps_index["maps"].items()) {
@@ -20,6 +20,8 @@ MapManager::MapManager(const char* path) : map_changer() {
                   << std::endl;
     }
 }
+
+MapManager::~MapManager() {}
 
 MapMonitor& MapManager::operator[](MapId map_id) {
     return maps.at(map_id);
@@ -36,13 +38,15 @@ const std::vector<MapId> MapManager::get_ids() {
 void MapManager::update(uint64_t delta_t) {
     for (auto& it : maps) {
         it.second.update(delta_t);
-        std::queue<map_change_t> q = maps.at(it.first).get_transitions();
+        std::queue<map_change_t> q = it.second.get_transitions();
         while (!q.empty()) {
             map_change_t change = q.front();
             q.pop();
-            map_changer.push_change(change);
+            changes_queue.push(change);
         }
     }
 }
 
-MapManager::~MapManager() {}
+map_change_t MapManager::get_change() {
+    return changes_queue.pop();
+}

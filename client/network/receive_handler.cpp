@@ -96,8 +96,6 @@ void ClientReceiveHandler::handle_move(Event &ev) {
         int entity_id = entity_position["entity_id"];
 
         if (!EntityManager::get_instance().has_entity(entity_id)) {
-            std::cerr << "Tried to move entity with id " << entity_id
-                      << "but it was not found." << std::endl;
             continue;
         }
 

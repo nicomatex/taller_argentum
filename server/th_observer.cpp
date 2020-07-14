@@ -11,7 +11,7 @@
 
 #define ENTITY_UPDATE_INTERVAL 10
 
-constexpr std::chrono::milliseconds OBSERVER_INTERVAL(5);
+constexpr std::chrono::milliseconds OBSERVER_INTERVAL(15);
 
 ThObserver::ThObserver(MapMonitor& map_monitor, BlockingThEventHandler& handler)
     : Thread(),
@@ -104,7 +104,7 @@ void ThObserver::run() {
     while (running) {
         auto start = std::chrono::steady_clock::now();
         try {
-            if (forced_update || ++counter % ENTITY_UPDATE_INTERVAL == 0) {
+            if (++counter % ENTITY_UPDATE_INTERVAL == 0) {
                 forced_update = true;
                 counter = 0;
             }

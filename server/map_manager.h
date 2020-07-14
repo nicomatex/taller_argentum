@@ -3,6 +3,7 @@
 
 #include <unordered_map>
 
+#include "../include/blocking_queue.h"
 #include "../include/types.h"
 #include "game/map.h"
 #include "game/map_transitions.h"
@@ -11,10 +12,11 @@
 class MapManager {
    private:
     std::unordered_map<MapId, MapMonitor> maps;
-    MapChanger map_changer;
+    BlockingQueue<map_change_t> changes_queue;
 
    public:
     MapManager(const char* path);
+    ~MapManager();
 
     MapMonitor& operator[](MapId map_id);
 
@@ -22,7 +24,11 @@ class MapManager {
 
     void update(uint64_t delta_t);
 
-    ~MapManager();
+    map_change_t get_change();
+
+    void close() {
+        changes_queue.close();
+    }
 };
 
 #endif  // MAP_MANAGER_H

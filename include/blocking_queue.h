@@ -1,5 +1,5 @@
-#ifndef __queue_BLOQUEANTE_H__
-#define __queue_BLOQUEANTE_H__
+#ifndef BLOCKING_QUEUE_H
+#define BLOCKING_QUEUE_H
 
 #include <condition_variable>
 #include <mutex>
@@ -88,4 +88,4 @@ class BlockingQueue {
     ~BlockingQueue() {}
 };
 
-#endif  //__queue_BLOQUEANTE_H__
+#endif  // BLOCKING_QUEUE_H

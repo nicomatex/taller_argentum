@@ -9,7 +9,6 @@
 
 #include "../../include/nlohmann/json.hpp"
 #include "../../include/types.h"
-#include "../map_changer.h"
 #include "actions/action.h"
 #include "entities/entity.h"
 #include "entities/entity_factory.h"
