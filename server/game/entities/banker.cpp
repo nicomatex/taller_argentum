@@ -1,5 +1,6 @@
 #include "banker.h"
-
+#include <iostream>
+#include <iomanip>
 #include <sstream>
 #include "../bank.h"
 
@@ -18,7 +19,7 @@ const std::string Banker::list_vault(std::string player_name) const {
 
     SlotId slot_id = 0;
     unsigned int counter = 0;
-    nlohmann::json json_vault = Bank::get_vault_data(player_name);
+    nlohmann::json json_vault = Bank::get_instance().get_vault_data(player_name);
     ss << json_vault["curr_gold"] << "\n";
     for (auto& item : json_vault["items"]) {
         if (item["type"] != 0) {
@@ -34,24 +35,25 @@ const std::string Banker::list_vault(std::string player_name) const {
         }
         slot_id++;
     }
+    std::cout << std::setw(4) << json_vault << std::endl;
     std::string msg = ss.str();
     return msg;
 }
 
 void Banker::deposit_gold(uint32_t amount, Player *player) {
-    Bank::deposit_gold(amount, player);
+    Bank::get_instance().deposit_gold(amount, player);
 }
 
 void Banker::withdraw_gold(uint32_t amount, Player *player) {
-    Bank::withdraw_gold(amount, player);
+    Bank::get_instance().withdraw_gold(amount, player);
 }
 
 void Banker::deposit_item(SlotId slot, uint32_t amount, Player *player) {
-    Bank::deposit_item(slot, amount, player);
+    Bank::get_instance().deposit_item(slot, amount, player);
 }
 
 void Banker::withdraw_item(SlotId slot, uint32_t amount, Player *player) {
-    Bank::withdraw_item(slot, amount, player);       
+    Bank::get_instance().withdraw_item(slot, amount, player);       
 }
 
 

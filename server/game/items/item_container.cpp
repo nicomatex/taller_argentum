@@ -27,6 +27,22 @@ ItemContainer::ItemContainer(unsigned int slots_amount) {
     gold = static_cast<Gold*>(item_factory.create(500, 0));
 }
 
+ItemContainer::ItemContainer(ItemContainer&& other)
+    : gold(std::move(other.gold)),
+      item_container(std::move(other.item_container)),
+      item_id_to_slot(std::move(other.item_id_to_slot)) {
+    other.gold = NULL;
+}
+
+
+ItemContainer& ItemContainer::operator=(ItemContainer&& other){
+    this->gold = std::move(other.gold);
+    this->item_container = std::move(other.item_container);
+    this->item_id_to_slot = std::move(other.item_id_to_slot);
+    other.gold = NULL;
+    return *this;
+}
+
 ItemContainer::ItemContainer(const nlohmann::json& inv_json)
     : ItemContainer(INV_SIZE) {
     ServerManager& server_manager = ServerManager::get_instance();
@@ -34,8 +50,7 @@ ItemContainer::ItemContainer(const nlohmann::json& inv_json)
     inventory_t inventory = inv_json;
     for (SlotId slot_id = 0; slot_id < item_container.size(); slot_id++) {
         ItemId item_id = inventory.items_ids[slot_id];
-        if (item_id == 0)
-            continue;  // El 0 es un id invalido (ausencia)
+        if (item_id == 0) continue;  // El 0 es un id invalido (ausencia)
         uint32_t stack = inventory.items_stacks[slot_id];
         this->add(item_factory.create(item_id, stack));
     }
@@ -81,10 +96,8 @@ void ItemContainer::add(Item* item, uint32_t stack) {
 }
 
 Item* ItemContainer::remove(SlotId slot_id) {
-    if (!is_in_range(slot_id))
-        throw OutOfRangeSlotException();
-    if (slot_is_free(slot_id))
-        throw EmptySlotException();
+    if (!is_in_range(slot_id)) throw OutOfRangeSlotException();
+    if (slot_is_free(slot_id)) throw EmptySlotException();
     Item* item = item_container[slot_id];
     item_container[slot_id] = nullptr;
     item_id_to_slot.erase(item->get_id());
@@ -92,15 +105,12 @@ Item* ItemContainer::remove(SlotId slot_id) {
 }
 
 Item* ItemContainer::remove(SlotId slot_id, uint32_t stack) {
-    if (!is_in_range(slot_id))
-        throw OutOfRangeSlotException();
+    if (!is_in_range(slot_id)) throw OutOfRangeSlotException();
     ServerManager& server_manager = ServerManager::get_instance();
     ItemFactory& item_factory = server_manager.get_item_factory();
-    if (slot_is_free(slot_id))
-        throw EmptySlotException();
+    if (slot_is_free(slot_id)) throw EmptySlotException();
     Item* item = item_container[slot_id];
-    if (item->stack_difference(stack) <= 0)
-        return remove(slot_id);
+    if (item->stack_difference(stack) <= 0) return remove(slot_id);
     item->decrease_stack(stack);
     return item_factory.create(item->get_id(), stack);
 }
@@ -108,8 +118,7 @@ Item* ItemContainer::remove(SlotId slot_id, uint32_t stack) {
 std::vector<Item*> ItemContainer::remove_all() {
     std::vector<Item*> items;
     for (SlotId slot_id = 0; slot_id < item_container.size(); slot_id++) {
-        if (!slot_is_free(slot_id))
-            items.push_back(remove(slot_id));
+        if (!slot_is_free(slot_id)) items.push_back(remove(slot_id));
     }
     return items;
 }
@@ -148,8 +157,7 @@ nlohmann::json ItemContainer::get_persist_data() const {
 }
 
 bool ItemContainer::slot_is_free(SlotId slot_id) const {
-    if (!is_in_range(slot_id))
-        throw OutOfRangeSlotException();
+    if (!is_in_range(slot_id)) throw OutOfRangeSlotException();
     return (item_container[slot_id] == nullptr) ? true : false;
 }
 
@@ -158,16 +166,13 @@ bool ItemContainer::has_item(ItemId item_id) {
 }
 
 const Item& ItemContainer::get_item(SlotId slot_id) const {
-    if (!is_in_range(slot_id))
-        throw OutOfRangeSlotException();
-    if (slot_is_free(slot_id))
-        throw EmptySlotException();
+    if (!is_in_range(slot_id)) throw OutOfRangeSlotException();
+    if (slot_is_free(slot_id)) throw EmptySlotException();
     return *item_container[slot_id];
 }
 
 SlotId ItemContainer::get_available_slot(ItemId item_id) {
-    if (has_item(item_id))
-        return item_id_to_slot.at(item_id);
+    if (has_item(item_id)) return item_id_to_slot.at(item_id);
     for (SlotId slot_id = 0; slot_id < item_container.size(); slot_id++) {
         if (slot_is_free(slot_id)) {
             return slot_id;
@@ -189,9 +194,7 @@ void ItemContainer::add_gold(Gold* other_gold, uint32_t stack) {
         other_gold->decrease_stack(stack);
     }
 }
-unsigned int ItemContainer::get_gold_stack() const {
-    return gold->get_stack();
-}
+unsigned int ItemContainer::get_gold_stack() const { return gold->get_stack(); }
 
 Gold* ItemContainer::remove_gold() {
     ServerManager& server_manager = ServerManager::get_instance();
@@ -205,8 +208,7 @@ Gold* ItemContainer::remove_gold() {
 Gold* ItemContainer::remove_gold(uint32_t stack) {
     ServerManager& server_manager = ServerManager::get_instance();
     ItemFactory& item_factory = server_manager.get_item_factory();
-    if (gold->stack_difference(stack) <= 0)
-        return remove_gold();
+    if (gold->stack_difference(stack) <= 0) return remove_gold();
     gold->decrease_stack(stack);
     return static_cast<Gold*>(item_factory.create(gold->get_id(), stack));
 }
@@ -214,4 +216,3 @@ Gold* ItemContainer::remove_gold(uint32_t stack) {
 bool ItemContainer::is_in_range(SlotId slotId) const {
     return (slotId >= 0 && slotId < item_container.size()) ? true : false;
 }
-

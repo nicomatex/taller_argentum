@@ -56,6 +56,9 @@ class ItemContainer {
    public:
     ItemContainer();
 
+    ItemContainer(ItemContainer&& other);
+    ItemContainer& operator=(ItemContainer&& other);
+
     ItemContainer(unsigned int slots_amount);
     /*
         Crea un inventario a partir del json.

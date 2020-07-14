@@ -4,11 +4,14 @@
 
 #include "../../include/my_exception.h"
 
-std::unordered_map<std::string, Vault> Bank::bank_accounts;
-
 Bank::Bank() {}
 
 Bank::~Bank() {}
+
+Bank& Bank::get_instance(){
+    static Bank bank;
+    return bank;
+}
 
 bool Bank::account_exists(std::string player_name) {
     return (!bank_accounts.count(player_name)) ? false : true;

@@ -86,7 +86,7 @@ void ServerManager::rm_name(ClientId client_id) {
 void ServerManager::add_player(ClientId client_id, nlohmann::json player_data) {
     std::unique_lock<std::recursive_mutex> l(m);
     // add_name(client_id, player_data["name"]);
-    Bank::add_account(player_data["name"], player_data["vault"]);
+    Bank::get_instance().add_account(player_data["name"], player_data["vault"]);
     MapId map_id = player_data["map_id"];
     MapMonitor& map_monitor = map_manager[map_id];
     // Añadimos el jugador al mapa
@@ -94,9 +94,11 @@ void ServerManager::add_player(ClientId client_id, nlohmann::json player_data) {
     client_to_map[client_id] = map_id;
     player_data["pos"] = map_monitor.get_position(client_id);
 
+
     std::cerr << "ServerManager: adding player: " << player_data["name"]
               << " in map " << map_id << " at " << player_data["pos"]["x"]
               << "," << player_data["pos"]["y"] << std::endl;
+    
     send_to(client_id, EventFactory::notify_new_map());
 
     // Enviamos la información de inicialización del mapa y del jugador
@@ -127,7 +129,7 @@ nlohmann::json ServerManager::rm_player(ClientId client_id) {
 
     // Eliminamos el jugador de la session
     sessions.at(map_id).rm_client(client_id);
-    player_data["vault"] = Bank::remove_account(player_data["name"]);
+    player_data["vault"] = Bank::get_instance().remove_account(player_data["name"]);
     return player_data;
 }
 
