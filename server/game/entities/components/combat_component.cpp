@@ -53,3 +53,11 @@ nlohmann::json CombatComponent::get_data() const {
     data["curr_mp"] = current_mp;
     return data;
 }
+
+void CombatComponent::set_max_mp(unsigned int mp) {
+    max_mp = mp;
+}
+
+void CombatComponent::set_max_hp(unsigned int hp) {
+    max_hp = hp;       
+}

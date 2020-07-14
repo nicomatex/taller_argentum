@@ -46,6 +46,10 @@ class CombatComponent {
     virtual bool attack_ready() const = 0;
 
     virtual nlohmann::json get_data() const;
+
+    void set_max_mp(unsigned int mp);
+
+    void set_max_hp(unsigned int hp);
 };
 
 #endif  // COMBAT_COMPONENT_H

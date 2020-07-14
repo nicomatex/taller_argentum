@@ -152,6 +152,16 @@ void PlayerCombatComponent::update(uint64_t delta_t) {
             regen_counter += delta_t;
         }
     }
+    max_hp =  stats.physique *
+              AttributeManager::get_class_hp_multiplier(
+                  player.get_class_type()) *
+              AttributeManager::get_race_hp_multiplier(player.get_race_type()) *
+              player.get_level();
+    max_mp = stats.intelligence *
+              AttributeManager::get_class_mp_multiplier(
+                  player.get_class_type()) *
+              AttributeManager::get_race_mp_multiplier(player.get_race_type()) *
+              player.get_level();
 }
 
 bool PlayerCombatComponent::attack_ready() const {
