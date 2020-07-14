@@ -12,27 +12,22 @@ MapMonitor::MapMonitor(const nlohmann::json& map_description,
 
 MapMonitor::~MapMonitor() {}
 
-MapMonitor::MapMonitor(const MapMonitor& other)
-    : map(other.map), client_map(other.client_map) {}
+MapMonitor::MapMonitor(const MapMonitor& other) : map(other.map) {}
 
-nlohmann::json MapMonitor::add_player(ClientId client_id,
-                                      nlohmann::json player_info) {
+nlohmann::json MapMonitor::add_player(nlohmann::json player_info) {
     std::unique_lock<std::recursive_mutex> l(m);
     nlohmann::json data = map.add_player(player_info);
-    client_map[client_id] = data["entity_id"];
     return data;
 }
 
-nlohmann::json MapMonitor::rm_player(ClientId client_id) {
+nlohmann::json MapMonitor::rm_player(EntityId entity_id) {
     std::unique_lock<std::recursive_mutex> l(m);
-    EntityId player_id = client_map.at(client_id);
-    client_map.erase(client_id);
-    return map.rm_player(player_id);
+    return map.rm_player(entity_id);
 }
 
-position_t MapMonitor::get_position(ClientId client_id) {
+position_t MapMonitor::get_position(EntityId entity_id) {
     std::unique_lock<std::recursive_mutex> l(m);
-    return map.get_position(client_map.at(client_id));
+    return map.get_position(entity_id);
 }
 
 bool MapMonitor::entity_exists(EntityId entity_id) {
@@ -57,9 +52,9 @@ void MapMonitor::update(uint64_t delta_t) {
     map.update(delta_t);
 }
 
-void MapMonitor::push_action(ClientId client_id, Action* action) {
+void MapMonitor::push_action(EntityId entity_id, Action* action) {
     std::unique_lock<std::recursive_mutex> l(m);
-    map.push_action(client_map.at(client_id), action);
+    map.push_action(entity_id, action);
 }
 
 std::vector<map_log_t> MapMonitor::get_update_logs() {

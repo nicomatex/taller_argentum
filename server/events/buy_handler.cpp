@@ -3,6 +3,7 @@
 #include "../../include/nlohmann/json.hpp"
 #include "../game/actions/action_buy.h"
 #include "../server_manager.h"
+#include "../session.h"
 
 BuyHandler::BuyHandler() {}
 
@@ -13,6 +14,6 @@ void BuyHandler::push_event(const Event& event) {
     position_t target = json["target"];
     SlotId slot = json["slot"];
     uint32_t amount = json["amount"];
-    MapMonitor& map_monitor = server_manager.get_map_by_client(client_id);
-    map_monitor.push_action(client_id, new ActionBuy(target, slot, amount));
+    Session& session = server_manager.get_session(client_id);
+    session.push_action(client_id, new ActionBuy(target, slot, amount));
 }

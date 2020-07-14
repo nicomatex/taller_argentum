@@ -11,14 +11,10 @@
 #include "game/map_log_factory.h"
 #include "game/map_transitions.h"
 
-// Clave: id de cliente, valor: id de entidad del jugador.
-typedef std::unordered_map<ClientId, EntityId> ClientMap;
-
 class MapMonitor {
    private:
     std::recursive_mutex m;
     Map map;
-    ClientMap client_map;
 
    public:
     MapMonitor(const nlohmann::json& map_description,
@@ -28,12 +24,12 @@ class MapMonitor {
 
     MapMonitor(const MapMonitor& other);
 
-    /* Devuelve el id de entidad asignado dentro del mapa al jugador. */
-    nlohmann::json add_player(ClientId client_id, nlohmann::json player_info);
+    /**/
+    nlohmann::json add_player(nlohmann::json player_info);
 
-    nlohmann::json rm_player(ClientId client_id);
+    nlohmann::json rm_player(EntityId entity_id);
 
-    position_t get_position(ClientId client_id);
+    position_t get_position(EntityId entity_id);
 
     bool entity_exists(EntityId entity_id);
 
@@ -43,7 +39,7 @@ class MapMonitor {
     void update(uint64_t delta_t);
 
     /* Ejecuta sobre la entidad asociada al client_id la accion. */
-    void push_action(ClientId client_id, Action* action);
+    void push_action(EntityId entity_id, Action* action);
 
     std::vector<map_log_t> get_update_logs();
 

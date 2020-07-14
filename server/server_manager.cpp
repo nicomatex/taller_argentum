@@ -8,9 +8,8 @@
 #include "attribute_manager.h"
 #include "configuration_manager.h"
 #include "events/event_factory.h"
-#include "race_graphics_manager.h"
 #include "game/bank.h"
-
+#include "race_graphics_manager.h"
 
 // Temp
 #include <iostream>
@@ -89,16 +88,17 @@ void ServerManager::add_player(ClientId client_id, nlohmann::json player_data) {
     std::unique_lock<std::recursive_mutex> l(m);
     // add_name(client_id, player_data["name"]);
     Bank::get_instance().add_account(player_data["name"], player_data["vault"]);
+    player_data.erase("vault");
     MapId map_id = player_data["map_id"];
     MapMonitor& map_monitor = map_manager[map_id];
     // Añadimos el jugador al mapa
-    player_data = map_monitor.add_player(client_id, player_data);
+    player_data = map_monitor.add_player(player_data);
     client_to_map[client_id] = map_id;
     player_data["pos"] = map_monitor.get_position(client_id);
 
-    // std::cerr << "ServerManager: adding player: " << player_data["name"]
-    //           << " in map " << map_id << " at " << player_data["pos"]["x"]
-    //           << "," << player_data["pos"]["y"] << std::endl;
+    std::cerr << "ServerManager: adding player: " << player_data["name"]
+              << " in map " << map_id << " at " << player_data["pos"]["x"]
+              << "," << player_data["pos"]["y"] << std::endl;
 
     // Notificación de conexión a nuevo mapa
     send_to(client_id, EventFactory::notify_new_map());
@@ -110,11 +110,11 @@ void ServerManager::add_player(ClientId client_id, nlohmann::json player_data) {
     send_to(client_id, EventFactory::update_entities(map_updates["entities"]));
     send_to(client_id, EventFactory::update_items(map_updates["items"]));
 
-    // std::cerr << "ServerManager: sent initialize msg to: " << client_id
-    //           << std::endl;
-
     // Lo agregamos a la session correspondiente
-    sessions.at(map_id).add_client(client_id);
+    sessions.at(map_id).add_client(client_id, player_data["entity_id"]);
+
+    std::cerr << "ServerManager: sent initialize msg to: " << client_id
+              << std::endl;
 }
 
 nlohmann::json ServerManager::rm_player(ClientId client_id) {
@@ -122,30 +122,29 @@ nlohmann::json ServerManager::rm_player(ClientId client_id) {
     // Eliminamos el jugador del mapa
     MapId map_id = client_to_map.at(client_id);
     client_to_map.erase(client_id);
-    nlohmann::json player_data = map_manager[map_id].rm_player(client_id);
+    EntityId player_id = sessions.at(map_id).rm_client(client_id);
+    nlohmann::json player_data = get_map(map_id).rm_player(player_id);
     player_data["map_id"] = map_id;
+    player_data["vault"] =
+        Bank::get_instance().remove_account(player_data["name"]);
+
     // std::cerr << "ServerManager: removing player: " << player_data["name"]
     //           << " in map " << player_data["map_id"] << " at "
     //           << player_data["pos"]["x"] << "," << player_data["pos"]["y"]
     //           << std::endl;
-
-    // Eliminamos el jugador de la session
-    sessions.at(map_id).rm_client(client_id);
-    player_data["vault"] = Bank::get_instance().remove_account(player_data["name"]);
     return player_data;
 }
 
-void ServerManager::change_player_map(ClientId client_id, position_t new_pos,
-                                      MapId new_map) {
+nlohmann::json ServerManager::change_player_map(ClientId client_id,
+                                                position_t new_pos,
+                                                MapId new_map) {
     std::unique_lock<std::recursive_mutex> l(m);
     nlohmann::json player_data = rm_player(client_id);
     player_data["map_id"] = new_map;
     player_data["pos"] = new_pos;
     send_to(client_id, EventFactory::notify_new_map());
     add_player(client_id, player_data);
-    l.unlock();
-    character_manager.save();
-    character_manager.set_character(player_data);
+    return player_data;
 }
 
 void ServerManager::send_to(ClientId client_id, const Event& ev) {
@@ -157,20 +156,17 @@ void ServerManager::finish() {
     accepter.stop();
     clients.drop_all();
     dispatcher.stop();
-    for (auto& it : sessions) {
-        it.second.stop();
-    }
     map_manager.close();
     game_loop.stop();
     l.unlock();
+    for (auto& it : sessions) {
+        it.second.finish();
+    }
+    std::cerr << "Sessions: finished all\n";
     accepter.join();
     std::cerr << "Accepter: joined\n";
     dispatcher.join();
     std::cerr << "Dispatcher: joined\n";
-    for (auto& it : sessions) {
-        it.second.join();
-    }
-    std::cerr << "Sessions: joined all\n";
     game_loop.join();
     std::cerr << "GameLoop: joined\n";
     map_changer.join();

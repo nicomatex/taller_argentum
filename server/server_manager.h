@@ -9,16 +9,19 @@
 #include "../include/types.h"
 #include "character_manager.h"
 #include "clients_names_monitor.h"
-#include "game/entities/mob_factory.h"
-#include "game/game_loop.h"
-#include "game/items/item_factory.h"
 #include "map_changer.h"
-#include "map_manager.h"
-#include "map_monitor.h"
 #include "network/clients_monitor.h"
 #include "network/th_client_accepter.h"
 #include "server_exceptions.h"
 #include "session.h"
+#include "th_dispatcher.h"
+
+// A game_manager
+#include "game/entities/mob_factory.h"
+#include "game/game_loop.h"
+#include "game/items/item_factory.h"
+#include "map_manager.h"
+#include "map_monitor.h"
 
 class ServerManager {
    private:
@@ -54,8 +57,8 @@ class ServerManager {
 
     void add_player(ClientId client_id, nlohmann::json player_info);
     nlohmann::json rm_player(ClientId client_id);
-    void change_player_map(ClientId client_id, position_t new_position,
-                           MapId new_map);
+    nlohmann::json change_player_map(ClientId client_id,
+                                     position_t new_position, MapId new_map);
 
     void add_name(ClientId client_id, const std::string& name);
     void rm_name(ClientId client_id);

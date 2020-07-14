@@ -187,9 +187,7 @@ size_t Socket::recv(char* buffer, size_t size) {
 
     while (read < size && _is_connected) {
         count = _recv(socketfd, &buffer[read], size - read);
-        if (count == RECV_ERROR) {
-            throw MyException("Error in Socket Recieve");
-        } else if (count == CONECTION_CLOSED) {
+        if (count == RECV_ERROR || count == CONECTION_CLOSED) {
             _is_connected = false;
             throw ConnectionClosedSocketException();
         } else {

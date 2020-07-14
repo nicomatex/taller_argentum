@@ -282,7 +282,8 @@ void CommandHandler::cmd_withdraw_gold(ClientId client_id, position_t target) {
     server_manager.dispatch(
         EventFactory::withdraw_gold_event(client_id, target, amount));
 }
-//depositaroro <cantidad> o depositaroro donde cantidad es por default TODO EL ORO
+// depositaroro <cantidad> o depositaroro donde cantidad es por default TODO EL
+// ORO
 void CommandHandler::cmd_deposit_gold(ClientId client_id, position_t target) {
     ServerManager& server_manager = ServerManager::get_instance();
     uint32_t amount = UINT32_MAX;
