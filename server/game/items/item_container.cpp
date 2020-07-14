@@ -18,6 +18,8 @@ const char* OutOfRangeSlotException::what() const throw() {
     return "SlotId is not between valid ranges!";
 }
 
+ItemContainer::ItemContainer() {}
+
 ItemContainer::ItemContainer(unsigned int slots_amount) {
     item_container.resize(slots_amount);
     ServerManager& server_manager = ServerManager::get_instance();

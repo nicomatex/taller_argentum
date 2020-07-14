@@ -12,6 +12,10 @@ add_library(game
   actions/action_buy.cpp
   actions/action_list.cpp
   actions/action_use_ability.cpp
+  actions/action_deposit_item.cpp
+  actions/action_withdraw_item.cpp
+  actions/action_deposit_gold.cpp
+  actions/action_withdraw_gold.cpp
   entities/components/combat_component.cpp
   entities/components/experience_component.cpp
   entities/entity.cpp
@@ -45,4 +49,5 @@ add_library(game
   entities/healer.cpp
   entities/merchant.cpp
   entities/banker.cpp
+  bank.cpp
 )

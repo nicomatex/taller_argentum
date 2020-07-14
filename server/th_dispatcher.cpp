@@ -19,6 +19,10 @@
 #include "events/sell_handler.h"
 #include "events/unequip_handler.h"
 #include "events/use_ability_handler.h"
+#include "events/withdraw_gold_handler.h"
+#include "events/deposit_gold_handler.h"
+#include "events/withdraw_item_handler.h"
+#include "events/deposit_item_handler.h"
 #include "server_manager.h"
 
 // Temp
@@ -112,6 +116,14 @@ ThDispatcher::ThDispatcher() : BlockingThEventHandler() {
         static_cast<EventHandler*>(new ListHandler());
     handlers[static_cast<int>(EV_ID_USE_ABILITY)] =
         static_cast<EventHandler*>(new UseAbilityHandler());
+    handlers[static_cast<int>(SERVER_DEPOSIT_ITEM)] =
+        static_cast<EventHandler*>(new DepositItemHandler());
+    handlers[static_cast<int>(SERVER_WITHDRAW_ITEM)] =
+        static_cast<EventHandler*>(new WithdrawItemHandler());
+    handlers[static_cast<int>(SERVER_DEPOSIT_GOLD)] =
+        static_cast<EventHandler*>(new DepositGoldHandler());
+    handlers[static_cast<int>(SERVER_WITHDRAW_GOLD)] =
+        static_cast<EventHandler*>(new WithdrawGoldHandler());
     // Inicializamos los handlers que sean threads
     for (auto it : handlers) {
         if (it.second->is_threaded()) {

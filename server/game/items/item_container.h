@@ -54,6 +54,8 @@ class ItemContainer {
     nlohmann::json _get_data(bool need_sprite_id) const;
 
    public:
+    ItemContainer();
+
     ItemContainer(unsigned int slots_amount);
     /*
         Crea un inventario a partir del json.

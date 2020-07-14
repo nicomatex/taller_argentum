@@ -31,6 +31,7 @@ typedef struct character {
     unsigned int current_level;
     unsigned int current_exp;
     bool alive;
+    inventory_t vault;
 } character_t;
 
 typedef uint32_t CharId;

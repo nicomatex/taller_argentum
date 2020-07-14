@@ -63,6 +63,16 @@ class EventFactory {
     static Event list_event(ClientId client_id, position_t target);
 
     static Event special_ability(const nlohmann::json& cast_info);
+
+    static Event deposit_item_event(ClientId client_id, position_t target,
+                                    SlotId slot, uint32_t amount);
+
+    static Event withdraw_item_event(ClientId client_id, position_t target,
+                                    SlotId slot, uint32_t amount);
+
+    static Event deposit_gold_event(ClientId client_id, position_t target, uint32_t amount);
+
+    static Event withdraw_gold_event(ClientId client_id, position_t target, uint32_t amount);
 };
 
 #endif  // EVENT_FACTORY_H

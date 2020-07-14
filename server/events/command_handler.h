@@ -15,7 +15,8 @@ enum cmd_type {
     CMD_HEAL,
     CMD_DEPOSIT_ITEM,
     CMD_DEPOSIT_GOLD,
-    CMD_WITHDRAW,
+    CMD_WITHDRAW_ITEM,
+    CMD_WITHDRAW_GOLD,
     CMD_LIST,
     CMD_BUY,
     CMD_SELL,
@@ -58,6 +59,14 @@ class CommandHandler : public BlockingThEventHandler {
     void cmd_buy(ClientId client_id, position_t target);
 
     void cmd_sell(ClientId client_id, position_t target, SlotId slot);
+
+    void cmd_deposit_item(ClientId client_id, position_t target, SlotId slot);
+
+    void cmd_withdraw_item(ClientId client_id, position_t target);
+
+    void cmd_deposit_gold(ClientId client_id, position_t target);
+
+    void cmd_withdraw_gold(ClientId client_id, position_t target);
 
    protected:
     void handle(Event& ev) override;

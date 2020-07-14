@@ -17,8 +17,12 @@ void ActionList::execute(Map& map, EntityId entity_id) const {
     if (!player || !player->is_alive())
         return;
     switch (npc->get_profession()) {
-        case BANKER:
-            // TODO:
+        case BANKER: {
+            Banker* banker = static_cast<Banker*>(npc);
+            map.push_log(MapLogFactory::message(
+                player->get_name(), {{"message", banker->list_vault(player->get_name())},
+                                     {"from", npc->get_name()}}));    
+        }
             break;
         case MERCHANT: {
             Merchant* merchant = static_cast<Merchant*>(npc);

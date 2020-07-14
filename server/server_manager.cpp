@@ -9,6 +9,8 @@
 #include "configuration_manager.h"
 #include "events/event_factory.h"
 #include "race_graphics_manager.h"
+#include "game/bank.h"
+
 
 // Temp
 #include <iostream>
@@ -84,6 +86,7 @@ void ServerManager::rm_name(ClientId client_id) {
 void ServerManager::add_player(ClientId client_id, nlohmann::json player_data) {
     std::unique_lock<std::recursive_mutex> l(m);
     // add_name(client_id, player_data["name"]);
+    Bank::add_account(player_data["name"], player_data["vault"]);
     MapId map_id = player_data["map_id"];
     MapMonitor& map_monitor = map_manager[map_id];
     // Añadimos el jugador al mapa
@@ -117,7 +120,6 @@ nlohmann::json ServerManager::rm_player(ClientId client_id) {
     client_to_map.erase(client_id);
     nlohmann::json player_data = map_manager[map_id].rm_player(client_id);
     player_data["map_id"] = map_id;
-
     // std::cerr << "ServerManager: removing player: " << player_data["name"]
     //           << " in map " << player_data["map_id"] << " at "
     //           << player_data["pos"]["x"] << "," << player_data["pos"]["y"]
@@ -125,6 +127,7 @@ nlohmann::json ServerManager::rm_player(ClientId client_id) {
 
     // Eliminamos el jugador de la session
     sessions.at(map_id).rm_client(client_id);
+    player_data["vault"] = Bank::remove_account(player_data["name"]);
     return player_data;
 }
 
