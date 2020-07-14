@@ -32,7 +32,9 @@ MonsterSpawner::MonsterSpawner(Map& map, const nlohmann::json& spawn_list)
 MonsterSpawner::~MonsterSpawner() {}
 
 MonsterSpawner::MonsterSpawner(Map& map, const MonsterSpawner& other)
-    : spawn_points(other.spawn_points), map(map) {}
+    : spawn_points(other.spawn_points),
+      map(map),
+      accumulator(other.accumulator) {}
 
 void MonsterSpawner::update(uint64_t delta_t) {
     accumulator += delta_t;

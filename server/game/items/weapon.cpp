@@ -8,7 +8,9 @@ Weapon::Weapon(item_info_t item_info, weapon_info_t weapon_info,
                SpecialAbility* special, uint32_t stack)
     : Item(item_info, stack), weapon_info(weapon_info), special(special) {}
 
-Weapon::~Weapon() {}
+Weapon::~Weapon() {
+    delete special;
+}
 
 int Weapon::deal_damage() {
     return (int)RandomEventGenerator::random_in(weapon_info.min_damage,
