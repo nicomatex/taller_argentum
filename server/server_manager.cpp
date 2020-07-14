@@ -94,7 +94,9 @@ void ServerManager::add_player(ClientId client_id, nlohmann::json player_data) {
     // std::cerr << "ServerManager: adding player: " << player_data["name"]
     //           << " in map " << map_id << " at " << player_data["pos"]["x"]
     //           << "," << player_data["pos"]["y"] << std::endl;
-    // send_to(client_id, EventFactory::notify_new_map());
+
+    // Notificación de conexión a nuevo mapa
+    send_to(client_id, EventFactory::notify_new_map());
 
     // Enviamos la información de inicialización del mapa y del jugador
     nlohmann::json map_data = map_monitor.get_map_data();

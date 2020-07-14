@@ -45,17 +45,6 @@ Map::Map(const Map& other)
       entity_factory(*this),
       visual_map_info(other.visual_map_info) {}
 
-// Map& Map::operator=(const Map& other) {
-//     width = other.width;
-//     height = other.height;
-//     _dirty_entities = false;
-//     _dirty_loot = false;
-//     transitions = other.transitions;
-//     collision_map = other.collision_map;
-//     visual_map_info = other.visual_map_info;
-//     return *this;
-// }
-
 Map::~Map() {
     for (auto it : entity_matrix) delete it.second;
     for (auto it : loot_matrix) delete it.second;
