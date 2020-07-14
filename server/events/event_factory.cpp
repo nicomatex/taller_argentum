@@ -174,3 +174,39 @@ Event EventFactory::special_ability(const nlohmann::json& cast_info) {
     ev_json["ev_id"] = EV_ID_SPECIAL_ABILITY;
     return Event(ev_json);
 }
+
+Event EventFactory::deposit_item_event(ClientId client_id, position_t target,
+                              SlotId slot, uint32_t amount) {
+    nlohmann::json ev_json = {{"ev_id", SERVER_DEPOSIT_ITEM},
+                              {"client_id", client_id},
+                              {"target", target},
+                              {"slot", slot},
+                              {"amount", amount}};
+    return Event(ev_json);
+}
+
+Event EventFactory::withdraw_item_event(ClientId client_id, position_t target,
+                              SlotId slot, uint32_t amount) {
+    nlohmann::json ev_json = {{"ev_id", SERVER_WITHDRAW_ITEM},
+                              {"client_id", client_id},
+                              {"target", target},
+                              {"slot", slot},
+                              {"amount", amount}};
+    return Event(ev_json);
+}
+
+Event EventFactory::deposit_gold_event(ClientId client_id, position_t target, uint32_t amount) {
+    nlohmann::json ev_json = {{"ev_id", SERVER_DEPOSIT_GOLD},
+                              {"client_id", client_id},
+                              {"target", target},
+                              {"amount", amount}};
+    return Event(ev_json);
+}
+
+Event EventFactory::withdraw_gold_event(ClientId client_id, position_t target, uint32_t amount) {
+    nlohmann::json ev_json = {{"ev_id", SERVER_WITHDRAW_GOLD},
+                              {"client_id", client_id},
+                              {"target", target},
+                              {"amount", amount}};
+    return Event(ev_json);
+}

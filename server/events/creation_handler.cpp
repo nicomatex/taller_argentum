@@ -42,6 +42,9 @@ void CreationHandler::handle(Event& event) {
         player_info["inventory"] = R"({"items_ids":[0,0,0,0,0,0,0,0,0,0,0,0],
                                  "items_stacks":[0,0,0,0,0,0,0,0,0,0,0,0],
                                  "curr_gold":0})"_json;
+        player_info["vault"] = R"({"items_ids":[0,0,0,0,0,0,0,0,0,0,0,0],
+                                 "items_stacks":[0,0,0,0,0,0,0,0,0,0,0,0],
+                                 "curr_gold":0})"_json;
         character_manager.add_character(player_info);
         server_manager.add_name(client_id, player_name);
         std::cout << "ClientInitializerHandler: Creating player: "

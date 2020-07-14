@@ -48,6 +48,10 @@ CharacterManager::CharacterManager(const char* f_char, const char* f_map)
             R"({"items_ids":[400,401,200,0,0,0,0,0,0,0,0,0],
                                  "items_stacks":[1372,521,1,0,0,0,0,0,0,0,0,0],
                                  "curr_gold":1700})"_json;
+        nico_info["vault"] =
+            R"({"items_ids":[0,0,0,0,0,0,0,0,0,0,0,0],
+                                 "items_stacks":[0,0,0,0,0,0,0,0,0,0,0,0],
+                                 "curr_gold":0})"_json;
         add_character(nico_info);
     }
 
@@ -71,6 +75,10 @@ CharacterManager::CharacterManager(const char* f_char, const char* f_map)
         taiel_info["inventory"] = R"({"items_ids":[400,401,0,0,0,0,0,0,0,0,0,0],
                                  "items_stacks":[3000,1500,0,0,0,0,0,0,0,0,0,0],
                                  "curr_gold":2650})"_json;
+        taiel_info["vault"] =
+            R"({"items_ids":[0,0,0,0,0,0,0,0,0,0,0,0],
+                                 "items_stacks":[0,0,0,0,0,0,0,0,0,0,0,0],
+                                 "curr_gold":0})"_json;                                 
         add_character(taiel_info);
     }
 
@@ -86,6 +94,10 @@ CharacterManager::CharacterManager(const char* f_char, const char* f_map)
             R"({"items_ids":[400,401,200,100,303,1,3,102,304,305,306,307],
                                  "items_stacks":[1200,500,3,2,2,1,1,1,1,1,1,1],
                                  "curr_gold":1681})"_json;
+        fran_info["vault"] =
+            R"({"items_ids":[400,401,200,100,303,1,3,102,304,305,306,307],
+                                 "items_stacks":[1200,500,3,2,2,1,1,1,1,1,1,1],
+                                 "curr_gold":30000})"_json;                                 
         add_character(fran_info);
     }
 
@@ -110,6 +122,10 @@ CharacterManager::CharacterManager(const char* f_char, const char* f_map)
             R"({"items_ids":[400,401,201,100,307,0,0,0,0,0,0,0],
                                  "items_stacks":[1200,780,1,2,2,0,0,0,0,0,0,0],
                                  "curr_gold":4800})"_json;
+        eze_info["vault"] =
+            R"({"items_ids":[0,0,0,0,0,0,0,0,0,0,0,0],
+                                 "items_stacks":[0,0,0,0,0,0,0,0,0,0,0,0],
+                                 "curr_gold":0})"_json;                                 
         add_character(eze_info);
     }
 }
@@ -149,6 +165,7 @@ static character_t create_character(const nlohmann::json& character_info) {
     character.current_level = character_info["curr_level"];
     character.current_exp = character_info["curr_exp"];
     character.alive = character_info["alive"];
+    character.vault = character_info["vault"];
     return character;
 }
 
@@ -211,6 +228,7 @@ nlohmann::json CharacterManager::get_character(std::string name) {
     character_info["curr_level"] = character.current_level;
     character_info["curr_exp"] = character.current_exp;
     character_info["alive"] = character.alive;
+    character_info["vault"] = character.vault;
     return character_info;
 }
 
@@ -246,5 +264,6 @@ void CharacterManager::print_character(std::string name) {
     std::cout << "Curr level: " << character["curr_level"] << std::endl;
     std::cout << "Curr exp " << character["curr_exp"] << std::endl;
     std::cout << "Is alive " << character["alive"] << std::endl;
+    std::cout << "Vault " << character["vault"] << std::endl;
     std::cout << std::endl;
 }

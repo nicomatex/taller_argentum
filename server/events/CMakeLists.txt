@@ -20,6 +20,10 @@ add_library(events
   buy_handler.cpp
   list_handler.cpp
   use_ability_handler.cpp
+  deposit_item_handler.cpp
+  withdraw_item_handler.cpp
+  deposit_gold_handler.cpp
+  withdraw_gold_handler.cpp
 )
 
 target_link_libraries(events

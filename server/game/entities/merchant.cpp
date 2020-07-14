@@ -34,7 +34,7 @@ const std::string Merchant::list_sale() const {
         if (item["type"] != 0) {
             ss << "[" << std::to_string(slot_id) << "]"
                << " ";
-            ss << "Name: " << item["name"] << ", ";
+            ss << "Nombre: " << item["name"] << ", ";
             ss << "stock: " << item["actual_stack"] << ", ";
             ss << "precio: $" << item["gold_value"] << "               ";
             counter++;

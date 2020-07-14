@@ -83,6 +83,22 @@ void CommandHandler::parse_line(const std::string& line) {
             if (cmd.size() != 1)
                 ok = false;
             cmd_type = CMD_LIST;
+        } else if (cmd[0] == "/depositar") {
+            if (cmd.size() > 2)
+                ok = false;
+            cmd_type = CMD_DEPOSIT_ITEM;
+        } else if (cmd[0] == "/retirar") {
+            if (cmd.size() != 2 && cmd.size() != 3)
+                ok = false;
+            cmd_type = CMD_WITHDRAW_ITEM;
+        } else if (cmd[0] == "/depositaroro") {
+            if (cmd.size() > 2)
+                ok = false;
+            cmd_type = CMD_DEPOSIT_GOLD;
+        } else if (cmd[0] == "/retiraroro") {
+            if (cmd.size() > 2)
+                ok = false;
+            cmd_type = CMD_WITHDRAW_GOLD;
         } else {
             throw CommandErrorException();
         }
@@ -191,7 +207,8 @@ void CommandHandler::cmd_buy(ClientId client_id, position_t target) {
     } catch (const std::out_of_range& e) {
         amount = UINT32_MAX;
     }
-    server_manager.dispatch(EventFactory::buy_event(client_id, target, (SlotId)slot, amount));
+    server_manager.dispatch(
+        EventFactory::buy_event(client_id, target, (SlotId)slot, amount));
 }
 
 // vender <cantidad> o vender donde cantidad es por default 1
@@ -210,6 +227,75 @@ void CommandHandler::cmd_sell(ClientId client_id, position_t target,
     }
     server_manager.dispatch(
         EventFactory::sell_event(client_id, target, slot, amount));
+}
+// depositar <cantidad> o depositar donde cantidad es por default 1
+void CommandHandler::cmd_deposit_item(ClientId client_id, position_t target,
+                                      SlotId slot) {
+    ServerManager& server_manager = ServerManager::get_instance();
+    uint32_t amount = 1;
+    if (cmd.size() == 2) {
+        try {
+            amount = std::stoul(cmd[1]);
+        } catch (const std::invalid_argument& e) {
+            throw CommandErrorException();
+        } catch (const std::out_of_range& e) {
+            amount = UINT32_MAX;
+        }
+    }
+    server_manager.dispatch(
+        EventFactory::deposit_item_event(client_id, target, slot, amount));
+}
+// retirar <SlotId> <cantidad> o retirar <SlotId> donde cantidad es por default
+// 1
+void CommandHandler::cmd_withdraw_item(ClientId client_id, position_t target) {
+    ServerManager& server_manager = ServerManager::get_instance();
+    uint32_t amount = 1;
+    uint32_t slot = 0;
+    try {
+        slot = std::stoul(cmd[1]);
+        if (amount > std::numeric_limits<SlotId>::max())
+            throw CommandErrorException();  // My myexception diciendo lo que
+                                            // esta mal, o usamos la de
+                                            // inventory
+        if (cmd.size() == 3)
+            amount = std::stoul(cmd[2]);
+    } catch (const std::invalid_argument& e) {
+        throw CommandErrorException();
+    } catch (const std::out_of_range& e) {
+        amount = UINT32_MAX;
+    }
+    server_manager.dispatch(
+        EventFactory::withdraw_item_event(client_id, target, slot, amount));
+}
+// retiraroro <cantidad> o retiraroro donde cantidad es por default TODO EL ORO
+void CommandHandler::cmd_withdraw_gold(ClientId client_id, position_t target) {
+    ServerManager& server_manager = ServerManager::get_instance();
+    uint32_t amount = UINT32_MAX;
+    try {
+        if (cmd.size() == 2)
+            amount = std::stoul(cmd[1]);
+    } catch (const std::invalid_argument& e) {
+        throw CommandErrorException();
+    } catch (const std::out_of_range& e) {
+        amount = UINT32_MAX;
+    }
+    server_manager.dispatch(
+        EventFactory::withdraw_gold_event(client_id, target, amount));
+}
+//depositaroro <cantidad> o depositaroro donde cantidad es por default TODO EL ORO
+void CommandHandler::cmd_deposit_gold(ClientId client_id, position_t target) {
+    ServerManager& server_manager = ServerManager::get_instance();
+    uint32_t amount = UINT32_MAX;
+    try {
+        if (cmd.size() == 2)
+            amount = std::stoul(cmd[1]);
+    } catch (const std::invalid_argument& e) {
+        throw CommandErrorException();
+    } catch (const std::out_of_range& e) {
+        amount = UINT32_MAX;
+    }
+    server_manager.dispatch(
+        EventFactory::deposit_gold_event(client_id, target, amount));
 }
 
 void CommandHandler::handle(Event& event) {
@@ -256,6 +342,19 @@ void CommandHandler::handle(Event& event) {
                 break;
             case CMD_BUY:
                 cmd_buy(json["client_id"], json["target"]);
+                break;
+            case CMD_DEPOSIT_ITEM:
+                cmd_deposit_item(json["client_id"], json["target"],
+                                 json["slot"]);
+                break;
+            case CMD_WITHDRAW_ITEM:
+                cmd_withdraw_item(json["client_id"], json["target"]);
+                break;
+            case CMD_DEPOSIT_GOLD:
+                cmd_deposit_gold(json["client_id"], json["target"]);
+                break;
+            case CMD_WITHDRAW_GOLD:
+                cmd_withdraw_gold(json["client_id"], json["target"]);
                 break;
             default:
                 throw CommandErrorException();
