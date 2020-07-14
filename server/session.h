@@ -12,6 +12,7 @@
 
 class Session {
    private:
+    MapMonitor& map;
     ClientIdSet clients;
     ThBroadcaster broadcaster;
     ThObserver observer;
@@ -28,6 +29,8 @@ class Session {
     void add_client(ClientId new_client);
 
     void rm_client(ClientId id);
+
+    MapMonitor& get_map();
 
     void broadcast(const Event& ev);
 

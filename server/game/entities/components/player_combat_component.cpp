@@ -62,6 +62,8 @@ PlayerCombatComponent::~PlayerCombatComponent() {
 std::vector<map_log_t> PlayerCombatComponent::use_ability(Entity* target,
                                                           position_t source,
                                                           position_t dest) {
+    if (!weapon)
+        return std::vector<map_log_t>{};
     return weapon->use_ability(&player, target, source, dest);
 }
 

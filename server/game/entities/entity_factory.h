@@ -1,7 +1,7 @@
 #ifndef ENTITY_FACTORY_H
 #define ENTITY_FACTORY_H
 
-#include "../../include/types.h"
+#include "../../../include/types.h"
 #include "mob_factory.h"
 
 class Player;

@@ -1,53 +1,53 @@
 add_library(game
-  actions/action.cpp
-  actions/action_move.cpp
   actions/action_attack.cpp
-  actions/action_inventory.cpp
-  actions/action_loot.cpp
-  actions/action_drop.cpp
-  actions/action_unequip.cpp
-  actions/action_resuscitate.cpp
-  actions/action_heal.cpp
-  actions/action_sell.cpp
   actions/action_buy.cpp
-  actions/action_list.cpp
-  actions/action_use_ability.cpp
-  actions/action_deposit_item.cpp
-  actions/action_withdraw_item.cpp
   actions/action_deposit_gold.cpp
+  actions/action_deposit_item.cpp
+  actions/action_drop.cpp
+  actions/action_heal.cpp
+  actions/action_inventory.cpp
+  actions/action_list.cpp
+  actions/action_loot.cpp
+  actions/action_move.cpp
+  actions/action_resuscitate.cpp
+  actions/action_sell.cpp
+  actions/action_unequip.cpp
+  actions/action_use_ability.cpp
   actions/action_withdraw_gold.cpp
+  actions/action_withdraw_item.cpp
+  actions/action.cpp
+  bank.cpp
+  entities/banker.cpp
   entities/components/combat_component.cpp
   entities/components/experience_component.cpp
+  entities/components/monster_combat_component.cpp
+  entities/components/monster_movement_component.cpp
+  entities/components/movement_component.cpp
+  entities/components/npc_combat_component.cpp
+  entities/components/npc_movement_component.cpp
+  entities/components/player_combat_component.cpp
+  entities/components/player_movement_component.cpp
+  entities/entity_factory.cpp
   entities/entity.cpp
-  entity_factory.cpp
+  entities/healer.cpp
+  entities/merchant.cpp
+  entities/mob_factory.cpp
+  entities/monster.cpp
+  entities/npc.cpp
+  entities/player.cpp
   game_loop.cpp
+  items/armor.cpp
+  items/gold.cpp
   items/item_container.cpp
   items/item_factory.cpp
   items/item.cpp
-  items/armor.cpp
-  items/weapon.cpp
-  items/gold.cpp
   items/potion.cpp
   items/special_ability.cpp
   items/special_attack.cpp
   items/special_heal.cpp
-  map.cpp
-  map_transitions.cpp
+  items/weapon.cpp
   map_log_factory.cpp
-  entities/components/movement_component.cpp
-  entities/monster.cpp
-  entities/components/monster_combat_component.cpp
-  entities/components/monster_movement_component.cpp
-  mob_factory.cpp
-  entities/player.cpp
-  entities/components/player_combat_component.cpp
-  entities/components/player_movement_component.cpp
+  map_transitions.cpp
+  map.cpp
   random_event_generator.cpp
-  entities/components/npc_combat_component.cpp
-  entities/components/npc_movement_component.cpp
-  entities/npc.cpp
-  entities/healer.cpp
-  entities/merchant.cpp
-  entities/banker.cpp
-  bank.cpp
 )

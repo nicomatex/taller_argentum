@@ -5,12 +5,15 @@
 // Temp
 #include <iostream>
 
-MapMonitor::MapMonitor(std::tuple<const nlohmann::json&, const nlohmann::json&,
-                                  const nlohmann::json&>
-                           forward_args)
-    : map(forward_args) {}
+MapMonitor::MapMonitor(const nlohmann::json& map_description,
+                       const nlohmann::json& map_mobs,
+                       const nlohmann::json& map_transitions)
+    : map(map_description, map_mobs, map_transitions) {}
 
 MapMonitor::~MapMonitor() {}
+
+MapMonitor::MapMonitor(const MapMonitor& other)
+    : map(other.map), client_map(other.client_map) {}
 
 nlohmann::json MapMonitor::add_player(ClientId client_id,
                                       nlohmann::json player_info) {

@@ -1,7 +1,7 @@
 #include "entity_factory.h"
 
-#include "../server_manager.h"
-#include "entities/player.h"
+#include "../../server_manager.h"
+#include "player.h"
 
 EntityId EntityFactory::get_next_id() {
     static EntityId entity_id = 0;

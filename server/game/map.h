@@ -12,7 +12,7 @@
 #include "../map_changer.h"
 #include "actions/action.h"
 #include "entities/entity.h"
-#include "entity_factory.h"
+#include "entities/entity_factory.h"
 #include "items/item.h"
 #include "map_log_factory.h"
 #include "map_transitions.h"
@@ -82,10 +82,12 @@ class Map {
     void add_entity(Entity* entity, position_t position);
 
    public:
-    Map(std::tuple<const nlohmann::json&, const nlohmann::json&,
-                   const nlohmann::json&>
-            forward_args);
+    Map(const nlohmann::json& map_description, const nlohmann::json& map_mobs,
+        const nlohmann::json& map_transitions);
     ~Map();
+
+    Map(const Map& other);
+    Map& operator=(const Map& other);
 
     /* Mueve la entidad asociada al entity_id un tile en la direccion
      * indicada.*/

@@ -6,7 +6,7 @@
 #include <iostream>
 
 Session::Session(MapMonitor& map)
-    : broadcaster(clients), observer(map, broadcaster) {}
+    : map(map), broadcaster(clients), observer(map, broadcaster) {}
 
 void Session::start() {
     broadcaster.start();
@@ -29,6 +29,10 @@ void Session::add_client(ClientId new_client) {
 
 void Session::rm_client(ClientId id) {
     clients.rm_client(id);
+}
+
+MapMonitor& Session::get_map() {
+    return map;
 }
 
 void Session::broadcast(const Event& ev) {
