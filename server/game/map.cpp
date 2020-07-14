@@ -8,14 +8,18 @@
 
 #include "entities/player.h"
 
+nlohmann::json map_mobs2;
+
 Map::Map(const nlohmann::json& map_description, const nlohmann::json& map_mobs,
          const nlohmann::json& map_transitions)
     : width(map_description["width"]),
       height(map_description["height"]),
       _dirty_entities(false),
+      entity_matrix({}),
       _dirty_loot(false),
       transitions(map_transitions, width, height),
-      entity_factory(*this) {
+      entity_factory(*this),
+      monster_spawner(*this, map_mobs["spawns"]) {
     visual_map_info = map_description;
     for (auto& layer : map_description["layers"].items()) {
         if (layer.value()["name"] == "Collision") {
@@ -30,6 +34,7 @@ Map::Map(const nlohmann::json& map_description, const nlohmann::json& map_mobs,
             visual_map_info["layers"].erase(std::stoi(layer.key()));
         }
     }
+    map_mobs2 = map_mobs;
 }
 
 Map::Map(const Map& other)
@@ -43,6 +48,7 @@ Map::Map(const Map& other)
       collision_map(other.collision_map),
       transitions(other.transitions),
       entity_factory(*this),
+      monster_spawner(*this, other.monster_spawner),
       visual_map_info(other.visual_map_info) {}
 
 Map::~Map() {
@@ -79,9 +85,9 @@ position_t Map::get_nearest_free_position(ObjectMatrix<T> object_matrix,
         position_t aux[4] = {
             {p.x + 1, p.y}, {p.x, p.y + 1}, {p.x - 1, p.y}, {p.x, p.y - 1}};
         for (position_t it : aux) {
-            if (!collides(object_matrix, it))
+            if (!collides(object_matrix, it)) {
                 return it;
-            else
+            } else
                 queue.push(it);
         }
     }
@@ -130,17 +136,20 @@ std::queue<map_change_t>& Map::get_transitions() {
 }
 
 nlohmann::json Map::add_player(nlohmann::json player_info) {
-    // TODO: sacar esto
-
-    add_entity(entity_factory.create_monster(1), {40, 40});
-    add_entity(entity_factory.create_monster(2), {35, 35});
-    add_entity(entity_factory.create_monster(3), {30, 20});
-    add_entity(entity_factory.create_monster(4), {38, 22});
-    add_entity(entity_factory.create_monster(5), {27, 26});
-
-    add_entity(entity_factory.create_npc(6), {13, 22});
-    add_entity(entity_factory.create_npc(8), {13, 24});
-    add_entity(entity_factory.create_npc(7), {13, 26});
+    static bool a = true;
+    if (a) {
+        a = false;
+        Npc* npc = entity_factory.create_npc(BANKER);
+        position_t pos = map_mobs2["banker"];
+        add_entity(npc, pos);
+        npc = entity_factory.create_npc(MERCHANT);
+        pos = map_mobs2["merchant"];
+        add_entity(npc, pos);
+        npc = entity_factory.create_npc(HEALER);
+        pos = map_mobs2["healer"];
+        add_entity(npc, pos);
+        std::cerr << "Adding npcs\n";
+    }
 
     Player* player = entity_factory.create_player(player_info);
 
@@ -189,6 +198,7 @@ void Map::update(uint64_t delta_t) {
     for (auto& it : copy) {
         it.second->update(delta_t);
     }
+    monster_spawner.update(delta_t);
 }
 
 void Map::push_log(const map_log_t& log) {

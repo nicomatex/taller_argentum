@@ -15,6 +15,7 @@
 #include "items/item.h"
 #include "map_log_factory.h"
 #include "map_transitions.h"
+#include "monster_spawner.h"
 #include "position.h"
 
 #define MAP_SIZE 50
@@ -46,6 +47,7 @@ typedef ObjectMatrix<Item*> LootMatrix;
 class Map {
    private:
     friend class Action;
+    friend class MonsterSpawner;
     int width;
     int height;
 
@@ -60,6 +62,7 @@ class Map {
 
     MapTransitions transitions;
     EntityFactory entity_factory;
+    MonsterSpawner monster_spawner;
 
     std::queue<entity_action_t> actions;
     std::queue<map_log_t> update_logs;

@@ -49,5 +49,6 @@ add_library(game
   map_log_factory.cpp
   map_transitions.cpp
   map.cpp
+  monster_spawner.cpp
   random_event_generator.cpp
 )

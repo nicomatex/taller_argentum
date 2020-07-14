@@ -4,24 +4,38 @@
             "map_id": 0,
             "map_name": "Paseo Colon",
             "path": "assets/maps/paseo_colon.json",
-            "mobs": [
-                {
-                    "mob_id": 1,
-                    "pos": {
-                        "x": 40,
-                        "y": 40
-                    },
-                    "max_count": 5
+            "mobs": {
+                "banker": {
+                    "x": 10,
+                    "y": 10
                 },
-                {
-                    "mob_id": 5,
-                    "pos": {
-                        "x": 15,
-                        "y": 30
+                "merchant": {
+                    "x": 15,
+                    "y": 15
+                },
+                "healer": {
+                    "x": 20,
+                    "y": 20
+                },
+                "spawns": [
+                    {
+                        "mob_name": "Ciclope",
+                        "pos": {
+                            "x": 40,
+                            "y": 40
+                        },
+                        "max_count": 5
                     },
-                    "max_count": 5
-                }
-            ],
+                    {
+                        "mob_name": "Goblin",
+                        "pos": {
+                            "x": 15,
+                            "y": 30
+                        },
+                        "max_count": 5
+                    }
+                ]
+            },
             "transitions": {
                 "teleports": [
                     {
@@ -87,24 +101,46 @@
             "map_id": 1,
             "map_name": "Reserva Puerto Madero",
             "path": "assets/maps/reserva_puerto_madero.json",
-            "mobs": [
-                {
-                    "mob_id": 2,
-                    "pos": {
-                        "x": 40,
-                        "y": 40
-                    },
-                    "max_count": 5
+            "mobs": {
+                "banker": {
+                    "x": 10,
+                    "y": 10
                 },
-                {
-                    "mob_id": 3,
-                    "pos": {
-                        "x": 20,
-                        "y": 12
+                "merchant": {
+                    "x": 15,
+                    "y": 15
+                },
+                "healer": {
+                    "x": 20,
+                    "y": 20
+                },
+                "spawns": [
+                    {
+                        "mob_name": "Zombie",
+                        "pos": {
+                            "x": 40,
+                            "y": 40
+                        },
+                        "max_count": 5
                     },
-                    "max_count": 5
-                }
-            ],
+                    {
+                        "mob_name": "Arania",
+                        "pos": {
+                            "x": 20,
+                            "y": 12
+                        },
+                        "max_count": 5
+                    },
+                    {
+                        "mob_name": "Esqueleto",
+                        "pos": {
+                            "x": 40,
+                            "y": 12
+                        },
+                        "max_count": 5
+                    }
+                ]
+            },
             "transitions": {
                 "teleports": [],
                 "upper": -1,

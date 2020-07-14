@@ -90,15 +90,15 @@ void ServerManager::add_player(ClientId client_id, nlohmann::json player_data) {
     Bank::get_instance().add_account(player_data["name"], player_data["vault"]);
     player_data.erase("vault");
     MapId map_id = player_data["map_id"];
-    MapMonitor& map_monitor = map_manager[map_id];
+    MapMonitor& map_monitor = get_map(map_id);
     // Añadimos el jugador al mapa
     player_data = map_monitor.add_player(player_data);
     client_to_map[client_id] = map_id;
-    player_data["pos"] = map_monitor.get_position(client_id);
+    player_data["pos"] = map_monitor.get_position(player_data["entity_id"]);
 
-    std::cerr << "ServerManager: adding player: " << player_data["name"]
-              << " in map " << map_id << " at " << player_data["pos"]["x"]
-              << "," << player_data["pos"]["y"] << std::endl;
+    // std::cerr << "ServerManager: adding player: " << player_data["name"]
+    //           << " in map " << map_id << " at " << player_data["pos"]["x"]
+    //           << "," << player_data["pos"]["y"] << std::endl;
 
     // Notificación de conexión a nuevo mapa
     send_to(client_id, EventFactory::notify_new_map());

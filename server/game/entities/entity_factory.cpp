@@ -15,10 +15,22 @@ Player* EntityFactory::create_player(nlohmann::json player_info) {
     return new Player(get_next_id(), player_info, map);
 }
 
+Monster* EntityFactory::create_monster(const std::string& monster_name) {
+    ServerManager& server_manager = ServerManager::get_instance();
+    MobFactory& mob_factory = server_manager.get_mob_factory();
+    return mob_factory.create_monster(get_next_id(), monster_name, map);
+}
+
 Monster* EntityFactory::create_monster(MobId monster_id) {
     ServerManager& server_manager = ServerManager::get_instance();
     MobFactory& mob_factory = server_manager.get_mob_factory();
     return mob_factory.create_monster(get_next_id(), monster_id, map);
+}
+
+Npc* EntityFactory::create_npc(npc_proffesion_t npc) {
+    ServerManager& server_manager = ServerManager::get_instance();
+    MobFactory& mob_factory = server_manager.get_mob_factory();
+    return mob_factory.create_npc(get_next_id(), npc, map);
 }
 
 Npc* EntityFactory::create_npc(MobId npc_id) {

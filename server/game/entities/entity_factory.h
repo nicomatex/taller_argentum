@@ -18,7 +18,9 @@ class EntityFactory {
     ~EntityFactory();
 
     Player* create_player(nlohmann::json player_info);
+    Monster* create_monster(const std::string& monster_name);
     Monster* create_monster(MobId monster_id);
+    Npc* create_npc(npc_proffesion_t npc);
     Npc* create_npc(MobId npc_id);
 };
 
