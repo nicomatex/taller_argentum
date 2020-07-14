@@ -108,8 +108,8 @@ void Player::use(SlotId slot) {
             try {
                 inventory.add(unequiped);
             } catch (const FullItemContainerException& e) {
-                std::cout << "Player Equip: ItemContainer full." << std::endl;
-                /* tirar? no equipar? */
+                map.drop_loot(id, unequiped);
+                map.push_log(MapLogFactory::inventory_full(name));
             }
     } else if (type == TYPE_POTION) {
         (static_cast<Potion*>(item))
@@ -140,13 +140,16 @@ void Player::add_item(Item* item) {
         float gold_exc_mult = ConfigurationManager::get_gold_exc_mult();
         Gold* gold = static_cast<Gold*>(item);
         unsigned int actual_gold = inventory.get_gold_stack();
-        unsigned int max_gold = (gold_max_sec_mult * std::pow((double)get_level(), gold_max_sec_expo)) * gold_exc_mult;
+        unsigned int max_gold =
+            (gold_max_sec_mult *
+             std::pow((double)get_level(), gold_max_sec_expo)) *
+            gold_exc_mult;
         unsigned int left_to_max = max_gold - actual_gold;
         if (gold->get_stack() <= left_to_max) {
             inventory.add_gold(gold);
             delete item;
         } else {
-            unsigned int excess = gold->get_stack()- left_to_max;
+            unsigned int excess = gold->get_stack() - left_to_max;
             gold->set_stack(left_to_max);
             inventory.add_gold(gold);
             gold->set_stack(excess);
@@ -181,25 +184,31 @@ uint32_t Player::get_gold_stack() const {
 void Player::unequip(SlotId slot) {
     PlayerCombatComponent* p_combat_component =
         static_cast<PlayerCombatComponent*>(combat_component);
-    switch (slot) {
-        case 0:
-            add_item(p_combat_component->unequip_helmet());
-            break;
-        case 1:
-            add_item(p_combat_component->unequip_chest());
-            break;
-        case 2:
-            add_item(p_combat_component->unequip_shield());
-            break;
-        case 3:
-            add_item(p_combat_component->unequip_weapon());
-            break;
-        default:
-            add_item(p_combat_component->unequip_helmet());
-            add_item(p_combat_component->unequip_chest());
-            add_item(p_combat_component->unequip_shield());
-            add_item(p_combat_component->unequip_weapon());
-            break;
+    Item *item = nullptr;
+    try {
+        switch (slot) {
+            case 0:
+                item = p_combat_component->unequip_helmet();
+                add_item(item);
+                break;
+            case 1:
+                item = p_combat_component->unequip_chest();
+                add_item(item);
+                break;
+            case 2:
+                item = p_combat_component->unequip_shield();
+                add_item(item);
+                break;
+            case 3:
+                item = p_combat_component->unequip_weapon();
+                add_item(item);
+                break;
+            default:
+                break;
+        }
+    } catch (const FullItemContainerException& e) {
+            map.drop_loot(id, item);
+            map.push_log(MapLogFactory::inventory_full(name));
     }
 }
 
