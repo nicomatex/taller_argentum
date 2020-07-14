@@ -56,16 +56,21 @@ void Bank::deposit_gold(uint32_t amount, Player *player) {
 void Bank::withdraw_gold(uint32_t amount, Player *player) {
     Vault &vault = get_vault(player->get_name());
     Gold *gold = vault.remove_gold(amount);
-    player->add_item(gold);
+    try { 
+        player->add_item(gold);
+    } catch (const FullItemContainerException& e) {
+        player->get_map().push_log(MapLogFactory::inventory_full(player->get_name()));
+        vault.add_gold(gold);
+        delete gold;
+    }
 }
 
 void Bank::deposit_item(SlotId slot, uint32_t amount, Player *player) {
     Vault &vault = get_vault(player->get_name());
-    Item *item = nullptr;
+    Item *item = player->remove_item(slot, amount);
+    if (!item)
+        return;
     try {
-        item = player->remove_item(slot, amount);
-        if (!item)
-            return;
         vault.add(item);
     } catch (const FullItemContainerException& e) {
         player->add_item(item);
@@ -75,5 +80,10 @@ void Bank::deposit_item(SlotId slot, uint32_t amount, Player *player) {
 void Bank::withdraw_item(SlotId slot, uint32_t amount, Player *player) {
     Vault &vault = get_vault(player->get_name());
     Item *item = vault.remove(slot, amount);
-    player->add_item(item);
+    try { 
+        player->add_item(item);   
+    } catch (const FullItemContainerException& e) {
+        player->get_map().push_log(MapLogFactory::inventory_full(player->get_name()));
+        vault.add(item);
+    }
 }

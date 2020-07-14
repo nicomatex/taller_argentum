@@ -114,6 +114,7 @@ class ItemContainer {
     Gold* remove_gold();
     Gold* remove_gold(uint32_t stack);
     bool is_in_range(SlotId slotId) const;
+    bool has_slots_left() const;
 
     /*
         Informacion para persistir el inventario en el personaje.

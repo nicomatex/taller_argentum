@@ -24,4 +24,6 @@ void ActionWithdrawItem::execute(Map& map, EntityId entity_id) const {
     } catch (const EmptySlotException& e) {
         // lado banker
     }
+    map.push_log(
+            MapLogFactory::inventory_change(player->get_name(), player->get_inventory_data())); 
 }

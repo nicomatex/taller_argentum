@@ -41,7 +41,7 @@ const std::string Merchant::list_sale() const {
             if (counter == 2) {
                 ss << "\n";
                 counter = 0;
-            }   
+            }
         }
         slot_id++;
     }
@@ -50,17 +50,35 @@ const std::string Merchant::list_sale() const {
 }
 
 void Merchant::sell(SlotId slot, uint32_t stack, Player* player) {
-    Item *item = nullptr;
+    Item* item = player->remove_item(slot, stack);
+    if (!item)
+        return;
+    ItemId item_id = item->get_id();
+    unsigned int gold_value = item->get_gold_value();
+    uint32_t gold_total = item->get_stack() * gold_value;
+    Gold* gold = nullptr;
     try {
-        item = player->remove_item(slot, stack);
-        if (!item)
-            return;
-        uint32_t gold_total = item->get_stack() * item->get_gold_value();
         inventory.add(item);
-        Gold* gold = inventory.remove_gold(gold_total);
+        gold = inventory.remove_gold(gold_total);
         player->add_item(gold);
     } catch (const FullItemContainerException& e) {
-        player->add_item(item);
+        if (!inventory.has_slots_left()) {
+            player->add_item(item);  // vino del merchant
+        } else {
+            unsigned int stack_return = 0;
+            while (stack_return * gold_value < gold->get_stack()) {
+                stack_return++;
+            }
+            SlotId slot = inventory.get_available_slot(item_id);
+            Item* item_return = inventory.remove(slot, stack_return);
+            player->add_item(item_return);
+            Gold* gold_returned = player->remove_gold(
+                stack_return * gold_value - gold->get_stack());
+            inventory.add_gold(gold_returned);
+            player->get_map().push_log(MapLogFactory::inventory_full(player->get_name()));
+            delete gold;
+            delete gold_returned;
+        }
     }
 }
 
@@ -77,9 +95,17 @@ void Merchant::buy(SlotId slot, uint32_t stack, Player* player) {
     }
     if (purchasable == 0)
         return;
-    Item* item = inventory.remove(slot, purchasable);
-    player->add_item(item);
-    Gold* gold = player->remove_gold(item->get_stack() * gold_value);
-    inventory.add_gold(gold);
-    delete gold;
+
+    Item *item = nullptr;
+    try {
+        item = inventory.remove(slot, purchasable);
+        unsigned int item_stack = item->get_stack();
+        player->add_item(item);
+        Gold* gold = player->remove_gold(item_stack * gold_value);
+        inventory.add_gold(gold);
+        delete gold;
+    } catch (const FullItemContainerException& e) {
+        inventory.add(item);
+        player->get_map().push_log(MapLogFactory::inventory_full(player->get_name()));
+    }
 }

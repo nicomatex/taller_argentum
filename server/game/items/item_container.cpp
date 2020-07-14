@@ -216,3 +216,11 @@ Gold* ItemContainer::remove_gold(uint32_t stack) {
 bool ItemContainer::is_in_range(SlotId slotId) const {
     return (slotId >= 0 && slotId < item_container.size()) ? true : false;
 }
+
+bool ItemContainer::has_slots_left() const {
+    for (SlotId slot_id = 0; slot_id < item_container.size(); slot_id++) {
+        if (slot_is_free(slot_id))
+            return true;   
+    }
+    return false;
+}

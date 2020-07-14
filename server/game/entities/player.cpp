@@ -125,7 +125,8 @@ void Player::use_ability(Entity* target, position_t target_pos) {
     for (const map_log_t& log : logs) {
         map.push_log(log);
     }
-    if(!target) return;
+    if (!target)
+        return;
     if (!target->is_alive() && target->get_type() == MONSTER)
         map.rm_entity(target->get_id());
 }
@@ -133,33 +134,26 @@ void Player::use_ability(Entity* target, position_t target_pos) {
 void Player::add_item(Item* item) {
     if (!item)
         return;
-    try {
-        if (item->get_type() == TYPE_GOLD) {
-            float gold_max_sec_mult =
-                ConfigurationManager::get_gold_max_sec_mult();
-            float gold_max_sec_expo =
-                ConfigurationManager::get_gold_max_sec_expo();
-            float gold_exc_mult = ConfigurationManager::get_gold_exc_mult();
-            Gold* gold = static_cast<Gold*>(item);
-            unsigned int actual_gold = inventory.get_gold_stack();
-            unsigned int max_secure_gold =
-                (gold_max_sec_mult *
-                 std::pow((double)get_level(), gold_max_sec_expo));
-            if (actual_gold + gold->get_stack() <=
-                max_secure_gold * gold_exc_mult) {
-                inventory.add_gold(gold);
-                delete item;
-            } else {
-                throw FullItemContainerException();
-            }
+    if (item->get_type() == TYPE_GOLD) {
+        float gold_max_sec_mult = ConfigurationManager::get_gold_max_sec_mult();
+        float gold_max_sec_expo = ConfigurationManager::get_gold_max_sec_expo();
+        float gold_exc_mult = ConfigurationManager::get_gold_exc_mult();
+        Gold* gold = static_cast<Gold*>(item);
+        unsigned int actual_gold = inventory.get_gold_stack();
+        unsigned int max_gold = (gold_max_sec_mult * std::pow((double)get_level(), gold_max_sec_expo)) * gold_exc_mult;
+        unsigned int left_to_max = max_gold - actual_gold;
+        if (gold->get_stack() <= left_to_max) {
+            inventory.add_gold(gold);
+            delete item;
         } else {
-            inventory.add(item);
+            unsigned int excess = gold->get_stack()- left_to_max;
+            gold->set_stack(left_to_max);
+            inventory.add_gold(gold);
+            gold->set_stack(excess);
+            throw FullItemContainerException();
         }
-        map.push_log(
-            MapLogFactory::inventory_change(name, get_inventory_data()));
-    } catch (const FullItemContainerException& e) {
-        map.drop_loot(get_id(), item);
-        map.push_log(MapLogFactory::inventory_full(name));
+    } else {
+        inventory.add(item);
     }
 }
 
@@ -233,6 +227,10 @@ nlohmann::json Player::get_persist_data() const {
 void Player::set_movement(mov_action_t action, direction_t direction) {
     static_cast<PlayerMovementComponent*>(movement_component)
         ->set_movement(action, direction);
+}
+
+Map& Player::get_map() {
+    return map;
 }
 
 void Player::revive() {

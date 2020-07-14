@@ -113,6 +113,13 @@ class Player : public Entity {
     void unequip(SlotId slot);
 
     /**
+     * @brief Devuelve el mapa actual del player
+     * 
+     * @return Map& 
+     */
+    Map& get_map();
+
+    /**
      * @brief Setea el movimiento del jugador.
      *
      * @param action Empieza (START) o detiene (STOP) el movimiento.

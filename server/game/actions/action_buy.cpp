@@ -14,12 +14,13 @@ void ActionBuy::execute(Map& map, EntityId entity_id) const {
     if (!merchant || merchant->get_type() != NPC ||
         merchant->get_profession() != MERCHANT)
         return;
-    std::cout << merchant->get_profession() << std::endl;
     Player* player = static_cast<Player*>(Action::get_entity(map, entity_id));
     if (!player || !player->is_alive())
         return;
     try {
         merchant->buy(slot, amount, player);
+        map.push_log(
+            MapLogFactory::inventory_change(player->get_name(), player->get_inventory_data())); 
     } catch (const OutOfRangeSlotException& e) {
         // lado del merchant
     } catch (const EmptySlotException& e) {

@@ -14,4 +14,6 @@ void ActionWithdrawGold::execute(Map& map, EntityId entity_id) const {
     if (!player || !player->is_alive())
         return;
     banker->withdraw_gold(amount, player);
+    map.push_log(
+            MapLogFactory::inventory_change(player->get_name(), player->get_inventory_data())); 
 }
