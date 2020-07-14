@@ -35,7 +35,6 @@ const std::string Banker::list_vault(std::string player_name) const {
         }
         slot_id++;
     }
-    std::cout << std::setw(4) << json_vault << std::endl;
     std::string msg = ss.str();
     return msg;
 }

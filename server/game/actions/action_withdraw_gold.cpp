@@ -1,7 +1,4 @@
 #include "action_withdraw_gold.h"
-
-#include <iostream>  //Temp
-
 #include "../entities/banker.h"
 #include "../entities/player.h"
 
@@ -17,5 +14,4 @@ void ActionWithdrawGold::execute(Map& map, EntityId entity_id) const {
     if (!player || !player->is_alive())
         return;
     banker->withdraw_gold(amount, player);
-    std::cout << "saque oro" << std::endl;
 }

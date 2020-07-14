@@ -23,7 +23,6 @@ void ActionBuy::execute(Map& map, EntityId entity_id) const {
     } catch (const OutOfRangeSlotException& e) {
         // lado del merchant
     } catch (const EmptySlotException& e) {
-        // lado del merchant decirle que no sea papanatas que no hay nada con
-        // ese numero
+        // lado del merchant 
     }
 }

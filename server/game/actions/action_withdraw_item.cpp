@@ -19,11 +19,9 @@ void ActionWithdrawItem::execute(Map& map, EntityId entity_id) const {
         return;
     try {
         banker->withdraw_item(slot, amount, player);
-        std::cout << "saque item" << std::endl;
     } catch (const OutOfRangeSlotException& e) {
-        // lado del banker
+        // lado banker
     } catch (const EmptySlotException& e) {
-        // lado del banker decirle que no sea papanatas que no hay nada con
-        // ese numero
+        // lado banker
     }
 }

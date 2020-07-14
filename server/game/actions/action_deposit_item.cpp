@@ -1,9 +1,6 @@
 #include "action_deposit_item.h"
-
 #include "../entities/banker.h"
 #include "../entities/player.h"
-
-#include <iostream>
 
 ActionDepositItem::ActionDepositItem(position_t target, SlotId slot, uint32_t amount)
     : target(target), slot(slot), amount(amount) {}
@@ -16,5 +13,4 @@ void ActionDepositItem::execute(Map& map, EntityId entity_id) const {
     if (!player || !player->is_alive())
         return;
     banker->deposit_item(slot, amount, player);
-    std::cout << "deposite item" << std::endl;
 }

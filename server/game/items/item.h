@@ -58,7 +58,7 @@ class Item {
     ItemId get_id() const;
     uint32_t get_sprite_id() const;
     item_type_t get_type() const;
-    int stack_difference(uint32_t other_stack);
+    long int stack_difference(uint32_t other_stack);
     void increase_stack(uint32_t stack);
     void decrease_stack(uint32_t stack);
     uint32_t get_gold_value() const;

@@ -1,7 +1,4 @@
 #include "action_deposit_gold.h"
-
-#include <iostream>
-
 #include "../entities/banker.h"
 #include "../entities/player.h"
 
@@ -17,5 +14,4 @@ void ActionDepositGold::execute(Map& map, EntityId entity_id) const {
     if (!player || !player->is_alive())
         return;
     banker->deposit_gold(amount, player);
-    std::cout << "deposite oro" << std::endl;
 }

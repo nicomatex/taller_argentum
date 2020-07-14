@@ -37,18 +37,12 @@ void Bank::add_account(std::string player_name, nlohmann::json vault_info) {
         throw MyException("Bank: Bank account with name : %s, already exists",
                           player_name);
     Vault vault(vault_info);
-    std::cout << "add " << std::endl;
-    std::cout << vault_info << std::endl;
     bank_accounts[player_name] = std::move(vault);
-    std::cout << "la info es " << get_vault_persist_data(player_name) << std::endl;
 }
 
 nlohmann::json Bank::remove_account(std::string player_name) {
     nlohmann::json json_vault = get_vault_persist_data(player_name);
-    std::cout << "remove " << std::endl;
-    std::cout << json_vault << std::endl;
     bank_accounts.erase(player_name);
-    std::cout << "aca me rompi" << std::endl;
     return json_vault;
 }
 

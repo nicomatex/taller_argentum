@@ -60,8 +60,8 @@ item_type_t Item::get_type() const {
     return item_info.type;
 }
 
-int Item::stack_difference(uint32_t other_stack) {
-    return actual_stack - other_stack;
+long int Item::stack_difference(uint32_t other_stack) {
+    return (long int)actual_stack - other_stack;
 }
 
 void Item::increase_stack(uint32_t stack) {
