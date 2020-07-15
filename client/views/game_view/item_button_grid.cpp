@@ -2,10 +2,11 @@
 
 ItemButtonGrid::ItemButtonGrid(SDL_Rect inventory_area, SDL_Rect viewport,
                                SDL_Renderer* renderer, int rows, int cols,
+                               int& last_clicked_slot,
                                SocketManager& socket_manager,
                                Event (*left_click_event)(SlotId),
                                Event (*right_click_event)(SlotId))
-    : last_clicked_slot(0) {
+    : last_clicked_slot(last_clicked_slot) {
     int button_width = inventory_area.w / cols;
     int button_height = inventory_area.h / rows;
     for (int i = 0; i < rows; i++) {
@@ -28,8 +29,4 @@ void ItemButtonGrid::handle_event(SDL_Event& e) {
     for (auto& button : buttons) {
         button.handle_event(e);
     }
-}
-
-int ItemButtonGrid::get_last_clicked_slot() {
-    return last_clicked_slot;
 }

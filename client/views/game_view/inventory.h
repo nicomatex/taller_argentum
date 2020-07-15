@@ -14,9 +14,12 @@
  */
 class Inventory {
    private:
+    int last_clicked_slot;
+    SDL_Renderer* renderer;
     IconGrid inventory_icons;
     ItemQtyGrid item_qty_grid;
     ItemButtonGrid item_button_grid;
+    void _render_slot_outline();
 
    public:
     /**

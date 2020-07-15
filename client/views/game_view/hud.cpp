@@ -160,11 +160,18 @@ void Hud::_update_stats() {
 }
 
 void Hud::_update_player_info() {
-    spell_name_text.update_text(player_info_monitor.get_spell_name());
-    attack_points_text.update_text(
-        std::to_string(player_info_monitor.get_attack_pts()));
-    defense_points_text.update_text(
-        std::to_string(player_info_monitor.get_defense_pts()));
+    StatsComponent& player_stats = player.get_component<StatsComponent>();
+    player_stats.get_ability_name();
+    spell_name_text.update_text(player_stats.get_ability_name());
+    int min_attack = player_stats.get_stat_current_value("att");
+    int max_attack = player_stats.get_stat_max_value("att");
+    std::string attack = std::to_string(min_attack) + " - " + std::to_string(max_attack);
+    attack_points_text.update_text(attack);
+
+    int min_defense = player_stats.get_stat_current_value("def");
+    int max_defense = player_stats.get_stat_max_value("def");
+    std::string defense = std::to_string(min_defense) + " - " + std::to_string(max_defense);
+    defense_points_text.update_text(defense);
 }
 
 SDL_Rect Hud::_get_scaled_dest(SDLText& text, SDL_Rect dest) {
@@ -192,8 +199,8 @@ void Hud::_render_player_info() {
         _get_scaled_dest(defense_points_text, DEF_PTS_TEXT_AREA));
 }
 
-void Hud::_render_help_panel(){
-    if(render_help){
+void Hud::_render_help_panel() {
+    if (render_help) {
         help_panel.render(scaler.scale(HELP_PANEL_AREA));
     }
 }

@@ -65,6 +65,14 @@ class IconGrid {
      *
      */
     void render();
+
+    /**
+     * @brief Devuelve el area correspondiente a un icono particular.
+     * 
+     * @param position Icono para el cual se quiere obtener el area.
+     * @return SDL_Rect 
+     */
+    SDL_Rect get_icon_area(int position);
 };
 
 #endif

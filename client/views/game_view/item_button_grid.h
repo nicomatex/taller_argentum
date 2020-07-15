@@ -13,7 +13,7 @@
 class ItemButtonGrid {
    private:
     std::vector<ItemButton> buttons;
-    int last_clicked_slot;
+    int& last_clicked_slot;
 
    public:
     /**
@@ -32,7 +32,7 @@ class ItemButtonGrid {
      */
     ItemButtonGrid(SDL_Rect inventory_area, SDL_Rect viewport,
                    SDL_Renderer* renderer, int rows, int cols,
-                   SocketManager& socket_manager,
+                   int& last_clicked_slot, SocketManager& socket_manager,
                    Event (*left_click_event)(SlotId),
                    Event (*right_click_event)(SlotId));
     ~ItemButtonGrid();
@@ -43,13 +43,6 @@ class ItemButtonGrid {
      * @param e Evento de SDL.
      */
     void handle_event(SDL_Event& e);
-
-    /**
-     * @brief Devuelve el ultimo slot clickeado.
-     *
-     * @return int
-     */
-    int get_last_clicked_slot();
 };
 
 #endif

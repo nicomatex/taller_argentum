@@ -156,6 +156,14 @@ void UiEventHandler::handle_keydown_whisper(){
     }
 }
 
+void UiEventHandler::handle_keydown_escape(){
+    if(text_input_enabled){
+        hud.chat.toggle();
+        text_input_enabled = false;
+        hud.chat.get_input_and_erase();
+    }
+}
+
 void UiEventHandler::handle() {
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
@@ -190,6 +198,9 @@ void UiEventHandler::handle() {
                     break;
                 case SDLK_s:
                     handle_keydown_whisper();
+                    break;
+                case SDLK_ESCAPE:
+                    handle_keydown_escape();
                     break;
             }
             if (!text_input_enabled) {

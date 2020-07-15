@@ -49,3 +49,12 @@ void IconGrid::render() {
         }
     }
 }
+
+SDL_Rect IconGrid::get_icon_area(int position) {
+    int row = position / cols;
+    int col = position % cols;
+    return {
+        render_area.x + col *icon_width, render_area.y + row *icon_height,
+            icon_width, icon_height
+    };
+}

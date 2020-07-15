@@ -9,6 +9,7 @@
 
 class Equipment {
    private:
+    int last_clicked_slot;
     IconGrid equipment_icons;
     SDL_Rect equipment_area;
     ItemButtonGrid item_button_grid;

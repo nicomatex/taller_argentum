@@ -18,8 +18,11 @@ class StatsComponent : public Component {
     StatValues max_stat_values;
     StatValues current_stat_values;
     int level;
-
+    std::string current_ability;
     std::recursive_mutex m;
+
+    void _update_defense(nlohmann::json entity_info);
+    void _update_attack(nlohmann::json entity_info);
 
    public:
     /**
@@ -93,6 +96,8 @@ class StatsComponent : public Component {
     void server_update(nlohmann::json entity_info);
     void init() override;
     void update() override;
+
+    std::string get_ability_name();
 };
 
 #endif
