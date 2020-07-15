@@ -134,6 +134,8 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                 entity_info["entity_id"])) {
             switch ((entity_type_t)entity_info["type_id"]) {
                 case PLAYER:
+                    std::cerr << "Player info: " << entity_info.dump(4)
+                              << std::endl;
                     EntityFactory::create_player(entity_info)
                         .get_component<VisualCharacterComponent>()
                         .set_orientation(entity_info["direction"]);

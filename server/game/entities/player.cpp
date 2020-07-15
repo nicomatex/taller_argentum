@@ -73,6 +73,7 @@ nlohmann::json Player::get_data() const {
     }
     aux = combat_component->get_data();
     for (auto& it : aux.items()) {
+        std::cerr << nlohmann::json{it.key(), it.value()}.dump(4) << std::endl;
         entity_data[it.key()] = it.value();
     }
     aux = experience_component.get_data();
@@ -184,7 +185,7 @@ uint32_t Player::get_gold_stack() const {
 void Player::unequip(SlotId slot) {
     PlayerCombatComponent* p_combat_component =
         static_cast<PlayerCombatComponent*>(combat_component);
-    Item *item = nullptr;
+    Item* item = nullptr;
     try {
         switch (slot) {
             case 0:
@@ -207,8 +208,8 @@ void Player::unequip(SlotId slot) {
                 break;
         }
     } catch (const FullItemContainerException& e) {
-            map.drop_loot(id, item);
-            map.push_log(MapLogFactory::inventory_full(name));
+        map.drop_loot(id, item);
+        map.push_log(MapLogFactory::inventory_full(name));
     }
 }
 
@@ -263,7 +264,7 @@ void Player::die() {
     if (actual_gold > max_secure_gold) {
         drops.push_back(inventory.remove_gold(actual_gold - max_secure_gold));
     }
-  
+
     PlayerCombatComponent* p_combat_component =
         static_cast<PlayerCombatComponent*>(combat_component);
     p_combat_component->set_meditate(false);

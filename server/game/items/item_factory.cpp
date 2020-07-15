@@ -12,7 +12,6 @@ const char* ItemNotFoundException::what() const throw() {
 }
 
 SpecialAbility* ItemFactory::create_ability(const std::string& ability_name) {
-    std::cerr << "Creating ability: " << ability_name << std::endl;
     if (ability_name.length() == 0)
         return nullptr;
     SpecialAbility* ability = nullptr;
@@ -36,7 +35,6 @@ SpecialAbility* ItemFactory::create_ability(const std::string& ability_name) {
                 ability_type);
             break;
     }
-    std::cerr << "Creating ability: " << ability << std::endl;
     return ability;
 }
 

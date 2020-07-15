@@ -117,10 +117,33 @@ attack_result_t PlayerCombatComponent::receive_damage(attack_t attack) {
 
 nlohmann::json PlayerCombatComponent::get_data() const {
     nlohmann::json data = CombatComponent::get_data();
-    data["helmet_id"] = helmet ? helmet->get_sprite_id() : NOT_EQUIPED;
-    data["armor_id"] = armor ? armor->get_sprite_id() : NOT_EQUIPED;
-    data["shield_id"] = shield ? shield->get_sprite_id() : NOT_EQUIPED;
-    data["weapon_id"] = weapon ? weapon->get_sprite_id() : NOT_EQUIPED;
+    if (helmet) {
+        data["helmet_id"] = helmet->get_sprite_id();
+        data["helmet_info"] = helmet->get_data()["armor_info"];
+        data["helmet_info"].erase("slot_info");
+    } else {
+        data["helmet_id"] = NOT_EQUIPED;
+    }
+    if (armor) {
+        data["armor_id"] = armor->get_sprite_id();
+        data["armor_info"] = armor->get_data()["armor_info"];
+        data["armor_info"].erase("slot_info");
+    } else {
+        data["armor_id"] = NOT_EQUIPED;
+    }
+    if (shield) {
+        data["shield_id"] = shield->get_sprite_id();
+        data["shield_info"] = shield->get_data()["armor_info"];
+        data["shield_info"].erase("slot_info");
+    } else {
+        data["shield_id"] = NOT_EQUIPED;
+    }
+    if (weapon) {
+        data["weapon_id"] = weapon->get_sprite_id();
+        data["weapon_info"] = weapon->get_data()["weapon_info"];
+    } else {
+        data["weapon_id"] = NOT_EQUIPED;
+    }
     data["is_meditating"] = is_meditating;
     return data;
 }
@@ -159,7 +182,9 @@ void PlayerCombatComponent::update(uint64_t delta_t) {
     if (is_meditating) {
         meditate_counter += delta_t;
         if (meditate_counter >= 1000) {
-            float meditate_multiplier = AttributeManager::get_meditate_multiplier(player.get_class_type());
+            float meditate_multiplier =
+                AttributeManager::get_meditate_multiplier(
+                    player.get_class_type());
             regen_mp(meditate_multiplier * stats.intelligence);
             meditate_counter = 0;
         } else {
@@ -169,16 +194,16 @@ void PlayerCombatComponent::update(uint64_t delta_t) {
             is_meditating = false;
     }
 
-    max_hp =  stats.physique *
-              AttributeManager::get_class_hp_multiplier(
-                  player.get_class_type()) *
-              AttributeManager::get_race_hp_multiplier(player.get_race_type()) *
-              player.get_level();
-    max_mp = stats.intelligence *
-              AttributeManager::get_class_mp_multiplier(
-                  player.get_class_type()) *
-              AttributeManager::get_race_mp_multiplier(player.get_race_type()) *
-              player.get_level();
+    max_hp =
+        stats.physique *
+        AttributeManager::get_class_hp_multiplier(player.get_class_type()) *
+        AttributeManager::get_race_hp_multiplier(player.get_race_type()) *
+        player.get_level();
+    max_mp =
+        stats.intelligence *
+        AttributeManager::get_class_mp_multiplier(player.get_class_type()) *
+        AttributeManager::get_race_mp_multiplier(player.get_race_type()) *
+        player.get_level();
 }
 
 bool PlayerCombatComponent::attack_ready() const {
