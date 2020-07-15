@@ -137,6 +137,25 @@ void UiEventHandler::handle_click(SDL_Event &e) {
     }
 }
 
+void UiEventHandler::handle_keydown_command(){
+    if(!text_input_enabled){
+        hud.chat.toggle();
+        SDL_StartTextInput();
+        text_input_enabled = true;
+        hud.chat.add_characters("/");
+    }
+}
+
+
+void UiEventHandler::handle_keydown_whisper(){
+    if(!text_input_enabled){
+        hud.chat.toggle();
+        SDL_StartTextInput();
+        text_input_enabled = true;
+        hud.chat.add_characters("@");
+    }
+}
+
 void UiEventHandler::handle() {
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
@@ -166,6 +185,12 @@ void UiEventHandler::handle() {
                 case SDLK_RETURN:
                     handle_keydown_return();
                     break;
+                case SDLK_SLASH:
+                    handle_keydown_command();
+                    break;
+                case SDLK_s:
+                    handle_keydown_whisper();
+                    break;
             }
             if (!text_input_enabled) {
                 switch (e.key.keysym.sym) {  // Teclas de uso general
@@ -181,6 +206,9 @@ void UiEventHandler::handle() {
                         break;
                     case SDLK_a:
                         handle_keydown_pickup();
+                        break;
+                    case SDLK_F1:
+                        hud.render_help = true;
                         break;
                 }
             }
@@ -199,6 +227,9 @@ void UiEventHandler::handle() {
                         break;
                     case SDLK_LEFT:
                         handle_keyup_move_left();
+                        break;
+                    case SDLK_F1:
+                        hud.render_help = false;
                         break;
                 }
             }

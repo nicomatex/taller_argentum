@@ -15,7 +15,7 @@ Chat::Chat(SDL_Rect chat_area, int nlines, SDL_Renderer* renderer,
 
 Chat::~Chat() {}
 
-void Chat::add_characters(char* characters) {
+void Chat::add_characters(const char* characters) {
     text_input.add_characters(characters);
 }
 

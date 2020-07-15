@@ -49,6 +49,10 @@
 #define MAIN_WINDOW_WIDTH 1138
 #define MAIN_WINDOW_HEIGHT 640
 
+
+
+#define HELP_PANEL_AREA {169,110,800,420}
+
 // --- Chat ---
 #define VIEWPORT_MAIN_RENDER \
     { 0, 128, 878, 512 }

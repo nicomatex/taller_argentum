@@ -37,8 +37,10 @@ class Hud {
     Equipment equipment;
     Inventory inventory;
     bool attempting_cast;
+    bool render_help;
     CastButton cast_button;
     SDLTexture& side_panel_background;
+    SDLTexture& help_panel;
     SDLText gold_text;
     SDLText level_text;
     SDLText spell_name_text;
@@ -51,6 +53,7 @@ class Hud {
     void _render_gold_amount();
     void _render_level();
     void _render_player_info();
+    void _render_help_panel();
 
     void _update_stats();
     void _update_inventory();

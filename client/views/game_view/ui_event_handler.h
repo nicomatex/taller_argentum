@@ -54,6 +54,8 @@ class UiEventHandler {
     void handle_keydown_sound_toggle();
     void handle_keydown_attack();
     void handle_keydown_pickup();
+    void handle_keydown_command();
+    void handle_keydown_whisper();
 
     void handle_keyup_move_up();
     void handle_keyup_move_down();

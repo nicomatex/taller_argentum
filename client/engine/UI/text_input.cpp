@@ -17,7 +17,7 @@ TextInput::TextInput(SDL_Rect render_area, SDL_Renderer* renderer,
 
 TextInput::~TextInput() {}
 
-void TextInput::add_characters(char* characters) {
+void TextInput::add_characters(const char* characters) {
     if (text.length() >= max_len)
         return;
     text += characters;

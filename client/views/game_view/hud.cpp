@@ -41,11 +41,13 @@ Hud::Hud(ResponsiveScaler& scaler, SDLWindow& window, ChatBuffer& chat_buffer,
           ResourceManager::get_instance().get_font(INVENTORY_QTIES_FONT_ID),
           window.get_renderer(), socket_manager),
       attempting_cast(false),
+      render_help(false),
       cast_button(scaler.scale(CAST_BUTTON_AREA),
                   scaler.scale(VIEWPORT_SIDE_PANEL), window.get_renderer(),
                   attempting_cast),
       side_panel_background(
           ResourceManager::get_instance().get_texture("interface", 1)),
+      help_panel(ResourceManager::get_instance().get_texture("interface", 23)),
       gold_text("9999", ResourceManager::get_instance().get_font(1),
                 GOLD_TEXT_COLOR, window.get_renderer()),
       level_text("99", ResourceManager::get_instance().get_font(1),
@@ -190,6 +192,12 @@ void Hud::_render_player_info() {
         _get_scaled_dest(defense_points_text, DEF_PTS_TEXT_AREA));
 }
 
+void Hud::_render_help_panel(){
+    if(render_help){
+        help_panel.render(scaler.scale(HELP_PANEL_AREA));
+    }
+}
+
 void Hud::update() {
     _update_stats();
     _update_equipment();
@@ -211,6 +219,8 @@ void Hud::render() {
     _render_gold_amount();
     _render_level();
     _render_player_info();
+    window.reset_viewport();
+    _render_help_panel();
 }
 
 void Hud::handle_event(SDL_Event& e) {

@@ -46,7 +46,7 @@ class TextInput {
      *
      * @param characters Caracteres a agregar.
      */
-    void add_characters(char* characters);
+    void add_characters(const char* characters);
 
     /**
      * @brief Borra un caracter del texto.
