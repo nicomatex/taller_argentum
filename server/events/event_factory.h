@@ -44,7 +44,7 @@ class EventFactory {
 
     static Event unequip_all_event(ClientId client_id);
 
-    static Event resuscitate_event(ClientId client_id, position_t target);
+    static Event resuscitate_event(ClientId client_id);
 
     static Event heal_event(ClientId client_id, position_t target);
 

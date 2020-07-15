@@ -53,8 +53,14 @@ class Player : public Entity {
      * @return race_type_t
      */
     race_type_t get_race_type() const;
+    /**
+     * @brief Tiempo a inmovilizar al personaje en milisegundos
+     * 
+     * @param delta_t 
+     */
+    void immobilize(int delta_t);
 
-    void revive();
+    void resuscitate(int delta_t);
     void regen_max();
 
     void die() override;
@@ -152,6 +158,8 @@ class Player : public Entity {
      * @return false
      */
     bool can_attack(Entity* attacked) const override;
+
+    void set_alive(bool alive);
 
     /**
      * @brief Obtiene los datos de la entidad para enviar al cliente. (caso

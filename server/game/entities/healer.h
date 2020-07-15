@@ -9,7 +9,7 @@ class Healer : public Npc {
     Healer(EntityId entity_id, nlohmann::json npc_info, Map& map);
     ~Healer();
     void heal(Player* player);
-    void revive(Player* player);
+    void resuscitate(Player* player);
 };
 
 #endif // HEALER_H

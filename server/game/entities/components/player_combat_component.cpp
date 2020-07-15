@@ -41,7 +41,9 @@ PlayerCombatComponent::PlayerCombatComponent(ItemId helmet_id, ItemId armor_id,
       shield(nullptr),
       weapon(nullptr),
       is_meditating(false),
-      meditate_counter(0) {
+      meditate_counter(0),
+      is_resuscitating(false),
+      resuscitate_counter(0) {
     ServerManager& server_manager = ServerManager::get_instance();
     ItemFactory& item_factory = server_manager.get_item_factory();
     if (helmet_id)
@@ -160,6 +162,27 @@ nlohmann::json PlayerCombatComponent::get_persist_data() const {
 }
 
 void PlayerCombatComponent::update(uint64_t delta_t) {
+    max_hp =  stats.physique *
+              AttributeManager::get_class_hp_multiplier(
+                  player.get_class_type()) *
+              AttributeManager::get_race_hp_multiplier(player.get_race_type()) *
+              player.get_level();
+    max_mp = stats.intelligence *
+              AttributeManager::get_class_mp_multiplier(
+                  player.get_class_type()) *
+              AttributeManager::get_race_mp_multiplier(player.get_race_type()) *
+              player.get_level();
+
+    if (is_resuscitating) {
+        resuscitate_counter -= delta_t;
+        if (resuscitate_counter <= 0) {
+            is_resuscitating = false;
+            player.set_alive(true);
+            regen_max();
+        }
+        return;
+    }
+
     float curr_attack_speed =
         weapon ? weapon->get_attack_speed() : attack_speed;
     uint32_t time_between_attacks = UINT32_MAX;
@@ -194,16 +217,11 @@ void PlayerCombatComponent::update(uint64_t delta_t) {
             is_meditating = false;
     }
 
-    max_hp =
-        stats.physique *
-        AttributeManager::get_class_hp_multiplier(player.get_class_type()) *
-        AttributeManager::get_race_hp_multiplier(player.get_race_type()) *
-        player.get_level();
-    max_mp =
-        stats.intelligence *
-        AttributeManager::get_class_mp_multiplier(player.get_class_type()) *
-        AttributeManager::get_race_mp_multiplier(player.get_race_type()) *
-        player.get_level();
+}
+
+void PlayerCombatComponent::resuscitate(int delta_t) {
+    resuscitate_counter = delta_t;
+    is_resuscitating = true;
 }
 
 bool PlayerCombatComponent::attack_ready() const {

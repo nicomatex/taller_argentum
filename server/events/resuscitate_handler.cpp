@@ -11,7 +11,6 @@ void ResuscitateHandler::push_event(const Event& event) {
     ServerManager& server_manager = ServerManager::get_instance();
     nlohmann::json json = event.get_json();
     ClientId client_id = json["client_id"];
-    position_t target = json["target"];
     Session& session = server_manager.get_session(client_id);
-    session.push_action(client_id, new ActionResucitate(target));
+    session.push_action(client_id, new ActionResuscitate());
 }

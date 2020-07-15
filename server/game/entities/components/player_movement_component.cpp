@@ -1,7 +1,8 @@
 #include "player_movement_component.h"
 
 PlayerMovementComponent::PlayerMovementComponent(unsigned int movement_speed)
-    : MovementComponent(movement_speed), move_accumulator(0), moving(false) {}
+    : MovementComponent(movement_speed), move_accumulator(0), moving(false), is_immobilized(false),
+    immobilized_counter(0) {}
 
 PlayerMovementComponent::~PlayerMovementComponent() {}
 
@@ -11,11 +12,25 @@ direction_t PlayerMovementComponent::current_direction() const {
     return direction_history.back();
 }
 
+void PlayerMovementComponent::immobilize(int delta_t) {
+    immobilized_counter = delta_t;
+    is_immobilized = true;
+}
+
 position_t PlayerMovementComponent::update(uint64_t delta_t) {
+    position_t steps = {0, 0};
+
+    if (is_immobilized) {
+        immobilized_counter -= delta_t;
+        if (immobilized_counter <= 0) {
+            is_immobilized = false;
+        } else {
+            return steps;
+        }
+    }
+
     int time_between_tiles = 1000 / movement_speed;
     move_accumulator += delta_t;
-
-    position_t steps = {0, 0};
 
     if (move_accumulator >= time_between_tiles) {
         // Esto deberia dar 1 salvo que el

@@ -115,10 +115,9 @@ Event EventFactory::unequip_all_event(ClientId client_id) {
     return Event(ev_json);
 }
 
-Event EventFactory::resuscitate_event(ClientId client_id, position_t target) {
+Event EventFactory::resuscitate_event(ClientId client_id) {
     nlohmann::json ev_json = {{"ev_id", SERVER_RESUSCITATE},
-                              {"client_id", client_id},
-                              {"target", target}};
+                              {"client_id", client_id}};
     return Event(ev_json);
 }
 

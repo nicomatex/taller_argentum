@@ -41,3 +41,7 @@ void Npc::update(uint64_t delta_t) {}
 npc_proffesion_t Npc::get_profession() {
     return proffesion;
 }
+
+Map& Npc::get_map() {
+    return map;
+}

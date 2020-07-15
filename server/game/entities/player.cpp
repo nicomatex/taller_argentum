@@ -43,6 +43,10 @@ void Player::update(uint64_t delta_t) {
     map.move(this->id, steps);
 }
 
+void Player::set_alive(bool alive) {
+    this->alive = alive;
+}
+
 entity_type_t Player::get_type() const {
     return PLAYER;
 }
@@ -243,9 +247,14 @@ Map& Player::get_map() {
     return map;
 }
 
-void Player::revive() {
-    alive = true;
-    regen_max();
+void Player::immobilize(int delta_t) {
+    static_cast<PlayerMovementComponent*>(movement_component)->immobilize(delta_t);    
+}
+
+void Player::resuscitate(int delta_t) {
+    static_cast<PlayerCombatComponent*>(combat_component)->resuscitate(delta_t);  
+    //alive = true;
+    //regen_max();
 }
 
 void Player::regen_max() {

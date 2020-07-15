@@ -9,6 +9,8 @@ class PlayerMovementComponent : public MovementComponent {
     std::vector<direction_t> direction_history;
     int move_accumulator;
     bool moving;
+    bool is_immobilized;
+    int immobilized_counter;
 
    protected:
     direction_t current_direction() const override;
@@ -16,6 +18,8 @@ class PlayerMovementComponent : public MovementComponent {
    public:
     PlayerMovementComponent(unsigned int ms);
     ~PlayerMovementComponent();
+
+    void immobilize(int delta_t);
 
     void set_movement(mov_action_t action, direction_t direction);
 

@@ -3,12 +3,9 @@
 
 #include "action.h"
 
-class ActionResucitate : public Action {
-   private:
-    position_t target;
-
+class ActionResuscitate : public Action {
    public:
-    ActionResucitate(position_t target);
+    ActionResuscitate();
 
     void execute(Map& map, EntityId entity_id) const override;
 };

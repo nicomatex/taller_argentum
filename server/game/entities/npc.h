@@ -28,6 +28,8 @@ class Npc : public Entity {
     void update(uint64_t delta_t) override;
 
     npc_proffesion_t get_profession();
+
+    Map& get_map();
 };
 
 #endif  // NPC_H

@@ -51,7 +51,7 @@ void CommandHandler::parse_line(const std::string& line) {
             if (cmd.size() > 2)
                 ok = false;
             cmd_type = CMD_DROP;
-        } else if (cmd[0] == "/revivir") {
+        } else if (cmd[0] == "/resucitar") {
             if (cmd.size() != 1)
                 ok = false;
             cmd_type = CMD_RESUSCITATE;
@@ -173,9 +173,9 @@ void CommandHandler::cmd_unequip_all(ClientId client_id) {
     server_manager.dispatch(EventFactory::unequip_all_event(client_id));
 }
 
-void CommandHandler::cmd_resuscitate(ClientId client_id, position_t target) {
+void CommandHandler::cmd_resuscitate(ClientId client_id) {
     ServerManager& server_manager = ServerManager::get_instance();
-    server_manager.dispatch(EventFactory::resuscitate_event(client_id, target));
+    server_manager.dispatch(EventFactory::resuscitate_event(client_id));
 }
 
 void CommandHandler::cmd_heal(ClientId client_id, position_t target) {
@@ -322,7 +322,7 @@ void CommandHandler::handle(Event& event) {
                 cmd_drop(json["client_id"], json["slot"]);
                 break;
             case CMD_RESUSCITATE:
-                cmd_resuscitate(json["client_id"], json["target"]);
+                cmd_resuscitate(json["client_id"]);
                 break;
             case CMD_HEAL:
                 cmd_heal(json["client_id"], json["target"]);

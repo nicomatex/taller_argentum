@@ -48,7 +48,7 @@ class CommandHandler : public BlockingThEventHandler {
 
     void cmd_drop(ClientId client_id, SlotId slot);
 
-    void cmd_resuscitate(ClientId client_id, position_t target);
+    void cmd_resuscitate(ClientId client_id);
 
     void cmd_heal(ClientId client_id, position_t target);
 
