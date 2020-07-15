@@ -12,13 +12,14 @@
 
 /**
  * @brief Objeto ventana de SDL.
- * 
+ *
  */
 class SDLWindow {
    private:
     SDL_Window *window;
     SDL_Renderer *renderer;
-
+    bool vsync;
+    
    public:
     /* Constructor. Recibe ancho y alto de la ventana en pixeles. */
 
@@ -31,7 +32,8 @@ class SDLWindow {
      * @param fullscreen Si es true, la ventana se creara fullscreen, utilizando
      * como dimensiones la resolucion actual.
      */
-    SDLWindow(int width, int height, const std::string &title, bool fullscreen);
+    SDLWindow(int width, int height, const std::string &title, bool fullscreen,
+              bool vsync);
     ~SDLWindow();
 
     /* Llena toda la ventana con el color indicado en los parametros. */
@@ -55,54 +57,54 @@ class SDLWindow {
 
     /**
      * @brief Setea el viewport del renderer.
-     * 
+     *
      * @param viewport_area Area que sera el viewport nuevo.
      */
     void set_viewport(SDL_Rect viewport_area);
 
     /**
      * @brief Restaura el viewport a la totalidad de la ventana.
-     * 
+     *
      */
     void reset_viewport();
 
     /**
      * @brief Inicia el renderer de la ventana.
-     * 
-     * @return SDL_Renderer* 
+     *
+     * @return SDL_Renderer*
      */
     SDL_Renderer *init_renderer();
 
     /**
      * @brief Devuelve el renderer asociado a la ventana.
-     * 
-     * @return SDL_Renderer* 
+     *
+     * @return SDL_Renderer*
      */
     SDL_Renderer *get_renderer();
 
     /**
      * @brief Devuelve el ancho de la ventana.
-     * 
-     * @return int 
+     *
+     * @return int
      */
     int get_width() const;
 
     /**
      * @brief Devuelve el alto de la ventana.
-     * 
-     * @return int 
+     *
+     * @return int
      */
     int get_height() const;
 
     /**
      * @brief Oculta la ventana.
-     * 
+     *
      */
     void hide();
 
     /**
      * @brief Muestra la ventana.
-     * 
+     *
      */
     void show();
 };

@@ -45,7 +45,7 @@ class LoginView {
      * @brief Inicia la vista.
      * 
      */
-    void run();
+    void run(int fps);
 };
 
 #endif

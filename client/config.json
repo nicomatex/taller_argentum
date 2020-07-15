@@ -3,5 +3,7 @@
 	"port": "27016",
 	"fullscreen": false,
 	"window_width":1138,
-	"window_height":640
+	"window_height":640,
+	"vsync":true,
+	"fps":60
 }

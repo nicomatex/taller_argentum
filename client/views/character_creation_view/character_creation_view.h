@@ -46,7 +46,7 @@ class CharacterCreationView {
                           SocketManager &socket_manager);
     ~CharacterCreationView();
 
-    void run();
+    void run(int fps);
 };
 
 #endif

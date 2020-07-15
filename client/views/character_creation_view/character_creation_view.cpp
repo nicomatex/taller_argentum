@@ -118,8 +118,13 @@ void CharacterCreationView::render_creation_alert() {
     }
 }
 
-void CharacterCreationView::run() {
+void CharacterCreationView::run(int fps) {
+    int frame_duration = 1000 / fps;
+    SDLTimer frame_timer;
+
     while (game_state_monitor.get_game_state() == CREATING_CHARACTER) {
+        frame_timer.start();
+
         window.fill(0, 0, 0, 255);
         ui_event_handler.handle();
         background.render(scaler.scale(CHAR_CREATION_BACKGROUND_AREA));
@@ -128,5 +133,8 @@ void CharacterCreationView::run() {
         render_selected_class_info();
         render_creation_alert();
         window.render();
+
+        int frame_time_remaining = frame_duration - frame_timer.get_ticks();
+        if (frame_time_remaining > 0) SDL_Delay(frame_time_remaining);
     }
 }

@@ -1,6 +1,7 @@
 #include "login_view.h"
 
 #include "../../client_config.h"
+#include "../../engine/SDL/sdl_timer.h"
 #include "../../engine/resource_manager.h"
 #include "../../engine/sound_system.h"
 
@@ -46,17 +47,24 @@ void LoginView::render_login_alert() {
     }
 }
 
-void LoginView::run() {
+void LoginView::run(int fps) {
+    int frame_duration = 1000 / fps;
+    SDLTimer frame_timer;
+
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
     if (!SoundSystem::get_instance().music_playing()) {
         SoundSystem::get_instance().play_music(1);
     }
     while (game_state_monitor.get_game_state() == LOGGING) {
+        frame_timer.start();
         window.fill(0, 0, 0, 255);
         ui_event_handler.handle();
         background.render(scaler.scale(LOGIN_BACKGROUND_AREA));
         character_name_input.render();
         render_login_alert();
         window.render();
+
+        int frame_time_remaining = frame_duration - frame_timer.get_ticks();
+        if (frame_time_remaining > 0) SDL_Delay(frame_time_remaining);
     }
 }

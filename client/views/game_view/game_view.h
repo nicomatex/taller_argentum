@@ -57,7 +57,7 @@ class GameView {
      * @brief Inicia la vista.
      *
      */
-    void run();
+    void run(int fps);
 
     ~GameView();
 };

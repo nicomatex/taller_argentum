@@ -35,15 +35,18 @@ GameView::GameView(ResponsiveScaler &scaler, int follow_entity_id,
 
 GameView::~GameView() {}
 
-void GameView::run() {
+void GameView::run(int fps) {
+    int frame_duration = 1000 / fps;
+    SDLTimer frame_timer;
+
     SDL_Rect main_render_viewport = scaler.scale(VIEWPORT_MAIN_RENDER);
     SoundSystem::get_instance().play_music(2);
     game_state_monitor.set_game_state(RUNNING);
     while (game_state_monitor.get_game_state() == RUNNING) {
+        frame_timer.start();
+
         window.fill(0, 0, 0, 255);
-
         ui_event_handler.handle();
-
         EntityManager::get_instance().update();
         hud.update();
         camera.update();
@@ -56,6 +59,9 @@ void GameView::run() {
         camera.render_map_layers(map.get_foreground_layers());
         hud.render();
         window.render();
+
+        int frame_time_remaining = frame_duration - frame_timer.get_ticks();
+        if (frame_time_remaining > 0) SDL_Delay(frame_time_remaining);
     }
     EntityManager::get_instance().empty();
 }

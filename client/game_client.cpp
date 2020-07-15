@@ -22,7 +22,7 @@ using json = nlohmann::json;
 
 GameClient::GameClient(json config)
     : window(config["window_width"], config["window_height"], WINDOW_TITLE,
-             config["fullscreen"]),
+             config["fullscreen"],config["vsync"]),
       socket_manager(
           Socket(std::string(config["server"]), std::string(config["port"])),
           receive_handler),
@@ -52,14 +52,14 @@ void GameClient::run() {
         switch (game_state_monitor.get_game_state()) {
             case LOGGING:
                 LoginView(window, scaler, game_state_monitor, socket_manager)
-                    .run();
+                    .run(config["fps"]);
                 break;
             case READY_TO_RUN:
                 GameView(scaler, map_change_buffer.get_follow_entity_id(),
                          socket_manager, window, chat_buffer, inventory_buffer,
                          map_decorations_buffer, player_info_monitor, game_state_monitor,
                          map_change_buffer.get_map_info())
-                    .run();
+                    .run(config["fps"]);
                 break;
             case SWITCHING_MAPS:
                 game_state_monitor.set_game_state(WAITING_FOR_INITIALIZATION);
@@ -67,7 +67,7 @@ void GameClient::run() {
             case CREATING_CHARACTER:
                 CharacterCreationView(window, scaler, game_state_monitor,
                                       socket_manager)
-                    .run();
+                    .run(config["fps"]);
                 break;
             default:
                 game_state_monitor.wait_for_next_game_state();
