@@ -128,6 +128,12 @@ class Player : public Entity {
     void set_movement(mov_action_t action, direction_t direction);
 
     /**
+     * @brief Empieza o detiene la regeneracion de mana al meditar
+     * 
+     */
+    void meditate(bool meditating);
+
+    /**
      * @brief Player update.
      *
      * @param delta_t

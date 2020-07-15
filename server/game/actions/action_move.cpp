@@ -9,5 +9,6 @@ void ActionMove::execute(Map &map, EntityId entity_id) const {
     Player *player = static_cast<Player *>(Action::get_entity(map, entity_id));
     if (!player)
         return;
+    player->meditate(false);
     player->set_movement(action, direction);
 }

@@ -48,16 +48,16 @@ class AttributeManager {
 
     // Player race methods
     static stats_t create_stats(race_type_t race_type);
-    static int get_race_name(race_type_t race_type);
-    static int get_race_hp_multiplier(race_type_t race_type);
-    static int get_race_mp_multiplier(race_type_t race_type);
-    static int get_regen_multiplier(race_type_t race_type);
+    static std::string get_race_name(race_type_t race_type);
+    static float get_race_hp_multiplier(race_type_t race_type);
+    static float get_race_mp_multiplier(race_type_t race_type);
+    static float get_regen_multiplier(race_type_t race_type);
 
     // Player class methods
-    static int get_class_name(class_type_t class_type);
-    static int get_class_hp_multiplier(class_type_t class_type);
-    static int get_class_mp_multiplier(class_type_t class_type);
-    static int get_meditate_multiplier(class_type_t class_type);
+    static std::string get_class_name(class_type_t class_type);
+    static float get_class_hp_multiplier(class_type_t class_type);
+    static float get_class_mp_multiplier(class_type_t class_type);
+    static float get_meditate_multiplier(class_type_t class_type);
 };
 
 #endif  // ATTRIBUTE_MANAGER_H

@@ -59,10 +59,6 @@ void CommandHandler::parse_line(const std::string& line) {
             if (cmd.size() != 1)
                 ok = false;
             cmd_type = CMD_HEAL;
-        } else if (cmd[0] == "/desequipar") {
-            if (cmd.size() != 1)
-                ok = false;
-            cmd_type = CMD_UNEQUIP;
         } else if (cmd[0] == "/salir") {
             if (cmd.size() != 1)
                 ok = false;
@@ -99,6 +95,10 @@ void CommandHandler::parse_line(const std::string& line) {
             if (cmd.size() > 2)
                 ok = false;
             cmd_type = CMD_WITHDRAW_GOLD;
+        } else if (cmd[0] == "/meditar") {
+            if (cmd.size() != 1)
+                ok = false;
+            cmd_type = CMD_MEDITATE;
         } else {
             throw CommandErrorException();
         }
@@ -188,8 +188,6 @@ void CommandHandler::cmd_list(ClientId client_id, position_t target) {
     server_manager.dispatch(EventFactory::list_event(client_id, target));
 }
 
-// comprar <SlotId> <cantidad> o comprar <SlotId> donde cantidad es 1 por
-// default
 void CommandHandler::cmd_buy(ClientId client_id, position_t target) {
     ServerManager& server_manager = ServerManager::get_instance();
     uint32_t amount = 1;
@@ -211,7 +209,6 @@ void CommandHandler::cmd_buy(ClientId client_id, position_t target) {
         EventFactory::buy_event(client_id, target, (SlotId)slot, amount));
 }
 
-// vender <cantidad> o vender donde cantidad es por default 1
 void CommandHandler::cmd_sell(ClientId client_id, position_t target,
                               SlotId slot) {
     ServerManager& server_manager = ServerManager::get_instance();
@@ -228,7 +225,7 @@ void CommandHandler::cmd_sell(ClientId client_id, position_t target,
     server_manager.dispatch(
         EventFactory::sell_event(client_id, target, slot, amount));
 }
-// depositar <cantidad> o depositar donde cantidad es por default 1
+
 void CommandHandler::cmd_deposit_item(ClientId client_id, position_t target,
                                       SlotId slot) {
     ServerManager& server_manager = ServerManager::get_instance();
@@ -245,8 +242,7 @@ void CommandHandler::cmd_deposit_item(ClientId client_id, position_t target,
     server_manager.dispatch(
         EventFactory::deposit_item_event(client_id, target, slot, amount));
 }
-// retirar <SlotId> <cantidad> o retirar <SlotId> donde cantidad es por default
-// 1
+
 void CommandHandler::cmd_withdraw_item(ClientId client_id, position_t target) {
     ServerManager& server_manager = ServerManager::get_instance();
     uint32_t amount = 1;
@@ -254,9 +250,7 @@ void CommandHandler::cmd_withdraw_item(ClientId client_id, position_t target) {
     try {
         slot = std::stoul(cmd[1]);
         if (amount > std::numeric_limits<SlotId>::max())
-            throw CommandErrorException();  // My myexception diciendo lo que
-                                            // esta mal, o usamos la de
-                                            // inventory
+            throw CommandErrorException();
         if (cmd.size() == 3)
             amount = std::stoul(cmd[2]);
     } catch (const std::invalid_argument& e) {
@@ -267,7 +261,7 @@ void CommandHandler::cmd_withdraw_item(ClientId client_id, position_t target) {
     server_manager.dispatch(
         EventFactory::withdraw_item_event(client_id, target, slot, amount));
 }
-// retiraroro <cantidad> o retiraroro donde cantidad es por default TODO EL ORO
+
 void CommandHandler::cmd_withdraw_gold(ClientId client_id, position_t target) {
     ServerManager& server_manager = ServerManager::get_instance();
     uint32_t amount = UINT32_MAX;
@@ -282,8 +276,7 @@ void CommandHandler::cmd_withdraw_gold(ClientId client_id, position_t target) {
     server_manager.dispatch(
         EventFactory::withdraw_gold_event(client_id, target, amount));
 }
-// depositaroro <cantidad> o depositaroro donde cantidad es por default TODO EL
-// ORO
+
 void CommandHandler::cmd_deposit_gold(ClientId client_id, position_t target) {
     ServerManager& server_manager = ServerManager::get_instance();
     uint32_t amount = UINT32_MAX;
@@ -297,6 +290,11 @@ void CommandHandler::cmd_deposit_gold(ClientId client_id, position_t target) {
     }
     server_manager.dispatch(
         EventFactory::deposit_gold_event(client_id, target, amount));
+}
+
+void CommandHandler::cmd_meditate(ClientId client_id) {
+    ServerManager& server_manager = ServerManager::get_instance();
+    server_manager.dispatch(EventFactory::meditate_event(client_id));
 }
 
 void CommandHandler::handle(Event& event) {
@@ -356,6 +354,9 @@ void CommandHandler::handle(Event& event) {
                 break;
             case CMD_WITHDRAW_GOLD:
                 cmd_withdraw_gold(json["client_id"], json["target"]);
+                break;
+            case CMD_MEDITATE:
+                cmd_meditate(json["client_id"]);
                 break;
             default:
                 throw CommandErrorException();

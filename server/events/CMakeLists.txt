@@ -24,6 +24,7 @@ add_library(events
   withdraw_item_handler.cpp
   deposit_gold_handler.cpp
   withdraw_gold_handler.cpp
+  meditate_handler.cpp
 )
 
 target_link_libraries(events

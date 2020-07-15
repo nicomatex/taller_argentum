@@ -210,3 +210,9 @@ Event EventFactory::withdraw_gold_event(ClientId client_id, position_t target, u
                               {"amount", amount}};
     return Event(ev_json);
 }
+
+Event EventFactory::meditate_event(ClientId client_id) {
+    nlohmann::json ev_json = {{"ev_id", SERVER_MEDITATE},
+                              {"client_id", client_id}};
+    return Event(ev_json);
+}

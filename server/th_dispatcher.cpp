@@ -8,6 +8,8 @@
 #include "events/client_initializer_handler.h"
 #include "events/command_handler.h"
 #include "events/creation_handler.h"
+#include "events/deposit_gold_handler.h"
+#include "events/deposit_item_handler.h"
 #include "events/disconnect_handler.h"
 #include "events/drop_loot_handler.h"
 #include "events/heal_handler.h"
@@ -20,9 +22,8 @@
 #include "events/unequip_handler.h"
 #include "events/use_ability_handler.h"
 #include "events/withdraw_gold_handler.h"
-#include "events/deposit_gold_handler.h"
 #include "events/withdraw_item_handler.h"
-#include "events/deposit_item_handler.h"
+#include "events/meditate_handler.h"
 #include "server_manager.h"
 
 // Temp
@@ -124,6 +125,8 @@ ThDispatcher::ThDispatcher() : BlockingThEventHandler() {
         static_cast<EventHandler*>(new DepositGoldHandler());
     handlers[static_cast<int>(SERVER_WITHDRAW_GOLD)] =
         static_cast<EventHandler*>(new WithdrawGoldHandler());
+    handlers[static_cast<int>(SERVER_MEDITATE)] =
+        static_cast<EventHandler*>(new MeditateHandler());
     // Inicializamos los handlers que sean threads
     for (auto it : handlers) {
         if (it.second->is_threaded()) {

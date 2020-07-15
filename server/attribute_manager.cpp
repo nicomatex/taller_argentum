@@ -79,44 +79,44 @@ bool AttributeManager::class_exists(class_type_t class_type) {
     return class_names_map.count(class_type);
 }
 
-int AttributeManager::get_race_hp_multiplier(race_type_t race_type) {
+float AttributeManager::get_race_hp_multiplier(race_type_t race_type) {
     if (!race_exists(race_type))
         throw MyException("AttributeManager: Race does not exist: %i",
                           race_type);
-    return int(race_multi_map.at(race_type)["health_multiplier"]);
+    return float(race_multi_map.at(race_type)["health_multiplier"]);
 }
 
-int AttributeManager::get_race_mp_multiplier(race_type_t race_type) {
+float AttributeManager::get_race_mp_multiplier(race_type_t race_type) {
     if (!race_exists(race_type))
         throw MyException("AttributeManager: Race does not exist: %i",
                           race_type);
-    return int(race_multi_map.at(race_type)["mana_multiplier"]);
+    return float(race_multi_map.at(race_type)["mana_multiplier"]);
 }
 
-int AttributeManager::get_regen_multiplier(race_type_t race_type) {
+float AttributeManager::get_regen_multiplier(race_type_t race_type) {
     if (!race_exists(race_type))
         throw MyException("AttributeManager: Race does not exist: %i",
                           race_type);
-    return int(race_multi_map.at(race_type)["regen_multiplier"]);
+    return float(race_multi_map.at(race_type)["regen_multiplier"]);
 }
 
-int AttributeManager::get_class_hp_multiplier(class_type_t class_type) {
+float AttributeManager::get_class_hp_multiplier(class_type_t class_type) {
     if (!class_exists(class_type))
         throw MyException("AttributeManager: Class does not exist: %i",
                           class_type);
-    return int(class_multi_map.at(class_type)["health_multiplier"]);
+    return float(class_multi_map.at(class_type)["health_multiplier"]);
 }
 
-int AttributeManager::get_class_mp_multiplier(class_type_t class_type) {
+float AttributeManager::get_class_mp_multiplier(class_type_t class_type) {
     if (!class_exists(class_type))
         throw MyException("AttributeManager: Class does not exist: %i",
                           class_type);
-    return int(class_multi_map.at(class_type)["mana_multiplier"]);
+    return float(class_multi_map.at(class_type)["mana_multiplier"]);
 }
 
-int AttributeManager::get_meditate_multiplier(class_type_t class_type) {
+float AttributeManager::get_meditate_multiplier(class_type_t class_type) {
     if (!class_exists(class_type))
         throw MyException("AttributeManager: Class does not exist: %i",
                           class_type);
-    return int(class_multi_map.at(class_type)["meditate_multiplier"]);
+    return float(class_multi_map.at(class_type)["meditate_multiplier"]);
 }

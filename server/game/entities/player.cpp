@@ -263,8 +263,10 @@ void Player::die() {
     if (actual_gold > max_secure_gold) {
         drops.push_back(inventory.remove_gold(actual_gold - max_secure_gold));
     }
+  
     PlayerCombatComponent* p_combat_component =
         static_cast<PlayerCombatComponent*>(combat_component);
+    p_combat_component->set_meditate(false);
     Weapon* weapon = p_combat_component->unequip_weapon();
     if (weapon)
         drops.push_back(weapon);
@@ -298,4 +300,11 @@ bool Player::can_attack(Entity* attacked) const {
     return (player->get_level() > newbie_lvl) && (get_level() > newbie_lvl) &&
            (std::abs(static_cast<int>(get_level() - player->get_level())) <
             max_lvl_diff);
+}
+
+void Player::meditate(bool meditating) {
+    PlayerCombatComponent* p_combat_component =
+        static_cast<PlayerCombatComponent*>(combat_component);
+    if (class_type != WARRIOR)
+        p_combat_component->set_meditate(meditating);
 }

@@ -48,6 +48,7 @@ void VisualCharacterComponent::server_update(nlohmann::json update_info) {
     set_part("shield", "shields", update_info["shield_id"], BODY_CONFIG);
     set_part("armor", "armors", update_info["armor_id"], BODY_CONFIG);
     set_orientation(update_info["direction"]);
+    is_meditating = update_info["is_meditating"];
 }
 
 void VisualCharacterComponent::init() {

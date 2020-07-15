@@ -6,7 +6,7 @@
 			"multipliers": {
 				"health_multiplier": 1,
 				"mana_multiplier": 1,
-				"meditate_multiplier": 1
+				"meditate_multiplier": 0.5
 			}
 		},
 		{
@@ -15,7 +15,7 @@
 			"multipliers": {
 				"health_multiplier": 1,
 				"mana_multiplier": 1,
-				"meditate_multiplier": 1
+				"meditate_multiplier": 0.5
 			}
 		},
 		{
@@ -24,7 +24,7 @@
 			"multipliers": {
 				"health_multiplier": 1,
 				"mana_multiplier": 1,
-				"meditate_multiplier": 1
+				"meditate_multiplier": 0.5
 			}
 		},
 		{

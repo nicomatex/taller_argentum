@@ -73,6 +73,8 @@ class EventFactory {
     static Event deposit_gold_event(ClientId client_id, position_t target, uint32_t amount);
 
     static Event withdraw_gold_event(ClientId client_id, position_t target, uint32_t amount);
+    
+    static Event meditate_event(ClientId client_id); 
 };
 
 #endif  // EVENT_FACTORY_H

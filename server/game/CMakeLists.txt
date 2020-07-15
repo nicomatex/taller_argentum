@@ -8,6 +8,7 @@ add_library(game
   actions/action_inventory.cpp
   actions/action_list.cpp
   actions/action_loot.cpp
+  actions/action_meditate.cpp
   actions/action_move.cpp
   actions/action_resuscitate.cpp
   actions/action_sell.cpp

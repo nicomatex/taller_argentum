@@ -130,7 +130,6 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
     EntityManager::get_instance().update_initialize();
     for (auto &it : entities_info["entities"].items()) {
         json entity_info = it.value();
-
         if (!EntityManager::get_instance().has_entity(
                 entity_info["entity_id"])) {
             switch ((entity_type_t)entity_info["type_id"]) {

@@ -1,5 +1,6 @@
 #include "action_attack.h"
 
+#include "../entities/player.h"
 #include "../map.h"
 #include "../map_log_factory.h"
 #include "../position.h"
@@ -10,6 +11,10 @@ void ActionAttack::execute(Map& map, EntityId entity_id) const {
     Entity* attacker = Action::get_entity(map, entity_id);
     if (!attacker || !attacker->is_alive())
         return;
+    if (attacker->get_type() == PLAYER) {
+        Player* player = static_cast<Player*>(attacker);
+        player->meditate(false);
+    }
     position_t attacked_pos =
         attacker->get_facing_position(map.get_position(entity_id));
     Entity* attacked = Action::get_entity(map, attacked_pos);
@@ -22,11 +27,15 @@ void ActionAttack::execute(Map& map, EntityId entity_id) const {
                                    {"dodged", result.dodged},
                                    {"to", attacked->get_name()},
                                    {"to_id", attacked->get_id()}}));
-    if (attacked->get_type() == PLAYER)
+    if (attacked->get_type() == PLAYER) {
+        Player* player = static_cast<Player*>(attacked);
+        player->meditate(false);
         map.push_log(MapLogFactory::receive_damage(
             attacked->get_name(), {{"damage", result.damage_dealt},
                                    {"dodged", result.dodged},
                                    {"from", attacker->get_name()}}));
+    }
+        
     if (result.killed) {
         attacked->die();
         if (attacked->get_type() == MONSTER)

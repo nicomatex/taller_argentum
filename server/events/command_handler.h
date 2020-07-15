@@ -68,6 +68,8 @@ class CommandHandler : public BlockingThEventHandler {
 
     void cmd_withdraw_gold(ClientId client_id, position_t target);
 
+    void cmd_meditate(ClientId client_id); 
+
    protected:
     void handle(Event& ev) override;
 

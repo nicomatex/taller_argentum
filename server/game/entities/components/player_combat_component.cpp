@@ -39,7 +39,9 @@ PlayerCombatComponent::PlayerCombatComponent(ItemId helmet_id, ItemId armor_id,
       helmet(nullptr),
       armor(nullptr),
       shield(nullptr),
-      weapon(nullptr) {
+      weapon(nullptr),
+      is_meditating(false),
+      meditate_counter(0) {
     ServerManager& server_manager = ServerManager::get_instance();
     ItemFactory& item_factory = server_manager.get_item_factory();
     if (helmet_id)
@@ -119,6 +121,7 @@ nlohmann::json PlayerCombatComponent::get_data() const {
     data["armor_id"] = armor ? armor->get_sprite_id() : NOT_EQUIPED;
     data["shield_id"] = shield ? shield->get_sprite_id() : NOT_EQUIPED;
     data["weapon_id"] = weapon ? weapon->get_sprite_id() : NOT_EQUIPED;
+    data["is_meditating"] = is_meditating;
     return data;
 }
 
@@ -144,7 +147,7 @@ void PlayerCombatComponent::update(uint64_t delta_t) {
     if (player.is_alive()) {
         regen_counter += delta_t;
         if (regen_counter >= 1000) {
-            int regen_multiplier =
+            float regen_multiplier =
                 AttributeManager::get_regen_multiplier(player.get_race_type());
             regen(regen_multiplier, regen_multiplier);
             regen_counter = 0;
@@ -152,6 +155,20 @@ void PlayerCombatComponent::update(uint64_t delta_t) {
             regen_counter += delta_t;
         }
     }
+
+    if (is_meditating) {
+        meditate_counter += delta_t;
+        if (meditate_counter >= 1000) {
+            float meditate_multiplier = AttributeManager::get_meditate_multiplier(player.get_class_type());
+            regen_mp(meditate_multiplier * stats.intelligence);
+            meditate_counter = 0;
+        } else {
+            meditate_counter += delta_t;
+        }
+        if (current_mp == max_mp)
+            is_meditating = false;
+    }
+
     max_hp =  stats.physique *
               AttributeManager::get_class_hp_multiplier(
                   player.get_class_type()) *
@@ -244,4 +261,8 @@ void PlayerCombatComponent::regen(unsigned int amount_hp,
                                   unsigned int amount_mp) {
     regen_hp(amount_hp);
     regen_mp(amount_mp);
+}
+
+void PlayerCombatComponent::set_meditate(bool meditating) {
+    is_meditating = meditating;
 }

@@ -22,6 +22,8 @@ class PlayerCombatComponent : public CombatComponent {
     Armor* armor;
     Armor* shield;
     Weapon* weapon;
+    bool is_meditating;
+    unsigned int meditate_counter;
 
    public:
     PlayerCombatComponent(ItemId helmet_id, ItemId armor_id, ItemId shield_id,
@@ -46,6 +48,7 @@ class PlayerCombatComponent : public CombatComponent {
     void regen(unsigned int amount_hp, unsigned int amount_mp);
     void regen_hp(unsigned int amount_hp);
     void regen_mp(unsigned int amount_mp);
+    void set_meditate(bool meditating);
 
     void update(uint64_t delta_t) override;
     bool attack_ready() const override;
