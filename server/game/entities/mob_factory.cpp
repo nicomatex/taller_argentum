@@ -22,16 +22,12 @@ MobFactory::MobFactory(const char* mobs_path_file) {
         nlohmann::json monster_info = it.value();
         monsters_info.emplace(monster_info["id"], monster_info);
         monsters_names.emplace(monster_info["name"], monster_info["id"]);
-        std::cerr << "MobFactory: reading monster: " << monster_info["name"]
-                  << std::endl;
     }
 
     for (auto& it : mobs["npcs"].items()) {
         nlohmann::json npc_info = it.value();
         npcs_info.emplace(npc_info["id"], npc_info);
         npcs_by_profession.emplace(npc_info["profession"], npc_info["id"]);
-        std::cerr << "MobFactory: reading npc: " << npc_info["name"]
-                  << std::endl;
     }
 }
 MobFactory::~MobFactory() {}

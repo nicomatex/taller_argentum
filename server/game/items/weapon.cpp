@@ -8,6 +8,9 @@ Weapon::Weapon(item_info_t item_info, weapon_info_t weapon_info,
                SpecialAbility* special, uint32_t stack)
     : Item(item_info, stack), weapon_info(weapon_info), special(special) {}
 
+Weapon::Weapon(const Weapon& other, SpecialAbility* special)
+    : Item(other), weapon_info(other.weapon_info), special(special) {}
+
 Weapon::~Weapon() {
     delete special;
 }

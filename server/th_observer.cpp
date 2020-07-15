@@ -87,7 +87,6 @@ void ThObserver::send_update_logs() {
                                            EventFactory::chat_message(msg));
                 } break;
                 case LOG_SPECIAL_ABILITY:
-                    std::cerr << "Observer: SPECIAL ABILITY LOG!\n";
                     handler.push_event(EventFactory::special_ability(log.info));
                     break;
             }

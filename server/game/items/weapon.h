@@ -40,6 +40,8 @@ class Weapon : public Item {
     Weapon(item_info_t item_info, weapon_info_t weapon_info,
            SpecialAbility* special, uint32_t stack = 0);
 
+    Weapon(const Weapon& other, SpecialAbility* special);
+
     /**
      * @brief Devuelve un valor en el rango de daño del arma.
      *

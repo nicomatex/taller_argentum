@@ -333,7 +333,6 @@
 			"min_damage": 4,
 			"max_damage": 8,
 			"mp_cost": 15
-		},
-		"": {}
+		}
 	}
 }
