@@ -1,6 +1,5 @@
 #include "creation_handler.h"
 
-#include "../game/map.h"
 #include "../game/position.h"
 #include "../race_graphics_manager.h"
 #include "../server_manager.h"

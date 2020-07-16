@@ -1,6 +1,5 @@
 #include "client_initializer_handler.h"
 
-#include "../game/map.h"
 #include "../game/position.h"
 #include "../server_manager.h"
 #include "event_factory.h"

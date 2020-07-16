@@ -40,6 +40,8 @@ MapMonitor& Session::get_map() {
 
 void Session::push_action(ClientId client_id, Action* action) {
     std::unique_lock<std::mutex> l(m);
+    if (!client_map.count(client_id))
+        return;
     map.push_action(client_map.at(client_id), action);
 }
 

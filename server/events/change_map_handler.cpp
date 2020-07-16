@@ -18,7 +18,7 @@ void ChangeMapHandler::handle(Event& event) {
         character_manager.save();
         character_manager.set_character(player_data);
     } catch (const std::exception& e) {
-        std::cerr << "ClientDropHandler: " << e.what() << std::endl;
+        std::cerr << "ChangeMapHandler: " << e.what() << std::endl;
     }
 }
 

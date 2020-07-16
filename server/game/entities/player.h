@@ -16,12 +16,16 @@ class Player : public Entity {
     bool alive;
     const int head_id;
     const int body_id;
+    position_t teleport_pos;
+    int teleport_accumulator;
 
     ItemContainer inventory;
 
     Map& map;
     class_type_t class_type;
     race_type_t race_type;
+
+    void _teleport();
 
    public:
     /**
@@ -55,13 +59,15 @@ class Player : public Entity {
     race_type_t get_race_type() const;
     /**
      * @brief Tiempo a inmovilizar al personaje en milisegundos
-     * 
-     * @param delta_t 
+     *
+     * @param delta_t
      */
     void immobilize(int delta_t);
 
     void resuscitate(int delta_t);
     void regen_max();
+
+    void teleport(position_t dest, int delta_t);
 
     void die() override;
     bool is_alive() const override;
@@ -120,8 +126,8 @@ class Player : public Entity {
 
     /**
      * @brief Devuelve el mapa actual del player
-     * 
-     * @return Map& 
+     *
+     * @return Map&
      */
     Map& get_map();
 
@@ -135,7 +141,7 @@ class Player : public Entity {
 
     /**
      * @brief Empieza o detiene la regeneracion de mana al meditar
-     * 
+     *
      */
     void meditate(bool meditating);
 

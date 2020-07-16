@@ -3,7 +3,8 @@
 // Temp
 #include <iostream>
 
-MapTransitions::MapTransitions(nlohmann::json changes, int width, int height) {
+MapTransitions::MapTransitions(MapId map_id, nlohmann::json changes, int width,
+                               int height) {
     for (auto& it : changes["teleports"].items()) {
         nlohmann::json& teleport = it.value();
         position_t position = teleport["position"];
@@ -52,4 +53,9 @@ void MapTransitions::push_change(std::string name, position_t position) {
 
 std::queue<map_change_t>& MapTransitions::get_changes() {
     return changes_queue;
+}
+
+void MapTransitions::teleport(std::string name, position_t dest) {
+    map_change_t change = {name, map_id, dest};
+    changes_queue.push(change);
 }

@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <tuple>
+#include <utility>
 
 // Temp
 #include <iostream>
@@ -14,8 +15,10 @@ MapManager::MapManager(const char* path) {
         std::ifstream map_file(map_info["path"]);
         nlohmann::json map_description = nlohmann::json::parse(map_file);
         MapId map_id = map_info["map_id"];
-        maps.emplace(map_id, MapMonitor(map_description, map_info["mobs"],
-                                        map_info["transitions"]));
+        maps.emplace(
+            std::piecewise_construct, std::forward_as_tuple(map_id),
+            std::forward_as_tuple(map_id, map_description, map_info["mobs"],
+                                  map_info["transitions"]));
         std::cerr << "MapManager: creado mapa: " << map_info["map_name"]
                   << std::endl;
     }

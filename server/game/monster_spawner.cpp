@@ -20,7 +20,7 @@ std::unordered_map<std::string, int> MonsterSpawner::search_monsters() {
 }
 
 MonsterSpawner::MonsterSpawner(Map& map, const nlohmann::json& spawn_list)
-    : map(map), accumulator(0) {
+    : map(map), accumulator(SPAWN_INTERVAL) {
     for (auto& it : spawn_list.items()) {
         const nlohmann::json& monster = it.value();
         spawn_points.emplace(

@@ -24,6 +24,8 @@ Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
       alive(player_info["alive"]),
       head_id(player_info["head_id"]),
       body_id(player_info["body_id"]),
+      teleport_pos({-1, -1}),
+      teleport_accumulator(0),
       inventory(player_info["inventory"]),
       map(map),
       class_type(player_info["class_type"]),
@@ -37,10 +39,24 @@ Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
         ConfigurationManager::get_player_attack_speed());
 }
 
+void Player::_teleport() {
+    map.teleport(get_id(), teleport_pos);
+}
+
 void Player::update(uint64_t delta_t) {
     position_t steps = movement_component->update(delta_t);
-    combat_component->update(delta_t);
     map.move(this->id, steps);
+    combat_component->update(delta_t);
+    if (teleport_accumulator > 0) {
+        std::cerr << "Player: teleport_accumulator: "
+                  << teleport_accumulator - (int)delta_t << std::endl;
+        if (teleport_accumulator - (int)delta_t <= 0) {
+            _teleport();
+            teleport_accumulator = 0;
+        } else {
+            teleport_accumulator -= delta_t;
+        }
+    }
 }
 
 void Player::set_alive(bool alive) {
@@ -77,7 +93,6 @@ nlohmann::json Player::get_data() const {
     }
     aux = combat_component->get_data();
     for (auto& it : aux.items()) {
-        std::cerr << nlohmann::json{it.key(), it.value()}.dump(4) << std::endl;
         entity_data[it.key()] = it.value();
     }
     aux = experience_component.get_data();
@@ -95,8 +110,7 @@ void Player::use(SlotId slot) {
     Item* item;
     try {
         item = inventory.remove(slot, 1);
-    } catch (...) {
-        std::cout << "Excepcion lanzada" << std::endl;
+    } catch (const EmptySlotException& e) {
         return;
     }
     item_type_t type = item->get_type();
@@ -248,17 +262,26 @@ Map& Player::get_map() {
 }
 
 void Player::immobilize(int delta_t) {
-    static_cast<PlayerMovementComponent*>(movement_component)->immobilize(delta_t);    
+    static_cast<PlayerMovementComponent*>(movement_component)
+        ->immobilize(delta_t);
 }
 
 void Player::resuscitate(int delta_t) {
-    static_cast<PlayerCombatComponent*>(combat_component)->resuscitate(delta_t);  
-    //alive = true;
-    //regen_max();
+    static_cast<PlayerCombatComponent*>(combat_component)->resuscitate(delta_t);
 }
 
 void Player::regen_max() {
     static_cast<PlayerCombatComponent*>(combat_component)->regen_max();
+}
+
+void Player::teleport(position_t dest, int delta_t) {
+    teleport_pos = dest;
+    if (delta_t == 0)
+        _teleport();
+    else
+        teleport_accumulator = delta_t;
+    std::cerr << "Player: setting teleport: time: " << delta_t / 1000
+              << " to: " << dest.x << "," << dest.y << std::endl;
 }
 
 void Player::die() {

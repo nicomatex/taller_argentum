@@ -16,18 +16,21 @@ typedef struct map_change {
 
 class MapTransitions {
    private:
+    MapId map_id;
     std::queue<map_change_t> changes_queue;
     std::unordered_map<position_t, std::pair<MapId, position_t>, PositionHasher,
                        PositionComparator>
         teleports;
 
    public:
-    MapTransitions(nlohmann::json changes, int width, int height);
+    MapTransitions(MapId map_id, nlohmann::json changes, int width, int height);
     ~MapTransitions();
 
     bool is_transition(position_t position);
 
     void push_change(std::string name, position_t position);
+
+    void teleport(std::string name, position_t dest);
 
     std::queue<map_change_t>& get_changes();
 };

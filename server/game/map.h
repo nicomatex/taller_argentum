@@ -84,18 +84,19 @@ class Map {
     void add_entity(Entity* entity, position_t position);
 
    public:
-    Map(const nlohmann::json& map_description, const nlohmann::json& map_mobs,
-        const nlohmann::json& map_transitions);
+    Map(MapId map_id, const nlohmann::json& map_description,
+        const nlohmann::json& map_mobs, const nlohmann::json& map_transitions);
     ~Map();
 
-    Map(const Map& other);
-    Map& operator=(const Map& other);
+    Map(const Map& other) = delete;
 
     /* Mueve la entidad asociada al entity_id un tile en la direccion
      * indicada.*/
     void move(EntityId entity_id, position_t steps);
 
     std::queue<map_change_t>& get_transitions();
+
+    void teleport(EntityId player_id, position_t dest);
 
     /* Devuelve el id de entidad asignado dentro del mapa al jugador. */
     nlohmann::json add_player(nlohmann::json player_info);

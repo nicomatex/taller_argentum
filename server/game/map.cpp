@@ -10,14 +10,14 @@
 
 nlohmann::json map_mobs2;
 
-Map::Map(const nlohmann::json& map_description, const nlohmann::json& map_mobs,
-         const nlohmann::json& map_transitions)
+Map::Map(MapId map_id, const nlohmann::json& map_description,
+         const nlohmann::json& map_mobs, const nlohmann::json& map_transitions)
     : width(map_description["width"]),
       height(map_description["height"]),
       _dirty_entities(false),
       entity_matrix({}),
       _dirty_loot(false),
-      transitions(map_transitions, width, height),
+      transitions(map_id, map_transitions, width, height),
       entity_factory(*this),
       monster_spawner(*this, map_mobs["spawns"]) {
     visual_map_info = map_description;
@@ -36,20 +36,6 @@ Map::Map(const nlohmann::json& map_description, const nlohmann::json& map_mobs,
     }
     map_mobs2 = map_mobs;
 }
-
-Map::Map(const Map& other)
-    : width(other.width),
-      height(other.height),
-      position_map(other.position_map),
-      _dirty_entities(other._dirty_entities),
-      entity_matrix(other.entity_matrix),
-      _dirty_loot(other._dirty_loot),
-      loot_matrix(other.loot_matrix),
-      collision_map(other.collision_map),
-      transitions(other.transitions),
-      entity_factory(*this),
-      monster_spawner(*this, other.monster_spawner),
-      visual_map_info(other.visual_map_info) {}
 
 Map::~Map() {
     for (auto it : entity_matrix) delete it.second;
@@ -133,6 +119,15 @@ void Map::move(EntityId entity_id, position_t steps) {
 
 std::queue<map_change_t>& Map::get_transitions() {
     return transitions.get_changes();
+}
+
+void Map::teleport(EntityId player_id, position_t dest) {
+    if (!position_map.count(player_id))
+        return;
+    Entity* player = entity_matrix.at(position_map.at(player_id));
+    if (player->get_type() != PLAYER)
+        return;
+    transitions.teleport(player->get_name(), dest);
 }
 
 nlohmann::json Map::add_player(nlohmann::json player_info) {

@@ -17,12 +17,12 @@ class MapMonitor {
     Map map;
 
    public:
-    MapMonitor(const nlohmann::json& map_description,
+    MapMonitor(MapId map_id, const nlohmann::json& map_description,
                const nlohmann::json& map_mobs,
                const nlohmann::json& map_transitions);
     ~MapMonitor();
 
-    MapMonitor(const MapMonitor& other);
+    MapMonitor(const MapMonitor& other) = delete;
 
     /**/
     nlohmann::json add_player(nlohmann::json player_info);
