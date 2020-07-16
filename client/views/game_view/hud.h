@@ -46,6 +46,7 @@ class Hud {
     SDLText spell_name_text;
     SDLText attack_points_text;
     SDLText defense_points_text;
+    SDLText selected_item_text;
     friend class UiEventHandler;
 
     SDL_Rect _get_scaled_dest(SDLText &text,SDL_Rect dest);
@@ -54,7 +55,8 @@ class Hud {
     void _render_level();
     void _render_player_info();
     void _render_help_panel();
-
+    void _render_selected_item_text();
+    
     void _update_stats();
     void _update_inventory();
     void _update_equipment();

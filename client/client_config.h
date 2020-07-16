@@ -69,7 +69,7 @@
     { 0, 0, 260, 640 }
 
 #define HP_BAR_AREA \
-    { 65, 576, 129, 15 }
+    { 65, 592, 129, 15 }
 #define MP_BAR_AREA \
     { 65, 616, 129, 15 }
 #define XP_BAR_AREA \
@@ -89,7 +89,7 @@
 #define INVENTORY_QTIES_FONT_ID 1
 
 #define CAST_BUTTON_AREA \
-    { 64, 514, 131, 37 }
+    { 64, 540, 131, 37 }
 
 #define GOLD_TEXT_AREA \
     { 85, 435, 114, 25 }
@@ -103,11 +103,13 @@
     { 39, 135, 0, 255 }
 
 #define SPELL_TEXT_AREA \
-    { 65, 485, 129, 20 }
+    { 65, 510, 129, 20 }
 #define ATT_PTS_TEXT_AREA \
     { 154, 200, 40, 15 }
 #define DEF_PTS_TEXT_AREA \
     { 154, 221, 40, 15 }
+
+#define ITEM_NAME_AREA {19,463,180,19}
 
 #define INFO_TEXT_COLOR \
     { 255, 255, 255, 255 }

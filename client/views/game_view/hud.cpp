@@ -57,7 +57,9 @@ Hud::Hud(ResponsiveScaler& scaler, SDLWindow& window, ChatBuffer& chat_buffer,
       attack_points_text("152", ResourceManager::get_instance().get_font(1),
                          INFO_TEXT_COLOR, window.get_renderer()),
       defense_points_text("245", ResourceManager::get_instance().get_font(1),
-                          INFO_TEXT_COLOR, window.get_renderer()) {}
+                          INFO_TEXT_COLOR, window.get_renderer()),
+      selected_item_text("Nothing", ResourceManager::get_instance().get_font(1),
+                         INFO_TEXT_COLOR, window.get_renderer()) {}
 
 Hud::~Hud() {}
 
@@ -103,6 +105,13 @@ void Hud::_update_inventory() {
                 break;
         }
         inventory.set_item(i, icon, quantity);
+    }
+    if (inventory_data["items"][inventory.get_last_clicked_slot()]["type"] !=
+        0) {
+        selected_item_text.update_text(
+            inventory_data["items"][inventory.get_last_clicked_slot()]["name"]);
+    } else {
+        selected_item_text.update_text("");
     }
     gold_text.update_text(std::to_string(int(inventory_data["curr_gold"])));
 }
@@ -165,12 +174,14 @@ void Hud::_update_player_info() {
     spell_name_text.update_text(player_stats.get_ability_name());
     int min_attack = player_stats.get_stat_current_value("att");
     int max_attack = player_stats.get_stat_max_value("att");
-    std::string attack = std::to_string(min_attack) + " - " + std::to_string(max_attack);
+    std::string attack =
+        std::to_string(min_attack) + " - " + std::to_string(max_attack);
     attack_points_text.update_text(attack);
 
     int min_defense = player_stats.get_stat_current_value("def");
     int max_defense = player_stats.get_stat_max_value("def");
-    std::string defense = std::to_string(min_defense) + " - " + std::to_string(max_defense);
+    std::string defense =
+        std::to_string(min_defense) + " - " + std::to_string(max_defense);
     defense_points_text.update_text(defense);
 }
 
@@ -205,6 +216,11 @@ void Hud::_render_help_panel() {
     }
 }
 
+void Hud::_render_selected_item_text() {
+    selected_item_text.render(
+        _get_scaled_dest(selected_item_text, ITEM_NAME_AREA));
+}
+
 void Hud::update() {
     _update_stats();
     _update_equipment();
@@ -226,6 +242,7 @@ void Hud::render() {
     _render_gold_amount();
     _render_level();
     _render_player_info();
+    _render_selected_item_text();
     window.reset_viewport();
     _render_help_panel();
 }
