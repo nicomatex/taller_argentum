@@ -193,7 +193,7 @@ void UiEventHandler::handle() {
                 case SDLK_RETURN:
                     handle_keydown_return();
                     break;
-                case SDLK_SLASH:
+                case SDLK_c:
                     handle_keydown_command();
                     break;
                 case SDLK_s:
