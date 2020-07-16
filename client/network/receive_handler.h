@@ -30,6 +30,7 @@ class ClientReceiveHandler : public BlockingThEventHandler {
     void handle_name_not_found(Event &ev);
     void handle_name_already_online(Event &ev);
     void handle_name_taken(Event &ev);
+    void handle_resuscitate(Event &ev);
     
     MapChangeBuffer &map_change_buffer;
     ChatBuffer &chat_buffer;

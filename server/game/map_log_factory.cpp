@@ -32,3 +32,8 @@ map_log_t MapLogFactory::special_ability(const std::string& player_name,
         nlohmann::json{
             {"ability_id", ability_id}, {"source", source}, {"dest", dest}}};
 }
+
+map_log_t MapLogFactory::resuscitate(const std::string& player_name,
+                                 nlohmann::json message_info) {
+    return {LOG_RESUSCITATE, player_name, message_info};
+}

@@ -74,7 +74,9 @@ class EventFactory {
 
     static Event withdraw_gold_event(ClientId client_id, position_t target, uint32_t amount);
     
-    static Event meditate_event(ClientId client_id); 
+    static Event meditate_event(ClientId client_id);
+
+    static Event resuscitate();
 };
 
 #endif  // EVENT_FACTORY_H

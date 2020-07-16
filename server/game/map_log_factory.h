@@ -11,7 +11,8 @@ typedef enum log_type {
     LOG_RECV_DAMAGE,
     // LOG_RECV_HEAL,
     LOG_SPECIAL_ABILITY,
-    LOG_MESSAGE
+    LOG_MESSAGE,
+    LOG_RESUSCITATE
 } log_type_t;
 
 typedef struct map_log {
@@ -38,6 +39,9 @@ class MapLogFactory {
     static map_log_t special_ability(const std::string& player_name,
                                      uint32_t ability_id, position_t source,
                                      position_t dest);
+
+    static map_log_t resuscitate(const std::string& player_name,
+                                 nlohmann::json message_info);                                   
 };
 
 #endif  // MAP_LOG_FACTORY_H

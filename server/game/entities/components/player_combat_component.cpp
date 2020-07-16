@@ -179,6 +179,8 @@ void PlayerCombatComponent::update(uint64_t delta_t) {
             is_resuscitating = false;
             player.set_alive(true);
             regen_max();
+            player.get_map().push_log(MapLogFactory::resuscitate(
+            player.get_name(), {{"message","Has sido resucitado!"}}));
         }
         return;
     }

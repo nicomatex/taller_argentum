@@ -89,6 +89,16 @@ void ThObserver::send_update_logs() {
                 case LOG_SPECIAL_ABILITY:
                     handler.push_event(EventFactory::special_ability(log.info));
                     break;
+                case LOG_RESUSCITATE:
+                    std::stringstream ss;
+                    ss << "[Cura] ";
+                    ss << std::string(log.info["message"]);
+                    std::string msg = ss.str();
+                    server_manager.send_to(client_id,
+                                           EventFactory::resuscitate());
+                    server_manager.send_to(client_id,
+                                           EventFactory::chat_message(msg));
+                    break;
             }
         } catch (const std::exception& e) {
             std::cerr << "Observer: update_logs error: type " << log.type

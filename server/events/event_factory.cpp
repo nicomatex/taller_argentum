@@ -215,3 +215,8 @@ Event EventFactory::meditate_event(ClientId client_id) {
                               {"client_id", client_id}};
     return Event(ev_json);
 }
+
+Event EventFactory::resuscitate() {
+    nlohmann::json ev_json = {{"ev_id", EV_ID_RESUSCITATE}};
+    return Event(ev_json);
+}

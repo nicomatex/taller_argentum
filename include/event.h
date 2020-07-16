@@ -19,7 +19,8 @@ enum server_to_client {
     EV_ID_NAME_NOTFOUND,
     EV_ID_NAME_TAKEN,
     EV_ID_SPECIAL_ABILITY,
-    EV_ID_NAME_ALREADY_ONLINE
+    EV_ID_NAME_ALREADY_ONLINE,
+    EV_ID_RESUSCITATE
 };
 
 enum client_to_server {

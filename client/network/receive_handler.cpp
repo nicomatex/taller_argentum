@@ -86,6 +86,9 @@ void ClientReceiveHandler::handle(Event &ev) {
             std::cout << "Received special ability" << std::endl;
             map_decorations_buffer.push_special_ability(ev.get_json());
             break;
+        case EV_ID_RESUSCITATE:
+            handle_resuscitate(ev);
+            break;
     };
 }
 
@@ -229,4 +232,8 @@ void ClientReceiveHandler::handle_name_already_online(Event &ev) {
 
 void ClientReceiveHandler::handle_name_taken(Event &ev) {
     game_state_monitor.set_char_creation_state(NAME_TAKEN);
+}
+
+void ClientReceiveHandler::handle_resuscitate(Event &ev) {
+    SoundSystem::get_instance().play_game_sfx(10);
 }
