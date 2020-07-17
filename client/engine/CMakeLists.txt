@@ -10,6 +10,7 @@ add_library(engine
   asset_loading_error.cpp
   sound_system.cpp
   engine_error.cpp
+  in_game_bar.cpp
   in_game_text.cpp
   visual_effect.cpp
 )

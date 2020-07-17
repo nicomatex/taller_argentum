@@ -10,12 +10,12 @@
 class InGameBar : public RenderizableObject {
    private:
     float fill_proportion;
-    SDL_Color color;
     SDLTexture& bar_texture;
 
    public:
-    InGameBar(visual_info_t visual_info, SDL_Color color);
-    ~InGameBar();
+    InGameBar(visual_info_t visual_info);
+
+    void set_fill_proportion(float fill_proportion);
 
     void render(SDL_Rect dest) override;
 };
