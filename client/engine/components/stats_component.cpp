@@ -116,6 +116,8 @@ void StatsComponent::_update_attack(nlohmann::json entity_info) {
         min_attack += int(entity_info["weapon_info"]["min_damage"]);
         max_attack += int(entity_info["weapon_info"]["max_damage"]);
         current_ability = entity_info["weapon_info"]["ability"];
+    }else{
+        current_ability = "";
     }
     current_stat_values["att"] = min_attack;
     max_stat_values["att"] = max_attack;
