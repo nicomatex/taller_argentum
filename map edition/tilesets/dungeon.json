@@ -1,0 +1,22 @@
+{ "columns":16,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"",
+         "target":"."
+        }
+    },
+ "image":"..\/sprites\/tilesets\/3.png",
+ "imageheight":512,
+ "imagewidth":512,
+ "margin":0,
+ "name":"dungeon",
+ "spacing":0,
+ "tilecount":256,
+ "tiledversion":"1.4.1",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":1.4
+}
