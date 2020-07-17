@@ -14,26 +14,25 @@ ClientsMonitor::ClientsMonitor() {}
 ClientsMonitor::~ClientsMonitor() {}
 
 void ClientsMonitor::add_client(ClientId client_id, SocketManager* client) {
-    std::unique_lock<std::mutex> l(m);
+    std::unique_lock<std::recursive_mutex> l(m);
     clients[client_id] = client;
     connected_clients.emplace(client_id);
 }
 
 SocketManager* ClientsMonitor::rm_client(ClientId client_id) {
-    std::unique_lock<std::mutex> l(m);
+    std::unique_lock<std::recursive_mutex> l(m);
     if (connected_clients.count(client_id)) {
         connected_clients.erase(client_id);
         std::cerr << "ClientsMonitor: El cliente : " << client_id
                   << " fue eliminado de forma repentina." << std::endl;
     }
-    std::cerr << "ClientsMonitor: dropping " << client_id << std::endl;
     SocketManager* client = clients.at(client_id);
     clients.erase(client_id);
     return client;
 }
 
 void ClientsMonitor::send_to(ClientId client_id, Event ev) {
-    std::unique_lock<std::mutex> l(m);
+    std::unique_lock<std::recursive_mutex> l(m);
     try {
         if (connected_clients.count(client_id))
             clients[client_id]->send(ev);
@@ -43,7 +42,7 @@ void ClientsMonitor::send_to(ClientId client_id, Event ev) {
 }
 
 void ClientsMonitor::drop(ClientId client_id) {
-    std::unique_lock<std::mutex> l(m);
+    std::unique_lock<std::recursive_mutex> l(m);
     if (!connected_clients.count(client_id))
         return;
     connected_clients.erase(client_id);
@@ -52,7 +51,8 @@ void ClientsMonitor::drop(ClientId client_id) {
 }
 
 void ClientsMonitor::drop_all() {
-    std::unique_lock<std::mutex> l(m);
+    std::unique_lock<std::recursive_mutex> l(m);
+    std::cerr << "ClientsMonitor\n";
     for (auto it = connected_clients.begin(); it != connected_clients.end();) {
         try {
             clients[*it]->send(EventFactory::disconnect());

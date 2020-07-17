@@ -150,8 +150,8 @@ void VisualNPCComponent::update() {
         }
     }
     StatsComponent& stats = entity->get_component<StatsComponent>();
-    health_bar.set_fill_proportion(stats.get_stat_current_value("hp") /
-                                   stats.get_stat_max_value("hp"));
+    health_bar.set_fill_proportion((float)stats.get_stat_current_value("hp") /
+                                   (float)stats.get_stat_max_value("hp"));
 }
 
 bool VisualNPCComponent::is_moving() {

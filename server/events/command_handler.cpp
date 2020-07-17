@@ -123,7 +123,7 @@ void CommandHandler::cmd_whisper(ClientId client_id) {
     } catch (const ClientDisconnectedException& e) {
         chat_msg = "[info] El cliente '" + cmd[0] +
                    "' al que se le quiso enviar un mensaje" +
-                   " esta desconectado.";
+                   " esta desconectado o no existe.";
         server_manager.send_to(client_id, EventFactory::chat_message(chat_msg));
     }
 }

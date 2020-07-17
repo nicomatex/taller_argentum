@@ -39,6 +39,10 @@ nlohmann::json Monster::get_data() const {
     for (auto& it : aux.items()) {
         entity_data[it.key()] = it.value();
     }
+    aux = experience_component.get_data();
+    for (auto& it : aux.items()) {
+        entity_data[it.key()] = it.value();
+    }
     return entity_data;
 }
 

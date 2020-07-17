@@ -74,7 +74,8 @@ SDLTexture& SDLTexture::operator=(SDLTexture&& other) {
 }
 
 SDLTexture::~SDLTexture() {
-    if (this->texture) SDL_DestroyTexture(this->texture);
+    if (this->texture)
+        SDL_DestroyTexture(this->texture);
 }
 
 void SDLTexture::render(SDL_Rect src, SDL_Rect dest) const {
@@ -93,14 +94,26 @@ void SDLTexture::render(SDL_Rect src) const {
     }
 }
 
-int SDLTexture::get_height() const { return this->height; }
-
-int SDLTexture::get_width() const { return this->width; }
-
-void SDLTexture::set_color_mod(uint8_t r, uint8_t g, uint8_t b){
-    SDL_SetTextureColorMod(this->texture,r,g,b);
+int SDLTexture::get_height() const {
+    return this->height;
 }
 
-void SDLTexture::reset_color_mod(){
-    SDL_SetTextureColorMod(this->texture,255,255,255);
+int SDLTexture::get_width() const {
+    return this->width;
+}
+
+void SDLTexture::set_color_mod(uint8_t r, uint8_t g, uint8_t b) {
+    SDL_SetTextureColorMod(this->texture, r, g, b);
+}
+
+void SDLTexture::reset_color_mod() {
+    SDL_SetTextureColorMod(this->texture, 255, 255, 255);
+}
+
+void SDLTexture::set_alpha(uint8_t a) {
+    SDL_SetTextureAlphaMod(this->texture, a);
+}
+
+void SDLTexture::reset_alpha() {
+    SDL_SetTextureAlphaMod(this->texture, 255);
 }

@@ -34,5 +34,9 @@ Entity &EntityFactory::create_npc(nlohmann::json entity_info) {
     npc.add_component<PositionComponent>(10, 10);
     npc.add_component<VisualNPCComponent>(entity_info["sprite_id"],
                                           entity_info["move_speed"], name);
+    npc.add_component<StatsComponent>(
+        entity_info["max_hp"], entity_info["curr_hp"], entity_info["max_mp"],
+        entity_info["curr_mp"], entity_info["limit_exp"],
+        entity_info["curr_exp"], entity_info["curr_level"]);
     return npc;
 }

@@ -1,7 +1,7 @@
 #include "npc.h"
 
-#include "components/npc_movement_component.h"
 #include "components/npc_combat_component.h"
+#include "components/npc_movement_component.h"
 
 Npc::Npc(EntityId entity_id, nlohmann::json npc_info, Map& map)
     : Entity(entity_id, npc_info["name"],
@@ -30,6 +30,14 @@ nlohmann::json Npc::get_data() const {
     entity_data["name"] = get_name();
     entity_data["sprite_id"] = sprite_id;
     nlohmann::json aux = movement_component->get_data();
+    for (auto& it : aux.items()) {
+        entity_data[it.key()] = it.value();
+    }
+    aux = combat_component->get_data();
+    for (auto& it : aux.items()) {
+        entity_data[it.key()] = it.value();
+    }
+    aux = experience_component.get_data();
     for (auto& it : aux.items()) {
         entity_data[it.key()] = it.value();
     }

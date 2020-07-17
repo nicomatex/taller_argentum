@@ -162,6 +162,8 @@ void ClientReceiveHandler::handle_entity_update(Event &ev) {
                 case NPC:
                     entity.get_component<VisualNPCComponent>().server_update(
                         entity_info);
+                    entity.get_component<StatsComponent>().server_update(
+                        entity_info);
                     break;
             }
         }

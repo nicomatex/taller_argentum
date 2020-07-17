@@ -12,7 +12,7 @@
 
 class ClientsMonitor {
    private:
-    std::mutex m;
+    std::recursive_mutex m;
     std::unordered_map<ClientId, SocketManager*> clients;
     std::unordered_set<ClientId> connected_clients;
 

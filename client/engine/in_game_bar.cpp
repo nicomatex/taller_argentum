@@ -13,10 +13,16 @@ void InGameBar::set_fill_proportion(float fill_proportion) {
 }
 
 void InGameBar::render(SDL_Rect dest) {
-    dest.w *= fill_proportion;
     uint8_t red = (uint8_t)(-255 * fill_proportion + 255);
     uint8_t green = (uint8_t)(255 * fill_proportion);
-    uint32_t blue = 0;
+    uint32_t blue = 100;
+    bar_texture.set_color_mod(red, green, blue);
+    bar_texture.set_alpha(128);
+    bar_texture.render(dest);
+    bar_texture.reset_alpha();
+    blue = 0;
+    bar_texture.set_color_mod(red, green, blue);
+    dest.w *= fill_proportion;
     bar_texture.set_color_mod(red, green, blue);
     bar_texture.render(dest);
     bar_texture.reset_color_mod();

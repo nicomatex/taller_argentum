@@ -8,7 +8,7 @@
 
 /**
  * @brief Objeto de textura de SDL.
- * 
+ *
  */
 class SDLTexture {
    protected:
@@ -76,6 +76,10 @@ class SDLTexture {
     void set_color_mod(uint8_t r, uint8_t g, uint8_t b);
 
     void reset_color_mod();
+
+    void set_alpha(uint8_t a);
+
+    void reset_alpha();
 };
 
 #endif
