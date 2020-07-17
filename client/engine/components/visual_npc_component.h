@@ -6,6 +6,7 @@
 #include "../ECS/component.h"
 #include "../actor.h"
 #include "../camera.h"
+#include "../in_game_bar.h"
 #include "../in_game_text.h"
 
 /**
@@ -22,6 +23,7 @@ class VisualNPCComponent : public Component {
     int transition_offset_y;
     InGameText render_name;
     InGameText render_damage;
+    InGameBar health_bar;
     bool recently_damaged;
     SDLTimer damage_render_timer;
     SDLTimer transition_timer;
@@ -77,7 +79,7 @@ class VisualNPCComponent : public Component {
 
     /**
      * @brief Indica que se debe renderizar el danio recibido.
-     * 
+     *
      * @param damage Danio recibido.
      */
     void display_damage(int damage);

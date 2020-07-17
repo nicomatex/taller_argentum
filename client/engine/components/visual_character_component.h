@@ -7,7 +7,9 @@
 #include "../actor.h"
 #include "../camera.h"
 #include "../in_game_text.h"
+#include "../in_game_bar.h"
 #include "../visual_effect.h"
+
 
 typedef std::unordered_map<std::string, Actor> Parts;
 typedef std::unordered_map<std::string, int> PartIds;
@@ -26,6 +28,7 @@ class VisualCharacterComponent : public Component {
     PartIds part_ids;
     InGameText render_name;
     InGameText render_damage;
+    InGameBar health_bar;
     VisualEffect meditation_effect;
     bool recently_damaged;
     bool is_meditating;

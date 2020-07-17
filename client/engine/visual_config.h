@@ -22,6 +22,7 @@
 #define MONSTER_NAME_COLOR {255,114,0,0}
 #define NAME_FONT_ID 1
 #define NAME_INFO {0,60,0,0}
+#define HEALTH_BAR_INFO {120, 20, -10, 10}
 
 #define DAMAGE_COLOR {255,0,0,0}
 #define DAMAGE_FONT_ID 1

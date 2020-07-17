@@ -610,6 +610,12 @@
                 "filename": "23.png",
                 "needs ckey": false,
                 "ckey" : [0,0,0]
+            },
+            {
+                "id":24,
+                "filename": "24.png",
+                "needs ckey": true,
+                "ckey" : [0,0,0]
             }
     	]
     },

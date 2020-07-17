@@ -4,6 +4,7 @@
 #include "../ECS/entity.h"
 #include "../engine_config.h"
 #include "../visual_config.h"
+#include "stats_component.h"
 
 VisualNPCComponent::VisualNPCComponent(int body_id, int speed,
                                        const std::string& name)
@@ -15,6 +16,7 @@ VisualNPCComponent::VisualNPCComponent(int body_id, int speed,
       transition_offset_y(0),
       render_name(name, MONSTER_NAME_COLOR, NAME_FONT_ID, NAME_INFO),
       render_damage("0", DAMAGE_COLOR, DAMAGE_FONT_ID, DAMAGE_INFO),
+      health_bar(HEALTH_BAR_INFO),
       recently_damaged(false) {
     int real_width = ResourceManager::get_instance()
                          .get_animation_pack("npcs", body_id)
@@ -34,8 +36,7 @@ VisualNPCComponent::VisualNPCComponent(int body_id, int speed,
     if (arbitrary_width > SIZE_GRANULARITY)
         offset_x = (SIZE_GRANULARITY - arbitrary_width) / 2;
 
-    body.set_visual_info(
-        {arbitrary_width, arbitrary_height, offset_x, 0});
+    body.set_visual_info({arbitrary_width, arbitrary_height, offset_x, 0});
 }
 
 VisualNPCComponent::~VisualNPCComponent() {}
@@ -52,6 +53,8 @@ void VisualNPCComponent::draw(Camera& camera) {
     camera.draw(&body, current_x, current_y, transition_offset_x,
                 transition_offset_y);
     camera.draw(&render_name, current_x, current_y, transition_offset_x,
+                transition_offset_y);
+    camera.draw(&health_bar, current_x, current_y, transition_offset_x,
                 transition_offset_y);
     if (recently_damaged) {
         camera.draw(&render_damage, current_x, current_y, transition_offset_x,
@@ -70,30 +73,38 @@ void VisualNPCComponent::_update_offset() {
 
     float speed_factor_x =
         (float)abs(transition_offset_x) / (float)MOVEMENT_OFFSET;
-    if (speed_factor_x < 1) speed_factor_x = 1;
+    if (speed_factor_x < 1)
+        speed_factor_x = 1;
 
     float speed_factor_y =
         (float)abs(transition_offset_y) / (float)MOVEMENT_OFFSET;
-    if (speed_factor_y < 1) speed_factor_y = 1;
+    if (speed_factor_y < 1)
+        speed_factor_y = 1;
 
     if (transition_offset_x > 0) {
         transition_offset_x -= delta_offset * speed_factor_x;
-        if (transition_offset_x <= 0) stop_x = true;
+        if (transition_offset_x <= 0)
+            stop_x = true;
     } else if (transition_offset_x < 0) {
         transition_offset_x += delta_offset * speed_factor_x;
-        if (transition_offset_x >= 0) stop_x = true;
+        if (transition_offset_x >= 0)
+            stop_x = true;
     } else if (transition_offset_y > 0) {
         transition_offset_y -= delta_offset * speed_factor_y;
-        if (transition_offset_y <= 0) stop_y = true;
+        if (transition_offset_y <= 0)
+            stop_y = true;
     } else if (transition_offset_y < 0) {
         transition_offset_y += delta_offset * speed_factor_y;
-        if (transition_offset_y >= 0) stop_x = true;
+        if (transition_offset_y >= 0)
+            stop_x = true;
     }
 
     if (stop_x || stop_y) {
         transition_timer.stop();
-        if (stop_x) transition_offset_x = 0;
-        if (stop_y) transition_offset_y = 0;
+        if (stop_x)
+            transition_offset_x = 0;
+        if (stop_y)
+            transition_offset_y = 0;
     } else {
         transition_timer.start();
     }
@@ -104,7 +115,8 @@ void VisualNPCComponent::_update_animation(int delta_x, int delta_y) {
         body.set_move_status(IDLE);
     }
 
-    if (delta_x == 0 && delta_y == 0) return;
+    if (delta_x == 0 && delta_y == 0)
+        return;
     if (!(entity->get_component<PositionComponent>().position_initialized()))
         return;
 
@@ -137,6 +149,9 @@ void VisualNPCComponent::update() {
             damage_render_timer.stop();
         }
     }
+    StatsComponent& stats = entity->get_component<StatsComponent>();
+    health_bar.set_fill_proportion(stats.get_stat_current_value("hp") /
+                                   stats.get_stat_max_value("hp"));
 }
 
 bool VisualNPCComponent::is_moving() {
