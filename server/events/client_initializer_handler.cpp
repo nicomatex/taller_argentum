@@ -14,7 +14,6 @@ void ClientInitializeHandler::handle(Event& event) {
         std::string player_name = connect_info["player"]["name"];
         nlohmann::json player_info =
             character_manager.get_character(player_name);
-        server_manager.add_name(client_id, player_name);
         server_manager.add_player(client_id, player_info);
         std::cout << "ClientInitializerHandler: Added player: " << player_name
                   << std::endl;

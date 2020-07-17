@@ -47,7 +47,7 @@ void MonsterSpawner::update(uint64_t delta_t) {
         if (!monster_count.count(it.first)) {
             monster_count.emplace(it.first, 0);
         }
-        while (monster_count.at(it.first) < pair.first) {
+        if (monster_count.at(it.first) < pair.first) {
             Monster* monster = map.entity_factory.create_monster(it.first);
             position_t pos = pair.second;
             pos = {RandomEventGenerator::random_in(pos.x - 3, pos.x + 3),

@@ -12,7 +12,7 @@
  * @brief Intervalo de tiempo para el __spawn__ de mosntruos (en ms).
  *
  */
-#define SPAWN_INTERVAL 15000
+#define SPAWN_INTERVAL 7000
 
 class Map;
 
@@ -23,6 +23,7 @@ class MonsterSpawner {
     uint64_t accumulator;
 
     std::unordered_map<std::string, int> search_monsters();
+
    public:
     MonsterSpawner(Map& map, const nlohmann::json& spawn_list);
     ~MonsterSpawner();

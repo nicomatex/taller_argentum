@@ -42,6 +42,9 @@ class ServerManager {
 
     ServerManager();
 
+    MapMonitor& get_map_by_client(ClientId client_id);
+    MapMonitor& get_map(MapId map_id);
+
    public:
     static ServerManager& get_instance();
 
@@ -60,17 +63,10 @@ class ServerManager {
     nlohmann::json change_player_map(ClientId client_id,
                                      position_t new_position, MapId new_map);
 
-    void add_name(ClientId client_id, const std::string& name);
-    void rm_name(ClientId client_id);
-
     void send_to(ClientId client_id, const Event& ev);
 
     std::string get_name_by_client(ClientId client_id);
     ClientId get_client_by_name(const std::string& name);
-
-    MapId get_map_id(ClientId client_id);
-    MapMonitor& get_map_by_client(ClientId client_id);
-    MapMonitor& get_map(MapId map_id);
 
     Session& get_session(ClientId client_id);
 

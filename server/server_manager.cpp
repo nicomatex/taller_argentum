@@ -69,7 +69,7 @@ void ServerManager::rm_client(ClientId client_id) {
     std::cerr << "ServerManager: stopped client: " << client_id << std::endl;
     client->join();
     std::cerr << "ServerManager: joined client: " << client_id << std::endl;
-    rm_name(client_id);
+    clients_names.rm_name(client_id);
     delete client;
 }
 
@@ -77,22 +77,15 @@ void ServerManager::drop_client(ClientId client_id) {
     clients.drop(client_id);
 }
 
-void ServerManager::add_name(ClientId client_id, const std::string& name) {
-    clients_names.add_name(client_id, name);
-}
-void ServerManager::rm_name(ClientId client_id) {
-    clients_names.rm_name(client_id);
-}
-
 void ServerManager::add_player(ClientId client_id, nlohmann::json player_data) {
     std::unique_lock<std::recursive_mutex> l(m);
-    // add_name(client_id, player_data["name"]);
+    clients_names.add_name(client_id, player_data["name"]);
     Bank::get_instance().add_account(player_data["name"], player_data["vault"]);
     MapId map_id = player_data["map_id"];
 
-    std::cerr << "ServerManager: adding player: " << player_data["name"]
-              << " in map " << map_id << " at " << player_data["pos"]["x"]
-              << "," << player_data["pos"]["y"] << std::endl;
+    // std::cerr << "ServerManager: adding player: " << player_data["name"]
+    //           << " in map " << map_id << " at " << player_data["pos"]["x"]
+    //           << "," << player_data["pos"]["y"] << std::endl;
 
     MapMonitor& map_monitor = get_map(map_id);
     // Añadimos el jugador al mapa
@@ -132,6 +125,7 @@ nlohmann::json ServerManager::rm_player(ClientId client_id) {
     //           << " in map " << player_data["map_id"] << " at "
     //           << player_data["pos"]["x"] << "," << player_data["pos"]["y"]
     //           << std::endl;
+
     return player_data;
 }
 
@@ -142,7 +136,6 @@ nlohmann::json ServerManager::change_player_map(ClientId client_id,
     nlohmann::json player_data = rm_player(client_id);
     player_data["map_id"] = new_map;
     player_data["pos"] = new_pos;
-    send_to(client_id, EventFactory::notify_new_map());
     add_player(client_id, player_data);
     return player_data;
 }

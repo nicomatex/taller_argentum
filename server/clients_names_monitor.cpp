@@ -8,7 +8,8 @@ ClientsNamesMonitor::~ClientsNamesMonitor() {}
 void ClientsNamesMonitor::add_name(ClientId client_id,
                                    const std::string& name) {
     std::unique_lock<std::mutex> l(m);
-    if (clients_names.second.count(name))
+    if (clients_names.second.count(name) &&
+        client_id != clients_names.second.at(name))
         throw DuplicatedPlayerException(name);
     clients_names.first.emplace(client_id, name);
     clients_names.second.emplace(name, client_id);

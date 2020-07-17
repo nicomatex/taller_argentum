@@ -45,10 +45,9 @@ void CreationHandler::handle(Event& event) {
                                  "items_stacks":[0,0,0,0,0,0,0,0,0,0,0,0],
                                  "curr_gold":0})"_json;
         character_manager.add_character(player_info);
-        server_manager.add_name(client_id, player_name);
-        std::cout << "ClientInitializerHandler: Creating player: "
-                  << player_name << std::endl;
         server_manager.add_player(client_id, player_info);
+        std::cout << "ClientInitializerHandler: Created player: " << player_name
+                  << std::endl;
     } catch (const DuplicatedPlayerException& e) {
         server_manager.send_to(client_id, EventFactory::name_taken());
     }
