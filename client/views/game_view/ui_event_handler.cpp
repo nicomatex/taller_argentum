@@ -249,8 +249,8 @@ void UiEventHandler::handle() {
         } else if (e.type == SDL_TEXTINPUT) {  // Input de texto
             hud.chat.add_characters(e.text.text);
         } else if (e.type == SDL_MOUSEBUTTONUP) {  // Clicks
+            hud.handle_event(e);
             handle_click(e);
         }
-        hud.handle_event(e);
     }
 }
