@@ -1,5 +1,6 @@
 #include "monster_spawner.h"
 
+#include "configuration_manager.h"
 #include "entities/mob_factory.h"
 #include "map.h"
 #include "random_event_generator.h"
@@ -20,7 +21,9 @@ std::unordered_map<std::string, int> MonsterSpawner::search_monsters() {
 }
 
 MonsterSpawner::MonsterSpawner(Map& map, const nlohmann::json& spawn_list)
-    : map(map), accumulator(SPAWN_INTERVAL) {
+    : map(map), accumulator(ConfigurationManager::get_spawn_interval()) {
+    if (map.is_safe())
+        return;
     for (auto& it : spawn_list.items()) {
         const nlohmann::json& monster = it.value();
         spawn_points.emplace(
@@ -31,14 +34,9 @@ MonsterSpawner::MonsterSpawner(Map& map, const nlohmann::json& spawn_list)
 
 MonsterSpawner::~MonsterSpawner() {}
 
-MonsterSpawner::MonsterSpawner(Map& map, const MonsterSpawner& other)
-    : spawn_points(other.spawn_points),
-      map(map),
-      accumulator(other.accumulator) {}
-
 void MonsterSpawner::update(uint64_t delta_t) {
     accumulator += delta_t;
-    if (accumulator < SPAWN_INTERVAL)
+    if (accumulator < ConfigurationManager::get_spawn_interval())
         return;
     accumulator = 0;
     std::unordered_map<std::string, int> monster_count = search_monsters();

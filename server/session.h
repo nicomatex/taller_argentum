@@ -10,16 +10,29 @@
 #include "network/th_broadcaster.h"
 #include "th_observer.h"
 
-// Clave: id de cliente, valor: id de entidad del jugador.
-typedef std::unordered_map<ClientId, EntityId> ClientMap;
-
 class Session {
    private:
+    /**
+     * @brief Mapa protegido al que está asociada la sesión.
+     *
+     */
     MapMonitor& map;
-    ClientIdSet clients;
-    std::mutex m;
-    ClientMap client_map;
+    /**
+     * @brief Mapeo protegido de Ids de clientes a Ids de entidades en el mapa
+     * asociado a la sesión.
+     *
+     */
+    ClientToEntityMap clients;
+    /**
+     * @brief Thread encargado de transmitir a todos los clientes.
+     *
+     */
     ThBroadcaster broadcaster;
+    /**
+     * @brief Thread encargado de observar y obtener las actualizaciones del
+     * mapa asociado.
+     *
+     */
     ThObserver observer;
 
    public:
@@ -29,6 +42,13 @@ class Session {
 
     void finish();
 
+    /**
+     * @brief Agregar un cliente a la sesión.
+     *
+     * @param new_client Id del nuevo cliente.
+     * @param entity_id Id de entidad asociada del mapa en el que se encuentra
+     * el jugador del cliente.
+     */
     void add_client(ClientId new_client, EntityId entity_id);
 
     EntityId rm_client(ClientId client_id);
@@ -37,6 +57,11 @@ class Session {
 
     MapMonitor& get_map();
 
+    /**
+     * @brief Envía a todos los clientes en la sesión un evento.
+     *
+     * @param ev Evento a ser transmitido a todos los clientes.
+     */
     void broadcast(const Event& ev);
 
     ~Session();

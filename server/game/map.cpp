@@ -8,14 +8,14 @@
 
 #include "entities/player.h"
 
-nlohmann::json map_mobs2;
-
-Map::Map(MapId map_id, const std::string& map_name,
+Map::Map(MapId map_id, const std::string& map_name, bool is_safe,
          const nlohmann::json& map_description, const nlohmann::json& map_mobs,
          const nlohmann::json& map_transitions)
     : width(map_description["width"]),
       height(map_description["height"]),
+      _is_safe(is_safe),
       map_name(map_name),
+      healer_pos(map_mobs["healer"]),
       _dirty_entities(false),
       entity_matrix({}),
       _dirty_loot(false),
@@ -36,7 +36,15 @@ Map::Map(MapId map_id, const std::string& map_name,
             visual_map_info["layers"].erase(std::stoi(layer.key()));
         }
     }
-    map_mobs2 = map_mobs;
+    Npc* npc = entity_factory.create_npc(BANKER);
+    position_t pos = map_mobs["banker"];
+    add_entity(npc, pos);
+    npc = entity_factory.create_npc(MERCHANT);
+    pos = map_mobs["merchant"];
+    add_entity(npc, pos);
+    npc = entity_factory.create_npc(HEALER);
+    add_entity(npc, healer_pos);
+    std::cerr << "Adding npcs\n";
 }
 
 Map::~Map() {
@@ -108,8 +116,8 @@ void Map::move(EntityId entity_id, position_t steps) {
     position.x += steps.x;
     position.y += steps.y;
 
-    if (entity->get_type() == PLAYER && transitions.is_transition(position))
-        transitions.push_change(entity->get_name(), position);
+    if (entity->get_type() == PLAYER)
+        transitions.push_if_transition(entity->get_name(), position);
     if (collides(entity_matrix, position))
         return;
 
@@ -137,21 +145,6 @@ void Map::teleport(EntityId player_id, position_t dest) {
 }
 
 nlohmann::json Map::add_player(nlohmann::json player_info) {
-    static bool a = true;
-    if (a) {
-        a = false;
-        Npc* npc = entity_factory.create_npc(BANKER);
-        position_t pos = map_mobs2["banker"];
-        add_entity(npc, pos);
-        npc = entity_factory.create_npc(MERCHANT);
-        pos = map_mobs2["merchant"];
-        add_entity(npc, pos);
-        npc = entity_factory.create_npc(HEALER);
-        pos = map_mobs2["healer"];
-        add_entity(npc, pos);
-        std::cerr << "Adding npcs\n";
-    }
-
     Player* player = entity_factory.create_player(player_info);
 
     add_entity(player, player_info["pos"]);
@@ -186,6 +179,14 @@ bool Map::entity_exists(EntityId entity_id) {
 
 position_t Map::get_position(EntityId entity_id) {
     return position_map.at(entity_id);
+}
+
+position_t Map::get_healer_pos() const {
+    return healer_pos;
+}
+
+bool Map::is_safe() const {
+    return _is_safe;
 }
 
 void Map::update(uint64_t delta_t) {

@@ -12,7 +12,7 @@ void ThBroadcaster::handle(Event& ev) {
     }
 }
 
-ThBroadcaster::ThBroadcaster(ClientIdSet& clients)
+ThBroadcaster::ThBroadcaster(ClientToEntityMap& clients)
     : BlockingThEventHandler(), clients(clients) {}
 
 ThBroadcaster::~ThBroadcaster() {}

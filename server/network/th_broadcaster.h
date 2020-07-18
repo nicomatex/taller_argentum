@@ -6,13 +6,13 @@
 
 class ThBroadcaster : public BlockingThEventHandler {
    private:
-    ClientIdSet& clients;
+    ClientToEntityMap& clients;
 
    protected:
     virtual void handle(Event& ev) override;
 
    public:
-    ThBroadcaster(ClientIdSet& clients);
+    ThBroadcaster(ClientToEntityMap& clients);
 
     ~ThBroadcaster();
 };

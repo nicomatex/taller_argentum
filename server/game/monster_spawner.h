@@ -8,17 +8,19 @@
 #include "../../include/nlohmann/json.hpp"
 #include "position.h"
 
-/**
- * @brief Intervalo de tiempo para el __spawn__ de mosntruos (en ms).
- *
- */
-#define SPAWN_INTERVAL 7000
-
 class Map;
 
+/**
+ * @brief Clase que mantiene los "spawns" de monstruos en un mapa.
+ *
+ * Es inicializada con información de qué, y cuántos monstruos se deben agregar
+ * en qué posiciones del mapa.
+ *
+ */
 class MonsterSpawner {
    private:
-    std::unordered_map<std::string, std::pair<int, position_t>> spawn_points;
+    std::unordered_multimap<std::string, std::pair<int, position_t>>
+        spawn_points;
     Map& map;
     uint64_t accumulator;
 
@@ -28,8 +30,18 @@ class MonsterSpawner {
     MonsterSpawner(Map& map, const nlohmann::json& spawn_list);
     ~MonsterSpawner();
 
-    MonsterSpawner(Map& map, const MonsterSpawner& other);
+    MonsterSpawner(Map& map, const MonsterSpawner& other) = delete;
 
+    /**
+     * @brief Update del MonsterSpawner.
+     *
+     * Pasado el tiempo definido por la constante, en caso de que haya menos de
+     * la cantidad indicada en el archivo de configuración (y si el mapa no es
+     * seguro) agrega uno de cada tipo faltante en una posición aleatoria
+     * cercana a la dada en la configuración.
+     *
+     * @param delta_t
+     */
     void update(uint64_t delta_t);
 };
 

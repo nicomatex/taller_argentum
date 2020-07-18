@@ -11,4 +11,9 @@ void ActionUseAbility::execute(Map& map, EntityId entity_id) const {
     Entity* targeted = Action::get_entity(map, target);
     player->meditate(false);
     player->use_ability(targeted, target);
+    Entity* target_entity = Action::get_entity(map, target);
+    if (!target_entity)
+        return;
+    if (!target_entity->is_alive() && target_entity->get_type() == MONSTER)
+        Action::rm_entity(map, target_entity->get_id());
 }

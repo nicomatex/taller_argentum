@@ -15,7 +15,7 @@ void ClientInitializeHandler::handle(Event& event) {
         nlohmann::json player_info =
             character_manager.get_character(player_name);
         server_manager.add_player(client_id, player_info);
-        std::cout << "ClientInitializerHandler: Added player: " << player_name
+        std::cerr << "ClientInitializerHandler: Added player: " << player_name
                   << std::endl;
     } catch (const CharacterNotFoundException& e) {
         server_manager.send_to(client_id, EventFactory::name_not_found());

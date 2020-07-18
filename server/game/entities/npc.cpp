@@ -4,10 +4,9 @@
 #include "components/npc_movement_component.h"
 
 Npc::Npc(EntityId entity_id, nlohmann::json npc_info, Map& map)
-    : Entity(entity_id, npc_info["name"],
+    : Entity(entity_id, map, npc_info["name"],
              new NpcMovementComponent(1, map, entity_id),
              new NpcCombatComponent(), 1, 0),
-      map(map),
       sprite_id(npc_info["sprite_id"]),
       proffesion(npc_info["profession"]) {}
 

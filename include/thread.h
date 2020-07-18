@@ -12,38 +12,70 @@ class Thread {
     std::thread thread;
 
    public:
-    // Create a guarded Thread
+    /**
+     * @brief Construct a new Thread object.
+     *
+     */
     Thread();
 
-    // Thread cannot be copied
     Thread(const Thread&) = delete;
     Thread& operator=(const Thread&) = delete;
 
-    // Move Constructor
+    /**
+     * @brief Move constructor.
+     *
+     * @param other
+     */
     Thread(Thread&& other);
     virtual Thread& operator=(Thread&& other);
 
-    // Functor for starting the thread
+    /**
+     * @brief Thread as a functor, same as start().
+     *
+     */
     void operator()();
 
-    // Start the thread
+    /**
+     * @brief Start the thread.
+     *
+     */
     void start();
 
-    // Join the thread
+    /**
+     * @brief Join the thread.
+     *
+     */
     virtual void join();
 
-    // Sleeps for value in us
+    /**
+     * @brief  Sleeps for value in micro-seconds.
+     *
+     * @param us
+     */
     void usleep(unsigned int us);
 
+    /**
+     * @brief Wrapper of std::this_thread::sleep_for
+     *
+     * @tparam Rep
+     * @tparam Period
+     * @param duration
+     */
     template <class Rep, class Period>
     void sleep(const std::chrono::duration<Rep, Period>& duration) {
         std::this_thread::sleep_for(duration);
     }
 
-    // Implemented by children
+    /**
+     * @brief Function to be called by the thread.
+     *
+     */
     virtual void run() = 0;
 
-    // Deletes safely the thread, if it not joined, join()
+    /**
+     * @brief Deletes safely the thread, if it not joined, join()
+     *
+     */
     virtual ~Thread();
 };
 

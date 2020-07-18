@@ -21,7 +21,6 @@ class Player : public Entity {
 
     ItemContainer inventory;
 
-    Map& map;
     class_type_t class_type;
     race_type_t race_type;
 

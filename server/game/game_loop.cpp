@@ -21,7 +21,7 @@ void GameLoop::run() {
     } catch (...) {
         std::cerr << "GameLoop: Unknown exception" << std::endl;
     }
-    std::cout << "Gameloop finished" << std::endl;
+    std::cerr << "Gameloop finished" << std::endl;
 }
 
 void GameLoop::stop() {

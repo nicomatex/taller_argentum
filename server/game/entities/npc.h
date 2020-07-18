@@ -9,7 +9,6 @@ class Map;
 
 class Npc : public Entity {
    private:
-    Map& map;
     uint32_t sprite_id;
     npc_proffesion_t proffesion;
 

@@ -17,7 +17,7 @@ class MapMonitor {
     Map map;
 
    public:
-    MapMonitor(MapId map_id, const std::string& map_name,
+    MapMonitor(MapId map_id, const std::string& map_name, bool is_safe,
                const nlohmann::json& map_description,
                const nlohmann::json& map_mobs,
                const nlohmann::json& map_transitions);

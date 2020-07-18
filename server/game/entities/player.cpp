@@ -19,7 +19,7 @@
 #include <iostream>
 
 Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
-    : Entity(entity_id, player_info["name"], player_info["curr_level"],
+    : Entity(entity_id, map, player_info["name"], player_info["curr_level"],
              player_info["curr_exp"]),
       alive(player_info["alive"]),
       head_id(player_info["head_id"]),
@@ -27,7 +27,6 @@ Player::Player(EntityId entity_id, nlohmann::json player_info, Map& map)
       teleport_pos({-1, -1}),
       teleport_accumulator(0),
       inventory(player_info["inventory"]),
-      map(map),
       class_type(player_info["class_type"]),
       race_type(player_info["race_type"]) {
     movement_component = new PlayerMovementComponent(7);
@@ -144,10 +143,6 @@ void Player::use_ability(Entity* target, position_t target_pos) {
     for (const map_log_t& log : logs) {
         map.push_log(log);
     }
-    if (!target)
-        return;
-    if (!target->is_alive() && target->get_type() == MONSTER)
-        map.rm_entity(target->get_id());
 }
 
 void Player::add_item(Item* item) {
@@ -321,7 +316,7 @@ bool Player::is_alive() const {
 }
 
 bool Player::can_attack(Entity* attacked) const {
-    if (!combat_component->attack_ready())
+    if (!combat_component->attack_ready() || map.is_safe())
         return false;
     if (attacked->get_type() == MONSTER)
         return true;

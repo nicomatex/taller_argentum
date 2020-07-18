@@ -5,11 +5,12 @@
 // Temp
 #include <iostream>
 
-MapMonitor::MapMonitor(MapId map_id, const std::string& map_name,
+MapMonitor::MapMonitor(MapId map_id, const std::string& map_name, bool is_safe,
                        const nlohmann::json& map_description,
                        const nlohmann::json& map_mobs,
                        const nlohmann::json& map_transitions)
-    : map(map_id, map_name, map_description, map_mobs, map_transitions) {}
+    : map(map_id, map_name, is_safe, map_description, map_mobs,
+          map_transitions) {}
 
 MapMonitor::~MapMonitor() {}
 

@@ -14,4 +14,8 @@ Entity* Action::get_entity(Map& map, position_t position) {
     return map.entity_matrix.at(position);
 }
 
+void Action::rm_entity(Map& map, EntityId entity_id) {
+    map.rm_entity(entity_id);
+}
+
 Action::~Action() {}

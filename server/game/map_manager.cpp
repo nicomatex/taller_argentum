@@ -18,10 +18,10 @@ void MapManager::create_maps() {
         nlohmann::json map_description = nlohmann::json::parse(map_file);
         MapId map_id = map_info["map_id"];
         const std::string& map_name = map_info["map_name"];
-        maps.emplace(
-            std::piecewise_construct, std::forward_as_tuple(map_id),
-            std::forward_as_tuple(map_id, map_name, map_description,
-                                  map_info["mobs"], map_info["transitions"]));
+        maps.emplace(std::piecewise_construct, std::forward_as_tuple(map_id),
+                     std::forward_as_tuple(
+                         map_id, map_name, map_info["is_safe"], map_description,
+                         map_info["mobs"], map_info["transitions"]));
         std::cerr << "MapManager: creado mapa: " << map_info["map_name"]
                   << std::endl;
     }

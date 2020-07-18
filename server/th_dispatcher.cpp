@@ -1,5 +1,7 @@
 #include "th_dispatcher.h"
 
+#include <iostream>
+
 #include "../include/nlohmann/json.hpp"
 #include "events/attack_handler.h"
 #include "events/buy_handler.h"
@@ -15,6 +17,7 @@
 #include "events/heal_handler.h"
 #include "events/inventory_handler.h"
 #include "events/list_handler.h"
+#include "events/meditate_handler.h"
 #include "events/movement_handler.h"
 #include "events/pickup_loot_handler.h"
 #include "events/resuscitate_handler.h"
@@ -23,11 +26,7 @@
 #include "events/use_ability_handler.h"
 #include "events/withdraw_gold_handler.h"
 #include "events/withdraw_item_handler.h"
-#include "events/meditate_handler.h"
 #include "server_manager.h"
-
-// Temp
-#include <iostream>
 
 void ThDispatcher::apply_to_threaded(void (BlockingThEventHandler::*func)()) {
     for (auto it : handlers) {
@@ -41,12 +40,12 @@ void ThDispatcher::apply_to_threaded(void (BlockingThEventHandler::*func)()) {
 
 void ThDispatcher::stop_handlers() {
     apply_to_threaded(&BlockingThEventHandler::stop);
-    std::cerr << "Stopped handlers\n";
+    std::cerr << "Dispatcher: Stopped handlers\n";
 }
 
 void ThDispatcher::join_handlers() {
     apply_to_threaded(&BlockingThEventHandler::join);
-    std::cerr << "Joined handlers\n";
+    std::cerr << "Dispatcher: Joined handlers\n";
 }
 
 void ThDispatcher::stop_and_join_handlers() {
@@ -61,7 +60,6 @@ void ThDispatcher::stop_and_join_handlers() {
 }
 
 void ThDispatcher::handle(Event& event) {
-    std::unique_lock<std::mutex> l(m);
     nlohmann::json json_ev = event.get_json();
     int ev_id = json_ev["ev_id"];
     try {
@@ -143,7 +141,6 @@ ThDispatcher::~ThDispatcher() {
 }
 
 void ThDispatcher::stop() {
-    std::unique_lock<std::mutex> l(m);
     BlockingThEventHandler::stop();
     stop_handlers();
 }

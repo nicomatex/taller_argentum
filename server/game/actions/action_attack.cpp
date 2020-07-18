@@ -9,7 +9,7 @@ ActionAttack::ActionAttack() {}
 
 void ActionAttack::execute(Map& map, EntityId entity_id) const {
     Entity* attacker = Action::get_entity(map, entity_id);
-    if (!attacker || !attacker->is_alive())
+    if (!attacker || !attacker->is_alive() || map.is_safe())
         return;
     if (attacker->get_type() == PLAYER) {
         Player* player = static_cast<Player*>(attacker);
@@ -35,10 +35,10 @@ void ActionAttack::execute(Map& map, EntityId entity_id) const {
                                    {"dodged", result.dodged},
                                    {"from", attacker->get_name()}}));
     }
-        
+
     if (result.killed) {
         attacked->die();
         if (attacked->get_type() == MONSTER)
-            map.rm_entity(attacked->get_id());
+            Action::rm_entity(map, attacked->get_id());
     }
 }

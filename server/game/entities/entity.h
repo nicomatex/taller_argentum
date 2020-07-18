@@ -10,9 +10,12 @@
 #include "components/experience_component.h"
 #include "components/movement_component.h"
 
+class Map;
+
 class Entity {
    protected:
     const EntityId id;
+    Map& map;
     const std::string name;
 
     MovementComponent* movement_component;
@@ -20,12 +23,12 @@ class Entity {
     ExperienceComponent experience_component;
 
    public:
-    Entity(EntityId id, const std::string& name,
+    Entity(EntityId id, Map& map, const std::string& name,
            MovementComponent* movement_component,
            CombatComponent* combat_component, unsigned int current_level,
            unsigned int current_exp);
-    Entity(EntityId id, const std::string& name, unsigned int current_level,
-           unsigned int current_exp);
+    Entity(EntityId id, Map& map, const std::string& name,
+           unsigned int current_level, unsigned int current_exp);
     virtual ~Entity();
 
     unsigned int heal(unsigned int hp);

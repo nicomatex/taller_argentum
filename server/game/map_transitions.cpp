@@ -39,11 +39,7 @@ MapTransitions::MapTransitions(MapId map_id, nlohmann::json changes, int width,
 }
 MapTransitions::~MapTransitions() {}
 
-bool MapTransitions::is_transition(position_t position) {
-    return teleports.count(position);
-}
-
-void MapTransitions::push_change(std::string name, position_t position) {
+void MapTransitions::push_if_transition(std::string name, position_t position) {
     if (!teleports.count(position))
         return;
     auto dest_pair = teleports.at(position);

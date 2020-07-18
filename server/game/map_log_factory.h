@@ -9,7 +9,6 @@ typedef enum log_type {
     LOG_INVENTORY_FULL,
     LOG_DEAL_DAMAGE,
     LOG_RECV_DAMAGE,
-    // LOG_RECV_HEAL,
     LOG_SPECIAL_ABILITY,
     LOG_MESSAGE,
     LOG_RESUSCITATE
@@ -21,6 +20,14 @@ typedef struct map_log {
     nlohmann::json info;
 } map_log_t;
 
+/**
+ * @brief Constructor de logs del mapa.
+ *
+ * Cada log del mapa está construido por el tipo de log (`log_type_t`), por el
+ * nombre del personaje al que se le debe enviar el log e información extra
+ * particular de cada tipo dada por un `json`.
+ *
+ */
 class MapLogFactory {
    public:
     static map_log_t inventory_change(const std::string& player_name,
@@ -41,7 +48,7 @@ class MapLogFactory {
                                      position_t dest);
 
     static map_log_t resuscitate(const std::string& player_name,
-                                 nlohmann::json message_info);                                   
+                                 nlohmann::json message_info);
 };
 
 #endif  // MAP_LOG_FACTORY_H

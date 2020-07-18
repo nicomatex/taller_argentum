@@ -2,28 +2,32 @@
 #define CLIENTS_IDS_SET_H
 
 #include <mutex>
-#include <unordered_set>
+#include <unordered_map>
 
 #include "../../include/event.h"
 #include "../../include/types.h"
 
-class ClientIdSet {
+class ClientToEntityMap {
    private:
     std::mutex m;
-    std::unordered_set<ClientId> clients;
+    std::unordered_map<ClientId, EntityId> client_to_entity;
 
    public:
-    ClientIdSet();
+    ClientToEntityMap();
 
-    void add_client(ClientId id);
+    void add_client(ClientId client_id, EntityId entity_id);
 
-    void rm_client(ClientId id);
+    void rm_client(ClientId client_id);
 
-    void send_to(ClientId id, const Event& ev);
+    bool count(ClientId client_id);
+
+    EntityId at(ClientId client_id);
+
+    void send_to(ClientId client_id, const Event& ev);
 
     void broadcast(Event& ev);
 
-    ~ClientIdSet();
+    ~ClientToEntityMap();
 };
 
 #endif  // CLIENTS_IDS_SET_H

@@ -19,6 +19,7 @@ class ConfigurationManager {
     static float critic_mult;
     static float player_attack_speed;
     static double dodge_threshold;
+    static unsigned int spawn_interval;
 
    public:
     ConfigurationManager();
@@ -46,6 +47,8 @@ class ConfigurationManager {
     static float get_critic_mult();
     static float get_player_attack_speed();
     static double get_dodge_thold();
+
+    static unsigned int get_spawn_interval();
 };
 
 #endif  // CONFIGURATION_MANAGER_H

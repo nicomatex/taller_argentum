@@ -4,6 +4,7 @@
             "map_id": 0,
             "map_name": "Paseo Colon",
             "path": "assets/maps/paseo_colon.json",
+            "is_safe": true,
             "mobs": {
                 "banker": {
                     "x": 19,
@@ -84,6 +85,7 @@
             "map_id": 1,
             "map_name": "Reserva Puerto Madero",
             "path": "assets/maps/reserva_puerto_madero.json",
+            "is_safe": false,
             "mobs": {
                 "banker": {
                     "x": 19,
@@ -136,6 +138,7 @@
             "map_id": 2,
             "map_name": "Facultad de Ingenieria",
             "path": "assets/maps/fiuba.json",
+            "is_safe": false,
             "mobs": {
                 "banker": {
                     "x": 19,

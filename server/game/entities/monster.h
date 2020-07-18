@@ -9,7 +9,6 @@ class Map;
 
 class Monster : public Entity {
    private:
-    Map& map;
     uint32_t sprite_id;
     bool alive;
 

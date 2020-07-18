@@ -12,6 +12,8 @@ class Action {
 
     static Entity* get_entity(Map& map, position_t position);
 
+    static void rm_entity(Map& map, EntityId entity_id);
+
    public:
     virtual ~Action();
     virtual void execute(Map& map, EntityId entity_id) const = 0;
