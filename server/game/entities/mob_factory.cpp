@@ -30,6 +30,7 @@ MobFactory::MobFactory(const char* mobs_path_file) {
         npcs_by_profession.emplace(npc_info["profession"], npc_info["id"]);
     }
 }
+
 MobFactory::~MobFactory() {}
 
 Monster* MobFactory::create_monster(EntityId entity_id,

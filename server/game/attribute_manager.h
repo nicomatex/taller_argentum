@@ -3,8 +3,8 @@
 
 #include <unordered_map>
 
-#include "../include/nlohmann/json.hpp"
-#include "../include/types.h"
+#include "../../include/nlohmann/json.hpp"
+#include "../../include/types.h"
 
 typedef struct stats {
     uint32_t strength;      // Fuerza

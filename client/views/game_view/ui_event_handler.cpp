@@ -137,8 +137,8 @@ void UiEventHandler::handle_click(SDL_Event &e) {
     }
 }
 
-void UiEventHandler::handle_keydown_command(){
-    if(!text_input_enabled){
+void UiEventHandler::handle_keydown_command() {
+    if (!text_input_enabled) {
         hud.chat.toggle();
         SDL_StartTextInput();
         text_input_enabled = true;
@@ -146,9 +146,8 @@ void UiEventHandler::handle_keydown_command(){
     }
 }
 
-
-void UiEventHandler::handle_keydown_whisper(){
-    if(!text_input_enabled){
+void UiEventHandler::handle_keydown_whisper() {
+    if (!text_input_enabled) {
         hud.chat.toggle();
         SDL_StartTextInput();
         text_input_enabled = true;
@@ -156,8 +155,8 @@ void UiEventHandler::handle_keydown_whisper(){
     }
 }
 
-void UiEventHandler::handle_keydown_escape(){
-    if(text_input_enabled){
+void UiEventHandler::handle_keydown_escape() {
+    if (text_input_enabled) {
         hud.chat.toggle();
         text_input_enabled = false;
         hud.chat.get_input_and_erase();
@@ -220,6 +219,9 @@ void UiEventHandler::handle() {
                         break;
                     case SDLK_F1:
                         hud.render_help = true;
+                        break;
+                    case SDLK_t:
+                        hud.cast_button.on_click();
                         break;
                 }
             }

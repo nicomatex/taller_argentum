@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <tuple>
 
-#include "../../configuration_manager.h"
+#include "../configuration_manager.h"
 
 // Temp
 #include <iostream>

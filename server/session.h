@@ -5,7 +5,7 @@
 
 #include "../include/event.h"
 #include "../include/types.h"
-#include "map_monitor.h"
+#include "game/map_monitor.h"
 #include "network/client_id_set.h"
 #include "network/th_broadcaster.h"
 #include "th_observer.h"

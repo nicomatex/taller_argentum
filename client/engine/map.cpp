@@ -18,7 +18,9 @@ MapError::MapError(const char* msg) noexcept {
     snprintf(msg_error, 256, "%s", msg);
 }
 
-const char* MapError::what() const noexcept { return msg_error; }
+const char* MapError::what() const noexcept {
+    return msg_error;
+}
 
 void Map::generate(json map_description) {
     background_layers.clear();
@@ -84,11 +86,17 @@ void Map::generate(json map_description) {
 
 Map::Map() : is_valid(false) {}
 
-Map::Map(json map_description) { generate(map_description); }
+Map::Map(json map_description) {
+    generate(map_description);
+}
 
-int Map::get_width() { return width; }
+int Map::get_width() {
+    return width;
+}
 
-int Map::get_height() { return height; }
+int Map::get_height() {
+    return height;
+}
 
 std::vector<std::vector<Decoration>>& Map::get_background_layers() {
     if (!is_valid) {
@@ -167,6 +175,8 @@ void Map::update_loot_layer(nlohmann::json loot_info) {
 }
 
 void Map::push_spell(nlohmann::json spell_info) {
+    if (spell_info["ability_id"] == 0)
+        return;
     foreground_layers[spell_layer_index].push_back(Decoration(
         ResourceManager::get_instance().get_sprite("spells",
                                                    spell_info["ability_id"]),

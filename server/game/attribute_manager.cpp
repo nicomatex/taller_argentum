@@ -3,7 +3,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "../include/my_exception.h"
+#include "../../include/my_exception.h"
 
 stats_t AttributeManager::stats;
 std::unordered_map<race_type_t, std::string> AttributeManager::race_names_map;

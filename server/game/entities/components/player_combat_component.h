@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "../../../attribute_manager.h"
+#include "../../attribute_manager.h"
 #include "../../items/armor.h"
 #include "../../map_log_factory.h"
 #include "../player.h"

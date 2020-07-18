@@ -9,6 +9,7 @@
 #include "../include/types.h"
 #include "character_manager.h"
 #include "clients_names_monitor.h"
+#include "game/game_manager.h"
 #include "map_changer.h"
 #include "network/clients_monitor.h"
 #include "network/th_client_accepter.h"
@@ -16,29 +17,19 @@
 #include "session.h"
 #include "th_dispatcher.h"
 
-// A game_manager
-#include "game/entities/mob_factory.h"
-#include "game/game_loop.h"
-#include "game/items/item_factory.h"
-#include "map_manager.h"
-#include "map_monitor.h"
-
 class ServerManager {
    private:
+    GameManager game_manager;
+
     std::recursive_mutex m;
     ThClientAccepter accepter;
     CharacterManager character_manager;
-    MapManager map_manager;
     MapChanger map_changer;
     std::unordered_map<MapId, Session> sessions;
     std::unordered_map<ClientId, MapId> client_to_map;
     ClientsNamesMonitor clients_names;
     ClientsMonitor clients;
     ThDispatcher dispatcher;
-    GameLoop game_loop;
-
-    ItemFactory item_factory;
-    MobFactory mob_factory;
 
     ServerManager();
 
@@ -50,9 +41,6 @@ class ServerManager {
 
     ThDispatcher& get_dispatcher();
     void dispatch(const Event& ev);
-
-    ItemFactory& get_item_factory();
-    MobFactory& get_mob_factory();
 
     void add_client(ClientId client_id, SocketManager* new_client);
     void rm_client(ClientId client_id);

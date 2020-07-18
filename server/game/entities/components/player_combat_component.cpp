@@ -3,8 +3,8 @@
 #include <cmath>
 #include <random>
 
-#include "../../../configuration_manager.h"
-#include "../../../server_manager.h"
+#include "../../configuration_manager.h"
+#include "../../game_manager.h"
 #include "../../items/item.h"
 #include "../../items/item_factory.h"
 #include "../../items/weapon.h"
@@ -44,8 +44,8 @@ PlayerCombatComponent::PlayerCombatComponent(ItemId helmet_id, ItemId armor_id,
       meditate_counter(0),
       is_resuscitating(false),
       resuscitate_counter(0) {
-    ServerManager& server_manager = ServerManager::get_instance();
-    ItemFactory& item_factory = server_manager.get_item_factory();
+    GameManager& game_manager = GameManager::get_instance();
+    ItemFactory& item_factory = game_manager.get_item_factory();
     if (helmet_id)
         helmet = static_cast<Armor*>(item_factory.create(helmet_id, 1));
     if (armor_id)
@@ -162,16 +162,16 @@ nlohmann::json PlayerCombatComponent::get_persist_data() const {
 }
 
 void PlayerCombatComponent::update(uint64_t delta_t) {
-    max_hp =  stats.physique *
-              AttributeManager::get_class_hp_multiplier(
-                  player.get_class_type()) *
-              AttributeManager::get_race_hp_multiplier(player.get_race_type()) *
-              player.get_level();
-    max_mp = stats.intelligence *
-              AttributeManager::get_class_mp_multiplier(
-                  player.get_class_type()) *
-              AttributeManager::get_race_mp_multiplier(player.get_race_type()) *
-              player.get_level();
+    max_hp =
+        stats.physique *
+        AttributeManager::get_class_hp_multiplier(player.get_class_type()) *
+        AttributeManager::get_race_hp_multiplier(player.get_race_type()) *
+        player.get_level();
+    max_mp =
+        stats.intelligence *
+        AttributeManager::get_class_mp_multiplier(player.get_class_type()) *
+        AttributeManager::get_race_mp_multiplier(player.get_race_type()) *
+        player.get_level();
 
     if (is_resuscitating) {
         resuscitate_counter -= delta_t;
@@ -180,7 +180,7 @@ void PlayerCombatComponent::update(uint64_t delta_t) {
             player.set_alive(true);
             regen_max();
             player.get_map().push_log(MapLogFactory::resuscitate(
-            player.get_name(), {{"message","Has sido resucitado!"}}));
+                player.get_name(), {{"message", "Has sido resucitado!"}}));
         }
         return;
     }
@@ -218,7 +218,6 @@ void PlayerCombatComponent::update(uint64_t delta_t) {
         if (current_mp == max_mp)
             is_meditating = false;
     }
-
 }
 
 void PlayerCombatComponent::resuscitate(int delta_t) {

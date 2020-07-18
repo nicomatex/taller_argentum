@@ -7,7 +7,6 @@
 #include <mutex>
 
 #include "../include/types.h"
-#include "attribute_manager.h"
 #include "game/items/item_container.h"
 #include "game/position.h"
 
@@ -53,65 +52,65 @@ class CharacterManager {
     CharacterManager(const char *f_char, const char *f_map);
     /**
      * @brief Devuelve true si existe el character, false si no.
-     * 
-     * @param name 
-     * @return true 
-     * @return false 
+     *
+     * @param name
+     * @return true
+     * @return false
      */
     bool character_exists(std::string name);
 
-   /**
-    * @brief Agrega un personaje al archivo de structs y al diccionario,
-    *        si ya existe, lanza CharacterAlreadyExistsException()
-    * 
-    * @param character_info 
-    */
+    /**
+     * @brief Agrega un personaje al archivo de structs y al diccionario,
+     *        si ya existe, lanza CharacterAlreadyExistsException()
+     *
+     * @param character_info
+     */
     void add_character(const nlohmann::json &character_info);
     /**
-     * @brief Se utiliza para persistir el estado actual de la entidad character,
-     *        al archivo de structs.
-     *        Si no existe el character, lanza excepcion.
-     * 
-     * @param character_info 
+     * @brief Se utiliza para persistir el estado actual de la entidad
+     * character, al archivo de structs. Si no existe el character, lanza
+     * excepcion.
+     *
+     * @param character_info
      */
     void set_character(const nlohmann::json &character_info);
 
     /**
      * @brief Devuelve el CharId asociado al player_name.
      *        Si no existe, lanza CharacterNotFoundException.
-     * 
-     * @param name 
-     * @return CharId 
+     *
+     * @param name
+     * @return CharId
      */
     CharId get_char_id(std::string name);
 
     /**
      * @brief  Devuelve el character asociado al name por movimiento.
      *         Si no existe, lanza CharacterNotFoundException.
-     * 
-     * @param name 
-     * @return nlohmann::json 
+     *
+     * @param name
+     * @return nlohmann::json
      */
     nlohmann::json get_character(std::string name);
 
     /**
-     * @brief  Hace el dump del diccionario actual al archivo de diccionarios, junto
-     *         con el char_count.
-     * 
+     * @brief  Hace el dump del diccionario actual al archivo de diccionarios,
+     * junto con el char_count.
+     *
      */
     void save();
 
-   /**
-    * @brief Imprime la informacion de un personaje.
-    *        Si no existe, lanza CharacterNotFoundException.
-    * 
-    * @param name 
-    */
+    /**
+     * @brief Imprime la informacion de un personaje.
+     *        Si no existe, lanza CharacterNotFoundException.
+     *
+     * @param name
+     */
     void print_character(std::string name);
 
     /**
      * @brief Debe realizarse un save.
-     * 
+     *
      */
     ~CharacterManager();
 };

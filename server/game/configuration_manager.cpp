@@ -3,8 +3,8 @@
 #include <fstream>
 #include <iostream>
 
-#include "../include/my_exception.h"
-#include "../include/nlohmann/json.hpp"
+#include "../../include/my_exception.h"
+#include "../../include/nlohmann/json.hpp"
 
 float ConfigurationManager::nothing_drop_ev_prob = 100;
 float ConfigurationManager::gold_drop_ev_prob = 0;

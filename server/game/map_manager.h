@@ -3,20 +3,22 @@
 
 #include <unordered_map>
 
-#include "../include/blocking_queue.h"
-#include "../include/types.h"
-#include "game/map.h"
-#include "game/map_transitions.h"
+#include "../../include/blocking_queue.h"
+#include "../../include/types.h"
 #include "map_monitor.h"
+#include "map_transitions.h"
 
 class MapManager {
    private:
+    const char* index_path;
     std::unordered_map<MapId, MapMonitor> maps;
     BlockingQueue<map_change_t> changes_queue;
 
    public:
-    MapManager(const char* path);
+    MapManager(const char* index_path);
     ~MapManager();
+
+    void create_maps();
 
     MapMonitor& operator[](MapId map_id);
 

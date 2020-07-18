@@ -2,8 +2,6 @@
 
 #include "../../include/nlohmann/json.hpp"
 #include "../character_manager.h"
-#include "../game/position.h"
-#include "../map_monitor.h"
 #include "../server_manager.h"
 
 // Temp

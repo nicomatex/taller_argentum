@@ -6,7 +6,7 @@
 
 #include "../../include/my_exception.h"
 #include "../../include/nlohmann/json.hpp"
-#include "../configuration_manager.h"
+#include "configuration_manager.h"
 
 RandomEventGenerator::RandomEventGenerator(const char* random_events_file)
     : events{nothing, rand_gold, rand_potion, rand_item},

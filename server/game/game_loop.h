@@ -4,7 +4,7 @@
 #include <atomic>
 
 #include "../../include/thread.h"
-#include "../map_manager.h"
+#include "map_manager.h"
 
 class GameLoop : public Thread {
    private:

@@ -4,7 +4,7 @@
 
 /// \file
 
-#include "../../attribute_manager.h"
+#include "../attribute_manager.h"
 #include "../items/item.h"
 #include "../items/item_container.h"
 #include "../map.h"

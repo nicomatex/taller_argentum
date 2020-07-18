@@ -2,7 +2,7 @@
 #define MAP_CHANGER_H
 
 #include "../include/thread.h"
-#include "map_manager.h"
+#include "game/map_manager.h"
 
 class MapChanger : public Thread {
    private:

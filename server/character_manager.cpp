@@ -78,7 +78,7 @@ CharacterManager::CharacterManager(const char* f_char, const char* f_map)
         taiel_info["vault"] =
             R"({"items_ids":[0,0,0,0,0,0,0,0,0,0,0,0],
                                  "items_stacks":[0,0,0,0,0,0,0,0,0,0,0,0],
-                                 "curr_gold":0})"_json;                                 
+                                 "curr_gold":0})"_json;
         add_character(taiel_info);
     }
 
@@ -97,7 +97,7 @@ CharacterManager::CharacterManager(const char* f_char, const char* f_map)
         fran_info["vault"] =
             R"({"items_ids":[400,401,200,100,303,1,3,102,304,305,306,307],
                                  "items_stacks":[1200,500,3,2,2,1,1,1,1,1,1,1],
-                                 "curr_gold":30000})"_json;                                 
+                                 "curr_gold":30000})"_json;
         add_character(fran_info);
     }
 
@@ -125,7 +125,7 @@ CharacterManager::CharacterManager(const char* f_char, const char* f_map)
         eze_info["vault"] =
             R"({"items_ids":[0,0,0,0,0,0,0,0,0,0,0,0],
                                  "items_stacks":[0,0,0,0,0,0,0,0,0,0,0,0],
-                                 "curr_gold":0})"_json;                                 
+                                 "curr_gold":0})"_json;
         add_character(eze_info);
     }
 }

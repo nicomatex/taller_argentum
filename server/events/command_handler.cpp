@@ -7,7 +7,6 @@
 #include "../../include/nlohmann/json.hpp"
 #include "../../include/types.h"
 #include "../events/event_factory.h"
-#include "../map_monitor.h"
 #include "../server_manager.h"
 
 #define COMMAND '/'
@@ -202,7 +201,8 @@ void CommandHandler::cmd_help(ClientId client_id, position_t target,
     ServerManager& server_manager = ServerManager::get_instance();
     std::string msg;
     if (cmd.size() == 1) {
-        msg = message.help + "\n" + whisper.help + "\n" +
+        msg = "[info] Mantenga presionado F1 para ver los controles.\n" +
+              message.help + "\n" + whisper.help + "\n" +
               "[info] Los comandos existentes son: ";
         size_t i = 36;
         for (auto it = commands.begin(); it != commands.end(); it++) {

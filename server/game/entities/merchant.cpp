@@ -2,12 +2,12 @@
 
 #include <sstream>
 
-#include "../../server_manager.h"
+#include "../game_manager.h"
 
 Merchant::Merchant(EntityId entity_id, nlohmann::json npc_info, Map& map)
     : Npc(entity_id, npc_info, map), inventory(MERCH_SLOTS_INV) {
-    ServerManager& server_manager = ServerManager::get_instance();
-    ItemFactory& item_factory = server_manager.get_item_factory();
+    GameManager& game_manager = GameManager::get_instance();
+    ItemFactory& item_factory = game_manager.get_item_factory();
     inventory.add(item_factory.create(400, 9000));
     inventory.add(item_factory.create(401, 9000));
     inventory.add(item_factory.create(2, 3));
@@ -75,7 +75,8 @@ void Merchant::sell(SlotId slot, uint32_t stack, Player* player) {
             Gold* gold_returned = player->remove_gold(
                 stack_return * gold_value - gold->get_stack());
             inventory.add_gold(gold_returned);
-            player->get_map().push_log(MapLogFactory::inventory_full(player->get_name()));
+            player->get_map().push_log(
+                MapLogFactory::inventory_full(player->get_name()));
             delete gold;
             delete gold_returned;
         }
@@ -96,7 +97,7 @@ void Merchant::buy(SlotId slot, uint32_t stack, Player* player) {
     if (purchasable == 0)
         return;
 
-    Item *item = nullptr;
+    Item* item = nullptr;
     try {
         item = inventory.remove(slot, purchasable);
         unsigned int item_stack = item->get_stack();
@@ -106,6 +107,7 @@ void Merchant::buy(SlotId slot, uint32_t stack, Player* player) {
         delete gold;
     } catch (const FullItemContainerException& e) {
         inventory.add(item);
-        player->get_map().push_log(MapLogFactory::inventory_full(player->get_name()));
+        player->get_map().push_log(
+            MapLogFactory::inventory_full(player->get_name()));
     }
 }

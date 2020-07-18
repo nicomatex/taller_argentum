@@ -4,12 +4,12 @@
 #include <mutex>
 #include <queue>
 
-#include "../include/nlohmann/json.hpp"
-#include "../include/types.h"
-#include "game/actions/action.h"
-#include "game/map.h"
-#include "game/map_log_factory.h"
-#include "game/map_transitions.h"
+#include "../../include/nlohmann/json.hpp"
+#include "../../include/types.h"
+#include "actions/action.h"
+#include "map.h"
+#include "map_log_factory.h"
+#include "map_transitions.h"
 
 class MapMonitor {
    private:
@@ -17,12 +17,15 @@ class MapMonitor {
     Map map;
 
    public:
-    MapMonitor(MapId map_id, const nlohmann::json& map_description,
+    MapMonitor(MapId map_id, const std::string& map_name,
+               const nlohmann::json& map_description,
                const nlohmann::json& map_mobs,
                const nlohmann::json& map_transitions);
     ~MapMonitor();
 
     MapMonitor(const MapMonitor& other) = delete;
+
+    const std::string& get_name();
 
     /**/
     nlohmann::json add_player(nlohmann::json player_info);

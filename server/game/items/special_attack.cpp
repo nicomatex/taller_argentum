@@ -1,6 +1,6 @@
 #include "special_attack.h"
 
-#include "../../configuration_manager.h"
+#include "../configuration_manager.h"
 #include "../map_log_factory.h"
 #include "../random_event_generator.h"
 
@@ -15,7 +15,8 @@ std::vector<map_log_t> SpecialAttack::execute(Player* caster, Entity* target,
                                               position_t source,
                                               position_t dest) const {
     std::vector<map_log_t> logs;
-    if(!caster->can_spend_mp(mp_cost)) return logs;
+    if (!caster->can_spend_mp(mp_cost))
+        return logs;
     logs.push_back(MapLogFactory::special_ability(caster->get_name(),
                                                   ability_id, source, dest));
     caster->spend_mp(mp_cost);

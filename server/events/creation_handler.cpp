@@ -1,7 +1,7 @@
 #include "creation_handler.h"
 
 #include "../game/position.h"
-#include "../race_graphics_manager.h"
+#include "../game/race_graphics_manager.h"
 #include "../server_manager.h"
 #include "event_factory.h"
 

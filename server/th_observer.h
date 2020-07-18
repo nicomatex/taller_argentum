@@ -6,7 +6,7 @@
 #include "../include/blocking_th_event_handler.h"
 #include "../include/thread.h"
 #include "../include/types.h"
-#include "map_monitor.h"
+#include "game/map_monitor.h"
 
 class ThObserver : public Thread {
    private:

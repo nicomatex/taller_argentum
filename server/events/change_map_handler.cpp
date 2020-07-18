@@ -1,11 +1,10 @@
 #include "change_map_handler.h"
 
+#include <iostream>
+
 #include "../character_manager.h"
 #include "../server_manager.h"
 #include "event_factory.h"
-
-// Temp
-#include <iostream>
 
 void ChangeMapHandler::handle(Event& event) {
     try {

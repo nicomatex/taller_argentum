@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <vector>
 
-#include "../../configuration_manager.h"
+#include "../configuration_manager.h"
 #include "../items/armor.h"
 #include "../items/potion.h"
 #include "../items/weapon.h"

@@ -5,12 +5,17 @@
 // Temp
 #include <iostream>
 
-MapMonitor::MapMonitor(MapId map_id, const nlohmann::json& map_description,
+MapMonitor::MapMonitor(MapId map_id, const std::string& map_name,
+                       const nlohmann::json& map_description,
                        const nlohmann::json& map_mobs,
                        const nlohmann::json& map_transitions)
-    : map(map_id, map_description, map_mobs, map_transitions) {}
+    : map(map_id, map_name, map_description, map_mobs, map_transitions) {}
 
 MapMonitor::~MapMonitor() {}
+
+const std::string& MapMonitor::get_name() {
+    return map.get_name();
+}
 
 nlohmann::json MapMonitor::add_player(nlohmann::json player_info) {
     std::unique_lock<std::recursive_mutex> l(m);

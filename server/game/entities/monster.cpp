@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "../../server_manager.h"
+#include "../game_manager.h"
 #include "../items/item_factory.h"
 #include "../map.h"
 #include "../random_event_generator.h"
@@ -47,8 +47,8 @@ nlohmann::json Monster::get_data() const {
 }
 
 void Monster::die() {
-    ServerManager& server_manager = ServerManager::get_instance();
-    ItemFactory& item_factory = server_manager.get_item_factory();
+    GameManager& game_manager = GameManager::get_instance();
+    ItemFactory& item_factory = game_manager.get_item_factory();
     Item* item = nullptr;
     switch (RandomEventGenerator::roll()) {
         case rand_gold:

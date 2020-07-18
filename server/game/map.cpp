@@ -10,10 +10,12 @@
 
 nlohmann::json map_mobs2;
 
-Map::Map(MapId map_id, const nlohmann::json& map_description,
-         const nlohmann::json& map_mobs, const nlohmann::json& map_transitions)
+Map::Map(MapId map_id, const std::string& map_name,
+         const nlohmann::json& map_description, const nlohmann::json& map_mobs,
+         const nlohmann::json& map_transitions)
     : width(map_description["width"]),
       height(map_description["height"]),
+      map_name(map_name),
       _dirty_entities(false),
       entity_matrix({}),
       _dirty_loot(false),
@@ -45,6 +47,10 @@ Map::~Map() {
         actions.pop();
         delete entity_action.action;
     }
+}
+
+const std::string& Map::get_name() {
+    return map_name;
 }
 
 void Map::add_entity(Entity* entity, position_t position) {

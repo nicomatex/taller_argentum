@@ -15,19 +15,14 @@ message("Agregando '${PROJECT_BINARY_DIR}' como directorio de includes")
 include_directories(${PROJECT_BINARY_DIR})
 
 add_library(server
+  character_manager.cpp
+  clients_names_monitor.cpp
   game_server.cpp
-  map_manager.cpp
+  map_changer.cpp
   server_manager.cpp
+  session.cpp
   th_dispatcher.cpp
   th_observer.cpp
-  map_monitor.cpp
-  character_manager.cpp
-  map_changer.cpp
-  attribute_manager.cpp
-  race_graphics_manager.cpp
-  session.cpp
-  configuration_manager.cpp
-  clients_names_monitor.cpp
 )
 
 target_link_libraries(server

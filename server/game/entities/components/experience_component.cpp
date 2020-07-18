@@ -3,7 +3,7 @@
 #include <cmath>
 #include <iostream>
 
-#include "../../../configuration_manager.h"
+#include "../../configuration_manager.h"
 
 ExperienceComponent::ExperienceComponent(unsigned int level, unsigned int exp)
     : current_level(level), current_exp(exp) {}

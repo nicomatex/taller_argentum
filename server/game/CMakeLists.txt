@@ -17,7 +17,9 @@ add_library(game
   actions/action_withdraw_gold.cpp
   actions/action_withdraw_item.cpp
   actions/action.cpp
+  attribute_manager.cpp
   bank.cpp
+  configuration_manager.cpp
   entities/banker.cpp
   entities/components/combat_component.cpp
   entities/components/experience_component.cpp
@@ -37,6 +39,7 @@ add_library(game
   entities/npc.cpp
   entities/player.cpp
   game_loop.cpp
+  game_manager.cpp
   items/armor.cpp
   items/gold.cpp
   items/item_container.cpp
@@ -48,8 +51,11 @@ add_library(game
   items/special_heal.cpp
   items/weapon.cpp
   map_log_factory.cpp
+  map_manager.cpp
+  map_monitor.cpp
   map_transitions.cpp
   map.cpp
   monster_spawner.cpp
+  race_graphics_manager.cpp
   random_event_generator.cpp
 )

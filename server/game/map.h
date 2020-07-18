@@ -50,6 +50,7 @@ class Map {
     friend class MonsterSpawner;
     int width;
     int height;
+    std::string map_name;
 
     PositionMap position_map;
     bool _dirty_entities;
@@ -84,11 +85,14 @@ class Map {
     void add_entity(Entity* entity, position_t position);
 
    public:
-    Map(MapId map_id, const nlohmann::json& map_description,
-        const nlohmann::json& map_mobs, const nlohmann::json& map_transitions);
+    Map(MapId map_id, const std::string& map_name,
+        const nlohmann::json& map_description, const nlohmann::json& map_mobs,
+        const nlohmann::json& map_transitions);
     ~Map();
 
     Map(const Map& other) = delete;
+
+    const std::string& get_name();
 
     /* Mueve la entidad asociada al entity_id un tile en la direccion
      * indicada.*/

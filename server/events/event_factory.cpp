@@ -1,6 +1,5 @@
 #include "event_factory.h"
 
-#include <iostream>  //temp
 #include <string>
 
 Event EventFactory::initialize_map(const nlohmann::json& map_data,
@@ -175,7 +174,7 @@ Event EventFactory::special_ability(const nlohmann::json& cast_info) {
 }
 
 Event EventFactory::deposit_item_event(ClientId client_id, position_t target,
-                              SlotId slot, uint32_t amount) {
+                                       SlotId slot, uint32_t amount) {
     nlohmann::json ev_json = {{"ev_id", SERVER_DEPOSIT_ITEM},
                               {"client_id", client_id},
                               {"target", target},
@@ -185,7 +184,7 @@ Event EventFactory::deposit_item_event(ClientId client_id, position_t target,
 }
 
 Event EventFactory::withdraw_item_event(ClientId client_id, position_t target,
-                              SlotId slot, uint32_t amount) {
+                                        SlotId slot, uint32_t amount) {
     nlohmann::json ev_json = {{"ev_id", SERVER_WITHDRAW_ITEM},
                               {"client_id", client_id},
                               {"target", target},
@@ -194,7 +193,8 @@ Event EventFactory::withdraw_item_event(ClientId client_id, position_t target,
     return Event(ev_json);
 }
 
-Event EventFactory::deposit_gold_event(ClientId client_id, position_t target, uint32_t amount) {
+Event EventFactory::deposit_gold_event(ClientId client_id, position_t target,
+                                       uint32_t amount) {
     nlohmann::json ev_json = {{"ev_id", SERVER_DEPOSIT_GOLD},
                               {"client_id", client_id},
                               {"target", target},
@@ -202,7 +202,8 @@ Event EventFactory::deposit_gold_event(ClientId client_id, position_t target, ui
     return Event(ev_json);
 }
 
-Event EventFactory::withdraw_gold_event(ClientId client_id, position_t target, uint32_t amount) {
+Event EventFactory::withdraw_gold_event(ClientId client_id, position_t target,
+                                        uint32_t amount) {
     nlohmann::json ev_json = {{"ev_id", SERVER_WITHDRAW_GOLD},
                               {"client_id", client_id},
                               {"target", target},

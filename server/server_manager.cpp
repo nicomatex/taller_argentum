@@ -5,27 +5,20 @@
 
 #include "../include/event.h"
 #include "../include/nlohmann/json.hpp"
-#include "attribute_manager.h"
-#include "configuration_manager.h"
 #include "events/event_factory.h"
 #include "game/bank.h"
-#include "race_graphics_manager.h"
 
 // Temp
 #include <iostream>
 
 ServerManager::ServerManager()
-    : accepter(Socket("27016", 10)),
+    : game_manager("ind/items.json", "ind/mobs.json", "ind/maps_index.json"),
+      accepter(Socket("27016", 10)),
       character_manager("database/characters.dat", "database/characters.json"),
-      map_manager("ind/maps_index.json"),
-      map_changer(map_manager),
-      game_loop(map_manager),
-      item_factory("ind/items.json"),
-      mob_factory("ind/mobs.json") {
-    AttributeManager::init("ind/stats.json", "ind/races.json",
-                           "ind/classes.json");
-    RaceGraphicsManager::init("ind/races_graphics.json");
-    ConfigurationManager::init("ind/config.json");
+      map_changer(game_manager.get_map_manager()) {
+    map_changer.start();
+    game_manager.start();
+    MapManager& map_manager = game_manager.get_map_manager();
     std::vector<MapId> v = map_manager.get_ids();
     for (auto& it : v) {
         std::cerr << "ServerManager: creating session for map id: " << it
@@ -33,8 +26,6 @@ ServerManager::ServerManager()
         sessions.emplace(it, map_manager[it]);
         sessions.at(it).start();
     }
-    map_changer.start();
-    game_loop.start();
     dispatcher.start();
     accepter.start();
 }
@@ -50,13 +41,6 @@ ThDispatcher& ServerManager::get_dispatcher() {
 
 void ServerManager::dispatch(const Event& ev) {
     dispatcher.push_event(ev);
-}
-
-ItemFactory& ServerManager::get_item_factory() {
-    return item_factory;
-}
-MobFactory& ServerManager::get_mob_factory() {
-    return mob_factory;
 }
 
 void ServerManager::add_client(ClientId client_id, SocketManager* new_client) {
@@ -102,6 +86,9 @@ void ServerManager::add_player(ClientId client_id, nlohmann::json player_data) {
     send_to(client_id, EventFactory::initialize_map(map_data, player_data));
     send_to(client_id, EventFactory::update_entities(map_updates["entities"]));
     send_to(client_id, EventFactory::update_items(map_updates["items"]));
+    send_to(client_id,
+            EventFactory::chat_message("[info] Ha ingresado al Mapa: " +
+                                       map_monitor.get_name()));
 
     // Lo agregamos a la session correspondiente
     sessions.at(map_id).add_client(client_id, player_data["entity_id"]);
@@ -149,8 +136,7 @@ void ServerManager::finish() {
     accepter.stop();
     clients.drop_all();
     dispatcher.stop();
-    map_manager.close();
-    game_loop.stop();
+    game_manager.finish();
     l.unlock();
     for (auto& it : sessions) {
         it.second.finish();
@@ -160,8 +146,6 @@ void ServerManager::finish() {
     std::cerr << "Accepter: joined\n";
     dispatcher.join();
     std::cerr << "Dispatcher: joined\n";
-    game_loop.join();
-    std::cerr << "GameLoop: joined\n";
     map_changer.join();
     std::cerr << "MapChanger: joined\n";
 }
@@ -180,7 +164,7 @@ MapMonitor& ServerManager::get_map_by_client(ClientId client_id) {
 }
 
 MapMonitor& ServerManager::get_map(MapId map_id) {
-    return sessions.at(map_id).get_map();
+    return game_manager.get_map_manager()[map_id];
 }
 
 Session& ServerManager::get_session(ClientId client_id) {
