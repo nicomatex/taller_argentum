@@ -1,6 +1,6 @@
 var classSDLWindow =
 [
-    [ "SDLWindow", "classSDLWindow.html#a5b0a60c403768e44a13ab14083ea4118", null ],
+    [ "SDLWindow", "classSDLWindow.html#a79e6f2c9c7c616423516867727f9d20e", null ],
     [ "~SDLWindow", "classSDLWindow.html#a7a0af0daec54970ff2262b67a6ece281", null ],
     [ "fill", "classSDLWindow.html#a8a441bc6b143b07a465479409d66203f", null ],
     [ "get_height", "classSDLWindow.html#ab1631461aff60434adc1f6e96266b02e", null ],

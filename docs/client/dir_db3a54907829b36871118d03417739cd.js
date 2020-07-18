@@ -8,6 +8,7 @@ var dir_db3a54907829b36871118d03417739cd =
     [ "game_client.h", "game__client_8h_source.html", null ],
     [ "game_state_monitor.h", "game__state__monitor_8h_source.html", null ],
     [ "inventory_buffer.h", "inventory__buffer_8h_source.html", null ],
-    [ "loot_buffer.h", "loot__buffer_8h_source.html", null ],
-    [ "map_change_buffer.h", "map__change__buffer_8h_source.html", null ]
+    [ "map_change_buffer.h", "map__change__buffer_8h_source.html", null ],
+    [ "map_decorations_buffer.h", "map__decorations__buffer_8h_source.html", null ],
+    [ "player_info_monitor.h", "player__info__monitor_8h_source.html", null ]
 ];

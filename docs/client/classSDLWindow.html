@@ -106,9 +106,9 @@ $(document).ready(function(){initNavTree('classSDLWindow.html',''); initResizabl
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a5b0a60c403768e44a13ab14083ea4118"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDLWindow.html#a5b0a60c403768e44a13ab14083ea4118">SDLWindow</a> (int width, int height, const std::string &amp;title, bool fullscreen)</td></tr>
-<tr class="memdesc:a5b0a60c403768e44a13ab14083ea4118"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un objeto <a class="el" href="classSDLWindow.html" title="Objeto ventana de SDL.">SDLWindow</a>.  <a href="classSDLWindow.html#a5b0a60c403768e44a13ab14083ea4118">Más...</a><br /></td></tr>
-<tr class="separator:a5b0a60c403768e44a13ab14083ea4118"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79e6f2c9c7c616423516867727f9d20e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDLWindow.html#a79e6f2c9c7c616423516867727f9d20e">SDLWindow</a> (int width, int height, const std::string &amp;title, bool fullscreen, bool vsync)</td></tr>
+<tr class="memdesc:a79e6f2c9c7c616423516867727f9d20e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un objeto <a class="el" href="classSDLWindow.html" title="Objeto ventana de SDL.">SDLWindow</a>.  <a href="classSDLWindow.html#a79e6f2c9c7c616423516867727f9d20e">Más...</a><br /></td></tr>
+<tr class="separator:a79e6f2c9c7c616423516867727f9d20e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a441bc6b143b07a465479409d66203f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSDLWindow.html#a8a441bc6b143b07a465479409d66203f">fill</a> (int r, int g, int b, int alpha)</td></tr>
 <tr class="memdesc:a8a441bc6b143b07a465479409d66203f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limpia la ventana, y la pinta de un color.  <a href="classSDLWindow.html#a8a441bc6b143b07a465479409d66203f">Más...</a><br /></td></tr>
 <tr class="separator:a8a441bc6b143b07a465479409d66203f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,8 +143,8 @@ Métodos públicos</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Objeto ventana de SDL. </p>
 </div><h2 class="groupheader">Documentación del constructor y destructor</h2>
-<a id="a5b0a60c403768e44a13ab14083ea4118"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b0a60c403768e44a13ab14083ea4118">&#9670;&nbsp;</a></span>SDLWindow()</h2>
+<a id="a79e6f2c9c7c616423516867727f9d20e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79e6f2c9c7c616423516867727f9d20e">&#9670;&nbsp;</a></span>SDLWindow()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -171,7 +171,13 @@ Métodos públicos</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>fullscreen</em>&#160;</td>
+          <td class="paramname"><em>fullscreen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>vsync</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

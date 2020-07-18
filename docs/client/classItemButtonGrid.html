@@ -106,21 +106,18 @@ $(document).ready(function(){initNavTree('classItemButtonGrid.html',''); initRes
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a90b890b4bb37e79e4383e0c211ed9cd8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemButtonGrid.html#a90b890b4bb37e79e4383e0c211ed9cd8">ItemButtonGrid</a> (SDL_Rect inventory_area, SDL_Rect viewport, SDL_Renderer *renderer, int rows, int cols, <a class="el" href="classSocketManager.html">SocketManager</a> &amp;socket_manager, <a class="el" href="classEvent.html">Event</a>(*left_click_event)(SlotId), <a class="el" href="classEvent.html">Event</a>(*right_click_event)(SlotId))</td></tr>
-<tr class="memdesc:a90b890b4bb37e79e4383e0c211ed9cd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un objeto Item <a class="el" href="classButton.html" title="Boton abstracto. Todos los botones heredan de esta clase.">Button</a> Grid.  <a href="classItemButtonGrid.html#a90b890b4bb37e79e4383e0c211ed9cd8">Más...</a><br /></td></tr>
-<tr class="separator:a90b890b4bb37e79e4383e0c211ed9cd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ce83f38ba45de47d1b67304b74199b6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemButtonGrid.html#a4ce83f38ba45de47d1b67304b74199b6">ItemButtonGrid</a> (SDL_Rect inventory_area, SDL_Rect viewport, SDL_Renderer *renderer, int rows, int cols, int &amp;last_clicked_slot, <a class="el" href="classSocketManager.html">SocketManager</a> &amp;socket_manager, <a class="el" href="classEvent.html">Event</a>(*left_click_event)(SlotId), <a class="el" href="classEvent.html">Event</a>(*right_click_event)(SlotId))</td></tr>
+<tr class="memdesc:a4ce83f38ba45de47d1b67304b74199b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un objeto Item <a class="el" href="classButton.html" title="Boton abstracto. Todos los botones heredan de esta clase.">Button</a> Grid.  <a href="classItemButtonGrid.html#a4ce83f38ba45de47d1b67304b74199b6">Más...</a><br /></td></tr>
+<tr class="separator:a4ce83f38ba45de47d1b67304b74199b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af00edfda56d58aaa83cd4b79fa607632"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemButtonGrid.html#af00edfda56d58aaa83cd4b79fa607632">handle_event</a> (SDL_Event &amp;e)</td></tr>
 <tr class="memdesc:af00edfda56d58aaa83cd4b79fa607632"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maneja los clicks en el inventario.  <a href="classItemButtonGrid.html#af00edfda56d58aaa83cd4b79fa607632">Más...</a><br /></td></tr>
 <tr class="separator:af00edfda56d58aaa83cd4b79fa607632"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b6f52f721ceac1647ab2a186d0582bd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemButtonGrid.html#a7b6f52f721ceac1647ab2a186d0582bd">get_last_clicked_slot</a> ()</td></tr>
-<tr class="memdesc:a7b6f52f721ceac1647ab2a186d0582bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el ultimo slot clickeado.  <a href="classItemButtonGrid.html#a7b6f52f721ceac1647ab2a186d0582bd">Más...</a><br /></td></tr>
-<tr class="separator:a7b6f52f721ceac1647ab2a186d0582bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Wrapper para todos los botones del inventario. </p>
 </div><h2 class="groupheader">Documentación del constructor y destructor</h2>
-<a id="a90b890b4bb37e79e4383e0c211ed9cd8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a90b890b4bb37e79e4383e0c211ed9cd8">&#9670;&nbsp;</a></span>ItemButtonGrid()</h2>
+<a id="a4ce83f38ba45de47d1b67304b74199b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ce83f38ba45de47d1b67304b74199b6">&#9670;&nbsp;</a></span>ItemButtonGrid()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -154,6 +151,12 @@ Métodos públicos</h2></td></tr>
           <td></td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>cols</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>last_clicked_slot</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -199,26 +202,6 @@ Métodos públicos</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Documentación de las funciones miembro</h2>
-<a id="a7b6f52f721ceac1647ab2a186d0582bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b6f52f721ceac1647ab2a186d0582bd">&#9670;&nbsp;</a></span>get_last_clicked_slot()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int ItemButtonGrid::get_last_clicked_slot </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Devuelve el ultimo slot clickeado. </p>
-<dl class="section return"><dt>Devuelve</dt><dd>int </dd></dl>
-
-</div>
-</div>
 <a id="af00edfda56d58aaa83cd4b79fa607632"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af00edfda56d58aaa83cd4b79fa607632">&#9670;&nbsp;</a></span>handle_event()</h2>
 

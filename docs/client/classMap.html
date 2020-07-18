@@ -121,6 +121,12 @@ Métodos públicos</h2></td></tr>
 <tr class="memitem:acef3fdcc2f39b4bcf8ffb998e2d4fad2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#acef3fdcc2f39b4bcf8ffb998e2d4fad2">update_loot_layer</a> (nlohmann::json loot_info)</td></tr>
 <tr class="memdesc:acef3fdcc2f39b4bcf8ffb998e2d4fad2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualiza la capa de loot del mapa.  <a href="classMap.html#acef3fdcc2f39b4bcf8ffb998e2d4fad2">Más...</a><br /></td></tr>
 <tr class="separator:acef3fdcc2f39b4bcf8ffb998e2d4fad2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ab12fbdbb2ee0b7612075cab4ca95b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a6ab12fbdbb2ee0b7612075cab4ca95b8">push_spell</a> (nlohmann::json spell_info)</td></tr>
+<tr class="memdesc:a6ab12fbdbb2ee0b7612075cab4ca95b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega un efecto de hechizo al mapa.  <a href="classMap.html#a6ab12fbdbb2ee0b7612075cab4ca95b8">Más...</a><br /></td></tr>
+<tr class="separator:a6ab12fbdbb2ee0b7612075cab4ca95b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fae9d8d26786a649f092cb499ff1309"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a6fae9d8d26786a649f092cb499ff1309">clean_spells</a> ()</td></tr>
+<tr class="memdesc:a6fae9d8d26786a649f092cb499ff1309"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limpia los efectos de hechizo que ya terminaron de reproducirse.  <a href="classMap.html#a6fae9d8d26786a649f092cb499ff1309">Más...</a><br /></td></tr>
+<tr class="separator:a6fae9d8d26786a649f092cb499ff1309"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ef9d39ed4c6b757b8c0d27cfd8d4550"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; <a class="el" href="classDecoration.html">Decoration</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a1ef9d39ed4c6b757b8c0d27cfd8d4550">get_background_layers</a> ()</td></tr>
 <tr class="memdesc:a1ef9d39ed4c6b757b8c0d27cfd8d4550"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve las capas que deben ser renderizadas por detras de las entidades.  <a href="classMap.html#a1ef9d39ed4c6b757b8c0d27cfd8d4550">Más...</a><br /></td></tr>
 <tr class="separator:a1ef9d39ed4c6b757b8c0d27cfd8d4550"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -158,6 +164,25 @@ Métodos públicos</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="a6fae9d8d26786a649f092cb499ff1309"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fae9d8d26786a649f092cb499ff1309">&#9670;&nbsp;</a></span>clean_spells()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Map::clean_spells </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Limpia los efectos de hechizo que ya terminaron de reproducirse. </p>
+
+</div>
+</div>
 <a id="a95855bdf5194643c114c8682ced9c1cf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a95855bdf5194643c114c8682ced9c1cf">&#9670;&nbsp;</a></span>generate()</h2>
 
@@ -261,6 +286,32 @@ Métodos públicos</h2></td></tr>
 
 <p>Devuelve el ancho en tiles del mapa. </p>
 <dl class="section return"><dt>Devuelve</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="a6ab12fbdbb2ee0b7612075cab4ca95b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ab12fbdbb2ee0b7612075cab4ca95b8">&#9670;&nbsp;</a></span>push_spell()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Map::push_spell </td>
+          <td>(</td>
+          <td class="paramtype">nlohmann::json&#160;</td>
+          <td class="paramname"><em>spell_info</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega un efecto de hechizo al mapa. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spell_info</td><td>Informacion de hechizos provista por el servidor. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

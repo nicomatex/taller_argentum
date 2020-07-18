@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['fill_348',['fill',['../classSDLWindow.html#a8a441bc6b143b07a465479409d66203f',1,'SDLWindow::fill()'],['../classMapChangeBuffer.html#aa102bfbb7dc5b87b72a0ca0eb3e3bfe0',1,'MapChangeBuffer::fill()']]],
-  ['flush_349',['flush',['../classChatBuffer.html#a22dc58a958967e177f5635649e2d15ec',1,'ChatBuffer::flush()'],['../classLootBuffer.html#ad8f95516f16497e6f144aa264555a5cd',1,'LootBuffer::flush()']]],
-  ['free_5fresources_350',['free_resources',['../classResourceManager.html#afb13dbf42c9ae5a2a7b9f98660e4bf16',1,'ResourceManager']]]
+  ['fill_366',['fill',['../classSDLWindow.html#a8a441bc6b143b07a465479409d66203f',1,'SDLWindow::fill()'],['../classMapChangeBuffer.html#aa102bfbb7dc5b87b72a0ca0eb3e3bfe0',1,'MapChangeBuffer::fill()']]],
+  ['flush_367',['flush',['../classChatBuffer.html#a22dc58a958967e177f5635649e2d15ec',1,'ChatBuffer']]],
+  ['flush_5floot_368',['flush_loot',['../classMapDecorationsBuffer.html#a9c0b9a699926f361b1179f83ee13dc97',1,'MapDecorationsBuffer']]],
+  ['flush_5fspecial_5fabilities_369',['flush_special_abilities',['../classMapDecorationsBuffer.html#a11d4b4f3ba99f553d0c5da9ffcf0b78d',1,'MapDecorationsBuffer']]],
+  ['free_5fresources_370',['free_resources',['../classResourceManager.html#afb13dbf42c9ae5a2a7b9f98660e4bf16',1,'ResourceManager']]]
 ];

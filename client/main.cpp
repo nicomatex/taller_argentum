@@ -7,8 +7,6 @@
 #include "client_config.h"
 #include "game_client.h"
 
-bool debug = true;
-
 using json = nlohmann::json;
 
 int main(void) {

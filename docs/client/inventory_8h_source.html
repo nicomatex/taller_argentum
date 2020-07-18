@@ -107,35 +107,38 @@ $(document).ready(function(){initNavTree('inventory_8h_source.html',''); initRes
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classInventory.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classInventory.html">Inventory</a> {</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classIconGrid.html">IconGrid</a> inventory_icons;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classItemQtyGrid.html">ItemQtyGrid</a> item_qty_grid;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classItemButtonGrid.html">ItemButtonGrid</a> item_button_grid;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classInventory.html#a5e1152b5adf0cc66dc207a2f8e59f015">Inventory</a>(SDL_Rect inventory_area, SDL_Rect viewport, <span class="keywordtype">int</span> rows, <span class="keywordtype">int</span> cols,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;              TTF_Font* numbers_font, SDL_Renderer* renderer,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;              <a class="code" href="classSocketManager.html">SocketManager</a>&amp; socket_manager);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    ~<a class="code" href="classInventory.html">Inventory</a>();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classInventory.html#afbf08633742f7d05246bf2b446e4930d">render</a>();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classInventory.html#a4eb7524297829b32fb510009a2c4d9f5">set_item</a>(<span class="keywordtype">int</span> slot, <a class="code" href="classSDLTexture.html">SDLTexture</a>* icon, <span class="keywordtype">int</span> quantity);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classInventory.html#a003decc5b201b30fbc3d7862642c2550">handle_event</a>(SDL_Event&amp; e);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classInventory.html#aab69a77bd1cf3cecf11a0f5bd7d3ccc0">get_last_clicked_slot</a>();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span> last_clicked_slot;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    SDL_Renderer* renderer;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classIconGrid.html">IconGrid</a> inventory_icons;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classItemQtyGrid.html">ItemQtyGrid</a> item_qty_grid;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classItemButtonGrid.html">ItemButtonGrid</a> item_button_grid;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> _render_slot_outline();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="classInventory.html#a5e1152b5adf0cc66dc207a2f8e59f015">Inventory</a>(SDL_Rect inventory_area, SDL_Rect viewport, <span class="keywordtype">int</span> rows, <span class="keywordtype">int</span> cols,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;              TTF_Font* numbers_font, SDL_Renderer* renderer,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;              <a class="code" href="classSocketManager.html">SocketManager</a>&amp; socket_manager);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ~<a class="code" href="classInventory.html">Inventory</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classInventory.html#afbf08633742f7d05246bf2b446e4930d">render</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classInventory.html#a4eb7524297829b32fb510009a2c4d9f5">set_item</a>(<span class="keywordtype">int</span> slot, <a class="code" href="classSDLTexture.html">SDLTexture</a>* icon, <span class="keywordtype">int</span> quantity);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classInventory.html#a003decc5b201b30fbc3d7862642c2550">handle_event</a>(SDL_Event&amp; e);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classInventory.html#aab69a77bd1cf3cecf11a0f5bd7d3ccc0">get_last_clicked_slot</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;};</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassSocketManager_html"><div class="ttname"><a href="classSocketManager.html">SocketManager</a></div><div class="ttdef"><b>Definition:</b> socket_manager.h:12</div></div>
-<div class="ttc" id="aclassInventory_html_aab69a77bd1cf3cecf11a0f5bd7d3ccc0"><div class="ttname"><a href="classInventory.html#aab69a77bd1cf3cecf11a0f5bd7d3ccc0">Inventory::get_last_clicked_slot</a></div><div class="ttdeci">int get_last_clicked_slot()</div><div class="ttdoc">Devuelve el ultimo slot del inventario que fue clickeado.</div><div class="ttdef"><b>Definition:</b> inventory.cpp:31</div></div>
+<div class="ttc" id="aclassInventory_html_aab69a77bd1cf3cecf11a0f5bd7d3ccc0"><div class="ttname"><a href="classInventory.html#aab69a77bd1cf3cecf11a0f5bd7d3ccc0">Inventory::get_last_clicked_slot</a></div><div class="ttdeci">int get_last_clicked_slot()</div><div class="ttdoc">Devuelve el ultimo slot del inventario que fue clickeado.</div><div class="ttdef"><b>Definition:</b> inventory.cpp:39</div></div>
 <div class="ttc" id="aclassIconGrid_html"><div class="ttname"><a href="classIconGrid.html">IconGrid</a></div><div class="ttdoc">Cuadricula de iconos.</div><div class="ttdef"><b>Definition:</b> icon_grid.h:13</div></div>
-<div class="ttc" id="aclassInventory_html_a003decc5b201b30fbc3d7862642c2550"><div class="ttname"><a href="classInventory.html#a003decc5b201b30fbc3d7862642c2550">Inventory::handle_event</a></div><div class="ttdeci">void handle_event(SDL_Event &amp;e)</div><div class="ttdoc">Maneja eventos (clicks) en el inventario.</div><div class="ttdef"><b>Definition:</b> inventory.cpp:27</div></div>
-<div class="ttc" id="aclassInventory_html_afbf08633742f7d05246bf2b446e4930d"><div class="ttname"><a href="classInventory.html#afbf08633742f7d05246bf2b446e4930d">Inventory::render</a></div><div class="ttdeci">void render()</div><div class="ttdoc">Renderiza el inventario.</div><div class="ttdef"><b>Definition:</b> inventory.cpp:17</div></div>
+<div class="ttc" id="aclassInventory_html_a003decc5b201b30fbc3d7862642c2550"><div class="ttname"><a href="classInventory.html#a003decc5b201b30fbc3d7862642c2550">Inventory::handle_event</a></div><div class="ttdeci">void handle_event(SDL_Event &amp;e)</div><div class="ttdoc">Maneja eventos (clicks) en el inventario.</div><div class="ttdef"><b>Definition:</b> inventory.cpp:37</div></div>
+<div class="ttc" id="aclassInventory_html_afbf08633742f7d05246bf2b446e4930d"><div class="ttname"><a href="classInventory.html#afbf08633742f7d05246bf2b446e4930d">Inventory::render</a></div><div class="ttdeci">void render()</div><div class="ttdoc">Renderiza el inventario.</div><div class="ttdef"><b>Definition:</b> inventory.cpp:26</div></div>
 <div class="ttc" id="aclassSDLTexture_html"><div class="ttname"><a href="classSDLTexture.html">SDLTexture</a></div><div class="ttdoc">Objeto de textura de SDL.</div><div class="ttdef"><b>Definition:</b> sdl_texture.h:13</div></div>
-<div class="ttc" id="aclassInventory_html_a4eb7524297829b32fb510009a2c4d9f5"><div class="ttname"><a href="classInventory.html#a4eb7524297829b32fb510009a2c4d9f5">Inventory::set_item</a></div><div class="ttdeci">void set_item(int slot, SDLTexture *icon, int quantity)</div><div class="ttdoc">Setea el item en un slot.</div><div class="ttdef"><b>Definition:</b> inventory.cpp:22</div></div>
+<div class="ttc" id="aclassInventory_html_a4eb7524297829b32fb510009a2c4d9f5"><div class="ttname"><a href="classInventory.html#a4eb7524297829b32fb510009a2c4d9f5">Inventory::set_item</a></div><div class="ttdeci">void set_item(int slot, SDLTexture *icon, int quantity)</div><div class="ttdoc">Setea el item en un slot.</div><div class="ttdef"><b>Definition:</b> inventory.cpp:32</div></div>
 <div class="ttc" id="aclassInventory_html"><div class="ttname"><a href="classInventory.html">Inventory</a></div><div class="ttdoc">Inventario del jugador.</div><div class="ttdef"><b>Definition:</b> inventory.h:15</div></div>
 <div class="ttc" id="aclassItemQtyGrid_html"><div class="ttname"><a href="classItemQtyGrid.html">ItemQtyGrid</a></div><div class="ttdoc">Utilizada para renderizar las cantidades de los items en el inventario.</div><div class="ttdef"><b>Definition:</b> item_qty_grid.h:15</div></div>
 <div class="ttc" id="aclassItemButtonGrid_html"><div class="ttname"><a href="classItemButtonGrid.html">ItemButtonGrid</a></div><div class="ttdoc">Wrapper para todos los botones del inventario.</div><div class="ttdef"><b>Definition:</b> item_button_grid.h:13</div></div>

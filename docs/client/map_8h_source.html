@@ -123,7 +123,7 @@ $(document).ready(function(){initNavTree('map_8h_source.html',''); initResizable
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    std::vector&lt;std::vector&lt;Decoration&gt;&gt; background_layers;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    std::vector&lt;std::vector&lt;Decoration&gt;&gt; foreground_layers;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">int</span> loot_layer_index;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">int</span> spell_layer_index;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">bool</span> is_valid;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;   <span class="keyword">public</span>:</div>
@@ -139,22 +139,28 @@ $(document).ready(function(){initNavTree('map_8h_source.html',''); initResizable
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMap.html#acef3fdcc2f39b4bcf8ffb998e2d4fad2">update_loot_layer</a>(nlohmann::json loot_info);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    std::vector&lt;std::vector&lt;Decoration&gt;&gt;&amp; <a class="code" href="classMap.html#a1ef9d39ed4c6b757b8c0d27cfd8d4550">get_background_layers</a>();</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    std::vector&lt;std::vector&lt;Decoration&gt;&gt;&amp; <a class="code" href="classMap.html#a98e6569b76f6fb7bcc88ae1122c6f780">get_foreground_layers</a>();</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;};</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMap.html#a6ab12fbdbb2ee0b7612075cab4ca95b8">push_spell</a>(nlohmann::json spell_info);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMap.html#a6fae9d8d26786a649f092cb499ff1309">clean_spells</a>();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    std::vector&lt;std::vector&lt;Decoration&gt;&gt;&amp; <a class="code" href="classMap.html#a1ef9d39ed4c6b757b8c0d27cfd8d4550">get_background_layers</a>();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    std::vector&lt;std::vector&lt;Decoration&gt;&gt;&amp; <a class="code" href="classMap.html#a98e6569b76f6fb7bcc88ae1122c6f780">get_foreground_layers</a>();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;};</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassMap_html_a95855bdf5194643c114c8682ced9c1cf"><div class="ttname"><a href="classMap.html#a95855bdf5194643c114c8682ced9c1cf">Map::generate</a></div><div class="ttdeci">void generate(json map_description)</div><div class="ttdoc">Regenera el mapa.</div><div class="ttdef"><b>Definition:</b> map.cpp:23</div></div>
+<div class="ttc" id="aclassMap_html_a6fae9d8d26786a649f092cb499ff1309"><div class="ttname"><a href="classMap.html#a6fae9d8d26786a649f092cb499ff1309">Map::clean_spells</a></div><div class="ttdeci">void clean_spells()</div><div class="ttdoc">Limpia los efectos de hechizo que ya terminaron de reproducirse.</div><div class="ttdef"><b>Definition:</b> map.cpp:176</div></div>
 <div class="ttc" id="aclassMapError_html"><div class="ttname"><a href="classMapError.html">MapError</a></div><div class="ttdef"><b>Definition:</b> map.h:12</div></div>
-<div class="ttc" id="aclassMap_html_a38609ea6ce07bc5bb2ea55db6580b355"><div class="ttname"><a href="classMap.html#a38609ea6ce07bc5bb2ea55db6580b355">Map::get_width</a></div><div class="ttdeci">int get_width()</div><div class="ttdoc">Devuelve el ancho en tiles del mapa.</div><div class="ttdef"><b>Definition:</b> map.cpp:79</div></div>
-<div class="ttc" id="aclassMap_html_a98e6569b76f6fb7bcc88ae1122c6f780"><div class="ttname"><a href="classMap.html#a98e6569b76f6fb7bcc88ae1122c6f780">Map::get_foreground_layers</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; Decoration &gt; &gt; &amp; get_foreground_layers()</div><div class="ttdoc">Devuelve las capas que deben ser renderizadas por delante de las entidades.</div><div class="ttdef"><b>Definition:</b> map.cpp:90</div></div>
+<div class="ttc" id="aclassMap_html_a38609ea6ce07bc5bb2ea55db6580b355"><div class="ttname"><a href="classMap.html#a38609ea6ce07bc5bb2ea55db6580b355">Map::get_width</a></div><div class="ttdeci">int get_width()</div><div class="ttdoc">Devuelve el ancho en tiles del mapa.</div><div class="ttdef"><b>Definition:</b> map.cpp:89</div></div>
+<div class="ttc" id="aclassMap_html_a98e6569b76f6fb7bcc88ae1122c6f780"><div class="ttname"><a href="classMap.html#a98e6569b76f6fb7bcc88ae1122c6f780">Map::get_foreground_layers</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; Decoration &gt; &gt; &amp; get_foreground_layers()</div><div class="ttdoc">Devuelve las capas que deben ser renderizadas por delante de las entidades.</div><div class="ttdef"><b>Definition:</b> map.cpp:100</div></div>
 <div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdoc">Mapa. Contiene toda la informacion estatica del mapa, asi como tambien el loot que esta tirado en el ...</div><div class="ttdef"><b>Definition:</b> map.h:27</div></div>
-<div class="ttc" id="aclassMap_html_acef3fdcc2f39b4bcf8ffb998e2d4fad2"><div class="ttname"><a href="classMap.html#acef3fdcc2f39b4bcf8ffb998e2d4fad2">Map::update_loot_layer</a></div><div class="ttdeci">void update_loot_layer(nlohmann::json loot_info)</div><div class="ttdoc">Actualiza la capa de loot del mapa.</div><div class="ttdef"><b>Definition:</b> map.cpp:99</div></div>
-<div class="ttc" id="aclassMap_html_adef9516dd475e67aa7f819a6a358f668"><div class="ttname"><a href="classMap.html#adef9516dd475e67aa7f819a6a358f668">Map::get_height</a></div><div class="ttdeci">int get_height()</div><div class="ttdoc">Devuelve el alto en tiles del mapa.</div><div class="ttdef"><b>Definition:</b> map.cpp:81</div></div>
-<div class="ttc" id="aclassMap_html_a1ef9d39ed4c6b757b8c0d27cfd8d4550"><div class="ttname"><a href="classMap.html#a1ef9d39ed4c6b757b8c0d27cfd8d4550">Map::get_background_layers</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; Decoration &gt; &gt; &amp; get_background_layers()</div><div class="ttdoc">Devuelve las capas que deben ser renderizadas por detras de las entidades.</div><div class="ttdef"><b>Definition:</b> map.cpp:83</div></div>
+<div class="ttc" id="aclassMap_html_acef3fdcc2f39b4bcf8ffb998e2d4fad2"><div class="ttname"><a href="classMap.html#acef3fdcc2f39b4bcf8ffb998e2d4fad2">Map::update_loot_layer</a></div><div class="ttdeci">void update_loot_layer(nlohmann::json loot_info)</div><div class="ttdoc">Actualiza la capa de loot del mapa.</div><div class="ttdef"><b>Definition:</b> map.cpp:109</div></div>
+<div class="ttc" id="aclassMap_html_adef9516dd475e67aa7f819a6a358f668"><div class="ttname"><a href="classMap.html#adef9516dd475e67aa7f819a6a358f668">Map::get_height</a></div><div class="ttdeci">int get_height()</div><div class="ttdoc">Devuelve el alto en tiles del mapa.</div><div class="ttdef"><b>Definition:</b> map.cpp:91</div></div>
+<div class="ttc" id="aclassMap_html_a1ef9d39ed4c6b757b8c0d27cfd8d4550"><div class="ttname"><a href="classMap.html#a1ef9d39ed4c6b757b8c0d27cfd8d4550">Map::get_background_layers</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; Decoration &gt; &gt; &amp; get_background_layers()</div><div class="ttdoc">Devuelve las capas que deben ser renderizadas por detras de las entidades.</div><div class="ttdef"><b>Definition:</b> map.cpp:93</div></div>
+<div class="ttc" id="aclassMap_html_a6ab12fbdbb2ee0b7612075cab4ca95b8"><div class="ttname"><a href="classMap.html#a6ab12fbdbb2ee0b7612075cab4ca95b8">Map::push_spell</a></div><div class="ttdeci">void push_spell(nlohmann::json spell_info)</div><div class="ttdoc">Agrega un efecto de hechizo al mapa.</div><div class="ttdef"><b>Definition:</b> map.cpp:169</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

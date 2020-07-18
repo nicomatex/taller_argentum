@@ -106,35 +106,36 @@ $(document).ready(function(){initNavTree('equipment_8h_source.html',''); initRes
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classEquipment.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEquipment.html">Equipment</a> {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classIconGrid.html">IconGrid</a> equipment_icons;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    SDL_Rect equipment_area;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classItemButtonGrid.html">ItemButtonGrid</a> item_button_grid;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classEquipment.html">Equipment</a>(SDL_Rect equipment_area, SDL_Rect viewport,</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;              SDL_Renderer* renderer, <a class="code" href="classSocketManager.html">SocketManager</a>&amp; socket_manager);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    ~<a class="code" href="classEquipment.html">Equipment</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEquipment.html#a896edffb4e245bc4b1bade8e492b959e">render</a>();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEquipment.html#a57b623ad463a3df127a0bc538939011c">set_item</a>(<span class="keywordtype">int</span> slot, <a class="code" href="classSDLTexture.html">SDLTexture</a>* icon);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEquipment.html#a485c970543a156951d929dc07309189b">handle_event</a>(SDL_Event&amp; e);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classEquipment.html#a303059cd04ce3604b56b2f4d871003e6">get_last_clicked_slot</a>();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif  // __EQUIPMENT_H</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">int</span> last_clicked_slot;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classIconGrid.html">IconGrid</a> equipment_icons;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    SDL_Rect equipment_area;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classItemButtonGrid.html">ItemButtonGrid</a> item_button_grid;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classEquipment.html">Equipment</a>(SDL_Rect equipment_area, SDL_Rect viewport,</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;              SDL_Renderer* renderer, <a class="code" href="classSocketManager.html">SocketManager</a>&amp; socket_manager);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    ~<a class="code" href="classEquipment.html">Equipment</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEquipment.html#a896edffb4e245bc4b1bade8e492b959e">render</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEquipment.html#a57b623ad463a3df127a0bc538939011c">set_item</a>(<span class="keywordtype">int</span> slot, <a class="code" href="classSDLTexture.html">SDLTexture</a>* icon);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEquipment.html#a485c970543a156951d929dc07309189b">handle_event</a>(SDL_Event&amp; e);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classEquipment.html#a303059cd04ce3604b56b2f4d871003e6">get_last_clicked_slot</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif  // __EQUIPMENT_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassSocketManager_html"><div class="ttname"><a href="classSocketManager.html">SocketManager</a></div><div class="ttdef"><b>Definition:</b> socket_manager.h:12</div></div>
 <div class="ttc" id="aclassEquipment_html"><div class="ttname"><a href="classEquipment.html">Equipment</a></div><div class="ttdef"><b>Definition:</b> equipment.h:10</div></div>
-<div class="ttc" id="aclassEquipment_html_a485c970543a156951d929dc07309189b"><div class="ttname"><a href="classEquipment.html#a485c970543a156951d929dc07309189b">Equipment::handle_event</a></div><div class="ttdeci">void handle_event(SDL_Event &amp;e)</div><div class="ttdoc">Maneja eventos (clicks) en el equipamiento.</div><div class="ttdef"><b>Definition:</b> equipment.cpp:23</div></div>
+<div class="ttc" id="aclassEquipment_html_a485c970543a156951d929dc07309189b"><div class="ttname"><a href="classEquipment.html#a485c970543a156951d929dc07309189b">Equipment::handle_event</a></div><div class="ttdeci">void handle_event(SDL_Event &amp;e)</div><div class="ttdoc">Maneja eventos (clicks) en el equipamiento.</div><div class="ttdef"><b>Definition:</b> equipment.cpp:22</div></div>
 <div class="ttc" id="aclassIconGrid_html"><div class="ttname"><a href="classIconGrid.html">IconGrid</a></div><div class="ttdoc">Cuadricula de iconos.</div><div class="ttdef"><b>Definition:</b> icon_grid.h:13</div></div>
 <div class="ttc" id="aclassSDLTexture_html"><div class="ttname"><a href="classSDLTexture.html">SDLTexture</a></div><div class="ttdoc">Objeto de textura de SDL.</div><div class="ttdef"><b>Definition:</b> sdl_texture.h:13</div></div>
-<div class="ttc" id="aclassEquipment_html_a57b623ad463a3df127a0bc538939011c"><div class="ttname"><a href="classEquipment.html#a57b623ad463a3df127a0bc538939011c">Equipment::set_item</a></div><div class="ttdeci">void set_item(int slot, SDLTexture *icon)</div><div class="ttdoc">Setea el item en un slot.</div><div class="ttdef"><b>Definition:</b> equipment.cpp:19</div></div>
-<div class="ttc" id="aclassEquipment_html_a303059cd04ce3604b56b2f4d871003e6"><div class="ttname"><a href="classEquipment.html#a303059cd04ce3604b56b2f4d871003e6">Equipment::get_last_clicked_slot</a></div><div class="ttdeci">int get_last_clicked_slot()</div><div class="ttdoc">Devuelve el ultimo slot del equipamiento que fue clickeado.</div><div class="ttdef"><b>Definition:</b> equipment.cpp:27</div></div>
-<div class="ttc" id="aclassEquipment_html_a896edffb4e245bc4b1bade8e492b959e"><div class="ttname"><a href="classEquipment.html#a896edffb4e245bc4b1bade8e492b959e">Equipment::render</a></div><div class="ttdeci">void render()</div><div class="ttdoc">Renderiza el equipamiento.</div><div class="ttdef"><b>Definition:</b> equipment.cpp:15</div></div>
+<div class="ttc" id="aclassEquipment_html_a57b623ad463a3df127a0bc538939011c"><div class="ttname"><a href="classEquipment.html#a57b623ad463a3df127a0bc538939011c">Equipment::set_item</a></div><div class="ttdeci">void set_item(int slot, SDLTexture *icon)</div><div class="ttdoc">Setea el item en un slot.</div><div class="ttdef"><b>Definition:</b> equipment.cpp:18</div></div>
+<div class="ttc" id="aclassEquipment_html_a303059cd04ce3604b56b2f4d871003e6"><div class="ttname"><a href="classEquipment.html#a303059cd04ce3604b56b2f4d871003e6">Equipment::get_last_clicked_slot</a></div><div class="ttdeci">int get_last_clicked_slot()</div><div class="ttdoc">Devuelve el ultimo slot del equipamiento que fue clickeado.</div><div class="ttdef"><b>Definition:</b> equipment.cpp:24</div></div>
+<div class="ttc" id="aclassEquipment_html_a896edffb4e245bc4b1bade8e492b959e"><div class="ttname"><a href="classEquipment.html#a896edffb4e245bc4b1bade8e492b959e">Equipment::render</a></div><div class="ttdeci">void render()</div><div class="ttdoc">Renderiza el equipamiento.</div><div class="ttdef"><b>Definition:</b> equipment.cpp:16</div></div>
 <div class="ttc" id="aclassItemButtonGrid_html"><div class="ttname"><a href="classItemButtonGrid.html">ItemButtonGrid</a></div><div class="ttdoc">Wrapper para todos los botones del inventario.</div><div class="ttdef"><b>Definition:</b> item_button_grid.h:13</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

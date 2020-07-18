@@ -108,7 +108,7 @@ $(document).ready(function(){initNavTree('receive__handler_8h_source.html',''); 
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../game_state_monitor.h&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;../inventory_buffer.h&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;../map_change_buffer.h&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;../loot_buffer.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;../map_decorations_buffer.h&quot;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classClientReceiveHandler.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="classClientReceiveHandler.html">ClientReceiveHandler</a> : <span class="keyword">public</span> <a class="code" href="classBlockingThEventHandler.html">BlockingThEventHandler</a> {</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;   <span class="keyword">private</span>:</div>
@@ -124,35 +124,39 @@ $(document).ready(function(){initNavTree('receive__handler_8h_source.html',''); 
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> handle_outcoming_damage(<a class="code" href="classEvent.html">Event</a> &amp;ev);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> handle_outcoming_evaded_damage(<a class="code" href="classEvent.html">Event</a> &amp;ev);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> handle_incoming_damage_evaded(<a class="code" href="classEvent.html">Event</a> &amp;ev);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classMapChangeBuffer.html">MapChangeBuffer</a> &amp;map_change_buffer;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classChatBuffer.html">ChatBuffer</a> &amp;chat_buffer;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classInventoryBuffer.html">InventoryBuffer</a> &amp;inventory_buffer;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classLootBuffer.html">LootBuffer</a> &amp;loot_buffer;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a> &amp;game_state_monitor;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">// la idea es tener los handlers todos aca</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classClientReceiveHandler.html#a038fc0be8571b145d0d58f1a159bbd7f">ClientReceiveHandler</a>(<a class="code" href="classMapChangeBuffer.html">MapChangeBuffer</a> &amp;map_change_buffer,</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                         <a class="code" href="classChatBuffer.html">ChatBuffer</a> &amp;chat_buffer,</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                         <a class="code" href="classInventoryBuffer.html">InventoryBuffer</a> &amp;inventory_buffer,</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                         <a class="code" href="classLootBuffer.html">LootBuffer</a> &amp;loot_buffer,</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                         <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a> &amp;game_state_monitor);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    ~<a class="code" href="classClientReceiveHandler.html">ClientReceiveHandler</a>();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> handle_name_not_found(<a class="code" href="classEvent.html">Event</a> &amp;ev);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> handle_name_already_online(<a class="code" href="classEvent.html">Event</a> &amp;ev);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> handle_name_taken(<a class="code" href="classEvent.html">Event</a> &amp;ev);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> handle_resuscitate(<a class="code" href="classEvent.html">Event</a> &amp;ev);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classMapChangeBuffer.html">MapChangeBuffer</a> &amp;map_change_buffer;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="classChatBuffer.html">ChatBuffer</a> &amp;chat_buffer;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="classInventoryBuffer.html">InventoryBuffer</a> &amp;inventory_buffer;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classMapDecorationsBuffer.html">MapDecorationsBuffer</a> &amp;map_decorations_buffer;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a> &amp;game_state_monitor;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">// la idea es tener los handlers todos aca</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="classClientReceiveHandler.html#a7a6bb1bbf9e100a90eaa1b236dd7ef8f">ClientReceiveHandler</a>(<a class="code" href="classMapChangeBuffer.html">MapChangeBuffer</a> &amp;map_change_buffer,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                         <a class="code" href="classChatBuffer.html">ChatBuffer</a> &amp;chat_buffer,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                         <a class="code" href="classInventoryBuffer.html">InventoryBuffer</a> &amp;inventory_buffer,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                         <a class="code" href="classMapDecorationsBuffer.html">MapDecorationsBuffer</a> &amp;map_decorations_buffer,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                         <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a> &amp;game_state_monitor);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    ~<a class="code" href="classClientReceiveHandler.html">ClientReceiveHandler</a>();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassChatBuffer_html"><div class="ttname"><a href="classChatBuffer.html">ChatBuffer</a></div><div class="ttdoc">Buffer donde se almacenan los mensajes de chat provenientes del servidor.</div><div class="ttdef"><b>Definition:</b> chat_buffer.h:15</div></div>
-<div class="ttc" id="aclassGameStateMonitor_html"><div class="ttname"><a href="classGameStateMonitor.html">GameStateMonitor</a></div><div class="ttdoc">Monitor mediante el cual se sincroniza el flujo entre vistas.</div><div class="ttdef"><b>Definition:</b> game_state_monitor.h:25</div></div>
-<div class="ttc" id="aclassEvent_html"><div class="ttname"><a href="classEvent.html">Event</a></div><div class="ttdef"><b>Definition:</b> event.h:40</div></div>
-<div class="ttc" id="aclassLootBuffer_html"><div class="ttname"><a href="classLootBuffer.html">LootBuffer</a></div><div class="ttdoc">Buffer donde se almacenan los items tirados en el piso.</div><div class="ttdef"><b>Definition:</b> loot_buffer.h:13</div></div>
-<div class="ttc" id="aclassClientReceiveHandler_html_a038fc0be8571b145d0d58f1a159bbd7f"><div class="ttname"><a href="classClientReceiveHandler.html#a038fc0be8571b145d0d58f1a159bbd7f">ClientReceiveHandler::ClientReceiveHandler</a></div><div class="ttdeci">ClientReceiveHandler(MapChangeBuffer &amp;map_change_buffer, ChatBuffer &amp;chat_buffer, InventoryBuffer &amp;inventory_buffer, LootBuffer &amp;loot_buffer, GameStateMonitor &amp;game_state_monitor)</div><div class="ttdoc">Objeto manejador de eventos provenientes del servidor.</div><div class="ttdef"><b>Definition:</b> receive_handler.cpp:18</div></div>
+<div class="ttc" id="aclassGameStateMonitor_html"><div class="ttname"><a href="classGameStateMonitor.html">GameStateMonitor</a></div><div class="ttdoc">Monitor mediante el cual se sincroniza el flujo entre vistas.</div><div class="ttdef"><b>Definition:</b> game_state_monitor.h:29</div></div>
+<div class="ttc" id="aclassEvent_html"><div class="ttname"><a href="classEvent.html">Event</a></div><div class="ttdef"><b>Definition:</b> event.h:55</div></div>
 <div class="ttc" id="aclassInventoryBuffer_html"><div class="ttname"><a href="classInventoryBuffer.html">InventoryBuffer</a></div><div class="ttdoc">Buffer en el cual se almacena la informacion del inventario recibida.</div><div class="ttdef"><b>Definition:</b> inventory_buffer.h:12</div></div>
 <div class="ttc" id="aclassBlockingThEventHandler_html"><div class="ttname"><a href="classBlockingThEventHandler.html">BlockingThEventHandler</a></div><div class="ttdef"><b>Definition:</b> blocking_th_event_handler.h:22</div></div>
 <div class="ttc" id="aclassClientReceiveHandler_html"><div class="ttname"><a href="classClientReceiveHandler.html">ClientReceiveHandler</a></div><div class="ttdef"><b>Definition:</b> receive_handler.h:16</div></div>
 <div class="ttc" id="aclassMapChangeBuffer_html"><div class="ttname"><a href="classMapChangeBuffer.html">MapChangeBuffer</a></div><div class="ttdoc">Buffer donde se almacenan los mapas al inicializar, asi como informacion de la entidad que representa...</div><div class="ttdef"><b>Definition:</b> map_change_buffer.h:13</div></div>
+<div class="ttc" id="aclassClientReceiveHandler_html_a7a6bb1bbf9e100a90eaa1b236dd7ef8f"><div class="ttname"><a href="classClientReceiveHandler.html#a7a6bb1bbf9e100a90eaa1b236dd7ef8f">ClientReceiveHandler::ClientReceiveHandler</a></div><div class="ttdeci">ClientReceiveHandler(MapChangeBuffer &amp;map_change_buffer, ChatBuffer &amp;chat_buffer, InventoryBuffer &amp;inventory_buffer, MapDecorationsBuffer &amp;map_decorations_buffer, GameStateMonitor &amp;game_state_monitor)</div><div class="ttdoc">Objeto manejador de eventos provenientes del servidor.</div><div class="ttdef"><b>Definition:</b> receive_handler.cpp:18</div></div>
+<div class="ttc" id="aclassMapDecorationsBuffer_html"><div class="ttname"><a href="classMapDecorationsBuffer.html">MapDecorationsBuffer</a></div><div class="ttdoc">Buffer donde se almacenan los items tirados en el piso.</div><div class="ttdef"><b>Definition:</b> map_decorations_buffer.h:14</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

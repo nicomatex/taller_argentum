@@ -118,27 +118,29 @@ $(document).ready(function(){initNavTree('login__view_8h_source.html',''); initR
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classCreateCharacterButton.html">CreateCharacterButton</a> create_character_button;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classLoginUiEventHandler.html">LoginUiEventHandler</a> ui_event_handler;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="classLoginView.html#aaf17aba63b11fb3444df021180df5bcf">LoginView</a>(<a class="code" href="classSDLWindow.html">SDLWindow</a> &amp;window, <a class="code" href="classResponsiveScaler.html">ResponsiveScaler</a> &amp;scaler,</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;              <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a> &amp;game_state_monitor,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;              <a class="code" href="classSocketManager.html">SocketManager</a> &amp;socket_manager);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    ~<a class="code" href="classLoginView.html">LoginView</a>();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classLoginView.html#a1fa86b66869d144e574f55d862ee861d">run</a>();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> render_login_alert();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classLoginView.html#aaf17aba63b11fb3444df021180df5bcf">LoginView</a>(<a class="code" href="classSDLWindow.html">SDLWindow</a> &amp;window, <a class="code" href="classResponsiveScaler.html">ResponsiveScaler</a> &amp;scaler,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;              <a class="code" href="classGameStateMonitor.html">GameStateMonitor</a> &amp;game_state_monitor,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;              <a class="code" href="classSocketManager.html">SocketManager</a> &amp;socket_manager);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    ~<a class="code" href="classLoginView.html">LoginView</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classLoginView.html#ac27716fb6ad82e10db38f3d69c9c6855">run</a>(<span class="keywordtype">int</span> fps);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassSDLWindow_html"><div class="ttname"><a href="classSDLWindow.html">SDLWindow</a></div><div class="ttdoc">Objeto ventana de SDL.</div><div class="ttdef"><b>Definition:</b> sdl_window.h:17</div></div>
 <div class="ttc" id="aclassSocketManager_html"><div class="ttname"><a href="classSocketManager.html">SocketManager</a></div><div class="ttdef"><b>Definition:</b> socket_manager.h:12</div></div>
+<div class="ttc" id="aclassLoginView_html_ac27716fb6ad82e10db38f3d69c9c6855"><div class="ttname"><a href="classLoginView.html#ac27716fb6ad82e10db38f3d69c9c6855">LoginView::run</a></div><div class="ttdeci">void run(int fps)</div><div class="ttdoc">Inicia la vista.</div><div class="ttdef"><b>Definition:</b> login_view.cpp:50</div></div>
 <div class="ttc" id="aclassResponsiveScaler_html"><div class="ttname"><a href="classResponsiveScaler.html">ResponsiveScaler</a></div><div class="ttdoc">Escalador para hacer las areas responsive.</div><div class="ttdef"><b>Definition:</b> responsive_scaler.h:10</div></div>
 <div class="ttc" id="aclassCreateCharacterButton_html"><div class="ttname"><a href="classCreateCharacterButton.html">CreateCharacterButton</a></div><div class="ttdoc">Boton para cambiar a la vista de creacion de personaje.</div><div class="ttdef"><b>Definition:</b> create_character_button.h:10</div></div>
 <div class="ttc" id="aclassLoginButton_html"><div class="ttname"><a href="classLoginButton.html">LoginButton</a></div><div class="ttdoc">Boton para iniciar sesion.</div><div class="ttdef"><b>Definition:</b> login_button.h:12</div></div>
-<div class="ttc" id="aclassGameStateMonitor_html"><div class="ttname"><a href="classGameStateMonitor.html">GameStateMonitor</a></div><div class="ttdoc">Monitor mediante el cual se sincroniza el flujo entre vistas.</div><div class="ttdef"><b>Definition:</b> game_state_monitor.h:25</div></div>
-<div class="ttc" id="aclassLoginView_html_aaf17aba63b11fb3444df021180df5bcf"><div class="ttname"><a href="classLoginView.html#aaf17aba63b11fb3444df021180df5bcf">LoginView::LoginView</a></div><div class="ttdeci">LoginView(SDLWindow &amp;window, ResponsiveScaler &amp;scaler, GameStateMonitor &amp;game_state_monitor, SocketManager &amp;socket_manager)</div><div class="ttdoc">Crea un objeto Login View.</div><div class="ttdef"><b>Definition:</b> login_view.cpp:7</div></div>
+<div class="ttc" id="aclassGameStateMonitor_html"><div class="ttname"><a href="classGameStateMonitor.html">GameStateMonitor</a></div><div class="ttdoc">Monitor mediante el cual se sincroniza el flujo entre vistas.</div><div class="ttdef"><b>Definition:</b> game_state_monitor.h:29</div></div>
+<div class="ttc" id="aclassLoginView_html_aaf17aba63b11fb3444df021180df5bcf"><div class="ttname"><a href="classLoginView.html#aaf17aba63b11fb3444df021180df5bcf">LoginView::LoginView</a></div><div class="ttdeci">LoginView(SDLWindow &amp;window, ResponsiveScaler &amp;scaler, GameStateMonitor &amp;game_state_monitor, SocketManager &amp;socket_manager)</div><div class="ttdoc">Crea un objeto Login View.</div><div class="ttdef"><b>Definition:</b> login_view.cpp:8</div></div>
 <div class="ttc" id="aclassLoginView_html"><div class="ttname"><a href="classLoginView.html">LoginView</a></div><div class="ttdoc">Vista de inicio de sesion.</div><div class="ttdef"><b>Definition:</b> login_view.h:17</div></div>
-<div class="ttc" id="aclassLoginView_html_a1fa86b66869d144e574f55d862ee861d"><div class="ttname"><a href="classLoginView.html#a1fa86b66869d144e574f55d862ee861d">LoginView::run</a></div><div class="ttdeci">void run()</div><div class="ttdoc">Inicia la vista.</div><div class="ttdef"><b>Definition:</b> login_view.cpp:32</div></div>
 <div class="ttc" id="aclassSDLTexture_html"><div class="ttname"><a href="classSDLTexture.html">SDLTexture</a></div><div class="ttdoc">Objeto de textura de SDL.</div><div class="ttdef"><b>Definition:</b> sdl_texture.h:13</div></div>
 <div class="ttc" id="aclassTextInput_html"><div class="ttname"><a href="classTextInput.html">TextInput</a></div><div class="ttdoc">Input de texto.</div><div class="ttdef"><b>Definition:</b> text_input.h:14</div></div>
 <div class="ttc" id="aclassLoginUiEventHandler_html"><div class="ttname"><a href="classLoginUiEventHandler.html">LoginUiEventHandler</a></div><div class="ttdoc">Handler de eventos del usuario de la vista de inicio de sesion.</div><div class="ttdef"><b>Definition:</b> login_view_ui_handler.h:14</div></div>

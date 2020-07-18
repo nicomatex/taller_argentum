@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('chat_8h_source.html',''); initResizabl
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;         TTF_Font* font);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    ~<a class="code" href="classChat.html">Chat</a>();</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChat.html#afd423a494524749f4f8f79249cad9a72">add_characters</a>(<span class="keywordtype">char</span>* characters);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChat.html#ab14d0ea1029b7af6f633b681de55b4da">add_characters</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* characters);</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChat.html#accaf8b9c1790c3a7d82963dd5e6be76e">input_erase</a>();</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
@@ -132,6 +132,7 @@ $(document).ready(function(){initNavTree('chat_8h_source.html',''); initResizabl
 </div><!-- doc-content -->
 <div class="ttc" id="aclassChat_html_a79f43f7830f49ea5e58789f57151a844"><div class="ttname"><a href="classChat.html#a79f43f7830f49ea5e58789f57151a844">Chat::render</a></div><div class="ttdeci">void render()</div><div class="ttdoc">Renderiza el chat.</div><div class="ttdef"><b>Definition:</b> chat.cpp:36</div></div>
 <div class="ttc" id="aclassChat_html"><div class="ttname"><a href="classChat.html">Chat</a></div><div class="ttdoc">Chat del juego.</div><div class="ttdef"><b>Definition:</b> chat.h:12</div></div>
+<div class="ttc" id="aclassChat_html_ab14d0ea1029b7af6f633b681de55b4da"><div class="ttname"><a href="classChat.html#ab14d0ea1029b7af6f633b681de55b4da">Chat::add_characters</a></div><div class="ttdeci">void add_characters(const char *characters)</div><div class="ttdoc">Agrega caracteres al input box del chat.</div><div class="ttdef"><b>Definition:</b> chat.cpp:18</div></div>
 <div class="ttc" id="aclassChat_html_a3b650960f26148a104c1128cbd35698d"><div class="ttname"><a href="classChat.html#a3b650960f26148a104c1128cbd35698d">Chat::Chat</a></div><div class="ttdeci">Chat(SDL_Rect chat_area, int nlines, SDL_Renderer *renderer, TTF_Font *font)</div><div class="ttdoc">Crea un objeto Chat.</div><div class="ttdef"><b>Definition:</b> chat.cpp:5</div></div>
 <div class="ttc" id="aclassChat_html_a8ab7e0b575648345a4921fdf21d768d6"><div class="ttname"><a href="classChat.html#a8ab7e0b575648345a4921fdf21d768d6">Chat::print_line</a></div><div class="ttdeci">void print_line(std::string line)</div><div class="ttdoc">Imprime una linea en el chat.</div><div class="ttdef"><b>Definition:</b> chat.cpp:32</div></div>
 <div class="ttc" id="aclassChat_html_ad8b29870989af4a7eb4383cb7cb8f76c"><div class="ttname"><a href="classChat.html#ad8b29870989af4a7eb4383cb7cb8f76c">Chat::get_input_and_erase</a></div><div class="ttdeci">std::string get_input_and_erase()</div><div class="ttdoc">Devuelve el texto ingresado en el input, y lo borra.</div><div class="ttdef"><b>Definition:</b> chat.cpp:26</div></div>
@@ -139,7 +140,6 @@ $(document).ready(function(){initNavTree('chat_8h_source.html',''); initResizabl
 <div class="ttc" id="aclassChat_html_aae7f8cf1bc0daf8ab2fa11908747b7f3"><div class="ttname"><a href="classChat.html#aae7f8cf1bc0daf8ab2fa11908747b7f3">Chat::toggle</a></div><div class="ttdeci">void toggle()</div><div class="ttdoc">Activa / desactiva el cursor del chat.</div><div class="ttdef"><b>Definition:</b> chat.cpp:41</div></div>
 <div class="ttc" id="aclassTextInput_html"><div class="ttname"><a href="classTextInput.html">TextInput</a></div><div class="ttdoc">Input de texto.</div><div class="ttdef"><b>Definition:</b> text_input.h:14</div></div>
 <div class="ttc" id="aclassTextBox_html"><div class="ttname"><a href="classTextBox.html">TextBox</a></div><div class="ttdoc">Caja de texto. Usada en el chat.</div><div class="ttdef"><b>Definition:</b> text_box.h:14</div></div>
-<div class="ttc" id="aclassChat_html_afd423a494524749f4f8f79249cad9a72"><div class="ttname"><a href="classChat.html#afd423a494524749f4f8f79249cad9a72">Chat::add_characters</a></div><div class="ttdeci">void add_characters(char *characters)</div><div class="ttdoc">Agrega caracteres al input box del chat.</div><div class="ttdef"><b>Definition:</b> chat.cpp:18</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

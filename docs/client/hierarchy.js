@@ -60,17 +60,20 @@ var hierarchy =
     [ "ItemQtyGrid", "classItemQtyGrid.html", null ],
     [ "LoginUiEventHandler", "classLoginUiEventHandler.html", null ],
     [ "LoginView", "classLoginView.html", null ],
-    [ "LootBuffer", "classLootBuffer.html", null ],
     [ "Map", "classMap.html", null ],
     [ "MapChangeBuffer", "classMapChangeBuffer.html", null ],
+    [ "MapDecorationsBuffer", "classMapDecorationsBuffer.html", null ],
     [ "part_visual_info", "structpart__visual__info.html", null ],
+    [ "PlayerInfoMonitor", "classPlayerInfoMonitor.html", null ],
     [ "position", "structposition.html", null ],
     [ "Protocol", "classProtocol.html", null ],
     [ "RaceAndClassSelector", "classRaceAndClassSelector.html", null ],
     [ "RenderizableObject", "classRenderizableObject.html", [
       [ "Actor", "classActor.html", null ],
       [ "Decoration", "classDecoration.html", null ],
-      [ "InGameText", "classInGameText.html", null ]
+      [ "InGameBar", "classInGameBar.html", null ],
+      [ "InGameText", "classInGameText.html", null ],
+      [ "VisualEffect", "classVisualEffect.html", null ]
     ] ],
     [ "ResourceManager", "classResourceManager.html", null ],
     [ "ResponsiveScaler", "classResponsiveScaler.html", null ],

@@ -12,10 +12,12 @@ var dir_3f8315192904255f2bd3453e0fee5a42 =
     [ "engine_config.h", "engine__config_8h_source.html", null ],
     [ "engine_error.h", "engine__error_8h_source.html", null ],
     [ "entity_factory.h", "entity__factory_8h_source.html", null ],
+    [ "in_game_bar.h", "in__game__bar_8h_source.html", null ],
     [ "in_game_text.h", "in__game__text_8h_source.html", null ],
     [ "map.h", "map_8h_source.html", null ],
     [ "renderizable_object.h", "renderizable__object_8h_source.html", null ],
     [ "resource_manager.h", "resource__manager_8h_source.html", null ],
     [ "sound_system.h", "sound__system_8h_source.html", null ],
-    [ "visual_config.h", "visual__config_8h_source.html", null ]
+    [ "visual_config.h", "visual__config_8h_source.html", null ],
+    [ "visual_effect.h", "visual__effect_8h_source.html", null ]
 ];

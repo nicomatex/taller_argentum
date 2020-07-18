@@ -118,6 +118,18 @@ Métodos públicos</h2></td></tr>
 <tr class="memitem:ad72862822ffeba5defa184ca94d79679"><td class="memItemLeft" align="right" valign="top">game_state_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameStateMonitor.html#ad72862822ffeba5defa184ca94d79679">get_game_state</a> ()</td></tr>
 <tr class="memdesc:ad72862822ffeba5defa184ca94d79679"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el estado del juego.  <a href="classGameStateMonitor.html#ad72862822ffeba5defa184ca94d79679">Más...</a><br /></td></tr>
 <tr class="separator:ad72862822ffeba5defa184ca94d79679"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5ee43b80489542041aacb54a5457da9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameStateMonitor.html#aa5ee43b80489542041aacb54a5457da9">set_login_state</a> (login_state_t new_login_state)</td></tr>
+<tr class="memdesc:aa5ee43b80489542041aacb54a5457da9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setea el nuevo estado del login.  <a href="classGameStateMonitor.html#aa5ee43b80489542041aacb54a5457da9">Más...</a><br /></td></tr>
+<tr class="separator:aa5ee43b80489542041aacb54a5457da9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91bf6bd07a20fa16e3506d808d01aab5"><td class="memItemLeft" align="right" valign="top">login_state_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameStateMonitor.html#a91bf6bd07a20fa16e3506d808d01aab5">get_login_state</a> ()</td></tr>
+<tr class="memdesc:a91bf6bd07a20fa16e3506d808d01aab5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el estado de login.  <a href="classGameStateMonitor.html#a91bf6bd07a20fa16e3506d808d01aab5">Más...</a><br /></td></tr>
+<tr class="separator:a91bf6bd07a20fa16e3506d808d01aab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f8d6721ee09a2eb7a0fbfb87f3a0a7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameStateMonitor.html#a5f8d6721ee09a2eb7a0fbfb87f3a0a7d">set_char_creation_state</a> (char_creation_state_t new_char_creation_state)</td></tr>
+<tr class="memdesc:a5f8d6721ee09a2eb7a0fbfb87f3a0a7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setea el nuevo estado de creacion de personaje.  <a href="classGameStateMonitor.html#a5f8d6721ee09a2eb7a0fbfb87f3a0a7d">Más...</a><br /></td></tr>
+<tr class="separator:a5f8d6721ee09a2eb7a0fbfb87f3a0a7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada9cc05be3b977d7f4cf37a228125486"><td class="memItemLeft" align="right" valign="top">char_creation_state_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameStateMonitor.html#ada9cc05be3b977d7f4cf37a228125486">get_char_creation_state</a> ()</td></tr>
+<tr class="memdesc:ada9cc05be3b977d7f4cf37a228125486"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el estado de creacion de personaje.  <a href="classGameStateMonitor.html#ada9cc05be3b977d7f4cf37a228125486">Más...</a><br /></td></tr>
+<tr class="separator:ada9cc05be3b977d7f4cf37a228125486"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae51f3f03408b98cf9983916f3067c2ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameStateMonitor.html#ae51f3f03408b98cf9983916f3067c2ad">wait_for_game_state</a> (game_state_t expected_game_state)</td></tr>
 <tr class="memdesc:ae51f3f03408b98cf9983916f3067c2ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Duerme el thread llamante hasta que el estado del juego sea el esperado.  <a href="classGameStateMonitor.html#ae51f3f03408b98cf9983916f3067c2ad">Más...</a><br /></td></tr>
 <tr class="separator:ae51f3f03408b98cf9983916f3067c2ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,6 +143,26 @@ Métodos públicos</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Monitor mediante el cual se sincroniza el flujo entre vistas. </p>
 </div><h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="ada9cc05be3b977d7f4cf37a228125486"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada9cc05be3b977d7f4cf37a228125486">&#9670;&nbsp;</a></span>get_char_creation_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char_creation_state_t GameStateMonitor::get_char_creation_state </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve el estado de creacion de personaje. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>char_creation_state_t </dd></dl>
+
+</div>
+</div>
 <a id="ad72862822ffeba5defa184ca94d79679"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad72862822ffeba5defa184ca94d79679">&#9670;&nbsp;</a></span>get_game_state()</h2>
 
@@ -148,6 +180,26 @@ Métodos públicos</h2></td></tr>
 
 <p>Devuelve el estado del juego. </p>
 <dl class="section return"><dt>Devuelve</dt><dd>game_state_t </dd></dl>
+
+</div>
+</div>
+<a id="a91bf6bd07a20fa16e3506d808d01aab5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91bf6bd07a20fa16e3506d808d01aab5">&#9670;&nbsp;</a></span>get_login_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">login_state_t GameStateMonitor::get_login_state </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve el estado de login. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>login_state_t </dd></dl>
 
 </div>
 </div>
@@ -189,6 +241,32 @@ false Si no esta conectado. </dd></dl>
 </div><div class="memdoc">
 
 <p>Setea el estado como desconectado, y el estado de juego como EXITING. </p>
+
+</div>
+</div>
+<a id="a5f8d6721ee09a2eb7a0fbfb87f3a0a7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f8d6721ee09a2eb7a0fbfb87f3a0a7d">&#9670;&nbsp;</a></span>set_char_creation_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameStateMonitor::set_char_creation_state </td>
+          <td>(</td>
+          <td class="paramtype">char_creation_state_t&#160;</td>
+          <td class="paramname"><em>new_char_creation_state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setea el nuevo estado de creacion de personaje. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_char_creation_state</td><td>Nuevo estado de creacion de personaje. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -238,6 +316,32 @@ false Si no esta conectado. </dd></dl>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">new_game_state</td><td>Nuevo estado del juego. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa5ee43b80489542041aacb54a5457da9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5ee43b80489542041aacb54a5457da9">&#9670;&nbsp;</a></span>set_login_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameStateMonitor::set_login_state </td>
+          <td>(</td>
+          <td class="paramtype">login_state_t&#160;</td>
+          <td class="paramname"><em>new_login_state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setea el nuevo estado del login. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_login_state</td><td>Nuevo estado del login. </td></tr>
   </table>
   </dd>
 </dl>

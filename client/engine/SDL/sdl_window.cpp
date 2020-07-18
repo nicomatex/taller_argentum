@@ -7,8 +7,6 @@
 #include "sdl_error.h"
 #include "sdl_text.h"
 
-extern bool debug;
-
 SDLWindow::SDLWindow(int width, int height, const std::string &title,
                      bool fullscreen, bool vsync):vsync(vsync) {
     int errCode = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
@@ -25,8 +23,6 @@ SDLWindow::SDLWindow(int width, int height, const std::string &title,
     if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
         throw SDLError(ERR_MIXER_INIT);
     }
-    if (debug)
-        std::cout << "[DEBUG] SDL, IMAGE y TTF inicializados." << std::endl;
 
     int flags = fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0;
     this->window =
@@ -35,7 +31,6 @@ SDLWindow::SDLWindow(int width, int height, const std::string &title,
         throw SDLError(ERR_WINDOW_INIT);
     }
 
-    if (debug) std::cout << "[DEBUG] Ventana creada." << std::endl;
 }
 
 SDL_Renderer *SDLWindow::init_renderer() {
@@ -48,12 +43,10 @@ SDL_Renderer *SDLWindow::init_renderer() {
         SDL_DestroyWindow(this->window);
         throw SDLError(ERR_RENDERER_INIT);
     }
-    if (debug) std::cout << "[DEBUG] Renderer inicializado." << std::endl;
     return this->renderer;
 }
 
 SDLWindow::~SDLWindow() {
-    if (debug) std::cout << ("[DEBUG] Destruyendo ventana.") << std::endl;
     if (this->renderer) {
         SDL_DestroyRenderer(this->renderer);
         this->renderer = nullptr;

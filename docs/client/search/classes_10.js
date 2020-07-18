@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['visualcharactercomponent_316',['VisualCharacterComponent',['../classVisualCharacterComponent.html',1,'']]],
-  ['visualnpccomponent_317',['VisualNPCComponent',['../classVisualNPCComponent.html',1,'']]]
+  ['visualcharactercomponent_332',['VisualCharacterComponent',['../classVisualCharacterComponent.html',1,'']]],
+  ['visualeffect_333',['VisualEffect',['../classVisualEffect.html',1,'']]],
+  ['visualnpccomponent_334',['VisualNPCComponent',['../classVisualNPCComponent.html',1,'']]]
 ];

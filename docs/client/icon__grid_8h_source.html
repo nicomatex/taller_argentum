@@ -129,13 +129,16 @@ $(document).ready(function(){initNavTree('icon__grid_8h_source.html',''); initRe
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classIconGrid.html#a11da0a263d86683445637c60e5324104">set_icon</a>(<span class="keywordtype">int</span> <a class="code" href="structposition.html">position</a>, <a class="code" href="classSDLTexture.html">SDLTexture</a>* icon);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classIconGrid.html#af109e943c9506f431e8cc03ff9ee21f9">render</a>();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;};</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    SDL_Rect <a class="code" href="classIconGrid.html#ab165d0acd9422e013ec1b8e8c9a7e27d">get_icon_area</a>(<span class="keywordtype">int</span> <a class="code" href="structposition.html">position</a>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassIconGrid_html_af109e943c9506f431e8cc03ff9ee21f9"><div class="ttname"><a href="classIconGrid.html#af109e943c9506f431e8cc03ff9ee21f9">IconGrid::render</a></div><div class="ttdeci">void render()</div><div class="ttdoc">Renderiza el icongrid.</div><div class="ttdef"><b>Definition:</b> icon_grid.cpp:32</div></div>
 <div class="ttc" id="aclassIconGrid_html"><div class="ttname"><a href="classIconGrid.html">IconGrid</a></div><div class="ttdoc">Cuadricula de iconos.</div><div class="ttdef"><b>Definition:</b> icon_grid.h:13</div></div>
+<div class="ttc" id="aclassIconGrid_html_ab165d0acd9422e013ec1b8e8c9a7e27d"><div class="ttname"><a href="classIconGrid.html#ab165d0acd9422e013ec1b8e8c9a7e27d">IconGrid::get_icon_area</a></div><div class="ttdeci">SDL_Rect get_icon_area(int position)</div><div class="ttdoc">Devuelve el area correspondiente a un icono particular.</div><div class="ttdef"><b>Definition:</b> icon_grid.cpp:53</div></div>
 <div class="ttc" id="aclassSDLTexture_html"><div class="ttname"><a href="classSDLTexture.html">SDLTexture</a></div><div class="ttdoc">Objeto de textura de SDL.</div><div class="ttdef"><b>Definition:</b> sdl_texture.h:13</div></div>
 <div class="ttc" id="aclassIconGrid_html_a94f00e0198bbe9820e8adfacbbad39ae"><div class="ttname"><a href="classIconGrid.html#a94f00e0198bbe9820e8adfacbbad39ae">IconGrid::IconGrid</a></div><div class="ttdeci">IconGrid(SDL_Rect render_area, SDL_Renderer *renderer, int rows, int cols, float size_proportion, bool original_proportions=false)</div><div class="ttdoc">Crea un objeto Icon Grid.</div><div class="ttdef"><b>Definition:</b> icon_grid.cpp:5</div></div>
 <div class="ttc" id="aclassIconGrid_html_a11da0a263d86683445637c60e5324104"><div class="ttname"><a href="classIconGrid.html#a11da0a263d86683445637c60e5324104">IconGrid::set_icon</a></div><div class="ttdeci">void set_icon(int position, SDLTexture *icon)</div><div class="ttdoc">Setea el icono en una posicion dada.</div><div class="ttdef"><b>Definition:</b> icon_grid.cpp:25</div></div>

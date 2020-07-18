@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.19"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Argentum Online - Cliente: Fichero Fuente /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/client/map_decorations_buffer.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Argentum Online - Cliente
+   </div>
+  </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.19 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('map__decorations__buffer_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">map_decorations_buffer.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __MAP_DECORATIONS_BUFFER_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __MAP_DECORATIONS_BUFFER_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;queue&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../include/nlohmann/json.hpp&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;engine/map.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classMapDecorationsBuffer.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMapDecorationsBuffer.html">MapDecorationsBuffer</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    std::mutex m;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    nlohmann::json loot_info;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    std::queue&lt;nlohmann::json&gt; special_ability_queue;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classMapDecorationsBuffer.html">MapDecorationsBuffer</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    ~<a class="code" href="classMapDecorationsBuffer.html">MapDecorationsBuffer</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMapDecorationsBuffer.html#aa728605fde5de553a2b4f2b2c3c791ab">load_loot_info</a>(nlohmann::json new_loot_info);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMapDecorationsBuffer.html#a02a98b7ac99dba320fefc0b56aa1d764">push_special_ability</a>(nlohmann::json ability_info);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMapDecorationsBuffer.html#a9c0b9a699926f361b1179f83ee13dc97">flush_loot</a>(<a class="code" href="classMap.html">Map</a> &amp;map);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMapDecorationsBuffer.html#a11d4b4f3ba99f553d0c5da9ffcf0b78d">flush_special_abilities</a>(<a class="code" href="classMap.html">Map</a> &amp;map);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclassMapDecorationsBuffer_html_a9c0b9a699926f361b1179f83ee13dc97"><div class="ttname"><a href="classMapDecorationsBuffer.html#a9c0b9a699926f361b1179f83ee13dc97">MapDecorationsBuffer::flush_loot</a></div><div class="ttdeci">void flush_loot(Map &amp;map)</div><div class="ttdoc">Flushea la informacion del loot en un mapa.</div><div class="ttdef"><b>Definition:</b> map_decorations_buffer.cpp:15</div></div>
+<div class="ttc" id="aclassMapDecorationsBuffer_html_a11d4b4f3ba99f553d0c5da9ffcf0b78d"><div class="ttname"><a href="classMapDecorationsBuffer.html#a11d4b4f3ba99f553d0c5da9ffcf0b78d">MapDecorationsBuffer::flush_special_abilities</a></div><div class="ttdeci">void flush_special_abilities(Map &amp;map)</div><div class="ttdoc">Flushea informacion de habilidades especiales en un mapa.</div><div class="ttdef"><b>Definition:</b> map_decorations_buffer.cpp:26</div></div>
+<div class="ttc" id="aclassMapDecorationsBuffer_html_aa728605fde5de553a2b4f2b2c3c791ab"><div class="ttname"><a href="classMapDecorationsBuffer.html#aa728605fde5de553a2b4f2b2c3c791ab">MapDecorationsBuffer::load_loot_info</a></div><div class="ttdeci">void load_loot_info(nlohmann::json new_loot_info)</div><div class="ttdoc">Carga informacion en el buffer.</div><div class="ttdef"><b>Definition:</b> map_decorations_buffer.cpp:10</div></div>
+<div class="ttc" id="aclassMapDecorationsBuffer_html_a02a98b7ac99dba320fefc0b56aa1d764"><div class="ttname"><a href="classMapDecorationsBuffer.html#a02a98b7ac99dba320fefc0b56aa1d764">MapDecorationsBuffer::push_special_ability</a></div><div class="ttdeci">void push_special_ability(nlohmann::json ability_info)</div><div class="ttdoc">Agrega informacion sobre una habilidad especial.</div><div class="ttdef"><b>Definition:</b> map_decorations_buffer.cpp:20</div></div>
+<div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdoc">Mapa. Contiene toda la informacion estatica del mapa, asi como tambien el loot que esta tirado en el ...</div><div class="ttdef"><b>Definition:</b> map.h:27</div></div>
+<div class="ttc" id="aclassMapDecorationsBuffer_html"><div class="ttname"><a href="classMapDecorationsBuffer.html">MapDecorationsBuffer</a></div><div class="ttdoc">Buffer donde se almacenan los items tirados en el piso.</div><div class="ttdef"><b>Definition:</b> map_decorations_buffer.h:14</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><b>map_decorations_buffer.h</b></li>
+    <li class="footer">Generado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.19 </li>
+  </ul>
+</div>
+</body>
+</html>
