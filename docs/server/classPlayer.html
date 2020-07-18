@@ -122,6 +122,18 @@ Métodos públicos</h2></td></tr>
 <tr class="memitem:a554e23a070d9b608bbb28f390b4a7f03"><td class="memItemLeft" align="right" valign="top">race_type_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a554e23a070d9b608bbb28f390b4a7f03">get_race_type</a> () const</td></tr>
 <tr class="memdesc:a554e23a070d9b608bbb28f390b4a7f03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la raza del jugador.  <a href="classPlayer.html#a554e23a070d9b608bbb28f390b4a7f03">Más...</a><br /></td></tr>
 <tr class="separator:a554e23a070d9b608bbb28f390b4a7f03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb0fe9b66fecab56f00bdc240242d8b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#aeb0fe9b66fecab56f00bdc240242d8b9">immobilize</a> (int delta_t)</td></tr>
+<tr class="memdesc:aeb0fe9b66fecab56f00bdc240242d8b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tiempo a inmovilizar al personaje en milisegundos.  <a href="classPlayer.html#aeb0fe9b66fecab56f00bdc240242d8b9">Más...</a><br /></td></tr>
+<tr class="separator:aeb0fe9b66fecab56f00bdc240242d8b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21aa6deb52ca3e8d99112bf3ec2046f5"><td class="memItemLeft" align="right" valign="top"><a id="a21aa6deb52ca3e8d99112bf3ec2046f5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>resuscitate</b> (int delta_t)</td></tr>
+<tr class="separator:a21aa6deb52ca3e8d99112bf3ec2046f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae34a299486be71805dc30f99d64f48a3"><td class="memItemLeft" align="right" valign="top"><a id="ae34a299486be71805dc30f99d64f48a3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>regen_max</b> ()</td></tr>
+<tr class="separator:ae34a299486be71805dc30f99d64f48a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc57969eb3d226496ef9a781058f798d"><td class="memItemLeft" align="right" valign="top"><a id="afc57969eb3d226496ef9a781058f798d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>teleport</b> (<a class="el" href="structposition.html">position_t</a> dest, int delta_t)</td></tr>
+<tr class="separator:afc57969eb3d226496ef9a781058f798d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2854fa9a73fdc548f7c0afcdd3367fd"><td class="memItemLeft" align="right" valign="top"><a id="aa2854fa9a73fdc548f7c0afcdd3367fd"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>die</b> () override</td></tr>
 <tr class="separator:aa2854fa9a73fdc548f7c0afcdd3367fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,18 +143,42 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_alive</b> () const
 <tr class="memitem:a3cd10ee96674c54f60e3f70a344f5e8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a3cd10ee96674c54f60e3f70a344f5e8b">use</a> (SlotId slot)</td></tr>
 <tr class="memdesc:a3cd10ee96674c54f60e3f70a344f5e8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utilizar un item del inventario.  <a href="classPlayer.html#a3cd10ee96674c54f60e3f70a344f5e8b">Más...</a><br /></td></tr>
 <tr class="separator:a3cd10ee96674c54f60e3f70a344f5e8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff11834e62d58ca848f5efde8c51e78e"><td class="memItemLeft" align="right" valign="top"><a id="aff11834e62d58ca848f5efde8c51e78e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add_item</b> (<a class="el" href="classItem.html">Item</a> *item)</td></tr>
+<tr class="memitem:adc6e9d131d7110e865b6ad8f44700cfc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#adc6e9d131d7110e865b6ad8f44700cfc">use_ability</a> (<a class="el" href="classEntity.html">Entity</a> *target, <a class="el" href="structposition.html">position_t</a> target_pos)</td></tr>
+<tr class="memdesc:adc6e9d131d7110e865b6ad8f44700cfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Usar la habilidad del arma equipada actualmente.  <a href="classPlayer.html#adc6e9d131d7110e865b6ad8f44700cfc">Más...</a><br /></td></tr>
+<tr class="separator:adc6e9d131d7110e865b6ad8f44700cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff11834e62d58ca848f5efde8c51e78e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#aff11834e62d58ca848f5efde8c51e78e">add_item</a> (<a class="el" href="classItem.html">Item</a> *item)</td></tr>
+<tr class="memdesc:aff11834e62d58ca848f5efde8c51e78e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega un item al inventario del jugador. En caso de que el item no entrase en el inventario, este será dropeado al piso.  <a href="classPlayer.html#aff11834e62d58ca848f5efde8c51e78e">Más...</a><br /></td></tr>
 <tr class="separator:aff11834e62d58ca848f5efde8c51e78e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3edf2f967d370e348dca7f08b16f519"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classItem.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#ae3edf2f967d370e348dca7f08b16f519">remove_item</a> (SlotId slot, uint32_t amount)</td></tr>
+<tr class="memdesc:ae3edf2f967d370e348dca7f08b16f519"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quita un item del inventario del jugador.  <a href="classPlayer.html#ae3edf2f967d370e348dca7f08b16f519">Más...</a><br /></td></tr>
+<tr class="separator:ae3edf2f967d370e348dca7f08b16f519"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd95ef3c649066d59fc5f57de60aeeea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGold.html">Gold</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#abd95ef3c649066d59fc5f57de60aeeea">remove_gold</a> (uint32_t amount)</td></tr>
+<tr class="memdesc:abd95ef3c649066d59fc5f57de60aeeea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remueve amount del <a class="el" href="classGold.html">Gold</a> actual.  <a href="classPlayer.html#abd95ef3c649066d59fc5f57de60aeeea">Más...</a><br /></td></tr>
+<tr class="separator:abd95ef3c649066d59fc5f57de60aeeea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab582b79d6bcf66486b8a4c01d4eabd2"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#aab582b79d6bcf66486b8a4c01d4eabd2">get_gold_stack</a> () const</td></tr>
+<tr class="memdesc:aab582b79d6bcf66486b8a4c01d4eabd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve la cantidad de oro que tiene actualmente.  <a href="classPlayer.html#aab582b79d6bcf66486b8a4c01d4eabd2">Más...</a><br /></td></tr>
+<tr class="separator:aab582b79d6bcf66486b8a4c01d4eabd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab40eba0cc8dc9a7d7737da4dfb676ec5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#ab40eba0cc8dc9a7d7737da4dfb676ec5">unequip</a> (SlotId slot)</td></tr>
+<tr class="memdesc:ab40eba0cc8dc9a7d7737da4dfb676ec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Desequipa de todo su armamento al jugador.  <a href="classPlayer.html#ab40eba0cc8dc9a7d7737da4dfb676ec5">Más...</a><br /></td></tr>
+<tr class="separator:ab40eba0cc8dc9a7d7737da4dfb676ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9686e02df7c2a327d0428fd6d78588ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMap.html">Map</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a9686e02df7c2a327d0428fd6d78588ca">get_map</a> ()</td></tr>
+<tr class="memdesc:a9686e02df7c2a327d0428fd6d78588ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el mapa actual del player.  <a href="classPlayer.html#a9686e02df7c2a327d0428fd6d78588ca">Más...</a><br /></td></tr>
+<tr class="separator:a9686e02df7c2a327d0428fd6d78588ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b6984d0310b40ff0754dfe00e7860de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a3b6984d0310b40ff0754dfe00e7860de">set_movement</a> (mov_action_t action, direction_t direction)</td></tr>
 <tr class="memdesc:a3b6984d0310b40ff0754dfe00e7860de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setea el movimiento del jugador.  <a href="classPlayer.html#a3b6984d0310b40ff0754dfe00e7860de">Más...</a><br /></td></tr>
 <tr class="separator:a3b6984d0310b40ff0754dfe00e7860de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10444e61cfd4f37243c10ec9a3a6781e"><td class="memItemLeft" align="right" valign="top"><a id="a10444e61cfd4f37243c10ec9a3a6781e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (uint64_t delta_t) override</td></tr>
+<tr class="memitem:a4f23983051301044ffaa8748cc43f638"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a4f23983051301044ffaa8748cc43f638">meditate</a> (bool meditating)</td></tr>
+<tr class="memdesc:a4f23983051301044ffaa8748cc43f638"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empieza o detiene la regeneracion de mana al meditar.  <a href="classPlayer.html#a4f23983051301044ffaa8748cc43f638">Más...</a><br /></td></tr>
+<tr class="separator:a4f23983051301044ffaa8748cc43f638"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10444e61cfd4f37243c10ec9a3a6781e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a10444e61cfd4f37243c10ec9a3a6781e">update</a> (uint64_t delta_t) override</td></tr>
+<tr class="memdesc:a10444e61cfd4f37243c10ec9a3a6781e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classPlayer.html">Player</a> update.  <a href="classPlayer.html#a10444e61cfd4f37243c10ec9a3a6781e">Más...</a><br /></td></tr>
 <tr class="separator:a10444e61cfd4f37243c10ec9a3a6781e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a776717fe8fafda98740e74828bab03de"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a776717fe8fafda98740e74828bab03de">can_attack</a> (<a class="el" href="classEntity.html">Entity</a> *attacked) const override</td></tr>
 <tr class="memdesc:a776717fe8fafda98740e74828bab03de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define si un jugador podrá o no atacar a otra entidad.  <a href="classPlayer.html#a776717fe8fafda98740e74828bab03de">Más...</a><br /></td></tr>
 <tr class="separator:a776717fe8fafda98740e74828bab03de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab4b65990b315f8960707b4d861b7f44"><td class="memItemLeft" align="right" valign="top"><a id="aab4b65990b315f8960707b4d861b7f44"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_alive</b> (bool alive)</td></tr>
+<tr class="separator:aab4b65990b315f8960707b4d861b7f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad91b3daebc9bdacfc1cf9c9f6e684332"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#ad91b3daebc9bdacfc1cf9c9f6e684332">get_data</a> () const override</td></tr>
 <tr class="memdesc:ad91b3daebc9bdacfc1cf9c9f6e684332"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene los datos de la entidad para enviar al cliente. (caso PLAYER)  <a href="classPlayer.html#ad91b3daebc9bdacfc1cf9c9f6e684332">Más...</a><br /></td></tr>
 <tr class="separator:ad91b3daebc9bdacfc1cf9c9f6e684332"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,12 +189,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (uint64_t 
 <tr class="memdesc:a563e42c563e8f7e9a5425095ac140a81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtener la información para persistir a un jugador.  <a href="classPlayer.html#a563e42c563e8f7e9a5425095ac140a81">Más...</a><br /></td></tr>
 <tr class="separator:a563e42c563e8f7e9a5425095ac140a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classEntity"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classEntity')"><img src="closed.png" alt="-"/>&#160;Métodos públicos heredados desde <a class="el" href="classEntity.html">Entity</a></td></tr>
-<tr class="memitem:affb5580e3b255c4195ac0b281a2e5c85 inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="affb5580e3b255c4195ac0b281a2e5c85"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (EntityId id, const std::string &amp;name, <a class="el" href="classMovementComponent.html">MovementComponent</a> *movement_component, <a class="el" href="classCombatComponent.html">CombatComponent</a> *combat_component, unsigned int current_level, unsigned int current_exp)</td></tr>
-<tr class="separator:affb5580e3b255c4195ac0b281a2e5c85 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53e4bc69804b88dfc98840455ac69730 inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="a53e4bc69804b88dfc98840455ac69730"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (EntityId id, const std::string &amp;name, unsigned int current_level, unsigned int current_exp)</td></tr>
-<tr class="separator:a53e4bc69804b88dfc98840455ac69730 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3d581212c049c81b83cdc682e7110e0 inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="aa3d581212c049c81b83cdc682e7110e0"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (EntityId id, <a class="el" href="classMap.html">Map</a> &amp;map, const std::string &amp;name, <a class="el" href="classMovementComponent.html">MovementComponent</a> *movement_component, <a class="el" href="classCombatComponent.html">CombatComponent</a> *combat_component, unsigned int current_level, unsigned int current_exp)</td></tr>
+<tr class="separator:aa3d581212c049c81b83cdc682e7110e0 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5afe610ae4fb65479fe8572e008ea8d7 inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="a5afe610ae4fb65479fe8572e008ea8d7"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (EntityId id, <a class="el" href="classMap.html">Map</a> &amp;map, const std::string &amp;name, unsigned int current_level, unsigned int current_exp)</td></tr>
+<tr class="separator:a5afe610ae4fb65479fe8572e008ea8d7 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0b0c53fc6f684e6d4826346394ec4bc inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="ae0b0c53fc6f684e6d4826346394ec4bc"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>heal</b> (unsigned int hp)</td></tr>
+<tr class="separator:ae0b0c53fc6f684e6d4826346394ec4bc inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4528a126e7f11e9cc6ea4874c00c4d00 inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="a4528a126e7f11e9cc6ea4874c00c4d00"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>can_spend_mp</b> (unsigned int amount)</td></tr>
+<tr class="separator:a4528a126e7f11e9cc6ea4874c00c4d00 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad376ab08c4e53388fca50feaa2a0b3c2 inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="ad376ab08c4e53388fca50feaa2a0b3c2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>spend_mp</b> (unsigned int amount)</td></tr>
+<tr class="separator:ad376ab08c4e53388fca50feaa2a0b3c2 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a692b4047a0d7092b2af3772928c27193 inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="a692b4047a0d7092b2af3772928c27193"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_name</b> () const</td></tr>
 <tr class="separator:a692b4047a0d7092b2af3772928c27193 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,6 +219,12 @@ virtual <a class="el" href="structposition.html">position_t</a>&#160;</td><td cl
 <tr class="memitem:a4a86fb1dc1cf3fab4f5b744e156f1304 inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="a4a86fb1dc1cf3fab4f5b744e156f1304"></a>
 <a class="el" href="structattack__result.html">attack_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>attack</b> (<a class="el" href="classEntity.html">Entity</a> *attacked)</td></tr>
 <tr class="separator:a4a86fb1dc1cf3fab4f5b744e156f1304 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4ae37b73cab724042ff1c3eeab156ec inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="af4ae37b73cab724042ff1c3eeab156ec"></a>
+<a class="el" href="structattack__result.html">attack_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>receive_damage</b> (<a class="el" href="structattack.html">attack_t</a> <a class="el" href="structattack.html">attack</a>)</td></tr>
+<tr class="separator:af4ae37b73cab724042ff1c3eeab156ec inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae293a16e2a263266f2c95df0444952c inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="aae293a16e2a263266f2c95df0444952c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>add_exp</b> (int exp)</td></tr>
+<tr class="separator:aae293a16e2a263266f2c95df0444952c inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a264bc5680fecd00ad6377c389b0caf24 inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="a264bc5680fecd00ad6377c389b0caf24"></a>
 EntityId&#160;</td><td class="memItemRight" valign="bottom"><b>get_id</b> () const</td></tr>
 <tr class="separator:a264bc5680fecd00ad6377c389b0caf24 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -181,9 +232,12 @@ EntityId&#160;</td><td class="memItemRight" valign="bottom"><b>get_id</b> () con
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Otros miembros heredados</h2></td></tr>
 <tr class="inherit_header pro_attribs_classEntity"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classEntity')"><img src="closed.png" alt="-"/>&#160;Atributos protegidos heredados desde <a class="el" href="classEntity.html">Entity</a></td></tr>
-<tr class="memitem:a06d5b271091635ff8f53007061abb417 inherit pro_attribs_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="a06d5b271091635ff8f53007061abb417"></a>
-EntityId&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
-<tr class="separator:a06d5b271091635ff8f53007061abb417 inherit pro_attribs_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada9a878182b6ce0a6c7ccbbe89800431 inherit pro_attribs_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="ada9a878182b6ce0a6c7ccbbe89800431"></a>
+const EntityId&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
+<tr class="separator:ada9a878182b6ce0a6c7ccbbe89800431 inherit pro_attribs_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23f7e29463b67b89c3008481613fe123 inherit pro_attribs_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="a23f7e29463b67b89c3008481613fe123"></a>
+<a class="el" href="classMap.html">Map</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>map</b></td></tr>
+<tr class="separator:a23f7e29463b67b89c3008481613fe123 inherit pro_attribs_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a7d9df9b47e597a6abd76235e0b726c inherit pro_attribs_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="a9a7d9df9b47e597a6abd76235e0b726c"></a>
 const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
 <tr class="separator:a9a7d9df9b47e597a6abd76235e0b726c inherit pro_attribs_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -243,6 +297,32 @@ const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b>
 </div>
 </div>
 <h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="aff11834e62d58ca848f5efde8c51e78e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff11834e62d58ca848f5efde8c51e78e">&#9670;&nbsp;</a></span>add_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::add_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classItem.html">Item</a> *&#160;</td>
+          <td class="paramname"><em>item</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega un item al inventario del jugador. En caso de que el item no entrase en el inventario, este será dropeado al piso. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td><a class="el" href="classItem.html">Item</a> a ser agregado. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a776717fe8fafda98740e74828bab03de"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a776717fe8fafda98740e74828bab03de">&#9670;&nbsp;</a></span>can_attack()</h2>
 
@@ -355,6 +435,26 @@ false </dd></dl>
 
 </div>
 </div>
+<a id="aab582b79d6bcf66486b8a4c01d4eabd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab582b79d6bcf66486b8a4c01d4eabd2">&#9670;&nbsp;</a></span>get_gold_stack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Player::get_gold_stack </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve la cantidad de oro que tiene actualmente. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>uint32_t </dd></dl>
+
+</div>
+</div>
 <a id="ad39e83a4ce2c75731be8ded9e52049a2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad39e83a4ce2c75731be8ded9e52049a2">&#9670;&nbsp;</a></span>get_inventory_data()</h2>
 
@@ -395,6 +495,26 @@ false </dd></dl>
 <div class="line">    ]</div>
 <div class="line">}</div>
 </div><!-- fragment --><dl class="section return"><dt>Devuelve</dt><dd>nlohmann::json </dd></dl>
+
+</div>
+</div>
+<a id="a9686e02df7c2a327d0428fd6d78588ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9686e02df7c2a327d0428fd6d78588ca">&#9670;&nbsp;</a></span>get_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMap.html">Map</a> &amp; Player::get_map </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve el mapa actual del player. </p>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classMap.html">Map</a>&amp; </dd></dl>
 
 </div>
 </div>
@@ -515,6 +635,117 @@ false </dd></dl>
 
 </div>
 </div>
+<a id="aeb0fe9b66fecab56f00bdc240242d8b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb0fe9b66fecab56f00bdc240242d8b9">&#9670;&nbsp;</a></span>immobilize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::immobilize </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>delta_t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tiempo a inmovilizar al personaje en milisegundos. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">delta_t</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4f23983051301044ffaa8748cc43f638"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f23983051301044ffaa8748cc43f638">&#9670;&nbsp;</a></span>meditate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::meditate </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>meditating</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Empieza o detiene la regeneracion de mana al meditar. </p>
+
+</div>
+</div>
+<a id="abd95ef3c649066d59fc5f57de60aeeea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd95ef3c649066d59fc5f57de60aeeea">&#9670;&nbsp;</a></span>remove_gold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classGold.html">Gold</a> * Player::remove_gold </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>amount</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remueve amount del <a class="el" href="classGold.html">Gold</a> actual. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">amount</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Gold* </dd></dl>
+
+</div>
+</div>
+<a id="ae3edf2f967d370e348dca7f08b16f519"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3edf2f967d370e348dca7f08b16f519">&#9670;&nbsp;</a></span>remove_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classItem.html">Item</a> * Player::remove_item </td>
+          <td>(</td>
+          <td class="paramtype">SlotId&#160;</td>
+          <td class="paramname"><em>slot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>amount</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Quita un item del inventario del jugador. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slot</td><td>Slot del item que se quiere quitar. </td></tr>
+    <tr><td class="paramname">amount</td><td>Cantidad del item a ser quitada. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Item* El item quitado o NULL en caso de que no hubiera un item en esa posicion. </dd></dl>
+
+</div>
+</div>
 <a id="a3b6984d0310b40ff0754dfe00e7860de"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3b6984d0310b40ff0754dfe00e7860de">&#9670;&nbsp;</a></span>set_movement()</h2>
 
@@ -552,6 +783,62 @@ false </dd></dl>
 
 </div>
 </div>
+<a id="ab40eba0cc8dc9a7d7737da4dfb676ec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab40eba0cc8dc9a7d7737da4dfb676ec5">&#9670;&nbsp;</a></span>unequip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::unequip </td>
+          <td>(</td>
+          <td class="paramtype">SlotId&#160;</td>
+          <td class="paramname"><em>slot</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Desequipa de todo su armamento al jugador. </p>
+
+</div>
+</div>
+<a id="a10444e61cfd4f37243c10ec9a3a6781e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10444e61cfd4f37243c10ec9a3a6781e">&#9670;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::update </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>delta_t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classPlayer.html">Player</a> update. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">delta_t</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implementa <a class="el" href="classEntity.html">Entity</a>.</p>
+
+</div>
+</div>
 <a id="a3cd10ee96674c54f60e3f70a344f5e8b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3cd10ee96674c54f60e3f70a344f5e8b">&#9670;&nbsp;</a></span>use()</h2>
 
@@ -572,6 +859,42 @@ false </dd></dl>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">slot</td><td>Selecciona el casillero del inventario a utilizar. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adc6e9d131d7110e865b6ad8f44700cfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc6e9d131d7110e865b6ad8f44700cfc">&#9670;&nbsp;</a></span>use_ability()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::use_ability </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classEntity.html">Entity</a> *&#160;</td>
+          <td class="paramname"><em>target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structposition.html">position_t</a>&#160;</td>
+          <td class="paramname"><em>target_pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Usar la habilidad del arma equipada actualmente. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="classEntity.html">Entity</a></td><td>Entidad objetivo de la habilidad (podría ser sí mismo). </td></tr>
   </table>
   </dd>
 </dl>

@@ -98,6 +98,11 @@ $(document).ready(function(){initNavTree('classClientsMonitor.html',''); initRes
 <div class="title">Referencia de la Clase ClientsMonitor</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Monitor de sockets de los clientes.  
+ <a href="classClientsMonitor.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="clients__monitor_8h_source.html">clients_monitor.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
@@ -107,16 +112,105 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>add_client</b> (Clien
 <tr class="memitem:abca8834dd818dbfe53a82568c7f9eedd"><td class="memItemLeft" align="right" valign="top"><a id="abca8834dd818dbfe53a82568c7f9eedd"></a>
 <a class="el" href="classSocketManager.html">SocketManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>rm_client</b> (ClientId client_id)</td></tr>
 <tr class="separator:abca8834dd818dbfe53a82568c7f9eedd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5f2c2c9d8d3383636e05410ac4ec727"><td class="memItemLeft" align="right" valign="top"><a id="ae5f2c2c9d8d3383636e05410ac4ec727"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drop</b> (ClientId client_id)</td></tr>
+<tr class="memitem:ae5f2c2c9d8d3383636e05410ac4ec727"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientsMonitor.html#ae5f2c2c9d8d3383636e05410ac4ec727">drop</a> (ClientId client_id)</td></tr>
+<tr class="memdesc:ae5f2c2c9d8d3383636e05410ac4ec727"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setea la desconexión de un cliente.  <a href="classClientsMonitor.html#ae5f2c2c9d8d3383636e05410ac4ec727">Más...</a><br /></td></tr>
 <tr class="separator:ae5f2c2c9d8d3383636e05410ac4ec727"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2da3e405d15ff26927cc819fd34a29c4"><td class="memItemLeft" align="right" valign="top"><a id="a2da3e405d15ff26927cc819fd34a29c4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drop_all</b> ()</td></tr>
+<tr class="memitem:a2da3e405d15ff26927cc819fd34a29c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientsMonitor.html#a2da3e405d15ff26927cc819fd34a29c4">drop_all</a> ()</td></tr>
+<tr class="memdesc:a2da3e405d15ff26927cc819fd34a29c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepara a todos los clientes para la desconexión.  <a href="classClientsMonitor.html#a2da3e405d15ff26927cc819fd34a29c4">Más...</a><br /></td></tr>
 <tr class="separator:a2da3e405d15ff26927cc819fd34a29c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4a60861828dd9d774be0114dd6811dd"><td class="memItemLeft" align="right" valign="top"><a id="ac4a60861828dd9d774be0114dd6811dd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>send_to</b> (ClientId, <a class="el" href="classEvent.html">Event</a> ev)</td></tr>
-<tr class="separator:ac4a60861828dd9d774be0114dd6811dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5eec192ef3932795e5b567f55cf99ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientsMonitor.html#aa5eec192ef3932795e5b567f55cf99ab">send_to</a> (ClientId client_id, <a class="el" href="classEvent.html">Event</a> ev)</td></tr>
+<tr class="memdesc:aa5eec192ef3932795e5b567f55cf99ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envía un evento de forma segura a un cliente.  <a href="classClientsMonitor.html#aa5eec192ef3932795e5b567f55cf99ab">Más...</a><br /></td></tr>
+<tr class="separator:aa5eec192ef3932795e5b567f55cf99ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Monitor de sockets de los clientes. </p>
+<p>Esta clase permite controlar los <a class="el" href="classSocketManager.html">SocketManager</a> asociados a un ClientId de forma segura. Esto incluye enviar los eventos, detectar cuando un cliente se desconecta o cuando se quiere desconectar alguno de ellos. </p>
+</div><h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="ae5f2c2c9d8d3383636e05410ac4ec727"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5f2c2c9d8d3383636e05410ac4ec727">&#9670;&nbsp;</a></span>drop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientsMonitor::drop </td>
+          <td>(</td>
+          <td class="paramtype">ClientId&#160;</td>
+          <td class="paramname"><em>client_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setea la desconexión de un cliente. </p>
+<p>Esta clase encola en el "Dispatcher" el evento exlusivo del servidor para realizar la serie de acciones que implica desconectar a un cliente de forma ordenada.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client_id</td><td>Id del cliente a ser desconectado. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2da3e405d15ff26927cc819fd34a29c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2da3e405d15ff26927cc819fd34a29c4">&#9670;&nbsp;</a></span>drop_all()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientsMonitor::drop_all </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prepara a todos los clientes para la desconexión. </p>
+<p>Esto se hace repitiendo la acción de <code>drop</code> para todos los clientes. (Ver el miembro <code><a class="el" href="classClientsMonitor.html#ae5f2c2c9d8d3383636e05410ac4ec727" title="Setea la desconexión de un cliente.">drop(ClientId)</a></code> de esta misma clase para más información) </p>
+
+</div>
+</div>
+<a id="aa5eec192ef3932795e5b567f55cf99ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5eec192ef3932795e5b567f55cf99ab">&#9670;&nbsp;</a></span>send_to()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientsMonitor::send_to </td>
+          <td>(</td>
+          <td class="paramtype">ClientId&#160;</td>
+          <td class="paramname"><em>client_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classEvent.html">Event</a>&#160;</td>
+          <td class="paramname"><em>ev</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Envía un evento de forma segura a un cliente. </p>
+<p>Si el envío falla se desconecta de forma ordenada al cliente.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client_id</td><td>Id del cliente al que se le quiere enviar el evento. </td></tr>
+    <tr><td class="paramname">ev</td><td>Evento a ser enviado. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>/home/tc/Documents/Taller/tp_final/repo/server/network/<a class="el" href="clients__monitor_8h_source.html">clients_monitor.h</a></li>
 <li>/home/tc/Documents/Taller/tp_final/repo/server/network/clients_monitor.cpp</li>

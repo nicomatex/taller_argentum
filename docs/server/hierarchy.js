@@ -2,29 +2,49 @@ var hierarchy =
 [
     [ "Action", "classAction.html", [
       [ "ActionAttack", "classActionAttack.html", null ],
+      [ "ActionBuy", "classActionBuy.html", null ],
+      [ "ActionDepositGold", "classActionDepositGold.html", null ],
+      [ "ActionDepositItem", "classActionDepositItem.html", null ],
+      [ "ActionDrop", "classActionDrop.html", null ],
+      [ "ActionHeal", "classActionHeal.html", null ],
       [ "ActionInventory", "classActionInventory.html", null ],
+      [ "ActionList", "classActionList.html", null ],
       [ "ActionLoot", "classActionLoot.html", null ],
-      [ "ActionMove", "classActionMove.html", null ]
+      [ "ActionMeditate", "classActionMeditate.html", null ],
+      [ "ActionMove", "classActionMove.html", null ],
+      [ "ActionResuscitate", "classActionResuscitate.html", null ],
+      [ "ActionSell", "classActionSell.html", null ],
+      [ "ActionUnequip", "classActionUnequip.html", null ],
+      [ "ActionUseAbility", "classActionUseAbility.html", null ],
+      [ "ActionWithdrawGold", "classActionWithdrawGold.html", null ],
+      [ "ActionWithdrawItem", "classActionWithdrawItem.html", null ]
     ] ],
     [ "armor_info", "structarmor__info.html", null ],
+    [ "attack", "structattack.html", null ],
     [ "attack_result", "structattack__result.html", null ],
     [ "AttributeManager", "classAttributeManager.html", null ],
+    [ "Bank", "classBank.html", null ],
     [ "BlockingQueue< T >", "classBlockingQueue.html", null ],
     [ "BlockingQueue< Event >", "classBlockingQueue.html", null ],
+    [ "BlockingQueue< map_change >", "classBlockingQueue.html", null ],
     [ "character", "structcharacter.html", null ],
     [ "CharacterManager", "classCharacterManager.html", null ],
-    [ "ClientIdSet", "classClientIdSet.html", null ],
     [ "ClientsMonitor", "classClientsMonitor.html", null ],
+    [ "ClientsNamesMonitor", "classClientsNamesMonitor.html", null ],
+    [ "ClientToEntityMap", "classClientToEntityMap.html", null ],
     [ "CombatComponent", "classCombatComponent.html", [
       [ "MonsterCombatComponent", "classMonsterCombatComponent.html", null ],
       [ "NpcCombatComponent", "classNpcCombatComponent.html", null ],
       [ "PlayerCombatComponent", "classPlayerCombatComponent.html", null ]
     ] ],
-    [ "damage", "structdamage.html", null ],
+    [ "command_case", "structcommand__case.html", null ],
+    [ "ConfigurationManager", "classConfigurationManager.html", null ],
     [ "Entity", "classEntity.html", [
       [ "Monster", "classMonster.html", null ],
       [ "Npc", "classNpc.html", [
-        [ "Priest", "classPriest.html", null ]
+        [ "Banker", "classBanker.html", null ],
+        [ "Healer", "classHealer.html", null ],
+        [ "Merchant", "classMerchant.html", null ]
       ] ],
       [ "Player", "classPlayer.html", null ]
     ] ],
@@ -44,14 +64,26 @@ var hierarchy =
         [ "ThDispatcher", "classThDispatcher.html", null ],
         [ "ThSocketSender", "classThSocketSender.html", null ]
       ] ],
+      [ "BuyHandler", "classBuyHandler.html", null ],
+      [ "DepositGoldHandler", "classDepositGoldHandler.html", null ],
+      [ "DepositItemHandler", "classDepositItemHandler.html", null ],
       [ "DisconnectHandler", "classDisconnectHandler.html", null ],
+      [ "DropLootHandler", "classDropLootHandler.html", null ],
+      [ "HealHandler", "classHealHandler.html", null ],
       [ "InventoryHandler", "classInventoryHandler.html", null ],
+      [ "ListHandler", "classListHandler.html", null ],
+      [ "MeditateHandler", "classMeditateHandler.html", null ],
       [ "MovementHandler", "classMovementHandler.html", null ],
-      [ "PickupLootHandler", "classPickupLootHandler.html", null ]
+      [ "PickupLootHandler", "classPickupLootHandler.html", null ],
+      [ "ResuscitateHandler", "classResuscitateHandler.html", null ],
+      [ "SellHandler", "classSellHandler.html", null ],
+      [ "UnequipHandler", "classUnequipHandler.html", null ],
+      [ "UseAbilityHandler", "classUseAbilityHandler.html", null ],
+      [ "WithdrawGoldHandler", "classWithdrawGoldHandler.html", null ],
+      [ "WithdrawItemHandler", "classWithdrawItemHandler.html", null ]
     ] ],
     [ "exception", null, [
       [ "CantAttackNpcException", "classCantAttackNpcException.html", null ],
-      [ "CharacterAlreadyExistsException", "classCharacterAlreadyExistsException.html", null ],
       [ "CharacterNotFoundException", "classCharacterNotFoundException.html", null ],
       [ "ClientDisconnectedException", "classClientDisconnectedException.html", null ],
       [ "ClosedBlockingQueueException", "classClosedBlockingQueueException.html", null ],
@@ -64,7 +96,8 @@ var hierarchy =
       [ "ItemNotFoundException", "classItemNotFoundException.html", null ],
       [ "MaxStackExceedException", "classMaxStackExceedException.html", null ],
       [ "MyException", "classMyException.html", null ],
-      [ "NegativeStackException", "classNegativeStackException.html", null ]
+      [ "NegativeStackException", "classNegativeStackException.html", null ],
+      [ "OutOfRangeSlotException", "classOutOfRangeSlotException.html", null ]
     ] ],
     [ "ExperienceComponent", "classExperienceComponent.html", null ],
     [ "GameManager", "classGameManager.html", null ],
@@ -82,14 +115,15 @@ var hierarchy =
     [ "Map", "classMap.html", null ],
     [ "map_change", "structmap__change.html", null ],
     [ "map_log", "structmap__log.html", null ],
-    [ "MapChanger", "classMapChanger.html", null ],
     [ "MapLogFactory", "classMapLogFactory.html", null ],
     [ "MapManager", "classMapManager.html", null ],
     [ "MapMonitor", "classMapMonitor.html", null ],
     [ "MapTransitions", "classMapTransitions.html", null ],
     [ "MobFactory", "classMobFactory.html", null ],
+    [ "MonsterSpawner", "classMonsterSpawner.html", null ],
     [ "MovementComponent", "classMovementComponent.html", [
       [ "MonsterMovementComponent", "classMonsterMovementComponent.html", null ],
+      [ "NpcMovementComponent", "classNpcMovementComponent.html", null ],
       [ "PlayerMovementComponent", "classPlayerMovementComponent.html", null ]
     ] ],
     [ "position", "structposition.html", null ],
@@ -104,10 +138,15 @@ var hierarchy =
     [ "Session", "classSession.html", null ],
     [ "Socket", "classSocket.html", null ],
     [ "SocketManager", "classSocketManager.html", null ],
+    [ "SpecialAbility", "classSpecialAbility.html", [
+      [ "SpecialAttack", "classSpecialAttack.html", null ],
+      [ "SpecialHeal", "classSpecialHeal.html", null ]
+    ] ],
     [ "stats", "structstats.html", null ],
     [ "Thread", "classThread.html", [
       [ "BlockingThEventHandler", "classBlockingThEventHandler.html", null ],
       [ "GameLoop", "classGameLoop.html", null ],
+      [ "MapChanger", "classMapChanger.html", null ],
       [ "ThClientAccepter", "classThClientAccepter.html", null ],
       [ "ThObserver", "classThObserver.html", null ],
       [ "ThSocketReceiver", "classThSocketReceiver.html", null ]

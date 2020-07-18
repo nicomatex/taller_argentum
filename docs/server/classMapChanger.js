@@ -1,6 +1,6 @@
 var classMapChanger =
 [
-    [ "MapChanger", "classMapChanger.html#a03d8328e4f50ee30a6a552720b7b7a0d", null ],
+    [ "MapChanger", "classMapChanger.html#a482f3084175a5e4db4c939bfbe148bff", null ],
     [ "~MapChanger", "classMapChanger.html#a974ec3cc96863a665dfb83d1f6ed92e3", null ],
-    [ "push_change", "classMapChanger.html#adbbd0fa7e5317251df55e1866bdcec88", null ]
+    [ "run", "classMapChanger.html#a67d61affe21d89462a2562f328eab20f", null ]
 ];

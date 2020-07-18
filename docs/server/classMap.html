@@ -103,74 +103,89 @@ $(document).ready(function(){initNavTree('classMap.html',''); initResizable(); }
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a387856fea4b04c816542678070613b42"><td class="memItemLeft" align="right" valign="top"><a id="a387856fea4b04c816542678070613b42"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Map</b> (nlohmann::json map_info)</td></tr>
-<tr class="separator:a387856fea4b04c816542678070613b42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6655a2372dbcf08dbbbad95c8922fc76"><td class="memItemLeft" align="right" valign="top"><a id="a6655a2372dbcf08dbbbad95c8922fc76"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>move</b> (EntityId entity_id, <a class="el" href="structposition.html">position_t</a> steps)</td></tr>
+<tr class="memitem:a25b9097b89a35475c5278c0b0fb99b6c"><td class="memItemLeft" align="right" valign="top"><a id="a25b9097b89a35475c5278c0b0fb99b6c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Map</b> (MapId map_id, const std::string &amp;map_name, bool is_safe, const nlohmann::json &amp;map_description, const nlohmann::json &amp;map_mobs, const nlohmann::json &amp;map_transitions)</td></tr>
+<tr class="separator:a25b9097b89a35475c5278c0b0fb99b6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5618697d5c1aadb33ac680f5bb6f7d90"><td class="memItemLeft" align="right" valign="top"><a id="a5618697d5c1aadb33ac680f5bb6f7d90"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Map</b> (const <a class="el" href="classMap.html">Map</a> &amp;other)=delete</td></tr>
+<tr class="separator:a5618697d5c1aadb33ac680f5bb6f7d90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac62760de9766ffcdd187f5052ac9d73d"><td class="memItemLeft" align="right" valign="top"><a id="ac62760de9766ffcdd187f5052ac9d73d"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_name</b> ()</td></tr>
+<tr class="separator:ac62760de9766ffcdd187f5052ac9d73d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6655a2372dbcf08dbbbad95c8922fc76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a6655a2372dbcf08dbbbad95c8922fc76">move</a> (EntityId entity_id, <a class="el" href="structposition.html">position_t</a> steps)</td></tr>
+<tr class="memdesc:a6655a2372dbcf08dbbbad95c8922fc76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mueve la entidad asociada al entity_id hacia la posicion relativa steps.  <a href="classMap.html#a6655a2372dbcf08dbbbad95c8922fc76">Más...</a><br /></td></tr>
 <tr class="separator:a6655a2372dbcf08dbbbad95c8922fc76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05fdcee12ddf0abc3f57c63980df75ff"><td class="memItemLeft" align="right" valign="top"><a id="a05fdcee12ddf0abc3f57c63980df75ff"></a>
-std::queue&lt; <a class="el" href="structmap__change.html">map_change_t</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_transitions</b> ()</td></tr>
+<tr class="memitem:a05fdcee12ddf0abc3f57c63980df75ff"><td class="memItemLeft" align="right" valign="top">std::queue&lt; <a class="el" href="structmap__change.html">map_change_t</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a05fdcee12ddf0abc3f57c63980df75ff">get_transitions</a> ()</td></tr>
+<tr class="memdesc:a05fdcee12ddf0abc3f57c63980df75ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la cola de transiciones del mapa.  <a href="classMap.html#a05fdcee12ddf0abc3f57c63980df75ff">Más...</a><br /></td></tr>
 <tr class="separator:a05fdcee12ddf0abc3f57c63980df75ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52b87bbaa67ba72a6d0c5eefa368befe"><td class="memItemLeft" align="right" valign="top"><a id="a52b87bbaa67ba72a6d0c5eefa368befe"></a>
-nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>add_player</b> (nlohmann::json player_info)</td></tr>
+<tr class="memitem:ac2816643aa678d3a4ca0305f98b683a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#ac2816643aa678d3a4ca0305f98b683a0">teleport</a> (EntityId player_id, <a class="el" href="structposition.html">position_t</a> dest)</td></tr>
+<tr class="memdesc:ac2816643aa678d3a4ca0305f98b683a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teletransporta a un jugador a través de una transición.  <a href="classMap.html#ac2816643aa678d3a4ca0305f98b683a0">Más...</a><br /></td></tr>
+<tr class="separator:ac2816643aa678d3a4ca0305f98b683a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52b87bbaa67ba72a6d0c5eefa368befe"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a52b87bbaa67ba72a6d0c5eefa368befe">add_player</a> (nlohmann::json player_info)</td></tr>
+<tr class="memdesc:a52b87bbaa67ba72a6d0c5eefa368befe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega un jugador al mapa a partir de su información.  <a href="classMap.html#a52b87bbaa67ba72a6d0c5eefa368befe">Más...</a><br /></td></tr>
 <tr class="separator:a52b87bbaa67ba72a6d0c5eefa368befe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af48a8281049e829dad3bc51ee4c0fddb"><td class="memItemLeft" align="right" valign="top"><a id="af48a8281049e829dad3bc51ee4c0fddb"></a>
-nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>rm_player</b> (EntityId entity_id)</td></tr>
+<tr class="memitem:af48a8281049e829dad3bc51ee4c0fddb"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#af48a8281049e829dad3bc51ee4c0fddb">rm_player</a> (EntityId entity_id)</td></tr>
+<tr class="memdesc:af48a8281049e829dad3bc51ee4c0fddb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eliminar a un jugador identificado por su id del mapa.  <a href="classMap.html#af48a8281049e829dad3bc51ee4c0fddb">Más...</a><br /></td></tr>
 <tr class="separator:af48a8281049e829dad3bc51ee4c0fddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a275bb57d342a6e9711fab4d289971faa"><td class="memItemLeft" align="right" valign="top"><a id="a275bb57d342a6e9711fab4d289971faa"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>rm_entity</b> (EntityId entity_id)</td></tr>
-<tr class="separator:a275bb57d342a6e9711fab4d289971faa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a417e69ef4613a78329f6eb5c7d753dba"><td class="memItemLeft" align="right" valign="top"><a id="a417e69ef4613a78329f6eb5c7d753dba"></a>
 <a class="el" href="structposition.html">position_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_position</b> (EntityId entity_id)</td></tr>
 <tr class="separator:a417e69ef4613a78329f6eb5c7d753dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74fd1b37356d0e69d06b997d1b43eacb"><td class="memItemLeft" align="right" valign="top"><a id="a74fd1b37356d0e69d06b997d1b43eacb"></a>
-<a class="el" href="structposition.html">position_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_nearest_entity_pos</b> (<a class="el" href="structposition.html">position_t</a> entity_pos, unsigned int distance, entity_type_t entity_type)</td></tr>
+<tr class="memitem:afefbb512e7e10a37d58dd1dc5e3850ac"><td class="memItemLeft" align="right" valign="top"><a id="afefbb512e7e10a37d58dd1dc5e3850ac"></a>
+<a class="el" href="structposition.html">position_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_healer_pos</b> () const</td></tr>
+<tr class="separator:afefbb512e7e10a37d58dd1dc5e3850ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac81013590141b2f432ea5052e6157f3a"><td class="memItemLeft" align="right" valign="top"><a id="ac81013590141b2f432ea5052e6157f3a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_safe</b> () const</td></tr>
+<tr class="separator:ac81013590141b2f432ea5052e6157f3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74fd1b37356d0e69d06b997d1b43eacb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structposition.html">position_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a74fd1b37356d0e69d06b997d1b43eacb">get_nearest_entity_pos</a> (<a class="el" href="structposition.html">position_t</a> entity_pos, unsigned int distance, entity_type_t entity_type)</td></tr>
+<tr class="memdesc:a74fd1b37356d0e69d06b997d1b43eacb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtener la posición de la entidad de un tipo más cercana.  <a href="classMap.html#a74fd1b37356d0e69d06b997d1b43eacb">Más...</a><br /></td></tr>
 <tr class="separator:a74fd1b37356d0e69d06b997d1b43eacb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7e60594c7a98016f7a30400fcdbf49e"><td class="memItemLeft" align="right" valign="top"><a id="aa7e60594c7a98016f7a30400fcdbf49e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (uint64_t delta_t)</td></tr>
+<tr class="memitem:ae7f4876d5d8dce50bf46d7b3171bbc61"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#ae7f4876d5d8dce50bf46d7b3171bbc61">entity_exists</a> (EntityId entity_id)</td></tr>
+<tr class="memdesc:ae7f4876d5d8dce50bf46d7b3171bbc61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verificar si una entidad existe o no.  <a href="classMap.html#ae7f4876d5d8dce50bf46d7b3171bbc61">Más...</a><br /></td></tr>
+<tr class="separator:ae7f4876d5d8dce50bf46d7b3171bbc61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7e60594c7a98016f7a30400fcdbf49e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#aa7e60594c7a98016f7a30400fcdbf49e">update</a> (uint64_t delta_t)</td></tr>
+<tr class="memdesc:aa7e60594c7a98016f7a30400fcdbf49e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualiza todas las entidades que contiene segun el delta_t transcurrido.  <a href="classMap.html#aa7e60594c7a98016f7a30400fcdbf49e">Más...</a><br /></td></tr>
 <tr class="separator:aa7e60594c7a98016f7a30400fcdbf49e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09a395c572b3b44135e0f20629fea0b5"><td class="memItemLeft" align="right" valign="top"><a id="a09a395c572b3b44135e0f20629fea0b5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>push_log</b> (const <a class="el" href="structmap__log.html">map_log_t</a> &amp;log)</td></tr>
+<tr class="memitem:a09a395c572b3b44135e0f20629fea0b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a09a395c572b3b44135e0f20629fea0b5">push_log</a> (const <a class="el" href="structmap__log.html">map_log_t</a> &amp;log)</td></tr>
+<tr class="memdesc:a09a395c572b3b44135e0f20629fea0b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega un log al mapa.  <a href="classMap.html#a09a395c572b3b44135e0f20629fea0b5">Más...</a><br /></td></tr>
 <tr class="separator:a09a395c572b3b44135e0f20629fea0b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e6be80a83bf87805bd262276e2ebbfd"><td class="memItemLeft" align="right" valign="top"><a id="a7e6be80a83bf87805bd262276e2ebbfd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>push_action</b> (EntityId entity_id, <a class="el" href="classAction.html">Action</a> *action)</td></tr>
+<tr class="memitem:a7e6be80a83bf87805bd262276e2ebbfd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a7e6be80a83bf87805bd262276e2ebbfd">push_action</a> (EntityId entity_id, <a class="el" href="classAction.html">Action</a> *action)</td></tr>
+<tr class="memdesc:a7e6be80a83bf87805bd262276e2ebbfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ejecuta sobre la entidad asociada al id la accion.  <a href="classMap.html#a7e6be80a83bf87805bd262276e2ebbfd">Más...</a><br /></td></tr>
 <tr class="separator:a7e6be80a83bf87805bd262276e2ebbfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d6f34faee9066b3108f6919d148b59d"><td class="memItemLeft" align="right" valign="top"><a id="a0d6f34faee9066b3108f6919d148b59d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drop_loot</b> (EntityId entity_id, <a class="el" href="classItem.html">Item</a> *item)</td></tr>
+<tr class="memitem:a0d6f34faee9066b3108f6919d148b59d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a0d6f34faee9066b3108f6919d148b59d">drop_loot</a> (EntityId entity_id, <a class="el" href="classItem.html">Item</a> *item)</td></tr>
+<tr class="memdesc:a0d6f34faee9066b3108f6919d148b59d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deja el item pasado por parámetro en la posición de la entidad.  <a href="classMap.html#a0d6f34faee9066b3108f6919d148b59d">Más...</a><br /></td></tr>
 <tr class="separator:a0d6f34faee9066b3108f6919d148b59d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff8270fd83d546a8d9970a3b43b338c9"><td class="memItemLeft" align="right" valign="top"><a id="aff8270fd83d546a8d9970a3b43b338c9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drop_loot</b> (EntityId entity_id, const std::vector&lt; <a class="el" href="classItem.html">Item</a> * &gt; &amp;item)</td></tr>
-<tr class="separator:aff8270fd83d546a8d9970a3b43b338c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac211829e65dd3e2e13a35f44e793e6ed"><td class="memItemLeft" align="right" valign="top"><a id="ac211829e65dd3e2e13a35f44e793e6ed"></a>
-<a class="el" href="classItem.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>pickup_loot</b> (EntityId entity_id)</td></tr>
+<tr class="memitem:ab836e185b47439561e692ffde69a5959"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#ab836e185b47439561e692ffde69a5959">drop_loot</a> (EntityId entity_id, const std::vector&lt; <a class="el" href="classItem.html">Item</a> * &gt; &amp;items)</td></tr>
+<tr class="memdesc:ab836e185b47439561e692ffde69a5959"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deja caer la lista de items en el mapa.  <a href="classMap.html#ab836e185b47439561e692ffde69a5959">Más...</a><br /></td></tr>
+<tr class="separator:ab836e185b47439561e692ffde69a5959"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac211829e65dd3e2e13a35f44e793e6ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classItem.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#ac211829e65dd3e2e13a35f44e793e6ed">pickup_loot</a> (EntityId entity_id)</td></tr>
+<tr class="memdesc:ac211829e65dd3e2e13a35f44e793e6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Intenta obtener de la posición donde se encuentra la entidad el item que haya allí.  <a href="classMap.html#ac211829e65dd3e2e13a35f44e793e6ed">Más...</a><br /></td></tr>
 <tr class="separator:ac211829e65dd3e2e13a35f44e793e6ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11394b37c0be3d5f1b22670e3e07dcba"><td class="memItemLeft" align="right" valign="top"><a id="a11394b37c0be3d5f1b22670e3e07dcba"></a>
-const PositionMap&#160;</td><td class="memItemRight" valign="bottom"><b>get_position_map</b> () const</td></tr>
+<tr class="memitem:a11394b37c0be3d5f1b22670e3e07dcba"><td class="memItemLeft" align="right" valign="top">const PositionMap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a11394b37c0be3d5f1b22670e3e07dcba">get_position_map</a> () const</td></tr>
+<tr class="memdesc:a11394b37c0be3d5f1b22670e3e07dcba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene una copia del mapa de posiciones de las entidades.  <a href="classMap.html#a11394b37c0be3d5f1b22670e3e07dcba">Más...</a><br /></td></tr>
 <tr class="separator:a11394b37c0be3d5f1b22670e3e07dcba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79bff62cc690a8cfc0ab62af1d56a653"><td class="memItemLeft" align="right" valign="top"><a id="a79bff62cc690a8cfc0ab62af1d56a653"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>dirty_entities</b> () const</td></tr>
+<tr class="memitem:a79bff62cc690a8cfc0ab62af1d56a653"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a79bff62cc690a8cfc0ab62af1d56a653">dirty_entities</a> () const</td></tr>
+<tr class="memdesc:a79bff62cc690a8cfc0ab62af1d56a653"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verificar si hubo un cambio en las entidades del mapa desde la última vez que se utilizó este método.  <a href="classMap.html#a79bff62cc690a8cfc0ab62af1d56a653">Más...</a><br /></td></tr>
 <tr class="separator:a79bff62cc690a8cfc0ab62af1d56a653"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a37d5592c5f29fccbe4caa23f5f557e"><td class="memItemLeft" align="right" valign="top"><a id="a8a37d5592c5f29fccbe4caa23f5f557e"></a>
-nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_entity_data</b> ()</td></tr>
+<tr class="memitem:a8a37d5592c5f29fccbe4caa23f5f557e"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a8a37d5592c5f29fccbe4caa23f5f557e">get_entity_data</a> ()</td></tr>
+<tr class="memdesc:a8a37d5592c5f29fccbe4caa23f5f557e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la información de las entidades del mapa.  <a href="classMap.html#a8a37d5592c5f29fccbe4caa23f5f557e">Más...</a><br /></td></tr>
 <tr class="separator:a8a37d5592c5f29fccbe4caa23f5f557e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65c2a6ea4675dea0dcb6e9b08b3b813b"><td class="memItemLeft" align="right" valign="top"><a id="a65c2a6ea4675dea0dcb6e9b08b3b813b"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>dirty_loot</b> () const</td></tr>
+<tr class="memitem:a65c2a6ea4675dea0dcb6e9b08b3b813b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a65c2a6ea4675dea0dcb6e9b08b3b813b">dirty_loot</a> () const</td></tr>
+<tr class="memdesc:a65c2a6ea4675dea0dcb6e9b08b3b813b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verificar si hubo un cambio en los items caidos en el mapa desde la última vez que se utilizó este método.  <a href="classMap.html#a65c2a6ea4675dea0dcb6e9b08b3b813b">Más...</a><br /></td></tr>
 <tr class="separator:a65c2a6ea4675dea0dcb6e9b08b3b813b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9c111554d4e51dcff86f3db58ad2635"><td class="memItemLeft" align="right" valign="top"><a id="ab9c111554d4e51dcff86f3db58ad2635"></a>
-nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_loot_data</b> ()</td></tr>
+<tr class="memitem:ab9c111554d4e51dcff86f3db58ad2635"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#ab9c111554d4e51dcff86f3db58ad2635">get_loot_data</a> ()</td></tr>
+<tr class="memdesc:ab9c111554d4e51dcff86f3db58ad2635"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la información de los items del mapa.  <a href="classMap.html#ab9c111554d4e51dcff86f3db58ad2635">Más...</a><br /></td></tr>
 <tr class="separator:ab9c111554d4e51dcff86f3db58ad2635"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d4ceff6f81af163cb96c0b39c390692"><td class="memItemLeft" align="right" valign="top"><a id="a1d4ceff6f81af163cb96c0b39c390692"></a>
-std::queue&lt; <a class="el" href="structmap__log.html">map_log_t</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_update_logs</b> ()</td></tr>
+<tr class="memitem:a1d4ceff6f81af163cb96c0b39c390692"><td class="memItemLeft" align="right" valign="top">std::queue&lt; <a class="el" href="structmap__log.html">map_log_t</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a1d4ceff6f81af163cb96c0b39c390692">get_update_logs</a> ()</td></tr>
+<tr class="memdesc:a1d4ceff6f81af163cb96c0b39c390692"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la cola de "logs" del mapa.  <a href="classMap.html#a1d4ceff6f81af163cb96c0b39c390692">Más...</a><br /></td></tr>
 <tr class="separator:a1d4ceff6f81af163cb96c0b39c390692"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae528196e42063f379abd5d3f15478748"><td class="memItemLeft" align="right" valign="top"><a id="ae528196e42063f379abd5d3f15478748"></a>
-nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_map_data</b> ()</td></tr>
+<tr class="memitem:ae528196e42063f379abd5d3f15478748"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#ae528196e42063f379abd5d3f15478748">get_map_data</a> ()</td></tr>
+<tr class="memdesc:ae528196e42063f379abd5d3f15478748"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la información gráfica del mapa en forma de <code>json</code>.  <a href="classMap.html#ae528196e42063f379abd5d3f15478748">Más...</a><br /></td></tr>
 <tr class="separator:ae528196e42063f379abd5d3f15478748"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Métodos públicos estáticos</h2></td></tr>
-<tr class="memitem:afeb619310e5e19786f106e8ef6e7606a"><td class="memItemLeft" align="right" valign="top"><a id="afeb619310e5e19786f106e8ef6e7606a"></a>
-static nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_position_data</b> (const PositionMap &amp;position_map)</td></tr>
+<tr class="memitem:afeb619310e5e19786f106e8ef6e7606a"><td class="memItemLeft" align="right" valign="top">static nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#afeb619310e5e19786f106e8ef6e7606a">get_position_data</a> (const PositionMap &amp;position_map)</td></tr>
+<tr class="memdesc:afeb619310e5e19786f106e8ef6e7606a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Realizar una copia en forma de <code>json</code> de un mapa de posiciones.  <a href="classMap.html#afeb619310e5e19786f106e8ef6e7606a">Más...</a><br /></td></tr>
 <tr class="separator:afeb619310e5e19786f106e8ef6e7606a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
@@ -178,7 +193,602 @@ Amigas</h2></td></tr>
 <tr class="memitem:a2df56bce875115e30eee589571642e33"><td class="memItemLeft" align="right" valign="top"><a id="a2df56bce875115e30eee589571642e33"></a>
 class&#160;</td><td class="memItemRight" valign="bottom"><b>Action</b></td></tr>
 <tr class="separator:a2df56bce875115e30eee589571642e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a522d5b689ef2a63746dfafbf507347a6"><td class="memItemLeft" align="right" valign="top"><a id="a522d5b689ef2a63746dfafbf507347a6"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>MonsterSpawner</b></td></tr>
+<tr class="separator:a522d5b689ef2a63746dfafbf507347a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="a52b87bbaa67ba72a6d0c5eefa368befe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52b87bbaa67ba72a6d0c5eefa368befe">&#9670;&nbsp;</a></span>add_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">nlohmann::json Map::add_player </td>
+          <td>(</td>
+          <td class="paramtype">nlohmann::json&#160;</td>
+          <td class="paramname"><em>player_info</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega un jugador al mapa a partir de su información. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_info</td><td>Información del jugador para agregarlo al mapa. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>nlohmann::json Información del jugador actualizada luego de ser agregado. </dd></dl>
+
+</div>
+</div>
+<a id="a79bff62cc690a8cfc0ab62af1d56a653"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79bff62cc690a8cfc0ab62af1d56a653">&#9670;&nbsp;</a></span>dirty_entities()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Map::dirty_entities </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verificar si hubo un cambio en las entidades del mapa desde la última vez que se utilizó este método. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>true Se agregó o eliminó alguna entidad. </dd>
+<dd>
+false No se agregó o eliminó ninguna entidad. </dd></dl>
+
+</div>
+</div>
+<a id="a65c2a6ea4675dea0dcb6e9b08b3b813b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65c2a6ea4675dea0dcb6e9b08b3b813b">&#9670;&nbsp;</a></span>dirty_loot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Map::dirty_loot </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verificar si hubo un cambio en los items caidos en el mapa desde la última vez que se utilizó este método. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>true Se agregó o eliminó algún item. </dd>
+<dd>
+false No se agregó o eliminó ningún item. </dd></dl>
+
+</div>
+</div>
+<a id="ab836e185b47439561e692ffde69a5959"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab836e185b47439561e692ffde69a5959">&#9670;&nbsp;</a></span>drop_loot() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Map::drop_loot </td>
+          <td>(</td>
+          <td class="paramtype">EntityId&#160;</td>
+          <td class="paramname"><em>entity_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="classItem.html">Item</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>items</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deja caer la lista de items en el mapa. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity_id</td><td>Id de entidad que deja caer los items. </td></tr>
+    <tr><td class="paramname">items</td><td>Lista de items transferidos al mapa. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0d6f34faee9066b3108f6919d148b59d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d6f34faee9066b3108f6919d148b59d">&#9670;&nbsp;</a></span>drop_loot() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Map::drop_loot </td>
+          <td>(</td>
+          <td class="paramtype">EntityId&#160;</td>
+          <td class="paramname"><em>entity_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classItem.html">Item</a> *&#160;</td>
+          <td class="paramname"><em>item</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deja el item pasado por parámetro en la posición de la entidad. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity_id</td><td>Id de entidad que deja caer el item. </td></tr>
+    <tr><td class="paramname">item</td><td><a class="el" href="classItem.html">Item</a> transferido al mapa. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae7f4876d5d8dce50bf46d7b3171bbc61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7f4876d5d8dce50bf46d7b3171bbc61">&#9670;&nbsp;</a></span>entity_exists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Map::entity_exists </td>
+          <td>(</td>
+          <td class="paramtype">EntityId&#160;</td>
+          <td class="paramname"><em>entity_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verificar si una entidad existe o no. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity_id</td><td>Id de entidad a verificar si existe. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>bool </dd></dl>
+
+</div>
+</div>
+<a id="a8a37d5592c5f29fccbe4caa23f5f557e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a37d5592c5f29fccbe4caa23f5f557e">&#9670;&nbsp;</a></span>get_entity_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">nlohmann::json Map::get_entity_data </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene la información de las entidades del mapa. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>nlohmann::json Lista de información de las entidades en el mapa. </dd></dl>
+
+</div>
+</div>
+<a id="ab9c111554d4e51dcff86f3db58ad2635"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9c111554d4e51dcff86f3db58ad2635">&#9670;&nbsp;</a></span>get_loot_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">nlohmann::json Map::get_loot_data </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene la información de los items del mapa. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>nlohmann::json Lista de información y posiciones de los items en el mapa. </dd></dl>
+
+</div>
+</div>
+<a id="ae528196e42063f379abd5d3f15478748"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae528196e42063f379abd5d3f15478748">&#9670;&nbsp;</a></span>get_map_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">nlohmann::json Map::get_map_data </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene la información gráfica del mapa en forma de <code>json</code>. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>nlohmann::json Información gráfica del mapa. </dd></dl>
+
+</div>
+</div>
+<a id="a74fd1b37356d0e69d06b997d1b43eacb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74fd1b37356d0e69d06b997d1b43eacb">&#9670;&nbsp;</a></span>get_nearest_entity_pos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structposition.html">position_t</a> Map::get_nearest_entity_pos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structposition.html">position_t</a>&#160;</td>
+          <td class="paramname"><em>entity_pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>distance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">entity_type_t&#160;</td>
+          <td class="paramname"><em>entity_type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtener la posición de la entidad de un tipo más cercana. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity_pos</td><td>Posición orígen desde donde buscar. </td></tr>
+    <tr><td class="paramname">distance</td><td>Distancia máxima (Manhattan) a buscar la entidad. </td></tr>
+    <tr><td class="paramname">entity_type</td><td>Tipo de entidad buscada. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>position_t Posición de una entidad del tipo buscada, o si no se encontró, la misma posición orígen. </dd></dl>
+
+</div>
+</div>
+<a id="afeb619310e5e19786f106e8ef6e7606a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afeb619310e5e19786f106e8ef6e7606a">&#9670;&nbsp;</a></span>get_position_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">nlohmann::json Map::get_position_data </td>
+          <td>(</td>
+          <td class="paramtype">const PositionMap &amp;&#160;</td>
+          <td class="paramname"><em>position_map</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Realizar una copia en forma de <code>json</code> de un mapa de posiciones. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position_map</td><td>Mapa de posiciones. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>nlohmann::json Mapa de posiciones transformado a <code>json</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a11394b37c0be3d5f1b22670e3e07dcba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11394b37c0be3d5f1b22670e3e07dcba">&#9670;&nbsp;</a></span>get_position_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const PositionMap Map::get_position_map </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene una copia del mapa de posiciones de las entidades. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>const PositionMap Lista de posiciones de entidades en el mapa. </dd></dl>
+
+</div>
+</div>
+<a id="a05fdcee12ddf0abc3f57c63980df75ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05fdcee12ddf0abc3f57c63980df75ff">&#9670;&nbsp;</a></span>get_transitions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::queue&lt; <a class="el" href="structmap__change.html">map_change_t</a> &gt; &amp; Map::get_transitions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene la cola de transiciones del mapa. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>std::queue&lt;map_change_t&gt;&amp; Referencia a la cola de transiciones. </dd></dl>
+
+</div>
+</div>
+<a id="a1d4ceff6f81af163cb96c0b39c390692"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d4ceff6f81af163cb96c0b39c390692">&#9670;&nbsp;</a></span>get_update_logs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::queue&lt; <a class="el" href="structmap__log.html">map_log_t</a> &gt; &amp; Map::get_update_logs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene la cola de "logs" del mapa. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>std::queue&lt;map_log_t&gt;&amp; Referencia a la cola de logs del mapa. </dd></dl>
+
+</div>
+</div>
+<a id="a6655a2372dbcf08dbbbad95c8922fc76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6655a2372dbcf08dbbbad95c8922fc76">&#9670;&nbsp;</a></span>move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Map::move </td>
+          <td>(</td>
+          <td class="paramtype">EntityId&#160;</td>
+          <td class="paramname"><em>entity_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structposition.html">position_t</a>&#160;</td>
+          <td class="paramname"><em>steps</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Mueve la entidad asociada al entity_id hacia la posicion relativa steps. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity_id</td><td>Id de entidad a mover. </td></tr>
+    <tr><td class="paramname">steps</td><td>Posición relativa a la entidad a donde se va a mover. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac211829e65dd3e2e13a35f44e793e6ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac211829e65dd3e2e13a35f44e793e6ed">&#9670;&nbsp;</a></span>pickup_loot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classItem.html">Item</a> * Map::pickup_loot </td>
+          <td>(</td>
+          <td class="paramtype">EntityId&#160;</td>
+          <td class="paramname"><em>entity_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Intenta obtener de la posición donde se encuentra la entidad el item que haya allí. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity_id</td><td>Id de entidad que intenta obtener el item. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Item* El item obtenido, <code>NULL</code> si no había nada en esa posición. </dd></dl>
+
+</div>
+</div>
+<a id="a7e6be80a83bf87805bd262276e2ebbfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e6be80a83bf87805bd262276e2ebbfd">&#9670;&nbsp;</a></span>push_action()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Map::push_action </td>
+          <td>(</td>
+          <td class="paramtype">EntityId&#160;</td>
+          <td class="paramname"><em>entity_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classAction.html">Action</a> *&#160;</td>
+          <td class="paramname"><em>action</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ejecuta sobre la entidad asociada al id la accion. </p>
+<p>El mapa se encargará de liberar la memoria ocupada por la acción a través de un <code>delete</code>.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity_id</td><td>Id de entidad. </td></tr>
+    <tr><td class="paramname">action</td><td>Puntero a clase de tipo Accion alocada en el Heap. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a09a395c572b3b44135e0f20629fea0b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09a395c572b3b44135e0f20629fea0b5">&#9670;&nbsp;</a></span>push_log()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Map::push_log </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structmap__log.html">map_log_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>log</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega un log al mapa. </p>
+<p>Los logs son ulitizados para enviar a los jugadores correspondientes información específica según sus acciones recientes.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">log</td><td>Log del mapa. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af48a8281049e829dad3bc51ee4c0fddb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af48a8281049e829dad3bc51ee4c0fddb">&#9670;&nbsp;</a></span>rm_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">nlohmann::json Map::rm_player </td>
+          <td>(</td>
+          <td class="paramtype">EntityId&#160;</td>
+          <td class="paramname"><em>entity_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Eliminar a un jugador identificado por su id del mapa. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity_id</td><td>Id de entidad del jugador a eliminar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>nlohmann::json Información necesaria para persistir al personaje al ser sacado del mapa. </dd></dl>
+
+</div>
+</div>
+<a id="ac2816643aa678d3a4ca0305f98b683a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2816643aa678d3a4ca0305f98b683a0">&#9670;&nbsp;</a></span>teleport()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Map::teleport </td>
+          <td>(</td>
+          <td class="paramtype">EntityId&#160;</td>
+          <td class="paramname"><em>player_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structposition.html">position_t</a>&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Teletransporta a un jugador a través de una transición. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_id</td><td>Id de entidad del jugador a teletransportar. </td></tr>
+    <tr><td class="paramname">dest</td><td>Posición destino. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa7e60594c7a98016f7a30400fcdbf49e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7e60594c7a98016f7a30400fcdbf49e">&#9670;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Map::update </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>delta_t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Actualiza todas las entidades que contiene segun el delta_t transcurrido. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">delta_t</td><td>Tiempo transcurrido (en microsegundos). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>/home/tc/Documents/Taller/tp_final/repo/server/game/<a class="el" href="map_8h_source.html">map.h</a></li>
 <li>/home/tc/Documents/Taller/tp_final/repo/server/game/map.cpp</li>

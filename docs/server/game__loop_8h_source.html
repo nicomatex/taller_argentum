@@ -101,7 +101,7 @@ $(document).ready(function(){initNavTree('game__loop_8h_source.html',''); initRe
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;atomic&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../../include/thread.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../map_manager.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;map_manager.h&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classGameLoop.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGameLoop.html">GameLoop</a> : <span class="keyword">public</span> <a class="code" href="classThread.html">Thread</a> {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;   <span class="keyword">private</span>:</div>
@@ -110,7 +110,7 @@ $(document).ready(function(){initNavTree('game__loop_8h_source.html',''); initRe
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classGameLoop.html">GameLoop</a>(<a class="code" href="classMapManager.html">MapManager</a>&amp; map_manager);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">void</span> run() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameLoop.html#a5da2c7037d537d4feeffade3666ad3a3">run</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">void</span> stop();</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    ~<a class="code" href="classGameLoop.html">GameLoop</a>();</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
@@ -119,6 +119,7 @@ $(document).ready(function(){initNavTree('game__loop_8h_source.html',''); initRe
 </div><!-- doc-content -->
 <div class="ttc" id="aclassMapManager_html"><div class="ttname"><a href="classMapManager.html">MapManager</a></div><div class="ttdef"><b>Definition:</b> map_manager.h:11</div></div>
 <div class="ttc" id="aclassGameLoop_html"><div class="ttname"><a href="classGameLoop.html">GameLoop</a></div><div class="ttdef"><b>Definition:</b> game_loop.h:9</div></div>
+<div class="ttc" id="aclassGameLoop_html_a5da2c7037d537d4feeffade3666ad3a3"><div class="ttname"><a href="classGameLoop.html#a5da2c7037d537d4feeffade3666ad3a3">GameLoop::run</a></div><div class="ttdeci">void run() override</div><div class="ttdoc">Function to be called by the thread.</div><div class="ttdef"><b>Definition:</b> game_loop.cpp:12</div></div>
 <div class="ttc" id="aclassThread_html"><div class="ttname"><a href="classThread.html">Thread</a></div><div class="ttdef"><b>Definition:</b> thread.h:9</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

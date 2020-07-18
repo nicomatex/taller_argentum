@@ -110,12 +110,21 @@ Diagrama de herencias de Weapon</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a189a5a430f0da69092ff47bf535461a2"><td class="memItemLeft" align="right" valign="top"><a id="a189a5a430f0da69092ff47bf535461a2"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Weapon</b> (<a class="el" href="structitem__info.html">item_info_t</a> <a class="el" href="structitem__info.html">item_info</a>, <a class="el" href="structweapon__info.html">weapon_info_t</a> <a class="el" href="structweapon__info.html">weapon_info</a>, uint32_t stack=0)</td></tr>
-<tr class="separator:a189a5a430f0da69092ff47bf535461a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4817a3c11fa93baada37894dd41400e7"><td class="memItemLeft" align="right" valign="top"><a id="a4817a3c11fa93baada37894dd41400e7"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>deal_damage</b> ()</td></tr>
+<tr class="memitem:ac9e1358c34f4923c5816640726a3dce9"><td class="memItemLeft" align="right" valign="top"><a id="ac9e1358c34f4923c5816640726a3dce9"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Weapon</b> (<a class="el" href="structitem__info.html">item_info_t</a> <a class="el" href="structitem__info.html">item_info</a>, <a class="el" href="structweapon__info.html">weapon_info_t</a> <a class="el" href="structweapon__info.html">weapon_info</a>, <a class="el" href="classSpecialAbility.html">SpecialAbility</a> *special, uint32_t stack=0)</td></tr>
+<tr class="separator:ac9e1358c34f4923c5816640726a3dce9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ee12c6b8237b1f20a0af3fa9caff824"><td class="memItemLeft" align="right" valign="top"><a id="a5ee12c6b8237b1f20a0af3fa9caff824"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Weapon</b> (const <a class="el" href="classWeapon.html">Weapon</a> &amp;other, <a class="el" href="classSpecialAbility.html">SpecialAbility</a> *special)</td></tr>
+<tr class="separator:a5ee12c6b8237b1f20a0af3fa9caff824"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4817a3c11fa93baada37894dd41400e7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWeapon.html#a4817a3c11fa93baada37894dd41400e7">deal_damage</a> ()</td></tr>
+<tr class="memdesc:a4817a3c11fa93baada37894dd41400e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve un valor en el rango de daño del arma.  <a href="classWeapon.html#a4817a3c11fa93baada37894dd41400e7">Más...</a><br /></td></tr>
 <tr class="separator:a4817a3c11fa93baada37894dd41400e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20a4bc88055eb11653168c4933f2a1ac"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structmap__log.html">map_log_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWeapon.html#a20a4bc88055eb11653168c4933f2a1ac">use_ability</a> (<a class="el" href="classPlayer.html">Player</a> *thrower, <a class="el" href="classEntity.html">Entity</a> *target, <a class="el" href="structposition.html">position_t</a> source, <a class="el" href="structposition.html">position_t</a> dest)</td></tr>
+<tr class="memdesc:a20a4bc88055eb11653168c4933f2a1ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Usar la habiliadad especial del arma.  <a href="classWeapon.html#a20a4bc88055eb11653168c4933f2a1ac">Más...</a><br /></td></tr>
+<tr class="separator:a20a4bc88055eb11653168c4933f2a1ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9e85c80c98927fdadae3d2b09ad3500"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWeapon.html#ae9e85c80c98927fdadae3d2b09ad3500">get_attack_speed</a> ()</td></tr>
+<tr class="memdesc:ae9e85c80c98927fdadae3d2b09ad3500"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el valor de la velocidad de ataque del arma.  <a href="classWeapon.html#ae9e85c80c98927fdadae3d2b09ad3500">Más...</a><br /></td></tr>
+<tr class="separator:ae9e85c80c98927fdadae3d2b09ad3500"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e9973061df241bd5c1c51b2162f086c"><td class="memItemLeft" align="right" valign="top"><a id="a1e9973061df241bd5c1c51b2162f086c"></a>
 nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_data</b> () const override</td></tr>
 <tr class="separator:a1e9973061df241bd5c1c51b2162f086c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,16 +150,110 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_sprite_id</b>
 <tr class="memitem:a6346acf88d4c7ecbb052253e892e38dd inherit pub_methods_classItem"><td class="memItemLeft" align="right" valign="top"><a id="a6346acf88d4c7ecbb052253e892e38dd"></a>
 item_type_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_type</b> () const</td></tr>
 <tr class="separator:a6346acf88d4c7ecbb052253e892e38dd inherit pub_methods_classItem"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a769a9c8795058082c7f09d7f208bd8fc inherit pub_methods_classItem"><td class="memItemLeft" align="right" valign="top"><a id="a769a9c8795058082c7f09d7f208bd8fc"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>stack_difference</b> (uint32_t other_stack)</td></tr>
-<tr class="separator:a769a9c8795058082c7f09d7f208bd8fc inherit pub_methods_classItem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77c1a0036654bfb22cb5268f945636e7 inherit pub_methods_classItem"><td class="memItemLeft" align="right" valign="top"><a id="a77c1a0036654bfb22cb5268f945636e7"></a>
+long int&#160;</td><td class="memItemRight" valign="bottom"><b>stack_difference</b> (uint32_t other_stack)</td></tr>
+<tr class="separator:a77c1a0036654bfb22cb5268f945636e7 inherit pub_methods_classItem"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95a17880edd1611240b9ace21200519c inherit pub_methods_classItem"><td class="memItemLeft" align="right" valign="top"><a id="a95a17880edd1611240b9ace21200519c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>increase_stack</b> (uint32_t stack)</td></tr>
 <tr class="separator:a95a17880edd1611240b9ace21200519c inherit pub_methods_classItem"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33f831b60c7ff84caa11dab85946361d inherit pub_methods_classItem"><td class="memItemLeft" align="right" valign="top"><a id="a33f831b60c7ff84caa11dab85946361d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>decrease_stack</b> (uint32_t stack)</td></tr>
 <tr class="separator:a33f831b60c7ff84caa11dab85946361d inherit pub_methods_classItem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03aeb19727ccb1a0d9c34de9b2844218 inherit pub_methods_classItem"><td class="memItemLeft" align="right" valign="top"><a id="a03aeb19727ccb1a0d9c34de9b2844218"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_gold_value</b> () const</td></tr>
+<tr class="separator:a03aeb19727ccb1a0d9c34de9b2844218 inherit pub_methods_classItem"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="a4817a3c11fa93baada37894dd41400e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4817a3c11fa93baada37894dd41400e7">&#9670;&nbsp;</a></span>deal_damage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Weapon::deal_damage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve un valor en el rango de daño del arma. </p>
+<p>El cálculo de daño para un arma es un valor aleatorio entre el mínimo y máximo daño posible por la misma.</p>
+<dl class="section return"><dt>Devuelve</dt><dd>int Daño en puntos de vida. </dd></dl>
+
+</div>
+</div>
+<a id="ae9e85c80c98927fdadae3d2b09ad3500"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9e85c80c98927fdadae3d2b09ad3500">&#9670;&nbsp;</a></span>get_attack_speed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Weapon::get_attack_speed </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve el valor de la velocidad de ataque del arma. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>float Valor en ataques/seg. </dd></dl>
+
+</div>
+</div>
+<a id="a20a4bc88055eb11653168c4933f2a1ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20a4bc88055eb11653168c4933f2a1ac">&#9670;&nbsp;</a></span>use_ability()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structmap__log.html">map_log_t</a> &gt; Weapon::use_ability </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classPlayer.html">Player</a> *&#160;</td>
+          <td class="paramname"><em>thrower</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classEntity.html">Entity</a> *&#160;</td>
+          <td class="paramname"><em>target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structposition.html">position_t</a>&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structposition.html">position_t</a>&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Usar la habiliadad especial del arma. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="classPlayer.html">Player</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="classEntity.html">Entity</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>/home/tc/Documents/Taller/tp_final/repo/server/game/items/<a class="el" href="weapon_8h_source.html">weapon.h</a></li>
 <li>/home/tc/Documents/Taller/tp_final/repo/server/game/items/weapon.cpp</li>

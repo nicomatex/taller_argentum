@@ -107,9 +107,9 @@ static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memIt
 <tr class="memitem:ab2a6622ef47dd2bffe81c75dd96ac284"><td class="memItemLeft" align="right" valign="top"><a id="ab2a6622ef47dd2bffe81c75dd96ac284"></a>
 static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>update_map</b> (const nlohmann::json &amp;position_data)</td></tr>
 <tr class="separator:ab2a6622ef47dd2bffe81c75dd96ac284"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c36c3062d717e5f6eb2a8a670a6906a"><td class="memItemLeft" align="right" valign="top"><a id="a7c36c3062d717e5f6eb2a8a670a6906a"></a>
-static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>notify_map_change</b> ()</td></tr>
-<tr class="separator:a7c36c3062d717e5f6eb2a8a670a6906a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b5ae3e3689fe1a187ba7a49fa3ab07c"><td class="memItemLeft" align="right" valign="top"><a id="a1b5ae3e3689fe1a187ba7a49fa3ab07c"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>notify_new_map</b> ()</td></tr>
+<tr class="separator:a1b5ae3e3689fe1a187ba7a49fa3ab07c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2eb57b1aec40ddcaf34c4ed6c7430f7c"><td class="memItemLeft" align="right" valign="top"><a id="a2eb57b1aec40ddcaf34c4ed6c7430f7c"></a>
 static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>change_map</b> (ClientId client_id, const nlohmann::json &amp;player_data)</td></tr>
 <tr class="separator:a2eb57b1aec40ddcaf34c4ed6c7430f7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -129,14 +129,74 @@ static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memIt
 static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>drop_client</b> (ClientId client_id)</td></tr>
 <tr class="separator:a1991d11a9a7b00aaa9e51df26f504967"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecd9e082086eb1ad0908da0fa751ae0d"><td class="memItemLeft" align="right" valign="top"><a id="aecd9e082086eb1ad0908da0fa751ae0d"></a>
-static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>dealt_damage</b> (int <a class="el" href="structdamage.html">damage</a>, EntityId to_id)</td></tr>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>dealt_damage</b> (int damage, EntityId to_id)</td></tr>
 <tr class="separator:aecd9e082086eb1ad0908da0fa751ae0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef8a4d5ad10900aa3c05dab0c1a00059"><td class="memItemLeft" align="right" valign="top"><a id="aef8a4d5ad10900aa3c05dab0c1a00059"></a>
-static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>received_damage</b> (int <a class="el" href="structdamage.html">damage</a>)</td></tr>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>received_damage</b> (int damage)</td></tr>
 <tr class="separator:aef8a4d5ad10900aa3c05dab0c1a00059"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af53f11d904523a97829bd7ef1a59a667"><td class="memItemLeft" align="right" valign="top"><a id="af53f11d904523a97829bd7ef1a59a667"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>damage_evaded</b> (EntityId to_id)</td></tr>
+<tr class="separator:af53f11d904523a97829bd7ef1a59a667"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5aea625bfa89b4904b9a22245746b157"><td class="memItemLeft" align="right" valign="top"><a id="a5aea625bfa89b4904b9a22245746b157"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>evaded_damage</b> ()</td></tr>
+<tr class="separator:a5aea625bfa89b4904b9a22245746b157"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6dcfbfa5c25187308d8c5b574283f1b4"><td class="memItemLeft" align="right" valign="top"><a id="a6dcfbfa5c25187308d8c5b574283f1b4"></a>
 static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>inventory_update</b> (const nlohmann::json &amp;inventory_data)</td></tr>
 <tr class="separator:a6dcfbfa5c25187308d8c5b574283f1b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafcbce25d8f5b76bac34ed800bd14764"><td class="memItemLeft" align="right" valign="top"><a id="aafcbce25d8f5b76bac34ed800bd14764"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pickup_event</b> (ClientId client_id)</td></tr>
+<tr class="separator:aafcbce25d8f5b76bac34ed800bd14764"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97e068cd3efd7559e10941823168ca41"><td class="memItemLeft" align="right" valign="top"><a id="a97e068cd3efd7559e10941823168ca41"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>drop_event</b> (ClientId client_id, SlotId slot, uint32_t amount)</td></tr>
+<tr class="separator:a97e068cd3efd7559e10941823168ca41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4faaa0e0afad5b3f6eb293c56eac974d"><td class="memItemLeft" align="right" valign="top"><a id="a4faaa0e0afad5b3f6eb293c56eac974d"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>unequip_all_event</b> (ClientId client_id)</td></tr>
+<tr class="separator:a4faaa0e0afad5b3f6eb293c56eac974d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a235f4a7c9ddc7cc7a1ec05aed7a2f61b"><td class="memItemLeft" align="right" valign="top"><a id="a235f4a7c9ddc7cc7a1ec05aed7a2f61b"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>resuscitate_event</b> (ClientId client_id)</td></tr>
+<tr class="separator:a235f4a7c9ddc7cc7a1ec05aed7a2f61b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bbed3ff2f6e31ee5e64df54f3733d3f"><td class="memItemLeft" align="right" valign="top"><a id="a8bbed3ff2f6e31ee5e64df54f3733d3f"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>heal_event</b> (ClientId client_id, <a class="el" href="structposition.html">position_t</a> target)</td></tr>
+<tr class="separator:a8bbed3ff2f6e31ee5e64df54f3733d3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26ddf4e1ccd5716c1f78e7ca6d948aba"><td class="memItemLeft" align="right" valign="top"><a id="a26ddf4e1ccd5716c1f78e7ca6d948aba"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>name_not_found</b> ()</td></tr>
+<tr class="separator:a26ddf4e1ccd5716c1f78e7ca6d948aba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91f0f6caaeca9c9fc0c76698c6af56f7"><td class="memItemLeft" align="right" valign="top"><a id="a91f0f6caaeca9c9fc0c76698c6af56f7"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>name_already_online</b> ()</td></tr>
+<tr class="separator:a91f0f6caaeca9c9fc0c76698c6af56f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5849953576d5df8a2adef83342ee4827"><td class="memItemLeft" align="right" valign="top"><a id="a5849953576d5df8a2adef83342ee4827"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>name_taken</b> ()</td></tr>
+<tr class="separator:a5849953576d5df8a2adef83342ee4827"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1221566b921fcf22a295871ec782c908"><td class="memItemLeft" align="right" valign="top"><a id="a1221566b921fcf22a295871ec782c908"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>sell_event</b> (ClientId client_id, <a class="el" href="structposition.html">position_t</a> target, SlotId slot, uint32_t amount)</td></tr>
+<tr class="separator:a1221566b921fcf22a295871ec782c908"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ad8a28e9ccdf45b20d31460dc658da3"><td class="memItemLeft" align="right" valign="top"><a id="a3ad8a28e9ccdf45b20d31460dc658da3"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>buy_event</b> (ClientId client_id, <a class="el" href="structposition.html">position_t</a> target, SlotId slot, uint32_t amount)</td></tr>
+<tr class="separator:a3ad8a28e9ccdf45b20d31460dc658da3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f2b038255e67f605caf09ec4e9c7225"><td class="memItemLeft" align="right" valign="top"><a id="a9f2b038255e67f605caf09ec4e9c7225"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>list_event</b> (ClientId client_id, <a class="el" href="structposition.html">position_t</a> target)</td></tr>
+<tr class="separator:a9f2b038255e67f605caf09ec4e9c7225"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca58f064dbbfdf1329b1f45f1868a6bf"><td class="memItemLeft" align="right" valign="top"><a id="aca58f064dbbfdf1329b1f45f1868a6bf"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>special_ability</b> (const nlohmann::json &amp;cast_info)</td></tr>
+<tr class="separator:aca58f064dbbfdf1329b1f45f1868a6bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98acb875cdf0d58f2c55f60b1c847663"><td class="memItemLeft" align="right" valign="top"><a id="a98acb875cdf0d58f2c55f60b1c847663"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>deposit_item_event</b> (ClientId client_id, <a class="el" href="structposition.html">position_t</a> target, SlotId slot, uint32_t amount)</td></tr>
+<tr class="separator:a98acb875cdf0d58f2c55f60b1c847663"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a272017cb1ee2f66149673984e818ba91"><td class="memItemLeft" align="right" valign="top"><a id="a272017cb1ee2f66149673984e818ba91"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>withdraw_item_event</b> (ClientId client_id, <a class="el" href="structposition.html">position_t</a> target, SlotId slot, uint32_t amount)</td></tr>
+<tr class="separator:a272017cb1ee2f66149673984e818ba91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a144048689c8b3ce4c2ea6de8bbca537e"><td class="memItemLeft" align="right" valign="top"><a id="a144048689c8b3ce4c2ea6de8bbca537e"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>deposit_gold_event</b> (ClientId client_id, <a class="el" href="structposition.html">position_t</a> target, uint32_t amount)</td></tr>
+<tr class="separator:a144048689c8b3ce4c2ea6de8bbca537e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac45a9d7629c155cb0d095d66824ca675"><td class="memItemLeft" align="right" valign="top"><a id="ac45a9d7629c155cb0d095d66824ca675"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>withdraw_gold_event</b> (ClientId client_id, <a class="el" href="structposition.html">position_t</a> target, uint32_t amount)</td></tr>
+<tr class="separator:ac45a9d7629c155cb0d095d66824ca675"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a2fec91665928ebf71735ae77d76699"><td class="memItemLeft" align="right" valign="top"><a id="a4a2fec91665928ebf71735ae77d76699"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>meditate_event</b> (ClientId client_id)</td></tr>
+<tr class="separator:a4a2fec91665928ebf71735ae77d76699"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab43d352178448618b9144bf0fd2addb7"><td class="memItemLeft" align="right" valign="top"><a id="ab43d352178448618b9144bf0fd2addb7"></a>
+static <a class="el" href="classEvent.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>resuscitate</b> ()</td></tr>
+<tr class="separator:ab43d352178448618b9144bf0fd2addb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>/home/tc/Documents/Taller/tp_final/repo/server/events/<a class="el" href="event__factory_8h_source.html">event_factory.h</a></li>

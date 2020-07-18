@@ -100,70 +100,108 @@ $(document).ready(function(){initNavTree('player_8h_source.html',''); initResiza
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../../attribute_manager.h&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;../items/item_container.h&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;../map.h&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../position.h&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;entity.h&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classPlayer.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPlayer.html">Player</a> : <span class="keyword">public</span> <a class="code" href="classEntity.html">Entity</a> {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">bool</span> alive;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> head_id;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> body_id;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classItemContainer.html">ItemContainer</a> <a class="code" href="structinventory.html">inventory</a>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classMap.html">Map</a>&amp; map;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    class_type_t class_type;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    race_type_t race_type;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classPlayer.html#aa04e8a564b40fbda931e4ccceec23f12">Player</a>(EntityId entity_id, nlohmann::json player_info, <a class="code" href="classMap.html">Map</a>&amp; map);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    entity_type_t <a class="code" href="classPlayer.html#aea4e7068192a40c781aa7d07c68c81ba">get_type</a>() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    class_type_t <a class="code" href="classPlayer.html#a9917a8c8773835b1e2d1737c460b4c76">get_class_type</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    race_type_t <a class="code" href="classPlayer.html#a554e23a070d9b608bbb28f390b4a7f03">get_race_type</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> die() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">bool</span> is_alive() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlayer.html#a3cd10ee96674c54f60e3f70a344f5e8b">use</a>(SlotId slot);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> add_item(<a class="code" href="classItem.html">Item</a>* item);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlayer.html#a3b6984d0310b40ff0754dfe00e7860de">set_movement</a>(mov_action_t action, direction_t direction);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> update(uint64_t delta_t) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classPlayer.html#a776717fe8fafda98740e74828bab03de">can_attack</a>(<a class="code" href="classEntity.html">Entity</a>* attacked) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    nlohmann::json <a class="code" href="classPlayer.html#ad91b3daebc9bdacfc1cf9c9f6e684332">get_data</a>() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    nlohmann::json <a class="code" href="classPlayer.html#ad39e83a4ce2c75731be8ded9e52049a2">get_inventory_data</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../attribute_manager.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;../items/item.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;../items/item_container.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../map.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../position.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;entity.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classPlayer.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPlayer.html">Player</a> : <span class="keyword">public</span> <a class="code" href="classEntity.html">Entity</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">bool</span> alive;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> head_id;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> body_id;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="structposition.html">position_t</a> teleport_pos;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">int</span> teleport_accumulator;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classItemContainer.html">ItemContainer</a> <a class="code" href="structinventory.html">inventory</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    class_type_t class_type;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    race_type_t race_type;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> _teleport();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="classPlayer.html#aa04e8a564b40fbda931e4ccceec23f12">Player</a>(EntityId entity_id, nlohmann::json player_info, <a class="code" href="classMap.html">Map</a>&amp; map);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    entity_type_t <a class="code" href="classPlayer.html#aea4e7068192a40c781aa7d07c68c81ba">get_type</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    class_type_t <a class="code" href="classPlayer.html#a9917a8c8773835b1e2d1737c460b4c76">get_class_type</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    race_type_t <a class="code" href="classPlayer.html#a554e23a070d9b608bbb28f390b4a7f03">get_race_type</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlayer.html#aeb0fe9b66fecab56f00bdc240242d8b9">immobilize</a>(<span class="keywordtype">int</span> delta_t);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> resuscitate(<span class="keywordtype">int</span> delta_t);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> regen_max();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> teleport(<a class="code" href="structposition.html">position_t</a> dest, <span class="keywordtype">int</span> delta_t);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> die() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">bool</span> is_alive() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlayer.html#a3cd10ee96674c54f60e3f70a344f5e8b">use</a>(SlotId slot);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlayer.html#adc6e9d131d7110e865b6ad8f44700cfc">use_ability</a>(<a class="code" href="classEntity.html">Entity</a>* target, <a class="code" href="structposition.html">position_t</a> target_pos);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlayer.html#aff11834e62d58ca848f5efde8c51e78e">add_item</a>(<a class="code" href="classItem.html">Item</a>* item);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="classItem.html">Item</a>* <a class="code" href="classPlayer.html#ae3edf2f967d370e348dca7f08b16f519">remove_item</a>(SlotId slot, uint32_t amount);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="classGold.html">Gold</a>* <a class="code" href="classPlayer.html#abd95ef3c649066d59fc5f57de60aeeea">remove_gold</a>(uint32_t amount);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    uint32_t <a class="code" href="classPlayer.html#aab582b79d6bcf66486b8a4c01d4eabd2">get_gold_stack</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlayer.html#ab40eba0cc8dc9a7d7737da4dfb676ec5">unequip</a>(SlotId slot);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <a class="code" href="classMap.html">Map</a>&amp; <a class="code" href="classPlayer.html#a9686e02df7c2a327d0428fd6d78588ca">get_map</a>();</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlayer.html#a3b6984d0310b40ff0754dfe00e7860de">set_movement</a>(mov_action_t action, direction_t direction);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlayer.html#a4f23983051301044ffaa8748cc43f638">meditate</a>(<span class="keywordtype">bool</span> meditating);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlayer.html#a10444e61cfd4f37243c10ec9a3a6781e">update</a>(uint64_t delta_t) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    nlohmann::json <a class="code" href="classPlayer.html#a563e42c563e8f7e9a5425095ac140a81">get_persist_data</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;};</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="preprocessor">#endif  // PLAYER_H</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classPlayer.html#a776717fe8fafda98740e74828bab03de">can_attack</a>(<a class="code" href="classEntity.html">Entity</a>* attacked) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordtype">void</span> set_alive(<span class="keywordtype">bool</span> alive);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    nlohmann::json <a class="code" href="classPlayer.html#ad91b3daebc9bdacfc1cf9c9f6e684332">get_data</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    nlohmann::json <a class="code" href="classPlayer.html#ad39e83a4ce2c75731be8ded9e52049a2">get_inventory_data</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    nlohmann::json <a class="code" href="classPlayer.html#a563e42c563e8f7e9a5425095ac140a81">get_persist_data</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;};</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="preprocessor">#endif  // PLAYER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="astructinventory_html"><div class="ttname"><a href="structinventory.html">inventory</a></div><div class="ttdef"><b>Definition:</b> item_container.h:26</div></div>
-<div class="ttc" id="aclassPlayer_html_a776717fe8fafda98740e74828bab03de"><div class="ttname"><a href="classPlayer.html#a776717fe8fafda98740e74828bab03de">Player::can_attack</a></div><div class="ttdeci">bool can_attack(Entity *attacked) const override</div><div class="ttdoc">Define si un jugador podrá o no atacar a otra entidad.</div><div class="ttdef"><b>Definition:</b> player.cpp:199</div></div>
-<div class="ttc" id="aclassItem_html"><div class="ttname"><a href="classItem.html">Item</a></div><div class="ttdef"><b>Definition:</b> item.h:42</div></div>
-<div class="ttc" id="aclassPlayer_html_a3b6984d0310b40ff0754dfe00e7860de"><div class="ttname"><a href="classPlayer.html#a3b6984d0310b40ff0754dfe00e7860de">Player::set_movement</a></div><div class="ttdeci">void set_movement(mov_action_t action, direction_t direction)</div><div class="ttdoc">Setea el movimiento del jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:161</div></div>
-<div class="ttc" id="aclassItemContainer_html"><div class="ttname"><a href="classItemContainer.html">ItemContainer</a></div><div class="ttdef"><b>Definition:</b> item_container.h:44</div></div>
-<div class="ttc" id="aclassPlayer_html_ad39e83a4ce2c75731be8ded9e52049a2"><div class="ttname"><a href="classPlayer.html#ad39e83a4ce2c75731be8ded9e52049a2">Player::get_inventory_data</a></div><div class="ttdeci">nlohmann::json get_inventory_data() const</div><div class="ttdoc">Obtiene la información del inventario del jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:85</div></div>
-<div class="ttc" id="aclassPlayer_html_a563e42c563e8f7e9a5425095ac140a81"><div class="ttname"><a href="classPlayer.html#a563e42c563e8f7e9a5425095ac140a81">Player::get_persist_data</a></div><div class="ttdeci">nlohmann::json get_persist_data() const</div><div class="ttdoc">Obtener la información para persistir a un jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:140</div></div>
-<div class="ttc" id="aclassPlayer_html_ad91b3daebc9bdacfc1cf9c9f6e684332"><div class="ttname"><a href="classPlayer.html#ad91b3daebc9bdacfc1cf9c9f6e684332">Player::get_data</a></div><div class="ttdeci">nlohmann::json get_data() const override</div><div class="ttdoc">Obtiene los datos de la entidad para enviar al cliente. (caso PLAYER)</div><div class="ttdef"><b>Definition:</b> player.cpp:58</div></div>
-<div class="ttc" id="aclassPlayer_html_aea4e7068192a40c781aa7d07c68c81ba"><div class="ttname"><a href="classPlayer.html#aea4e7068192a40c781aa7d07c68c81ba">Player::get_type</a></div><div class="ttdeci">entity_type_t get_type() const override</div><div class="ttdoc">Obtiene el tipo de la entidad: PLAYER.</div><div class="ttdef"><b>Definition:</b> player.cpp:46</div></div>
-<div class="ttc" id="aclassEntity_html"><div class="ttname"><a href="classEntity.html">Entity</a></div><div class="ttdef"><b>Definition:</b> entity.h:13</div></div>
-<div class="ttc" id="aclassPlayer_html_aa04e8a564b40fbda931e4ccceec23f12"><div class="ttname"><a href="classPlayer.html#aa04e8a564b40fbda931e4ccceec23f12">Player::Player</a></div><div class="ttdeci">Player(EntityId entity_id, nlohmann::json player_info, Map &amp;map)</div><div class="ttdoc">Construye a un jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:22</div></div>
-<div class="ttc" id="aclassPlayer_html_a9917a8c8773835b1e2d1737c460b4c76"><div class="ttname"><a href="classPlayer.html#a9917a8c8773835b1e2d1737c460b4c76">Player::get_class_type</a></div><div class="ttdeci">class_type_t get_class_type() const</div><div class="ttdoc">Obtiene la clase del jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:50</div></div>
-<div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdef"><b>Definition:</b> map.h:59</div></div>
-<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdef"><b>Definition:</b> player.h:13</div></div>
-<div class="ttc" id="aclassPlayer_html_a554e23a070d9b608bbb28f390b4a7f03"><div class="ttname"><a href="classPlayer.html#a554e23a070d9b608bbb28f390b4a7f03">Player::get_race_type</a></div><div class="ttdeci">race_type_t get_race_type() const</div><div class="ttdoc">Obtiene la raza del jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:54</div></div>
-<div class="ttc" id="aclassPlayer_html_a3cd10ee96674c54f60e3f70a344f5e8b"><div class="ttname"><a href="classPlayer.html#a3cd10ee96674c54f60e3f70a344f5e8b">Player::use</a></div><div class="ttdeci">void use(SlotId slot)</div><div class="ttdoc">Utilizar un item del inventario.</div><div class="ttdef"><b>Definition:</b> player.cpp:89</div></div>
+<div class="ttc" id="astructinventory_html"><div class="ttname"><a href="structinventory.html">inventory</a></div><div class="ttdef"><b>Definition:</b> item_container.h:31</div></div>
+<div class="ttc" id="aclassPlayer_html_a776717fe8fafda98740e74828bab03de"><div class="ttname"><a href="classPlayer.html#a776717fe8fafda98740e74828bab03de">Player::can_attack</a></div><div class="ttdeci">bool can_attack(Entity *attacked) const override</div><div class="ttdoc">Define si un jugador podrá o no atacar a otra entidad.</div><div class="ttdef"><b>Definition:</b> player.cpp:318</div></div>
+<div class="ttc" id="aclassItem_html"><div class="ttname"><a href="classItem.html">Item</a></div><div class="ttdef"><b>Definition:</b> item.h:45</div></div>
+<div class="ttc" id="aclassPlayer_html_ab40eba0cc8dc9a7d7737da4dfb676ec5"><div class="ttname"><a href="classPlayer.html#ab40eba0cc8dc9a7d7737da4dfb676ec5">Player::unequip</a></div><div class="ttdeci">void unequip(SlotId slot)</div><div class="ttdoc">Desequipa de todo su armamento al jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:198</div></div>
+<div class="ttc" id="aclassPlayer_html_a3b6984d0310b40ff0754dfe00e7860de"><div class="ttname"><a href="classPlayer.html#a3b6984d0310b40ff0754dfe00e7860de">Player::set_movement</a></div><div class="ttdeci">void set_movement(mov_action_t action, direction_t direction)</div><div class="ttdoc">Setea el movimiento del jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:250</div></div>
+<div class="ttc" id="aclassPlayer_html_abd95ef3c649066d59fc5f57de60aeeea"><div class="ttname"><a href="classPlayer.html#abd95ef3c649066d59fc5f57de60aeeea">Player::remove_gold</a></div><div class="ttdeci">Gold * remove_gold(uint32_t amount)</div><div class="ttdoc">Remueve amount del Gold actual.</div><div class="ttdef"><b>Definition:</b> player.cpp:188</div></div>
+<div class="ttc" id="aclassPlayer_html_a10444e61cfd4f37243c10ec9a3a6781e"><div class="ttname"><a href="classPlayer.html#a10444e61cfd4f37243c10ec9a3a6781e">Player::update</a></div><div class="ttdeci">void update(uint64_t delta_t) override</div><div class="ttdoc">Player update.</div><div class="ttdef"><b>Definition:</b> player.cpp:45</div></div>
+<div class="ttc" id="aclassPlayer_html_aeb0fe9b66fecab56f00bdc240242d8b9"><div class="ttname"><a href="classPlayer.html#aeb0fe9b66fecab56f00bdc240242d8b9">Player::immobilize</a></div><div class="ttdeci">void immobilize(int delta_t)</div><div class="ttdoc">Tiempo a inmovilizar al personaje en milisegundos.</div><div class="ttdef"><b>Definition:</b> player.cpp:259</div></div>
+<div class="ttc" id="aclassPlayer_html_adc6e9d131d7110e865b6ad8f44700cfc"><div class="ttname"><a href="classPlayer.html#adc6e9d131d7110e865b6ad8f44700cfc">Player::use_ability</a></div><div class="ttdeci">void use_ability(Entity *target, position_t target_pos)</div><div class="ttdoc">Usar la habilidad del arma equipada actualmente.</div><div class="ttdef"><b>Definition:</b> player.cpp:139</div></div>
+<div class="ttc" id="aclassItemContainer_html"><div class="ttname"><a href="classItemContainer.html">ItemContainer</a></div><div class="ttdef"><b>Definition:</b> item_container.h:49</div></div>
+<div class="ttc" id="aclassPlayer_html_ad39e83a4ce2c75731be8ded9e52049a2"><div class="ttname"><a href="classPlayer.html#ad39e83a4ce2c75731be8ded9e52049a2">Player::get_inventory_data</a></div><div class="ttdeci">nlohmann::json get_inventory_data() const</div><div class="ttdoc">Obtiene la información del inventario del jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:104</div></div>
+<div class="ttc" id="aclassPlayer_html_a563e42c563e8f7e9a5425095ac140a81"><div class="ttname"><a href="classPlayer.html#a563e42c563e8f7e9a5425095ac140a81">Player::get_persist_data</a></div><div class="ttdeci">nlohmann::json get_persist_data() const</div><div class="ttdoc">Obtener la información para persistir a un jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:229</div></div>
+<div class="ttc" id="aclassPlayer_html_a4f23983051301044ffaa8748cc43f638"><div class="ttname"><a href="classPlayer.html#a4f23983051301044ffaa8748cc43f638">Player::meditate</a></div><div class="ttdeci">void meditate(bool meditating)</div><div class="ttdoc">Empieza o detiene la regeneracion de mana al meditar.</div><div class="ttdef"><b>Definition:</b> player.cpp:333</div></div>
+<div class="ttc" id="aclassPlayer_html_aab582b79d6bcf66486b8a4c01d4eabd2"><div class="ttname"><a href="classPlayer.html#aab582b79d6bcf66486b8a4c01d4eabd2">Player::get_gold_stack</a></div><div class="ttdeci">uint32_t get_gold_stack() const</div><div class="ttdoc">Devuelve la cantidad de oro que tiene actualmente.</div><div class="ttdef"><b>Definition:</b> player.cpp:194</div></div>
+<div class="ttc" id="aclassPlayer_html_ad91b3daebc9bdacfc1cf9c9f6e684332"><div class="ttname"><a href="classPlayer.html#ad91b3daebc9bdacfc1cf9c9f6e684332">Player::get_data</a></div><div class="ttdeci">nlohmann::json get_data() const override</div><div class="ttdoc">Obtiene los datos de la entidad para enviar al cliente. (caso PLAYER)</div><div class="ttdef"><b>Definition:</b> player.cpp:77</div></div>
+<div class="ttc" id="aclassPlayer_html_aea4e7068192a40c781aa7d07c68c81ba"><div class="ttname"><a href="classPlayer.html#aea4e7068192a40c781aa7d07c68c81ba">Player::get_type</a></div><div class="ttdeci">entity_type_t get_type() const override</div><div class="ttdoc">Obtiene el tipo de la entidad: PLAYER.</div><div class="ttdef"><b>Definition:</b> player.cpp:65</div></div>
+<div class="ttc" id="aclassPlayer_html_ae3edf2f967d370e348dca7f08b16f519"><div class="ttname"><a href="classPlayer.html#ae3edf2f967d370e348dca7f08b16f519">Player::remove_item</a></div><div class="ttdeci">Item * remove_item(SlotId slot, uint32_t amount)</div><div class="ttdoc">Quita un item del inventario del jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:177</div></div>
+<div class="ttc" id="aclassEntity_html"><div class="ttname"><a href="classEntity.html">Entity</a></div><div class="ttdef"><b>Definition:</b> entity.h:15</div></div>
+<div class="ttc" id="aclassPlayer_html_aff11834e62d58ca848f5efde8c51e78e"><div class="ttname"><a href="classPlayer.html#aff11834e62d58ca848f5efde8c51e78e">Player::add_item</a></div><div class="ttdeci">void add_item(Item *item)</div><div class="ttdoc">Agrega un item al inventario del jugador. En caso de que el item no entrase en el inventario,...</div><div class="ttdef"><b>Definition:</b> player.cpp:148</div></div>
+<div class="ttc" id="aclassPlayer_html_aa04e8a564b40fbda931e4ccceec23f12"><div class="ttname"><a href="classPlayer.html#aa04e8a564b40fbda931e4ccceec23f12">Player::Player</a></div><div class="ttdeci">Player(EntityId entity_id, nlohmann::json player_info, Map &amp;map)</div><div class="ttdoc">Construye a un jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:21</div></div>
+<div class="ttc" id="aclassGold_html"><div class="ttname"><a href="classGold.html">Gold</a></div><div class="ttdef"><b>Definition:</b> gold.h:6</div></div>
+<div class="ttc" id="aclassPlayer_html_a9917a8c8773835b1e2d1737c460b4c76"><div class="ttname"><a href="classPlayer.html#a9917a8c8773835b1e2d1737c460b4c76">Player::get_class_type</a></div><div class="ttdeci">class_type_t get_class_type() const</div><div class="ttdoc">Obtiene la clase del jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:69</div></div>
+<div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdef"><b>Definition:</b> map.h:47</div></div>
+<div class="ttc" id="aclassPlayer_html_a9686e02df7c2a327d0428fd6d78588ca"><div class="ttname"><a href="classPlayer.html#a9686e02df7c2a327d0428fd6d78588ca">Player::get_map</a></div><div class="ttdeci">Map &amp; get_map()</div><div class="ttdoc">Devuelve el mapa actual del player.</div><div class="ttdef"><b>Definition:</b> player.cpp:255</div></div>
+<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdef"><b>Definition:</b> player.h:14</div></div>
+<div class="ttc" id="astructposition_html"><div class="ttname"><a href="structposition.html">position</a></div><div class="ttdef"><b>Definition:</b> position.h:8</div></div>
+<div class="ttc" id="aclassPlayer_html_a554e23a070d9b608bbb28f390b4a7f03"><div class="ttname"><a href="classPlayer.html#a554e23a070d9b608bbb28f390b4a7f03">Player::get_race_type</a></div><div class="ttdeci">race_type_t get_race_type() const</div><div class="ttdoc">Obtiene la raza del jugador.</div><div class="ttdef"><b>Definition:</b> player.cpp:73</div></div>
+<div class="ttc" id="aclassPlayer_html_a3cd10ee96674c54f60e3f70a344f5e8b"><div class="ttname"><a href="classPlayer.html#a3cd10ee96674c54f60e3f70a344f5e8b">Player::use</a></div><div class="ttdeci">void use(SlotId slot)</div><div class="ttdoc">Utilizar un item del inventario.</div><div class="ttdef"><b>Definition:</b> player.cpp:108</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

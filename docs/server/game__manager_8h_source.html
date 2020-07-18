@@ -98,19 +98,48 @@ $(document).ready(function(){initNavTree('game__manager_8h_source.html',''); ini
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef GAME_MANAGER_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define GAME_MANAGER_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="classGameManager.html">    4</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGameManager.html">GameManager</a> {</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <a class="code" href="classGameManager.html">GameManager</a>();</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="classGameManager.html">GameManager</a>&amp; get_instance();</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    ~<a class="code" href="classGameManager.html">GameManager</a>();</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;};</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#endif  // GAME_MANAGER_H</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;entities/mob_factory.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;game_loop.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;items/item_factory.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;map_manager.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;map_monitor.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classGameManager.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGameManager.html">GameManager</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classServerManager.html">ServerManager</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">static</span> <a class="code" href="classGameManager.html">GameManager</a>* instance;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classItemFactory.html">ItemFactory</a> item_factory;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classMobFactory.html">MobFactory</a> mob_factory;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classMapManager.html">MapManager</a> map_manager;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classGameLoop.html">GameLoop</a> game_loop;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classGameManager.html">GameManager</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* items_index_path, <span class="keyword">const</span> <span class="keywordtype">char</span>* mobs_index_path,</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">char</span>* maps_index_path);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">static</span> <a class="code" href="classGameManager.html">GameManager</a>&amp; get_instance();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    ~<a class="code" href="classGameManager.html">GameManager</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> start();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classItemFactory.html">ItemFactory</a>&amp; get_item_factory();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classMobFactory.html">MobFactory</a>&amp; get_mob_factory();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classMapManager.html">MapManager</a>&amp; get_map_manager();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classServerManager.html#af40a98dbfd394b032ec0b87ac3bbab09">finish</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif  // GAME_MANAGER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassGameManager_html"><div class="ttname"><a href="classGameManager.html">GameManager</a></div><div class="ttdef"><b>Definition:</b> game_manager.h:4</div></div>
+<div class="ttc" id="aclassGameManager_html"><div class="ttname"><a href="classGameManager.html">GameManager</a></div><div class="ttdef"><b>Definition:</b> game_manager.h:10</div></div>
+<div class="ttc" id="aclassMapManager_html"><div class="ttname"><a href="classMapManager.html">MapManager</a></div><div class="ttdef"><b>Definition:</b> map_manager.h:11</div></div>
+<div class="ttc" id="aclassServerManager_html"><div class="ttname"><a href="classServerManager.html">ServerManager</a></div><div class="ttdoc">Orquestador de las componentes del servidor.</div><div class="ttdef"><b>Definition:</b> server_manager.h:31</div></div>
+<div class="ttc" id="aclassGameLoop_html"><div class="ttname"><a href="classGameLoop.html">GameLoop</a></div><div class="ttdef"><b>Definition:</b> game_loop.h:9</div></div>
+<div class="ttc" id="aclassServerManager_html_af40a98dbfd394b032ec0b87ac3bbab09"><div class="ttname"><a href="classServerManager.html#af40a98dbfd394b032ec0b87ac3bbab09">ServerManager::finish</a></div><div class="ttdeci">void finish()</div><div class="ttdoc">Cerrar y finalizar el servidor de forma ordenada.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:134</div></div>
+<div class="ttc" id="aclassMobFactory_html"><div class="ttname"><a href="classMobFactory.html">MobFactory</a></div><div class="ttdef"><b>Definition:</b> mob_factory.h:11</div></div>
+<div class="ttc" id="aclassItemFactory_html"><div class="ttname"><a href="classItemFactory.html">ItemFactory</a></div><div class="ttdef"><b>Definition:</b> item_factory.h:18</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

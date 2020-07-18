@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('position_8h_source.html',''); initResi
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef POSITION_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define POSITION_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;boost/functional/hash.hpp&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../../include/nlohmann/json.hpp&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
@@ -120,7 +120,7 @@ $(document).ready(function(){initNavTree('position_8h_source.html',''); initResi
 <div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classPositionHasher.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPositionHasher.html">PositionHasher</a> {</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;   <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    std::size_t operator()(<span class="keyword">const</span> <a class="code" href="structposition.html">position_t</a>&amp; <a class="code" href="structposition.html">position</a>) <span class="keyword">const</span> noexcept {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        boost::hash&lt;int&gt; hasher;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        std::hash&lt;int&gt; hasher;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">return</span> hasher(<a class="code" href="structposition.html">position</a>.x) ^ hasher(<a class="code" href="structposition.html">position</a>.y);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>

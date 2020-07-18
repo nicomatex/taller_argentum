@@ -98,64 +98,78 @@ $(document).ready(function(){initNavTree('player__combat__component_8h_source.ht
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef PLAYER_COMBAT_COMPONENT_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define PLAYER_COMBAT_COMPONENT_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../../../attribute_manager.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../../items/armor.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../../items/weapon.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../player.h&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;combat_component.h&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classPlayerCombatComponent.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPlayerCombatComponent.html">PlayerCombatComponent</a> : <span class="keyword">public</span> <a class="code" href="classCombatComponent.html">CombatComponent</a> {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classPlayer.html">Player</a>&amp; player;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classArmor.html">Armor</a>* helmet;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classArmor.html">Armor</a>* armor;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classArmor.html">Armor</a>* shield;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classWeapon.html">Weapon</a>* weapon;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../../attribute_manager.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../../items/armor.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;../../map_log_factory.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;../player.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;combat_component.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">class </span><a class="code" href="classWeapon.html">Weapon</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classPlayerCombatComponent.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPlayerCombatComponent.html">PlayerCombatComponent</a> : <span class="keyword">public</span> <a class="code" href="classCombatComponent.html">CombatComponent</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classPlayer.html">Player</a>&amp; player;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="structstats.html">stats_t</a> <a class="code" href="structstats.html">stats</a>;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">float</span> attack_speed;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> attack_accumulator;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> regen_counter;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classPlayerCombatComponent.html">PlayerCombatComponent</a>(ItemId helmet_id, ItemId armor_id, ItemId shield_id,</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                          ItemId weapon_id, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> current_hp,</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                          <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> current_mp, <a class="code" href="structstats.html">stats_t</a> <a class="code" href="structstats.html">stats</a>,</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                          <a class="code" href="classPlayer.html">Player</a>&amp; player, <span class="keywordtype">float</span> attack_speed);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    ~<a class="code" href="classPlayerCombatComponent.html">PlayerCombatComponent</a>();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">// int special();</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="structdamage.html">damage_t</a> attack() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="structattack__result.html">attack_result_t</a> receive_damage(<a class="code" href="structdamage.html">damage_t</a> raw_damage) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classArmor.html">Armor</a>* equip(<a class="code" href="classArmor.html">Armor</a>* armor);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classWeapon.html">Weapon</a>* equip(<a class="code" href="classWeapon.html">Weapon</a>* weapon);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classArmor.html">Armor</a>* unequip_helmet();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="classArmor.html">Armor</a>* unequip_chest();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="classArmor.html">Armor</a>* unequip_shield();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classWeapon.html">Weapon</a>* unequip_weapon();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> regen(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> amount_hp, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> amount_mp);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> regen_hp(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> amount_hp);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> regen_mp(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> amount_mp);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> update(uint64_t delta_t) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">bool</span> attack_ready() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    nlohmann::json get_data() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    nlohmann::json get_persist_data() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif  // PLAYER_COMBAT_COMPONENT_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classArmor.html">Armor</a>* helmet;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classArmor.html">Armor</a>* armor;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classArmor.html">Armor</a>* shield;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classWeapon.html">Weapon</a>* weapon;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">bool</span> is_meditating;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> meditate_counter;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">bool</span> is_resuscitating;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">int</span> resuscitate_counter;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classPlayerCombatComponent.html">PlayerCombatComponent</a>(ItemId helmet_id, ItemId armor_id, ItemId shield_id,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                          ItemId weapon_id, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> current_hp,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                          <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> current_mp, <a class="code" href="structstats.html">stats_t</a> <a class="code" href="structstats.html">stats</a>,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                          <a class="code" href="classPlayer.html">Player</a>&amp; player, <span class="keywordtype">float</span> attack_speed);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    ~<a class="code" href="classPlayerCombatComponent.html">PlayerCombatComponent</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    std::vector&lt;map_log_t&gt; use_ability(<a class="code" href="classEntity.html">Entity</a>* target, <a class="code" href="structposition.html">position_t</a> source,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                       <a class="code" href="structposition.html">position_t</a> dest);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="structattack.html">attack_t</a> <a class="code" href="structattack.html">attack</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="structattack__result.html">attack_result_t</a> receive_damage(<a class="code" href="structattack.html">attack_t</a> <a class="code" href="structattack.html">attack</a>) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="classArmor.html">Armor</a>* equip(<a class="code" href="classArmor.html">Armor</a>* armor);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="classWeapon.html">Weapon</a>* equip(<a class="code" href="classWeapon.html">Weapon</a>* weapon);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classArmor.html">Armor</a>* unequip_helmet();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="classArmor.html">Armor</a>* unequip_chest();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="classArmor.html">Armor</a>* unequip_shield();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="classWeapon.html">Weapon</a>* unequip_weapon();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> regen_max();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> regen(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> amount_hp, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> amount_mp);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> regen_hp(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> amount_hp);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> regen_mp(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> amount_mp);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> set_meditate(<span class="keywordtype">bool</span> meditating);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> resuscitate(<span class="keywordtype">int</span> delta_t);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> update(uint64_t delta_t) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">bool</span> attack_ready() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    nlohmann::json get_data() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    nlohmann::json get_persist_data() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif  // PLAYER_COMBAT_COMPONENT_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassWeapon_html"><div class="ttname"><a href="classWeapon.html">Weapon</a></div><div class="ttdef"><b>Definition:</b> weapon.h:21</div></div>
+<div class="ttc" id="aclassWeapon_html"><div class="ttname"><a href="classWeapon.html">Weapon</a></div><div class="ttdef"><b>Definition:</b> weapon.h:33</div></div>
 <div class="ttc" id="aclassArmor_html"><div class="ttname"><a href="classArmor.html">Armor</a></div><div class="ttdef"><b>Definition:</b> armor.h:26</div></div>
-<div class="ttc" id="astructdamage_html"><div class="ttname"><a href="structdamage.html">damage</a></div><div class="ttdef"><b>Definition:</b> combat_component.h:6</div></div>
+<div class="ttc" id="aclassEntity_html"><div class="ttname"><a href="classEntity.html">Entity</a></div><div class="ttdef"><b>Definition:</b> entity.h:15</div></div>
 <div class="ttc" id="astructstats_html"><div class="ttname"><a href="structstats.html">stats</a></div><div class="ttdef"><b>Definition:</b> attribute_manager.h:9</div></div>
-<div class="ttc" id="aclassPlayerCombatComponent_html"><div class="ttname"><a href="classPlayerCombatComponent.html">PlayerCombatComponent</a></div><div class="ttdef"><b>Definition:</b> player_combat_component.h:10</div></div>
-<div class="ttc" id="astructattack__result_html"><div class="ttname"><a href="structattack__result.html">attack_result</a></div><div class="ttdef"><b>Definition:</b> combat_component.h:11</div></div>
-<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdef"><b>Definition:</b> player.h:13</div></div>
-<div class="ttc" id="aclassCombatComponent_html"><div class="ttname"><a href="classCombatComponent.html">CombatComponent</a></div><div class="ttdef"><b>Definition:</b> combat_component.h:18</div></div>
+<div class="ttc" id="aclassPlayerCombatComponent_html"><div class="ttname"><a href="classPlayerCombatComponent.html">PlayerCombatComponent</a></div><div class="ttdef"><b>Definition:</b> player_combat_component.h:14</div></div>
+<div class="ttc" id="astructattack__result_html"><div class="ttname"><a href="structattack__result.html">attack_result</a></div><div class="ttdef"><b>Definition:</b> combat_component.h:13</div></div>
+<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdef"><b>Definition:</b> player.h:14</div></div>
+<div class="ttc" id="astructposition_html"><div class="ttname"><a href="structposition.html">position</a></div><div class="ttdef"><b>Definition:</b> position.h:8</div></div>
+<div class="ttc" id="astructattack_html"><div class="ttname"><a href="structattack.html">attack</a></div><div class="ttdef"><b>Definition:</b> combat_component.h:8</div></div>
+<div class="ttc" id="aclassCombatComponent_html"><div class="ttname"><a href="classCombatComponent.html">CombatComponent</a></div><div class="ttdef"><b>Definition:</b> combat_component.h:19</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

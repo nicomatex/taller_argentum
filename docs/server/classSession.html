@@ -107,22 +107,89 @@ Métodos públicos</h2></td></tr>
 <tr class="memitem:a47baf956cead0046fcbac45c572c70d3"><td class="memItemLeft" align="right" valign="top"><a id="a47baf956cead0046fcbac45c572c70d3"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> ()</td></tr>
 <tr class="separator:a47baf956cead0046fcbac45c572c70d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4c637cd36d88ddac5a1db2565f82ef1"><td class="memItemLeft" align="right" valign="top"><a id="ae4c637cd36d88ddac5a1db2565f82ef1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>stop</b> ()</td></tr>
-<tr class="separator:ae4c637cd36d88ddac5a1db2565f82ef1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac87819740e53f67fb8ca3b037aadff6d"><td class="memItemLeft" align="right" valign="top"><a id="ac87819740e53f67fb8ca3b037aadff6d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>join</b> ()</td></tr>
-<tr class="separator:ac87819740e53f67fb8ca3b037aadff6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8d60cd468638c69f94436a5580a74b6"><td class="memItemLeft" align="right" valign="top"><a id="af8d60cd468638c69f94436a5580a74b6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add_client</b> (ClientId new_client)</td></tr>
-<tr class="separator:af8d60cd468638c69f94436a5580a74b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40bac71e000b0c9d9df5655437679138"><td class="memItemLeft" align="right" valign="top"><a id="a40bac71e000b0c9d9df5655437679138"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>rm_client</b> (ClientId id)</td></tr>
-<tr class="separator:a40bac71e000b0c9d9df5655437679138"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a990cf4e67d971529b41dea5e7c922d32"><td class="memItemLeft" align="right" valign="top"><a id="a990cf4e67d971529b41dea5e7c922d32"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>broadcast</b> (const <a class="el" href="classEvent.html">Event</a> &amp;ev)</td></tr>
+<tr class="memitem:a44482ed4f30238bedac41c4d81bf1a6c"><td class="memItemLeft" align="right" valign="top"><a id="a44482ed4f30238bedac41c4d81bf1a6c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>finish</b> ()</td></tr>
+<tr class="separator:a44482ed4f30238bedac41c4d81bf1a6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2276ea5b4df1460048169b899ab7da28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSession.html#a2276ea5b4df1460048169b899ab7da28">add_client</a> (ClientId new_client, EntityId entity_id)</td></tr>
+<tr class="memdesc:a2276ea5b4df1460048169b899ab7da28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agregar un cliente a la sesión.  <a href="classSession.html#a2276ea5b4df1460048169b899ab7da28">Más...</a><br /></td></tr>
+<tr class="separator:a2276ea5b4df1460048169b899ab7da28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9bed27301f5ab31941db6e797b353f1"><td class="memItemLeft" align="right" valign="top"><a id="ab9bed27301f5ab31941db6e797b353f1"></a>
+EntityId&#160;</td><td class="memItemRight" valign="bottom"><b>rm_client</b> (ClientId client_id)</td></tr>
+<tr class="separator:ab9bed27301f5ab31941db6e797b353f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb167b00a96f9d08f3cd6366c28aada4"><td class="memItemLeft" align="right" valign="top"><a id="aeb167b00a96f9d08f3cd6366c28aada4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>push_action</b> (ClientId client_id, <a class="el" href="classAction.html">Action</a> *action)</td></tr>
+<tr class="separator:aeb167b00a96f9d08f3cd6366c28aada4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf1140a02427f64bdf26127cab931079"><td class="memItemLeft" align="right" valign="top"><a id="acf1140a02427f64bdf26127cab931079"></a>
+<a class="el" href="classMapMonitor.html">MapMonitor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_map</b> ()</td></tr>
+<tr class="separator:acf1140a02427f64bdf26127cab931079"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a990cf4e67d971529b41dea5e7c922d32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSession.html#a990cf4e67d971529b41dea5e7c922d32">broadcast</a> (const <a class="el" href="classEvent.html">Event</a> &amp;ev)</td></tr>
+<tr class="memdesc:a990cf4e67d971529b41dea5e7c922d32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envía a todos los clientes en la sesión un evento.  <a href="classSession.html#a990cf4e67d971529b41dea5e7c922d32">Más...</a><br /></td></tr>
 <tr class="separator:a990cf4e67d971529b41dea5e7c922d32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="a2276ea5b4df1460048169b899ab7da28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2276ea5b4df1460048169b899ab7da28">&#9670;&nbsp;</a></span>add_client()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Session::add_client </td>
+          <td>(</td>
+          <td class="paramtype">ClientId&#160;</td>
+          <td class="paramname"><em>new_client</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">EntityId&#160;</td>
+          <td class="paramname"><em>entity_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agregar un cliente a la sesión. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_client</td><td>Id del nuevo cliente. </td></tr>
+    <tr><td class="paramname">entity_id</td><td>Id de entidad asociada del mapa en el que se encuentra el jugador del cliente. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a990cf4e67d971529b41dea5e7c922d32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a990cf4e67d971529b41dea5e7c922d32">&#9670;&nbsp;</a></span>broadcast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Session::broadcast </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classEvent.html">Event</a> &amp;&#160;</td>
+          <td class="paramname"><em>ev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Envía a todos los clientes en la sesión un evento. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ev</td><td>Evento a ser transmitido a todos los clientes. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>/home/tc/Documents/Taller/tp_final/repo/server/<a class="el" href="session_8h_source.html">session.h</a></li>
 <li>/home/tc/Documents/Taller/tp_final/repo/server/session.cpp</li>

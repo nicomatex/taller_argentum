@@ -98,22 +98,106 @@ $(document).ready(function(){initNavTree('classMapTransitions.html',''); initRes
 <div class="title">Referencia de la Clase MapTransitions</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Clase que se encarga de manejar las transiciones en cada mapa.  
+ <a href="classMapTransitions.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="map__transitions_8h_source.html">map_transitions.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:aa3915d7c8973423966c6f87b2f5a8d8b"><td class="memItemLeft" align="right" valign="top"><a id="aa3915d7c8973423966c6f87b2f5a8d8b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MapTransitions</b> (nlohmann::json changes, int width, int height)</td></tr>
-<tr class="separator:aa3915d7c8973423966c6f87b2f5a8d8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0383ffa271185cc6671e1fae07d14e80"><td class="memItemLeft" align="right" valign="top"><a id="a0383ffa271185cc6671e1fae07d14e80"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_transition</b> (<a class="el" href="structposition.html">position_t</a> <a class="el" href="structposition.html">position</a>)</td></tr>
-<tr class="separator:a0383ffa271185cc6671e1fae07d14e80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cc33e7097276bf9a04038bc7f48093f"><td class="memItemLeft" align="right" valign="top"><a id="a9cc33e7097276bf9a04038bc7f48093f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>push_change</b> (std::string name, <a class="el" href="structposition.html">position_t</a> <a class="el" href="structposition.html">position</a>)</td></tr>
-<tr class="separator:a9cc33e7097276bf9a04038bc7f48093f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9143cbea87f3c07021b01d4dceb10421"><td class="memItemLeft" align="right" valign="top"><a id="a9143cbea87f3c07021b01d4dceb10421"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MapTransitions</b> (MapId map_id, nlohmann::json changes, int width, int height)</td></tr>
+<tr class="separator:a9143cbea87f3c07021b01d4dceb10421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a5f19c16452ae169097ecdb322e532d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMapTransitions.html#a8a5f19c16452ae169097ecdb322e532d">push_if_transition</a> (std::string name, <a class="el" href="structposition.html">position_t</a> <a class="el" href="structposition.html">position</a>)</td></tr>
+<tr class="memdesc:a8a5f19c16452ae169097ecdb322e532d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega la transición en caso de ser necesaria de un jugador.  <a href="classMapTransitions.html#a8a5f19c16452ae169097ecdb322e532d">Más...</a><br /></td></tr>
+<tr class="separator:a8a5f19c16452ae169097ecdb322e532d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad36a9f7d62fb2406e0a3b68372429398"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMapTransitions.html#ad36a9f7d62fb2406e0a3b68372429398">teleport</a> (std::string name, <a class="el" href="structposition.html">position_t</a> dest)</td></tr>
+<tr class="memdesc:ad36a9f7d62fb2406e0a3b68372429398"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agregar una transición forzada de un jugador a una posición de destino en el mismo mapa.  <a href="classMapTransitions.html#ad36a9f7d62fb2406e0a3b68372429398">Más...</a><br /></td></tr>
+<tr class="separator:ad36a9f7d62fb2406e0a3b68372429398"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3862b48baf6a8859e8e8a35ef64a3e8"><td class="memItemLeft" align="right" valign="top"><a id="aa3862b48baf6a8859e8e8a35ef64a3e8"></a>
 std::queue&lt; <a class="el" href="structmap__change.html">map_change_t</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_changes</b> ()</td></tr>
 <tr class="separator:aa3862b48baf6a8859e8e8a35ef64a3e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Clase que se encarga de manejar las transiciones en cada mapa. </p>
+<p>Mantiene estructuras inicializadas durante el constructor que definen cuáles son las posiciones del mapa que refieren a transiciones y cuando se ejecuta un movimiento en el mapa (particularmente solo de jugadores) se encola en caso de ser una "transicion". Cada transición es encolada con información del nombre del personaje, el mapa y posición de destino. </p>
+</div><h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="a8a5f19c16452ae169097ecdb322e532d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a5f19c16452ae169097ecdb322e532d">&#9670;&nbsp;</a></span>push_if_transition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MapTransitions::push_if_transition </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structposition.html">position_t</a>&#160;</td>
+          <td class="paramname"><em>position</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega la transición en caso de ser necesaria de un jugador. </p>
+<p>Verifica si la posición a donde se va a mover el personaje es una transición del mapa.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Nombre del personaje. </td></tr>
+    <tr><td class="paramname">position</td><td>Posición a donde se va a mover el personaje. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad36a9f7d62fb2406e0a3b68372429398"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad36a9f7d62fb2406e0a3b68372429398">&#9670;&nbsp;</a></span>teleport()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MapTransitions::teleport </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structposition.html">position_t</a>&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agregar una transición forzada de un jugador a una posición de destino en el mismo mapa. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Nombre del personaje. </td></tr>
+    <tr><td class="paramname">dest</td><td>Posición de destino. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>/home/tc/Documents/Taller/tp_final/repo/server/game/<a class="el" href="map__transitions_8h_source.html">map_transitions.h</a></li>
 <li>/home/tc/Documents/Taller/tp_final/repo/server/game/map_transitions.cpp</li>

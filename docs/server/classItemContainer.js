@@ -1,5 +1,7 @@
 var classItemContainer =
 [
+    [ "ItemContainer", "classItemContainer.html#a3ce79c8b4501fafc5ea369ef3b3c1bce", null ],
+    [ "ItemContainer", "classItemContainer.html#aecc8e2203860b219e2847ba21e046564", null ],
     [ "ItemContainer", "classItemContainer.html#a41fd61c7b8370cfaddc4617031d453d8", null ],
     [ "ItemContainer", "classItemContainer.html#a5e671872ba332f72a3ba8798eebbb9a1", null ],
     [ "~ItemContainer", "classItemContainer.html#af88f67167a5496cd1e830664ef19b268", null ],
@@ -13,6 +15,9 @@ var classItemContainer =
     [ "get_item", "classItemContainer.html#af70d8ff46924732434ba6690a0fea51d", null ],
     [ "get_persist_data", "classItemContainer.html#a97255a865b88cbd282980a80a4b681c8", null ],
     [ "has_item", "classItemContainer.html#a445b7677c187dc1537c2c8072d865922", null ],
+    [ "has_slots_left", "classItemContainer.html#a2855755df4036865bc51988ad9553fa1", null ],
+    [ "is_in_range", "classItemContainer.html#ae155a5ac90fd872036be0ce4ed8d0469", null ],
+    [ "operator=", "classItemContainer.html#a1cb4270811eb5ad061eb25ec5ef943c1", null ],
     [ "remove", "classItemContainer.html#a36102b9860b0b1a3938c6f62f4733375", null ],
     [ "remove", "classItemContainer.html#add8f35198dd4278d9ba1808c915b9d18", null ],
     [ "remove_all", "classItemContainer.html#a45cd67ea4d3a769d88b84bca033a384a", null ],

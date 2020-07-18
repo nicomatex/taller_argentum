@@ -99,41 +99,43 @@ $(document).ready(function(){initNavTree('classServerManager.html',''); initResi
 <div class="title">Referencia de la Clase ServerManager</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Orquestador de las componentes del servidor.  
+ <a href="classServerManager.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="server__manager_8h_source.html">server_manager.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
 <tr class="memitem:a4d9b1e41415a9c1eeb9005979e5bb17e"><td class="memItemLeft" align="right" valign="top"><a id="a4d9b1e41415a9c1eeb9005979e5bb17e"></a>
 <a class="el" href="classThDispatcher.html">ThDispatcher</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_dispatcher</b> ()</td></tr>
 <tr class="separator:a4d9b1e41415a9c1eeb9005979e5bb17e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a998b1f67719286c5ca2d8331e1284b8f"><td class="memItemLeft" align="right" valign="top"><a id="a998b1f67719286c5ca2d8331e1284b8f"></a>
-<a class="el" href="classItemFactory.html">ItemFactory</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_item_factory</b> ()</td></tr>
-<tr class="separator:a998b1f67719286c5ca2d8331e1284b8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8920637bbc9b18789cfe18e4399c82ee"><td class="memItemLeft" align="right" valign="top"><a id="a8920637bbc9b18789cfe18e4399c82ee"></a>
-<a class="el" href="classMobFactory.html">MobFactory</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_mob_factory</b> ()</td></tr>
-<tr class="separator:a8920637bbc9b18789cfe18e4399c82ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91d39b57de4064f54105f7bd8e7d4734"><td class="memItemLeft" align="right" valign="top"><a id="a91d39b57de4064f54105f7bd8e7d4734"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add_client</b> (ClientId client_id, <a class="el" href="classSocketManager.html">SocketManager</a> *new_client)</td></tr>
+<tr class="memitem:a5392b3b0b9ea4afb47b4beaef84f73db"><td class="memItemLeft" align="right" valign="top"><a id="a5392b3b0b9ea4afb47b4beaef84f73db"></a>
+<a class="el" href="classCharacterManager.html">CharacterManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_character_manager</b> ()</td></tr>
+<tr class="separator:a5392b3b0b9ea4afb47b4beaef84f73db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae36933904628df7a643c9243b4d048dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerManager.html#ae36933904628df7a643c9243b4d048dd">dispatch</a> (const <a class="el" href="classEvent.html">Event</a> &amp;ev)</td></tr>
+<tr class="memdesc:ae36933904628df7a643c9243b4d048dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agregar un evento que debe ser manejado por el servidor.  <a href="classServerManager.html#ae36933904628df7a643c9243b4d048dd">Más...</a><br /></td></tr>
+<tr class="separator:ae36933904628df7a643c9243b4d048dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91d39b57de4064f54105f7bd8e7d4734"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerManager.html#a91d39b57de4064f54105f7bd8e7d4734">add_client</a> (ClientId client_id, <a class="el" href="classSocketManager.html">SocketManager</a> *new_client)</td></tr>
+<tr class="memdesc:a91d39b57de4064f54105f7bd8e7d4734"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agregar a un cliente al servidor.  <a href="classServerManager.html#a91d39b57de4064f54105f7bd8e7d4734">Más...</a><br /></td></tr>
 <tr class="separator:a91d39b57de4064f54105f7bd8e7d4734"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8b1a6a65222e75604b3f414daecd82f"><td class="memItemLeft" align="right" valign="top"><a id="ad8b1a6a65222e75604b3f414daecd82f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>rm_client</b> (ClientId client_id)</td></tr>
+<tr class="memitem:ad8b1a6a65222e75604b3f414daecd82f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerManager.html#ad8b1a6a65222e75604b3f414daecd82f">rm_client</a> (ClientId client_id)</td></tr>
+<tr class="memdesc:ad8b1a6a65222e75604b3f414daecd82f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eliminar a un cliente del servidor.  <a href="classServerManager.html#ad8b1a6a65222e75604b3f414daecd82f">Más...</a><br /></td></tr>
 <tr class="separator:ad8b1a6a65222e75604b3f414daecd82f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9647779c17d1bff8de34a2ee8a775ee6"><td class="memItemLeft" align="right" valign="top"><a id="a9647779c17d1bff8de34a2ee8a775ee6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drop_client</b> (ClientId client_id)</td></tr>
+<tr class="memitem:a9647779c17d1bff8de34a2ee8a775ee6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerManager.html#a9647779c17d1bff8de34a2ee8a775ee6">drop_client</a> (ClientId client_id)</td></tr>
+<tr class="memdesc:a9647779c17d1bff8de34a2ee8a775ee6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Función ejecutar la desconexión de un cliente.  <a href="classServerManager.html#a9647779c17d1bff8de34a2ee8a775ee6">Más...</a><br /></td></tr>
 <tr class="separator:a9647779c17d1bff8de34a2ee8a775ee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65bca0e6fbb59d863bedf47694158a54"><td class="memItemLeft" align="right" valign="top"><a id="a65bca0e6fbb59d863bedf47694158a54"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add_player</b> (ClientId client_id, nlohmann::json player_info, bool send_map_data=true)</td></tr>
-<tr class="separator:a65bca0e6fbb59d863bedf47694158a54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c12240e7a976c37c8faef23e4d40407"><td class="memItemLeft" align="right" valign="top"><a id="a2c12240e7a976c37c8faef23e4d40407"></a>
-nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>rm_player</b> (ClientId client_id)</td></tr>
+<tr class="memitem:accd979829d70f378de9a56f9e0af2661"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerManager.html#accd979829d70f378de9a56f9e0af2661">add_player</a> (ClientId client_id, nlohmann::json player_info)</td></tr>
+<tr class="memdesc:accd979829d70f378de9a56f9e0af2661"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agregar un jugador a un mapa y la sesión asociada.  <a href="classServerManager.html#accd979829d70f378de9a56f9e0af2661">Más...</a><br /></td></tr>
+<tr class="separator:accd979829d70f378de9a56f9e0af2661"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c12240e7a976c37c8faef23e4d40407"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerManager.html#a2c12240e7a976c37c8faef23e4d40407">rm_player</a> (ClientId client_id)</td></tr>
+<tr class="memdesc:a2c12240e7a976c37c8faef23e4d40407"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remueve un jugador del mapa (y la sesión asociada) al que esté conectado.  <a href="classServerManager.html#a2c12240e7a976c37c8faef23e4d40407">Más...</a><br /></td></tr>
 <tr class="separator:a2c12240e7a976c37c8faef23e4d40407"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab56afe0625063f74f21fea541f0e1386"><td class="memItemLeft" align="right" valign="top"><a id="ab56afe0625063f74f21fea541f0e1386"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add_name</b> (ClientId client_id, const std::string &amp;name)</td></tr>
-<tr class="separator:ab56afe0625063f74f21fea541f0e1386"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1c0c0c77bd17e5e14003f7d76823136"><td class="memItemLeft" align="right" valign="top"><a id="ab1c0c0c77bd17e5e14003f7d76823136"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>rm_name</b> (ClientId client_id)</td></tr>
-<tr class="separator:ab1c0c0c77bd17e5e14003f7d76823136"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a026d580bb779f919980628d1b8546d17"><td class="memItemLeft" align="right" valign="top"><a id="a026d580bb779f919980628d1b8546d17"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>send_to</b> (ClientId client_id, const <a class="el" href="classEvent.html">Event</a> &amp;ev)</td></tr>
+<tr class="memitem:a3591e269a2ff8565251aba6bb9893fdd"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerManager.html#a3591e269a2ff8565251aba6bb9893fdd">change_player_map</a> (ClientId client_id, <a class="el" href="structposition.html">position_t</a> new_position, MapId new_map)</td></tr>
+<tr class="memdesc:a3591e269a2ff8565251aba6bb9893fdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cambia a un jugador de un mapa (y sesión) a otro.  <a href="classServerManager.html#a3591e269a2ff8565251aba6bb9893fdd">Más...</a><br /></td></tr>
+<tr class="separator:a3591e269a2ff8565251aba6bb9893fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a026d580bb779f919980628d1b8546d17"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerManager.html#a026d580bb779f919980628d1b8546d17">send_to</a> (ClientId client_id, const <a class="el" href="classEvent.html">Event</a> &amp;ev)</td></tr>
+<tr class="memdesc:a026d580bb779f919980628d1b8546d17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia un Evento a un cliente.  <a href="classServerManager.html#a026d580bb779f919980628d1b8546d17">Más...</a><br /></td></tr>
 <tr class="separator:a026d580bb779f919980628d1b8546d17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e64a9a63731a89fb00af90a4a7ae823"><td class="memItemLeft" align="right" valign="top"><a id="a3e64a9a63731a89fb00af90a4a7ae823"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_name_by_client</b> (ClientId client_id)</td></tr>
@@ -141,24 +143,12 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_name_by_cl
 <tr class="memitem:a419106db6389e007de674ad6df4feca3"><td class="memItemLeft" align="right" valign="top"><a id="a419106db6389e007de674ad6df4feca3"></a>
 ClientId&#160;</td><td class="memItemRight" valign="bottom"><b>get_client_by_name</b> (const std::string &amp;name)</td></tr>
 <tr class="separator:a419106db6389e007de674ad6df4feca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b4e8f7f7195f910546277989e6afb95"><td class="memItemLeft" align="right" valign="top"><a id="a8b4e8f7f7195f910546277989e6afb95"></a>
-MapId&#160;</td><td class="memItemRight" valign="bottom"><b>get_map_id</b> (ClientId client_id)</td></tr>
-<tr class="separator:a8b4e8f7f7195f910546277989e6afb95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5548a364b0766841c3fe929361a52d58"><td class="memItemLeft" align="right" valign="top"><a id="a5548a364b0766841c3fe929361a52d58"></a>
-<a class="el" href="classMapMonitor.html">MapMonitor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_map_by_client</b> (ClientId client_id)</td></tr>
-<tr class="separator:a5548a364b0766841c3fe929361a52d58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c50fe553b1329eff874673c6f4d1c6f"><td class="memItemLeft" align="right" valign="top"><a id="a0c50fe553b1329eff874673c6f4d1c6f"></a>
-<a class="el" href="classMapMonitor.html">MapMonitor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_map</b> (MapId map_id)</td></tr>
-<tr class="separator:a0c50fe553b1329eff874673c6f4d1c6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af208d52f85c1140c93cebf5ebae76bbe"><td class="memItemLeft" align="right" valign="top"><a id="af208d52f85c1140c93cebf5ebae76bbe"></a>
-<a class="el" href="classSession.html">Session</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_session</b> (ClientId client_id)</td></tr>
+<tr class="memitem:af208d52f85c1140c93cebf5ebae76bbe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSession.html">Session</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerManager.html#af208d52f85c1140c93cebf5ebae76bbe">get_session</a> (ClientId client_id)</td></tr>
+<tr class="memdesc:af208d52f85c1140c93cebf5ebae76bbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtener la sesión a la que está conectado un cliente.  <a href="classServerManager.html#af208d52f85c1140c93cebf5ebae76bbe">Más...</a><br /></td></tr>
 <tr class="separator:af208d52f85c1140c93cebf5ebae76bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af40a98dbfd394b032ec0b87ac3bbab09"><td class="memItemLeft" align="right" valign="top"><a id="af40a98dbfd394b032ec0b87ac3bbab09"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>finish</b> ()</td></tr>
+<tr class="memitem:af40a98dbfd394b032ec0b87ac3bbab09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerManager.html#af40a98dbfd394b032ec0b87ac3bbab09">finish</a> ()</td></tr>
+<tr class="memdesc:af40a98dbfd394b032ec0b87ac3bbab09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cerrar y finalizar el servidor de forma ordenada.  <a href="classServerManager.html#af40a98dbfd394b032ec0b87ac3bbab09">Más...</a><br /></td></tr>
 <tr class="separator:af40a98dbfd394b032ec0b87ac3bbab09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5392b3b0b9ea4afb47b4beaef84f73db"><td class="memItemLeft" align="right" valign="top"><a id="a5392b3b0b9ea4afb47b4beaef84f73db"></a>
-<a class="el" href="classCharacterManager.html">CharacterManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_character_manager</b> ()</td></tr>
-<tr class="separator:a5392b3b0b9ea4afb47b4beaef84f73db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Métodos públicos estáticos</h2></td></tr>
@@ -166,6 +156,321 @@ Métodos públicos estáticos</h2></td></tr>
 static <a class="el" href="classServerManager.html">ServerManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_instance</b> ()</td></tr>
 <tr class="separator:a356752e3a1f8d051591bb7cc2387c947"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Orquestador de las componentes del servidor. </p>
+<p>Esta clase se encarga de contener las instancias de las distintas componentes y contenedores necesarios para el servidor del juego. Esto incluye el manejo de threads que se utilizan para el mismo. Se encarga principalmente de la sincronización para agregar y sacar jugadores de los diferentes mapas (y sesiones), esto incluye cuando un jugador cambia de mapa o se teletransporta. </p>
+</div><h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="a91d39b57de4064f54105f7bd8e7d4734"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91d39b57de4064f54105f7bd8e7d4734">&#9670;&nbsp;</a></span>add_client()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServerManager::add_client </td>
+          <td>(</td>
+          <td class="paramtype">ClientId&#160;</td>
+          <td class="paramname"><em>client_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classSocketManager.html">SocketManager</a> *&#160;</td>
+          <td class="paramname"><em>new_client</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agregar a un cliente al servidor. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client_id</td><td>Id del nuevo cliente. </td></tr>
+    <tr><td class="paramname">new_client</td><td><a class="el" href="classSocket.html">Socket</a> (alocado en heap) del nuevo cliente. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="accd979829d70f378de9a56f9e0af2661"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accd979829d70f378de9a56f9e0af2661">&#9670;&nbsp;</a></span>add_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServerManager::add_player </td>
+          <td>(</td>
+          <td class="paramtype">ClientId&#160;</td>
+          <td class="paramname"><em>client_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">nlohmann::json&#160;</td>
+          <td class="paramname"><em>player_info</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agregar un jugador a un mapa y la sesión asociada. </p>
+<p>Para un cliente existente, agrega al jugador con la información correspondiente.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client_id</td><td>Id del cliente que está entrando con un personaje. </td></tr>
+    <tr><td class="paramname">player_info</td><td>Información del personaje a ser agregado. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3591e269a2ff8565251aba6bb9893fdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3591e269a2ff8565251aba6bb9893fdd">&#9670;&nbsp;</a></span>change_player_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">nlohmann::json ServerManager::change_player_map </td>
+          <td>(</td>
+          <td class="paramtype">ClientId&#160;</td>
+          <td class="paramname"><em>client_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structposition.html">position_t</a>&#160;</td>
+          <td class="paramname"><em>new_position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">MapId&#160;</td>
+          <td class="paramname"><em>new_map</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cambia a un jugador de un mapa (y sesión) a otro. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client_id</td><td>Id de cliente que se está cambiando de mapa. </td></tr>
+    <tr><td class="paramname">new_position</td><td>Posición en el nuevo mapa. </td></tr>
+    <tr><td class="paramname">new_map</td><td>Id del mapa a donde se mueve el jugador. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>nlohmann::json Devuelve la información del jugador al ser cambiado de mapa. </dd></dl>
+
+</div>
+</div>
+<a id="ae36933904628df7a643c9243b4d048dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae36933904628df7a643c9243b4d048dd">&#9670;&nbsp;</a></span>dispatch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServerManager::dispatch </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classEvent.html">Event</a> &amp;&#160;</td>
+          <td class="paramname"><em>ev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agregar un evento que debe ser manejado por el servidor. </p>
+<p>Simplemente envía al "Dispatcher" el evento pasado por parámetro.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ev</td><td>Evento. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9647779c17d1bff8de34a2ee8a775ee6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9647779c17d1bff8de34a2ee8a775ee6">&#9670;&nbsp;</a></span>drop_client()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServerManager::drop_client </td>
+          <td>(</td>
+          <td class="paramtype">ClientId&#160;</td>
+          <td class="paramname"><em>client_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Función ejecutar la desconexión de un cliente. </p>
+<p>Esta función puede ser llamada porque un cliente desea desconectarse o es pateado forzosamente del servidor.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client_id</td><td>Id del cliente a ser desconectado. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af40a98dbfd394b032ec0b87ac3bbab09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af40a98dbfd394b032ec0b87ac3bbab09">&#9670;&nbsp;</a></span>finish()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServerManager::finish </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cerrar y finalizar el servidor de forma ordenada. </p>
+<p>Esta función patea a todos los clientes (los desconecta y persiste sus personajes), cierra todas las componentes y une todos los threads. </p>
+
+</div>
+</div>
+<a id="af208d52f85c1140c93cebf5ebae76bbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af208d52f85c1140c93cebf5ebae76bbe">&#9670;&nbsp;</a></span>get_session()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSession.html">Session</a> &amp; ServerManager::get_session </td>
+          <td>(</td>
+          <td class="paramtype">ClientId&#160;</td>
+          <td class="paramname"><em>client_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtener la sesión a la que está conectado un cliente. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client_id</td><td>Id del cliente. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classSession.html">Session</a> Sesión a la que está conectado un cliente. </dd></dl>
+
+</div>
+</div>
+<a id="ad8b1a6a65222e75604b3f414daecd82f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8b1a6a65222e75604b3f414daecd82f">&#9670;&nbsp;</a></span>rm_client()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServerManager::rm_client </td>
+          <td>(</td>
+          <td class="paramtype">ClientId&#160;</td>
+          <td class="paramname"><em>client_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Eliminar a un cliente del servidor. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client_id</td><td>Id del cliente a ser eliminado. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2c12240e7a976c37c8faef23e4d40407"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c12240e7a976c37c8faef23e4d40407">&#9670;&nbsp;</a></span>rm_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">nlohmann::json ServerManager::rm_player </td>
+          <td>(</td>
+          <td class="paramtype">ClientId&#160;</td>
+          <td class="paramname"><em>client_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remueve un jugador del mapa (y la sesión asociada) al que esté conectado. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client_id</td><td>Id de cliente al que se va a remover. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>nlohmann::json Devuelve la información del personaje que se removió. </dd></dl>
+
+</div>
+</div>
+<a id="a026d580bb779f919980628d1b8546d17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a026d580bb779f919980628d1b8546d17">&#9670;&nbsp;</a></span>send_to()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServerManager::send_to </td>
+          <td>(</td>
+          <td class="paramtype">ClientId&#160;</td>
+          <td class="paramname"><em>client_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classEvent.html">Event</a> &amp;&#160;</td>
+          <td class="paramname"><em>ev</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Envia un Evento a un cliente. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client_id</td><td>Id del cliente. </td></tr>
+    <tr><td class="paramname">ev</td><td>Evento a ser enviado al cliente. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>/home/tc/Documents/Taller/tp_final/repo/server/<a class="el" href="server__manager_8h_source.html">server_manager.h</a></li>
 <li>/home/tc/Documents/Taller/tp_final/repo/server/server_manager.cpp</li>

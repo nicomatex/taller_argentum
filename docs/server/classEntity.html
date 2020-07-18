@@ -105,27 +105,38 @@ Diagrama de herencias de Entity</div>
  <div class="center">
   <img src="classEntity.png" usemap="#Entity_map" alt=""/>
   <map id="Entity_map" name="Entity_map">
-<area href="classMonster.html" alt="Monster" shape="rect" coords="0,56,58,80"/>
-<area href="classNpc.html" alt="Npc" shape="rect" coords="68,56,126,80"/>
-<area href="classPlayer.html" alt="Player" shape="rect" coords="136,56,194,80"/>
-<area href="classPriest.html" alt="Priest" shape="rect" coords="68,112,126,136"/>
+<area href="classMonster.html" alt="Monster" shape="rect" coords="0,56,66,80"/>
+<area href="classNpc.html" alt="Npc" shape="rect" coords="76,56,142,80"/>
+<area href="classPlayer.html" alt="Player" shape="rect" coords="152,56,218,80"/>
+<area href="classBanker.html" alt="Banker" shape="rect" coords="0,112,66,136"/>
+<area href="classHealer.html" alt="Healer" shape="rect" coords="76,112,142,136"/>
+<area href="classMerchant.html" alt="Merchant" shape="rect" coords="152,112,218,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:affb5580e3b255c4195ac0b281a2e5c85"><td class="memItemLeft" align="right" valign="top"><a id="affb5580e3b255c4195ac0b281a2e5c85"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (EntityId id, const std::string &amp;name, <a class="el" href="classMovementComponent.html">MovementComponent</a> *movement_component, <a class="el" href="classCombatComponent.html">CombatComponent</a> *combat_component, unsigned int current_level, unsigned int current_exp)</td></tr>
-<tr class="separator:affb5580e3b255c4195ac0b281a2e5c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53e4bc69804b88dfc98840455ac69730"><td class="memItemLeft" align="right" valign="top"><a id="a53e4bc69804b88dfc98840455ac69730"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (EntityId id, const std::string &amp;name, unsigned int current_level, unsigned int current_exp)</td></tr>
-<tr class="separator:a53e4bc69804b88dfc98840455ac69730"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3d581212c049c81b83cdc682e7110e0"><td class="memItemLeft" align="right" valign="top"><a id="aa3d581212c049c81b83cdc682e7110e0"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (EntityId id, <a class="el" href="classMap.html">Map</a> &amp;map, const std::string &amp;name, <a class="el" href="classMovementComponent.html">MovementComponent</a> *movement_component, <a class="el" href="classCombatComponent.html">CombatComponent</a> *combat_component, unsigned int current_level, unsigned int current_exp)</td></tr>
+<tr class="separator:aa3d581212c049c81b83cdc682e7110e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5afe610ae4fb65479fe8572e008ea8d7"><td class="memItemLeft" align="right" valign="top"><a id="a5afe610ae4fb65479fe8572e008ea8d7"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (EntityId id, <a class="el" href="classMap.html">Map</a> &amp;map, const std::string &amp;name, unsigned int current_level, unsigned int current_exp)</td></tr>
+<tr class="separator:a5afe610ae4fb65479fe8572e008ea8d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0b0c53fc6f684e6d4826346394ec4bc"><td class="memItemLeft" align="right" valign="top"><a id="ae0b0c53fc6f684e6d4826346394ec4bc"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>heal</b> (unsigned int hp)</td></tr>
+<tr class="separator:ae0b0c53fc6f684e6d4826346394ec4bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a3cf13d22d4f8a6ac5b6ffaff41205e"><td class="memItemLeft" align="right" valign="top"><a id="a2a3cf13d22d4f8a6ac5b6ffaff41205e"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>die</b> ()=0</td></tr>
 <tr class="separator:a2a3cf13d22d4f8a6ac5b6ffaff41205e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab952b9ac298af820e2e48dc797a73a79"><td class="memItemLeft" align="right" valign="top"><a id="ab952b9ac298af820e2e48dc797a73a79"></a>
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_alive</b> () const =0</td></tr>
 <tr class="separator:ab952b9ac298af820e2e48dc797a73a79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4528a126e7f11e9cc6ea4874c00c4d00"><td class="memItemLeft" align="right" valign="top"><a id="a4528a126e7f11e9cc6ea4874c00c4d00"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>can_spend_mp</b> (unsigned int amount)</td></tr>
+<tr class="separator:a4528a126e7f11e9cc6ea4874c00c4d00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad376ab08c4e53388fca50feaa2a0b3c2"><td class="memItemLeft" align="right" valign="top"><a id="ad376ab08c4e53388fca50feaa2a0b3c2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>spend_mp</b> (unsigned int amount)</td></tr>
+<tr class="separator:ad376ab08c4e53388fca50feaa2a0b3c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a692b4047a0d7092b2af3772928c27193"><td class="memItemLeft" align="right" valign="top"><a id="a692b4047a0d7092b2af3772928c27193"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_name</b> () const</td></tr>
 <tr class="separator:a692b4047a0d7092b2af3772928c27193"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,15 +164,24 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>can_attack</b
 <tr class="memitem:a4a86fb1dc1cf3fab4f5b744e156f1304"><td class="memItemLeft" align="right" valign="top"><a id="a4a86fb1dc1cf3fab4f5b744e156f1304"></a>
 <a class="el" href="structattack__result.html">attack_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>attack</b> (<a class="el" href="classEntity.html">Entity</a> *attacked)</td></tr>
 <tr class="separator:a4a86fb1dc1cf3fab4f5b744e156f1304"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4ae37b73cab724042ff1c3eeab156ec"><td class="memItemLeft" align="right" valign="top"><a id="af4ae37b73cab724042ff1c3eeab156ec"></a>
+<a class="el" href="structattack__result.html">attack_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>receive_damage</b> (<a class="el" href="structattack.html">attack_t</a> <a class="el" href="structattack.html">attack</a>)</td></tr>
+<tr class="separator:af4ae37b73cab724042ff1c3eeab156ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae293a16e2a263266f2c95df0444952c"><td class="memItemLeft" align="right" valign="top"><a id="aae293a16e2a263266f2c95df0444952c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>add_exp</b> (int exp)</td></tr>
+<tr class="separator:aae293a16e2a263266f2c95df0444952c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a264bc5680fecd00ad6377c389b0caf24"><td class="memItemLeft" align="right" valign="top"><a id="a264bc5680fecd00ad6377c389b0caf24"></a>
 EntityId&#160;</td><td class="memItemRight" valign="bottom"><b>get_id</b> () const</td></tr>
 <tr class="separator:a264bc5680fecd00ad6377c389b0caf24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Atributos protegidos</h2></td></tr>
-<tr class="memitem:a06d5b271091635ff8f53007061abb417"><td class="memItemLeft" align="right" valign="top"><a id="a06d5b271091635ff8f53007061abb417"></a>
-EntityId&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
-<tr class="separator:a06d5b271091635ff8f53007061abb417"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada9a878182b6ce0a6c7ccbbe89800431"><td class="memItemLeft" align="right" valign="top"><a id="ada9a878182b6ce0a6c7ccbbe89800431"></a>
+const EntityId&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
+<tr class="separator:ada9a878182b6ce0a6c7ccbbe89800431"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23f7e29463b67b89c3008481613fe123"><td class="memItemLeft" align="right" valign="top"><a id="a23f7e29463b67b89c3008481613fe123"></a>
+<a class="el" href="classMap.html">Map</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>map</b></td></tr>
+<tr class="separator:a23f7e29463b67b89c3008481613fe123"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a7d9df9b47e597a6abd76235e0b726c"><td class="memItemLeft" align="right" valign="top"><a id="a9a7d9df9b47e597a6abd76235e0b726c"></a>
 const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
 <tr class="separator:a9a7d9df9b47e597a6abd76235e0b726c"><td class="memSeparator" colspan="2">&#160;</td></tr>

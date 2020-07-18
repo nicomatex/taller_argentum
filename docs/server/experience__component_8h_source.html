@@ -100,38 +100,31 @@ $(document).ready(function(){initNavTree('experience__component_8h_source.html',
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../../../../include/nlohmann/json.hpp&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// Limite = int(1000 * Nivel^1.8)</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define EXP_MULT 1000</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define EXP_EXPO 1.8</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// Porcentaje sobre lo minimo del nivel, que pierde de experiencia al</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// morir</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define EXP_REDU 10</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classExperienceComponent.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classExperienceComponent.html">ExperienceComponent</a> {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> current_level;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> current_exp;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">int</span> exp_to_next_level(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> current_level, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> current_exp);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classExperienceComponent.html">ExperienceComponent</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> level = 1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> exp = 0);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    ~<a class="code" href="classExperienceComponent.html">ExperienceComponent</a>();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classExperienceComponent.html#aa37e4f758d742fe2a37cfc947b0d32ef">add_exp</a>(<span class="keywordtype">int</span> exp);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classExperienceComponent.html#a73adcf8df8faa089c5a2cae761326f84">reduce</a>();</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classExperienceComponent.html#a04a9270824db5ec68bc5f90605d3febf">get_xp_limit_level</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> level) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> get_level() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> set_level(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> level);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    nlohmann::json get_data() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    nlohmann::json get_persist_data() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif  // EXPERIENCE_COMPONENT_H</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classExperienceComponent.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classExperienceComponent.html">ExperienceComponent</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> current_level;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> current_exp;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span> exp_to_next_level(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> current_level, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> current_exp);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classExperienceComponent.html">ExperienceComponent</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> level = 1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> exp = 0);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    ~<a class="code" href="classExperienceComponent.html">ExperienceComponent</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classExperienceComponent.html#aa37e4f758d742fe2a37cfc947b0d32ef">add_exp</a>(<span class="keywordtype">int</span> exp);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classExperienceComponent.html#a73adcf8df8faa089c5a2cae761326f84">reduce</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classExperienceComponent.html#a04a9270824db5ec68bc5f90605d3febf">get_xp_limit_level</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> level) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> get_level() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> set_level(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> level);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    nlohmann::json get_data() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    nlohmann::json get_persist_data() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif  // EXPERIENCE_COMPONENT_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassExperienceComponent_html_a04a9270824db5ec68bc5f90605d3febf"><div class="ttname"><a href="classExperienceComponent.html#a04a9270824db5ec68bc5f90605d3febf">ExperienceComponent::get_xp_limit_level</a></div><div class="ttdeci">int get_xp_limit_level(unsigned int level) const</div><div class="ttdoc">Devuelve el limite de experiencia asociado al nivel (se entiende por limite de experiencia,...</div><div class="ttdef"><b>Definition:</b> experience_component.cpp:49</div></div>
-<div class="ttc" id="aclassExperienceComponent_html_a73adcf8df8faa089c5a2cae761326f84"><div class="ttname"><a href="classExperienceComponent.html#a73adcf8df8faa089c5a2cae761326f84">ExperienceComponent::reduce</a></div><div class="ttdeci">void reduce()</div><div class="ttdoc">Reduce la experiencia actual en un X% sobre la diferencia entre la experiencia base del nivel actual,...</div><div class="ttdef"><b>Definition:</b> experience_component.cpp:27</div></div>
-<div class="ttc" id="aclassExperienceComponent_html_aa37e4f758d742fe2a37cfc947b0d32ef"><div class="ttname"><a href="classExperienceComponent.html#aa37e4f758d742fe2a37cfc947b0d32ef">ExperienceComponent::add_exp</a></div><div class="ttdeci">void add_exp(int exp)</div><div class="ttdoc">Agrega &quot;exp&quot; a la experencia actual, actualizando los niveles.</div><div class="ttdef"><b>Definition:</b> experience_component.cpp:11</div></div>
-<div class="ttc" id="aclassExperienceComponent_html"><div class="ttname"><a href="classExperienceComponent.html">ExperienceComponent</a></div><div class="ttdef"><b>Definition:</b> experience_component.h:13</div></div>
+<div class="ttc" id="aclassExperienceComponent_html_a04a9270824db5ec68bc5f90605d3febf"><div class="ttname"><a href="classExperienceComponent.html#a04a9270824db5ec68bc5f90605d3febf">ExperienceComponent::get_xp_limit_level</a></div><div class="ttdeci">int get_xp_limit_level(unsigned int level) const</div><div class="ttdoc">Devuelve el limite de experiencia asociado al nivel (se entiende por limite de experiencia,...</div><div class="ttdef"><b>Definition:</b> experience_component.cpp:54</div></div>
+<div class="ttc" id="aclassExperienceComponent_html_a73adcf8df8faa089c5a2cae761326f84"><div class="ttname"><a href="classExperienceComponent.html#a73adcf8df8faa089c5a2cae761326f84">ExperienceComponent::reduce</a></div><div class="ttdeci">void reduce()</div><div class="ttdoc">Reduce la experiencia actual en un X% sobre la diferencia entre la experiencia base del nivel actual,...</div><div class="ttdef"><b>Definition:</b> experience_component.cpp:29</div></div>
+<div class="ttc" id="aclassExperienceComponent_html_aa37e4f758d742fe2a37cfc947b0d32ef"><div class="ttname"><a href="classExperienceComponent.html#aa37e4f758d742fe2a37cfc947b0d32ef">ExperienceComponent::add_exp</a></div><div class="ttdeci">void add_exp(int exp)</div><div class="ttdoc">Agrega &quot;exp&quot; a la experencia actual, actualizando los niveles.</div><div class="ttdef"><b>Definition:</b> experience_component.cpp:13</div></div>
+<div class="ttc" id="aclassExperienceComponent_html"><div class="ttname"><a href="classExperienceComponent.html">ExperienceComponent</a></div><div class="ttdef"><b>Definition:</b> experience_component.h:6</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

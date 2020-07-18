@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['damage_157',['damage',['../structdamage.html',1,'']]],
-  ['disconnecthandler_158',['DisconnectHandler',['../classDisconnectHandler.html',1,'']]],
-  ['duplicatedplayerexception_159',['DuplicatedPlayerException',['../classDuplicatedPlayerException.html',1,'']]]
+  ['depositgoldhandler_272',['DepositGoldHandler',['../classDepositGoldHandler.html',1,'']]],
+  ['deposititemhandler_273',['DepositItemHandler',['../classDepositItemHandler.html',1,'']]],
+  ['disconnecthandler_274',['DisconnectHandler',['../classDisconnectHandler.html',1,'']]],
+  ['droploothandler_275',['DropLootHandler',['../classDropLootHandler.html',1,'']]],
+  ['duplicatedplayerexception_276',['DuplicatedPlayerException',['../classDuplicatedPlayerException.html',1,'']]]
 ];

@@ -6,5 +6,8 @@ var dir_5aedae68c6b720aa83fb9696479044bf =
     [ "item_container.h", "item__container_8h_source.html", null ],
     [ "item_factory.h", "item__factory_8h_source.html", null ],
     [ "potion.h", "potion_8h_source.html", null ],
+    [ "special_ability.h", "special__ability_8h_source.html", null ],
+    [ "special_attack.h", "special__attack_8h_source.html", null ],
+    [ "special_heal.h", "special__heal_8h_source.html", null ],
     [ "weapon.h", "weapon_8h_source.html", null ]
 ];

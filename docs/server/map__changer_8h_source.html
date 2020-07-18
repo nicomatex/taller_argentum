@@ -98,23 +98,27 @@ $(document).ready(function(){initNavTree('map__changer_8h_source.html',''); init
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef MAP_CHANGER_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define MAP_CHANGER_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;game/map_transitions.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classMapChanger.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMapChanger.html">MapChanger</a> {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classMapChanger.html">MapChanger</a>();</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    ~<a class="code" href="classMapChanger.html">MapChanger</a>();</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">void</span> push_change(<a class="code" href="structmap__change.html">map_change_t</a> change);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;};</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#endif  // MAP_CHANGER_H</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../include/thread.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;game/map_manager.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classMapChanger.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMapChanger.html">MapChanger</a> : <span class="keyword">public</span> <a class="code" href="classThread.html">Thread</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="classMapManager.html">MapManager</a>&amp; map_manager;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classMapChanger.html">MapChanger</a>(<a class="code" href="classMapManager.html">MapManager</a>&amp; map_manager);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    ~<a class="code" href="classMapChanger.html">MapChanger</a>();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMapChanger.html#a67d61affe21d89462a2562f328eab20f">run</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif  // MAP_CHANGER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="astructmap__change_html"><div class="ttname"><a href="structmap__change.html">map_change</a></div><div class="ttdef"><b>Definition:</b> map_transitions.h:11</div></div>
-<div class="ttc" id="aclassMapChanger_html"><div class="ttname"><a href="classMapChanger.html">MapChanger</a></div><div class="ttdef"><b>Definition:</b> map_changer.h:8</div></div>
+<div class="ttc" id="aclassMapManager_html"><div class="ttname"><a href="classMapManager.html">MapManager</a></div><div class="ttdef"><b>Definition:</b> map_manager.h:11</div></div>
+<div class="ttc" id="aclassMapChanger_html_a67d61affe21d89462a2562f328eab20f"><div class="ttname"><a href="classMapChanger.html#a67d61affe21d89462a2562f328eab20f">MapChanger::run</a></div><div class="ttdeci">void run() override</div><div class="ttdoc">Function to be called by the thread.</div><div class="ttdef"><b>Definition:</b> map_changer.cpp:17</div></div>
+<div class="ttc" id="aclassMapChanger_html"><div class="ttname"><a href="classMapChanger.html">MapChanger</a></div><div class="ttdef"><b>Definition:</b> map_changer.h:7</div></div>
+<div class="ttc" id="aclassThread_html"><div class="ttname"><a href="classThread.html">Thread</a></div><div class="ttdef"><b>Definition:</b> thread.h:9</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

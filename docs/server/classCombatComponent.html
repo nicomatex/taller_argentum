@@ -122,12 +122,21 @@ Métodos públicos</h2></td></tr>
 <tr class="memitem:ac8499a30a9ef82fe6124bf4d20cbdedd"><td class="memItemLeft" align="right" valign="top"><a id="ac8499a30a9ef82fe6124bf4d20cbdedd"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>reset_max</b> (unsigned int max_hp, unsigned int max_mp)</td></tr>
 <tr class="separator:ac8499a30a9ef82fe6124bf4d20cbdedd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a296cc01916a81d780d7db831effd9eb3"><td class="memItemLeft" align="right" valign="top"><a id="a296cc01916a81d780d7db831effd9eb3"></a>
-virtual <a class="el" href="structdamage.html">damage_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>attack</b> ()=0</td></tr>
-<tr class="separator:a296cc01916a81d780d7db831effd9eb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b1a17a3dbedc052814eeae0ce1b20b5"><td class="memItemLeft" align="right" valign="top"><a id="a1b1a17a3dbedc052814eeae0ce1b20b5"></a>
-virtual <a class="el" href="structattack__result.html">attack_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>receive_damage</b> (<a class="el" href="structdamage.html">damage_t</a> raw_damage)=0</td></tr>
-<tr class="separator:a1b1a17a3dbedc052814eeae0ce1b20b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67a290ea76a2e235e1ac88b6b3dc1c34"><td class="memItemLeft" align="right" valign="top"><a id="a67a290ea76a2e235e1ac88b6b3dc1c34"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>restore_hp</b> (unsigned int hp)</td></tr>
+<tr class="separator:a67a290ea76a2e235e1ac88b6b3dc1c34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7eff5fb239330a4cadeba2cd18a0469a"><td class="memItemLeft" align="right" valign="top"><a id="a7eff5fb239330a4cadeba2cd18a0469a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>can_spend_mp</b> (unsigned int mp)</td></tr>
+<tr class="separator:a7eff5fb239330a4cadeba2cd18a0469a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a809149a8729e258913698323c3c5ead4"><td class="memItemLeft" align="right" valign="top"><a id="a809149a8729e258913698323c3c5ead4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>spend_mp</b> (unsigned int mp)</td></tr>
+<tr class="separator:a809149a8729e258913698323c3c5ead4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56550e7045be8c024345c16151bfbe70"><td class="memItemLeft" align="right" valign="top"><a id="a56550e7045be8c024345c16151bfbe70"></a>
+virtual <a class="el" href="structattack.html">attack_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>attack</b> ()=0</td></tr>
+<tr class="separator:a56550e7045be8c024345c16151bfbe70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affd1043694bef858d2ce55f689a92192"><td class="memItemLeft" align="right" valign="top"><a id="affd1043694bef858d2ce55f689a92192"></a>
+virtual <a class="el" href="structattack__result.html">attack_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>receive_damage</b> (<a class="el" href="structattack.html">attack_t</a> raw_damage)=0</td></tr>
+<tr class="separator:affd1043694bef858d2ce55f689a92192"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42aeefaeb52bf0c23c6c667607379b93"><td class="memItemLeft" align="right" valign="top"><a id="a42aeefaeb52bf0c23c6c667607379b93"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (uint64_t)=0</td></tr>
 <tr class="separator:a42aeefaeb52bf0c23c6c667607379b93"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,18 +149,24 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>attack_ready<
 <tr class="memitem:a17a5248d300f0d62baa042af7fbb985f"><td class="memItemLeft" align="right" valign="top"><a id="a17a5248d300f0d62baa042af7fbb985f"></a>
 virtual nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_data</b> () const</td></tr>
 <tr class="separator:a17a5248d300f0d62baa042af7fbb985f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc111b50271a482e6d255608a6dd027e"><td class="memItemLeft" align="right" valign="top"><a id="acc111b50271a482e6d255608a6dd027e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_max_mp</b> (unsigned int mp)</td></tr>
+<tr class="separator:acc111b50271a482e6d255608a6dd027e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7de62bc4400a8ca7bf5c3efa54a5733"><td class="memItemLeft" align="right" valign="top"><a id="aa7de62bc4400a8ca7bf5c3efa54a5733"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_max_hp</b> (unsigned int hp)</td></tr>
+<tr class="separator:aa7de62bc4400a8ca7bf5c3efa54a5733"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Atributos protegidos</h2></td></tr>
 <tr class="memitem:a1c153660797ada18c231c17c2de027c5"><td class="memItemLeft" align="right" valign="top"><a id="a1c153660797ada18c231c17c2de027c5"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>max_hp</b></td></tr>
 <tr class="separator:a1c153660797ada18c231c17c2de027c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84c04c764532527ce3e7025ead61fb41"><td class="memItemLeft" align="right" valign="top"><a id="a84c04c764532527ce3e7025ead61fb41"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>current_hp</b></td></tr>
-<tr class="separator:a84c04c764532527ce3e7025ead61fb41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86526ff17a5b2a06913d7eed4f4a98c8"><td class="memItemLeft" align="right" valign="top"><a id="a86526ff17a5b2a06913d7eed4f4a98c8"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>max_mp</b></td></tr>
 <tr class="separator:a86526ff17a5b2a06913d7eed4f4a98c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84c04c764532527ce3e7025ead61fb41"><td class="memItemLeft" align="right" valign="top"><a id="a84c04c764532527ce3e7025ead61fb41"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>current_hp</b></td></tr>
+<tr class="separator:a84c04c764532527ce3e7025ead61fb41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7a1e41356b7dd659416bfe4c3fb78f4"><td class="memItemLeft" align="right" valign="top"><a id="aa7a1e41356b7dd659416bfe4c3fb78f4"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>current_mp</b></td></tr>
 <tr class="separator:aa7a1e41356b7dd659416bfe4c3fb78f4"><td class="memSeparator" colspan="2">&#160;</td></tr>

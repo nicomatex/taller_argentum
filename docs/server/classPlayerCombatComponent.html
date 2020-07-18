@@ -113,12 +113,15 @@ Métodos públicos</h2></td></tr>
 <tr class="memitem:a59c14e741b6283557b8b8a34f6a25f21"><td class="memItemLeft" align="right" valign="top"><a id="a59c14e741b6283557b8b8a34f6a25f21"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PlayerCombatComponent</b> (ItemId helmet_id, ItemId armor_id, ItemId shield_id, ItemId weapon_id, unsigned int current_hp, unsigned int current_mp, <a class="el" href="structstats.html">stats_t</a> <a class="el" href="structstats.html">stats</a>, <a class="el" href="classPlayer.html">Player</a> &amp;player, float attack_speed)</td></tr>
 <tr class="separator:a59c14e741b6283557b8b8a34f6a25f21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7eb29a06f2cb149e44fb01af53247de0"><td class="memItemLeft" align="right" valign="top"><a id="a7eb29a06f2cb149e44fb01af53247de0"></a>
-virtual <a class="el" href="structdamage.html">damage_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>attack</b> () override</td></tr>
-<tr class="separator:a7eb29a06f2cb149e44fb01af53247de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84146be830e319f9405eb0ae1918ceb3"><td class="memItemLeft" align="right" valign="top"><a id="a84146be830e319f9405eb0ae1918ceb3"></a>
-virtual <a class="el" href="structattack__result.html">attack_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>receive_damage</b> (<a class="el" href="structdamage.html">damage_t</a> raw_damage) override</td></tr>
-<tr class="separator:a84146be830e319f9405eb0ae1918ceb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6e4c62317b4f05bf5bcc0732efeda36"><td class="memItemLeft" align="right" valign="top"><a id="aa6e4c62317b4f05bf5bcc0732efeda36"></a>
+std::vector&lt; <a class="el" href="structmap__log.html">map_log_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>use_ability</b> (<a class="el" href="classEntity.html">Entity</a> *target, <a class="el" href="structposition.html">position_t</a> source, <a class="el" href="structposition.html">position_t</a> dest)</td></tr>
+<tr class="separator:aa6e4c62317b4f05bf5bcc0732efeda36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51242741fe01593a02ca2aa9ae272537"><td class="memItemLeft" align="right" valign="top"><a id="a51242741fe01593a02ca2aa9ae272537"></a>
+<a class="el" href="structattack.html">attack_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>attack</b> () override</td></tr>
+<tr class="separator:a51242741fe01593a02ca2aa9ae272537"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a094eec34692dd1580a0a4c5b843f0373"><td class="memItemLeft" align="right" valign="top"><a id="a094eec34692dd1580a0a4c5b843f0373"></a>
+<a class="el" href="structattack__result.html">attack_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>receive_damage</b> (<a class="el" href="structattack.html">attack_t</a> <a class="el" href="structattack.html">attack</a>) override</td></tr>
+<tr class="separator:a094eec34692dd1580a0a4c5b843f0373"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fb3a541c847402e0afff4feac095c62"><td class="memItemLeft" align="right" valign="top"><a id="a4fb3a541c847402e0afff4feac095c62"></a>
 <a class="el" href="classArmor.html">Armor</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>equip</b> (<a class="el" href="classArmor.html">Armor</a> *armor)</td></tr>
 <tr class="separator:a4fb3a541c847402e0afff4feac095c62"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,6 +140,9 @@ virtual <a class="el" href="structattack__result.html">attack_result_t</a>&#160;
 <tr class="memitem:a24a12381babe27c426c00aec7b6ea778"><td class="memItemLeft" align="right" valign="top"><a id="a24a12381babe27c426c00aec7b6ea778"></a>
 <a class="el" href="classWeapon.html">Weapon</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>unequip_weapon</b> ()</td></tr>
 <tr class="separator:a24a12381babe27c426c00aec7b6ea778"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad80507b769f5a87e1697437ea36d9383"><td class="memItemLeft" align="right" valign="top"><a id="ad80507b769f5a87e1697437ea36d9383"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>regen_max</b> ()</td></tr>
+<tr class="separator:ad80507b769f5a87e1697437ea36d9383"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3db0c835676f3258c3d907b6a17152d"><td class="memItemLeft" align="right" valign="top"><a id="ac3db0c835676f3258c3d907b6a17152d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>regen</b> (unsigned int amount_hp, unsigned int amount_mp)</td></tr>
 <tr class="separator:ac3db0c835676f3258c3d907b6a17152d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,6 +152,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>regen_hp</b> (unsigne
 <tr class="memitem:ac8fb3dc1c3e40f84c7fb16e46e5e2b02"><td class="memItemLeft" align="right" valign="top"><a id="ac8fb3dc1c3e40f84c7fb16e46e5e2b02"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>regen_mp</b> (unsigned int amount_mp)</td></tr>
 <tr class="separator:ac8fb3dc1c3e40f84c7fb16e46e5e2b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae829e616d3ddb150a7c0360bef339193"><td class="memItemLeft" align="right" valign="top"><a id="ae829e616d3ddb150a7c0360bef339193"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_meditate</b> (bool meditating)</td></tr>
+<tr class="separator:ae829e616d3ddb150a7c0360bef339193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41ceb6a5d29d114f1074b4b0550d2bef"><td class="memItemLeft" align="right" valign="top"><a id="a41ceb6a5d29d114f1074b4b0550d2bef"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>resuscitate</b> (int delta_t)</td></tr>
+<tr class="separator:a41ceb6a5d29d114f1074b4b0550d2bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8139813533f159ceb8a235e7890054b"><td class="memItemLeft" align="right" valign="top"><a id="af8139813533f159ceb8a235e7890054b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (uint64_t delta_t) override</td></tr>
 <tr class="separator:af8139813533f159ceb8a235e7890054b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,9 +180,24 @@ nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_persist
 <tr class="memitem:ac8499a30a9ef82fe6124bf4d20cbdedd inherit pub_methods_classCombatComponent"><td class="memItemLeft" align="right" valign="top"><a id="ac8499a30a9ef82fe6124bf4d20cbdedd"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>reset_max</b> (unsigned int max_hp, unsigned int max_mp)</td></tr>
 <tr class="separator:ac8499a30a9ef82fe6124bf4d20cbdedd inherit pub_methods_classCombatComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67a290ea76a2e235e1ac88b6b3dc1c34 inherit pub_methods_classCombatComponent"><td class="memItemLeft" align="right" valign="top"><a id="a67a290ea76a2e235e1ac88b6b3dc1c34"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>restore_hp</b> (unsigned int hp)</td></tr>
+<tr class="separator:a67a290ea76a2e235e1ac88b6b3dc1c34 inherit pub_methods_classCombatComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7eff5fb239330a4cadeba2cd18a0469a inherit pub_methods_classCombatComponent"><td class="memItemLeft" align="right" valign="top"><a id="a7eff5fb239330a4cadeba2cd18a0469a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>can_spend_mp</b> (unsigned int mp)</td></tr>
+<tr class="separator:a7eff5fb239330a4cadeba2cd18a0469a inherit pub_methods_classCombatComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a809149a8729e258913698323c3c5ead4 inherit pub_methods_classCombatComponent"><td class="memItemLeft" align="right" valign="top"><a id="a809149a8729e258913698323c3c5ead4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>spend_mp</b> (unsigned int mp)</td></tr>
+<tr class="separator:a809149a8729e258913698323c3c5ead4 inherit pub_methods_classCombatComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3a03f31d112349f02392297b45ad9a3 inherit pub_methods_classCombatComponent"><td class="memItemLeft" align="right" valign="top"><a id="ab3a03f31d112349f02392297b45ad9a3"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>get_max_hp</b> () const</td></tr>
 <tr class="separator:ab3a03f31d112349f02392297b45ad9a3 inherit pub_methods_classCombatComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc111b50271a482e6d255608a6dd027e inherit pub_methods_classCombatComponent"><td class="memItemLeft" align="right" valign="top"><a id="acc111b50271a482e6d255608a6dd027e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_max_mp</b> (unsigned int mp)</td></tr>
+<tr class="separator:acc111b50271a482e6d255608a6dd027e inherit pub_methods_classCombatComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7de62bc4400a8ca7bf5c3efa54a5733 inherit pub_methods_classCombatComponent"><td class="memItemLeft" align="right" valign="top"><a id="aa7de62bc4400a8ca7bf5c3efa54a5733"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_max_hp</b> (unsigned int hp)</td></tr>
+<tr class="separator:aa7de62bc4400a8ca7bf5c3efa54a5733 inherit pub_methods_classCombatComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Otros miembros heredados</h2></td></tr>
@@ -178,12 +205,12 @@ Otros miembros heredados</h2></td></tr>
 <tr class="memitem:a1c153660797ada18c231c17c2de027c5 inherit pro_attribs_classCombatComponent"><td class="memItemLeft" align="right" valign="top"><a id="a1c153660797ada18c231c17c2de027c5"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>max_hp</b></td></tr>
 <tr class="separator:a1c153660797ada18c231c17c2de027c5 inherit pro_attribs_classCombatComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84c04c764532527ce3e7025ead61fb41 inherit pro_attribs_classCombatComponent"><td class="memItemLeft" align="right" valign="top"><a id="a84c04c764532527ce3e7025ead61fb41"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>current_hp</b></td></tr>
-<tr class="separator:a84c04c764532527ce3e7025ead61fb41 inherit pro_attribs_classCombatComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86526ff17a5b2a06913d7eed4f4a98c8 inherit pro_attribs_classCombatComponent"><td class="memItemLeft" align="right" valign="top"><a id="a86526ff17a5b2a06913d7eed4f4a98c8"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>max_mp</b></td></tr>
 <tr class="separator:a86526ff17a5b2a06913d7eed4f4a98c8 inherit pro_attribs_classCombatComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84c04c764532527ce3e7025ead61fb41 inherit pro_attribs_classCombatComponent"><td class="memItemLeft" align="right" valign="top"><a id="a84c04c764532527ce3e7025ead61fb41"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>current_hp</b></td></tr>
+<tr class="separator:a84c04c764532527ce3e7025ead61fb41 inherit pro_attribs_classCombatComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7a1e41356b7dd659416bfe4c3fb78f4 inherit pro_attribs_classCombatComponent"><td class="memItemLeft" align="right" valign="top"><a id="aa7a1e41356b7dd659416bfe4c3fb78f4"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>current_mp</b></td></tr>
 <tr class="separator:aa7a1e41356b7dd659416bfe4c3fb78f4 inherit pro_attribs_classCombatComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>

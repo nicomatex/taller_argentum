@@ -98,47 +98,53 @@ $(document).ready(function(){initNavTree('session_8h_source.html',''); initResiz
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef SESSION_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define SESSION_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../include/event.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../include/network/socket_manager.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../include/types.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;map_monitor.h&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;network/client_id_set.h&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;network/th_broadcaster.h&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;th_dispatcher.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../include/event.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../include/types.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;game/map_monitor.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;network/client_id_set.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;network/th_broadcaster.h&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;th_observer.h&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classSession.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSession.html">Session</a> {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classClientIdSet.html">ClientIdSet</a> clients;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classThBroadcaster.html">ThBroadcaster</a> broadcaster;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classThObserver.html">ThObserver</a> observer;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classSession.html">Session</a>(<a class="code" href="classMapMonitor.html">MapMonitor</a>&amp; map);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> start();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> stop();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> join();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> add_client(ClientId new_client);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> rm_client(ClientId <span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> broadcast(<span class="keyword">const</span> <a class="code" href="classEvent.html">Event</a>&amp; ev);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    ~<a class="code" href="classSession.html">Session</a>();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif  // SESSION_H</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classMapMonitor.html">MapMonitor</a>&amp; map;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classClientToEntityMap.html">ClientToEntityMap</a> clients;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classThBroadcaster.html">ThBroadcaster</a> broadcaster;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="classThObserver.html">ThObserver</a> observer;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classSession.html">Session</a>(<a class="code" href="classMapMonitor.html">MapMonitor</a>&amp; map);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> start();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> finish();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSession.html#a2276ea5b4df1460048169b899ab7da28">add_client</a>(ClientId new_client, EntityId entity_id);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    EntityId rm_client(ClientId client_id);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> push_action(ClientId client_id, <a class="code" href="classAction.html">Action</a>* action);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="classMapMonitor.html">MapMonitor</a>&amp; get_map();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSession.html#a990cf4e67d971529b41dea5e7c922d32">broadcast</a>(<span class="keyword">const</span> <a class="code" href="classEvent.html">Event</a>&amp; ev);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    ~<a class="code" href="classSession.html">Session</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;};</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif  // SESSION_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclassSession_html_a990cf4e67d971529b41dea5e7c922d32"><div class="ttname"><a href="classSession.html#a990cf4e67d971529b41dea5e7c922d32">Session::broadcast</a></div><div class="ttdeci">void broadcast(const Event &amp;ev)</div><div class="ttdoc">Envía a todos los clientes en la sesión un evento.</div><div class="ttdef"><b>Definition:</b> session.cpp:40</div></div>
+<div class="ttc" id="aclassAction_html"><div class="ttname"><a href="classAction.html">Action</a></div><div class="ttdef"><b>Definition:</b> action.h:9</div></div>
 <div class="ttc" id="aclassSession_html"><div class="ttname"><a href="classSession.html">Session</a></div><div class="ttdef"><b>Definition:</b> session.h:13</div></div>
-<div class="ttc" id="aclassEvent_html"><div class="ttname"><a href="classEvent.html">Event</a></div><div class="ttdef"><b>Definition:</b> event.h:32</div></div>
+<div class="ttc" id="aclassClientToEntityMap_html"><div class="ttname"><a href="classClientToEntityMap.html">ClientToEntityMap</a></div><div class="ttdef"><b>Definition:</b> client_id_set.h:10</div></div>
+<div class="ttc" id="aclassEvent_html"><div class="ttname"><a href="classEvent.html">Event</a></div><div class="ttdef"><b>Definition:</b> event.h:55</div></div>
 <div class="ttc" id="aclassThObserver_html"><div class="ttname"><a href="classThObserver.html">ThObserver</a></div><div class="ttdef"><b>Definition:</b> th_observer.h:11</div></div>
-<div class="ttc" id="aclassMapMonitor_html"><div class="ttname"><a href="classMapMonitor.html">MapMonitor</a></div><div class="ttdef"><b>Definition:</b> map_monitor.h:16</div></div>
-<div class="ttc" id="aclassClientIdSet_html"><div class="ttname"><a href="classClientIdSet.html">ClientIdSet</a></div><div class="ttdef"><b>Definition:</b> client_id_set.h:10</div></div>
+<div class="ttc" id="aclassMapMonitor_html"><div class="ttname"><a href="classMapMonitor.html">MapMonitor</a></div><div class="ttdef"><b>Definition:</b> map_monitor.h:14</div></div>
+<div class="ttc" id="aclassSession_html_a2276ea5b4df1460048169b899ab7da28"><div class="ttname"><a href="classSession.html#a2276ea5b4df1460048169b899ab7da28">Session::add_client</a></div><div class="ttdeci">void add_client(ClientId new_client, EntityId entity_id)</div><div class="ttdoc">Agregar un cliente a la sesión.</div><div class="ttdef"><b>Definition:</b> session.cpp:20</div></div>
 <div class="ttc" id="aclassThBroadcaster_html"><div class="ttname"><a href="classThBroadcaster.html">ThBroadcaster</a></div><div class="ttdef"><b>Definition:</b> th_broadcaster.h:7</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

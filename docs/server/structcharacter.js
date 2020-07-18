@@ -16,5 +16,6 @@ var structcharacter =
     [ "position", "structcharacter.html#acb64a2edc5364e1e3963aff9f946c8cf", null ],
     [ "race_type", "structcharacter.html#a5ffc496541f4812508536cddc69a5ad3", null ],
     [ "shield_id", "structcharacter.html#adb4a549617cb96c234a4d79e18eb317d", null ],
+    [ "vault", "structcharacter.html#a5e931bf341255f08ee56bb67096799f2", null ],
     [ "weapon_id", "structcharacter.html#a2d5c6bf96277e23642ba4d5d76cba85a", null ]
 ];

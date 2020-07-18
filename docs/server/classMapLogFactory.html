@@ -98,6 +98,11 @@ $(document).ready(function(){initNavTree('classMapLogFactory.html',''); initResi
 <div class="title">Referencia de la Clase MapLogFactory</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Constructor de logs del mapa.  
+ <a href="classMapLogFactory.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="map__log__factory_8h_source.html">map_log_factory.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Métodos públicos estáticos</h2></td></tr>
@@ -113,8 +118,20 @@ static <a class="el" href="structmap__log.html">map_log_t</a>&#160;</td><td clas
 <tr class="memitem:a5504290c9ada39cc8c24c9efec99785d"><td class="memItemLeft" align="right" valign="top"><a id="a5504290c9ada39cc8c24c9efec99785d"></a>
 static <a class="el" href="structmap__log.html">map_log_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>receive_damage</b> (const std::string &amp;player_name, nlohmann::json damage_info)</td></tr>
 <tr class="separator:a5504290c9ada39cc8c24c9efec99785d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9666810145d442e6c95b58e401eafaf3"><td class="memItemLeft" align="right" valign="top"><a id="a9666810145d442e6c95b58e401eafaf3"></a>
+static <a class="el" href="structmap__log.html">map_log_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>message</b> (const std::string &amp;player_name, nlohmann::json message_info)</td></tr>
+<tr class="separator:a9666810145d442e6c95b58e401eafaf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6765901cbacb4a5ca76a7f6639bb1a3e"><td class="memItemLeft" align="right" valign="top"><a id="a6765901cbacb4a5ca76a7f6639bb1a3e"></a>
+static <a class="el" href="structmap__log.html">map_log_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>special_ability</b> (const std::string &amp;player_name, uint32_t ability_id, <a class="el" href="structposition.html">position_t</a> source, <a class="el" href="structposition.html">position_t</a> dest)</td></tr>
+<tr class="separator:a6765901cbacb4a5ca76a7f6639bb1a3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dc2c8a87bfca3c15e1ebe49f7d67b46"><td class="memItemLeft" align="right" valign="top"><a id="a1dc2c8a87bfca3c15e1ebe49f7d67b46"></a>
+static <a class="el" href="structmap__log.html">map_log_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>resuscitate</b> (const std::string &amp;player_name, nlohmann::json message_info)</td></tr>
+<tr class="separator:a1dc2c8a87bfca3c15e1ebe49f7d67b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Constructor de logs del mapa. </p>
+<p>Cada log del mapa está construido por el tipo de log (<code>log_type_t</code>), por el nombre del personaje al que se le debe enviar el log e información extra particular de cada tipo dada por un <code>json</code>. </p>
+</div><hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>/home/tc/Documents/Taller/tp_final/repo/server/game/<a class="el" href="map__log__factory_8h_source.html">map_log_factory.h</a></li>
 <li>/home/tc/Documents/Taller/tp_final/repo/server/game/map_log_factory.cpp</li>
 </ul>

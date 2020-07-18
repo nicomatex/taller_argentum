@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7echaractermanager_253',['~CharacterManager',['../classCharacterManager.html#a0f47c4d30d5d863f09e6665927f158a0',1,'CharacterManager']]]
+  ['join_409',['join',['../classThDispatcher.html#a8002a0ab71dbc93c3e44cd5e2c953992',1,'ThDispatcher::join()'],['../classThread.html#a4d9d788e98388a3217831a9046709deb',1,'Thread::join()']]]
 ];

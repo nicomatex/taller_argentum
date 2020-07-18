@@ -106,154 +106,173 @@ $(document).ready(function(){initNavTree('map_8h_source.html',''); initResizable
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../../include/nlohmann/json.hpp&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../../include/types.h&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;../map_changer.h&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;actions/action.h&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;entities/entity.h&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;entity_factory.h&quot;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;items/item.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;actions/action.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;entities/entity.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;entities/entity_factory.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;items/item.h&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;map_log_factory.h&quot;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;map_transitions.h&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;position.h&quot;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define MAP_SIZE 50</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">class </span><a class="code" href="classPlayer.html">Player</a>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structentity__action.html">   24</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structentity__action.html">entity_action</a> {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    EntityId entity;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classAction.html">Action</a>* action;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;} <a class="code" href="structentity__action.html">entity_action_t</a>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> log_type {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    LOG_INVENTORY,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    LOG_FULL_INVENTORY,</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    LOG_DEAL_DAMAGE,</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    LOG_RECV_DAMAGE</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;} log_type_t;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structmap__log.html">   36</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmap__log.html">map_log</a> {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    log_type_t type;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::string player_name;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    nlohmann::json info;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;} <a class="code" href="structmap__log.html">map_log_t</a>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">using</span> ObjectMatrix =</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    std::unordered_map&lt;position_t, T, PositionHasher, PositionComparator&gt;;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">// clave: id de entidad, valor: position_t</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">typedef</span> std::unordered_map&lt;EntityId, position_t&gt; PositionMap;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">// Clave: position_t, valor: puntero a una entidad</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">typedef</span> ObjectMatrix&lt;Entity*&gt; EntityMatrix;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">// Clave: position_t. Contiene los bloques colisionables del mapa</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">typedef</span> std::unordered_set&lt;position_t, PositionHasher, PositionComparator&gt;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    CollisionMap;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;monster_spawner.h&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;position.h&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define MAP_SIZE 50</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">class </span><a class="code" href="classPlayer.html">Player</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structentity__action.html">   25</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structentity__action.html">entity_action</a> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    EntityId entity;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classAction.html">Action</a>* action;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;} <a class="code" href="structentity__action.html">entity_action_t</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> ObjectMatrix =</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    std::unordered_map&lt;position_t, T, PositionHasher, PositionComparator&gt;;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">// clave: id de entidad, valor: position_t</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">typedef</span> std::unordered_map&lt;EntityId, position_t&gt; PositionMap;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">// Clave: position_t, valor: puntero a una entidad</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">typedef</span> ObjectMatrix&lt;Entity*&gt; EntityMatrix;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">// Clave: position_t. Contiene los bloques colisionables del mapa</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">typedef</span> std::unordered_set&lt;position_t, PositionHasher, PositionComparator&gt;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    PositionSet;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">// Clave: position_t, valor: puntero a un item</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">typedef</span> ObjectMatrix&lt;Item*&gt; LootMatrix;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classMap.html">   47</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMap.html">Map</a> {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classAction.html">Action</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classMonsterSpawner.html">MonsterSpawner</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">int</span> width;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">int</span> height;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">bool</span> _is_safe;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    std::string map_name;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">// Clave: position_t, valor: puntero a un item</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">typedef</span> ObjectMatrix&lt;Item*&gt; LootMatrix;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classMap.html">   59</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMap.html">Map</a> {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classAction.html">Action</a>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    MapId map_id;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">int</span> height;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">int</span> width;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="structposition.html">position_t</a> healer_pos;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    PositionMap position_map;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">bool</span> _dirty_entities;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    EntityMatrix entity_matrix;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">bool</span> _dirty_loot;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    LootMatrix loot_matrix;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    PositionSet collision_map;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// PositionSet safe_zone;</span></div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    PositionMap position_map;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">bool</span> _dirty_entities;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    EntityMatrix entity_matrix;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">bool</span> _dirty_loot;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    LootMatrix loot_matrix;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    CollisionMap collision_map;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="classMapTransitions.html">MapTransitions</a> transitions;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="classEntityFactory.html">EntityFactory</a> entity_factory;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    std::queue&lt;entity_action_t&gt; actions;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::queue&lt;map_log_t&gt; update_logs;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// Para mandarsela a los clientes.</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    nlohmann::json visual_map_info;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">// Devuelve la posicion no-colisionable mas cercana.</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="classMapTransitions.html">MapTransitions</a> transitions;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="classEntityFactory.html">EntityFactory</a> entity_factory;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="classMonsterSpawner.html">MonsterSpawner</a> monster_spawner;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    std::queue&lt;entity_action_t&gt; actions;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    std::queue&lt;map_log_t&gt; update_logs;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// Para mandarsela a los clientes.</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    nlohmann::json visual_map_info;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="structposition.html">position_t</a> get_nearest_free_position(ObjectMatrix&lt;T&gt; object_matrix,</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                         <a class="code" href="structposition.html">position_t</a> <a class="code" href="structposition.html">position</a>);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">/* Indica si la posicion indicada tiene un elemento colisionable (no se</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">     * puede pisar). */</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">bool</span> collides(ObjectMatrix&lt;T&gt; object_matrix, <a class="code" href="structposition.html">position_t</a> <a class="code" href="structposition.html">position</a>);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment">/* Agrega una nueva entidad asociada al entity_id en la posicion indicada.*/</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">void</span> add_entity(<a class="code" href="classEntity.html">Entity</a>* entity, <a class="code" href="structposition.html">position_t</a> <a class="code" href="structposition.html">position</a>);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">void</span> solve_combats();</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="classMap.html">Map</a>(nlohmann::json map_info);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    ~<a class="code" href="classMap.html">Map</a>();</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">/* Mueve la entidad asociada al entity_id un tile en la direccion</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">     * indicada.*/</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">void</span> move(EntityId entity_id, <a class="code" href="structposition.html">position_t</a> steps);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    std::queue&lt;map_change_t&gt;&amp; get_transitions();</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="comment">/* Devuelve el id de entidad asignado dentro del mapa al jugador. */</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    nlohmann::json add_player(nlohmann::json player_info);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    nlohmann::json rm_player(EntityId entity_id);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">void</span> rm_entity(EntityId entity_id);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <a class="code" href="structposition.html">position_t</a> get_position(EntityId entity_id);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="structposition.html">position_t</a> get_nearest_entity_pos(<a class="code" href="structposition.html">position_t</a> entity_pos,</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                                      <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> distance,</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                                      entity_type_t entity_type);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="comment">/* Actualiza todas las entidades que contiene segun el delta_t</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">     * transcurrido.*/</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">void</span> update(uint64_t delta_t);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="comment">/* Agrega un log de accion al mapa */</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordtype">void</span> push_log(<span class="keyword">const</span> <a class="code" href="structmap__log.html">map_log_t</a>&amp; log);</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="comment">/* Ejecuta sobre la entidad asociada al id la accion. */</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordtype">void</span> push_action(EntityId entity_id, <a class="code" href="classAction.html">Action</a>* action);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordtype">void</span> drop_loot(EntityId entity_id, <a class="code" href="classItem.html">Item</a>* item);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordtype">void</span> drop_loot(EntityId entity_id, <span class="keyword">const</span> std::vector&lt;Item*&gt;&amp; item);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <a class="code" href="classItem.html">Item</a>* pickup_loot(EntityId entity_id);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">bool</span> collides(ObjectMatrix&lt;T&gt; object_matrix, <a class="code" href="structposition.html">position_t</a> <a class="code" href="structposition.html">position</a>);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">void</span> add_entity(<a class="code" href="classEntity.html">Entity</a>* entity, <a class="code" href="structposition.html">position_t</a> <a class="code" href="structposition.html">position</a>);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordtype">void</span> rm_entity(EntityId entity_id);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="classMap.html">Map</a>(MapId map_id, <span class="keyword">const</span> std::string&amp; map_name, <span class="keywordtype">bool</span> is_safe,</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keyword">const</span> nlohmann::json&amp; map_description, <span class="keyword">const</span> nlohmann::json&amp; map_mobs,</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keyword">const</span> nlohmann::json&amp; map_transitions);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    ~<a class="code" href="classMap.html">Map</a>();</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <a class="code" href="classMap.html">Map</a>(<span class="keyword">const</span> <a class="code" href="classMap.html">Map</a>&amp; other) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keyword">const</span> std::string&amp; get_name();</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMap.html#a6655a2372dbcf08dbbbad95c8922fc76">move</a>(EntityId entity_id, <a class="code" href="structposition.html">position_t</a> steps);</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keyword">static</span> nlohmann::json get_position_data(<span class="keyword">const</span> PositionMap&amp; position_map);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keyword">const</span> PositionMap get_position_map() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordtype">bool</span> dirty_entities() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    nlohmann::json get_entity_data();</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordtype">bool</span> dirty_loot() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    nlohmann::json get_loot_data();</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    std::queue&lt;map_log_t&gt;&amp; get_update_logs();</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    nlohmann::json get_map_data();</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;};</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    std::queue&lt;map_change_t&gt;&amp; <a class="code" href="classMap.html#a05fdcee12ddf0abc3f57c63980df75ff">get_transitions</a>();</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMap.html#ac2816643aa678d3a4ca0305f98b683a0">teleport</a>(EntityId player_id, <a class="code" href="structposition.html">position_t</a> dest);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    nlohmann::json <a class="code" href="classMap.html#a52b87bbaa67ba72a6d0c5eefa368befe">add_player</a>(nlohmann::json player_info);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    nlohmann::json <a class="code" href="classMap.html#af48a8281049e829dad3bc51ee4c0fddb">rm_player</a>(EntityId entity_id);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <a class="code" href="structposition.html">position_t</a> get_position(EntityId entity_id);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <a class="code" href="structposition.html">position_t</a> get_healer_pos() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordtype">bool</span> is_safe() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <a class="code" href="structposition.html">position_t</a> <a class="code" href="classMap.html#a74fd1b37356d0e69d06b997d1b43eacb">get_nearest_entity_pos</a>(<a class="code" href="structposition.html">position_t</a> entity_pos,</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                                      <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> distance,</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                                      entity_type_t entity_type);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classMap.html#ae7f4876d5d8dce50bf46d7b3171bbc61">entity_exists</a>(EntityId entity_id);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMap.html#aa7e60594c7a98016f7a30400fcdbf49e">update</a>(uint64_t delta_t);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMap.html#a09a395c572b3b44135e0f20629fea0b5">push_log</a>(<span class="keyword">const</span> <a class="code" href="structmap__log.html">map_log_t</a>&amp; log);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMap.html#a7e6be80a83bf87805bd262276e2ebbfd">push_action</a>(EntityId entity_id, <a class="code" href="classAction.html">Action</a>* action);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMap.html#a0d6f34faee9066b3108f6919d148b59d">drop_loot</a>(EntityId entity_id, <a class="code" href="classItem.html">Item</a>* item);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMap.html#a0d6f34faee9066b3108f6919d148b59d">drop_loot</a>(EntityId entity_id, <span class="keyword">const</span> std::vector&lt;Item*&gt;&amp; items);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <a class="code" href="classItem.html">Item</a>* <a class="code" href="classMap.html#ac211829e65dd3e2e13a35f44e793e6ed">pickup_loot</a>(EntityId entity_id);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keyword">static</span> nlohmann::json <a class="code" href="classMap.html#afeb619310e5e19786f106e8ef6e7606a">get_position_data</a>(<span class="keyword">const</span> PositionMap&amp; position_map);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keyword">const</span> PositionMap <a class="code" href="classMap.html#a11394b37c0be3d5f1b22670e3e07dcba">get_position_map</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classMap.html#a79bff62cc690a8cfc0ab62af1d56a653">dirty_entities</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    nlohmann::json <a class="code" href="classMap.html#a8a37d5592c5f29fccbe4caa23f5f557e">get_entity_data</a>();</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classMap.html#a65c2a6ea4675dea0dcb6e9b08b3b813b">dirty_loot</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    nlohmann::json <a class="code" href="classMap.html#ab9c111554d4e51dcff86f3db58ad2635">get_loot_data</a>();</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    std::queue&lt;map_log_t&gt;&amp; <a class="code" href="classMap.html#a1d4ceff6f81af163cb96c0b39c390692">get_update_logs</a>();</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    nlohmann::json <a class="code" href="classMap.html#ae528196e42063f379abd5d3f15478748">get_map_data</a>();</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;};</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassItem_html"><div class="ttname"><a href="classItem.html">Item</a></div><div class="ttdef"><b>Definition:</b> item.h:42</div></div>
-<div class="ttc" id="astructmap__log_html"><div class="ttname"><a href="structmap__log.html">map_log</a></div><div class="ttdef"><b>Definition:</b> map.h:36</div></div>
+<div class="ttc" id="aclassItem_html"><div class="ttname"><a href="classItem.html">Item</a></div><div class="ttdef"><b>Definition:</b> item.h:45</div></div>
+<div class="ttc" id="aclassMap_html_aa7e60594c7a98016f7a30400fcdbf49e"><div class="ttname"><a href="classMap.html#aa7e60594c7a98016f7a30400fcdbf49e">Map::update</a></div><div class="ttdeci">void update(uint64_t delta_t)</div><div class="ttdoc">Actualiza todas las entidades que contiene segun el delta_t transcurrido.</div><div class="ttdef"><b>Definition:</b> map.cpp:192</div></div>
+<div class="ttc" id="aclassMap_html_ab9c111554d4e51dcff86f3db58ad2635"><div class="ttname"><a href="classMap.html#ab9c111554d4e51dcff86f3db58ad2635">Map::get_loot_data</a></div><div class="ttdeci">nlohmann::json get_loot_data()</div><div class="ttdoc">Obtiene la información de los items del mapa.</div><div class="ttdef"><b>Definition:</b> map.cpp:247</div></div>
+<div class="ttc" id="aclassMap_html_a74fd1b37356d0e69d06b997d1b43eacb"><div class="ttname"><a href="classMap.html#a74fd1b37356d0e69d06b997d1b43eacb">Map::get_nearest_entity_pos</a></div><div class="ttdeci">position_t get_nearest_entity_pos(position_t entity_pos, unsigned int distance, entity_type_t entity_type)</div><div class="ttdoc">Obtener la posición de la entidad de un tipo más cercana.</div><div class="ttdef"><b>Definition:</b> map.cpp:262</div></div>
+<div class="ttc" id="aclassMap_html_a11394b37c0be3d5f1b22670e3e07dcba"><div class="ttname"><a href="classMap.html#a11394b37c0be3d5f1b22670e3e07dcba">Map::get_position_map</a></div><div class="ttdeci">const PositionMap get_position_map() const</div><div class="ttdoc">Obtiene una copia del mapa de posiciones de las entidades.</div><div class="ttdef"><b>Definition:</b> map.cpp:227</div></div>
+<div class="ttc" id="astructmap__log_html"><div class="ttname"><a href="structmap__log.html">map_log</a></div><div class="ttdef"><b>Definition:</b> map_log_factory.h:17</div></div>
 <div class="ttc" id="aclassAction_html"><div class="ttname"><a href="classAction.html">Action</a></div><div class="ttdef"><b>Definition:</b> action.h:9</div></div>
+<div class="ttc" id="aclassMap_html_afeb619310e5e19786f106e8ef6e7606a"><div class="ttname"><a href="classMap.html#afeb619310e5e19786f106e8ef6e7606a">Map::get_position_data</a></div><div class="ttdeci">static nlohmann::json get_position_data(const PositionMap &amp;position_map)</div><div class="ttdoc">Realizar una copia en forma de json de un mapa de posiciones.</div><div class="ttdef"><b>Definition:</b> map.cpp:218</div></div>
+<div class="ttc" id="aclassMap_html_a6655a2372dbcf08dbbbad95c8922fc76"><div class="ttname"><a href="classMap.html#a6655a2372dbcf08dbbbad95c8922fc76">Map::move</a></div><div class="ttdeci">void move(EntityId entity_id, position_t steps)</div><div class="ttdoc">Mueve la entidad asociada al entity_id hacia la posicion relativa steps.</div><div class="ttdef"><b>Definition:</b> map.cpp:110</div></div>
+<div class="ttc" id="aclassMap_html_a65c2a6ea4675dea0dcb6e9b08b3b813b"><div class="ttname"><a href="classMap.html#a65c2a6ea4675dea0dcb6e9b08b3b813b">Map::dirty_loot</a></div><div class="ttdeci">bool dirty_loot() const</div><div class="ttdoc">Verificar si hubo un cambio en los items caidos en el mapa desde la última vez que se utilizó este mé...</div><div class="ttdef"><b>Definition:</b> map.cpp:244</div></div>
+<div class="ttc" id="aclassMonsterSpawner_html"><div class="ttname"><a href="classMonsterSpawner.html">MonsterSpawner</a></div><div class="ttdoc">Clase que mantiene los &quot;spawns&quot; de monstruos en un mapa.</div><div class="ttdef"><b>Definition:</b> monster_spawner.h:20</div></div>
+<div class="ttc" id="aclassMap_html_a05fdcee12ddf0abc3f57c63980df75ff"><div class="ttname"><a href="classMap.html#a05fdcee12ddf0abc3f57c63980df75ff">Map::get_transitions</a></div><div class="ttdeci">std::queue&lt; map_change_t &gt; &amp; get_transitions()</div><div class="ttdoc">Obtiene la cola de transiciones del mapa.</div><div class="ttdef"><b>Definition:</b> map.cpp:134</div></div>
+<div class="ttc" id="aclassMap_html_ae528196e42063f379abd5d3f15478748"><div class="ttname"><a href="classMap.html#ae528196e42063f379abd5d3f15478748">Map::get_map_data</a></div><div class="ttdeci">nlohmann::json get_map_data()</div><div class="ttdoc">Obtiene la información gráfica del mapa en forma de json.</div><div class="ttdef"><b>Definition:</b> map.cpp:258</div></div>
+<div class="ttc" id="aclassMap_html_ac211829e65dd3e2e13a35f44e793e6ed"><div class="ttname"><a href="classMap.html#ac211829e65dd3e2e13a35f44e793e6ed">Map::pickup_loot</a></div><div class="ttdeci">Item * pickup_loot(EntityId entity_id)</div><div class="ttdoc">Intenta obtener de la posición donde se encuentra la entidad el item que haya allí.</div><div class="ttdef"><b>Definition:</b> map.cpp:305</div></div>
+<div class="ttc" id="aclassMap_html_ac2816643aa678d3a4ca0305f98b683a0"><div class="ttname"><a href="classMap.html#ac2816643aa678d3a4ca0305f98b683a0">Map::teleport</a></div><div class="ttdeci">void teleport(EntityId player_id, position_t dest)</div><div class="ttdoc">Teletransporta a un jugador a través de una transición.</div><div class="ttdef"><b>Definition:</b> map.cpp:138</div></div>
+<div class="ttc" id="aclassMap_html_a09a395c572b3b44135e0f20629fea0b5"><div class="ttname"><a href="classMap.html#a09a395c572b3b44135e0f20629fea0b5">Map::push_log</a></div><div class="ttdeci">void push_log(const map_log_t &amp;log)</div><div class="ttdoc">Agrega un log al mapa.</div><div class="ttdef"><b>Definition:</b> map.cpp:206</div></div>
 <div class="ttc" id="aclassEntityFactory_html"><div class="ttname"><a href="classEntityFactory.html">EntityFactory</a></div><div class="ttdef"><b>Definition:</b> entity_factory.h:10</div></div>
-<div class="ttc" id="aclassEntity_html"><div class="ttname"><a href="classEntity.html">Entity</a></div><div class="ttdef"><b>Definition:</b> entity.h:13</div></div>
-<div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdef"><b>Definition:</b> map.h:59</div></div>
-<div class="ttc" id="aclassMapTransitions_html"><div class="ttname"><a href="classMapTransitions.html">MapTransitions</a></div><div class="ttdef"><b>Definition:</b> map_transitions.h:17</div></div>
-<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdef"><b>Definition:</b> player.h:13</div></div>
+<div class="ttc" id="aclassEntity_html"><div class="ttname"><a href="classEntity.html">Entity</a></div><div class="ttdef"><b>Definition:</b> entity.h:15</div></div>
+<div class="ttc" id="aclassMap_html_af48a8281049e829dad3bc51ee4c0fddb"><div class="ttname"><a href="classMap.html#af48a8281049e829dad3bc51ee4c0fddb">Map::rm_player</a></div><div class="ttdeci">nlohmann::json rm_player(EntityId entity_id)</div><div class="ttdoc">Eliminar a un jugador identificado por su id del mapa.</div><div class="ttdef"><b>Definition:</b> map.cpp:157</div></div>
+<div class="ttc" id="aclassMap_html_a8a37d5592c5f29fccbe4caa23f5f557e"><div class="ttname"><a href="classMap.html#a8a37d5592c5f29fccbe4caa23f5f557e">Map::get_entity_data</a></div><div class="ttdeci">nlohmann::json get_entity_data()</div><div class="ttdoc">Obtiene la información de las entidades del mapa.</div><div class="ttdef"><b>Definition:</b> map.cpp:234</div></div>
+<div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdef"><b>Definition:</b> map.h:47</div></div>
+<div class="ttc" id="aclassMapTransitions_html"><div class="ttname"><a href="classMapTransitions.html">MapTransitions</a></div><div class="ttdoc">Clase que se encarga de manejar las transiciones en cada mapa.</div><div class="ttdef"><b>Definition:</b> map_transitions.h:27</div></div>
+<div class="ttc" id="aclassMap_html_a52b87bbaa67ba72a6d0c5eefa368befe"><div class="ttname"><a href="classMap.html#a52b87bbaa67ba72a6d0c5eefa368befe">Map::add_player</a></div><div class="ttdeci">nlohmann::json add_player(nlohmann::json player_info)</div><div class="ttdoc">Agrega un jugador al mapa a partir de su información.</div><div class="ttdef"><b>Definition:</b> map.cpp:147</div></div>
+<div class="ttc" id="aclassMap_html_a1d4ceff6f81af163cb96c0b39c390692"><div class="ttname"><a href="classMap.html#a1d4ceff6f81af163cb96c0b39c390692">Map::get_update_logs</a></div><div class="ttdeci">std::queue&lt; map_log_t &gt; &amp; get_update_logs()</div><div class="ttdoc">Obtiene la cola de &quot;logs&quot; del mapa.</div><div class="ttdef"><b>Definition:</b> map.cpp:214</div></div>
+<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdef"><b>Definition:</b> player.h:14</div></div>
 <div class="ttc" id="astructposition_html"><div class="ttname"><a href="structposition.html">position</a></div><div class="ttdef"><b>Definition:</b> position.h:8</div></div>
-<div class="ttc" id="astructentity__action_html"><div class="ttname"><a href="structentity__action.html">entity_action</a></div><div class="ttdef"><b>Definition:</b> map.h:24</div></div>
+<div class="ttc" id="aclassMap_html_a79bff62cc690a8cfc0ab62af1d56a653"><div class="ttname"><a href="classMap.html#a79bff62cc690a8cfc0ab62af1d56a653">Map::dirty_entities</a></div><div class="ttdeci">bool dirty_entities() const</div><div class="ttdoc">Verificar si hubo un cambio en las entidades del mapa desde la última vez que se utilizó este método.</div><div class="ttdef"><b>Definition:</b> map.cpp:231</div></div>
+<div class="ttc" id="astructentity__action_html"><div class="ttname"><a href="structentity__action.html">entity_action</a></div><div class="ttdef"><b>Definition:</b> map.h:25</div></div>
+<div class="ttc" id="aclassMap_html_ae7f4876d5d8dce50bf46d7b3171bbc61"><div class="ttname"><a href="classMap.html#ae7f4876d5d8dce50bf46d7b3171bbc61">Map::entity_exists</a></div><div class="ttdeci">bool entity_exists(EntityId entity_id)</div><div class="ttdoc">Verificar si una entidad existe o no.</div><div class="ttdef"><b>Definition:</b> map.cpp:176</div></div>
+<div class="ttc" id="aclassMap_html_a7e6be80a83bf87805bd262276e2ebbfd"><div class="ttname"><a href="classMap.html#a7e6be80a83bf87805bd262276e2ebbfd">Map::push_action</a></div><div class="ttdeci">void push_action(EntityId entity_id, Action *action)</div><div class="ttdoc">Ejecuta sobre la entidad asociada al id la accion.</div><div class="ttdef"><b>Definition:</b> map.cpp:210</div></div>
+<div class="ttc" id="aclassMap_html_a0d6f34faee9066b3108f6919d148b59d"><div class="ttname"><a href="classMap.html#a0d6f34faee9066b3108f6919d148b59d">Map::drop_loot</a></div><div class="ttdeci">void drop_loot(EntityId entity_id, Item *item)</div><div class="ttdoc">Deja el item pasado por parámetro en la posición de la entidad.</div><div class="ttdef"><b>Definition:</b> map.cpp:294</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

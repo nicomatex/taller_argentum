@@ -99,35 +99,39 @@ $(document).ready(function(){initNavTree('client__id__set_8h_source.html',''); i
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define CLIENTS_IDS_SET_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;unordered_set&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../../include/event.h&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;../../include/types.h&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classClientIdSet.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classClientIdSet.html">ClientIdSet</a> {</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classClientToEntityMap.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classClientToEntityMap.html">ClientToEntityMap</a> {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;   <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    std::mutex m;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    std::unordered_set&lt;ClientId&gt; clients;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    std::unordered_map&lt;ClientId, EntityId&gt; client_to_entity;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classClientIdSet.html">ClientIdSet</a>();</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classClientToEntityMap.html">ClientToEntityMap</a>();</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> add_client(ClientId <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> add_client(ClientId client_id, EntityId entity_id);</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> rm_client(ClientId <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> rm_client(ClientId client_id);</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> send_to(ClientId <span class="keywordtype">id</span>, <span class="keyword">const</span> <a class="code" href="classEvent.html">Event</a>&amp; ev);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">bool</span> count(ClientId client_id);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> broadcast(<a class="code" href="classEvent.html">Event</a>&amp; ev);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    EntityId at(ClientId client_id);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    ~<a class="code" href="classClientIdSet.html">ClientIdSet</a>();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif  // CLIENTS_IDS_SET_H</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> send_to(ClientId client_id, <span class="keyword">const</span> <a class="code" href="classEvent.html">Event</a>&amp; ev);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> broadcast(<a class="code" href="classEvent.html">Event</a>&amp; ev);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    ~<a class="code" href="classClientToEntityMap.html">ClientToEntityMap</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif  // CLIENTS_IDS_SET_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassEvent_html"><div class="ttname"><a href="classEvent.html">Event</a></div><div class="ttdef"><b>Definition:</b> event.h:32</div></div>
-<div class="ttc" id="aclassClientIdSet_html"><div class="ttname"><a href="classClientIdSet.html">ClientIdSet</a></div><div class="ttdef"><b>Definition:</b> client_id_set.h:10</div></div>
+<div class="ttc" id="aclassClientToEntityMap_html"><div class="ttname"><a href="classClientToEntityMap.html">ClientToEntityMap</a></div><div class="ttdef"><b>Definition:</b> client_id_set.h:10</div></div>
+<div class="ttc" id="aclassEvent_html"><div class="ttname"><a href="classEvent.html">Event</a></div><div class="ttdef"><b>Definition:</b> event.h:55</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

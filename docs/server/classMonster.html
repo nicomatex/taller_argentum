@@ -132,12 +132,21 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>can_attack</b> (<a cl
 void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (uint64_t delta_t) override</td></tr>
 <tr class="separator:ae3fdc85ee2bccf369c0cfdbaf0ca3362"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classEntity"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classEntity')"><img src="closed.png" alt="-"/>&#160;Métodos públicos heredados desde <a class="el" href="classEntity.html">Entity</a></td></tr>
-<tr class="memitem:affb5580e3b255c4195ac0b281a2e5c85 inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="affb5580e3b255c4195ac0b281a2e5c85"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (EntityId id, const std::string &amp;name, <a class="el" href="classMovementComponent.html">MovementComponent</a> *movement_component, <a class="el" href="classCombatComponent.html">CombatComponent</a> *combat_component, unsigned int current_level, unsigned int current_exp)</td></tr>
-<tr class="separator:affb5580e3b255c4195ac0b281a2e5c85 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53e4bc69804b88dfc98840455ac69730 inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="a53e4bc69804b88dfc98840455ac69730"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (EntityId id, const std::string &amp;name, unsigned int current_level, unsigned int current_exp)</td></tr>
-<tr class="separator:a53e4bc69804b88dfc98840455ac69730 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3d581212c049c81b83cdc682e7110e0 inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="aa3d581212c049c81b83cdc682e7110e0"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (EntityId id, <a class="el" href="classMap.html">Map</a> &amp;map, const std::string &amp;name, <a class="el" href="classMovementComponent.html">MovementComponent</a> *movement_component, <a class="el" href="classCombatComponent.html">CombatComponent</a> *combat_component, unsigned int current_level, unsigned int current_exp)</td></tr>
+<tr class="separator:aa3d581212c049c81b83cdc682e7110e0 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5afe610ae4fb65479fe8572e008ea8d7 inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="a5afe610ae4fb65479fe8572e008ea8d7"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (EntityId id, <a class="el" href="classMap.html">Map</a> &amp;map, const std::string &amp;name, unsigned int current_level, unsigned int current_exp)</td></tr>
+<tr class="separator:a5afe610ae4fb65479fe8572e008ea8d7 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0b0c53fc6f684e6d4826346394ec4bc inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="ae0b0c53fc6f684e6d4826346394ec4bc"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>heal</b> (unsigned int hp)</td></tr>
+<tr class="separator:ae0b0c53fc6f684e6d4826346394ec4bc inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4528a126e7f11e9cc6ea4874c00c4d00 inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="a4528a126e7f11e9cc6ea4874c00c4d00"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>can_spend_mp</b> (unsigned int amount)</td></tr>
+<tr class="separator:a4528a126e7f11e9cc6ea4874c00c4d00 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad376ab08c4e53388fca50feaa2a0b3c2 inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="ad376ab08c4e53388fca50feaa2a0b3c2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>spend_mp</b> (unsigned int amount)</td></tr>
+<tr class="separator:ad376ab08c4e53388fca50feaa2a0b3c2 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a692b4047a0d7092b2af3772928c27193 inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="a692b4047a0d7092b2af3772928c27193"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_name</b> () const</td></tr>
 <tr class="separator:a692b4047a0d7092b2af3772928c27193 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,6 +162,12 @@ virtual <a class="el" href="structposition.html">position_t</a>&#160;</td><td cl
 <tr class="memitem:a4a86fb1dc1cf3fab4f5b744e156f1304 inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="a4a86fb1dc1cf3fab4f5b744e156f1304"></a>
 <a class="el" href="structattack__result.html">attack_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>attack</b> (<a class="el" href="classEntity.html">Entity</a> *attacked)</td></tr>
 <tr class="separator:a4a86fb1dc1cf3fab4f5b744e156f1304 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4ae37b73cab724042ff1c3eeab156ec inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="af4ae37b73cab724042ff1c3eeab156ec"></a>
+<a class="el" href="structattack__result.html">attack_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>receive_damage</b> (<a class="el" href="structattack.html">attack_t</a> <a class="el" href="structattack.html">attack</a>)</td></tr>
+<tr class="separator:af4ae37b73cab724042ff1c3eeab156ec inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae293a16e2a263266f2c95df0444952c inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="aae293a16e2a263266f2c95df0444952c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>add_exp</b> (int exp)</td></tr>
+<tr class="separator:aae293a16e2a263266f2c95df0444952c inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a264bc5680fecd00ad6377c389b0caf24 inherit pub_methods_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="a264bc5680fecd00ad6377c389b0caf24"></a>
 EntityId&#160;</td><td class="memItemRight" valign="bottom"><b>get_id</b> () const</td></tr>
 <tr class="separator:a264bc5680fecd00ad6377c389b0caf24 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -160,9 +175,12 @@ EntityId&#160;</td><td class="memItemRight" valign="bottom"><b>get_id</b> () con
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Otros miembros heredados</h2></td></tr>
 <tr class="inherit_header pro_attribs_classEntity"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classEntity')"><img src="closed.png" alt="-"/>&#160;Atributos protegidos heredados desde <a class="el" href="classEntity.html">Entity</a></td></tr>
-<tr class="memitem:a06d5b271091635ff8f53007061abb417 inherit pro_attribs_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="a06d5b271091635ff8f53007061abb417"></a>
-EntityId&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
-<tr class="separator:a06d5b271091635ff8f53007061abb417 inherit pro_attribs_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada9a878182b6ce0a6c7ccbbe89800431 inherit pro_attribs_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="ada9a878182b6ce0a6c7ccbbe89800431"></a>
+const EntityId&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
+<tr class="separator:ada9a878182b6ce0a6c7ccbbe89800431 inherit pro_attribs_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23f7e29463b67b89c3008481613fe123 inherit pro_attribs_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="a23f7e29463b67b89c3008481613fe123"></a>
+<a class="el" href="classMap.html">Map</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>map</b></td></tr>
+<tr class="separator:a23f7e29463b67b89c3008481613fe123 inherit pro_attribs_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a7d9df9b47e597a6abd76235e0b726c inherit pro_attribs_classEntity"><td class="memItemLeft" align="right" valign="top"><a id="a9a7d9df9b47e597a6abd76235e0b726c"></a>
 const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
 <tr class="separator:a9a7d9df9b47e597a6abd76235e0b726c inherit pro_attribs_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
