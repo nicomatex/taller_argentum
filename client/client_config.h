@@ -6,9 +6,10 @@
 
 /* Configuracion basica */
 
-#define BASE_CONFIG_FILE                                               \
-    "{ \"server\": \"localhost\",\"port\": \"27016\",\"fullscreen\": " \
-    "false,\"window_width\":1138,\"window_height\":640}"
+#define BASE_CONFIG_FILE                                                  \
+    "{ \"server\": \"localhost\",\"port\": \"27016\",\"fullscreen\": "    \
+    "false,\"window_width\":1138,\"window_height\":640, \"vsync\":true, " \
+    "\"fps\":60}"
 
 /* Misc*/
 #define WINDOW_TITLE "Argentum Online"
@@ -49,9 +50,8 @@
 #define MAIN_WINDOW_WIDTH 1138
 #define MAIN_WINDOW_HEIGHT 640
 
-
-
-#define HELP_PANEL_AREA {169,110,800,420}
+#define HELP_PANEL_AREA \
+    { 169, 110, 800, 420 }
 
 // --- Chat ---
 #define VIEWPORT_MAIN_RENDER \
@@ -109,7 +109,8 @@
 #define DEF_PTS_TEXT_AREA \
     { 154, 221, 40, 15 }
 
-#define ITEM_NAME_AREA {19,463,180,19}
+#define ITEM_NAME_AREA \
+    { 19, 463, 180, 19 }
 
 #define INFO_TEXT_COLOR \
     { 255, 255, 255, 255 }
