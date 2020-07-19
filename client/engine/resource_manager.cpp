@@ -15,9 +15,9 @@ void ResourceManager::_load_textures(SDLTextureLoader& loader,
                                      const std::string& texture_index_file) {
     std::cout << MSG_TEXTURES_LOADING << std::endl;
 
-    std::ifstream input_file(texture_index_file);
-    json texture_indexes = json::parse(input_file);
     try {
+        std::ifstream input_file(texture_index_file);
+        json texture_indexes = json::parse(input_file);
         for (auto texture_type = texture_indexes.begin();
              texture_type != texture_indexes.end(); ++texture_type) {
             std::string type(texture_type.key());
@@ -50,9 +50,9 @@ void ResourceManager::_load_textures(SDLTextureLoader& loader,
 }
 
 void ResourceManager::_load_animations(const std::string& sprite_index_file) {
-    std::ifstream input_file(sprite_index_file);
-    json sprite_info = json::parse(input_file);
     try {
+        std::ifstream input_file(sprite_index_file);
+        json sprite_info = json::parse(input_file);
         for (auto sprite_type_it = sprite_info["actors"].begin();
              sprite_type_it != sprite_info["actors"].end(); ++sprite_type_it) {
             std::string type(sprite_type_it.key());
@@ -112,9 +112,9 @@ void ResourceManager::_load_animations(const std::string& sprite_index_file) {
 }
 
 void ResourceManager::_load_fonts(const std::string& font_index_file) {
-    std::ifstream input_file(font_index_file);
-    json fonts_info = json::parse(input_file);
     try {
+        std::ifstream input_file(font_index_file);
+        json fonts_info = json::parse(input_file);
         std::string basedir = fonts_info["truetype"]["basedir"];
         for (auto& font : fonts_info["truetype"]["fonts"].items()) {
             json font_info = font.value();
@@ -140,9 +140,9 @@ void ResourceManager::_load_fonts(const std::string& font_index_file) {
 }
 
 void ResourceManager::_load_audio(const std::string& audio_index_file) {
-    std::ifstream input_file(audio_index_file);
-    json audio_info = json::parse(input_file);
     try {
+        std::ifstream input_file(audio_index_file);
+        json audio_info = json::parse(input_file);
         std::string music_basedir = audio_info["music"]["basedir"];
         for (auto& it : audio_info["music"]["files"].items()) {
             json music_file_info = it.value();

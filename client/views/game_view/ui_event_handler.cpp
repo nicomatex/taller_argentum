@@ -19,8 +19,7 @@ UiEventHandler::UiEventHandler(SocketManager &socket_manager,
       camera(camera),
       main_render_viewport(main_render_viewport),
       current_target({0, 0}),
-      selected_inventory_slot(0),
-      selected_equipment_slot(0) {
+      selected_inventory_slot(0) {
     SDL_StopTextInput();
 }
 
@@ -80,7 +79,7 @@ void UiEventHandler::handle_keydown_return() {
         if (chat_input != "") {
             send_event(EventFactory::chat_event(chat_input, current_target.x,
                                                 current_target.y,
-                                                selected_inventory_slot));
+                                                hud.inventory.get_last_clicked_slot()));
         }
     } else {
         SDL_StartTextInput();
@@ -119,9 +118,6 @@ void UiEventHandler::handle_click(SDL_Event &e) {
     SDL_GetMouseState(&x, &y);
     bool cast_requested = hud.attempting_cast;
     hud.attempting_cast = false;
-    selected_inventory_slot = hud.inventory.get_last_clicked_slot();
-    selected_equipment_slot = hud.equipment.get_last_clicked_slot();
-
     if (x < main_render_viewport.x ||
         x > main_render_viewport.x + main_render_viewport.w) {
         return;
@@ -136,6 +132,7 @@ void UiEventHandler::handle_click(SDL_Event &e) {
                                                    current_target.y));
     }
 }
+
 
 void UiEventHandler::handle_keydown_command() {
     if (!text_input_enabled) {
@@ -249,8 +246,8 @@ void UiEventHandler::handle() {
         } else if (e.type == SDL_TEXTINPUT) {  // Input de texto
             hud.chat.add_characters(e.text.text);
         } else if (e.type == SDL_MOUSEBUTTONUP) {  // Clicks
-            hud.handle_event(e);
             handle_click(e);
+            hud.handle_event(e);
         }
     }
 }

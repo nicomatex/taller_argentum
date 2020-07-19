@@ -3,7 +3,6 @@ CLIENT_SOURCE_DIR := ../client
 ASSETS_DIR := $(CLIENT_SOURCE_DIR)/assets
 IND_DIR := $(CLIENT_SOURCE_DIR)/ind
 BIN_FILE := $(CLIENT_SOURCE_DIR)/build/aoclient
-CONFIG_FILE := $(CLIENT_SOURCE_DIR)/config.json
 
 PACKAGE_NAME := argentum
 VERSION := 1.0
@@ -43,7 +42,6 @@ create_control_file: clean create_package_dir
 copy_files: clean create_package_dir
 	cp -rf $(ASSETS_DIR) $(PACKAGE_DIR)/usr/local/share/argentum
 	cp -rf $(IND_DIR) $(PACKAGE_DIR)/usr/local/share/argentum
-	cp -f $(CONFIG_FILE) $(PACKAGE_DIR)/usr/local/share/argentum
 	cp -f $(BIN_FILE) $(PACKAGE_DIR)/usr/local/bin
 
 clean: 

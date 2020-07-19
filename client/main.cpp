@@ -12,8 +12,8 @@ using json = nlohmann::json;
 int main(void) {
     json config;
     std::ifstream config_file(CONFIG_FILE);
-    //Si no se encuentra el archivo de configs en este directorio, se asume 
-    //que el juego esta instalado mediante paquete.
+    // Si no se encuentra el archivo de configs en este directorio, se asume
+    // que el juego esta instalado mediante paquete.
     if (!config_file.is_open()) {
         const char* env_home = std::getenv("HOME");
         std::string config_file_path = env_home;
@@ -37,6 +37,12 @@ int main(void) {
             new_conf_file.close();
             config_file.open(config_file_name);
         }
+        
+    }
+    config = json::parse(config_file);
+
+    struct stat sb;
+    if (!(stat("./assets", &sb) == 0 && S_ISDIR(sb.st_mode))) {
         if (chdir("/usr/local/share/argentum") < 0) {
             std::cerr
                 << "Game files not found. Is the game installed correctly?"
@@ -44,12 +50,11 @@ int main(void) {
             return -1;
         }
     }
-    config = json::parse(config_file);
-
+    
     try {
         GameClient game(config);
         game.run();
-    } catch (std::exception &e) {
+    } catch (std::exception& e) {
         return -1;
     }
     return 0;
