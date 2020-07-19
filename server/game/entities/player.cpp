@@ -47,8 +47,6 @@ void Player::update(uint64_t delta_t) {
     map.move(this->id, steps);
     combat_component->update(delta_t);
     if (teleport_accumulator > 0) {
-        std::cerr << "Player: teleport_accumulator: "
-                  << teleport_accumulator - (int)delta_t << std::endl;
         if (teleport_accumulator - (int)delta_t <= 0) {
             _teleport();
             teleport_accumulator = 0;

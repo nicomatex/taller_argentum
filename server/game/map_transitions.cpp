@@ -4,7 +4,7 @@
 #include <iostream>
 
 MapTransitions::MapTransitions(MapId map_id, nlohmann::json changes, int width,
-                               int height) {
+                               int height) : map_id(map_id) {
     for (auto& it : changes["teleports"].items()) {
         nlohmann::json& teleport = it.value();
         position_t position = teleport["position"];
