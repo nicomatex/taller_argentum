@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="generator" content="Doxygen 1.8.19"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Argentum Online - Servidor: Referencia de la Clase ConfigurationManager</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.png"
+          <img id="MSearchSelect" src="search/mag_sel.svg"
                onmouseover="return searchBox.OnSearchSelectShow()"
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
@@ -44,7 +44,7 @@
                onblur="searchBox.OnSearchFieldFocus(false)" 
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
           </span>
         </div>
 </td>
@@ -53,7 +53,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.17 -->
+<!-- Generado por Doxygen 1.8.19 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
@@ -101,8 +101,8 @@ $(document).ready(function(){initNavTree('classConfigurationManager.html',''); i
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Métodos públicos estáticos</h2></td></tr>
-<tr class="memitem:a015f5c52450f275941bbf5ae01ca531b"><td class="memItemLeft" align="right" valign="top"><a id="a015f5c52450f275941bbf5ae01ca531b"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> (const char *config_file)</td></tr>
+<tr class="memitem:a015f5c52450f275941bbf5ae01ca531b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigurationManager.html#a015f5c52450f275941bbf5ae01ca531b">init</a> (const char *config_file)</td></tr>
+<tr class="memdesc:a015f5c52450f275941bbf5ae01ca531b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lee de config_file e inicializa las constantes utilizadas en las distintas ecuaciones del juego. Lanza <a class="el" href="classMyException.html">MyException</a> en caso de no existir el archivo o error.  <a href="classConfigurationManager.html#a015f5c52450f275941bbf5ae01ca531b">Más...</a><br /></td></tr>
 <tr class="separator:a015f5c52450f275941bbf5ae01ca531b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08427062f5c004cff57c9edb1db184fb"><td class="memItemLeft" align="right" valign="top"><a id="a08427062f5c004cff57c9edb1db184fb"></a>
 static float&#160;</td><td class="memItemRight" valign="bottom"><b>get_nothing_drop_ev_prob</b> ()</td></tr>
@@ -156,9 +156,44 @@ static double&#160;</td><td class="memItemRight" valign="bottom"><b>get_dodge_th
 static unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>get_spawn_interval</b> ()</td></tr>
 <tr class="separator:a66743c02a12a8f1fbec1d915e2470a68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="a015f5c52450f275941bbf5ae01ca531b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a015f5c52450f275941bbf5ae01ca531b">&#9670;&nbsp;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConfigurationManager::init </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config_file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lee de config_file e inicializa las constantes utilizadas en las distintas ecuaciones del juego. Lanza <a class="el" href="classMyException.html">MyException</a> en caso de no existir el archivo o error. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">config_file</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
-<li>/home/tc/Documents/Taller/tp_final/repo/server/game/<a class="el" href="configuration__manager_8h_source.html">configuration_manager.h</a></li>
-<li>/home/tc/Documents/Taller/tp_final/repo/server/game/configuration_manager.cpp</li>
+<li>/home/franco/Documents/Taller de Programacion 1/taller_argentum/server/game/<a class="el" href="configuration__manager_8h_source.html">configuration_manager.h</a></li>
+<li>/home/franco/Documents/Taller de Programacion 1/taller_argentum/server/game/configuration_manager.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -166,9 +201,7 @@ static unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>get_sp
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classConfigurationManager.html">ConfigurationManager</a></li>
-    <li class="footer">Generado por
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+    <li class="footer">Generado por <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.19 </li>
   </ul>
 </div>
 </body>

@@ -57,13 +57,21 @@ class Player : public Entity {
      */
     race_type_t get_race_type() const;
     /**
-     * @brief Tiempo a inmovilizar al personaje en milisegundos
+     * @brief Tiempo a inmovilizar al personaje en milisegundos.
      *
      * @param delta_t
      */
     void immobilize(int delta_t);
-
+    /**
+     * @brief Tiempo a esperar para ser resucitado en milisegundos.
+     * 
+     * @param delta_t 
+     */
     void resuscitate(int delta_t);
+    /**
+     * @brief Regenera al maximo la vida y mana actuales.
+     * 
+     */
     void regen_max();
 
     void teleport(position_t dest, int delta_t);

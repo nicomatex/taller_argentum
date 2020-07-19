@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="generator" content="Doxygen 1.8.19"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Argentum Online - Servidor: Lista de los miembros</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.png"
+          <img id="MSearchSelect" src="search/mag_sel.svg"
                onmouseover="return searchBox.OnSearchSelectShow()"
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
@@ -44,7 +44,7 @@
                onblur="searchBox.OnSearchFieldFocus(false)" 
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
           </span>
         </div>
 </td>
@@ -53,7 +53,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.17 -->
+<!-- Generado por Doxygen 1.8.19 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
@@ -99,24 +99,22 @@ $(document).ready(function(){initNavTree('classBank.html',''); initResizable(); 
 <p>Lista completa de los miembros de <a class="el" href="classBank.html">Bank</a>, incluyendo todos los heredados:</p>
 <table class="directory">
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>account_exists</b>(std::string player_name) (definido en <a class="el" href="classBank.html">Bank</a>)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>add_account</b>(std::string player_name, nlohmann::json vault_info) (definido en <a class="el" href="classBank.html">Bank</a>)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>deposit_gold</b>(uint32_t amount, Player *player) (definido en <a class="el" href="classBank.html">Bank</a>)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>deposit_item</b>(SlotId slot, uint32_t amount, Player *player) (definido en <a class="el" href="classBank.html">Bank</a>)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classBank.html#a23a7b856848a7497a356b2c7c9c05840">add_account</a>(std::string player_name, nlohmann::json vault_info)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classBank.html#a383cb2e31a64b481078d4072e443333b">deposit_gold</a>(uint32_t amount, Player *player)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classBank.html#aec2e6ad7590e57c2038e96f49d51dd63">deposit_item</a>(SlotId slot, uint32_t amount, Player *player)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>get_instance</b>() (definido en <a class="el" href="classBank.html">Bank</a>)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>get_vault_data</b>(std::string player_name) (definido en <a class="el" href="classBank.html">Bank</a>)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>get_vault_persist_data</b>(std::string player_name) (definido en <a class="el" href="classBank.html">Bank</a>)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>remove_account</b>(std::string player_name) (definido en <a class="el" href="classBank.html">Bank</a>)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>withdraw_gold</b>(uint32_t amount, Player *player) (definido en <a class="el" href="classBank.html">Bank</a>)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>withdraw_item</b>(SlotId slot, uint32_t amount, Player *player) (definido en <a class="el" href="classBank.html">Bank</a>)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classBank.html#afedcafa307c00e61cdb04adff3da36ca">get_vault_data</a>(std::string player_name)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classBank.html#a9f19b56406dfadc8a05a5bc27c61f6e9">get_vault_persist_data</a>(std::string player_name)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classBank.html#a5ccc5ed2e0c7f61a563049c1b8a66246">remove_account</a>(std::string player_name)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classBank.html#ae7b8d1abb82f3d0636d1de4923498879">withdraw_gold</a>(uint32_t amount, Player *player)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classBank.html#a32a50e55b4a0256748675261efebfe4f">withdraw_item</a>(SlotId slot, uint32_t amount, Player *player)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~Bank</b>() (definido en <a class="el" href="classBank.html">Bank</a>)</td><td class="entry"><a class="el" href="classBank.html">Bank</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generado por
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+    <li class="footer">Generado por <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.19 </li>
   </ul>
 </div>
 </body>

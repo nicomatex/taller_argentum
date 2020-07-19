@@ -24,6 +24,13 @@ class ConfigurationManager {
    public:
     ConfigurationManager();
     ~ConfigurationManager();
+    /**
+     * @brief Lee de config_file e inicializa las constantes utilizadas en las distintas
+     * ecuaciones del juego.
+     * Lanza MyException en caso de no existir el archivo o error.
+     * 
+     * @param config_file 
+     */
     static void init(const char *config_file);
     /*
         Drops probabilities (events)

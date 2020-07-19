@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="generator" content="Doxygen 1.8.19"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Argentum Online - Servidor: Referencia de la Clase ItemContainer</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.png"
+          <img id="MSearchSelect" src="search/mag_sel.svg"
                onmouseover="return searchBox.OnSearchSelectShow()"
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
@@ -44,7 +44,7 @@
                onblur="searchBox.OnSearchFieldFocus(false)" 
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
           </span>
         </div>
 </td>
@@ -53,7 +53,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.17 -->
+<!-- Generado por Doxygen 1.8.19 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
@@ -110,26 +110,29 @@ Métodos públicos</h2></td></tr>
 <tr class="memitem:a41fd61c7b8370cfaddc4617031d453d8"><td class="memItemLeft" align="right" valign="top"><a id="a41fd61c7b8370cfaddc4617031d453d8"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ItemContainer</b> (unsigned int slots_amount)</td></tr>
 <tr class="separator:a41fd61c7b8370cfaddc4617031d453d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e671872ba332f72a3ba8798eebbb9a1"><td class="memItemLeft" align="right" valign="top"><a id="a5e671872ba332f72a3ba8798eebbb9a1"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ItemContainer</b> (const nlohmann::json &amp;inv_json)</td></tr>
+<tr class="memitem:a5e671872ba332f72a3ba8798eebbb9a1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemContainer.html#a5e671872ba332f72a3ba8798eebbb9a1">ItemContainer</a> (const nlohmann::json &amp;inv_json)</td></tr>
+<tr class="memdesc:a5e671872ba332f72a3ba8798eebbb9a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Se crea un inventario a partir del json.  <a href="classItemContainer.html#a5e671872ba332f72a3ba8798eebbb9a1">Más...</a><br /></td></tr>
 <tr class="separator:a5e671872ba332f72a3ba8798eebbb9a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d82e86b0f6d2084bcaf931a0f8cd5a2"><td class="memItemLeft" align="right" valign="top"><a id="a8d82e86b0f6d2084bcaf931a0f8cd5a2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add</b> (<a class="el" href="classItem.html">Item</a> *item)</td></tr>
+<tr class="memitem:af88f67167a5496cd1e830664ef19b268"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemContainer.html#af88f67167a5496cd1e830664ef19b268">~ItemContainer</a> ()</td></tr>
+<tr class="memdesc:af88f67167a5496cd1e830664ef19b268"><td class="mdescLeft">&#160;</td><td class="mdescRight">Se destruyen los items que quedaron almacenados en el inventario, junto con el oro.  <a href="classItemContainer.html#af88f67167a5496cd1e830664ef19b268">Más...</a><br /></td></tr>
+<tr class="separator:af88f67167a5496cd1e830664ef19b268"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d82e86b0f6d2084bcaf931a0f8cd5a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemContainer.html#a8d82e86b0f6d2084bcaf931a0f8cd5a2">add</a> (<a class="el" href="classItem.html">Item</a> *item)</td></tr>
+<tr class="memdesc:a8d82e86b0f6d2084bcaf931a0f8cd5a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega el item entero (con todo su stack) al inventario. Lo invalida haciendo delete del puntero (en caso de que ya existiese un item de ese tipo en algun slot) Si ya existia ese item en el inventario, se agrega en la posicion existente, en caso contrario, se agrega en el slot de menor orden numerico. Lanza <a class="el" href="classFullItemContainerException.html">FullItemContainerException</a> en caso de que el inventario este lleno.  <a href="classItemContainer.html#a8d82e86b0f6d2084bcaf931a0f8cd5a2">Más...</a><br /></td></tr>
 <tr class="separator:a8d82e86b0f6d2084bcaf931a0f8cd5a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3713a082e7b8bb3a734b51c71b41abb"><td class="memItemLeft" align="right" valign="top"><a id="ad3713a082e7b8bb3a734b51c71b41abb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add</b> (<a class="el" href="classItem.html">Item</a> *item, uint32_t stack)</td></tr>
+<tr class="memitem:ad3713a082e7b8bb3a734b51c71b41abb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemContainer.html#ad3713a082e7b8bb3a734b51c71b41abb">add</a> (<a class="el" href="classItem.html">Item</a> *item, uint32_t stack)</td></tr>
+<tr class="memdesc:ad3713a082e7b8bb3a734b51c71b41abb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega una cierta cantidad (stack) del item, al inventario. Lo invalida haciendo delete del puntero (en caso de que ya existiese un item de ese tipo en algun slot, y stack es &gt;= al stack actual del item a depositar) Si ya existia ese item en el inventario, se agrega en la posicion existente, en caso contrario, se agrega en el slot de menor orden numerico. Reduce el stack actual del item a depositar en "stack" cantidad. Lanza <a class="el" href="classFullItemContainerException.html">FullItemContainerException</a> en caso de que el inventario este lleno.  <a href="classItemContainer.html#ad3713a082e7b8bb3a734b51c71b41abb">Más...</a><br /></td></tr>
 <tr class="separator:ad3713a082e7b8bb3a734b51c71b41abb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36102b9860b0b1a3938c6f62f4733375"><td class="memItemLeft" align="right" valign="top"><a id="a36102b9860b0b1a3938c6f62f4733375"></a>
-<a class="el" href="classItem.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>remove</b> (SlotId slot_id)</td></tr>
+<tr class="memitem:a36102b9860b0b1a3938c6f62f4733375"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classItem.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemContainer.html#a36102b9860b0b1a3938c6f62f4733375">remove</a> (SlotId slot_id)</td></tr>
+<tr class="memdesc:a36102b9860b0b1a3938c6f62f4733375"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remueve en su totalidad el item que se encuentra en el slot_id, devolviendo un puntero a este. Lanza <a class="el" href="classEmptySlotException.html">EmptySlotException</a> en caso de que el slot este vacio.  <a href="classItemContainer.html#a36102b9860b0b1a3938c6f62f4733375">Más...</a><br /></td></tr>
 <tr class="separator:a36102b9860b0b1a3938c6f62f4733375"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add8f35198dd4278d9ba1808c915b9d18"><td class="memItemLeft" align="right" valign="top"><a id="add8f35198dd4278d9ba1808c915b9d18"></a>
-<a class="el" href="classItem.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>remove</b> (SlotId slot_id, uint32_t stack)</td></tr>
+<tr class="memitem:add8f35198dd4278d9ba1808c915b9d18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classItem.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemContainer.html#add8f35198dd4278d9ba1808c915b9d18">remove</a> (SlotId slot_id, uint32_t stack)</td></tr>
+<tr class="memdesc:add8f35198dd4278d9ba1808c915b9d18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remueve "stack" cantidad del actual_stack del item que se encuentra en el slot_id, devolviendo un puntero a este. Lanza <a class="el" href="classEmptySlotException.html">EmptySlotException</a> en caso de que el slot este vacio.  <a href="classItemContainer.html#add8f35198dd4278d9ba1808c915b9d18">Más...</a><br /></td></tr>
 <tr class="separator:add8f35198dd4278d9ba1808c915b9d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45cd67ea4d3a769d88b84bca033a384a"><td class="memItemLeft" align="right" valign="top"><a id="a45cd67ea4d3a769d88b84bca033a384a"></a>
-std::vector&lt; <a class="el" href="classItem.html">Item</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>remove_all</b> ()</td></tr>
+<tr class="memitem:a45cd67ea4d3a769d88b84bca033a384a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classItem.html">Item</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemContainer.html#a45cd67ea4d3a769d88b84bca033a384a">remove_all</a> ()</td></tr>
+<tr class="memdesc:a45cd67ea4d3a769d88b84bca033a384a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remueve todos los items del inventario, devolviendo un vector que los contiene a todos.  <a href="classItemContainer.html#a45cd67ea4d3a769d88b84bca033a384a">Más...</a><br /></td></tr>
 <tr class="separator:a45cd67ea4d3a769d88b84bca033a384a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9d361ed431e5ef639ce9ea766c4ddfe"><td class="memItemLeft" align="right" valign="top"><a id="af9d361ed431e5ef639ce9ea766c4ddfe"></a>
-SlotId&#160;</td><td class="memItemRight" valign="bottom"><b>get_available_slot</b> (ItemId item_id)</td></tr>
+<tr class="memitem:af9d361ed431e5ef639ce9ea766c4ddfe"><td class="memItemLeft" align="right" valign="top">SlotId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemContainer.html#af9d361ed431e5ef639ce9ea766c4ddfe">get_available_slot</a> (ItemId item_id)</td></tr>
+<tr class="memdesc:af9d361ed431e5ef639ce9ea766c4ddfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el SlotId asignado/a asignar al item con item_id. Lanza FullContainerException en caso de que no haya slots disponibles.  <a href="classItemContainer.html#af9d361ed431e5ef639ce9ea766c4ddfe">Más...</a><br /></td></tr>
 <tr class="separator:af9d361ed431e5ef639ce9ea766c4ddfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af70d8ff46924732434ba6690a0fea51d"><td class="memItemLeft" align="right" valign="top"><a id="af70d8ff46924732434ba6690a0fea51d"></a>
 const <a class="el" href="classItem.html">Item</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_item</b> (SlotId slot_id) const</td></tr>
@@ -143,17 +146,17 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>has_item</b> (ItemId 
 <tr class="memitem:ad1e0b330432c9dbdab545fd905b24bdf"><td class="memItemLeft" align="right" valign="top"><a id="ad1e0b330432c9dbdab545fd905b24bdf"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>get_gold_stack</b> () const</td></tr>
 <tr class="separator:ad1e0b330432c9dbdab545fd905b24bdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd4c108cf9b6b169882aa09761402455"><td class="memItemLeft" align="right" valign="top"><a id="abd4c108cf9b6b169882aa09761402455"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add_gold</b> (<a class="el" href="classGold.html">Gold</a> *gold)</td></tr>
+<tr class="memitem:abd4c108cf9b6b169882aa09761402455"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemContainer.html#abd4c108cf9b6b169882aa09761402455">add_gold</a> (<a class="el" href="classGold.html">Gold</a> *gold)</td></tr>
+<tr class="memdesc:abd4c108cf9b6b169882aa09761402455"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega la totalidad del stack del oro al inventario, seteando su stack en 0 (no invalida el puntero)  <a href="classItemContainer.html#abd4c108cf9b6b169882aa09761402455">Más...</a><br /></td></tr>
 <tr class="separator:abd4c108cf9b6b169882aa09761402455"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a395ebbac8f2b24f53ae79ef78a9d6e9a"><td class="memItemLeft" align="right" valign="top"><a id="a395ebbac8f2b24f53ae79ef78a9d6e9a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add_gold</b> (<a class="el" href="classGold.html">Gold</a> *gold, uint32_t stack)</td></tr>
+<tr class="memitem:a395ebbac8f2b24f53ae79ef78a9d6e9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemContainer.html#a395ebbac8f2b24f53ae79ef78a9d6e9a">add_gold</a> (<a class="el" href="classGold.html">Gold</a> *gold, uint32_t stack)</td></tr>
+<tr class="memdesc:a395ebbac8f2b24f53ae79ef78a9d6e9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retira stack cantidad del stack actual del oro pasado por parametro, depositandolo en el inventario (no invalida el puntero). En caso de que stack sea mayor al stack actual del oro pasado por parametro, lo deposita en su totalidad.  <a href="classItemContainer.html#a395ebbac8f2b24f53ae79ef78a9d6e9a">Más...</a><br /></td></tr>
 <tr class="separator:a395ebbac8f2b24f53ae79ef78a9d6e9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaca7c9668233bf875ebdc3412155e33a"><td class="memItemLeft" align="right" valign="top"><a id="aaca7c9668233bf875ebdc3412155e33a"></a>
-<a class="el" href="classGold.html">Gold</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>remove_gold</b> ()</td></tr>
+<tr class="memitem:aaca7c9668233bf875ebdc3412155e33a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGold.html">Gold</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemContainer.html#aaca7c9668233bf875ebdc3412155e33a">remove_gold</a> ()</td></tr>
+<tr class="memdesc:aaca7c9668233bf875ebdc3412155e33a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remueve la totalidad del oro del inventario (setea el stack en 0), devolviendo un nuevo puntero a <a class="el" href="classGold.html">Gold</a> con ese stack.  <a href="classItemContainer.html#aaca7c9668233bf875ebdc3412155e33a">Más...</a><br /></td></tr>
 <tr class="separator:aaca7c9668233bf875ebdc3412155e33a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81e7b38cee5479d2a4d5300216e01138"><td class="memItemLeft" align="right" valign="top"><a id="a81e7b38cee5479d2a4d5300216e01138"></a>
-<a class="el" href="classGold.html">Gold</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>remove_gold</b> (uint32_t stack)</td></tr>
+<tr class="memitem:a81e7b38cee5479d2a4d5300216e01138"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGold.html">Gold</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemContainer.html#a81e7b38cee5479d2a4d5300216e01138">remove_gold</a> (uint32_t stack)</td></tr>
+<tr class="memdesc:a81e7b38cee5479d2a4d5300216e01138"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remueve stack cantidad del oro del inventario (reduce su cantidad en stack), devolviendo un nuevo puntero a <a class="el" href="classGold.html">Gold</a>. Si stack supera la cantidad actual de oro en el inventario, lo remueve en su totalidad.  <a href="classItemContainer.html#a81e7b38cee5479d2a4d5300216e01138">Más...</a><br /></td></tr>
 <tr class="separator:a81e7b38cee5479d2a4d5300216e01138"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae155a5ac90fd872036be0ce4ed8d0469"><td class="memItemLeft" align="right" valign="top"><a id="ae155a5ac90fd872036be0ce4ed8d0469"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_in_range</b> (SlotId slotId) const</td></tr>
@@ -161,16 +164,388 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_in_range</b> (Slot
 <tr class="memitem:a2855755df4036865bc51988ad9553fa1"><td class="memItemLeft" align="right" valign="top"><a id="a2855755df4036865bc51988ad9553fa1"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>has_slots_left</b> () const</td></tr>
 <tr class="separator:a2855755df4036865bc51988ad9553fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97255a865b88cbd282980a80a4b681c8"><td class="memItemLeft" align="right" valign="top"><a id="a97255a865b88cbd282980a80a4b681c8"></a>
-nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_persist_data</b> () const</td></tr>
+<tr class="memitem:a97255a865b88cbd282980a80a4b681c8"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemContainer.html#a97255a865b88cbd282980a80a4b681c8">get_persist_data</a> () const</td></tr>
+<tr class="memdesc:a97255a865b88cbd282980a80a4b681c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Informacion para persistir el inventario en el personaje.  <a href="classItemContainer.html#a97255a865b88cbd282980a80a4b681c8">Más...</a><br /></td></tr>
 <tr class="separator:a97255a865b88cbd282980a80a4b681c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b31165f1f8f57f6dca0a034f8fbb24d"><td class="memItemLeft" align="right" valign="top"><a id="a7b31165f1f8f57f6dca0a034f8fbb24d"></a>
-nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_data</b> () const</td></tr>
+<tr class="memitem:a7b31165f1f8f57f6dca0a034f8fbb24d"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemContainer.html#a7b31165f1f8f57f6dca0a034f8fbb24d">get_data</a> () const</td></tr>
+<tr class="memdesc:a7b31165f1f8f57f6dca0a034f8fbb24d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Informacion a enviar al cliente.  <a href="classItemContainer.html#a7b31165f1f8f57f6dca0a034f8fbb24d">Más...</a><br /></td></tr>
 <tr class="separator:a7b31165f1f8f57f6dca0a034f8fbb24d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Documentación del constructor y destructor</h2>
+<a id="a5e671872ba332f72a3ba8798eebbb9a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e671872ba332f72a3ba8798eebbb9a1">&#9670;&nbsp;</a></span>ItemContainer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ItemContainer::ItemContainer </td>
+          <td>(</td>
+          <td class="paramtype">const nlohmann::json &amp;&#160;</td>
+          <td class="paramname"><em>inv_json</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Se crea un inventario a partir del json. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inv_json</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af88f67167a5496cd1e830664ef19b268"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af88f67167a5496cd1e830664ef19b268">&#9670;&nbsp;</a></span>~ItemContainer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ItemContainer::~ItemContainer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Se destruyen los items que quedaron almacenados en el inventario, junto con el oro. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="a8d82e86b0f6d2084bcaf931a0f8cd5a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d82e86b0f6d2084bcaf931a0f8cd5a2">&#9670;&nbsp;</a></span>add() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ItemContainer::add </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classItem.html">Item</a> *&#160;</td>
+          <td class="paramname"><em>item</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega el item entero (con todo su stack) al inventario. Lo invalida haciendo delete del puntero (en caso de que ya existiese un item de ese tipo en algun slot) Si ya existia ese item en el inventario, se agrega en la posicion existente, en caso contrario, se agrega en el slot de menor orden numerico. Lanza <a class="el" href="classFullItemContainerException.html">FullItemContainerException</a> en caso de que el inventario este lleno. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad3713a082e7b8bb3a734b51c71b41abb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3713a082e7b8bb3a734b51c71b41abb">&#9670;&nbsp;</a></span>add() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ItemContainer::add </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classItem.html">Item</a> *&#160;</td>
+          <td class="paramname"><em>item</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>stack</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega una cierta cantidad (stack) del item, al inventario. Lo invalida haciendo delete del puntero (en caso de que ya existiese un item de ese tipo en algun slot, y stack es &gt;= al stack actual del item a depositar) Si ya existia ese item en el inventario, se agrega en la posicion existente, en caso contrario, se agrega en el slot de menor orden numerico. Reduce el stack actual del item a depositar en "stack" cantidad. Lanza <a class="el" href="classFullItemContainerException.html">FullItemContainerException</a> en caso de que el inventario este lleno. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td></td></tr>
+    <tr><td class="paramname">stack</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abd4c108cf9b6b169882aa09761402455"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd4c108cf9b6b169882aa09761402455">&#9670;&nbsp;</a></span>add_gold() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ItemContainer::add_gold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classGold.html">Gold</a> *&#160;</td>
+          <td class="paramname"><em>gold</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega la totalidad del stack del oro al inventario, seteando su stack en 0 (no invalida el puntero) </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gold</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a395ebbac8f2b24f53ae79ef78a9d6e9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a395ebbac8f2b24f53ae79ef78a9d6e9a">&#9670;&nbsp;</a></span>add_gold() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ItemContainer::add_gold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classGold.html">Gold</a> *&#160;</td>
+          <td class="paramname"><em>gold</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>stack</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retira stack cantidad del stack actual del oro pasado por parametro, depositandolo en el inventario (no invalida el puntero). En caso de que stack sea mayor al stack actual del oro pasado por parametro, lo deposita en su totalidad. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gold</td><td></td></tr>
+    <tr><td class="paramname">stack</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af9d361ed431e5ef639ce9ea766c4ddfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9d361ed431e5ef639ce9ea766c4ddfe">&#9670;&nbsp;</a></span>get_available_slot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SlotId ItemContainer::get_available_slot </td>
+          <td>(</td>
+          <td class="paramtype">ItemId&#160;</td>
+          <td class="paramname"><em>item_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve el SlotId asignado/a asignar al item con item_id. Lanza FullContainerException en caso de que no haya slots disponibles. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item_id</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>SlotId </dd></dl>
+
+</div>
+</div>
+<a id="a7b31165f1f8f57f6dca0a034f8fbb24d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b31165f1f8f57f6dca0a034f8fbb24d">&#9670;&nbsp;</a></span>get_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">nlohmann::json ItemContainer::get_data </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Informacion a enviar al cliente. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>nlohmann::json </dd></dl>
+
+</div>
+</div>
+<a id="a97255a865b88cbd282980a80a4b681c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97255a865b88cbd282980a80a4b681c8">&#9670;&nbsp;</a></span>get_persist_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">nlohmann::json ItemContainer::get_persist_data </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Informacion para persistir el inventario en el personaje. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>nlohmann::json </dd></dl>
+
+</div>
+</div>
+<a id="a36102b9860b0b1a3938c6f62f4733375"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36102b9860b0b1a3938c6f62f4733375">&#9670;&nbsp;</a></span>remove() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classItem.html">Item</a> * ItemContainer::remove </td>
+          <td>(</td>
+          <td class="paramtype">SlotId&#160;</td>
+          <td class="paramname"><em>slot_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remueve en su totalidad el item que se encuentra en el slot_id, devolviendo un puntero a este. Lanza <a class="el" href="classEmptySlotException.html">EmptySlotException</a> en caso de que el slot este vacio. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slot_id</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Item* </dd></dl>
+
+</div>
+</div>
+<a id="add8f35198dd4278d9ba1808c915b9d18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add8f35198dd4278d9ba1808c915b9d18">&#9670;&nbsp;</a></span>remove() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classItem.html">Item</a> * ItemContainer::remove </td>
+          <td>(</td>
+          <td class="paramtype">SlotId&#160;</td>
+          <td class="paramname"><em>slot_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>stack</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remueve "stack" cantidad del actual_stack del item que se encuentra en el slot_id, devolviendo un puntero a este. Lanza <a class="el" href="classEmptySlotException.html">EmptySlotException</a> en caso de que el slot este vacio. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slot_id</td><td></td></tr>
+    <tr><td class="paramname">stack</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Item* </dd></dl>
+
+</div>
+</div>
+<a id="a45cd67ea4d3a769d88b84bca033a384a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45cd67ea4d3a769d88b84bca033a384a">&#9670;&nbsp;</a></span>remove_all()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="classItem.html">Item</a> * &gt; ItemContainer::remove_all </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remueve todos los items del inventario, devolviendo un vector que los contiene a todos. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>std::vector&lt;Item*&gt; </dd></dl>
+
+</div>
+</div>
+<a id="aaca7c9668233bf875ebdc3412155e33a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaca7c9668233bf875ebdc3412155e33a">&#9670;&nbsp;</a></span>remove_gold() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classGold.html">Gold</a> * ItemContainer::remove_gold </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remueve la totalidad del oro del inventario (setea el stack en 0), devolviendo un nuevo puntero a <a class="el" href="classGold.html">Gold</a> con ese stack. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Gold* </dd></dl>
+
+</div>
+</div>
+<a id="a81e7b38cee5479d2a4d5300216e01138"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81e7b38cee5479d2a4d5300216e01138">&#9670;&nbsp;</a></span>remove_gold() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classGold.html">Gold</a> * ItemContainer::remove_gold </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>stack</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remueve stack cantidad del oro del inventario (reduce su cantidad en stack), devolviendo un nuevo puntero a <a class="el" href="classGold.html">Gold</a>. Si stack supera la cantidad actual de oro en el inventario, lo remueve en su totalidad. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stack</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Gold* </dd></dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
-<li>/home/tc/Documents/Taller/tp_final/repo/server/game/items/<a class="el" href="item__container_8h_source.html">item_container.h</a></li>
-<li>/home/tc/Documents/Taller/tp_final/repo/server/game/items/item_container.cpp</li>
+<li>/home/franco/Documents/Taller de Programacion 1/taller_argentum/server/game/items/<a class="el" href="item__container_8h_source.html">item_container.h</a></li>
+<li>/home/franco/Documents/Taller de Programacion 1/taller_argentum/server/game/items/item_container.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -178,9 +553,7 @@ nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_data</b
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classItemContainer.html">ItemContainer</a></li>
-    <li class="footer">Generado por
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+    <li class="footer">Generado por <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.19 </li>
   </ul>
 </div>
 </body>

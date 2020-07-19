@@ -49,6 +49,14 @@ class CharacterManager {
     std::map<std::string, CharId> char_map;
 
    public:
+   /**
+    * @brief Se carga el diccionario de personajes, y se tienen temporalmente hardcodeados
+    * la creación de algunos (a modo de testing para probar las distintas funcionalidades
+    * del juego)
+    * 
+    * @param f_char 
+    * @param f_map 
+    */
     CharacterManager(const char *f_char, const char *f_map);
     /**
      * @brief Devuelve true si existe el character, false si no.

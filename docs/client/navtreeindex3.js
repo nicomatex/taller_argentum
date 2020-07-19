@@ -1,5 +1,9 @@
 var NAVTREEINDEX3 =
 {
+"structpart__visual__info.html#a8136861676a7ca249e3006652b311f3c":[1,0,50,2],
+"structpart__visual__info.html#ae96235b762ed95ca39cda6553607da01":[1,0,50,3],
+"structpart__visual__info.html#afc3a221df44d1d70aa5c10edccb8b2d2":[1,0,50,0],
+"structposition.html":[1,0,52],
 "structposition.html#aad0117268685890818989a6c0112ab8a":[1,0,52,0],
 "structposition.html#ab7163210f8aa5e8dc68ef434a315792c":[1,0,52,1],
 "text__box_8h_source.html":[2,0,0,0,3,3],

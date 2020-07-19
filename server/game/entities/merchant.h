@@ -41,7 +41,7 @@ class Merchant : public Npc {
      */
     void buy(SlotId slot, uint32_t stack, Player* player);
     /**
-     * @brief Devuelve que representa la lista de los items que tiene el
+     * @brief Devuelve un string que representa la lista de los items que tiene el
      * comerciante para vender, detallando precio y stock.
      *
      * @return const std::string

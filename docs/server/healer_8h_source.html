@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="generator" content="Doxygen 1.8.19"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Argentum Online - Servidor: Fichero Fuente /home/tc/Documents/Taller/tp_final/repo/server/game/entities/healer.h</title>
+<title>Argentum Online - Servidor: Fichero Fuente /home/franco/Documents/Taller de Programacion 1/taller_argentum/server/game/entities/healer.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -35,7 +35,7 @@
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.png"
+          <img id="MSearchSelect" src="search/mag_sel.svg"
                onmouseover="return searchBox.OnSearchSelectShow()"
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
@@ -44,7 +44,7 @@
                onblur="searchBox.OnSearchFieldFocus(false)" 
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
           </span>
         </div>
 </td>
@@ -53,7 +53,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.17 -->
+<!-- Generado por Doxygen 1.8.19 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
@@ -105,14 +105,16 @@ $(document).ready(function(){initNavTree('healer_8h_source.html',''); initResiza
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;   <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="classHealer.html">Healer</a>(EntityId entity_id, nlohmann::json npc_info, <a class="code" href="classMap.html">Map</a>&amp; map);</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    ~<a class="code" href="classHealer.html">Healer</a>();</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">void</span> heal(<a class="code" href="classPlayer.html">Player</a>* player);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">void</span> resuscitate(<a class="code" href="classPlayer.html">Player</a>* player);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;};</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#endif // HEALER_H</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classHealer.html#a92a3629ef0debec32b4e12c76c98b3c8">heal</a>(<a class="code" href="classPlayer.html">Player</a>* player);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classHealer.html#ab2cae53b424257f5b42c8b5cab7a50a2">resuscitate</a>(<a class="code" href="classPlayer.html">Player</a>* player);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif // HEALER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassHealer_html"><div class="ttname"><a href="classHealer.html">Healer</a></div><div class="ttdef"><b>Definition:</b> healer.h:7</div></div>
+<div class="ttc" id="aclassHealer_html_ab2cae53b424257f5b42c8b5cab7a50a2"><div class="ttname"><a href="classHealer.html#ab2cae53b424257f5b42c8b5cab7a50a2">Healer::resuscitate</a></div><div class="ttdeci">void resuscitate(Player *player)</div><div class="ttdoc">Resucita al jugador luego de un breve tiempo, restableciendo la mana y vida de este,...</div><div class="ttdef"><b>Definition:</b> healer.cpp:16</div></div>
+<div class="ttc" id="aclassHealer_html_a92a3629ef0debec32b4e12c76c98b3c8"><div class="ttname"><a href="classHealer.html#a92a3629ef0debec32b4e12c76c98b3c8">Healer::heal</a></div><div class="ttdeci">void heal(Player *player)</div><div class="ttdoc">Restablece la vida del jugador al maximo. En caso de que el jugador este muerto, no hace nada.</div><div class="ttdef"><b>Definition:</b> healer.cpp:10</div></div>
 <div class="ttc" id="aclassNpc_html"><div class="ttname"><a href="classNpc.html">Npc</a></div><div class="ttdef"><b>Definition:</b> npc.h:10</div></div>
 <div class="ttc" id="aplayer_8h_html"><div class="ttname"><a href="player_8h.html">player.h</a></div></div>
 <div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdef"><b>Definition:</b> map.h:47</div></div>
@@ -121,9 +123,7 @@ $(document).ready(function(){initNavTree('healer_8h_source.html',''); initResiza
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a class="el" href="dir_afb3612a37971015fc09a9ec8e55baac.html">game</a></li><li class="navelem"><a class="el" href="dir_a32322efb43ee2d4c1f8285ba950bcaf.html">entities</a></li><li class="navelem"><b>healer.h</b></li>
-    <li class="footer">Generado por
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+    <li class="footer">Generado por <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.19 </li>
   </ul>
 </div>
 </body>

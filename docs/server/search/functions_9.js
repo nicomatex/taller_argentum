@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['list_5fsale_410',['list_sale',['../classMerchant.html#ad88f78e25cff3af6bda649afe63e4966',1,'Merchant']]]
+  ['join_449',['join',['../classThDispatcher.html#a8002a0ab71dbc93c3e44cd5e2c953992',1,'ThDispatcher::join()'],['../classThread.html#a4d9d788e98388a3217831a9046709deb',1,'Thread::join()']]]
 ];

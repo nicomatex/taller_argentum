@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['wait_5ffor_5fgame_5fstate_529',['wait_for_game_state',['../classGameStateMonitor.html#ae51f3f03408b98cf9983916f3067c2ad',1,'GameStateMonitor']]],
-  ['wait_5ffor_5fnext_5fgame_5fstate_530',['wait_for_next_game_state',['../classGameStateMonitor.html#a0a29daf4f96503dd0a9911a2ee927d45',1,'GameStateMonitor']]]
+  ['visualcharactercomponent_537',['VisualCharacterComponent',['../classVisualCharacterComponent.html#a0b7e2616c9b2d3f59027861930c5d279',1,'VisualCharacterComponent']]],
+  ['visualnpccomponent_538',['VisualNPCComponent',['../classVisualNPCComponent.html#ad7017a3159122f29f3c1b9b17707c255',1,'VisualNPCComponent']]]
 ];

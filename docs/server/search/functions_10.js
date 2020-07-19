@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['unequip_438',['unequip',['../classPlayer.html#ab40eba0cc8dc9a7d7737da4dfb676ec5',1,'Player']]],
-  ['update_439',['update',['../classPlayer.html#a10444e61cfd4f37243c10ec9a3a6781e',1,'Player::update()'],['../classMap.html#aa7e60594c7a98016f7a30400fcdbf49e',1,'Map::update()'],['../classMonsterSpawner.html#aca748861a030829f734fa6d077bc51a7',1,'MonsterSpawner::update()']]],
-  ['use_440',['use',['../classPlayer.html#a3cd10ee96674c54f60e3f70a344f5e8b',1,'Player']]],
-  ['use_5fability_441',['use_ability',['../classPlayer.html#adc6e9d131d7110e865b6ad8f44700cfc',1,'Player::use_ability()'],['../classWeapon.html#a20a4bc88055eb11653168c4933f2a1ac',1,'Weapon::use_ability()']]],
-  ['usleep_442',['usleep',['../classThread.html#a56db7b092884b5d1e7740bd9db340107',1,'Thread']]]
+  ['teleport_483',['teleport',['../classMap.html#ac2816643aa678d3a4ca0305f98b683a0',1,'Map::teleport()'],['../classMapTransitions.html#ad36a9f7d62fb2406e0a3b68372429398',1,'MapTransitions::teleport()']]],
+  ['thread_484',['Thread',['../classThread.html#a95c703fb8f2f27cb64f475a8c940864a',1,'Thread::Thread()'],['../classThread.html#a3b3684ab3a193d3efe7457b316857ce0',1,'Thread::Thread(Thread &amp;&amp;other)']]]
 ];

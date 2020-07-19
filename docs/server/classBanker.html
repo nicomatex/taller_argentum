@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="generator" content="Doxygen 1.8.19"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Argentum Online - Servidor: Referencia de la Clase Banker</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.png"
+          <img id="MSearchSelect" src="search/mag_sel.svg"
                onmouseover="return searchBox.OnSearchSelectShow()"
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
@@ -44,7 +44,7 @@
                onblur="searchBox.OnSearchFieldFocus(false)" 
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
           </span>
         </div>
 </td>
@@ -53,7 +53,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.17 -->
+<!-- Generado por Doxygen 1.8.19 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
@@ -114,8 +114,8 @@ Métodos públicos</h2></td></tr>
 <tr class="memitem:a5313e73482c10552b38587a5691a1ccb"><td class="memItemLeft" align="right" valign="top"><a id="a5313e73482c10552b38587a5691a1ccb"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Banker</b> (EntityId entity_id, nlohmann::json npc_info, <a class="el" href="classMap.html">Map</a> &amp;map)</td></tr>
 <tr class="separator:a5313e73482c10552b38587a5691a1ccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9668536f86679bff5b185b5f121309b"><td class="memItemLeft" align="right" valign="top"><a id="aa9668536f86679bff5b185b5f121309b"></a>
-const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>list_vault</b> (std::string player_name) const</td></tr>
+<tr class="memitem:aa9668536f86679bff5b185b5f121309b"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBanker.html#aa9668536f86679bff5b185b5f121309b">list_vault</a> (std::string player_name) const</td></tr>
+<tr class="memdesc:aa9668536f86679bff5b185b5f121309b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista la boveda asociada al jugador.  <a href="classBanker.html#aa9668536f86679bff5b185b5f121309b">Más...</a><br /></td></tr>
 <tr class="separator:aa9668536f86679bff5b185b5f121309b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f520fdf5c408ab52fa7948d39784788"><td class="memItemLeft" align="right" valign="top"><a id="a1f520fdf5c408ab52fa7948d39784788"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>deposit_gold</b> (uint32_t amount, <a class="el" href="classPlayer.html">Player</a> *player)</td></tr>
@@ -220,9 +220,37 @@ const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b>
 <a class="el" href="classExperienceComponent.html">ExperienceComponent</a>&#160;</td><td class="memItemRight" valign="bottom"><b>experience_component</b></td></tr>
 <tr class="separator:a39a94207146592dcafa6e199f3288c69 inherit pro_attribs_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="aa9668536f86679bff5b185b5f121309b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9668536f86679bff5b185b5f121309b">&#9670;&nbsp;</a></span>list_vault()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string Banker::list_vault </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>player_name</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lista la boveda asociada al jugador. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_name</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>const std::string </dd></dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
-<li>/home/tc/Documents/Taller/tp_final/repo/server/game/entities/<a class="el" href="banker_8h_source.html">banker.h</a></li>
-<li>/home/tc/Documents/Taller/tp_final/repo/server/game/entities/banker.cpp</li>
+<li>/home/franco/Documents/Taller de Programacion 1/taller_argentum/server/game/entities/<a class="el" href="banker_8h_source.html">banker.h</a></li>
+<li>/home/franco/Documents/Taller de Programacion 1/taller_argentum/server/game/entities/banker.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -230,9 +258,7 @@ const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classBanker.html">Banker</a></li>
-    <li class="footer">Generado por
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+    <li class="footer">Generado por <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.19 </li>
   </ul>
 </div>
 </body>

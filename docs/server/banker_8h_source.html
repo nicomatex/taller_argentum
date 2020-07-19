@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="generator" content="Doxygen 1.8.19"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Argentum Online - Servidor: Fichero Fuente /home/tc/Documents/Taller/tp_final/repo/server/game/entities/banker.h</title>
+<title>Argentum Online - Servidor: Fichero Fuente /home/franco/Documents/Taller de Programacion 1/taller_argentum/server/game/entities/banker.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -35,7 +35,7 @@
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.png"
+          <img id="MSearchSelect" src="search/mag_sel.svg"
                onmouseover="return searchBox.OnSearchSelectShow()"
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
@@ -44,7 +44,7 @@
                onblur="searchBox.OnSearchFieldFocus(false)" 
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
           </span>
         </div>
 </td>
@@ -53,7 +53,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.17 -->
+<!-- Generado por Doxygen 1.8.19 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
@@ -105,17 +105,18 @@ $(document).ready(function(){initNavTree('banker_8h_source.html',''); initResiza
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;   <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="classBanker.html">Banker</a>(EntityId entity_id, nlohmann::json npc_info, <a class="code" href="classMap.html">Map</a>&amp; map);</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    ~<a class="code" href="classBanker.html">Banker</a>();</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">const</span> std::string list_vault(std::string player_name) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">void</span> deposit_gold(uint32_t amount, <a class="code" href="classPlayer.html">Player</a> *player);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">void</span> withdraw_gold(uint32_t amount, <a class="code" href="classPlayer.html">Player</a> *player);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">void</span> deposit_item(SlotId slot, uint32_t amount, <a class="code" href="classPlayer.html">Player</a> *player);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">void</span> withdraw_item(SlotId slot, uint32_t amount, <a class="code" href="classPlayer.html">Player</a> *player);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif // BANKER_H</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">const</span> std::string <a class="code" href="classBanker.html#aa9668536f86679bff5b185b5f121309b">list_vault</a>(std::string player_name) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> deposit_gold(uint32_t amount, <a class="code" href="classPlayer.html">Player</a> *player);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> withdraw_gold(uint32_t amount, <a class="code" href="classPlayer.html">Player</a> *player);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> deposit_item(SlotId slot, uint32_t amount, <a class="code" href="classPlayer.html">Player</a> *player);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> withdraw_item(SlotId slot, uint32_t amount, <a class="code" href="classPlayer.html">Player</a> *player);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif // BANKER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassBanker_html"><div class="ttname"><a href="classBanker.html">Banker</a></div><div class="ttdef"><b>Definition:</b> banker.h:7</div></div>
+<div class="ttc" id="aclassBanker_html_aa9668536f86679bff5b185b5f121309b"><div class="ttname"><a href="classBanker.html#aa9668536f86679bff5b185b5f121309b">Banker::list_vault</a></div><div class="ttdeci">const std::string list_vault(std::string player_name) const</div><div class="ttdoc">Lista la boveda asociada al jugador.</div><div class="ttdef"><b>Definition:</b> banker.cpp:12</div></div>
 <div class="ttc" id="aclassNpc_html"><div class="ttname"><a href="classNpc.html">Npc</a></div><div class="ttdef"><b>Definition:</b> npc.h:10</div></div>
 <div class="ttc" id="aplayer_8h_html"><div class="ttname"><a href="player_8h.html">player.h</a></div></div>
 <div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdef"><b>Definition:</b> map.h:47</div></div>
@@ -124,9 +125,7 @@ $(document).ready(function(){initNavTree('banker_8h_source.html',''); initResiza
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a class="el" href="dir_afb3612a37971015fc09a9ec8e55baac.html">game</a></li><li class="navelem"><a class="el" href="dir_a32322efb43ee2d4c1f8285ba950bcaf.html">entities</a></li><li class="navelem"><b>banker.h</b></li>
-    <li class="footer">Generado por
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+    <li class="footer">Generado por <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.19 </li>
   </ul>
 </div>
 </body>

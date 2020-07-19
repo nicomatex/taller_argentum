@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="generator" content="Doxygen 1.8.19"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Argentum Online - Servidor: Fichero Fuente /home/tc/Documents/Taller/tp_final/repo/server/game/attribute_manager.h</title>
+<title>Argentum Online - Servidor: Fichero Fuente /home/franco/Documents/Taller de Programacion 1/taller_argentum/server/game/attribute_manager.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -35,7 +35,7 @@
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.png"
+          <img id="MSearchSelect" src="search/mag_sel.svg"
                onmouseover="return searchBox.OnSearchSelectShow()"
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
@@ -44,7 +44,7 @@
                onblur="searchBox.OnSearchFieldFocus(false)" 
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
           </span>
         </div>
 </td>
@@ -53,7 +53,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.17 -->
+<!-- Generado por Doxygen 1.8.19 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
@@ -139,36 +139,35 @@ $(document).ready(function(){initNavTree('attribute__manager_8h_source.html','')
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;   <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="classAttributeManager.html">AttributeManager</a>();</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    ~<a class="code" href="classAttributeManager.html">AttributeManager</a>();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> init(<span class="keyword">const</span> <span class="keywordtype">char</span> *stats_file, <span class="keyword">const</span> <span class="keywordtype">char</span> *races_file,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                     <span class="keyword">const</span> <span class="keywordtype">char</span> *classes_file);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">// Player race methods</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">static</span> <a class="code" href="structstats.html">stats_t</a> create_stats(race_type_t race_type);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">static</span> std::string get_race_name(race_type_t race_type);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">float</span> get_race_hp_multiplier(race_type_t race_type);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">float</span> get_race_mp_multiplier(race_type_t race_type);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">float</span> get_regen_multiplier(race_type_t race_type);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// Player class methods</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">static</span> std::string get_class_name(class_type_t class_type);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">float</span> get_class_hp_multiplier(class_type_t class_type);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">float</span> get_class_mp_multiplier(class_type_t class_type);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">float</span> get_meditate_multiplier(class_type_t class_type);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif  // ATTRIBUTE_MANAGER_H</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classAttributeManager.html#af1e81c4cf1b65ad8795b586d22a48e38">init</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *stats_file, <span class="keyword">const</span> <span class="keywordtype">char</span> *races_file,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                     <span class="keyword">const</span> <span class="keywordtype">char</span> *classes_file);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// Player race methods</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment"></span>    <span class="keyword">static</span> <a class="code" href="structstats.html">stats_t</a> <a class="code" href="classAttributeManager.html#a607d3c9943eabff0ede510cfa1373f59">create_stats</a>(race_type_t race_type);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">static</span> std::string get_race_name(race_type_t race_type);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">float</span> get_race_hp_multiplier(race_type_t race_type);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">float</span> get_race_mp_multiplier(race_type_t race_type);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">float</span> get_regen_multiplier(race_type_t race_type);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">// Player class methods</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">static</span> std::string get_class_name(class_type_t class_type);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">float</span> get_class_hp_multiplier(class_type_t class_type);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">float</span> get_class_mp_multiplier(class_type_t class_type);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">float</span> get_meditate_multiplier(class_type_t class_type);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif  // ATTRIBUTE_MANAGER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclassAttributeManager_html_af1e81c4cf1b65ad8795b586d22a48e38"><div class="ttname"><a href="classAttributeManager.html#af1e81c4cf1b65ad8795b586d22a48e38">AttributeManager::init</a></div><div class="ttdeci">static void init(const char *stats_file, const char *races_file, const char *classes_file)</div><div class="ttdoc">Se realiza la inicializacion de los diccionarios asociados a los modificadores de stats y multiplicad...</div><div class="ttdef"><b>Definition:</b> attribute_manager.cpp:23</div></div>
+<div class="ttc" id="aclassAttributeManager_html_a607d3c9943eabff0ede510cfa1373f59"><div class="ttname"><a href="classAttributeManager.html#a607d3c9943eabff0ede510cfa1373f59">AttributeManager::create_stats</a></div><div class="ttdeci">static stats_t create_stats(race_type_t race_type)</div><div class="ttdoc">Crea un stats_t decorado con la raza especificada.</div><div class="ttdef"><b>Definition:</b> attribute_manager.cpp:61</div></div>
 <div class="ttc" id="astructstats_html"><div class="ttname"><a href="structstats.html">stats</a></div><div class="ttdef"><b>Definition:</b> attribute_manager.h:9</div></div>
 <div class="ttc" id="aclassAttributeManager_html"><div class="ttname"><a href="classAttributeManager.html">AttributeManager</a></div><div class="ttdef"><b>Definition:</b> attribute_manager.h:30</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a class="el" href="dir_afb3612a37971015fc09a9ec8e55baac.html">game</a></li><li class="navelem"><b>attribute_manager.h</b></li>
-    <li class="footer">Generado por
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+    <li class="footer">Generado por <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.19 </li>
   </ul>
 </div>
 </body>

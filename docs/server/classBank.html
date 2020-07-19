@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="generator" content="Doxygen 1.8.19"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Argentum Online - Servidor: Referencia de la Clase Bank</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.png"
+          <img id="MSearchSelect" src="search/mag_sel.svg"
                onmouseover="return searchBox.OnSearchSelectShow()"
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
@@ -44,7 +44,7 @@
                onblur="searchBox.OnSearchFieldFocus(false)" 
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
           </span>
         </div>
 </td>
@@ -53,7 +53,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.17 -->
+<!-- Generado por Doxygen 1.8.19 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
@@ -102,32 +102,32 @@ $(document).ready(function(){initNavTree('classBank.html',''); initResizable(); 
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a9f19b56406dfadc8a05a5bc27c61f6e9"><td class="memItemLeft" align="right" valign="top"><a id="a9f19b56406dfadc8a05a5bc27c61f6e9"></a>
-nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_vault_persist_data</b> (std::string player_name)</td></tr>
+<tr class="memitem:a9f19b56406dfadc8a05a5bc27c61f6e9"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBank.html#a9f19b56406dfadc8a05a5bc27c61f6e9">get_vault_persist_data</a> (std::string player_name)</td></tr>
+<tr class="memdesc:a9f19b56406dfadc8a05a5bc27c61f6e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve un json que representa el vault, para luego convertirlo a inventory_t (de forma automatica) al momento de persistir el personaje. Lanza <a class="el" href="classMyException.html">MyException</a> en caso de no existir una cuenta asociada al player.  <a href="classBank.html#a9f19b56406dfadc8a05a5bc27c61f6e9">Más...</a><br /></td></tr>
 <tr class="separator:a9f19b56406dfadc8a05a5bc27c61f6e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afedcafa307c00e61cdb04adff3da36ca"><td class="memItemLeft" align="right" valign="top"><a id="afedcafa307c00e61cdb04adff3da36ca"></a>
-nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>get_vault_data</b> (std::string player_name)</td></tr>
+<tr class="memitem:afedcafa307c00e61cdb04adff3da36ca"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBank.html#afedcafa307c00e61cdb04adff3da36ca">get_vault_data</a> (std::string player_name)</td></tr>
+<tr class="memdesc:afedcafa307c00e61cdb04adff3da36ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve un json que representa el contenido actual del vault asociado al player. Lanza <a class="el" href="classMyException.html">MyException</a> en caso de no existir una cuenta asociada al player.  <a href="classBank.html#afedcafa307c00e61cdb04adff3da36ca">Más...</a><br /></td></tr>
 <tr class="separator:afedcafa307c00e61cdb04adff3da36ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23a7b856848a7497a356b2c7c9c05840"><td class="memItemLeft" align="right" valign="top"><a id="a23a7b856848a7497a356b2c7c9c05840"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add_account</b> (std::string player_name, nlohmann::json vault_info)</td></tr>
+<tr class="memitem:a23a7b856848a7497a356b2c7c9c05840"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBank.html#a23a7b856848a7497a356b2c7c9c05840">add_account</a> (std::string player_name, nlohmann::json vault_info)</td></tr>
+<tr class="memdesc:a23a7b856848a7497a356b2c7c9c05840"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega una entrada en el diccionario de cuentas asociada a player_name, creando un vault a partir de vault_info Lanza <a class="el" href="classMyException.html">MyException</a> en caso de no existir una cuenta asociada al player.  <a href="classBank.html#a23a7b856848a7497a356b2c7c9c05840">Más...</a><br /></td></tr>
 <tr class="separator:a23a7b856848a7497a356b2c7c9c05840"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ccc5ed2e0c7f61a563049c1b8a66246"><td class="memItemLeft" align="right" valign="top"><a id="a5ccc5ed2e0c7f61a563049c1b8a66246"></a>
-nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>remove_account</b> (std::string player_name)</td></tr>
+<tr class="memitem:a5ccc5ed2e0c7f61a563049c1b8a66246"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBank.html#a5ccc5ed2e0c7f61a563049c1b8a66246">remove_account</a> (std::string player_name)</td></tr>
+<tr class="memdesc:a5ccc5ed2e0c7f61a563049c1b8a66246"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remueve del diccionario a player_name, devolviendo un json que representa la informacion a persistir de la boveda del personaje. Lanza <a class="el" href="classMyException.html">MyException</a> en caso de que ya exista una cuenta asociada al player.  <a href="classBank.html#a5ccc5ed2e0c7f61a563049c1b8a66246">Más...</a><br /></td></tr>
 <tr class="separator:a5ccc5ed2e0c7f61a563049c1b8a66246"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96de99e87b0f75e2ea9a25faa77fec46"><td class="memItemLeft" align="right" valign="top"><a id="a96de99e87b0f75e2ea9a25faa77fec46"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>account_exists</b> (std::string player_name)</td></tr>
 <tr class="separator:a96de99e87b0f75e2ea9a25faa77fec46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a383cb2e31a64b481078d4072e443333b"><td class="memItemLeft" align="right" valign="top"><a id="a383cb2e31a64b481078d4072e443333b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deposit_gold</b> (uint32_t amount, <a class="el" href="classPlayer.html">Player</a> *player)</td></tr>
+<tr class="memitem:a383cb2e31a64b481078d4072e443333b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBank.html#a383cb2e31a64b481078d4072e443333b">deposit_gold</a> (uint32_t amount, <a class="el" href="classPlayer.html">Player</a> *player)</td></tr>
+<tr class="memdesc:a383cb2e31a64b481078d4072e443333b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extrae de la billetera del jugador amount cantidad de oro, y la deposita en su boveda. En caso de superar la cantidad actual que posee en la billetera, se deposita la totalidad de la misma.  <a href="classBank.html#a383cb2e31a64b481078d4072e443333b">Más...</a><br /></td></tr>
 <tr class="separator:a383cb2e31a64b481078d4072e443333b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7b8d1abb82f3d0636d1de4923498879"><td class="memItemLeft" align="right" valign="top"><a id="ae7b8d1abb82f3d0636d1de4923498879"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>withdraw_gold</b> (uint32_t amount, <a class="el" href="classPlayer.html">Player</a> *player)</td></tr>
+<tr class="memitem:ae7b8d1abb82f3d0636d1de4923498879"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBank.html#ae7b8d1abb82f3d0636d1de4923498879">withdraw_gold</a> (uint32_t amount, <a class="el" href="classPlayer.html">Player</a> *player)</td></tr>
+<tr class="memdesc:ae7b8d1abb82f3d0636d1de4923498879"><td class="mdescLeft">&#160;</td><td class="mdescRight">Se extrae de la boveda del jugador amount cantidad de oro y se deposita en la billetera del mismo. En caso de que la cantidad actual que posee en la boveda sea menor a amount, se extrae la totalidad de la misma.  <a href="classBank.html#ae7b8d1abb82f3d0636d1de4923498879">Más...</a><br /></td></tr>
 <tr class="separator:ae7b8d1abb82f3d0636d1de4923498879"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec2e6ad7590e57c2038e96f49d51dd63"><td class="memItemLeft" align="right" valign="top"><a id="aec2e6ad7590e57c2038e96f49d51dd63"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deposit_item</b> (SlotId slot, uint32_t amount, <a class="el" href="classPlayer.html">Player</a> *player)</td></tr>
+<tr class="memitem:aec2e6ad7590e57c2038e96f49d51dd63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBank.html#aec2e6ad7590e57c2038e96f49d51dd63">deposit_item</a> (SlotId slot, uint32_t amount, <a class="el" href="classPlayer.html">Player</a> *player)</td></tr>
+<tr class="memdesc:aec2e6ad7590e57c2038e96f49d51dd63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Se deposita en la boveda del jugador amount cantidad del item que se encuentra en el slot del inventario. En caso de que la cantidad amount supere el stack actual del item en el inventario, se deposita en su totalidad.  <a href="classBank.html#aec2e6ad7590e57c2038e96f49d51dd63">Más...</a><br /></td></tr>
 <tr class="separator:aec2e6ad7590e57c2038e96f49d51dd63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32a50e55b4a0256748675261efebfe4f"><td class="memItemLeft" align="right" valign="top"><a id="a32a50e55b4a0256748675261efebfe4f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>withdraw_item</b> (SlotId slot, uint32_t amount, <a class="el" href="classPlayer.html">Player</a> *player)</td></tr>
+<tr class="memitem:a32a50e55b4a0256748675261efebfe4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBank.html#a32a50e55b4a0256748675261efebfe4f">withdraw_item</a> (SlotId slot, uint32_t amount, <a class="el" href="classPlayer.html">Player</a> *player)</td></tr>
+<tr class="memdesc:a32a50e55b4a0256748675261efebfe4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Se retira de la boveda del jugador amount cantidad del item que se encuentra en el slot del vault, y deposita en su inventario. En caso de que la cantidad amount supere el stack actual del item en el vault, se retira en su totalidad.  <a href="classBank.html#a32a50e55b4a0256748675261efebfe4f">Más...</a><br /></td></tr>
 <tr class="separator:a32a50e55b4a0256748675261efebfe4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
@@ -136,9 +136,290 @@ Métodos públicos estáticos</h2></td></tr>
 static <a class="el" href="classBank.html">Bank</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_instance</b> ()</td></tr>
 <tr class="separator:a06cd76f1886f36deba3506b36f4ff608"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="a23a7b856848a7497a356b2c7c9c05840"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23a7b856848a7497a356b2c7c9c05840">&#9670;&nbsp;</a></span>add_account()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bank::add_account </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>player_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">nlohmann::json&#160;</td>
+          <td class="paramname"><em>vault_info</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega una entrada en el diccionario de cuentas asociada a player_name, creando un vault a partir de vault_info Lanza <a class="el" href="classMyException.html">MyException</a> en caso de no existir una cuenta asociada al player. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_name</td><td></td></tr>
+    <tr><td class="paramname">vault_info</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a383cb2e31a64b481078d4072e443333b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a383cb2e31a64b481078d4072e443333b">&#9670;&nbsp;</a></span>deposit_gold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bank::deposit_gold </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>amount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classPlayer.html">Player</a> *&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Extrae de la billetera del jugador amount cantidad de oro, y la deposita en su boveda. En caso de superar la cantidad actual que posee en la billetera, se deposita la totalidad de la misma. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">amount</td><td></td></tr>
+    <tr><td class="paramname">player</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aec2e6ad7590e57c2038e96f49d51dd63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec2e6ad7590e57c2038e96f49d51dd63">&#9670;&nbsp;</a></span>deposit_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bank::deposit_item </td>
+          <td>(</td>
+          <td class="paramtype">SlotId&#160;</td>
+          <td class="paramname"><em>slot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>amount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classPlayer.html">Player</a> *&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Se deposita en la boveda del jugador amount cantidad del item que se encuentra en el slot del inventario. En caso de que la cantidad amount supere el stack actual del item en el inventario, se deposita en su totalidad. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slot</td><td></td></tr>
+    <tr><td class="paramname">amount</td><td></td></tr>
+    <tr><td class="paramname">player</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afedcafa307c00e61cdb04adff3da36ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afedcafa307c00e61cdb04adff3da36ca">&#9670;&nbsp;</a></span>get_vault_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">nlohmann::json Bank::get_vault_data </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>player_name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve un json que representa el contenido actual del vault asociado al player. Lanza <a class="el" href="classMyException.html">MyException</a> en caso de no existir una cuenta asociada al player. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_name</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>nlohmann::json </dd></dl>
+
+</div>
+</div>
+<a id="a9f19b56406dfadc8a05a5bc27c61f6e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f19b56406dfadc8a05a5bc27c61f6e9">&#9670;&nbsp;</a></span>get_vault_persist_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">nlohmann::json Bank::get_vault_persist_data </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>player_name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve un json que representa el vault, para luego convertirlo a inventory_t (de forma automatica) al momento de persistir el personaje. Lanza <a class="el" href="classMyException.html">MyException</a> en caso de no existir una cuenta asociada al player. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_name</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>nlohmann::json </dd></dl>
+
+</div>
+</div>
+<a id="a5ccc5ed2e0c7f61a563049c1b8a66246"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ccc5ed2e0c7f61a563049c1b8a66246">&#9670;&nbsp;</a></span>remove_account()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">nlohmann::json Bank::remove_account </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>player_name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remueve del diccionario a player_name, devolviendo un json que representa la informacion a persistir de la boveda del personaje. Lanza <a class="el" href="classMyException.html">MyException</a> en caso de que ya exista una cuenta asociada al player. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_name</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>nlohmann::json </dd></dl>
+
+</div>
+</div>
+<a id="ae7b8d1abb82f3d0636d1de4923498879"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7b8d1abb82f3d0636d1de4923498879">&#9670;&nbsp;</a></span>withdraw_gold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bank::withdraw_gold </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>amount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classPlayer.html">Player</a> *&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Se extrae de la boveda del jugador amount cantidad de oro y se deposita en la billetera del mismo. En caso de que la cantidad actual que posee en la boveda sea menor a amount, se extrae la totalidad de la misma. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">amount</td><td></td></tr>
+    <tr><td class="paramname">player</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a32a50e55b4a0256748675261efebfe4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32a50e55b4a0256748675261efebfe4f">&#9670;&nbsp;</a></span>withdraw_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bank::withdraw_item </td>
+          <td>(</td>
+          <td class="paramtype">SlotId&#160;</td>
+          <td class="paramname"><em>slot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>amount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classPlayer.html">Player</a> *&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Se retira de la boveda del jugador amount cantidad del item que se encuentra en el slot del vault, y deposita en su inventario. En caso de que la cantidad amount supere el stack actual del item en el vault, se retira en su totalidad. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slot</td><td></td></tr>
+    <tr><td class="paramname">amount</td><td></td></tr>
+    <tr><td class="paramname">player</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
-<li>/home/tc/Documents/Taller/tp_final/repo/server/game/<a class="el" href="bank_8h_source.html">bank.h</a></li>
-<li>/home/tc/Documents/Taller/tp_final/repo/server/game/bank.cpp</li>
+<li>/home/franco/Documents/Taller de Programacion 1/taller_argentum/server/game/<a class="el" href="bank_8h_source.html">bank.h</a></li>
+<li>/home/franco/Documents/Taller de Programacion 1/taller_argentum/server/game/bank.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -146,9 +427,7 @@ static <a class="el" href="classBank.html">Bank</a> &amp;&#160;</td><td class="m
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classBank.html">Bank</a></li>
-    <li class="footer">Generado por
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+    <li class="footer">Generado por <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.19 </li>
   </ul>
 </div>
 </body>

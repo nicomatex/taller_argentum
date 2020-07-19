@@ -36,10 +36,14 @@ class ItemFactory {
 
    public:
     ItemFactory(const char* items_file);
-    /*
-        Devuelve una copia del item en memoria, con su respectiva cantidad.
-        En caso de no existir el item_id, lanza ItemNotFoundException.
-    */
+    /**
+     * @brief Devuelve una copia del item en memoria, con su respectiva cantidad.
+     *  En caso de no existir el item_id, lanza ItemNotFoundException.
+     * 
+     * @param item_id 
+     * @param stack 
+     * @return Item* 
+     */
     Item* create(ItemId item_id, uint32_t stack);
     bool item_exists(ItemId item_id);
     ~ItemFactory();

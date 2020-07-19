@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "Argentum Online - Cliente", "index.html", [
-    [ "Dependencias a instalar para compilar", "md__home_nicolas_Taller_TP_FINAL_-_ARGENTUM_repo_client_readme.html", null ],
+    [ "Dependencias a instalar para compilar", "md__home_franco_Documents_Taller_de_Programacion_1_taller_argentum_client_readme.html", null ],
     [ "Clases", "annotated.html", [
       [ "Lista de clases", "annotated.html", "annotated_dup" ],
       [ "Índice de clases", "classes.html", null ],
@@ -47,7 +47,7 @@ var NAVTREEINDEX =
 "actor_8h_source.html",
 "classLoginButton.html#a2de2887758f6b6b9319003ef2b907cd1",
 "classSoundSystem.html",
-"structposition.html#aad0117268685890818989a6c0112ab8a"
+"structpart__visual__info.html#a8136861676a7ca249e3006652b311f3c"
 ];
 
 var SYNCONMSG = 'click en deshabilitar sincronización';

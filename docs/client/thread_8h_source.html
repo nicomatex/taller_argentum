@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.19"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Argentum Online - Cliente: Fichero Fuente /home/nicolas/Taller/TP FINAL - ARGENTUM/repo/include/thread.h</title>
+<title>Argentum Online - Cliente: Fichero Fuente /home/franco/Documents/Taller de Programacion 1/taller_argentum/include/thread.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -109,52 +109,49 @@ $(document).ready(function(){initNavTree('thread_8h_source.html',''); initResiza
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    std::thread thread;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="comment">// Create a guarded Thread</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classThread.html">Thread</a>();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">// Thread cannot be copied</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classThread.html">Thread</a>(<span class="keyword">const</span> <a class="code" href="classThread.html">Thread</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classThread.html">Thread</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classThread.html">Thread</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="comment">// Move Constructor</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classThread.html">Thread</a>(<a class="code" href="classThread.html">Thread</a>&amp;&amp; other);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classThread.html">Thread</a>&amp; operator=(<a class="code" href="classThread.html">Thread</a>&amp;&amp; other);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">// Functor for starting the thread</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> operator()();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">// Start the thread</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> start();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classThread.html#a95c703fb8f2f27cb64f475a8c940864a">Thread</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classThread.html#a95c703fb8f2f27cb64f475a8c940864a">Thread</a>(<span class="keyword">const</span> <a class="code" href="classThread.html">Thread</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classThread.html">Thread</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classThread.html">Thread</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classThread.html#a95c703fb8f2f27cb64f475a8c940864a">Thread</a>(<a class="code" href="classThread.html">Thread</a>&amp;&amp; other);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classThread.html">Thread</a>&amp; operator=(<a class="code" href="classThread.html">Thread</a>&amp;&amp; other);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">// Join the thread</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> join();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// Sleeps for value in us</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> usleep(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> us);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classThread.html#abd935e9d64c786860dcac09504f52337">operator()</a>();</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> Rep, <span class="keyword">class</span> Period&gt;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> sleep(<span class="keyword">const</span> std::chrono::duration&lt;Rep, Period&gt;&amp; duration) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        std::this_thread::sleep_for(duration);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// Implemented by children</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> run() = 0;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">// Deletes safely the thread, if it not joined, join()</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classThread.html">Thread</a>();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classThread.html#a1f53ee62bd30a7924186ef26150ce262">start</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classThread.html#a4d9d788e98388a3217831a9046709deb">join</a>();</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif  //__THREAD_H__</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classThread.html#a56db7b092884b5d1e7740bd9db340107">usleep</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> us);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> Rep, <span class="keyword">class</span> Period&gt;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classThread.html#af9dd25b4a016107dedcd26fea8da68c1">   65</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classThread.html#af9dd25b4a016107dedcd26fea8da68c1">sleep</a>(<span class="keyword">const</span> std::chrono::duration&lt;Rep, Period&gt;&amp; duration) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        std::this_thread::sleep_for(duration);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classThread.html#aae90dfabab3e1776cf01a26e7ee3a620">   73</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classThread.html#aae90dfabab3e1776cf01a26e7ee3a620">run</a>() = 0;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classThread.html#a37d9edd3a1a776cbc27dedff949c9726">~Thread</a>();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;};</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#endif  //__THREAD_H__</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclassThread_html_aae90dfabab3e1776cf01a26e7ee3a620"><div class="ttname"><a href="classThread.html#aae90dfabab3e1776cf01a26e7ee3a620">Thread::run</a></div><div class="ttdeci">virtual void run()=0</div><div class="ttdoc">Function to be called by the thread.</div></div>
+<div class="ttc" id="aclassThread_html_a4d9d788e98388a3217831a9046709deb"><div class="ttname"><a href="classThread.html#a4d9d788e98388a3217831a9046709deb">Thread::join</a></div><div class="ttdeci">virtual void join()</div><div class="ttdoc">Join the thread.</div><div class="ttdef"><b>Definition:</b> thread.cpp:23</div></div>
+<div class="ttc" id="aclassThread_html_a1f53ee62bd30a7924186ef26150ce262"><div class="ttname"><a href="classThread.html#a1f53ee62bd30a7924186ef26150ce262">Thread::start</a></div><div class="ttdeci">void start()</div><div class="ttdoc">Start the thread.</div><div class="ttdef"><b>Definition:</b> thread.cpp:16</div></div>
+<div class="ttc" id="aclassThread_html_a37d9edd3a1a776cbc27dedff949c9726"><div class="ttname"><a href="classThread.html#a37d9edd3a1a776cbc27dedff949c9726">Thread::~Thread</a></div><div class="ttdeci">virtual ~Thread()</div><div class="ttdoc">Deletes safely the thread, if it not joined, join()</div><div class="ttdef"><b>Definition:</b> thread.cpp:45</div></div>
+<div class="ttc" id="aclassThread_html_a56db7b092884b5d1e7740bd9db340107"><div class="ttname"><a href="classThread.html#a56db7b092884b5d1e7740bd9db340107">Thread::usleep</a></div><div class="ttdeci">void usleep(unsigned int us)</div><div class="ttdoc">Sleeps for value in micro-seconds.</div><div class="ttdef"><b>Definition:</b> thread.cpp:28</div></div>
+<div class="ttc" id="aclassThread_html_abd935e9d64c786860dcac09504f52337"><div class="ttname"><a href="classThread.html#abd935e9d64c786860dcac09504f52337">Thread::operator()</a></div><div class="ttdeci">void operator()()</div><div class="ttdoc">Thread as a functor, same as start().</div><div class="ttdef"><b>Definition:</b> thread.cpp:12</div></div>
+<div class="ttc" id="aclassThread_html_af9dd25b4a016107dedcd26fea8da68c1"><div class="ttname"><a href="classThread.html#af9dd25b4a016107dedcd26fea8da68c1">Thread::sleep</a></div><div class="ttdeci">void sleep(const std::chrono::duration&lt; Rep, Period &gt; &amp;duration)</div><div class="ttdoc">Wrapper of std::this_thread::sleep_for.</div><div class="ttdef"><b>Definition:</b> thread.h:65</div></div>
+<div class="ttc" id="aclassThread_html_a95c703fb8f2f27cb64f475a8c940864a"><div class="ttname"><a href="classThread.html#a95c703fb8f2f27cb64f475a8c940864a">Thread::Thread</a></div><div class="ttdeci">Thread()</div><div class="ttdoc">Construct a new Thread object.</div><div class="ttdef"><b>Definition:</b> thread.cpp:10</div></div>
 <div class="ttc" id="aclassThread_html"><div class="ttname"><a href="classThread.html">Thread</a></div><div class="ttdef"><b>Definition:</b> thread.h:9</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><b>thread.h</b></li>
-    <li class="footer">Generado por
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.19 </li>
+    <li class="footer">Generado por <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.19 </li>
   </ul>
 </div>
 </body>

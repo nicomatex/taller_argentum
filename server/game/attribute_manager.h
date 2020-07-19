@@ -42,11 +42,26 @@ class AttributeManager {
    public:
     AttributeManager();
     ~AttributeManager();
-
+    /**
+     * @brief Se realiza la inicializacion de los diccionarios asociados a los
+     * modificadores de stats y multiplicadores, de cada raza y clase.
+     * Lanza MyException en caso de que no exista alguno de los archivos,
+     * o algun error.
+     * 
+     * @param stats_file 
+     * @param races_file 
+     * @param classes_file 
+     */
     static void init(const char *stats_file, const char *races_file,
                      const char *classes_file);
 
     // Player race methods
+    /**
+     * @brief Crea un stats_t decorado con la raza especificada.
+     * 
+     * @param race_type 
+     * @return stats_t 
+     */
     static stats_t create_stats(race_type_t race_type);
     static std::string get_race_name(race_type_t race_type);
     static float get_race_hp_multiplier(race_type_t race_type);

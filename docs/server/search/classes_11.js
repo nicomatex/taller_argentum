@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['unequiphandler_356',['UnequipHandler',['../classUnequipHandler.html',1,'']]],
-  ['useabilityhandler_357',['UseAbilityHandler',['../classUseAbilityHandler.html',1,'']]]
+  ['unequiphandler_380',['UnequipHandler',['../classUnequipHandler.html',1,'']]],
+  ['useabilityhandler_381',['UseAbilityHandler',['../classUseAbilityHandler.html',1,'']]]
 ];

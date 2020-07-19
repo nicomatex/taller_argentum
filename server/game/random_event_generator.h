@@ -28,25 +28,36 @@ class RandomEventGenerator {
     std::mt19937 gen;
     std::uniform_real_distribution<> drops_dist;
 
-    RandomEventGenerator(const char* random_events = "../ind/random_events.json");
+    /**
+     * @brief Se inicializan los arreglos con las probabilidades y rangos
+     * correspondientes, para luego ser utilizados al llamarse a roll()
+     * 
+     */
+    RandomEventGenerator();
 
    public:
     ~RandomEventGenerator();
     static RandomEventGenerator& get_instance();
     /**
      * @brief Devuelve un evento de forma random en base a las probabilidades
-     * provistas
+     * provistas en el contructor.
      * 
      * @return random_drop_t 
      */
     static random_drop_t roll();
 
-    /* Devuelve un numero entero entre min y max */
+    /**
+     * @brief Devuelve un numero entero entre min y max
+     * 
+     * @param min 
+     * @param max 
+     * @return uint16_t 
+     */
     static uint16_t random_in(uint16_t min, uint16_t max);
     /**
      * @brief Devuelve un indice random entre 0 y tamaño del vector-1
      * 
-     * @param list_size 
+     * @param vec_size 
      * @return unsigned int 
      */
     static unsigned int rand_idx_in_vec(unsigned int vec_size);

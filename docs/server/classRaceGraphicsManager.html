@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="generator" content="Doxygen 1.8.19"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Argentum Online - Servidor: Referencia de la Clase RaceGraphicsManager</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.png"
+          <img id="MSearchSelect" src="search/mag_sel.svg"
                onmouseover="return searchBox.OnSearchSelectShow()"
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
@@ -44,7 +44,7 @@
                onblur="searchBox.OnSearchFieldFocus(false)" 
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
           </span>
         </div>
 </td>
@@ -53,7 +53,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.17 -->
+<!-- Generado por Doxygen 1.8.19 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
@@ -101,19 +101,124 @@ $(document).ready(function(){initNavTree('classRaceGraphicsManager.html',''); in
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Métodos públicos estáticos</h2></td></tr>
-<tr class="memitem:a2b027665b83be8281810e7e205977058"><td class="memItemLeft" align="right" valign="top"><a id="a2b027665b83be8281810e7e205977058"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> (const char *races_file)</td></tr>
+<tr class="memitem:a2b027665b83be8281810e7e205977058"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaceGraphicsManager.html#a2b027665b83be8281810e7e205977058">init</a> (const char *races_file)</td></tr>
+<tr class="memdesc:a2b027665b83be8281810e7e205977058"><td class="mdescLeft">&#160;</td><td class="mdescRight">Se inicializan los diccionarios de los id's de las cabezas y cuerpos, asociados a las distintas razas. Lanza <a class="el" href="classMyException.html">MyException</a> en caso de que no exista el archivo, o en caso de error.  <a href="classRaceGraphicsManager.html#a2b027665b83be8281810e7e205977058">Más...</a><br /></td></tr>
 <tr class="separator:a2b027665b83be8281810e7e205977058"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add3c49110228645660f8938959712048"><td class="memItemLeft" align="right" valign="top"><a id="add3c49110228645660f8938959712048"></a>
-static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_race_head</b> (race_type_t race_type)</td></tr>
+<tr class="memitem:add3c49110228645660f8938959712048"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaceGraphicsManager.html#add3c49110228645660f8938959712048">get_race_head</a> (race_type_t race_type)</td></tr>
+<tr class="memdesc:add3c49110228645660f8938959712048"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el id de sprite de la cabeza asociada a la raza Lanza <a class="el" href="classMyException.html">MyException</a> en caso de no existir la raza.  <a href="classRaceGraphicsManager.html#add3c49110228645660f8938959712048">Más...</a><br /></td></tr>
 <tr class="separator:add3c49110228645660f8938959712048"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad9d4f08670542f508cd53204a107fca"><td class="memItemLeft" align="right" valign="top"><a id="aad9d4f08670542f508cd53204a107fca"></a>
-static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_race_body</b> (race_type_t race_type)</td></tr>
+<tr class="memitem:aad9d4f08670542f508cd53204a107fca"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaceGraphicsManager.html#aad9d4f08670542f508cd53204a107fca">get_race_body</a> (race_type_t race_type)</td></tr>
+<tr class="memdesc:aad9d4f08670542f508cd53204a107fca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el id de sprite del cuerpo asociado a la raza Lanza <a class="el" href="classMyException.html">MyException</a> en caso de no existir la raza.  <a href="classRaceGraphicsManager.html#aad9d4f08670542f508cd53204a107fca">Más...</a><br /></td></tr>
 <tr class="separator:aad9d4f08670542f508cd53204a107fca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="aad9d4f08670542f508cd53204a107fca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad9d4f08670542f508cd53204a107fca">&#9670;&nbsp;</a></span>get_race_body()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t RaceGraphicsManager::get_race_body </td>
+          <td>(</td>
+          <td class="paramtype">race_type_t&#160;</td>
+          <td class="paramname"><em>race_type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Devuelve el id de sprite del cuerpo asociado a la raza Lanza <a class="el" href="classMyException.html">MyException</a> en caso de no existir la raza. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">race_type</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>uint32_t </dd></dl>
+
+</div>
+</div>
+<a id="add3c49110228645660f8938959712048"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add3c49110228645660f8938959712048">&#9670;&nbsp;</a></span>get_race_head()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t RaceGraphicsManager::get_race_head </td>
+          <td>(</td>
+          <td class="paramtype">race_type_t&#160;</td>
+          <td class="paramname"><em>race_type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Devuelve el id de sprite de la cabeza asociada a la raza Lanza <a class="el" href="classMyException.html">MyException</a> en caso de no existir la raza. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">race_type</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>uint32_t </dd></dl>
+
+</div>
+</div>
+<a id="a2b027665b83be8281810e7e205977058"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b027665b83be8281810e7e205977058">&#9670;&nbsp;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RaceGraphicsManager::init </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>races_file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Se inicializan los diccionarios de los id's de las cabezas y cuerpos, asociados a las distintas razas. Lanza <a class="el" href="classMyException.html">MyException</a> en caso de que no exista el archivo, o en caso de error. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">races_file</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
-<li>/home/tc/Documents/Taller/tp_final/repo/server/game/<a class="el" href="race__graphics__manager_8h_source.html">race_graphics_manager.h</a></li>
-<li>/home/tc/Documents/Taller/tp_final/repo/server/game/race_graphics_manager.cpp</li>
+<li>/home/franco/Documents/Taller de Programacion 1/taller_argentum/server/game/<a class="el" href="race__graphics__manager_8h_source.html">race_graphics_manager.h</a></li>
+<li>/home/franco/Documents/Taller de Programacion 1/taller_argentum/server/game/race_graphics_manager.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -121,9 +226,7 @@ static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_race_b
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classRaceGraphicsManager.html">RaceGraphicsManager</a></li>
-    <li class="footer">Generado por
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+    <li class="footer">Generado por <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.19 </li>
   </ul>
 </div>
 </body>

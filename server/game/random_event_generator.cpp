@@ -8,7 +8,7 @@
 #include "../../include/nlohmann/json.hpp"
 #include "configuration_manager.h"
 
-RandomEventGenerator::RandomEventGenerator(const char* random_events_file)
+RandomEventGenerator::RandomEventGenerator()
     : events{nothing, rand_gold, rand_potion, rand_item},
       gen(rd()),
       drops_dist(0, 1) {
