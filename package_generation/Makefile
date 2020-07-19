@@ -16,7 +16,8 @@ Package: $(PACKAGE_NAME)
 Version: $(VERSION)-$(REVISION)
 Section: base
 Priority: optional
-Architecture: i386
+Architecture: amd64
+Depends: libsdl2-2.0-0, libsdl2-image-2.0-0, libsdl2-mixer-2.0-0, libsdl2-ttf-2.0-0
 Maintainer: Grupo 4 - Taller 75.42
 Description: Argentum Online
  Remake del clasico juego Argentum Online!
