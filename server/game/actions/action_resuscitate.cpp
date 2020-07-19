@@ -20,4 +20,7 @@ void ActionResuscitate::execute(Map& map, EntityId entity_id) const {
     if (!player || player->is_alive())
         return;
     healer->resuscitate(player);
+    map.push_log(MapLogFactory::message(
+                player->get_name(), {{"message", "Usted sera resucitado en breve!"},
+                                     {"from", healer->get_name()}}));
 }
