@@ -5,11 +5,11 @@
 # Instalacion rapida
  
 ## Cliente 
-1. Una vez descargado el paquete de debian, ejecutar 
++ 1 Una vez descargado el paquete de debian, ejecutar 
 
 ``` ~$ sudo apt install ./argentum_1.0-1.deb ```.
 
-2. Ejecutar el juego corriendo 
++ 2 - Ejecutar el juego corriendo 
 
 ``` $ aoclient ```
 
@@ -18,25 +18,25 @@ en el directorio _~/argentum/config.json_.
 
 ## Servidor 
 
-1. Descargar el codigo fuente del servidor y crear un directorio _build_
++ 1 - Descargar el codigo fuente del servidor y crear un directorio _build_
 
 ```argentum/server$ mkdir build```
 
 ```argentum/server$ cd build```
 
-2. Generar el MakeFile con cmake 
++ 2 - Generar el MakeFile con cmake 
 
 ```argentum/server/build$ cmake .. ```
 
-3. Compilar 
++ 3 - Compilar 
 
 ```argentum/server/build$ make ```
 
-4. Instalar base de datos y assets en el directorio 
++ 4 - Instalar base de datos y assets en el directorio 
 
 ```argentum/server/build$ make install ```
 
-5. Y listo! Ejecutar el servidor mediante 
++ 5 - Y listo! Ejecutar el servidor mediante 
 
 ```argentum/server/build$ ./aoserver ```
 
