@@ -28,9 +28,7 @@ class MapManager {
 
     map_change_t get_change();
 
-    void close() {
-        changes_queue.close();
-    }
+    void close();
 };
 
 #endif  // MAP_MANAGER_H

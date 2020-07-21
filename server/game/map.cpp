@@ -44,7 +44,6 @@ Map::Map(MapId map_id, const std::string& map_name, bool is_safe,
     add_entity(npc, pos);
     npc = entity_factory.create_npc(HEALER);
     add_entity(npc, healer_pos);
-    std::cerr << "Adding npcs\n";
 }
 
 Map::~Map() {

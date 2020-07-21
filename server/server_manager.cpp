@@ -15,7 +15,9 @@ ServerManager::ServerManager()
     : game_manager("ind/items.json", "ind/mobs.json", "ind/maps_index.json"),
       accepter(Socket("27016", 10)),
       character_manager("database/characters.dat", "database/characters.json"),
-      map_changer(game_manager.get_map_manager()) {
+      map_changer(game_manager.get_map_manager()) {}
+
+void ServerManager::start() {
     map_changer.start();
     game_manager.start();
     MapManager& map_manager = game_manager.get_map_manager();

@@ -14,6 +14,6 @@ var searchData=
   ['specialability_216',['SpecialAbility',['../classSpecialAbility.html',1,'']]],
   ['specialattack_217',['SpecialAttack',['../classSpecialAttack.html',1,'']]],
   ['specialheal_218',['SpecialHeal',['../classSpecialHeal.html',1,'']]],
-  ['start_219',['start',['../classThread.html#a1f53ee62bd30a7924186ef26150ce262',1,'Thread']]],
+  ['start_219',['start',['../classServerManager.html#a85f0448e181c05f8582d7702b91071f8',1,'ServerManager::start()'],['../classThread.html#a1f53ee62bd30a7924186ef26150ce262',1,'Thread::start()']]],
   ['stats_220',['stats',['../structstats.html',1,'']]]
 ];

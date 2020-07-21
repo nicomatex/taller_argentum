@@ -6,5 +6,5 @@ var searchData=
   ['set_5fcharacter_479',['set_character',['../classCharacterManager.html#ae7bc2d09b52a2a5a62b5ac7dbc07d2c5',1,'CharacterManager']]],
   ['set_5fmovement_480',['set_movement',['../classPlayer.html#a3b6984d0310b40ff0754dfe00e7860de',1,'Player']]],
   ['sleep_481',['sleep',['../classThread.html#af9dd25b4a016107dedcd26fea8da68c1',1,'Thread']]],
-  ['start_482',['start',['../classThread.html#a1f53ee62bd30a7924186ef26150ce262',1,'Thread']]]
+  ['start_482',['start',['../classServerManager.html#a85f0448e181c05f8582d7702b91071f8',1,'ServerManager::start()'],['../classThread.html#a1f53ee62bd30a7924186ef26150ce262',1,'Thread::start()']]]
 ];

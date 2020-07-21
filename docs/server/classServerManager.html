@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.19"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Argentum Online - Servidor: Referencia de la Clase ServerManager</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.svg"
+          <img id="MSearchSelect" src="search/mag_sel.png"
                onmouseover="return searchBox.OnSearchSelectShow()"
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
@@ -44,7 +44,7 @@
                onblur="searchBox.OnSearchFieldFocus(false)" 
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
           </span>
         </div>
 </td>
@@ -53,7 +53,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.19 -->
+<!-- Generado por Doxygen 1.8.17 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
@@ -100,13 +100,16 @@ $(document).ready(function(){initNavTree('classServerManager.html',''); initResi
 </div><!--header-->
 <div class="contents">
 
-<p>Orquestador de las componentes del servidor.  
+<p>Orquestador de las componentes del servidor. (Singleton)  
  <a href="classServerManager.html#details">Más...</a></p>
 
 <p><code>#include &lt;<a class="el" href="server__manager_8h_source.html">server_manager.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
+<tr class="memitem:a85f0448e181c05f8582d7702b91071f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerManager.html#a85f0448e181c05f8582d7702b91071f8">start</a> ()</td></tr>
+<tr class="memdesc:a85f0448e181c05f8582d7702b91071f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empezar a ejecutar la instancia del servidor.  <a href="classServerManager.html#a85f0448e181c05f8582d7702b91071f8">Más...</a><br /></td></tr>
+<tr class="separator:a85f0448e181c05f8582d7702b91071f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d9b1e41415a9c1eeb9005979e5bb17e"><td class="memItemLeft" align="right" valign="top"><a id="a4d9b1e41415a9c1eeb9005979e5bb17e"></a>
 <a class="el" href="classThDispatcher.html">ThDispatcher</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_dispatcher</b> ()</td></tr>
 <tr class="separator:a4d9b1e41415a9c1eeb9005979e5bb17e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -157,7 +160,7 @@ static <a class="el" href="classServerManager.html">ServerManager</a> &amp;&#160
 <tr class="separator:a356752e3a1f8d051591bb7cc2387c947"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
-<div class="textblock"><p>Orquestador de las componentes del servidor. </p>
+<div class="textblock"><p>Orquestador de las componentes del servidor. (Singleton) </p>
 <p>Esta clase se encarga de contener las instancias de las distintas componentes y contenedores necesarios para el servidor del juego. Esto incluye el manejo de threads que se utilizan para el mismo. Se encarga principalmente de la sincronización para agregar y sacar jugadores de los diferentes mapas (y sesiones), esto incluye cuando un jugador cambia de mapa o se teletransporta. </p>
 </div><h2 class="groupheader">Documentación de las funciones miembro</h2>
 <a id="a91d39b57de4064f54105f7bd8e7d4734"></a>
@@ -471,9 +474,28 @@ static <a class="el" href="classServerManager.html">ServerManager</a> &amp;&#160
 
 </div>
 </div>
+<a id="a85f0448e181c05f8582d7702b91071f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85f0448e181c05f8582d7702b91071f8">&#9670;&nbsp;</a></span>start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServerManager::start </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Empezar a ejecutar la instancia del servidor. </p>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
-<li>/home/franco/Documents/Taller de Programacion 1/taller_argentum/server/<a class="el" href="server__manager_8h_source.html">server_manager.h</a></li>
-<li>/home/franco/Documents/Taller de Programacion 1/taller_argentum/server/server_manager.cpp</li>
+<li>/home/tc/Documents/Taller/tp_final/repo/server/<a class="el" href="server__manager_8h_source.html">server_manager.h</a></li>
+<li>/home/tc/Documents/Taller/tp_final/repo/server/server_manager.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -481,7 +503,9 @@ static <a class="el" href="classServerManager.html">ServerManager</a> &amp;&#160
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classServerManager.html">ServerManager</a></li>
-    <li class="footer">Generado por <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.19 </li>
+    <li class="footer">Generado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
 </div>
 </body>

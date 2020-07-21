@@ -48,17 +48,6 @@ void ThDispatcher::join_handlers() {
     std::cerr << "Dispatcher: Joined handlers\n";
 }
 
-void ThDispatcher::stop_and_join_handlers() {
-    for (auto it : handlers) {
-        if (it.second->is_threaded()) {
-            BlockingThEventHandler* handler =
-                static_cast<BlockingThEventHandler*>(it.second);
-            handler->stop();
-            handler->join();
-        }
-    }
-}
-
 void ThDispatcher::handle(Event& event) {
     nlohmann::json json_ev = event.get_json();
     int ev_id = json_ev["ev_id"];

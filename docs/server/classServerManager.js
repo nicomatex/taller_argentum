@@ -14,5 +14,6 @@ var classServerManager =
     [ "get_session", "classServerManager.html#af208d52f85c1140c93cebf5ebae76bbe", null ],
     [ "rm_client", "classServerManager.html#ad8b1a6a65222e75604b3f414daecd82f", null ],
     [ "rm_player", "classServerManager.html#a2c12240e7a976c37c8faef23e4d40407", null ],
-    [ "send_to", "classServerManager.html#a026d580bb779f919980628d1b8546d17", null ]
+    [ "send_to", "classServerManager.html#a026d580bb779f919980628d1b8546d17", null ],
+    [ "start", "classServerManager.html#a85f0448e181c05f8582d7702b91071f8", null ]
 ];

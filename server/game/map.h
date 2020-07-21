@@ -61,7 +61,6 @@ class Map {
     LootMatrix loot_matrix;
 
     PositionSet collision_map;
-    // PositionSet safe_zone;
 
     MapTransitions transitions;
     EntityFactory entity_factory;

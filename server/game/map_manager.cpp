@@ -22,7 +22,7 @@ void MapManager::create_maps() {
                      std::forward_as_tuple(
                          map_id, map_name, map_info["is_safe"], map_description,
                          map_info["mobs"], map_info["transitions"]));
-        std::cerr << "MapManager: creado mapa: " << map_info["map_name"]
+        std::cerr << "MapManager: created map: " << map_info["map_name"]
                   << std::endl;
     }
 }
@@ -53,4 +53,8 @@ void MapManager::update(uint64_t delta_t) {
 
 map_change_t MapManager::get_change() {
     return changes_queue.pop();
+}
+
+void MapManager::close() {
+    changes_queue.close();
 }

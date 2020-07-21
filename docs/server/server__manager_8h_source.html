@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.19"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Argentum Online - Servidor: Fichero Fuente /home/franco/Documents/Taller de Programacion 1/taller_argentum/server/server_manager.h</title>
+<title>Argentum Online - Servidor: Fichero Fuente /home/tc/Documents/Taller/tp_final/repo/server/server_manager.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -35,7 +35,7 @@
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.svg"
+          <img id="MSearchSelect" src="search/mag_sel.png"
                onmouseover="return searchBox.OnSearchSelectShow()"
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
@@ -44,7 +44,7 @@
                onblur="searchBox.OnSearchFieldFocus(false)" 
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
           </span>
         </div>
 </td>
@@ -53,7 +53,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.19 -->
+<!-- Generado por Doxygen 1.8.17 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
@@ -135,65 +135,70 @@ $(document).ready(function(){initNavTree('server__manager_8h_source.html',''); i
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;   <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keyword">static</span> <a class="code" href="classServerManager.html">ServerManager</a>&amp; get_instance();</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="classThDispatcher.html">ThDispatcher</a>&amp; get_dispatcher();</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="classCharacterManager.html">CharacterManager</a>&amp; get_character_manager();</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classServerManager.html#ae36933904628df7a643c9243b4d048dd">dispatch</a>(<span class="keyword">const</span> <a class="code" href="classEvent.html">Event</a>&amp; ev);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classServerManager.html#a91d39b57de4064f54105f7bd8e7d4734">add_client</a>(ClientId client_id, <a class="code" href="classSocketManager.html">SocketManager</a>* new_client);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classServerManager.html#ad8b1a6a65222e75604b3f414daecd82f">rm_client</a>(ClientId client_id);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classServerManager.html#a9647779c17d1bff8de34a2ee8a775ee6">drop_client</a>(ClientId client_id);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classServerManager.html#accd979829d70f378de9a56f9e0af2661">add_player</a>(ClientId client_id, nlohmann::json player_info);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    nlohmann::json <a class="code" href="classServerManager.html#a2c12240e7a976c37c8faef23e4d40407">rm_player</a>(ClientId client_id);</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    nlohmann::json <a class="code" href="classServerManager.html#a3591e269a2ff8565251aba6bb9893fdd">change_player_map</a>(ClientId client_id,</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                                     <a class="code" href="structposition.html">position_t</a> new_position, MapId new_map);</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classServerManager.html#a026d580bb779f919980628d1b8546d17">send_to</a>(ClientId client_id, <span class="keyword">const</span> <a class="code" href="classEvent.html">Event</a>&amp; ev);</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    std::string get_name_by_client(ClientId client_id);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    ClientId get_client_by_name(<span class="keyword">const</span> std::string&amp; name);</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <a class="code" href="classSession.html">Session</a>&amp; <a class="code" href="classServerManager.html#af208d52f85c1140c93cebf5ebae76bbe">get_session</a>(ClientId client_id);</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classServerManager.html#af40a98dbfd394b032ec0b87ac3bbab09">finish</a>();</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    ~<a class="code" href="classServerManager.html">ServerManager</a>();</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;};</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="preprocessor">#endif  // SERVER_MANAGER_H</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classServerManager.html#a85f0448e181c05f8582d7702b91071f8">start</a>();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="classThDispatcher.html">ThDispatcher</a>&amp; get_dispatcher();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <a class="code" href="classCharacterManager.html">CharacterManager</a>&amp; get_character_manager();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classServerManager.html#ae36933904628df7a643c9243b4d048dd">dispatch</a>(<span class="keyword">const</span> <a class="code" href="classEvent.html">Event</a>&amp; ev);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classServerManager.html#a91d39b57de4064f54105f7bd8e7d4734">add_client</a>(ClientId client_id, <a class="code" href="classSocketManager.html">SocketManager</a>* new_client);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classServerManager.html#ad8b1a6a65222e75604b3f414daecd82f">rm_client</a>(ClientId client_id);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classServerManager.html#a9647779c17d1bff8de34a2ee8a775ee6">drop_client</a>(ClientId client_id);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classServerManager.html#accd979829d70f378de9a56f9e0af2661">add_player</a>(ClientId client_id, nlohmann::json player_info);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    nlohmann::json <a class="code" href="classServerManager.html#a2c12240e7a976c37c8faef23e4d40407">rm_player</a>(ClientId client_id);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    nlohmann::json <a class="code" href="classServerManager.html#a3591e269a2ff8565251aba6bb9893fdd">change_player_map</a>(ClientId client_id,</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                                     <a class="code" href="structposition.html">position_t</a> new_position, MapId new_map);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classServerManager.html#a026d580bb779f919980628d1b8546d17">send_to</a>(ClientId client_id, <span class="keyword">const</span> <a class="code" href="classEvent.html">Event</a>&amp; ev);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    std::string get_name_by_client(ClientId client_id);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    ClientId get_client_by_name(<span class="keyword">const</span> std::string&amp; name);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <a class="code" href="classSession.html">Session</a>&amp; <a class="code" href="classServerManager.html#af208d52f85c1140c93cebf5ebae76bbe">get_session</a>(ClientId client_id);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classServerManager.html#af40a98dbfd394b032ec0b87ac3bbab09">finish</a>();</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    ~<a class="code" href="classServerManager.html">ServerManager</a>();</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;};</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="preprocessor">#endif  // SERVER_MANAGER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassSocketManager_html"><div class="ttname"><a href="classSocketManager.html">SocketManager</a></div><div class="ttdef"><b>Definition:</b> socket_manager.h:12</div></div>
 <div class="ttc" id="aclassGameManager_html"><div class="ttname"><a href="classGameManager.html">GameManager</a></div><div class="ttdef"><b>Definition:</b> game_manager.h:10</div></div>
 <div class="ttc" id="aclassClientsMonitor_html"><div class="ttname"><a href="classClientsMonitor.html">ClientsMonitor</a></div><div class="ttdoc">Monitor de sockets de los clientes.</div><div class="ttdef"><b>Definition:</b> clients_monitor.h:21</div></div>
-<div class="ttc" id="aclassServerManager_html_a2c12240e7a976c37c8faef23e4d40407"><div class="ttname"><a href="classServerManager.html#a2c12240e7a976c37c8faef23e4d40407">ServerManager::rm_player</a></div><div class="ttdeci">nlohmann::json rm_player(ClientId client_id)</div><div class="ttdoc">Remueve un jugador del mapa (y la sesión asociada) al que esté conectado.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:100</div></div>
-<div class="ttc" id="aclassServerManager_html_af208d52f85c1140c93cebf5ebae76bbe"><div class="ttname"><a href="classServerManager.html#af208d52f85c1140c93cebf5ebae76bbe">ServerManager::get_session</a></div><div class="ttdeci">Session &amp; get_session(ClientId client_id)</div><div class="ttdoc">Obtener la sesión a la que está conectado un cliente.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:170</div></div>
-<div class="ttc" id="aclassServerManager_html_ae36933904628df7a643c9243b4d048dd"><div class="ttname"><a href="classServerManager.html#ae36933904628df7a643c9243b4d048dd">ServerManager::dispatch</a></div><div class="ttdeci">void dispatch(const Event &amp;ev)</div><div class="ttdoc">Agregar un evento que debe ser manejado por el servidor.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:42</div></div>
-<div class="ttc" id="aclassServerManager_html_accd979829d70f378de9a56f9e0af2661"><div class="ttname"><a href="classServerManager.html#accd979829d70f378de9a56f9e0af2661">ServerManager::add_player</a></div><div class="ttdeci">void add_player(ClientId client_id, nlohmann::json player_info)</div><div class="ttdoc">Agregar un jugador a un mapa y la sesión asociada.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:64</div></div>
+<div class="ttc" id="aclassServerManager_html_a2c12240e7a976c37c8faef23e4d40407"><div class="ttname"><a href="classServerManager.html#a2c12240e7a976c37c8faef23e4d40407">ServerManager::rm_player</a></div><div class="ttdeci">nlohmann::json rm_player(ClientId client_id)</div><div class="ttdoc">Remueve un jugador del mapa (y la sesión asociada) al que esté conectado.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:102</div></div>
+<div class="ttc" id="aclassServerManager_html_af208d52f85c1140c93cebf5ebae76bbe"><div class="ttname"><a href="classServerManager.html#af208d52f85c1140c93cebf5ebae76bbe">ServerManager::get_session</a></div><div class="ttdeci">Session &amp; get_session(ClientId client_id)</div><div class="ttdoc">Obtener la sesión a la que está conectado un cliente.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:172</div></div>
+<div class="ttc" id="aclassServerManager_html_ae36933904628df7a643c9243b4d048dd"><div class="ttname"><a href="classServerManager.html#ae36933904628df7a643c9243b4d048dd">ServerManager::dispatch</a></div><div class="ttdeci">void dispatch(const Event &amp;ev)</div><div class="ttdoc">Agregar un evento que debe ser manejado por el servidor.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:44</div></div>
+<div class="ttc" id="aclassServerManager_html_accd979829d70f378de9a56f9e0af2661"><div class="ttname"><a href="classServerManager.html#accd979829d70f378de9a56f9e0af2661">ServerManager::add_player</a></div><div class="ttdeci">void add_player(ClientId client_id, nlohmann::json player_info)</div><div class="ttdoc">Agregar un jugador a un mapa y la sesión asociada.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:66</div></div>
 <div class="ttc" id="aclassSession_html"><div class="ttname"><a href="classSession.html">Session</a></div><div class="ttdef"><b>Definition:</b> session.h:13</div></div>
 <div class="ttc" id="aclassCharacterManager_html"><div class="ttname"><a href="classCharacterManager.html">CharacterManager</a></div><div class="ttdef"><b>Definition:</b> character_manager.h:43</div></div>
 <div class="ttc" id="aclassEvent_html"><div class="ttname"><a href="classEvent.html">Event</a></div><div class="ttdef"><b>Definition:</b> event.h:55</div></div>
-<div class="ttc" id="aclassServerManager_html_ad8b1a6a65222e75604b3f414daecd82f"><div class="ttname"><a href="classServerManager.html#ad8b1a6a65222e75604b3f414daecd82f">ServerManager::rm_client</a></div><div class="ttdeci">void rm_client(ClientId client_id)</div><div class="ttdoc">Eliminar a un cliente del servidor.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:50</div></div>
-<div class="ttc" id="aclassServerManager_html"><div class="ttname"><a href="classServerManager.html">ServerManager</a></div><div class="ttdoc">Orquestador de las componentes del servidor.</div><div class="ttdef"><b>Definition:</b> server_manager.h:31</div></div>
+<div class="ttc" id="aclassServerManager_html_ad8b1a6a65222e75604b3f414daecd82f"><div class="ttname"><a href="classServerManager.html#ad8b1a6a65222e75604b3f414daecd82f">ServerManager::rm_client</a></div><div class="ttdeci">void rm_client(ClientId client_id)</div><div class="ttdoc">Eliminar a un cliente del servidor.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:52</div></div>
+<div class="ttc" id="aclassServerManager_html"><div class="ttname"><a href="classServerManager.html">ServerManager</a></div><div class="ttdoc">Orquestador de las componentes del servidor. (Singleton)</div><div class="ttdef"><b>Definition:</b> server_manager.h:31</div></div>
 <div class="ttc" id="aclassMapChanger_html"><div class="ttname"><a href="classMapChanger.html">MapChanger</a></div><div class="ttdef"><b>Definition:</b> map_changer.h:7</div></div>
-<div class="ttc" id="aclassServerManager_html_a9647779c17d1bff8de34a2ee8a775ee6"><div class="ttname"><a href="classServerManager.html#a9647779c17d1bff8de34a2ee8a775ee6">ServerManager::drop_client</a></div><div class="ttdeci">void drop_client(ClientId client_id)</div><div class="ttdoc">Función ejecutar la desconexión de un cliente.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:60</div></div>
+<div class="ttc" id="aclassServerManager_html_a9647779c17d1bff8de34a2ee8a775ee6"><div class="ttname"><a href="classServerManager.html#a9647779c17d1bff8de34a2ee8a775ee6">ServerManager::drop_client</a></div><div class="ttdeci">void drop_client(ClientId client_id)</div><div class="ttdoc">Función ejecutar la desconexión de un cliente.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:62</div></div>
 <div class="ttc" id="aclassMapMonitor_html"><div class="ttname"><a href="classMapMonitor.html">MapMonitor</a></div><div class="ttdef"><b>Definition:</b> map_monitor.h:14</div></div>
 <div class="ttc" id="aclassThDispatcher_html"><div class="ttname"><a href="classThDispatcher.html">ThDispatcher</a></div><div class="ttdef"><b>Definition:</b> th_dispatcher.h:11</div></div>
 <div class="ttc" id="aclassClientsNamesMonitor_html"><div class="ttname"><a href="classClientsNamesMonitor.html">ClientsNamesMonitor</a></div><div class="ttdoc">Monitor de ClientsNames.</div><div class="ttdef"><b>Definition:</b> clients_names_monitor.h:27</div></div>
-<div class="ttc" id="aclassServerManager_html_af40a98dbfd394b032ec0b87ac3bbab09"><div class="ttname"><a href="classServerManager.html#af40a98dbfd394b032ec0b87ac3bbab09">ServerManager::finish</a></div><div class="ttdeci">void finish()</div><div class="ttdoc">Cerrar y finalizar el servidor de forma ordenada.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:134</div></div>
+<div class="ttc" id="aclassServerManager_html_af40a98dbfd394b032ec0b87ac3bbab09"><div class="ttname"><a href="classServerManager.html#af40a98dbfd394b032ec0b87ac3bbab09">ServerManager::finish</a></div><div class="ttdeci">void finish()</div><div class="ttdoc">Cerrar y finalizar el servidor de forma ordenada.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:136</div></div>
+<div class="ttc" id="aclassServerManager_html_a85f0448e181c05f8582d7702b91071f8"><div class="ttname"><a href="classServerManager.html#a85f0448e181c05f8582d7702b91071f8">ServerManager::start</a></div><div class="ttdeci">void start()</div><div class="ttdoc">Empezar a ejecutar la instancia del servidor.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:20</div></div>
 <div class="ttc" id="astructposition_html"><div class="ttname"><a href="structposition.html">position</a></div><div class="ttdef"><b>Definition:</b> position.h:8</div></div>
 <div class="ttc" id="aclassThClientAccepter_html"><div class="ttname"><a href="classThClientAccepter.html">ThClientAccepter</a></div><div class="ttdef"><b>Definition:</b> th_client_accepter.h:8</div></div>
-<div class="ttc" id="aclassServerManager_html_a026d580bb779f919980628d1b8546d17"><div class="ttname"><a href="classServerManager.html#a026d580bb779f919980628d1b8546d17">ServerManager::send_to</a></div><div class="ttdeci">void send_to(ClientId client_id, const Event &amp;ev)</div><div class="ttdoc">Envia un Evento a un cliente.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:130</div></div>
-<div class="ttc" id="aclassServerManager_html_a3591e269a2ff8565251aba6bb9893fdd"><div class="ttname"><a href="classServerManager.html#a3591e269a2ff8565251aba6bb9893fdd">ServerManager::change_player_map</a></div><div class="ttdeci">nlohmann::json change_player_map(ClientId client_id, position_t new_position, MapId new_map)</div><div class="ttdoc">Cambia a un jugador de un mapa (y sesión) a otro.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:119</div></div>
-<div class="ttc" id="aclassServerManager_html_a91d39b57de4064f54105f7bd8e7d4734"><div class="ttname"><a href="classServerManager.html#a91d39b57de4064f54105f7bd8e7d4734">ServerManager::add_client</a></div><div class="ttdeci">void add_client(ClientId client_id, SocketManager *new_client)</div><div class="ttdoc">Agregar a un cliente al servidor.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:46</div></div>
+<div class="ttc" id="aclassServerManager_html_a026d580bb779f919980628d1b8546d17"><div class="ttname"><a href="classServerManager.html#a026d580bb779f919980628d1b8546d17">ServerManager::send_to</a></div><div class="ttdeci">void send_to(ClientId client_id, const Event &amp;ev)</div><div class="ttdoc">Envia un Evento a un cliente.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:132</div></div>
+<div class="ttc" id="aclassServerManager_html_a3591e269a2ff8565251aba6bb9893fdd"><div class="ttname"><a href="classServerManager.html#a3591e269a2ff8565251aba6bb9893fdd">ServerManager::change_player_map</a></div><div class="ttdeci">nlohmann::json change_player_map(ClientId client_id, position_t new_position, MapId new_map)</div><div class="ttdoc">Cambia a un jugador de un mapa (y sesión) a otro.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:121</div></div>
+<div class="ttc" id="aclassServerManager_html_a91d39b57de4064f54105f7bd8e7d4734"><div class="ttname"><a href="classServerManager.html#a91d39b57de4064f54105f7bd8e7d4734">ServerManager::add_client</a></div><div class="ttdeci">void add_client(ClientId client_id, SocketManager *new_client)</div><div class="ttdoc">Agregar a un cliente al servidor.</div><div class="ttdef"><b>Definition:</b> server_manager.cpp:48</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><b>server_manager.h</b></li>
-    <li class="footer">Generado por <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.19 </li>
+    <li class="footer">Generado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
 </div>
 </body>

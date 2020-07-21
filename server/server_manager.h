@@ -18,7 +18,7 @@
 #include "th_dispatcher.h"
 
 /**
- * @brief Orquestador de las componentes del servidor.
+ * @brief Orquestador de las componentes del servidor. (Singleton)
  *
  * Esta clase se encarga de contener las instancias de las distintas componentes
  * y contenedores necesarios para el servidor del juego. Esto incluye el manejo
@@ -99,6 +99,12 @@ class ServerManager {
 
    public:
     static ServerManager& get_instance();
+
+    /**
+     * @brief Empezar a ejecutar la instancia del servidor.
+     *
+     */
+    void start();
 
     ThDispatcher& get_dispatcher();
 

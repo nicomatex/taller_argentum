@@ -18,8 +18,6 @@ class ThDispatcher : public BlockingThEventHandler {
     void stop_handlers();
     void join_handlers();
 
-    void stop_and_join_handlers();
-
    protected:
     void handle(Event& ev) override;
 
