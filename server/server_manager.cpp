@@ -51,11 +51,13 @@ void ServerManager::add_client(ClientId client_id, SocketManager* new_client) {
 
 void ServerManager::rm_client(ClientId client_id) {
     SocketManager* client = clients.rm_client(client_id);
+    clients_names.rm_name(client_id);
+    if (!client)
+        return;
     client->stop(true);
     std::cerr << "ServerManager: stopped client: " << client_id << std::endl;
     client->join();
     std::cerr << "ServerManager: joined client: " << client_id << std::endl;
-    clients_names.rm_name(client_id);
     delete client;
 }
 
@@ -101,6 +103,8 @@ void ServerManager::add_player(ClientId client_id, nlohmann::json player_data) {
 
 nlohmann::json ServerManager::rm_player(ClientId client_id) {
     std::unique_lock<std::recursive_mutex> l(m);
+    if (!client_to_map.count(client_id))
+        throw ClientDisconnectedException(client_id);
     // Eliminamos el jugador del mapa
     MapId map_id = client_to_map.at(client_id);
     client_to_map.erase(client_id);

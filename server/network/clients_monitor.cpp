@@ -25,6 +25,7 @@ SocketManager* ClientsMonitor::rm_client(ClientId client_id) {
         connected_clients.erase(client_id);
         std::cerr << "ClientsMonitor: El cliente : " << client_id
                   << " fue eliminado de forma repentina." << std::endl;
+        return nullptr;
     }
     SocketManager* client = clients.at(client_id);
     clients.erase(client_id);
@@ -52,7 +53,7 @@ void ClientsMonitor::drop(ClientId client_id) {
 
 void ClientsMonitor::drop_all() {
     std::unique_lock<std::recursive_mutex> l(m);
-    std::cerr << "ClientsMonitor\n";
+    std::cerr << "ClientsMonitor: dropping all clients" << std::endl;
     for (auto it = connected_clients.begin(); it != connected_clients.end();) {
         try {
             clients[*it]->send(EventFactory::disconnect());
