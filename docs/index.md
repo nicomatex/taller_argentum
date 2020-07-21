@@ -5,7 +5,7 @@
 # Instalacion rapida
  
 ## Cliente 
-+ 1 Una vez descargado el paquete de debian, ejecutar 
++ 1 Una vez descargado el [paquete de Debian](https://github.com/nicomatex/taller_argentum/releases/download/v1.1/argentum_1.0-1.deb), ejecutar 
 
 ```bash 
 ~$ sudo apt install ./argentum_1.0-1.deb 
