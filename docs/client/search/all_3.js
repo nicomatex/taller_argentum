@@ -7,5 +7,5 @@ var searchData=
   ['draw_35',['draw',['../classCamera.html#ab4594414daf3874e7139c79dec541449',1,'Camera::draw()'],['../classVisualCharacterComponent.html#af4d37ba8f7847989c6b46fdcbf86c2d5',1,'VisualCharacterComponent::draw()'],['../classVisualNPCComponent.html#a46807420c1ed0f0a1c2c077d1d6612b8',1,'VisualNPCComponent::draw()']]],
   ['draw_5fall_36',['draw_all',['../classCamera.html#a95eaaace775843647d6f2e3886ba672b',1,'Camera']]],
   ['drop_5fitem_5fevent_37',['drop_item_event',['../classEventFactory.html#a4d9ae6ad0a433d128a4351cf8123a0aa',1,'EventFactory']]],
-  ['dependencias_20a_20instalar_20para_20compilar_38',['Dependencias a instalar para compilar',['../md__home_franco_Documents_Taller_de_Programacion_1_taller_argentum_client_readme.html',1,'']]]
+  ['dependencias_20a_20instalar_20para_20compilar_38',['Dependencias a instalar para compilar',['../md__home_nicolas_Taller_TP_FINAL_-_ARGENTUM_repo_client_readme.html',1,'']]]
 ];

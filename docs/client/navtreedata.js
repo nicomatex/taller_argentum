@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "Argentum Online - Cliente", "index.html", [
-    [ "Dependencias a instalar para compilar", "md__home_franco_Documents_Taller_de_Programacion_1_taller_argentum_client_readme.html", null ],
+    [ "Dependencias a instalar para compilar", "md__home_nicolas_Taller_TP_FINAL_-_ARGENTUM_repo_client_readme.html", null ],
     [ "Clases", "annotated.html", [
       [ "Lista de clases", "annotated.html", "annotated_dup" ],
       [ "Índice de clases", "classes.html", null ],
